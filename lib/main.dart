@@ -1,7 +1,18 @@
+import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/registeredUser.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'example.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.landscapeLeft,    //#TODO before demo, disable landscape rotation (both sides)
+    DeviceOrientation.landscapeRight
+  ]).then((_) {
+    runApp(new MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -10,57 +21,36 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+          primaryColor: Colors.green,
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+          buttonTheme: ButtonThemeData(
+            height: 48,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+              side: BorderSide(
+                  //   color: Color.fromRGBO(149, 152, 154, 100),
+                  ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            //highlightColor: Color.fromRGBO(0, 0, 0, 24),
+            highlightColor: Colors.green,
+          ),
+          
+          appBarTheme: AppBarTheme(
+            color: Color.fromARGB(255, 226, 11, 48),
+            elevation: 0.0,
+            textTheme: TextTheme(
+              headline6: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'Roboto',
+              ),
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+          ),
+          textTheme: ThemeData.light()
+              .textTheme
+              .copyWith(headline6: TextStyle(fontFamily: 'Roboto'))),
+      home: AnonymouseHome(),
+      //home: AnonymouseHome(),
     );
   }
 }
