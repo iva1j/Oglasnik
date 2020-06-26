@@ -1,8 +1,5 @@
-import 'package:Oglasnik/view/screens/Auth/onPressedRegister.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/registeredUser.dart';
+import 'package:Oglasnik/view/widgets/registerForm.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({Key key}) : super(key: key);
@@ -33,46 +30,25 @@ class _RegisterPageState extends State<RegisterPage> {
     dynamic formKey;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Registracija"),
+        leading: IconButton(
+            icon: Icon(Icons.clear),
+            onPressed: () {
+              Navigator.of(context).pop();
+            }),
       ),
       body: Container(
         child: SingleChildScrollView(
-          child: Form(
-            key: _registerFormKey,
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  controller: fullNameInputController,
-                ),
-                TextFormField(
-                  controller: phoneNumberInputController,
-                  keyboardType: TextInputType.phone,
-                ),
-                TextFormField(
-                  controller: emailInputController,
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                TextFormField(
-                  controller: passwordInputController,
-                  obscureText: true,
-                ),
-                RaisedButton(
-                  child: Text("Registruj se"),
-                  color: Theme.of(context).primaryColor,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    fullName = fullNameInputController.text;
-                    email = emailInputController.text;
-                    password = passwordInputController.text;
-                    phoneNumber = phoneNumberInputController.text;
-                    formKey = _registerFormKey;
-                    onPressedRegister(context, fullName, email, password,
-                        phoneNumber, formKey);
-                  },
-                ),
-              ],
-            ),
-          ),
+          child: FormWidget(
+              registerFormKey: _registerFormKey,
+              fullNameInputController: fullNameInputController,
+              phoneNumberInputController: phoneNumberInputController,
+              emailInputController: emailInputController,
+              passwordInputController: passwordInputController,
+              fullName: fullName,
+              email: email,
+              password: password,
+              phoneNumber: phoneNumber,
+              formKey: formKey),
         ),
       ),
     );
