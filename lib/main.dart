@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           textTheme: ThemeData.light()
               .textTheme
               .copyWith(headline6: TextStyle(fontFamily: 'Roboto'))),
-      home: AnonymouseHome(),
+      home: RegisterPage(),
     );
   }
 }
