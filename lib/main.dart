@@ -7,7 +7,8 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    DeviceOrientation.landscapeLeft,    //#TODO before demo, disable landscape rotation (both sides)
+    DeviceOrientation
+        .landscapeLeft, //#TODO before demo, disable landscape rotation (both sides)
     DeviceOrientation.landscapeRight
   ]).then((_) {
     runApp(new MyApp());
@@ -21,7 +22,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
           primaryColor: Colors.green,
-
           buttonTheme: ButtonThemeData(
             height: 48,
             shape: RoundedRectangleBorder(
@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
             //highlightColor: Color.fromRGBO(0, 0, 0, 24),
             highlightColor: Colors.green,
           ),
-          
           appBarTheme: AppBarTheme(
             color: Color.fromARGB(255, 226, 11, 48),
             elevation: 0.0,
