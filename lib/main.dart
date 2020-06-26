@@ -5,15 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // SystemChrome.setPreferredOrientations([
-  //   DeviceOrientation.portraitUp,
-  //   DeviceOrientation
-  //       .landscapeLeft, //#TODO before demo, disable landscape rotation (both sides)
-  //   DeviceOrientation.landscapeRight
-  // ]).then((_) {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    // DeviceOrientation.landscapeLeft, //#TODO before demo, disable landscape rotation (both sides)
+    // DeviceOrientation.landscapeRight
+  ]).then((_) {
     runApp(new MyApp());
-  // });
+  });
 }
 class MyApp extends StatelessWidget {
   @override
