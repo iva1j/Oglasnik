@@ -1,4 +1,3 @@
-import 'package:Oglasnik/example.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
