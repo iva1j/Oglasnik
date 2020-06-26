@@ -3,7 +3,6 @@ import 'package:Oglasnik/view/screens/RegisterHome/registeredUser.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/screens/register.dart';
 import 'package:flutter/services.dart';
-import 'example.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

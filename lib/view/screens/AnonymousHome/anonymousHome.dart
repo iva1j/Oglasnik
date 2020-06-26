@@ -1,4 +1,3 @@
-import 'package:Oglasnik/example.dart';
 import 'package:Oglasnik/view/screens/RegisterHome/registeredUser.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
