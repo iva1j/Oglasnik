@@ -1,3 +1,4 @@
+import 'package:Oglasnik/view/screens/RegisterHome/registeredUser.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,7 +23,6 @@ class _RegisterPageState extends State<RegisterPage> {
     phoneNumberInputController = new TextEditingController();
     emailInputController = new TextEditingController();
     passwordInputController = new TextEditingController();
-
     super.initState();
   }
 
@@ -58,6 +58,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 color: Theme.of(context).primaryColor,
                 textColor: Colors.white,
                 onPressed: () {
+                  Navigator.of(context)
+                      .pushReplacement(MaterialPageRoute(builder: (_) {
+                    print('onpressed-button');
+                    return RegisteredUser();
+                  }));
                   if (_registerFormKey.currentState.validate()) {
                     FirebaseAuth.instance
                         .createUserWithEmailAndPassword(
