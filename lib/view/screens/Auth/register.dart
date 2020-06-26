@@ -1,3 +1,4 @@
+import 'package:Oglasnik/view/screens/Auth/onPressedRegister.dart';
 import 'package:Oglasnik/view/screens/RegisterHome/registeredUser.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,6 +29,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    String fullName, email, password, phoneNumber;
+    dynamic formKey;
     return Scaffold(
         appBar: AppBar(
           title: Text("Registracija"),
@@ -58,27 +61,13 @@ class _RegisterPageState extends State<RegisterPage> {
                 color: Theme.of(context).primaryColor,
                 textColor: Colors.white,
                 onPressed: () {
-                  Navigator.of(context)
-                      .pushReplacement(MaterialPageRoute(builder: (_) {
-                    print('onpressed-button');
-                    return RegisteredUser();
-                  }));
-                  if (_registerFormKey.currentState.validate()) {
-                    FirebaseAuth.instance
-                        .createUserWithEmailAndPassword(
-                            email: emailInputController.text,
-                            password: passwordInputController.text)
-                        .then((currentUser) => Firestore.instance
-                                .collection("Users")
-                                .document(currentUser.uid)
-                                .setData({
-                              "uid": currentUser.uid,
-                              "fullname": fullNameInputController.text,
-                              "phone": phoneNumberInputController.text,
-                              "email": emailInputController.text,
-                            }).catchError((err) => print(err)))
-                        .catchError((err) => print(err));
-                  }
+                  fullName = fullNameInputController.text;
+                  email = emailInputController.text;
+                  password = passwordInputController.text;
+                  phoneNumber = phoneNumberInputController.text;
+                  formKey = _registerFormKey;
+                  onPressedRegister(
+                      context, fullName, email, password, phoneNumber, formKey);
                 },
               ),
             ],
