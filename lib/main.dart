@@ -1,6 +1,4 @@
 import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
-import 'package:Oglasnik/view/screens/Auth/register.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/registeredUser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -8,12 +6,14 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    // DeviceOrientation.landscapeLeft, //#TODO before demo, disable landscape rotation (both sides)
-    // DeviceOrientation.landscapeRight
+    DeviceOrientation
+        .landscapeLeft, //#TODO before demo, disable landscape rotation (both sides)
+    DeviceOrientation.landscapeRight
   ]).then((_) {
     runApp(new MyApp());
   });
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           textTheme: ThemeData.light()
               .textTheme
               .copyWith(headline6: TextStyle(fontFamily: 'Roboto'))),
-      home: RegisterPage(),
+      home: AnonymouseHome(),
     );
   }
 }
