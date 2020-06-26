@@ -1,3 +1,4 @@
+import 'package:Oglasnik/view/screens/Auth/register.dart';
 import 'package:Oglasnik/view/screens/RegisterHome/registeredUser.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
@@ -51,7 +52,7 @@ class AnonymouseHome extends StatelessWidget {
                           onPressed: () => Navigator.of(context)
                               .pushReplacement(MaterialPageRoute(builder: (_) {
                             print('onpressed-button');
-                            return RegisteredUser();
+                            return RegisterPage();
                           })),
                           icon: Icon(Icons.person_add),
                         ),
@@ -71,7 +72,7 @@ class AnonymouseHome extends StatelessWidget {
               color: Color.fromARGB(255, 226, 11, 48),
             ),
             ringWidth: 120,
-         ringDiameter: 200,
+            ringDiameter: 200,
             fabElevation: 100,
             alignment: Alignment.bottomRight,
             fabColor: Colors.white,
