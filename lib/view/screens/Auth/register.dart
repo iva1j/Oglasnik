@@ -32,46 +32,49 @@ class _RegisterPageState extends State<RegisterPage> {
     String fullName, email, password, phoneNumber;
     dynamic formKey;
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Registracija"),
-        ),
-        body: Container(
-            child: SingleChildScrollView(
-                child: Form(
-          key: _registerFormKey,
-          child: Column(
-            children: <Widget>[
-              TextFormField(
-                controller: fullNameInputController,
-              ),
-              TextFormField(
-                controller: phoneNumberInputController,
-                keyboardType: TextInputType.phone,
-              ),
-              TextFormField(
-                controller: emailInputController,
-                keyboardType: TextInputType.emailAddress,
-              ),
-              TextFormField(
-                controller: passwordInputController,
-                obscureText: true,
-              ),
-              RaisedButton(
-                child: Text("Registruj se"),
-                color: Theme.of(context).primaryColor,
-                textColor: Colors.white,
-                onPressed: () {
-                  fullName = fullNameInputController.text;
-                  email = emailInputController.text;
-                  password = passwordInputController.text;
-                  phoneNumber = phoneNumberInputController.text;
-                  formKey = _registerFormKey;
-                  onPressedRegister(
-                      context, fullName, email, password, phoneNumber, formKey);
-                },
-              ),
-            ],
+      appBar: AppBar(
+        title: Text("Registracija"),
+      ),
+      body: Container(
+        child: SingleChildScrollView(
+          child: Form(
+            key: _registerFormKey,
+            child: Column(
+              children: <Widget>[
+                TextFormField(
+                  controller: fullNameInputController,
+                ),
+                TextFormField(
+                  controller: phoneNumberInputController,
+                  keyboardType: TextInputType.phone,
+                ),
+                TextFormField(
+                  controller: emailInputController,
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                TextFormField(
+                  controller: passwordInputController,
+                  obscureText: true,
+                ),
+                RaisedButton(
+                  child: Text("Registruj se"),
+                  color: Theme.of(context).primaryColor,
+                  textColor: Colors.white,
+                  onPressed: () {
+                    fullName = fullNameInputController.text;
+                    email = emailInputController.text;
+                    password = passwordInputController.text;
+                    phoneNumber = phoneNumberInputController.text;
+                    formKey = _registerFormKey;
+                    onPressedRegister(context, fullName, email, password,
+                        phoneNumber, formKey);
+                  },
+                ),
+              ],
+            ),
           ),
-        ))));
+        ),
+      ),
+    );
   }
 }
