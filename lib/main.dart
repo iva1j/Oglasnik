@@ -2,7 +2,6 @@ import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
 import 'package:Oglasnik/view/screens/RegisterHome/registeredUser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'example.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
