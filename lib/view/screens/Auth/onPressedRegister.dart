@@ -1,4 +1,4 @@
-import 'package:Oglasnik/view/screens/RegisterHome/registeredUser.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,6 @@ class RegisterButton extends StatefulWidget {
 }
 
 class _RegisterButtonState extends State<RegisterButton> {
-  final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
   TextEditingController fullNameInputController;
   TextEditingController phoneNumberInputController;
   TextEditingController emailInputController;
@@ -33,8 +32,7 @@ class _RegisterButtonState extends State<RegisterButton> {
 void onPressedRegister(BuildContext context, String fullName, String email,
     String phoneNumber, String password, dynamic formKey) {
   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-    print('onpressed-button');
-    return RegisteredUser();
+    return RegisteredHome();
   }));
   if (formKey.currentState.validate()) {
     FirebaseAuth.instance

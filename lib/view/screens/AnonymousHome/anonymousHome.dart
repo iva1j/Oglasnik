@@ -1,7 +1,4 @@
 import 'package:Oglasnik/view/screens/Auth/register.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/registeredUser.dart';
-import 'package:Oglasnik/view/widgets/specialElements.dart';
-import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 

@@ -1,9 +1,7 @@
-import 'package:Oglasnik/view/widgets/specialElements.dart';
-import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 
-class RegisteredUser extends StatelessWidget {
+class RegisteredHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +33,7 @@ class RegisteredUser extends StatelessWidget {
                 fit: StackFit.passthrough,
                 children: <Widget>[
                   Column(
-                    children: <Widget>[
-                    ],
+                    children: <Widget>[],
                   ),
                 ],
               ),
