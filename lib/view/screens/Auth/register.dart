@@ -1,5 +1,5 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/widgets/registerForm.dart';
+import 'package:Oglasnik/view/screens/Auth/onPressedRegister.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +29,11 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     String fullName, email, password, phoneNumber;
+    fullName = fullNameInputController.text;
+    email = emailInputController.text;
+    phoneNumber = phoneNumberInputController.text;
+    password = passwordInputController.text;
+
     dynamic formKey;
     return Scaffold(
       appBar: AppBar(
@@ -62,29 +67,97 @@ class _RegisterPageState extends State<RegisterPage> {
         color: Color.fromARGB(255, 226, 11, 48),
       ),
       body: Container(
-        height: SizeConfig.screenHeight,
-        margin: EdgeInsets.all(50),
-        child: Column(
-          children: <Widget>[
-            logoContainer(),
-            welcomeScreen(),
-            nameOfForm(),
-            FormWidget(
-              registerFormKey: formKey,
-              fullNameInputController: null,
-              phoneNumberInputController: null,
-              emailInputController: null,
-              passwordInputController: null,
-              fullName: null,
-              email: null,
-              password: null,
-              phoneNumber: null,
-              formKey: null,
-            )
-          ],
-        ),
-      ),
+          height: SizeConfig.screenHeight,
+          margin: EdgeInsets.all(50),
+          child: Column(
+            children: <Widget>[
+              logoContainer(),
+              welcomeScreen(),
+              nameOfForm(),
+              formRegister(fullName, email, password, phoneNumber, formKey, context)
+            ],
+          )),
     );
+  }
+
+  Form formRegister(String fullName, String email, String password, String phoneNumber, formKey, BuildContext context) {
+    return Form(
+              key: _registerFormKey,
+              child: Column(children: <Widget>[
+                new Container(
+                  margin: EdgeInsets.only(top: 10, bottom: 10),
+                  child: new SizedBox(
+                    width: double.infinity,
+                    child: Container(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Ime i prezime',
+                        ),
+                        controller: fullNameInputController,
+                        keyboardType: TextInputType.text,
+                      ),
+                    ),
+                  ),
+                ),
+                new Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  child: new SizedBox(
+                    width: double.infinity,
+                    child: Container(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Email',
+                        ),
+                        controller: emailInputController,
+                        keyboardType: TextInputType.emailAddress,
+                      ),
+                    ),
+                  ),
+                ),
+                new Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  child: new SizedBox(
+                    width: double.infinity,
+                    child: Container(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Lozinka',
+                        ),
+                        controller: passwordInputController,
+                        keyboardType: TextInputType.text,
+                      ),
+                    ),
+                  ),
+                ),
+                new Container(
+                  margin: EdgeInsets.only(bottom: 30),
+                  child: new SizedBox(
+                    width: double.infinity,
+                    child: Container(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Broj telefona',
+                        ),
+                        controller: phoneNumberInputController,
+                        keyboardType: TextInputType.phone,
+                      ),
+                    ),
+                  ),
+                ),
+                button(
+                  'Registruj se',
+                  () {
+                    fullName = fullNameInputController.text;
+                    email = emailInputController.text;
+                    password = passwordInputController.text;
+                    phoneNumber = phoneNumberInputController.text;
+                    formKey = _registerFormKey;
+                    onPressedRegister(context, fullName, email, password,
+                        phoneNumber, formKey);
+                  },
+                ),
+              ]),
+            );
   }
 
   Container nameOfForm() {

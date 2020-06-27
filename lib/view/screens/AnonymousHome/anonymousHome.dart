@@ -68,7 +68,6 @@ class _AnonymouseHomeState extends State<AnonymouseHome> {
                         child: IconButton(
                           onPressed: () => Navigator.of(context)
                               .pushReplacement(MaterialPageRoute(builder: (_) {
-                            print('onpressed-button');
                             return RegisterPage();
                           })),
                           icon: Icon(Icons.person_add),

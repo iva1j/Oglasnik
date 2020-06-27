@@ -16,7 +16,7 @@ class _AnonymousSignInState extends State<AnonymousSignIn> {
       body: Center(
         child: FlatButton(
           onPressed: () async {
-            dynamic result = await auth.getAnonymous();
+            var result = await anonymousSignIn();
             (result == null)
                 ? print('errori signing in')
                 : print('user signed in');
@@ -26,5 +26,10 @@ class _AnonymousSignInState extends State<AnonymousSignIn> {
         ),
       ),
     );
+  }
+
+  Future anonymousSignIn() async {
+    dynamic result = await auth.getAnonymous();
+    return result;
   }
 }

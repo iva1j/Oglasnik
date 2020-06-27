@@ -32,20 +32,22 @@ class _RegisterButtonState extends State<RegisterButton> {
 void onPressedRegister(BuildContext context, String fullName, String email,
     String phoneNumber, String password, dynamic formKey) {
   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+    print('došli ste do ovog stage-a');
     return RegisteredHome();
   }));
+
   if (formKey.currentState.validate()) {
-    FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: password)
-        .then((currentUser) => Firestore.instance
-                .collection("Users")
-                .document(currentUser.user.uid)
-                .setData({
-              "uid": currentUser.user.uid,
-              "fullname": fullName,
-              "phone": phoneNumber,
-              "email": email,
-            }).catchError((err) => print(err)))
-        .catchError((err) => print(err));
+  FirebaseAuth.instance
+      .createUserWithEmailAndPassword(email: email, password: password)
+      .then((currentUser) => Firestore.instance
+              .collection("Users")
+              .document(currentUser.user.uid)
+              .setData({
+            "uid": currentUser.user.uid,
+            "fullname": fullName,
+            "phone": phoneNumber,
+            "email": email,
+          }).catchError((err) => print(err)))
+      .catchError((err) => print(err));
   }
 }
