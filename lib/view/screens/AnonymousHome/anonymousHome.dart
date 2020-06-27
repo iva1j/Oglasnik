@@ -16,7 +16,7 @@ class _AnonymouseHomeState extends State<AnonymouseHome> {
   @override
   void initState() {
     super.initState();
-    //_handleAnonymousSignIn(); //#TODO odkomentarisati prije DEMO/review
+    _handleAnonymousSignIn(); //#TODO odkomentarisati prije DEMO/review
   }
   Future<FirebaseUser> _handleAnonymousSignIn()async{
     dynamic result = await auth.getAnonymous();
