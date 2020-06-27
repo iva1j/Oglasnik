@@ -1,4 +1,5 @@
 import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
+import 'package:Oglasnik/view/screens/Auth/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -21,14 +22,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
           primaryColor: Color.fromARGB(255, 226, 11, 48),
           buttonTheme: ButtonThemeData(
             height: 48,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-              side: BorderSide(),
+              borderRadius: BorderRadius.circular(10.0),
+              side: BorderSide(
+                color: Color.fromARGB(255, 226, 11, 48),
+                style: BorderStyle.solid,
+              ),
             ),
-            highlightColor: Colors.green,
+            // highlightColor: Colors.green,
           ),
           appBarTheme: AppBarTheme(
             color: Color.fromARGB(255, 226, 11, 48),

@@ -39,9 +39,9 @@ void onPressedRegister(BuildContext context, String fullName, String email,
         .createUserWithEmailAndPassword(email: email, password: password)
         .then((currentUser) => Firestore.instance
                 .collection("Users")
-                .document(currentUser.uid)
+                .document(currentUser.user.uid)
                 .setData({
-              "uid": currentUser.uid,
+              "uid": currentUser.user.uid,
               "fullname": fullName,
               "phone": phoneNumber,
               "email": email,
