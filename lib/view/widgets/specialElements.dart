@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 SizedBox button(String text, dynamic function) {
   return SizedBox(
-    height: 48,
+    height: 50,
     width: 250,
     child: RaisedButton(
       elevation: 0,
@@ -12,7 +12,7 @@ SizedBox button(String text, dynamic function) {
         text,
         style: TextStyle(
           color: Colors.white,
-          fontFamily: 'Roboto',
+          fontFamily: 'Roboto', //#TODO  postaviti ROBOTO medium
           fontSize: 14,
         ),
       ),

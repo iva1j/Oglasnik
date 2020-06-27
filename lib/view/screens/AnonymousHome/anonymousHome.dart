@@ -1,9 +1,28 @@
 import 'package:Oglasnik/view/screens/Auth/register.dart';
+import 'package:Oglasnik/viewModel/anonymousViewModel.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class AnonymouseHome extends StatelessWidget {
+class AnonymouseHome extends StatefulWidget {
   @override
+  _AnonymouseHomeState createState() => _AnonymouseHomeState();
+}
+
+class _AnonymouseHomeState extends State<AnonymouseHome> {
+ //R final FirebaseAuth auth = FirebaseAuth.instance;
+  final AnonymousViewModel auth = AnonymousViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    _handleAnonymousSignIn();
+  }
+  Future<FirebaseUser> _handleAnonymousSignIn()async{
+    dynamic result = await auth.getAnonymous();
+    return result;
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -11,6 +30,7 @@ class AnonymouseHome extends StatelessWidget {
         centerTitle: true,
         title: Text('Oglasnik'),
       ),
+      body: Center(child: Text('Anonymous user stored in Firebase')),
       floatingActionButton: Stack(
         overflow: Overflow.visible,
         children: <Widget>[
@@ -48,7 +68,6 @@ class AnonymouseHome extends StatelessWidget {
                         child: IconButton(
                           onPressed: () => Navigator.of(context)
                               .pushReplacement(MaterialPageRoute(builder: (_) {
-                            print('onpressed-button');
                             return RegisterPage();
                           })),
                           icon: Icon(Icons.person_add),
@@ -78,7 +97,7 @@ class AnonymouseHome extends StatelessWidget {
         ],
       ),
       bottomSheet: Container(
-        height: 60,
+        height: 56,
         width: double.infinity,
         color: Color.fromARGB(255, 226, 11, 48),
       ),
