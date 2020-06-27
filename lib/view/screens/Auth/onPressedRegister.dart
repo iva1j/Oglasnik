@@ -1,6 +1,5 @@
 import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 
 class RegisterButton extends StatefulWidget {
@@ -32,22 +31,11 @@ class _RegisterButtonState extends State<RegisterButton> {
 void onPressedRegister(BuildContext context, String fullName, String email,
     String phoneNumber, String password, dynamic formKey) {
   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-    print('došli ste do ovog stage-a');
     return RegisteredHome();
   }));
 
   if (formKey.currentState.validate()) {
-  FirebaseAuth.instance
-      .createUserWithEmailAndPassword(email: email, password: password)
-      .then((currentUser) => Firestore.instance
-              .collection("Users")
-              .document(currentUser.user.uid)
-              .setData({
-            "uid": currentUser.user.uid,
-            "fullname": fullName,
-            "phone": phoneNumber,
-            "email": email,
-          }).catchError((err) => print(err)))
-      .catchError((err) => print(err));
+    FormRegisterViewModel()
+        .registerWithEmailAndPassword(email, password, fullName, phoneNumber);
   }
 }
