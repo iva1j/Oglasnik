@@ -1,6 +1,6 @@
 import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/viewModel/crud.dart';
 
 class RegisterButton extends StatefulWidget {
   @override
@@ -35,7 +35,7 @@ void onPressedRegister(BuildContext context, String fullName, String email,
   }));
 
   if (formKey.currentState.validate()) {
-    AuthService()
+    FormRegisterViewModel()
         .registerWithEmailAndPassword(email, password, fullName, phoneNumber);
   }
 }
