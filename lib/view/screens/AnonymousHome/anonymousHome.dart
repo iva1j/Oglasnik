@@ -1,4 +1,5 @@
 import 'package:Oglasnik/view/screens/Auth/register.dart';
+import 'package:Oglasnik/view/screens/Auth/signin.dart';
 import 'package:Oglasnik/viewModel/AuthViewModel.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,7 +17,7 @@ class _AnonymouseHomeState extends State<AnonymouseHome> {
   @override
   void initState() {
     super.initState();
-    _handleAnonymousSignIn(); //#TODO odkomentarisati prije DEMO/review
+ //   _handleAnonymousSignIn(); //#TODO odkomentarisati prije DEMO/review
   }
 
   Future<FirebaseUser> _handleAnonymousSignIn() async {
@@ -45,9 +46,10 @@ class _AnonymouseHomeState extends State<AnonymouseHome> {
                       SizedBox(
                         child: RawMaterialButton(
                           child: Icon(Icons.person),
-                          onPressed: () {
-                            print('object');
-                          },
+                          onPressed: () => Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(builder: (_) {
+                            return SigninPage();
+                          })),
                         ),
                       ),
                       Text('Prijava'),
