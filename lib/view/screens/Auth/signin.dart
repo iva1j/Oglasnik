@@ -1,47 +1,28 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/screens/Auth/onPressedRegister.dart';
-import 'package:Oglasnik/view/screens/Auth/signin.dart';
+import 'package:Oglasnik/view/screens/Auth/register.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatefulWidget {
-  RegisterPage({Key key}) : super(key: key);
+class SigninPage extends StatefulWidget {
+  SigninPage({Key key}) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _SigninPageState createState() => _SigninPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _SigninPageState extends State<SigninPage> {
   final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 
-  TextEditingController fullNameInputController;
-  TextEditingController phoneNumberInputController;
   TextEditingController emailInputController;
   TextEditingController passwordInputController;
 
   @override
   initState() {
-    fullNameInputController = new TextEditingController();
-    phoneNumberInputController = new TextEditingController();
     emailInputController = new TextEditingController();
     passwordInputController = new TextEditingController();
     super.initState();
-  }
-
-  String nameValidator(String value) {
-    if (value.length == null || value == '')
-      return 'Polje ne smije biti prazno';
-    else {
-      return null;
-    }
-  }
-
-  String phoneValidator(String value) {
-    if (value.length == 0) {
-      return 'Polje ne smije biti prazno';
-    }
-    return null;
   }
 
   String emailValidator(String value) {
@@ -69,10 +50,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    String fullName, email, password, phoneNumber;
-    fullName = fullNameInputController.text;
+    String email, password;
+
     email = emailInputController.text;
-    phoneNumber = phoneNumberInputController.text;
+
     password = passwordInputController.text;
 
     dynamic formKey;
@@ -102,10 +83,10 @@ class _RegisterPageState extends State<RegisterPage> {
           color: Colors.white,
           onPressed: () => Navigator.of(context)
               .pushReplacement(MaterialPageRoute(builder: (_) {
-            return SigninPage();
+            return RegisterPage();
           })),
           child: Text(
-            'Prijavi se',
+            'Registruj se',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
@@ -124,34 +105,17 @@ class _RegisterPageState extends State<RegisterPage> {
               LogoContainer(),
               welcomeScreen(),
               nameOfForm(),
-              formRegister(
-                  fullName, email, password, phoneNumber, formKey, context)
+              formSignin(email, password, formKey, context)
             ],
           )),
     );
   }
 
-  Form formRegister(String fullName, String email, String password,
-      String phoneNumber, formKey, BuildContext context) {
+  Form formSignin(
+      String email, String password, formKey, BuildContext context) {
     return Form(
       key: _registerFormKey,
       child: Column(children: <Widget>[
-        new Container(
-          margin: EdgeInsets.only(top: 10, bottom: 10),
-          child: new SizedBox(
-            width: double.infinity,
-            child: Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Ime i prezime',
-                ),
-                controller: fullNameInputController,
-                keyboardType: TextInputType.text,
-                validator: nameValidator,
-              ),
-            ),
-          ),
-        ),
         new Container(
           margin: EdgeInsets.only(bottom: 10),
           child: new SizedBox(
@@ -184,34 +148,19 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
         ),
-        new Container(
-          margin: EdgeInsets.only(bottom: 30),
-          child: new SizedBox(
-            width: double.infinity,
-            child: Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Broj telefona',
-                ),
-                controller: phoneNumberInputController,
-                keyboardType: TextInputType.phone,
-                validator: phoneValidator,
-              ),
-            ),
-          ),
-        ),
         button(
-          'Registruj se',
-          () {
-            fullName = fullNameInputController.text;
-            email = emailInputController.text;
-            password = passwordInputController.text;
-            phoneNumber = phoneNumberInputController.text;
-            formKey = _registerFormKey;
-            onPressedRegister(
-                context, fullName, email, password, phoneNumber, formKey);
-          },
+          'Prijavi se',
+          () {},
         ),
+        Container(
+          margin: EdgeInsets.only(top: 10.0),
+          child: new GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, "");
+            },
+            child: new Text("Zaboravili ste lozinku?"),
+          ),
+        )
       ]),
     );
   }
@@ -221,7 +170,7 @@ class _RegisterPageState extends State<RegisterPage> {
       margin: EdgeInsets.only(top: 10),
       alignment: Alignment.centerLeft,
       child: Text(
-        'Registracija',
+        'Prijava',
         textDirection: TextDirection.ltr,
         style: TextStyle(
           fontWeight: FontWeight.bold,
