@@ -108,9 +108,9 @@ class _RegisterPageState extends State<RegisterPage> {
             'Prijavi se',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-            ),
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.normal),
           ),
         ),
         height: 60,
