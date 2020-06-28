@@ -1,10 +1,15 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/screens/Auth/onPressedRegister.dart';
+import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
 import 'package:Oglasnik/view/screens/Auth/register.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
 import 'package:Oglasnik/view/screens/PasswordChange/passwordChange.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+FirebaseAuth _auth = FirebaseAuth.instance;
 
 class SigninPage extends StatefulWidget {
   SigninPage({Key key}) : super(key: key);
@@ -14,6 +19,8 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
+  FirebaseUser user;
+
   final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 
   TextEditingController emailInputController;
@@ -49,6 +56,7 @@ class _SigninPageState extends State<SigninPage> {
     }
   }
 
+  String error = '';
   @override
   Widget build(BuildContext context) {
     String email, password;
@@ -62,15 +70,7 @@ class _SigninPageState extends State<SigninPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: IconButton(
-            icon: Icon(
-              Icons.clear,
-              color: Colors.black,
-              size: 24,
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }),
+        leading: backButtonIphone(context),
       ),
       bottomNavigationBar: Container(
         child: FlatButton(
@@ -125,6 +125,7 @@ class _SigninPageState extends State<SigninPage> {
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Email',
+                  contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: emailInputController,
                 keyboardType: TextInputType.emailAddress,
@@ -141,9 +142,11 @@ class _SigninPageState extends State<SigninPage> {
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Lozinka',
+                  contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: passwordInputController,
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: true,
                 validator: passwordValidator,
               ),
             ),
@@ -152,8 +155,23 @@ class _SigninPageState extends State<SigninPage> {
         Container(
           margin: EdgeInsets.only(top: 15.0),
           child: button(
-            'Prijavi se',
-            () {},
+          'Prijavi se',
+          () async {
+            email = emailInputController.text;
+            password = passwordInputController.text;
+            formKey = _registerFormKey;
+
+            if (formKey.currentState.validate()) {
+              dynamic result = await _auth
+                  .signInWithEmailAndPassword(email: email, password: password)
+                  .then((value) => Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (_) => RegisteredHome())));
+
+              if (result == null) {
+                setState(() => error = 'Email ili lozinka nisu ispravni!');
+              } else {}
+            }
+          },
           ),
         ),
         Container(

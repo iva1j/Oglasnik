@@ -3,6 +3,7 @@ import 'package:Oglasnik/view/screens/Auth/register.dart';
 import 'package:Oglasnik/view/screens/Auth/alertdialog.dart';
 import 'package:Oglasnik/view/screens/Auth/signin.dart';
 import 'package:Oglasnik/view/screens/PasswordChange/passwordChange.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -10,9 +11,9 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    DeviceOrientation
-        .landscapeLeft, //#TODO before demo, disable landscape rotation (both sides)
-    DeviceOrientation.landscapeRight
+    // DeviceOrientation
+    //     .landscapeLeft, //#TODO before demo, disable landscape rotation (both sides)
+    // DeviceOrientation.landscapeRight
   ]).then((_) {
     runApp(new MyApp());
   });
@@ -52,7 +53,8 @@ class MyApp extends StatelessWidget {
           textTheme: ThemeData.light()
               .textTheme
               .copyWith(headline6: TextStyle(fontFamily: 'Roboto'))),
-      home: SigninPage(),
+
+      home: AnonymouseHome(),
     );
   }
 }

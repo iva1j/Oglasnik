@@ -5,7 +5,7 @@ SizedBox button(String text, dynamic function) {
     height: 50,
     width: 250,
     child: RaisedButton(
-      elevation: 0,
+      elevation: 3,
       onPressed: function,
       color: Color.fromARGB(255, 226, 11, 48),
       child: Text(
@@ -39,3 +39,15 @@ SizedBox buttons(String text, dynamic function) {
     ),
   );
 }
+
+IconButton backButtonIphone(BuildContext context) {
+    return IconButton(
+          icon: Icon(
+            Icons.clear,
+            color: Colors.black,
+            size: 30,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          });
+  }
