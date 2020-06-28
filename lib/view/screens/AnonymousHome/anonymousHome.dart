@@ -17,13 +17,15 @@ class _AnonymouseHomeState extends State<AnonymouseHome> {
   @override
   void initState() {
     super.initState();
- //   _handleAnonymousSignIn(); //#TODO odkomentarisati prije DEMO/review
+    //   _handleAnonymousSignIn(); //#TODO odkomentarisati prije DEMO/review
   }
 
   Future<FirebaseUser> _handleAnonymousSignIn() async {
     dynamic result = await auth.getAnonymous();
     return result;
   }
+
+  final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,75 +34,80 @@ class _AnonymouseHomeState extends State<AnonymouseHome> {
         centerTitle: true,
         title: Text('Oglasnik'),
       ),
-      body: Center(child: Text('Anonymous user stored in Firebase')),
-      floatingActionButton: Stack(
-        overflow: Overflow.visible,
-        children: <Widget>[
-          FabCircularMenu(
-            children: <Widget>[
-              Container(),
-              Stack(
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      SizedBox(
-                        child: RawMaterialButton(
-                          child: Icon(Icons.person),
-                          onPressed: () => Navigator.of(context)
-                              .pushReplacement(MaterialPageRoute(builder: (_) {
-                            return SigninPage();
-                          })),
-                        ),
-                      ),
-                      Text('Prijava'),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 90,
-                    width: 180,
-                  ),
-                ],
-              ),
-              Stack(
-                overflow: Overflow.visible,
-                //  fit: StackFit.passthrough,
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      SizedBox(
-                        child: IconButton(
-                          onPressed: () => Navigator.of(context)
-                              .pushReplacement(MaterialPageRoute(builder: (_) {
-                            return RegisterPage();
-                          })),
-                          icon: Icon(Icons.person_add),
-                        ),
-                      ),
-                      Text('Registracija'),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-            fabCloseIcon: Icon(
-              Icons.person,
-              color: Color.fromARGB(255, 226, 11, 48),
-            ),
+      body: Container(color: Colors.white),
+      floatingActionButton:
+          Stack(overflow: Overflow.visible, children: <Widget>[
+        Builder(
+          builder: (context) => FabCircularMenu(
+            key: fabKey,
+            alignment: Alignment.bottomRight,
+            ringColor: Colors.black.withAlpha(10),
+            ringDiameter: 350.0,
+            ringWidth: 76.0,
+            fabColor: Colors.white,
             fabOpenIcon: Icon(
               Icons.person,
               color: Color.fromARGB(255, 226, 11, 48),
             ),
-            ringWidth: 120,
-            ringDiameter: 200,
-            fabElevation: 100,
-            alignment: Alignment.bottomRight,
-            fabColor: Colors.white,
-            ringColor: Colors.transparent,
+            fabCloseIcon: Icon(
+              Icons.close,
+              color: Color.fromARGB(255, 226, 11, 48),
+            ),
+            fabMargin: const EdgeInsets.only(bottom: 24.0, right: 20.0),
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(bottom: 84.0, left: 10.0),
+                child: SizedBox.fromSize(
+                  size: Size(80, 80), // button width and height
+                  child: ClipOval(
+                    child: Material(
+                      color: Colors.transparent, // button color
+                      child: InkWell(
+                        splashColor: Colors.transparent, // splash color
+                        onTap: () => Navigator.of(context)
+                            .pushReplacement(MaterialPageRoute(builder: (_) {
+                          return SigninPage();
+                        })), // button pressed
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(Icons.person), // icon
+                            Text("Prijava"), // text
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox.fromSize(
+                size: Size(80, 80), // button width and height
+                child: ClipOval(
+                  child: Material(
+                    color: Colors.transparent, // button color
+                    child: InkWell(
+                      splashColor: Colors.transparent, // splash color
+                      onTap: () => Navigator.of(context)
+                          .pushReplacement(MaterialPageRoute(builder: (_) {
+                        return RegisterPage();
+                      })), // button pressed
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(Icons.person_add), // icon
+                          Text("Registracija"), // text
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
-        ],
-      ),
+        ),
+      ]),
       bottomSheet: Container(
-        height: 56,
+        height: 55,
         width: double.infinity,
         color: Color.fromARGB(255, 226, 11, 48),
       ),
