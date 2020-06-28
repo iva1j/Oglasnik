@@ -1,5 +1,5 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/screens/Auth/onPressedRegister.dart';
+import 'package:Oglasnik/view/widgets/onPressedRegister.dart';
 import 'package:Oglasnik/view/screens/Auth/signin.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
@@ -80,15 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: IconButton(
-            icon: Icon(
-              Icons.clear,
-              color: Colors.black,
-              size: 24,
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }),
+        leading: backButtonIphone(context),
       ),
       bottomNavigationBar: Container(
         child: FlatButton(
@@ -131,6 +123,8 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+  
+
   Form formRegister(String fullName, String email, String password,
       String phoneNumber, formKey, BuildContext context) {
     return Form(
@@ -144,6 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Ime i prezime',
+                  contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: fullNameInputController,
                 keyboardType: TextInputType.text,
@@ -160,6 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Email',
+                  contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: emailInputController,
                 keyboardType: TextInputType.emailAddress,
@@ -176,10 +172,12 @@ class _RegisterPageState extends State<RegisterPage> {
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Lozinka',
+                  contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: passwordInputController,
-                keyboardType: TextInputType.text,
-                validator: passwordValidator,
+               // keyboardType: TextInputType.visiblePassword,
+                obscureText: true,
+               validator: passwordValidator,
               ),
             ),
           ),
@@ -191,6 +189,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Container(
               child: TextFormField(
                 decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(left: 20),
                   hintText: 'Broj telefona',
                 ),
                 controller: phoneNumberInputController,

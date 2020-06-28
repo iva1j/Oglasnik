@@ -9,10 +9,12 @@ class AnonymousViewModel implements AnonymousInterface {
   @override
   Future getAnonymous() async {
     // dodjeljivanje uid-a Anonymous useru
-    final FirebaseAuth auth = FirebaseAuth.instance;
+    //final FirebaseAuth auth = FirebaseAuth.instance;
     try {
-      AuthResult result = await auth.signInAnonymously();
-      FirebaseUser user = result.user;
+      //AuthResult result = await auth.signInAnonymously();
+      //FirebaseUser user =  result.user;
+      final FirebaseUser user =
+          (await FirebaseAuth.instance.signInAnonymously()).user;
       return user;
     } catch (e) {
       print(e.toString());
@@ -66,6 +68,10 @@ class FormRegisterViewModel implements AuthRegisterWithEmailAndPassword {
   }
 }
 
+// User _userFromFirebase(FirebaseUser user) {
+//   return user != null ? User(userID: user.uid) : null;
+// }
+
 class FormSignInViewModel implements AuthSignInWithEmailAndPassword {
   @override
   Future signInWithEmailAndPassword(String email, String password) async {
@@ -102,4 +108,14 @@ class SignInAnonViewModel implements AuthSignInAnon {
 
 User userFromFirebaseUser(FirebaseUser user) {
   return user != null ? User(userID: user.uid) : null;
+}
+
+// sign out
+Future signOut() async {
+  try {
+    return await _auth.signOut();
+  } catch (error) {
+    print(error.toString());
+    return null;
+  }
 }
