@@ -2,6 +2,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
 import 'package:Oglasnik/view/screens/Auth/register.dart';
 import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
+import 'package:Oglasnik/view/screens/PasswordChange/passwordChange.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
@@ -89,9 +90,9 @@ class _SigninPageState extends State<SigninPage> {
             'Registruj se',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-            ),
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.normal),
           ),
         ),
         height: 60,
@@ -151,7 +152,9 @@ class _SigninPageState extends State<SigninPage> {
             ),
           ),
         ),
-        button(
+        Container(
+          margin: EdgeInsets.only(top: 15.0),
+          child: button(
           'Prijavi se',
           () async {
             email = emailInputController.text;
@@ -169,14 +172,19 @@ class _SigninPageState extends State<SigninPage> {
               } else {}
             }
           },
+          ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 10.0),
+          margin: EdgeInsets.only(top: 15.0),
           child: new GestureDetector(
-            onTap: () {
-              //Navigator.pushNamed(context, "");
-            },
-            child: new Text("Zaboravili ste lozinku?"),
+            onTap: () => _displayDialog(context),
+            child: new Text(
+              "Zaboravili ste lozinku?",
+              style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 16,
+                  color: Color.fromRGBO(0, 0, 0, 102)),
+            ),
           ),
         )
       ]),
@@ -219,4 +227,52 @@ class _SigninPageState extends State<SigninPage> {
       ),
     );
   }
+}
+
+_displayDialog(BuildContext context) async {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Color.fromARGB(255, 239, 232, 232),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              side: BorderSide(color: Color.fromRGBO(112, 112, 112, 100))),
+          content: TextFormField(
+            decoration: InputDecoration(
+              hintText: 'Email',
+            ),
+            keyboardType: TextInputType.emailAddress,
+          ),
+          actions: <Widget>[
+            new FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(2.0)),
+              color: Color.fromARGB(255, 226, 11, 48),
+              child: new Text(
+                'ODUSTANI',
+                style: TextStyle(
+                    color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            new FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(2.0)),
+              color: Color.fromARGB(255, 226, 11, 48),
+              child: new Text(
+                'POŠALJI KOD',
+                style: TextStyle(
+                    color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
+              ),
+              onPressed: () => Navigator.of(context)
+                  .pushReplacement(MaterialPageRoute(builder: (_) {
+                return PasswordChange();
+              })),
+            ),
+          ],
+        );
+      });
 }
