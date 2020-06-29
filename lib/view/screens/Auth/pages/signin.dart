@@ -1,10 +1,12 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/screens/Auth/register.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
-import 'package:Oglasnik/view/widgets/alertdialog.dart';
+import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/register.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/screens/Auth/widgets/alertdialog.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 FirebaseAuth _auth = FirebaseAuth.instance;
@@ -47,7 +49,7 @@ class _SigninPageState extends State<SigninPage> {
   String passwordValidator(String value) {
     if (value.length == null || value == '')
       return 'Polje ne smije biti prazno';
-    if (value.length <= 8) {
+    if (value.length <= 7) {
       return 'Password ne smije biti manji od 8 char';
     } else {
       return null;
@@ -71,7 +73,8 @@ class _SigninPageState extends State<SigninPage> {
         elevation: 0.0,
         leading: backButtonIphone(context),
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(left: 100.0, right: 100.0, bottom: 5.0),
         child: FlatButton(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -81,10 +84,8 @@ class _SigninPageState extends State<SigninPage> {
             ),
           ),
           color: Colors.white,
-          onPressed: () => Navigator.of(context)
-              .pushReplacement(MaterialPageRoute(builder: (_) {
-            return RegisterPage();
-          })),
+          onPressed: () =>
+              Navigator.push(context, FadeRoute(page: RegisterPage())),
           child: Text(
             'Registruj se',
             textAlign: TextAlign.center,
@@ -94,24 +95,30 @@ class _SigninPageState extends State<SigninPage> {
                 fontWeight: FontWeight.normal),
           ),
         ),
-        height: 60,
-        width: double.infinity,
+        // height: 60,
+        // width: double.infinity,
       ),
-      body: SingleChildScrollView(
-        reverse: true,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: bottom),
-          child: Container(
-              height: SizeConfig.screenHeight,
-              margin: EdgeInsets.all(50),
-              child: Column(
-                children: <Widget>[
-                  LogoContainer(),
-                  welcomeScreen(),
-                  nameOfForm(),
-                  formSignin(email, password, formKey, context)
-                ],
-              )),
+      body: WillPopScope(
+        onWillPop: () => Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (_) {
+          return AnonymouseHome();
+        })),
+        child: SingleChildScrollView(
+          reverse: true,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: bottom),
+            child: Container(
+                height: SizeConfig.screenHeight,
+                margin: EdgeInsets.all(50),
+                child: Column(
+                  children: <Widget>[
+                    LogoContainer(),
+                    welcomeScreen(),
+                    nameOfForm(),
+                    formSignin(email, password, formKey, context)
+                  ],
+                )),
+          ),
         ),
       ),
     );

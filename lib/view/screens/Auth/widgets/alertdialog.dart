@@ -1,4 +1,4 @@
-import 'package:Oglasnik/view/screens/PasswordChange/passwordChange.dart';
+import 'package:Oglasnik/view/screens/PasswordChange/pages/passwordChange.dart';
 import 'package:flutter/material.dart';
 
 displayDialog(BuildContext context) async {

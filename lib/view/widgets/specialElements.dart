@@ -1,3 +1,4 @@
+import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
 import 'package:flutter/material.dart';
 
 SizedBox button(String text, dynamic function) {
@@ -41,13 +42,37 @@ SizedBox buttons(String text, dynamic function) {
 }
 
 IconButton backButtonIphone(BuildContext context) {
-    return IconButton(
-          icon: Icon(
-            Icons.clear,
-            color: Colors.black,
-            size: 30,
+  return IconButton(
+      icon: Icon(
+        Icons.clear,
+        color: Colors.black,
+        size: 30,
+      ),
+      onPressed: () =>
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+            return AnonymouseHome();
+          })));
+}
+
+class FadeRoute extends PageRouteBuilder {
+  final Widget page;
+  FadeRoute({this.page})
+      : super(
+          pageBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+          ) =>
+              page,
+          transitionsBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+            Widget child,
+          ) =>
+              FadeTransition(
+            opacity: animation,
+            child: child,
           ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          });
-  }
+        );
+}

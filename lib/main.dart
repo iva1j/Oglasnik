@@ -1,5 +1,9 @@
-import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
-import 'package:Oglasnik/view/screens/splash.dart';
+import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/register.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/signin.dart';
+import 'package:Oglasnik/view/screens/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/screens/SplashScreen/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -49,7 +53,7 @@ class MyApp extends StatelessWidget {
           textTheme: ThemeData.light()
               .textTheme
               .copyWith(headline6: TextStyle(fontFamily: 'Roboto'))),
-      home: AnonymouseHome(),
+      home: RegisterPage(),
     );
   }
 }

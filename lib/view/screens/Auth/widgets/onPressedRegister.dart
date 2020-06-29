@@ -1,8 +1,6 @@
-import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
-
-
 
 class RegisterButton extends StatefulWidget {
   @override

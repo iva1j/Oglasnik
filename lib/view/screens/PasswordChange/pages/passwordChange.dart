@@ -11,7 +11,17 @@ class _PasswordChangeState extends State<PasswordChange> {
   String passwordValidator(String value) {
     if (value.length == null || value == '')
       return 'Polje ne smije biti prazno';
-    if (value.length <= 8) {
+    if (value.length <= 7) {
+      return 'Password ne smije biti manji od 8 char';
+    } else {
+      return null;
+    }
+  }
+
+  String confirmpasswordValidator(String value) {
+    if (value.length == null || value == '')
+      return 'Polje ne smije biti prazno';
+    if (value.length <= 7) {
       return 'Password ne smije biti manji od 8 char';
     } else {
       return null;
@@ -76,8 +86,11 @@ class _PasswordChangeState extends State<PasswordChange> {
                           child: Container(
                             child: TextFormField(
                               decoration: InputDecoration(
+                                // errorStyle: TextStyle(fontSize: 20),
                                 hintText: 'Nova šifra',
                               ),
+                              obscureText: true,
+                              validator: passwordValidator,
                             ),
                           ),
                         ),
@@ -88,10 +101,11 @@ class _PasswordChangeState extends State<PasswordChange> {
                           width: double.infinity,
                           child: Container(
                             child: TextFormField(
-                              decoration: InputDecoration(
-                                hintText: 'Potvrdi šifru',
-                              ),
-                            ),
+                                decoration: InputDecoration(
+                                  hintText: 'Potvrdi šifru',
+                                ),
+                                obscureText: true,
+                                validator: confirmpasswordValidator),
                           ),
                         ),
                       ),
