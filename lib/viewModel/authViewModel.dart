@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
+final db = Firestore.instance;
 
 class AnonymousViewModel implements AnonymousInterface {
   @override
@@ -13,22 +14,12 @@ class AnonymousViewModel implements AnonymousInterface {
     try {
       //AuthResult result = await auth.signInAnonymously();
       //FirebaseUser user =  result.user;
-      final FirebaseUser user =
-          (await FirebaseAuth.instance.signInAnonymously()).user;
+      final FirebaseUser user = (await _auth.signInAnonymously()).user;
       return user;
     } catch (e) {
       print(e.toString());
       return null;
     }
-  }
-}
-
-class RegisteredUserViewModel implements RegisteredUserInterface {
-  @override
-  Future getRegisterUser() async {
-    var auth = Firestore.instance;
-    QuerySnapshot qn = await auth.collection('Users').getDocuments();
-    return qn.documents;
   }
 }
 
@@ -49,12 +40,10 @@ class FormRegisterViewModel implements AuthRegisterWithEmailAndPassword {
   Future registerWithEmailAndPassword(String email, String password,
       String fullName, String phoneNumber) async {
     try {
-      FirebaseAuth.instance
+      _auth
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((currentUser) => Firestore.instance
-                  .collection("Users")
-                  .document(currentUser.user.uid)
-                  .setData({
+          .then((currentUser) =>
+              db.collection("Users").document(currentUser.user.uid).setData({
                 "uid": currentUser.user.uid,
                 "fullname": fullName,
                 "phone": phoneNumber,
@@ -68,23 +57,35 @@ class FormRegisterViewModel implements AuthRegisterWithEmailAndPassword {
     }
   }
 }
+// class RegisteredUserViewModel implements RegisteredUserInterface {
+//   @override
+//   Future getRegisterUser() async {
+//     QuerySnapshot qn = await db.collection('Users').getDocuments(
 
-// User _userFromFirebase(FirebaseUser user) {
-//   return user != null ? User(userID: user.uid) : null;
+//     );
+//     return qn.documents;
+//   }
 // }
 
 class FormSignInViewModel implements AuthSignInWithEmailAndPassword {
   @override
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      FirebaseUser user = result.user;
-      return user;
+      
     } catch (error) {
       print(error.toString());
       return null;
     }
+
+    // try {
+    //   AuthResult result = await _auth.signInWithEmailAndPassword(
+    //       email: email, password: password);
+    //   FirebaseUser user = result.user;
+    //   return user;
+    // } catch (error) {
+    //   print(error.toString());
+    //   return null;
+    // }
   }
 }
 
@@ -106,6 +107,10 @@ class SignInAnonViewModel implements AuthSignInAnon {
     }
   }
 }
+
+// User _userFromFirebase(FirebaseUser user) {
+//   return user != null ? User(userID: user.uid) : null;
+// }
 
 User userFromFirebaseUser(FirebaseUser user) {
   return user != null ? User(userID: user.uid) : null;

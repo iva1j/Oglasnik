@@ -1,9 +1,11 @@
+import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/screens/Auth/register.dart';
 import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
 import 'package:Oglasnik/view/widgets/alertdialog.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -167,17 +169,19 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
+                // Firestore user = User.fromDocument(doc).userID as Firestore;
 
+                // dynamic result =
 
-                dynamic result = await _auth
-                    .signInWithEmailAndPassword(
-                        email: email, password: password)
-                    .then((value) => Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (_) => RegisteredHome())));
+                // dynamic result = await _auth
+                //     .signInWithEmailAndPassword(
+                //         email: email, password: password)
+                //     .then((value) => Navigator.of(context).pushReplacement(
+                //         MaterialPageRoute(builder: (_) => RegisteredHome())));
 
-                if (result == null) {
-                  setState(() => error = 'Email ili lozinka nisu ispravni!');
-                } else {}
+                // if (result == null) {
+                //   setState(() => error = 'Email ili lozinka nisu ispravni!');
+                // } else {}
               }
             },
           ),
