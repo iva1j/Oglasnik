@@ -1,13 +1,13 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/register.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/screens/Auth/widgets/alertdialog.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
+import 'package:Oglasnik/view/screens/Auth/sharedwidgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/widgets/alertdialog.dart';
 
 FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -177,8 +177,8 @@ class _SigninPageState extends State<SigninPage> {
                 dynamic result = await _auth
                     .signInWithEmailAndPassword(
                         email: email, password: password)
-                    .then((value) => Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (_) => RegisteredHome())));
+                    .then((value) => Navigator.pushNamedAndRemoveUntil(
+                        context, "/homeregister", (_) => false));
 
                 if (result == null) {
                   setState(() => error = 'Email ili lozinka nisu ispravni!');
@@ -215,28 +215,6 @@ class _SigninPageState extends State<SigninPage> {
           fontWeight: FontWeight.bold,
           fontSize: 23,
         ),
-      ),
-    );
-  }
-
-  Container welcomeScreen() {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Container(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  child: Text(
-                    'Dobrodošli u Oglasnik',
-                    style: TextStyle(fontSize: 22),
-                  ),
-                  alignment: Alignment.centerLeft,
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

@@ -1,10 +1,11 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/view/screens/Auth/widgets/onPressedRegister.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/signin.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/onPressedRegister.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/screens/Auth/sharedwidgets/welcomeScreen.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({Key key}) : super(key: key);
@@ -96,10 +97,8 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           color: Colors.white,
-          onPressed: () => Navigator.of(context)
-              .pushReplacement(MaterialPageRoute(builder: (_) {
-            return SigninPage();
-          })),
+          onPressed: () =>
+              Navigator.push(context, FadeRoute(page: SigninPage())),
           child: Text(
             'Prijavi se',
             textAlign: TextAlign.center,
@@ -241,28 +240,6 @@ class _RegisterPageState extends State<RegisterPage> {
           fontWeight: FontWeight.bold,
           fontSize: 23,
         ),
-      ),
-    );
-  }
-
-  Container welcomeScreen() {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Container(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  child: Text(
-                    'Dobrodošli u Oglasnik',
-                    style: TextStyle(fontSize: 22),
-                  ),
-                  alignment: Alignment.centerLeft,
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

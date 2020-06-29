@@ -33,10 +33,6 @@ void onPressedRegister(BuildContext context, String fullName, String email,
   if (formKey.currentState.validate()) {
     FormRegisterViewModel()
         .registerWithEmailAndPassword(email, password, fullName, phoneNumber);
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) {
-        return RegisteredHome();
-      }),
-    );
+    Navigator.pushNamedAndRemoveUntil(context, "/homeregister", (_) => false);
   }
 }
