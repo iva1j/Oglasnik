@@ -1,9 +1,19 @@
+import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
+  User userFromFirebaseUser(FirebaseUser user) {
+  return user != null ? User(userID: user.uid) : null;
+}
+  @override
+  _SplashState createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

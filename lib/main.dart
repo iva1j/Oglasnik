@@ -1,9 +1,6 @@
 import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
-import 'package:Oglasnik/view/screens/Auth/signin.dart';
-import 'package:Oglasnik/view/screens/PasswordChange/passwordChange.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './splash.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
