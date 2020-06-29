@@ -62,9 +62,10 @@ class _SigninPageState extends State<SigninPage> {
     email = emailInputController.text;
 
     password = passwordInputController.text;
-
+    final bottom = MediaQuery.of(context).viewInsets.bottom;
     dynamic formKey;
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
@@ -96,17 +97,23 @@ class _SigninPageState extends State<SigninPage> {
         height: 60,
         width: double.infinity,
       ),
-      body: Container(
-          height: SizeConfig.screenHeight,
-          margin: EdgeInsets.all(50),
-          child: Column(
-            children: <Widget>[
-              LogoContainer(),
-              welcomeScreen(),
-              nameOfForm(),
-              formSignin(email, password, formKey, context)
-            ],
-          )),
+      body: SingleChildScrollView(
+        reverse: true,
+        child: Padding(
+          padding: EdgeInsets.only(bottom: bottom),
+          child: Container(
+              height: SizeConfig.screenHeight,
+              margin: EdgeInsets.all(50),
+              child: Column(
+                children: <Widget>[
+                  LogoContainer(),
+                  welcomeScreen(),
+                  nameOfForm(),
+                  formSignin(email, password, formKey, context)
+                ],
+              )),
+        ),
+      ),
     );
   }
 

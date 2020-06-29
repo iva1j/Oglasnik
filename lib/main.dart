@@ -1,4 +1,5 @@
 import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
+import 'package:Oglasnik/view/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
