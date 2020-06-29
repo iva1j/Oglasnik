@@ -20,7 +20,9 @@ class _PasswordChangeState extends State<PasswordChange> {
 
   @override
   Widget build(BuildContext context) {
+    final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
+        resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
@@ -34,70 +36,76 @@ class _PasswordChangeState extends State<PasswordChange> {
                 Navigator.of(context).pop();
               }),
         ),
-        body: Container(
-            height: SizeConfig.screenHeight,
-            margin: EdgeInsets.all(50),
-            child: Column(children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(bottom: 90.0),
-                child: Text(
-                  "Promijeni šifru",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.normal),
-                ),
-              ),
-              Form(
+        body: SingleChildScrollView(
+          reverse: true,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: bottom),
+            child: Container(
+                height: SizeConfig.screenHeight,
+                margin: EdgeInsets.all(50),
                 child: Column(children: <Widget>[
-                  new Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: new SizedBox(
-                      width: double.infinity,
-                      child: Container(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            hintText: 'Unesi kod',
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  new Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: new SizedBox(
-                      width: double.infinity,
-                      child: Container(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            hintText: 'Nova šifra',
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  new Container(
-                    margin: EdgeInsets.only(bottom: 30),
-                    child: new SizedBox(
-                      width: double.infinity,
-                      child: Container(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            hintText: 'Potvrdi šifru',
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
                   Container(
-                    margin: EdgeInsets.only(top: 110),
-                    child: button(
-                      'Sačuvaj',
-                      () {},
+                    margin: EdgeInsets.only(bottom: 90.0),
+                    child: Text(
+                      "Promijeni šifru",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.normal),
                     ),
                   ),
-                ]),
-              )
-            ])));
+                  Form(
+                    child: Column(children: <Widget>[
+                      new Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: new SizedBox(
+                          width: double.infinity,
+                          child: Container(
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                hintText: 'Unesi kod',
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      new Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: new SizedBox(
+                          width: double.infinity,
+                          child: Container(
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                hintText: 'Nova šifra',
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      new Container(
+                        margin: EdgeInsets.only(bottom: 30),
+                        child: new SizedBox(
+                          width: double.infinity,
+                          child: Container(
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                hintText: 'Potvrdi šifru',
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 110),
+                        child: button(
+                          'Sačuvaj',
+                          () {},
+                        ),
+                      ),
+                    ]),
+                  )
+                ])),
+          ),
+        ));
   }
 }
