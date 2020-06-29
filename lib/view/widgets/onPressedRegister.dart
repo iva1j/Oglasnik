@@ -2,8 +2,6 @@ import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 
-
-
 class RegisterButton extends StatefulWidget {
   @override
   _RegisterButtonState createState() => _RegisterButtonState();
@@ -33,8 +31,13 @@ class _RegisterButtonState extends State<RegisterButton> {
 void onPressedRegister(BuildContext context, String fullName, String email,
     String password, String phoneNumber, dynamic formKey) {
   if (formKey.currentState.validate()) {
-    FormRegisterViewModel()
-        .registerWithEmailAndPassword(email, password, fullName, phoneNumber);
+    // FormRegisterViewModel()
+    //     .registerWithEmailAndPassword(email, password, fullName, phoneNumber);
+     
+     
+     //registerWithEmailAndPassword(fullName, email, password);
+     AuthService().registerWithEmailAndPassword(fullName, email, password);
+
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) {
         return RegisteredHome();

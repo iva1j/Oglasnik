@@ -1,7 +1,10 @@
 import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
+import 'package:Oglasnik/view/screens/PasswordChange/passwordChange.dart';
 import 'package:Oglasnik/view/screens/splash.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +14,14 @@ void main() {
     //     .landscapeLeft, //#TODO before demo, disable landscape rotation (both sides)
     // DeviceOrientation.landscapeRight
   ]).then((_) {
-    runApp(new MyApp());
+    runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AuthService>(
+          create: (context) => AuthService(),
+        ),
+      ],
+      child: new MyApp(),
+    ));
   });
 }
 
@@ -49,7 +59,7 @@ class MyApp extends StatelessWidget {
           textTheme: ThemeData.light()
               .textTheme
               .copyWith(headline6: TextStyle(fontFamily: 'Roboto'))),
-      home: AnonymouseHome(),
+      home: PasswordChange(),
     );
   }
 }
