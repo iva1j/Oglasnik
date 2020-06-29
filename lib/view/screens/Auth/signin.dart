@@ -160,6 +160,8 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
+
+
                 dynamic result = await _auth
                     .signInWithEmailAndPassword(
                         email: email, password: password)

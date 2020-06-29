@@ -59,6 +59,7 @@ class FormRegisterViewModel implements AuthRegisterWithEmailAndPassword {
                 "fullname": fullName,
                 "phone": phoneNumber,
                 "email": email,
+                "password": password,
               }).catchError((err) => print(err)))
           .catchError((err) => print(err));
     } catch (error) {
