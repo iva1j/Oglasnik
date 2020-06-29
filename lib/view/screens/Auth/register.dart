@@ -74,9 +74,11 @@ class _RegisterPageState extends State<RegisterPage> {
     email = emailInputController.text;
     phoneNumber = phoneNumberInputController.text;
     password = passwordInputController.text;
+    final bottom = MediaQuery.of(context).viewInsets.bottom;
 
     dynamic formKey;
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
@@ -108,22 +110,26 @@ class _RegisterPageState extends State<RegisterPage> {
         height: 60,
         width: double.infinity,
       ),
-      body: Container(
-          height: SizeConfig.screenHeight,
-          margin: EdgeInsets.all(50),
-          child: Column(
-            children: <Widget>[
-              LogoContainer(),
-              welcomeScreen(),
-              nameOfForm(),
-              formRegister(
-                  fullName, email, password, phoneNumber, formKey, context)
-            ],
-          )),
+      body: SingleChildScrollView(
+        reverse: true,
+        child: Padding(
+          padding: EdgeInsets.only(bottom: bottom),
+          child: Container(
+              height: SizeConfig.screenHeight,
+              margin: EdgeInsets.all(50),
+              child: Column(
+                children: <Widget>[
+                  LogoContainer(),
+                  welcomeScreen(),
+                  nameOfForm(),
+                  formRegister(
+                      fullName, email, password, phoneNumber, formKey, context)
+                ],
+              )),
+        ),
+      ),
     );
   }
-
-  
 
   Form formRegister(String fullName, String email, String password,
       String phoneNumber, formKey, BuildContext context) {
@@ -175,9 +181,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: passwordInputController,
-               // keyboardType: TextInputType.visiblePassword,
+                // keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
-               validator: passwordValidator,
+                validator: passwordValidator,
               ),
             ),
           ),
