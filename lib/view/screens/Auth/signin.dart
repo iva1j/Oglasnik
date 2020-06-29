@@ -1,12 +1,9 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/screens/AnonymousHome/anonymousHome.dart';
 import 'package:Oglasnik/view/screens/Auth/register.dart';
 import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
-import 'package:Oglasnik/view/screens/PasswordChange/passwordChange.dart';
 import 'package:Oglasnik/view/widgets/alertdialog.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
-import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
