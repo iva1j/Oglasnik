@@ -5,17 +5,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
-  User userFromFirebaseUser(FirebaseUser user) {
-  return user != null ? User(userID: user.uid) : null;
-}
+  // User userFromFirebaseUser(FirebaseUser user) {
+  //   return user != null
+  //       ? User(
+  //           userID: user.uid,
+  //         )
+  //       : null;
+  // }
+
   @override
   _SplashState createState() => _SplashState();
 }
 
 class _SplashState extends State<Splash> {
-  
   @override
   Widget build(BuildContext context) {
+    return splashScreen();
+  }
+
+  Scaffold splashScreen() {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 226, 11, 48),
       body: Container(

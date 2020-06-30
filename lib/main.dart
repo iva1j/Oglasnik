@@ -1,11 +1,13 @@
+
+import 'package:Oglasnik/view/screens/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
-import 'package:Oglasnik/view/screens/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/screens/SplashScreen/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +17,14 @@ void main() {
     //     .landscapeLeft, //#TODO before demo, disable landscape rotation (both sides)
     // DeviceOrientation.landscapeRight
   ]).then((_) {
-    runApp(new MyApp());
+    runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AuthService>(
+          create: (context) => AuthService(),
+        ),
+      ],
+      child: new MyApp(),
+    ));
   });
 }
 
