@@ -1,14 +1,14 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/onPressedRegister.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/screens/Auth/sharedwidgets/welcomeScreen.dart';
 
 class RegisterPage extends StatefulWidget {
-  RegisterPage({Key key}) : super(key: key);
+  final Function toggleView;
+  RegisterPage({Key key, this.toggleView}) : super(key: key);
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -32,9 +32,11 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   String nameValidator(String value) {
-    if (value.length == null || value == '')
+    Pattern pattern = r'(?!\s*$)';
+    RegExp regex = new RegExp(pattern);
+    if (value.length == null || value == '' || !regex.hasMatch(value))
       return 'Polje ne smije biti prazno';
-    else {
+    {
       return null;
     }
   }
@@ -97,8 +99,9 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           color: Colors.white,
-          onPressed: () =>
-              Navigator.push(context, FadeRoute(page: SigninPage())),
+          onPressed: () {
+            widget.toggleView();
+          },
           child: Text(
             'Prijavi se',
             textAlign: TextAlign.center,
@@ -149,6 +152,7 @@ class _RegisterPageState extends State<RegisterPage> {
             width: double.infinity,
             child: Container(
               child: TextFormField(
+                textCapitalization: TextCapitalization.words,
                 decoration: InputDecoration(
                   hintText: 'Ime i prezime',
                   contentPadding: EdgeInsets.only(left: 20),
