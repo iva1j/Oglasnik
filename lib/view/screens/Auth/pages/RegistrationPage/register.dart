@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/screens/Auth/sharedwidgets/welcomeScreen.dart';
 
 class RegisterPage extends StatefulWidget {
-  RegisterPage({Key key}) : super(key: key);
+  final Function toggleView;
+  RegisterPage({Key key, this.toggleView}) : super(key: key);
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -97,8 +98,9 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           color: Colors.white,
-          onPressed: () =>
-              Navigator.push(context, FadeRoute(page: SigninPage())),
+          onPressed: () {
+            widget.toggleView();
+          },
           child: Text(
             'Prijavi se',
             textAlign: TextAlign.center,
@@ -149,6 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
             width: double.infinity,
             child: Container(
               child: TextFormField(
+                textCapitalization: TextCapitalization.words,
                 decoration: InputDecoration(
                   hintText: 'Ime i prezime',
                   contentPadding: EdgeInsets.only(left: 20),

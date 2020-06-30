@@ -12,7 +12,8 @@ import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/widgets/alertdialog.
 FirebaseAuth _auth = FirebaseAuth.instance;
 
 class SigninPage extends StatefulWidget {
-  SigninPage({Key key}) : super(key: key);
+  final Function toggleView;
+  SigninPage({Key key, this.toggleView}) : super(key: key);
 
   @override
   _SigninPageState createState() => _SigninPageState();
@@ -84,8 +85,9 @@ class _SigninPageState extends State<SigninPage> {
             ),
           ),
           color: Colors.white,
-          onPressed: () =>
-              Navigator.push(context, FadeRoute(page: RegisterPage())),
+          onPressed: () {
+            widget.toggleView();
+          },
           child: Text(
             'Registruj se',
             textAlign: TextAlign.center,
