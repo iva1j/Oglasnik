@@ -1,5 +1,7 @@
-import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
+import 'package:Oglasnik/view/screens/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class RegisterButton extends StatefulWidget {
@@ -8,6 +10,7 @@ class RegisterButton extends StatefulWidget {
 }
 
 class _RegisterButtonState extends State<RegisterButton> {
+  final db = Firestore.instance;
   TextEditingController fullNameInputController;
   TextEditingController phoneNumberInputController;
   TextEditingController emailInputController;
@@ -33,14 +36,22 @@ void onPressedRegister(BuildContext context, String fullName, String email,
   if (formKey.currentState.validate()) {
     // FormRegisterViewModel()
     //     .registerWithEmailAndPassword(email, password, fullName, phoneNumber);
-     
-     
-     //registerWithEmailAndPassword(fullName, email, password);
-     AuthService().registerWithEmailAndPassword(fullName, email, password);
+
+    //registerWithEmailAndPassword(fullName, email, password);
+
+    //AuthService().registerWithEmailAndPassword(fullName, email, password);
+    db.collection("firestoreUsers").document(email).setData({
+      'fullName': fullName,
+      'email': email,
+      'password': password,
+      'phoneNumber': phoneNumber
+      });
+    
+    
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) {
-        return RegisteredHome();
+        return PasswordChange();
       }),
     );
   }

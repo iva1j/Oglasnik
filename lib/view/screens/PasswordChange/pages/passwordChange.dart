@@ -1,5 +1,8 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/registerForm.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
@@ -10,6 +13,7 @@ class PasswordChange extends StatefulWidget {
 }
 
 class _PasswordChangeState extends State<PasswordChange> {
+  final db = Firestore.instance;
   final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
   FirebaseUser user;
   TextEditingController _email;
@@ -29,7 +33,17 @@ class _PasswordChangeState extends State<PasswordChange> {
   String passwordValidator(String value) {
     if (value.length == null || value == '')
       return 'Polje ne smije biti prazno';
-    if (value.length <= 8) {
+    if (value.length <= 7) {
+      return 'Password ne smije biti manji od 8 char';
+    } else {
+      return null;
+    }
+  }
+
+  String confirmpasswordValidator(String value) {
+    if (value.length == null || value == '')
+      return 'Polje ne smije biti prazno';
+    if (value.length <= 7) {
       return 'Password ne smije biti manji od 8 char';
     } else {
       return null;
@@ -39,6 +53,8 @@ class _PasswordChangeState extends State<PasswordChange> {
   @override
   Widget build(BuildContext context) {
     dynamic formKey;
+    String passwordpravi = _password.text;
+    String emailpravi = _email.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -64,7 +80,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 margin: EdgeInsets.all(50),
                 child: Column(children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(bottom: 90.0),
+                    margin: EdgeInsets.only(bottom: 120.0),
                     child: Text(
                       "Promijeni šifru",
                       style: TextStyle(
@@ -97,9 +113,12 @@ class _PasswordChangeState extends State<PasswordChange> {
                           child: Container(
                             child: TextFormField(
                               decoration: InputDecoration(
-                                hintText: 'Nova šifra',
+                                // errorStyle: TextStyle(fontSize: 20),
+                                hintText: 'email',
                               ),
                               controller: _email,
+                              obscureText: true,
+                              validator: passwordValidator,
                             ),
                           ),
                         ),
@@ -114,19 +133,39 @@ class _PasswordChangeState extends State<PasswordChange> {
                                 hintText: 'Potvrdi šifru',
                               ),
                               controller: _password,
+                              obscureText: true,
                             ),
                           ),
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 110),
-                        child: button(
-                          'Sačuvaj',
-                          () {
-                            AuthService().updateUserinFirestore(
-                                _displayName.text, _email.text, _password.text,);
-                          },
-                        ),
+                        child: button('Sačuvaj', () {
+                          //if (formKey.currentState.validate()) {
+                          db   
+                              .collection("firestoreUsers")
+                              .document(emailpravi)
+                              .updateData({
+                            'password': passwordpravi,
+                          });
+
+                          // Navigator.of(context).pushReplacement(
+                          //   MaterialPageRoute(
+                          //     builder: (_) {
+                          //       return RegisteredHome();
+                          //     },
+                          //   ),
+                          // );
+                        }
+                            //}
+
+                            // AuthService().updateUserinFirestore(
+                            //   _displayName.text,
+                            //   _email.text,
+                            //   _password.text,
+                            //);
+                            // },
+                            ),
                       ),
                     ]),
                   )

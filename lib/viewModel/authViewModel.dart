@@ -1,8 +1,10 @@
 import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
@@ -13,14 +15,30 @@ class AuthService extends ChangeNotifier {
 
   User get user => null;
 
+  Future<Stream> getRegisteredUsers(db) async {
+    try {
+      await db.collection("users").getDocuments().then((querySnapshot) {
+        querySnapshot.documents.forEach((result) {
+          print(result.data);
+          User _newUser = User(
+              userID: result.user.uid,
+              email: result.user.email,
+              fullName: result.user.fullName,
+              password: result.user.password);
+          print(_newUser);
+        });
+        _updateUserFirestore(user, querySnapshot);
+      });
+    } catch (e) {}
+  }
+
 //updates the firestore users collection
   void _updateUserFirestore(User user, FirebaseUser firebaseUser) {
     db
         .document('/users/${firebaseUser.email}')
         .setData(user.toJson(), merge: true);
   }
-
-// User registration using email and password         //currently, this function is in use for registering (and works fine)
+// User registration using email and password                   //currently, this function is in use for registering (and works fine)
   Future<bool> registerWithEmailAndPassword(
       String name, String email, String password) async {
     try {
@@ -47,7 +65,11 @@ class AuthService extends ChangeNotifier {
 
 //trying to updateUser informations
 
-  updateUserinFirestore(String name, String email, String password,) async {
+  updateUserinFirestore(
+    String name,
+    String email,
+    String password,
+  ) async {
     final databaseReference = Firestore.instance;
     await databaseReference
         .collection("users")
@@ -88,13 +110,30 @@ class AuthService extends ChangeNotifier {
     return _result;
   }
 
+//Streams the firestore user from the firestore collection
+  Stream<User> streamFirestoreUser(FirebaseUser firebaseUser) {
+    if (firebaseUser?.email != null) {
+      return db
+          .document('/users/${firebaseUser.email}')
+          .snapshots()
+          .map((snapshot) => User.fromDocument(snapshot.data));
+    }
+    return null;
+  }
+
 //Method to handle user sign in using email and password
-  Future<bool> signInWithEmailAndPassword(String email, String password) async {
+  Future<bool> signInWithEmailAndPassword(
+      String email, String password, BuildContext context) async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .whenComplete(() => Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (_) => RegisteredHome())));
+
       print('user successful signed in ');
       return true;
     } catch (e) {
+      print('user is not signed in');
       return false;
     }
   }
@@ -153,17 +192,6 @@ class AuthService extends ChangeNotifier {
 // User _userFromFirebase(FirebaseUser user) {
 //   return user != null ? User(userID: user.uid) : null;
 // }
-
-//Streams the firestore user from the firestore collection
-  Stream<User> streamFirestoreUser(FirebaseUser firebaseUser) {
-    if (firebaseUser?.uid != null) {
-      return db
-          .document('/users/${firebaseUser.uid}')
-          .snapshots()
-          .map((snapshot) => User.fromDocument(snapshot.data));
-    }
-    return null;
-  }
 
 // sign out
   Future signOut() async {

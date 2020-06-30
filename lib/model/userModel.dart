@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class User {
   String fullName, userID, phoneNumber, password, email;
   User(

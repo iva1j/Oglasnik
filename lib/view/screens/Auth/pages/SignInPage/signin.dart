@@ -1,15 +1,15 @@
-import 'package:Oglasnik/interface/authUserInterface.dart';
-import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/screens/Auth/register.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/registeredHome.dart';
-import 'package:Oglasnik/view/widgets/alertdialog.dart';
+import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
+import 'package:Oglasnik/view/screens/Auth/sharedwidgets/welcomeScreen.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/widgets/alertdialog.dart';
 
 FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -32,7 +32,9 @@ class _SigninPageState extends State<SigninPage> {
   initState() {
     emailInputController = new TextEditingController();
     passwordInputController = new TextEditingController();
+    AuthService().getRegisteredUsers(db);
     super.initState();
+
   }
 
   String emailValidator(String value) {
@@ -75,7 +77,8 @@ class _SigninPageState extends State<SigninPage> {
         elevation: 0.0,
         leading: backButtonIphone(context),
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(left: 100.0, right: 100.0, bottom: 5.0),
         child: FlatButton(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -85,10 +88,8 @@ class _SigninPageState extends State<SigninPage> {
             ),
           ),
           color: Colors.white,
-          onPressed: () => Navigator.of(context)
-              .pushReplacement(MaterialPageRoute(builder: (_) {
-            return RegisterPage();
-          })),
+          onPressed: () =>
+              Navigator.push(context, FadeRoute(page: RegisterPage())),
           child: Text(
             'Registruj se',
             textAlign: TextAlign.center,
@@ -98,24 +99,30 @@ class _SigninPageState extends State<SigninPage> {
                 fontWeight: FontWeight.normal),
           ),
         ),
-        height: 60,
-        width: double.infinity,
+        // height: 60,
+        // width: double.infinity,
       ),
-      body: SingleChildScrollView(
-        reverse: true,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: bottom),
-          child: Container(
-              height: SizeConfig.screenHeight,
-              margin: EdgeInsets.all(50),
-              child: Column(
-                children: <Widget>[
-                  LogoContainer(),
-                  welcomeScreen(),
-                  nameOfForm(),
-                  formSignin(email, password, formKey, context)
-                ],
-              )),
+      body: WillPopScope(
+        onWillPop: () => Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (_) {
+          return AnonymouseHome();
+        })),
+        child: SingleChildScrollView(
+          reverse: true,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: bottom),
+            child: Container(
+                height: SizeConfig.screenHeight,
+                margin: EdgeInsets.all(50),
+                child: Column(
+                  children: <Widget>[
+                    LogoContainer(),
+                    welcomeScreen(),
+                    nameOfForm(),
+                    formSignin(email, password, formKey, context)
+                  ],
+                )),
+          ),
         ),
       ),
     );
@@ -171,13 +178,20 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
-                AuthService().signInWithEmailAndPassword(email, password).then(
-                    (value) => Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (_) => RegisteredHome())));
+               
+               AuthService().getRegisteredUsers(db);
+               
 
-                // signInWithEmailAndPassword(email, password).then((value) =>
-                //     Navigator.of(context).pushReplacement(
-                //         MaterialPageRoute(builder: (_) => RegisteredHome())));
+                // AuthService()
+                //     .signInWithEmailAndPassword(email, password, context);
+                    
+                    // .whenComplete(
+                    //   () => Navigator.of(context).pushReplacement(
+                    //     MaterialPageRoute(
+                    //       builder: (_) => RegisteredHome(),
+                    //     ),
+                    //  ),
+                    //);
               }
             },
           ),
@@ -210,28 +224,6 @@ class _SigninPageState extends State<SigninPage> {
           fontWeight: FontWeight.bold,
           fontSize: 23,
         ),
-      ),
-    );
-  }
-
-  Container welcomeScreen() {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Container(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  child: Text(
-                    'Dobrodošli u Oglasnik',
-                    style: TextStyle(fontSize: 22),
-                  ),
-                  alignment: Alignment.centerLeft,
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
