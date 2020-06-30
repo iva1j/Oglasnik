@@ -34,24 +34,16 @@ class _RegisterButtonState extends State<RegisterButton> {
 void onPressedRegister(BuildContext context, String fullName, String email,
     String password, String phoneNumber, dynamic formKey) {
   if (formKey.currentState.validate()) {
-    // FormRegisterViewModel()
-    //     .registerWithEmailAndPassword(email, password, fullName, phoneNumber);
-
-    //registerWithEmailAndPassword(fullName, email, password);
-
-    //AuthService().registerWithEmailAndPassword(fullName, email, password);
     db.collection("firestoreUsers").document(email).setData({
       'fullName': fullName,
       'email': email,
       'password': password,
       'phoneNumber': phoneNumber
-      });
-    
-    
+    });
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) {
-        return PasswordChange();
+        return RegisteredHome();
       }),
     );
   }

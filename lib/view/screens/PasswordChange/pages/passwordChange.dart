@@ -142,7 +142,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                         margin: EdgeInsets.only(top: 110),
                         child: button('Sačuvaj', () {
                           //if (formKey.currentState.validate()) {
-                          db   
+                          db
                               .collection("firestoreUsers")
                               .document(emailpravi)
                               .updateData({

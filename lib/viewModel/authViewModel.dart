@@ -1,5 +1,6 @@
 import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
 import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,21 +16,10 @@ class AuthService extends ChangeNotifier {
 
   User get user => null;
 
-  Future<Stream> getRegisteredUsers(db) async {
-    try {
-      await db.collection("users").getDocuments().then((querySnapshot) {
-        querySnapshot.documents.forEach((result) {
-          print(result.data);
-          User _newUser = User(
-              userID: result.user.uid,
-              email: result.user.email,
-              fullName: result.user.fullName,
-              password: result.user.password);
-          print(_newUser);
-        });
-        _updateUserFirestore(user, querySnapshot);
-      });
-    } catch (e) {}
+  Future getRegisteredUsers() async {
+    var firestore = Firestore.instance;
+    QuerySnapshot qn = await firestore.collection('users').getDocuments();
+    return qn.documents;
   }
 
 //updates the firestore users collection
@@ -38,6 +28,7 @@ class AuthService extends ChangeNotifier {
         .document('/users/${firebaseUser.email}')
         .setData(user.toJson(), merge: true);
   }
+
 // User registration using email and password                   //currently, this function is in use for registering (and works fine)
   Future<bool> registerWithEmailAndPassword(
       String name, String email, String password) async {
@@ -121,77 +112,62 @@ class AuthService extends ChangeNotifier {
     return null;
   }
 
-//Method to handle user sign in using email and password
+//best case for checking user
+  Future<bool> userExistingorNot(String email) async {
+     final QuerySnapshot result = await Firestore.instance
+        .collection('firestoreUsers')
+        .where('email', isEqualTo: email)
+        .limit(1)
+        .getDocuments();
+    final List<DocumentSnapshot> documents = result.documents;
+    return documents.length == 1;
+  }
+
+  checkStatus(BuildContext context, String email) {
+    FutureBuilder(
+        future: AuthService().userExistingorNot(email),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            print('korisnik zapisan');
+            return RegisterPage();
+          } else {
+            print('user  is not existing');
+            return null;
+          }
+        });
+  }
+
+//worst case
   Future<bool> signInWithEmailAndPassword(
-      String email, String password, BuildContext context) async {
+      BuildContext context, String email, String password) async {
     try {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
           .whenComplete(() => Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (_) => RegisteredHome())));
-
       print('user successful signed in ');
       return true;
     } catch (e) {
-      print('user is not signed in');
       return false;
     }
   }
 
-// class FormRegisterViewModel implements AuthRegisterWithEmailAndPassword {
-//   @override
-//   Future registerWithEmailAndPassword(String email, String password,
-//       String fullName, String phoneNumber) async {
-//     try {
-//       _auth
-//           .createUserWithEmailAndPassword(email: email, password: password)
-//           .then((currentUser) =>
-//               db.collection("Users").document(currentUser.user.uid).setData({
-//                 "uid": currentUser.user.uid,
-//                 "fullname": fullName,
-//                 "phone": phoneNumber,
-//                 "email": email,
-//                 "password": password,
-//               }).catchError((err) => print(err)))
-//           .catchError((err) => print(err));
-//     } catch (error) {
-//       print(error.toString());
-//       return null;
-//     }
-//   }
-// }
-
-// class RegisteredUserViewModel implements RegisteredUserInterface {
-//   @override
-//   Future getRegisterUser() async {
-//     QuerySnapshot qn = await db.collection('Users').getDocuments(
-
-//     );
-//     return qn.documents;
-//   }
-// }
-
-// class FormSignInViewModel implements AuthSignInWithEmailAndPassword {
-//   @override
-//   Future signInWithEmailAndPassword(String email, String password) async {
-//     try {} catch (error) {
-//       print(error.toString());
-//       return null;
-//     }
-
-//   }
-// }
-
-  // @override
-  // Stream<User> get user {
-  //   return _auth.onAuthStateChanged.map(userFromFirebaseUser);
-  // }
+//Method to handle user sign in using email and password
+  Future<bool> signInOverFirestore(String email, String password) async {
+    db
+        .collection('firestoreUsers')
+        .where('email', isEqualTo: email)
+        .getDocuments()
+        .then(
+          (value) => print('User on Firestore : $value'),
+        )
+        .catchError((e) {
+      print('Error no document');
+    });
+    return true;
+  }
 
   Future<FirebaseUser> get getUser => _auth.currentUser(); //geting currentUser
-
-// User _userFromFirebase(FirebaseUser user) {
-//   return user != null ? User(userID: user.uid) : null;
-// }
 
 // sign out
   Future signOut() async {
@@ -248,5 +224,13 @@ class SignOutModel implements AuthSignOut {
       print(error.toString());
       return null;
     }
+  }
+}
+
+class RegisteredUserViewModel implements RegisteredUserInterface {
+  @override
+  Future getRegisterUser() async {
+    QuerySnapshot qn = await db.collection('Users').getDocuments();
+    return qn.documents;
   }
 }

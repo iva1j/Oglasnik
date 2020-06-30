@@ -1,3 +1,4 @@
+import 'package:Oglasnik/interface/authToggle.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
@@ -34,10 +35,16 @@ Stack homeFloatingAnimatedButton() {
                   color: Colors.transparent, // button color
                   child: InkWell(
                     splashColor: Colors.transparent, // splash color
-                    onTap: () => Navigator.of(context)
-                        .pushReplacement(MaterialPageRoute(builder: (_) {
-                      return SigninPage();
-                    })), // button pressed
+                    onTap: () {
+                      
+
+                      Navigator.of(context)
+                          .pushReplacement(MaterialPageRoute(builder: (_) {
+                        return SigninPage();
+                      }));
+                    },
+
+                    // button pressed
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -57,10 +64,13 @@ Stack homeFloatingAnimatedButton() {
                 color: Colors.transparent, // button color
                 child: InkWell(
                   splashColor: Colors.transparent, // splash color
-                  onTap: () => Navigator.of(context)
-                      .pushReplacement(MaterialPageRoute(builder: (_) {
-                    return RegisterPage();
-                  })), // button pressed
+                  onTap: () {
+                    
+                    Navigator.of(context)
+                        .pushReplacement(MaterialPageRoute(builder: (_) {
+                      return RegisterPage();
+                    }));
+                  }, // button pressed
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
