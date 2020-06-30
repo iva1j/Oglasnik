@@ -2,8 +2,10 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
 import 'package:Oglasnik/view/screens/Auth/sharedwidgets/welcomeScreen.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +32,9 @@ class _SigninPageState extends State<SigninPage> {
   initState() {
     emailInputController = new TextEditingController();
     passwordInputController = new TextEditingController();
+    AuthService().getRegisteredUsers(db);
     super.initState();
+
   }
 
   String emailValidator(String value) {
@@ -174,15 +178,20 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
-                dynamic result = await _auth
-                    .signInWithEmailAndPassword(
-                        email: email, password: password)
-                    .then((value) => Navigator.pushNamedAndRemoveUntil(
-                        context, "/homeregister", (_) => false));
+               
+               AuthService().getRegisteredUsers(db);
+               
 
-                if (result == null) {
-                  setState(() => error = 'Email ili lozinka nisu ispravni!');
-                } else {}
+                // AuthService()
+                //     .signInWithEmailAndPassword(email, password, context);
+                    
+                    // .whenComplete(
+                    //   () => Navigator.of(context).pushReplacement(
+                    //     MaterialPageRoute(
+                    //       builder: (_) => RegisteredHome(),
+                    //     ),
+                    //  ),
+                    //);
               }
             },
           ),

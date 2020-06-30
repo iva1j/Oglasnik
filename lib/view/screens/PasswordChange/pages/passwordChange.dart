@@ -1,6 +1,11 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/registerForm.dart';
+import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 
 class PasswordChange extends StatefulWidget {
   @override
@@ -8,6 +13,23 @@ class PasswordChange extends StatefulWidget {
 }
 
 class _PasswordChangeState extends State<PasswordChange> {
+  final db = Firestore.instance;
+  final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
+  FirebaseUser user;
+  TextEditingController _email;
+  TextEditingController _password;
+  TextEditingController _displayName;
+  TextEditingController _userID;
+
+  AuthService _auth = AuthService();
+  initState() {
+    _email = new TextEditingController();
+    _displayName = new TextEditingController();
+    _userID = new TextEditingController();
+    _password = new TextEditingController();
+    super.initState();
+  }
+
   String passwordValidator(String value) {
     if (value.length == null || value == '')
       return 'Polje ne smije biti prazno';
@@ -30,6 +52,9 @@ class _PasswordChangeState extends State<PasswordChange> {
 
   @override
   Widget build(BuildContext context) {
+    dynamic formKey;
+    String passwordpravi = _password.text;
+    String emailpravi = _email.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -65,6 +90,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                     ),
                   ),
                   Form(
+                    key: _registerFormKey,
                     child: Column(children: <Widget>[
                       new Container(
                         margin: EdgeInsets.only(bottom: 10),
@@ -75,6 +101,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                               decoration: InputDecoration(
                                 hintText: 'Unesi kod',
                               ),
+                              controller: _displayName,
                             ),
                           ),
                         ),
@@ -87,8 +114,9 @@ class _PasswordChangeState extends State<PasswordChange> {
                             child: TextFormField(
                               decoration: InputDecoration(
                                 // errorStyle: TextStyle(fontSize: 20),
-                                hintText: 'Nova šifra',
+                                hintText: 'email',
                               ),
+                              controller: _email,
                               obscureText: true,
                               validator: passwordValidator,
                             ),
@@ -101,20 +129,43 @@ class _PasswordChangeState extends State<PasswordChange> {
                           width: double.infinity,
                           child: Container(
                             child: TextFormField(
-                                decoration: InputDecoration(
-                                  hintText: 'Potvrdi šifru',
-                                ),
-                                obscureText: true,
-                                validator: confirmpasswordValidator),
+                              decoration: InputDecoration(
+                                hintText: 'Potvrdi šifru',
+                              ),
+                              controller: _password,
+                              obscureText: true,
+                            ),
                           ),
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 110),
-                        child: button(
-                          'Sačuvaj',
-                          () {},
-                        ),
+                        child: button('Sačuvaj', () {
+                          //if (formKey.currentState.validate()) {
+                          db   
+                              .collection("firestoreUsers")
+                              .document(emailpravi)
+                              .updateData({
+                            'password': passwordpravi,
+                          });
+
+                          // Navigator.of(context).pushReplacement(
+                          //   MaterialPageRoute(
+                          //     builder: (_) {
+                          //       return RegisteredHome();
+                          //     },
+                          //   ),
+                          // );
+                        }
+                            //}
+
+                            // AuthService().updateUserinFirestore(
+                            //   _displayName.text,
+                            //   _email.text,
+                            //   _password.text,
+                            //);
+                            // },
+                            ),
                       ),
                     ]),
                   )
