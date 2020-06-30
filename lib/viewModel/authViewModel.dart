@@ -11,14 +11,16 @@ class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final db = Firestore.instance;
 
+  User get user => null;
+
 //updates the firestore users collection
   void _updateUserFirestore(User user, FirebaseUser firebaseUser) {
     db
-        .document('/users/${firebaseUser.uid}')
+        .document('/users/${firebaseUser.email}')
         .setData(user.toJson(), merge: true);
   }
 
-// User registration using email and password
+// User registration using email and password         //currently, this function is in use for registering (and works fine)
   Future<bool> registerWithEmailAndPassword(
       String name, String email, String password) async {
     try {
@@ -41,6 +43,36 @@ class AuthService extends ChangeNotifier {
     } catch (e) {
       return false;
     }
+  }
+
+//trying to updateUser informations
+
+  updateUserinFirestore(String name, String email, String password,) async {
+    final databaseReference = Firestore.instance;
+    await databaseReference
+        .collection("users")
+        .document(user.email)
+        .updateData({
+      'name': name,
+      'email': email,
+      'password': password,
+    });
+  }
+
+  void updateUserData(String displayName, FirebaseUser firebaseUser,
+      String email, String password) async {
+    try {
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((_firebaseUser) {
+        _updateUserFirestore(user, _firebaseUser.user);
+
+        db.document('/users/${firebaseUser.uid}').updateData(user.toJson());
+
+        // await db.collection("users").document('/users/${firebaseUser.uid}').updateData({
+        //   'name': displayName,
+      });
+    } catch (e) {}
   }
 
 //handles updating the user when updating profile
@@ -111,10 +143,10 @@ class AuthService extends ChangeNotifier {
 //   }
 // }
 
-  @override
-  Stream<User> get user {
-    return _auth.onAuthStateChanged.map(userFromFirebaseUser);
-  }
+  // @override
+  // Stream<User> get user {
+  //   return _auth.onAuthStateChanged.map(userFromFirebaseUser);
+  // }
 
   Future<FirebaseUser> get getUser => _auth.currentUser(); //geting currentUser
 
