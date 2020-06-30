@@ -1,4 +1,4 @@
-import 'package:Oglasnik/view/screens/PasswordChange/passwordChange.dart';
+import 'package:Oglasnik/view/screens/PasswordChange/pages/passwordChange.dart';
 import 'package:flutter/material.dart';
 
 displayDialog(BuildContext context) async {
@@ -20,24 +20,31 @@ displayDialog(BuildContext context) async {
             ),
           ),
           actions: <Widget>[
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    //margin: EdgeInsets.only(right: 15.0),
+                    child: new FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2.0)),
+                      color: Color.fromARGB(255, 226, 11, 48),
+                      child: new Text(
+                        'ODUSTANI',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Roboto',
+                            fontSize: 14),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ),
+                ]),
             Container(
-              margin: EdgeInsets.only(right: 35.0, top: 15.0),
-              child: new FlatButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(2.0)),
-                color: Color.fromARGB(255, 226, 11, 48),
-                child: new Text(
-                  'ODUSTANI',
-                  style: TextStyle(
-                      color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(right: 35.0, top: 15.0),
+              //margin: EdgeInsets.only(right: 25.0),
               child: new FlatButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(2.0)),

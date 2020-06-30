@@ -1,9 +1,11 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/widgets/onPressedRegister.dart';
-import 'package:Oglasnik/view/screens/Auth/signin.dart';
+import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/onPressedRegister.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/screens/Auth/sharedwidgets/welcomeScreen.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({Key key}) : super(key: key);
@@ -60,7 +62,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String passwordValidator(String value) {
     if (value.length == null || value == '')
       return 'Polje ne smije biti prazno';
-    if (value.length <= 8) {
+    if (value.length <= 7) {
       return 'Password ne smije biti manji od 8 char';
     } else {
       return null;
@@ -84,7 +86,8 @@ class _RegisterPageState extends State<RegisterPage> {
         elevation: 0.0,
         leading: backButtonIphone(context),
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(left: 100.0, right: 100.0, bottom: 5.0),
         child: FlatButton(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -94,10 +97,8 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           color: Colors.white,
-          onPressed: () => Navigator.of(context)
-              .pushReplacement(MaterialPageRoute(builder: (_) {
-            return SigninPage();
-          })),
+          onPressed: () =>
+              Navigator.push(context, FadeRoute(page: SigninPage())),
           child: Text(
             'Prijavi se',
             textAlign: TextAlign.center,
@@ -107,25 +108,31 @@ class _RegisterPageState extends State<RegisterPage> {
                 fontWeight: FontWeight.normal),
           ),
         ),
-        height: 60,
-        width: double.infinity,
+        // height: 60,
+        // width: double.infinity,
       ),
-      body: SingleChildScrollView(
-        reverse: true,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: bottom),
-          child: Container(
-              height: SizeConfig.screenHeight,
-              margin: EdgeInsets.all(50),
-              child: Column(
-                children: <Widget>[
-                  LogoContainer(),
-                  welcomeScreen(),
-                  nameOfForm(),
-                  formRegister(
-                      fullName, email, password, phoneNumber, formKey, context)
-                ],
-              )),
+      body: WillPopScope(
+        onWillPop: () => Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (_) {
+          return AnonymouseHome();
+        })),
+        child: SingleChildScrollView(
+          reverse: true,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: bottom),
+            child: Container(
+                height: SizeConfig.screenHeight,
+                margin: EdgeInsets.all(50),
+                child: Column(
+                  children: <Widget>[
+                    LogoContainer(),
+                    welcomeScreen(),
+                    nameOfForm(),
+                    formRegister(fullName, email, password, phoneNumber,
+                        formKey, context)
+                  ],
+                )),
+          ),
         ),
       ),
     );
@@ -177,6 +184,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Container(
               child: TextFormField(
                 decoration: InputDecoration(
+                  labelStyle: TextStyle(),
                   hintText: 'Lozinka',
                   contentPadding: EdgeInsets.only(left: 20),
                 ),
@@ -232,28 +240,6 @@ class _RegisterPageState extends State<RegisterPage> {
           fontWeight: FontWeight.bold,
           fontSize: 23,
         ),
-      ),
-    );
-  }
-
-  Container welcomeScreen() {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Container(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  child: Text(
-                    'Dobrodošli u Oglasnik',
-                    style: TextStyle(fontSize: 22),
-                  ),
-                  alignment: Alignment.centerLeft,
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
