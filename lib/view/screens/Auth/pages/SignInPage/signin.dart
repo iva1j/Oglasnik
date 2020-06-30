@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/registerForm.dart';
 import 'package:Oglasnik/view/screens/Auth/sharedwidgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
@@ -23,15 +24,19 @@ class _SigninPageState extends State<SigninPage> {
   FirebaseUser user;
 
   final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
-
+  bool islogin = false;
   TextEditingController emailInputController;
   TextEditingController passwordInputController;
+  bool showSignIn = true;
+  void toggleView() {
+    setState(() => showSignIn = !showSignIn);
+  }
 
   @override
   initState() {
     emailInputController = new TextEditingController();
     passwordInputController = new TextEditingController();
-    AuthService().getRegisteredUsers(db);
+    //AuthService().getRegisteredUsers(db);
     super.initState();
   }
 
@@ -61,7 +66,13 @@ class _SigninPageState extends State<SigninPage> {
   String error = '';
   @override
   Widget build(BuildContext context) {
+    // if (showSignIn) {
+    //   return SigninPage(toggleView: toggleView);
+    // } else {
+    //   return RegisterPage(toggleView: toggleView);
+    // }
     String email, password;
+    String phoneNumber;
     email = emailInputController.text;
     password = passwordInputController.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -85,7 +96,15 @@ class _SigninPageState extends State<SigninPage> {
           ),
           color: Colors.white,
           onPressed: () {
-            //     widget.toggleView();
+            Navigator.pushReplacement(
+              context,
+              PageRouteBuilder(
+                pageBuilder: (context, animation1, animation2) =>
+                    RegisterPage(),
+              ),
+            );
+            // widget.toggleView();
+            //    islogin ? formSignin(email, password, formKey, context) : formRegister(fullNameInputController.text, email, password, phoneNumber, formKey, context);
           },
           child: Text(
             'Registruj se',
@@ -166,6 +185,9 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ),
         Container(
+          child: AuthService().checkStatus(context, emailInputController.text),
+            ),
+        Container(
           margin: EdgeInsets.only(top: 15.0),
           child: button(
             'Prijavi se',
@@ -175,18 +197,27 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
-                AuthService().getRegisteredUsers(db);
+                AuthService()
+                    .userExistingorNot(email);
+                    //(AuthService().checkStatus(context, email));
 
-                // AuthService()
-                //     .signInWithEmailAndPassword(email, password, context);
+                // .then(
+                //   (value) => Navigator.of(context).pushReplacement(
+                //       MaterialPageRoute(builder: (_) => RegisteredHome())));
+                //AuthService().signInOverFirestore(email, password);
 
-                // .whenComplete(
+                // AuthService().signInOverFirestore(email).whenComplete(
                 //   () => Navigator.of(context).pushReplacement(
                 //     MaterialPageRoute(
                 //       builder: (_) => RegisteredHome(),
                 //     ),
                 //  ),
-                //);
+                // );
+
+                //AuthService().getRegisteredUsers(db);
+
+                // AuthService()
+                //     .signInWithEmailAndPassword(email, password, context);
               }
             },
           ),

@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/onPressedRegister.dart';
+import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +17,15 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
-
+  bool isRegistered = true;
   TextEditingController fullNameInputController;
   TextEditingController phoneNumberInputController;
   TextEditingController emailInputController;
   TextEditingController passwordInputController;
+  bool showSignIn = true;
+  void toggleView() {
+    setState(() => showSignIn = !showSignIn);
+  }
 
   @override
   initState() {
@@ -80,6 +85,11 @@ class _RegisterPageState extends State<RegisterPage> {
     password = passwordInputController.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
 
+    // if (showSignIn) {
+    //   return SigninPage(toggleView: toggleView);
+    // } else {
+    //   return RegisterPage(toggleView: toggleView);
+    // }
     dynamic formKey;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -99,8 +109,15 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           color: Colors.white,
-          onPressed: () {
-            widget.toggleView();
+          onPressed: () {Navigator.pushReplacement(
+      context, 
+      PageRouteBuilder(
+        pageBuilder: (context, animation1, animation2) => SigninPage(),
+    ),
+);
+
+            //widget.toggleView();
+            //isRegistered ? formRegister(fullNameInputController.text, email, password, phoneNumber, formKey, context) : formSignin(email, password, formKey, context);
           },
           child: Text(
             'Prijavi se',
