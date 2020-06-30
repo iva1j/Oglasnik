@@ -11,8 +11,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/widgets/alertdialog.dart';
 
-FirebaseAuth _auth = FirebaseAuth.instance;
-
 class SigninPage extends StatefulWidget {
   final Function toggleView;
   SigninPage({Key key, this.toggleView}) : super(key: key);
@@ -35,7 +33,6 @@ class _SigninPageState extends State<SigninPage> {
     passwordInputController = new TextEditingController();
     AuthService().getRegisteredUsers(db);
     super.initState();
-
   }
 
   String emailValidator(String value) {
@@ -65,9 +62,7 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     String email, password;
-
     email = emailInputController.text;
-
     password = passwordInputController.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     dynamic formKey;
@@ -90,7 +85,7 @@ class _SigninPageState extends State<SigninPage> {
           ),
           color: Colors.white,
           onPressed: () {
-            widget.toggleView();
+            //     widget.toggleView();
           },
           child: Text(
             'Registruj se',
@@ -180,20 +175,18 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
-               
-               AuthService().getRegisteredUsers(db);
-               
+                AuthService().getRegisteredUsers(db);
 
                 // AuthService()
                 //     .signInWithEmailAndPassword(email, password, context);
-                    
-                    // .whenComplete(
-                    //   () => Navigator.of(context).pushReplacement(
-                    //     MaterialPageRoute(
-                    //       builder: (_) => RegisteredHome(),
-                    //     ),
-                    //  ),
-                    //);
+
+                // .whenComplete(
+                //   () => Navigator.of(context).pushReplacement(
+                //     MaterialPageRoute(
+                //       builder: (_) => RegisteredHome(),
+                //     ),
+                //  ),
+                //);
               }
             },
           ),
