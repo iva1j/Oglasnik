@@ -55,7 +55,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 margin: EdgeInsets.all(50),
                 child: Column(children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(bottom: 90.0),
+                    margin: EdgeInsets.only(bottom: 120.0),
                     child: Text(
                       "Promijeni šifru",
                       style: TextStyle(

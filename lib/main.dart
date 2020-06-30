@@ -66,6 +66,8 @@ class MyApp extends StatelessWidget {
         routes: {
           "/back": (_) => AnonymouseHome(),
           "/homeregister": (_) => RegisteredHome(),
+          "/register": (_) => RegisterPage(),
+          "/signin": (_) => SigninPage(),
         },
       ),
     );
