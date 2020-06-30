@@ -1,7 +1,6 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/onPressedRegister.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
 import 'package:Oglasnik/view/widgets/logoContainer.dart';
 import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +32,11 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   String nameValidator(String value) {
-    if (value.length == null || value == '')
+    Pattern pattern = r'(?!\s*$)';
+    RegExp regex = new RegExp(pattern);
+    if (value.length == null || value == '' || !regex.hasMatch(value))
       return 'Polje ne smije biti prazno';
-    else {
+    {
       return null;
     }
   }
