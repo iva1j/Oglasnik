@@ -185,10 +185,12 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ),
         Container(
+
             //child: AuthService().checkStatus(context, email, password),
             ),
+
         Container(
-          margin: EdgeInsets.only(top: 15.0),
+          margin: EdgeInsets.only(top: 20.0),
           child: button(
             'Prijavi se',
             () async {
@@ -197,11 +199,11 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
+
                 AuthService().userExistingorNot(email, password);
                 // if (AuthService().userExistingorNot(email, password))
                 // print();
                 //.then(AuthService().checkStatus(context, email, password));
-
                 //(AuthService().checkStatus(context, email));
 
                 // .then(
@@ -228,7 +230,7 @@ class _SigninPageState extends State<SigninPage> {
         Container(
           margin: EdgeInsets.only(top: 15.0),
           child: new GestureDetector(
-            onTap: () => displayDialog(context),
+            // onTap: () => displayDialog(context),
             child: new Text(
               "Zaboravili ste lozinku?",
               style: TextStyle(
@@ -244,7 +246,7 @@ class _SigninPageState extends State<SigninPage> {
 
   Container nameOfForm() {
     return Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: EdgeInsets.only(top: 10, bottom: 10.0),
       alignment: Alignment.centerLeft,
       child: Text(
         'Prijava',

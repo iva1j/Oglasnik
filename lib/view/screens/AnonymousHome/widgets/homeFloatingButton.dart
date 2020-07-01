@@ -1,6 +1,7 @@
 import 'package:Oglasnik/interface/authToggle.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
 import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
+import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 
@@ -36,12 +37,8 @@ Stack homeFloatingAnimatedButton() {
                   child: InkWell(
                     splashColor: Colors.transparent, // splash color
                     onTap: () {
-                      
-
                       Navigator.of(context)
-                          .pushReplacement(MaterialPageRoute(builder: (_) {
-                        return SigninPage();
-                      }));
+                          .pushReplacement(FadeRoute(page: SigninPage()));
                     },
 
                     // button pressed
@@ -65,11 +62,8 @@ Stack homeFloatingAnimatedButton() {
                 child: InkWell(
                   splashColor: Colors.transparent, // splash color
                   onTap: () {
-                    
                     Navigator.of(context)
-                        .pushReplacement(MaterialPageRoute(builder: (_) {
-                      return RegisterPage();
-                    }));
+                        .pushReplacement(FadeRoute(page: RegisterPage()));
                   }, // button pressed
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
