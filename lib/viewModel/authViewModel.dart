@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
-
+bool checkUser = false;
+bool isLogin = false;
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final db = Firestore.instance;
@@ -123,29 +124,7 @@ class AuthService extends ChangeNotifier {
     return documents.length == 1;
   }
 
-  checkStatus(BuildContext context, String email, String password) {
-    bool checkUser = false;
-    List<User> users = [];
-    FutureBuilder(
-        future: AuthService().userExistingorNot(email, password),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            print('korisnik zapisan');
-            checkUser = true;
-            users = snapshot.data.map((data)=>User.fromDocument(data).toJson());
-            return ListView.builder(
-              itemBuilder: (BuildContext context, int index) {
-                return Text('ispis: ');
-              },
-              shrinkWrap: true,
-              itemCount: users.length,
-            );
-          } else {
-            print('user  is not existing');
-            return null;
-          }
-        });
-  }
+  
 
 //worst case
   Future<bool> signInWithEmailAndPassword(

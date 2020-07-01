@@ -53,6 +53,21 @@ class _SigninPageState extends State<SigninPage> {
     }
   }
 
+  checkStatus(BuildContext context, String email, String password) {
+    FutureBuilder(
+        future: AuthService().userExistingorNot(email, password),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            print('korisnik zapisan');
+            isLogin = true;
+            return Container();
+          } else {
+            print('user  is not existing');
+            return null;
+          }
+        });
+  }
+
   String passwordValidator(String value) {
     if (value.length == null || value == '')
       return 'Polje ne smije biti prazno';
@@ -186,6 +201,7 @@ class _SigninPageState extends State<SigninPage> {
         ),
         Container(
             //child: AuthService().checkStatus(context, email, password),
+            //child: AuthService().checkStatus(context, email, password),
             ),
         Container(
           margin: EdgeInsets.only(top: 15.0),
@@ -197,30 +213,11 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
-                AuthService().userExistingorNot(email, password);
-                // if (AuthService().userExistingorNot(email, password))
-                // print();
-                //.then(AuthService().checkStatus(context, email, password));
-
-                //(AuthService().checkStatus(context, email));
-
-                // .then(
-                //   (value) => Navigator.of(context).pushReplacement(
-                //       MaterialPageRoute(builder: (_) => RegisteredHome())));
-                //AuthService().signInOverFirestore(email, password);
-
-                // AuthService().signInOverFirestore(email).whenComplete(
-                //   () => Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(
-                //       builder: (_) => RegisteredHome(),
-                //     ),
-                //  ),
-                // );
-
-                //AuthService().getRegisteredUsers(db);
-
-                // AuthService()
-                //     .signInWithEmailAndPassword(email, password, context);
+                if (islogin = true)
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (_) => RegisteredHome()));
+                else
+                  print('Korisnik u bazi');
               }
             },
           ),
