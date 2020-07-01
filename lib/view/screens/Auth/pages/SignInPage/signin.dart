@@ -214,11 +214,9 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
-                if (islogin = true)
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (_) => RegisteredHome()));
-                else
-                  print('Korisnik u bazi');
+                checkStatus(context, email, password);
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (_) => RegisteredHome()));
               }
             },
           ),
