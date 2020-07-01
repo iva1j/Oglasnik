@@ -185,7 +185,7 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ),
         Container(
-          child: AuthService().checkStatus(context, emailInputController.text),
+            //child: AuthService().checkStatus(context, email, password),
             ),
         Container(
           margin: EdgeInsets.only(top: 15.0),
@@ -197,9 +197,12 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
-                AuthService()
-                    .userExistingorNot(email);
-                    //(AuthService().checkStatus(context, email));
+                AuthService().userExistingorNot(email, password);
+                // if (AuthService().userExistingorNot(email, password))
+                // print();
+                //.then(AuthService().checkStatus(context, email, password));
+
+                //(AuthService().checkStatus(context, email));
 
                 // .then(
                 //   (value) => Navigator.of(context).pushReplacement(

@@ -13,9 +13,8 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    // DeviceOrientation
-    //     .landscapeLeft, //#TODO before demo, disable landscape rotation (both sides)
-    // DeviceOrientation.landscapeRight
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight
   ]).then((_) {
     runApp(MultiProvider(
       providers: [
@@ -55,7 +54,6 @@ class MyApp extends StatelessWidget {
                   style: BorderStyle.solid,
                 ),
               ),
-              // highlightColor: Colors.green,
             ),
             appBarTheme: AppBarTheme(
               color: Color.fromARGB(255, 226, 11, 48),
