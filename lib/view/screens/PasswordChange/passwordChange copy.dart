@@ -25,7 +25,6 @@ class _PasswordChangeState extends State<PasswordChange> {
   TextEditingController _name;
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  
 
   @override
   initState() {
@@ -103,7 +102,7 @@ class _PasswordChangeState extends State<PasswordChange> {
     // );
     return Scaffold(
         key: _scaffoldKey,
-    //    appBar: AppBar(title: Text(labels.auth.updateProfileTitle),),                   
+        //    appBar: AppBar(title: Text(labels.auth.updateProfileTitle),),
         body: LoadingScreen(
           child: updateProfileForm(context),
           inAsyncCall: _loading,
@@ -114,13 +113,10 @@ class _PasswordChangeState extends State<PasswordChange> {
 //new form for testing
 
   updateProfileForm(BuildContext context) {
-    
-    final User user =User();
+    final User user = User();
     // create: (_) => Provider.of<User>(context);
-    
 
-
-   // _name.text = user?.fullName;
+    // _name.text = user?.fullName;
     //_email.text = user?.email;
     //final labels = AppLocalizations.of(context);
     return Form(
@@ -213,8 +209,9 @@ class _PasswordChangeState extends State<PasswordChange> {
             ),
             actions: <Widget>[
               new FlatButton(
-                    child: new Text('labels.auth.cancel.toUpperCase()'),//   instead of this text, we will add other
-              //  child: new Text('cancel'),
+                child: new Text(
+                    'labels.auth.cancel.toUpperCase()'), //   instead of this text, we will add other
+                //  child: new Text('cancel'),
                 onPressed: () {
                   Navigator.of(context).pop();
                   setState(() {
@@ -223,7 +220,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 },
               ),
               new FlatButton(
-                 child: new Text('labels.auth.submit.toUpperCase()'),
+                child: new Text('labels.auth.submit.toUpperCase()'),
                 //child: new Text('submit'),
                 onPressed: () async {
                   setState(() {
@@ -242,8 +239,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                         _scaffoldKey.currentState.showSnackBar(
                           SnackBar(
                             // content: Text(labels.auth.updateUserSuccessNotice),
-                            content:
-                                Text(''),
+                            content: Text(''),
                           ),
                         );
                       }
@@ -436,4 +432,22 @@ class _PasswordChangeState extends State<PasswordChange> {
 //           ],
 //         );
 //       });
+// }
+
+//MD5
+
+// import 'package:crypto/crypto.dart' as crypto;
+// ///Generate MD5 hash
+// generateMd5(String data) {
+//   var content = UTF8.encode(data);
+//   var md5 = crypto.md5;
+// }
+
+// or
+
+// import 'dart:convert';
+// import 'package:crypto/crypto.dart';
+
+// String generateMd5(String input) {
+//   return md5.convert(utf8.encode(input)).toString();
 // }
