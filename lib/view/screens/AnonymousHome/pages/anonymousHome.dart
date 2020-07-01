@@ -12,17 +12,14 @@ class AnonymouseHome extends StatefulWidget {
 }
 
 class _AnonymouseHomeState extends State<AnonymouseHome> {
-  //R final FirebaseAuth auth = FirebaseAuth.instance;
+  //  final FirebaseAuth auth = FirebaseAuth.instance;
+
   final AnonymousViewModel auth = AnonymousViewModel();
-  // bool showSignIn = false;
-  // void toggleView() {
-  //   setState(() => showSignIn = !showSignIn);
-  // }
 
   @override
   void initState() {
     super.initState();
-    //   _handleAnonymousSignIn(); //#TODO odkomentarisati prije DEMO/review
+    _handleAnonymousSignIn(); //#TODO odkomentarisati prije DEMO/review
   }
 
   Future<FirebaseUser> _handleAnonymousSignIn() async {
