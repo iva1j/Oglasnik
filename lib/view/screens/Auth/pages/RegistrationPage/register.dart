@@ -109,12 +109,13 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           color: Colors.white,
-          onPressed: () {Navigator.pushReplacement(
-      context, 
-      PageRouteBuilder(
-        pageBuilder: (context, animation1, animation2) => SigninPage(),
-    ),
-);
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              PageRouteBuilder(
+                pageBuilder: (context, animation1, animation2) => SigninPage(),
+              ),
+            );
 
             //widget.toggleView();
             //isRegistered ? formRegister(fullNameInputController.text, email, password, phoneNumber, formKey, context) : formSignin(email, password, formKey, context);
@@ -164,7 +165,7 @@ class _RegisterPageState extends State<RegisterPage> {
       key: _registerFormKey,
       child: Column(children: <Widget>[
         new Container(
-          margin: EdgeInsets.only(top: 10, bottom: 10),
+          margin: EdgeInsets.only(top: 15, bottom: 10),
           child: new SizedBox(
             width: double.infinity,
             child: Container(
