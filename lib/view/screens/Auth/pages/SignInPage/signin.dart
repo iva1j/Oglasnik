@@ -186,7 +186,7 @@ class _SigninPageState extends State<SigninPage> {
         ),
         Container(
           child: AuthService().checkStatus(context, emailInputController.text),
-            ),
+        ),
         Container(
           margin: EdgeInsets.only(top: 15.0),
           child: button(
@@ -197,9 +197,8 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
-                AuthService()
-                    .userExistingorNot(email);
-                    //(AuthService().checkStatus(context, email));
+                AuthService().userExistingorNot(email);
+                //(AuthService().checkStatus(context, email));
 
                 // .then(
                 //   (value) => Navigator.of(context).pushReplacement(
@@ -225,7 +224,7 @@ class _SigninPageState extends State<SigninPage> {
         Container(
           margin: EdgeInsets.only(top: 15.0),
           child: new GestureDetector(
-            onTap: () => displayDialog(context),
+            // onTap: () => displayDialog(context),
             child: new Text(
               "Zaboravili ste lozinku?",
               style: TextStyle(
