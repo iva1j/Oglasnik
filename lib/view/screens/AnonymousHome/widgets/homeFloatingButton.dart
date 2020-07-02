@@ -55,7 +55,7 @@ Stack homeFloatingAnimatedButton() {
             ),
           ),
           SizedBox.fromSize(
-            size: Size(80, 80), // button width and height
+            size: Size(110, 80), // button width and height
             child: ClipOval(
               child: Material(
                 color: Colors.transparent, // button color

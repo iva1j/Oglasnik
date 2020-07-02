@@ -42,7 +42,7 @@ class _SigninPageState extends State<SigninPage> {
 
   String emailValidator(String value) {
     Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|orange|live|outlook)+(\.com|\.org|\.co|\.uk|\.edu|\.de|\.ba|\.fr|\.net|\.co.uk)$';
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|live|outlook)+(\.com)$|@(hotmail|yahoo)+(\.fr|\.co.uk)$|@(orange)+(\.fr)$';
     RegExp regex = new RegExp(pattern);
     if (value.length == null || value == '')
       return 'Polje ne smije biti prazno';
