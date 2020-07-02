@@ -1,16 +1,14 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/registerForm.dart';
-import 'package:Oglasnik/view/screens/Auth/sharedwidgets/welcomeScreen.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/widgets/logoContainer.dart';
-import 'package:Oglasnik/view/widgets/specialElements.dart';
+import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/utils/logoContainer.dart';
+import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/widgets/alertdialog.dart';
 
 class SigninPage extends StatefulWidget {
   final Function toggleView;
@@ -53,6 +51,21 @@ class _SigninPageState extends State<SigninPage> {
     }
   }
 
+  checkStatus(BuildContext context, String email, String password) {
+    FutureBuilder(
+        future: AuthService().userExistingorNot(email, password),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            print('korisnik zapisan');
+            isLogin = true;
+            return Container();
+          } else {
+            print('user  is not existing');
+            return null;
+          }
+        });
+  }
+
   String passwordValidator(String value) {
     if (value.length == null || value == '')
       return 'Polje ne smije biti prazno';
@@ -72,7 +85,7 @@ class _SigninPageState extends State<SigninPage> {
     //   return RegisterPage(toggleView: toggleView);
     // }
     String email, password;
-    String phoneNumber;
+
     email = emailInputController.text;
     password = passwordInputController.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -187,8 +200,8 @@ class _SigninPageState extends State<SigninPage> {
         Container(
 
             //child: AuthService().checkStatus(context, email, password),
+            //child: AuthService().checkStatus(context, email, password),
             ),
-
         Container(
           margin: EdgeInsets.only(top: 20.0),
           child: button(
@@ -199,30 +212,9 @@ class _SigninPageState extends State<SigninPage> {
               formKey = _registerFormKey;
 
               if (formKey.currentState.validate()) {
-
-                AuthService().userExistingorNot(email, password);
-                // if (AuthService().userExistingorNot(email, password))
-                // print();
-                //.then(AuthService().checkStatus(context, email, password));
-                //(AuthService().checkStatus(context, email));
-
-                // .then(
-                //   (value) => Navigator.of(context).pushReplacement(
-                //       MaterialPageRoute(builder: (_) => RegisteredHome())));
-                //AuthService().signInOverFirestore(email, password);
-
-                // AuthService().signInOverFirestore(email).whenComplete(
-                //   () => Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(
-                //       builder: (_) => RegisteredHome(),
-                //     ),
-                //  ),
-                // );
-
-                //AuthService().getRegisteredUsers(db);
-
-                // AuthService()
-                //     .signInWithEmailAndPassword(email, password, context);
+                checkStatus(context, email, password);
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (_) => RegisteredHome()));
               }
             },
           ),

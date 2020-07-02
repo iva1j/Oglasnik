@@ -1,4 +1,4 @@
-import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:flutter/material.dart';
 
 SizedBox button(String text, dynamic function) {

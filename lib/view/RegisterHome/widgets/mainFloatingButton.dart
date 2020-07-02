@@ -1,13 +1,8 @@
-import 'package:Oglasnik/interface/authToggle.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
-import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 
 final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
-
-Stack homeFloatingAnimatedButton() {
+Stack mainFloatingButton() {
   return Stack(overflow: Overflow.visible, children: <Widget>[
     Builder(
       builder: (context) => FabCircularMenu(
@@ -18,7 +13,7 @@ Stack homeFloatingAnimatedButton() {
         ringWidth: 76.0,
         fabColor: Colors.white,
         fabOpenIcon: Icon(
-          Icons.person,
+          Icons.add,
           color: Color.fromARGB(255, 226, 11, 48),
         ),
         fabCloseIcon: Icon(
@@ -28,7 +23,7 @@ Stack homeFloatingAnimatedButton() {
         fabMargin: const EdgeInsets.only(bottom: 24.0, right: 20.0),
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(bottom: 84.0, left: 10.0),
+            margin: EdgeInsets.only(bottom: 184.0, left: 60.0),
             child: SizedBox.fromSize(
               size: Size(80, 80), // button width and height
               child: ClipOval(
@@ -36,17 +31,12 @@ Stack homeFloatingAnimatedButton() {
                   color: Colors.transparent, // button color
                   child: InkWell(
                     splashColor: Colors.transparent, // splash color
-                    onTap: () {
-                      Navigator.of(context)
-                          .pushReplacement(FadeRoute(page: SigninPage()));
-                    },
-
                     // button pressed
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.person), // icon
-                        Text("Prijava"), // text
+                        Icon(Icons.add_circle_outline), // icon
+                        Text("Novi oglas"), // text
                       ],
                     ),
                   ),
@@ -59,20 +49,7 @@ Stack homeFloatingAnimatedButton() {
             child: ClipOval(
               child: Material(
                 color: Colors.transparent, // button color
-                child: InkWell(
-                  splashColor: Colors.transparent, // splash color
-                  onTap: () {
-                    Navigator.of(context)
-                        .pushReplacement(FadeRoute(page: RegisterPage()));
-                  }, // button pressed
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(Icons.person_add), // icon
-                      Text("Registracija"), // text
-                    ],
-                  ),
-                ),
+                child: InkWell(),
               ),
             ),
           )

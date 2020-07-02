@@ -1,6 +1,6 @@
 import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
+bool checkUser = false;
+bool isLogin = false;
 
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -53,40 +55,6 @@ class AuthService extends ChangeNotifier {
     }
   }
 
-//trying to updateUser informations
-
-  // updateUserinFirestore(
-  //   String name,
-  //   String email,
-  //   String password,
-  // ) async {
-  //   final databaseReference = Firestore.instance;
-  //   await databaseReference
-  //       .collection("users")
-  //       .document(user.email)
-  //       .updateData({
-  //     'name': name,
-  //     'email': email,
-  //     'password': password,
-  //   });
-  // }
-
-  // void updateUserData(String displayName, FirebaseUser firebaseUser,
-  //     String email, String password) async {
-  //   try {
-  //     await _auth
-  //         .signInWithEmailAndPassword(email: email, password: password)
-  //         .then((_firebaseUser) {
-  //       _updateUserFirestore(user, _firebaseUser.user);
-
-  //       db.document('/users/${firebaseUser.uid}').updateData(user.toJson());
-
-  //       // await db.collection("users").document('/users/${firebaseUser.uid}').updateData({
-  //       //   'name': displayName,
-  //     });
-  //   } catch (e) {}
-  // }
-
 //handles updating the user when updating profile
   Future<bool> updateUser(User user, String oldEmail, String password) async {
     bool _result = false;
@@ -121,30 +89,6 @@ class AuthService extends ChangeNotifier {
     final List<DocumentSnapshot> documents = result.documents;
     //print("documents = " + documents.length.toString());
     return documents.length == 1;
-  }
-
-  checkStatus(BuildContext context, String email, String password) {
-    bool checkUser = false;
-    List<User> users = [];
-    FutureBuilder(
-        future: AuthService().userExistingorNot(email, password),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            print('korisnik zapisan');
-            checkUser = true;
-            users = snapshot.data.map((data)=>User.fromDocument(data).toJson());
-            return ListView.builder(
-              itemBuilder: (BuildContext context, int index) {
-                return Text('ispis: ');
-              },
-              shrinkWrap: true,
-              itemCount: users.length,
-            );
-          } else {
-            print('user  is not existing');
-            return null;
-          }
-        });
   }
 
 //worst case
