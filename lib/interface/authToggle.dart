@@ -1,5 +1,5 @@
-import 'package:Oglasnik/view/RegistrationPage/register.dart';
-import 'package:Oglasnik/view/SignInPage/signin.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
+import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:flutter/material.dart';
 
 class Toggle extends StatefulWidget {
