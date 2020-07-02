@@ -1,5 +1,6 @@
 import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,8 +9,6 @@ import 'package:flutter/material.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
-bool checkUser = false;
-bool isLogin = false;
 
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -81,24 +80,48 @@ class AuthService extends ChangeNotifier {
 
 //best case for checking user
   Future<bool> userExistingorNot(String email) async {
+
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
         .where('email', isEqualTo: email)
         .limit(1)
         .getDocuments();
     final List<DocumentSnapshot> documents = result.documents;
-    //print("documents = " + documents.length.toString());
+    print("documents = " + documents.length.toString());
+    documents.length.toString() == '1' ? status = true : status = false;
+    print('status: ');
+    print(status);
     return documents.length == 1;
   }
 
-//worst case
+
+  checkStatus(BuildContext context, String email, String password) {
+    FutureBuilder(
+        future: AuthService().userExistingorNot(email, password),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            print('korisnik postoji');
+            return Container();
+          } else {
+            print('korisnik nije u bazi');
+            return Container();
+          }
+        });
+  }
+
+// this is not working because we are using another approach for signing in (not over the Firebase Auth)
   Future<bool> signInWithEmailAndPassword(
       BuildContext context, String email, String password) async {
     try {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
-          .whenComplete(() => Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (_) => RegisteredHome())));
+          .whenComplete(
+            () => Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (_) => RegisteredHome(),
+              ),
+            ),
+          );
       print('user successful signed in ');
       return true;
     } catch (e) {

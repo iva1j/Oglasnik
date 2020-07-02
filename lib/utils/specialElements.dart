@@ -1,7 +1,7 @@
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:flutter/material.dart';
 
-SizedBox button(String text, dynamic function) {
+SizedBox button(dynamic nameFunction, dynamic function) {
   return SizedBox(
     height: 50,
     width: 250,
@@ -10,7 +10,7 @@ SizedBox button(String text, dynamic function) {
       onPressed: function,
       color: Color.fromARGB(255, 226, 11, 48),
       child: Text(
-        text,
+        nameFunction,
         style: TextStyle(
           color: Colors.white,
           fontFamily: 'Roboto', //#TODO  postaviti ROBOTO medium
