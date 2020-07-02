@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
@@ -19,10 +20,7 @@ class _RegisterButtonState extends State<RegisterButton> {
 
   @override
   initState() {
-    fullNameInputController = new TextEditingController();
-    phoneNumberInputController = new TextEditingController();
-    emailInputController = new TextEditingController();
-    passwordInputController = new TextEditingController();
+    RegisterControllers();
     super.initState();
   }
 
