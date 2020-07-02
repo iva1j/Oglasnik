@@ -110,6 +110,8 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           color: Colors.white,
           onPressed: () {
+            // keyboard hide when user press 'Prijavi se' to go on next screen
+            FocusScope.of(context).requestFocus(FocusNode());
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(

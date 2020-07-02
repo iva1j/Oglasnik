@@ -109,6 +109,10 @@ class _SigninPageState extends State<SigninPage> {
           ),
           color: Colors.white,
           onPressed: () {
+            // keyboard hide when user press 'Registruj se' to go on next screen
+            FocusScope.of(context).requestFocus(
+                FocusNode()); 
+
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(
@@ -168,6 +172,7 @@ class _SigninPageState extends State<SigninPage> {
             width: double.infinity,
             child: Container(
               child: TextFormField(
+                // autofocus: true,
                 decoration: InputDecoration(
                   hintText: 'Email',
                   contentPadding: EdgeInsets.only(left: 20),
@@ -185,6 +190,7 @@ class _SigninPageState extends State<SigninPage> {
             width: double.infinity,
             child: Container(
               child: TextFormField(
+                // autofocus: true,
                 decoration: InputDecoration(
                   hintText: 'Lozinka',
                   contentPadding: EdgeInsets.only(left: 20),
@@ -210,6 +216,7 @@ class _SigninPageState extends State<SigninPage> {
               email = emailInputController.text;
               password = passwordInputController.text;
               formKey = _registerFormKey;
+              FocusScope.of(context).requestFocus(FocusNode());
 
               if (formKey.currentState.validate()) {
                 checkStatus(context, email, password);

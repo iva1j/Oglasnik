@@ -1,5 +1,5 @@
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
-import 'package:Oglasnik/viewModel/AuthViewModel.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
