@@ -4,7 +4,9 @@ import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/widgets/registerForm.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,6 +36,7 @@ class _SigninPageState extends State<SigninPage> {
   initState() {
     emailInputController = new TextEditingController();
     passwordInputController = new TextEditingController();
+
     //AuthService().getRegisteredUsers(db);
     super.initState();
   }
@@ -49,21 +52,6 @@ class _SigninPageState extends State<SigninPage> {
     } else {
       return null;
     }
-  }
-
-  checkStatus(BuildContext context, String email, String password) {
-    FutureBuilder(
-        future: AuthService().userExistingorNot(email, password),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            print('korisnik zapisan');
-            isLogin = true;
-            return Container();
-          } else {
-            print('user  is not existing');
-            return null;
-          }
-        });
   }
 
   String passwordValidator(String value) {
@@ -85,7 +73,7 @@ class _SigninPageState extends State<SigninPage> {
     //   return RegisterPage(toggleView: toggleView);
     // }
     String email, password;
-
+    bool isRegistered;
     email = emailInputController.text;
     password = passwordInputController.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -148,7 +136,7 @@ class _SigninPageState extends State<SigninPage> {
                     LogoContainer(),
                     welcomeScreen(),
                     nameOfForm(),
-                    formSignin(email, password, formKey, context)
+                    formSignin(email, password, formKey, context, isRegistered),
                   ],
                 )),
           ),
@@ -157,8 +145,8 @@ class _SigninPageState extends State<SigninPage> {
     );
   }
 
-  Form formSignin(
-      String email, String password, formKey, BuildContext context) {
+  Form formSignin(String email, String password, formKey, BuildContext context,
+      bool isRegistered) {
     return Form(
       key: _registerFormKey,
       child: Column(children: <Widget>[
@@ -198,10 +186,8 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ),
         Container(
-
-            //child: AuthService().checkStatus(context, email, password),
-            //child: AuthService().checkStatus(context, email, password),
-            ),
+          child: AuthService().checkStatus(context, email, password),
+        ),
         Container(
           margin: EdgeInsets.only(top: 20.0),
           child: button(
@@ -210,11 +196,9 @@ class _SigninPageState extends State<SigninPage> {
               email = emailInputController.text;
               password = passwordInputController.text;
               formKey = _registerFormKey;
-
               if (formKey.currentState.validate()) {
-                checkStatus(context, email, password);
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (_) => RegisteredHome()));
+                // Navigator.of(context).pushReplacement(
+                //     MaterialPageRoute(builder: (_) => RegisteredHome()));
               }
             },
           ),
@@ -222,7 +206,7 @@ class _SigninPageState extends State<SigninPage> {
         Container(
           margin: EdgeInsets.only(top: 15.0),
           child: new GestureDetector(
-            // onTap: () => displayDialog(context),
+            onTap: () => displayDialog(context),
             child: new Text(
               "Zaboravili ste lozinku?",
               style: TextStyle(

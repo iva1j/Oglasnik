@@ -1,10 +1,12 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/logoContainer.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -17,15 +19,14 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
-  bool isRegistered = true;
   TextEditingController fullNameInputController;
   TextEditingController phoneNumberInputController;
   TextEditingController emailInputController;
   TextEditingController passwordInputController;
-  bool showSignIn = true;
-  void toggleView() {
-    setState(() => showSignIn = !showSignIn);
-  }
+
+  // void toggleView() {
+  //   setState(() => showSignIn = !showSignIn);
+  // }
 
   @override
   initState() {
@@ -148,6 +149,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: <Widget>[
                     LogoContainer(),
                     welcomeScreen(),
+                    Container(
+                      child:
+                          AuthService().checkStatus(context, email, password),
+                    ),
                     nameOfForm(),
                     formRegister(fullName, email, password, phoneNumber,
                         formKey, context)
@@ -236,7 +241,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
         button(
-          'Registruj se',
+          App_Labels_Auth().registracija,
           () {
             fullName = fullNameInputController.text;
             email = emailInputController.text;

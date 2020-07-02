@@ -1,5 +1,7 @@
-import 'package:Oglasnik/view/RegistrationPage/widgets/onPressedRegister.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 
 final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
@@ -7,6 +9,7 @@ TextEditingController fullNameInputController;
 TextEditingController phoneNumberInputController;
 TextEditingController emailInputController;
 TextEditingController passwordInputController;
+
 String nameValidator(String value) {
   if (value.length == null || value == '')
     return 'Polje ne smije biti prazno';
@@ -44,7 +47,7 @@ String passwordValidator(String value) {
 }
 
 Form formRegister(String fullName, String email, String password,
-    String phoneNumber, formKey, BuildContext context) {
+    String phoneNumber, formKey, BuildContext context, bool isRegistered) {
   return Form(
     key: _registerFormKey,
     child: Column(children: <Widget>[
@@ -119,7 +122,7 @@ Form formRegister(String fullName, String email, String password,
         ),
       ),
       button(
-        'Registruj se',
+        App_Labels_Auth().registracija,
         () {
           fullName = fullNameInputController.text;
           email = emailInputController.text;
