@@ -212,7 +212,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: passwordInputController,
-                // keyboardType: TextInputType.visiblePassword,
+                keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
                 validator: passwordValidator,
               ),

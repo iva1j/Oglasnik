@@ -179,7 +179,7 @@ class _SigninPageState extends State<SigninPage> {
                   contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: emailInputController,
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.visiblePassword,
                 validator: emailValidator,
               ),
             ),
