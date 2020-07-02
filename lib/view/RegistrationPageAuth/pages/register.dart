@@ -55,7 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String emailValidator(String value) {
     Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|orange|live|outlook)+(\.com|\.org|\.co|\.uk|\.edu|\.de|\.ba|\.fr|\.net|\.co.uk)$';
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|live|outlook)+(\.com)$|@(hotmail|yahoo)+(\.fr|\.co.uk)$|@(orange)+(\.fr)$';
     RegExp regex = new RegExp(pattern);
     if (value.length == null || value == '')
       return 'Polje ne smije biti prazno';
@@ -110,8 +110,6 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           color: Colors.white,
           onPressed: () {
-            // keyboard hide when user press 'Prijavi se' to go on next screen
-            FocusScope.of(context).requestFocus(FocusNode());
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(
@@ -195,7 +193,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: emailInputController,
-                keyboardType: TextInputType.emailAddress,
+                //keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.visiblePassword,
                 validator: emailValidator,
               ),
             ),
@@ -213,7 +212,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: passwordInputController,
-                // keyboardType: TextInputType.visiblePassword,
+                keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
                 validator: passwordValidator,
               ),

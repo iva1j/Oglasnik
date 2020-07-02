@@ -40,7 +40,7 @@ class _SigninPageState extends State<SigninPage> {
 
   String emailValidator(String value) {
     Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|orange|live|outlook)+(\.com|\.org|\.co|\.uk|\.edu|\.de|\.ba|\.fr|\.net|\.co.uk)$';
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|live|outlook)+(\.com)$|@(hotmail|yahoo)+(\.fr|\.co.uk)$|@(orange)+(\.fr)$';
     RegExp regex = new RegExp(pattern);
     if (value.length == null || value == '')
       return 'Polje ne smije biti prazno';
@@ -53,14 +53,20 @@ class _SigninPageState extends State<SigninPage> {
 
   checkStatus(BuildContext context, String email, String password) {
     FutureBuilder(
-        future: AuthService().userExistingorNot(email, password),
+        future: AuthService().userExistingorNot(email),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            print(snapshot);
+          } else if (snapshot.connectionState == ConnectionState.waiting) {
+            print('waiting');
+          }
           if (snapshot.hasData) {
             print('korisnik zapisan');
             isLogin = true;
             return Container();
           } else {
             print('user  is not existing');
+            isLogin = false;
             return null;
           }
         });
@@ -109,10 +115,6 @@ class _SigninPageState extends State<SigninPage> {
           ),
           color: Colors.white,
           onPressed: () {
-            // keyboard hide when user press 'Registruj se' to go on next screen
-            FocusScope.of(context).requestFocus(
-                FocusNode()); 
-
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(
@@ -172,13 +174,12 @@ class _SigninPageState extends State<SigninPage> {
             width: double.infinity,
             child: Container(
               child: TextFormField(
-                // autofocus: true,
                 decoration: InputDecoration(
                   hintText: 'Email',
                   contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: emailInputController,
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.visiblePassword,
                 validator: emailValidator,
               ),
             ),
@@ -190,7 +191,6 @@ class _SigninPageState extends State<SigninPage> {
             width: double.infinity,
             child: Container(
               child: TextFormField(
-                // autofocus: true,
                 decoration: InputDecoration(
                   hintText: 'Lozinka',
                   contentPadding: EdgeInsets.only(left: 20),
@@ -216,7 +216,6 @@ class _SigninPageState extends State<SigninPage> {
               email = emailInputController.text;
               password = passwordInputController.text;
               formKey = _registerFormKey;
-              FocusScope.of(context).requestFocus(FocusNode());
 
               if (formKey.currentState.validate()) {
                 checkStatus(context, email, password);
