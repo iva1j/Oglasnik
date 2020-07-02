@@ -1,7 +1,11 @@
 import 'package:Oglasnik/utils/specialElements.dart';
+
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
+
+import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
+
 import 'package:flutter/material.dart';
 
 final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();

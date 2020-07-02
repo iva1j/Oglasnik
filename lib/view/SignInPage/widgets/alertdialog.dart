@@ -21,7 +21,7 @@ displayDialog(BuildContext context) async {
               decoration: InputDecoration(
                 hintText: 'Email',
               ),
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.visiblePassword,
               validator: emailValidator,
             ),
           ),
