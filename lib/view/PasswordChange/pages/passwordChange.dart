@@ -1,9 +1,9 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/validation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 
 class PasswordChange extends StatefulWidget {
   @override
@@ -26,29 +26,8 @@ class _PasswordChangeState extends State<PasswordChange> {
     super.initState();
   }
 
-  String passwordValidator(String value) {
-    if (value.length == null || value == '')
-      return 'Polje ne smije biti prazno';
-    if (value.length <= 7) {
-      return 'Password ne smije biti manji od 8 char';
-    } else {
-      return null;
-    }
-  }
-
-  String confirmpasswordValidator(String value) {
-    if (value.length == null || value == '')
-      return 'Polje ne smije biti prazno';
-    if (value.length <= 7) {
-      return 'Password ne smije biti manji od 8 char';
-    } else {
-      return null;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    
     String passwordpravi = _password.text;
     String emailpravi = _email.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
