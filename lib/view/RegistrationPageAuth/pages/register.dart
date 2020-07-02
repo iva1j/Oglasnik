@@ -1,10 +1,12 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -34,46 +36,6 @@ class _RegisterPageState extends State<RegisterPage> {
     emailInputController = new TextEditingController();
     passwordInputController = new TextEditingController();
     super.initState();
-  }
-
-  String nameValidator(String value) {
-    Pattern pattern = r'(?!\s*$)';
-    RegExp regex = new RegExp(pattern);
-    if (value.length == null || value == '' || !regex.hasMatch(value))
-      return 'Polje ne smije biti prazno';
-    {
-      return null;
-    }
-  }
-
-  String phoneValidator(String value) {
-    if (value.length == 0) {
-      return 'Polje ne smije biti prazno';
-    }
-    return null;
-  }
-
-  String emailValidator(String value) {
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|live|outlook)+(\.com)$|@(hotmail|yahoo)+(\.fr|\.co.uk)$|@(orange)+(\.fr)$';
-    RegExp regex = new RegExp(pattern);
-    if (value.length == null || value == '')
-      return 'Polje ne smije biti prazno';
-    if (!regex.hasMatch(value)) {
-      return 'Email mora biti validan';
-    } else {
-      return null;
-    }
-  }
-
-  String passwordValidator(String value) {
-    if (value.length == null || value == '')
-      return 'Polje ne smije biti prazno';
-    if (value.length <= 7) {
-      return 'Password ne smije biti manji od 8 char';
-    } else {
-      return null;
-    }
   }
 
   @override

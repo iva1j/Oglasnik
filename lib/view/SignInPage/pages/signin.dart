@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
@@ -38,19 +39,6 @@ class _SigninPageState extends State<SigninPage> {
     super.initState();
   }
 
-  String emailValidator(String value) {
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|live|outlook)+(\.com)$|@(hotmail|yahoo)+(\.fr|\.co.uk)$|@(orange)+(\.fr)$';
-    RegExp regex = new RegExp(pattern);
-    if (value.length == null || value == '')
-      return 'Polje ne smije biti prazno';
-    if (!regex.hasMatch(value)) {
-      return 'Email mora biti validan';
-    } else {
-      return null;
-    }
-  }
-
   checkStatus(BuildContext context, String email, String password) {
     FutureBuilder(
         future: AuthService().userExistingorNot(email),
@@ -70,16 +58,6 @@ class _SigninPageState extends State<SigninPage> {
             return null;
           }
         });
-  }
-
-  String passwordValidator(String value) {
-    if (value.length == null || value == '')
-      return 'Polje ne smije biti prazno';
-    if (value.length <= 7) {
-      return 'Password ne smije biti manji od 8 char';
-    } else {
-      return null;
-    }
   }
 
   String error = '';
