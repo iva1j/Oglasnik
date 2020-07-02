@@ -1,6 +1,4 @@
-import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
-import 'package:Oglasnik/view/screens/AnonymousHome/widgets/homeFloatingButton.dart';
+import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 import 'package:Oglasnik/viewModel/AuthViewModel.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,14 +10,12 @@ class AnonymouseHome extends StatefulWidget {
 }
 
 class _AnonymouseHomeState extends State<AnonymouseHome> {
-  //  final FirebaseAuth auth = FirebaseAuth.instance;
-
   final AnonymousViewModel auth = AnonymousViewModel();
 
   @override
   void initState() {
     super.initState();
-    _handleAnonymousSignIn(); //#TODO odkomentarisati prije DEMO/review
+    _handleAnonymousSignIn();
   }
 
   Future<FirebaseUser> _handleAnonymousSignIn() async {

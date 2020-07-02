@@ -1,7 +1,5 @@
-import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/widgets/logoContainer.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {

@@ -1,5 +1,4 @@
-import 'package:Oglasnik/view/screens/PasswordChange/pages/passwordChange.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';

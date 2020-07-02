@@ -1,11 +1,9 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/registerForm.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/widgets/specialElements.dart';
+import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/viewModel/authViewModel.dart';
+
 
 class PasswordChange extends StatefulWidget {
   @override
@@ -19,13 +17,11 @@ class _PasswordChangeState extends State<PasswordChange> {
   TextEditingController _email;
   TextEditingController _password;
   TextEditingController _displayName;
-  TextEditingController _userID;
 
-  AuthService _auth = AuthService();
   initState() {
     _email = new TextEditingController();
     _displayName = new TextEditingController();
-    _userID = new TextEditingController();
+
     _password = new TextEditingController();
     super.initState();
   }
@@ -52,7 +48,7 @@ class _PasswordChangeState extends State<PasswordChange> {
 
   @override
   Widget build(BuildContext context) {
-    dynamic formKey;
+    
     String passwordpravi = _password.text;
     String emailpravi = _email.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;

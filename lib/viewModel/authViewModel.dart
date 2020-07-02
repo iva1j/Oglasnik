@@ -1,6 +1,6 @@
 import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -53,40 +53,6 @@ class AuthService extends ChangeNotifier {
       return false;
     }
   }
-
-//trying to updateUser informations
-
-  // updateUserinFirestore(
-  //   String name,
-  //   String email,
-  //   String password,
-  // ) async {
-  //   final databaseReference = Firestore.instance;
-  //   await databaseReference
-  //       .collection("users")
-  //       .document(user.email)
-  //       .updateData({
-  //     'name': name,
-  //     'email': email,
-  //     'password': password,
-  //   });
-  // }
-
-  // void updateUserData(String displayName, FirebaseUser firebaseUser,
-  //     String email, String password) async {
-  //   try {
-  //     await _auth
-  //         .signInWithEmailAndPassword(email: email, password: password)
-  //         .then((_firebaseUser) {
-  //       _updateUserFirestore(user, _firebaseUser.user);
-
-  //       db.document('/users/${firebaseUser.uid}').updateData(user.toJson());
-
-  //       // await db.collection("users").document('/users/${firebaseUser.uid}').updateData({
-  //       //   'name': displayName,
-  //     });
-  //   } catch (e) {}
-  // }
 
 //handles updating the user when updating profile
   Future<bool> updateUser(User user, String oldEmail, String password) async {

@@ -1,5 +1,5 @@
-import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/onPressedRegister.dart';
-import 'package:Oglasnik/view/widgets/specialElements.dart';
+import 'package:Oglasnik/view/RegistrationPage/widgets/onPressedRegister.dart';
+import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:flutter/material.dart';
 
 final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();

@@ -1,16 +1,15 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/registerForm.dart';
-import 'package:Oglasnik/view/screens/Auth/sharedwidgets/welcomeScreen.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/widgets/logoContainer.dart';
-import 'package:Oglasnik/view/widgets/specialElements.dart';
+import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/utils/logoContainer.dart';
+import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/sharedwidgets/welcomeScreen.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/widgets/alertdialog.dart';
+
+import '../RegistrationPage/register.dart';
 
 class SigninPage extends StatefulWidget {
   final Function toggleView;
@@ -87,7 +86,7 @@ class _SigninPageState extends State<SigninPage> {
     //   return RegisterPage(toggleView: toggleView);
     // }
     String email, password;
-    String phoneNumber;
+
     email = emailInputController.text;
     password = passwordInputController.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;

@@ -1,11 +1,11 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/onPressedRegister.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
-import 'package:Oglasnik/view/widgets/logoContainer.dart';
-import 'package:Oglasnik/view/widgets/specialElements.dart';
+import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/utils/logoContainer.dart';
+import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/view/RegistrationPage/widgets/onPressedRegister.dart';
+import 'package:Oglasnik/view/SignInPage/signin.dart';
+import 'package:Oglasnik/view/sharedwidgets/welcomeScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/screens/Auth/sharedwidgets/welcomeScreen.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function toggleView;

@@ -1,10 +1,8 @@
-import 'package:Oglasnik/interface/authToggle.dart';
-import 'package:Oglasnik/view/screens/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegistrationPage/register.dart';
+import 'package:Oglasnik/view/SignInPage/signin.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
-import 'package:Oglasnik/view/screens/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/register.dart';
-import 'package:Oglasnik/view/screens/Auth/pages/SignInPage/signin.dart';
-import 'package:Oglasnik/view/screens/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
