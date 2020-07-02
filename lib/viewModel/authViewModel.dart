@@ -15,47 +15,20 @@ class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final db = Firestore.instance;
 
-  //User get user => null;
-
   Future getRegisteredUsers() async {
     var firestore = Firestore.instance;
     QuerySnapshot qn = await firestore.collection('users').getDocuments();
     return qn.documents;
   }
 
-//updates the firestore users collection
+  //updates the firestore users collection    //currently inactive
   void _updateUserFirestore(User user, FirebaseUser firebaseUser) {
     db
         .document('/users/${firebaseUser.email}')
         .setData(user.toJson(), merge: true);
   }
 
-// User registration using email and password                   //currently, this function is in use for registering (and works fine)
-  Future<bool> registerWithEmailAndPassword(
-      String name, String email, String password) async {
-    try {
-      await _auth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((result) async {
-        print('userID: ' + result.user.uid);
-        print('email: ' + result.user.email);
-
-        //create the new user object
-        User _newUser = User(
-            userID: result.user.uid,
-            email: result.user.email,
-            fullName: name,
-            password: password);
-        //update the user in firestore
-        _updateUserFirestore(_newUser, result.user);
-      });
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-//handles updating the user when updating profile
+//handles updating the user when updating profile but using Firebase Auth which we are not using in this project. However, it can help us to see how it works
   Future<bool> updateUser(User user, String oldEmail, String password) async {
     bool _result = false;
     await _auth
@@ -79,7 +52,7 @@ class AuthService extends ChangeNotifier {
     return null;
   }
 
-//best case for checking user
+//checking is user exist or not in firestore
   Future<bool> userExistingorNot(String email, String password) async {
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
@@ -91,7 +64,7 @@ class AuthService extends ChangeNotifier {
     return documents.length == 1;
   }
 
-//worst case
+// this is not working because we are using another approach for signing in (not over the Firebase Auth)
   Future<bool> signInWithEmailAndPassword(
       BuildContext context, String email, String password) async {
     try {
@@ -106,7 +79,7 @@ class AuthService extends ChangeNotifier {
     }
   }
 
-//Method to handle user sign in using email and password
+//Method to handle user sign in using email and password -> by this function, we have to sign in user into our app (this feature is not working properly yet!)
   Future<bool> signInOverFirestore(String email, String password) async {
     db
         .collection('firestoreUsers')
@@ -121,23 +94,15 @@ class AuthService extends ChangeNotifier {
     return true;
   }
 
-  Future<FirebaseUser> get getUser => _auth.currentUser(); //geting currentUser
-
-// sign out
-  Future signOut() async {
-    try {
-      return await _auth.signOut();
-    } catch (error) {
-      print(error.toString());
-      return null;
-    }
-  }
+  //  Future<FirebaseUser> get getUser => _auth.currentUser(); //geting currentUser from Firebase Auth
 }
 
+//checking users state (if he's logged in, from splash screen it must forward him to RegisteredHome screen)
 User userFromFirebaseUser(FirebaseUser user) {
   return user != null ? User(userID: user.uid) : null;
 }
 
+//Signing in user over Firebase Auth
 class SignInAnonViewModel implements AuthSignInAnon {
   @override
   Future signInAnon() async {
@@ -152,14 +117,11 @@ class SignInAnonViewModel implements AuthSignInAnon {
   }
 }
 
+//check usability of this function once when we finish with Sign in and Sign up features (US1 and US2)
 class AnonymousViewModel implements AnonymousInterface {
   @override
   Future getAnonymous() async {
-    // dodjeljivanje uid-a Anonymous useru
-    //final FirebaseAuth auth = FirebaseAuth.instance;
     try {
-      //AuthResult result = await auth.signInAnonymously();
-      //FirebaseUser user =  result.user;
       final FirebaseUser user = (await _auth.signInAnonymously()).user;
       return user;
     } catch (e) {
@@ -169,6 +131,7 @@ class AnonymousViewModel implements AnonymousInterface {
   }
 }
 
+// sign out implementation
 class SignOutModel implements AuthSignOut {
   @override
   Future signOut() async {
