@@ -1,15 +1,13 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/validation.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/signInContainer.dart';
 
 class SigninPage extends StatefulWidget {
   final Function toggleView;
@@ -33,8 +31,7 @@ class _SigninPageState extends State<SigninPage> {
 
   @override
   initState() {
-    emailInputController = new TextEditingController();
-    passwordInputController = new TextEditingController();
+    InputFields();
 
     //AuthService().getRegisteredUsers(db);
     super.initState();
@@ -124,107 +121,14 @@ class _SigninPageState extends State<SigninPage> {
           child: Padding(
             padding: EdgeInsets.only(bottom: bottom),
             child: Container(
-                height: SizeConfig.screenHeight,
-                margin: EdgeInsets.all(50),
-                child: Column(
-                  children: <Widget>[
-                    LogoContainer(),
-                    welcomeScreen(),
-                    nameOfForm(),
-                    formSignin(email, password, formKey, context, isRegistered),
-                  ],
-                )),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Form formSignin(String email, String password, formKey, BuildContext context,
-      bool isRegistered) {
-    return Form(
-      key: _registerFormKey,
-      child: Column(children: <Widget>[
-        new Container(
-          margin: EdgeInsets.only(bottom: 10),
-          child: new SizedBox(
-            width: double.infinity,
-            child: Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  contentPadding: EdgeInsets.only(left: 20),
-                ),
-                controller: emailInputController,
-                keyboardType: TextInputType.visiblePassword,
-                validator: emailValidator,
-              ),
+              height: SizeConfig.screenHeight,
+              margin: EdgeInsets.all(50),
+              child: SignInContainer(
+                  registerFormKey: _registerFormKey,
+                  emailInputController: emailInputController,
+                  passwordInputController: passwordInputController),
             ),
           ),
-        ),
-        new Container(
-          margin: EdgeInsets.only(bottom: 10),
-          child: new SizedBox(
-            width: double.infinity,
-            child: Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Lozinka',
-                  contentPadding: EdgeInsets.only(left: 20),
-                ),
-                controller: passwordInputController,
-                keyboardType: TextInputType.visiblePassword,
-                obscureText: true,
-                validator: passwordValidator,
-              ),
-            ),
-          ),
-        ),
-        Container(
-          child: AuthService().checkStatus(context, email, password),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 20.0),
-          child: button(
-            'Prijavi se',
-            () async {
-              email = emailInputController.text;
-              password = passwordInputController.text;
-              formKey = _registerFormKey;
-              if (formKey.currentState.validate()) {
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (_) => RegisteredHome()));
-              }
-            },
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 15.0),
-          child: new GestureDetector(
-            onTap: () => displayDialog(context),
-            child: new Text(
-              "Zaboravili ste lozinku?",
-              style: TextStyle(
-                  fontFamily: 'Roboto',
-                  fontSize: 16,
-                  color: Color.fromRGBO(0, 0, 0, 102)),
-            ),
-          ),
-        )
-      ]),
-    );
-  }
-
-  Container nameOfForm() {
-    return Container(
-      margin: EdgeInsets.only(top: 10, bottom: 10.0),
-      alignment: Alignment.centerLeft,
-      child: Text(
-        'Prijava',
-        textDirection: TextDirection.ltr,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 23,
         ),
       ),
     );

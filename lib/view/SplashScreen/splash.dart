@@ -1,5 +1,5 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/logoContainer.dart';
+import 'package:Oglasnik/utils/shared/logoContainer.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
