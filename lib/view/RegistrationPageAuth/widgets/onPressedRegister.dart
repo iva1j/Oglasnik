@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,6 +10,7 @@ class RegisterButton extends StatefulWidget {
 }
 
 class _RegisterButtonState extends State<RegisterButton> {
+  //bool isRegistered = false;
   final db = Firestore.instance;
   TextEditingController fullNameInputController;
   TextEditingController phoneNumberInputController;
@@ -32,18 +34,21 @@ class _RegisterButtonState extends State<RegisterButton> {
 
 void onPressedRegister(BuildContext context, String fullName, String email,
     String password, String phoneNumber, dynamic formKey) {
-  if (formKey.currentState.validate()) {
+  if (formKey.currentState.validate() && status == false) {
     db.collection("firestoreUsers").document(email).setData({
       'fullName': fullName,
       'email': email,
       'password': password,
-      'phoneNumber': phoneNumber
+      'phoneNumber': phoneNumber,
     });
+    print('korisnik uspješno ubačen u bazi');
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) {
         return RegisteredHome();
       }),
     );
+  } else {
+    print('korisnik već u bazi, registracija nije uspjela');
   }
 }

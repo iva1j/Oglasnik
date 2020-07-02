@@ -11,8 +11,11 @@ displayDialog(BuildContext context) async {
         return AlertDialog(
           backgroundColor: Color.fromARGB(255, 239, 232, 232),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-              side: BorderSide(color: Color.fromRGBO(112, 112, 112, 100))),
+            borderRadius: BorderRadius.circular(10.0),
+            side: BorderSide(
+              color: Color.fromRGBO(112, 112, 112, 100),
+            ),
+          ),
           content: Container(
             margin: EdgeInsets.only(top: 43.0),
             child: TextFormField(
