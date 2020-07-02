@@ -1,5 +1,6 @@
-import 'package:Oglasnik/view/screens/Auth/pages/RegistrationPage/widgets/registerForm.dart';
-import 'package:Oglasnik/view/screens/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/widgets/registerForm.dart';
+
 import 'package:flutter/material.dart';
 
 displayDialog(BuildContext context) async {
