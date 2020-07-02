@@ -10,6 +10,7 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
 bool checkUser = false;
 bool isLogin = false;
+
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final db = Firestore.instance;
@@ -89,8 +90,6 @@ class AuthService extends ChangeNotifier {
     //print("documents = " + documents.length.toString());
     return documents.length == 1;
   }
-
-  
 
 //worst case
   Future<bool> signInWithEmailAndPassword(

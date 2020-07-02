@@ -49,20 +49,7 @@ Stack mainFloatingButton() {
             child: ClipOval(
               child: Material(
                 color: Colors.transparent, // button color
-                child: InkWell(
-                    // splashColor: Colors.transparent, // splash color
-                    // onTap: () => Navigator.of(context)
-                    //     .pushReplacement(MaterialPageRoute(builder: (_) {
-                    //   return RegisterPage();
-                    // })), // button pressed
-                    // child: Column(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: <Widget>[
-                    //     Icon(Icons.person_add), // icon
-                    //     Text("Registracija"), // text
-                    //   ],
-                    // ),
-                    ),
+                child: InkWell(),
               ),
             ),
           )

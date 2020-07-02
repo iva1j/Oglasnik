@@ -11,8 +11,8 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight
+    // DeviceOrientation.landscapeLeft,
+    // DeviceOrientation.landscapeRight
   ]).then((_) {
     runApp(MultiProvider(
       providers: [
@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
-
         if (!currentFocus.hasPrimaryFocus &&
             currentFocus.focusedChild != null) {
           currentFocus.focusedChild.unfocus();

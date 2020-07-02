@@ -12,7 +12,7 @@ final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
 class _RegisteredHomeState extends State<RegisteredHome> {
   List<dynamic> users = [];
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppBarTheme.of(context).color,
