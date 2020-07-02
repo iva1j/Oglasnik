@@ -2,9 +2,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/widgets/registerForm.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
@@ -54,10 +52,9 @@ class _SigninPageState extends State<SigninPage> {
     }
   }
 
-
   checkStatus(BuildContext context, String email, String password) {
     FutureBuilder(
-        future: AuthService().userExistingorNot(email),
+        future: AuthService().userExistingorNot(email, password),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             print(snapshot);
@@ -66,11 +63,9 @@ class _SigninPageState extends State<SigninPage> {
           }
           if (snapshot.hasData) {
             print('korisnik zapisan');
-            isLogin = true;
             return Container();
           } else {
             print('user  is not existing');
-            isLogin = false;
             return null;
           }
         });
