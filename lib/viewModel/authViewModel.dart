@@ -80,7 +80,7 @@ class AuthService extends ChangeNotifier {
   }
 
 //best case for checking user
-  Future<bool> userExistingorNot(String email, String password) async {
+  Future<bool> userExistingorNot(String email) async {
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
         .where('email', isEqualTo: email)

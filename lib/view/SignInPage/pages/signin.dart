@@ -53,14 +53,20 @@ class _SigninPageState extends State<SigninPage> {
 
   checkStatus(BuildContext context, String email, String password) {
     FutureBuilder(
-        future: AuthService().userExistingorNot(email, password),
+        future: AuthService().userExistingorNot(email),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            print(snapshot);
+          } else if (snapshot.connectionState == ConnectionState.waiting) {
+            print('waiting');
+          }
           if (snapshot.hasData) {
             print('korisnik zapisan');
             isLogin = true;
             return Container();
           } else {
             print('user  is not existing');
+            isLogin = false;
             return null;
           }
         });
