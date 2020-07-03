@@ -16,7 +16,6 @@ Stack homeFloatingAnimatedButton() {
         ringDiameter: 350.0,
         ringWidth: 76.0,
         fabColor: Colors.white,
-        
         fabOpenIcon: Icon(
           Icons.person,
           color: Color.fromARGB(255, 226, 11, 48),

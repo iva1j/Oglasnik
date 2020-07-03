@@ -1,3 +1,7 @@
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'package:flutter/cupertino.dart';
+
 String nameValidator(String value) {
   Pattern pattern = r'(?!\s*$)';
   RegExp regex = new RegExp(pattern);
@@ -22,10 +26,21 @@ String emailValidator(String value) {
   if (value.length == null || value == '') return 'Polje ne smije biti prazno';
   if (!regex.hasMatch(value)) {
     return 'Email mora biti validan';
+  }
+  if (doesExist != null) {
+    return 'Email već postoji';
   } else {
     return null;
   }
 }
+
+// String emailExists(String value) {
+//   if (doesExist != null) {
+//     return 'Email već postoji';
+//   } else {
+//     return null;
+//   }
+// }
 
 String passwordValidator(String value) {
   if (value.length == null || value == '') return 'Polje ne smije biti prazno';

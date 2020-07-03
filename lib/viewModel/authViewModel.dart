@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
+var doesExist = RegisterEmailTextWidget().emailHint;
 
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -98,7 +99,7 @@ class AuthService extends ChangeNotifier {
         future: AuthService().userExistingorNot(email, password),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
-            print('korisnik postoji');
+            print(doesExist);
             return Container();
           } else {
             print('korisnik nije u bazi');
