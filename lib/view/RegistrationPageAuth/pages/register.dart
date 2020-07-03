@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
 import 'package:Oglasnik/utils/validation.dart';
@@ -36,7 +35,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   initState() {
-    RegisterControllers();
+    fullNameInputController = new TextEditingController();
+    phoneNumberInputController = new TextEditingController();
+    emailInputController = new TextEditingController();
+    passwordInputController = new TextEditingController();
     super.initState();
   }
 
