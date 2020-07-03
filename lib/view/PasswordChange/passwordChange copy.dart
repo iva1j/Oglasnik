@@ -27,8 +27,7 @@ class _PasswordChangeState extends State<PasswordChange> {
 
   @override
   initState() {
-    // _email = new TextEditingController();
-    // _name = new TextEditingController();
+    PswCopyFields();
     super.initState();
   }
 
@@ -37,16 +36,6 @@ class _PasswordChangeState extends State<PasswordChange> {
     _name.dispose();
     _email.dispose();
     super.dispose();
-  }
-
-  String passwordValidator(String value) {
-    if (value.length == null || value == '')
-      return 'Polje ne smije biti prazno';
-    if (value.length <= 8) {
-      return 'Password ne smije biti manji od 8 char';
-    } else {
-      return null;
-    }
   }
 
   @override
