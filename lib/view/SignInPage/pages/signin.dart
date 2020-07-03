@@ -3,11 +3,14 @@ import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/bottomNavigationBar.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/signInContainer.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/bodySignIn.dart';
+
 
 class SigninPage extends StatefulWidget {
   final Function toggleView;
@@ -36,7 +39,7 @@ class _SigninPageState extends State<SigninPage> {
     //AuthService().getRegisteredUsers(db);
     super.initState();
   }
-
+//#TODO checkstatus refactor into viewModel-> authViewModel
   checkStatus(BuildContext context, String email, String password) {
     FutureBuilder(
         future: AuthService().userExistingorNot(email, password),
@@ -59,11 +62,6 @@ class _SigninPageState extends State<SigninPage> {
   String error = '';
   @override
   Widget build(BuildContext context) {
-    // if (showSignIn) {
-    //   return SigninPage(toggleView: toggleView);
-    // } else {
-    //   return RegisterPage(toggleView: toggleView);
-    // }
     String email, password;
     bool isRegistered;
     email = emailInputController.text;
@@ -77,60 +75,10 @@ class _SigninPageState extends State<SigninPage> {
         elevation: 0.0,
         leading: backButtonIphone(context),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(left: 100.0, right: 100.0, bottom: 5.0),
-        child: FlatButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            side: BorderSide(
-              color: Colors.white,
-              style: BorderStyle.solid,
-            ),
-          ),
-          color: Colors.white,
-          onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              PageRouteBuilder(
-                pageBuilder: (context, animation1, animation2) =>
-                    RegisterPage(),
-              ),
-            );
-            // widget.toggleView();
-            //    islogin ? formSignin(email, password, formKey, context) : formRegister(fullNameInputController.text, email, password, phoneNumber, formKey, context);
-          },
-          child: Text(
-            'Registruj se',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.normal),
-          ),
-        ),
-        // height: 60,
-        // width: double.infinity,
-      ),
-      body: WillPopScope(
-        onWillPop: () => Navigator.of(context)
-            .pushReplacement(MaterialPageRoute(builder: (_) {
-          return AnonymouseHome();
-        })),
-        child: SingleChildScrollView(
-          reverse: true,
-          child: Padding(
-            padding: EdgeInsets.only(bottom: bottom),
-            child: Container(
-              height: SizeConfig.screenHeight,
-              margin: EdgeInsets.all(50),
-              child: SignInContainer(
-                  registerFormKey: _registerFormKey,
-                  emailInputController: emailInputController,
-                  passwordInputController: passwordInputController),
-            ),
-          ),
-        ),
-      ),
+      bottomNavigationBar: 
+      BottomBarNavigation(),
+      body: BodySignIn(bottom: bottom, registerFormKey: _registerFormKey, emailInputController: emailInputController, passwordInputController: passwordInputController),
     );
   }
 }
+

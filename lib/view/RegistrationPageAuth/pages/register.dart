@@ -64,7 +64,8 @@ class _RegisterPageState extends State<RegisterPage> {
         elevation: 0.0,
         leading: backButtonIphone(context),
       ),
-      bottomNavigationBar: Padding(
+      bottomNavigationBar: 
+      Padding(
         padding: EdgeInsets.only(left: 100.0, right: 100.0, bottom: 5.0),
         child: FlatButton(
           shape: RoundedRectangleBorder(
