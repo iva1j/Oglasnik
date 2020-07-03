@@ -23,5 +23,3 @@ class RegisterControllers {
   TextEditingController emailInputController = new TextEditingController();
   TextEditingController passwordInputController = new TextEditingController();
 }
-
-abstract class PswChange {}
