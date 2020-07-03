@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: buildThemeData(),
-        home: AnonymouseHome(),
+        home: SigninPage(),
         routes: {
           "/back": (_) => AnonymouseHome(),
           "/homeregister": (_) => RegisteredHome(),
