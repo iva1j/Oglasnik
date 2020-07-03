@@ -206,7 +206,8 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
         button(
-          App_Labels_Auth().registracija,
+          // App_Labels_Auth().registracija,
+          Text('registracija'),
           () {
             fullName = fullNameInputController.text;
             email = emailInputController.text;

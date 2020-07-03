@@ -6,6 +6,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:convert/convert.dart';
+import 'package:crypto/crypto.dart' as crypto;
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
@@ -208,4 +211,12 @@ class RegisteredUserViewModel implements RegisteredUserInterface {
     QuerySnapshot qn = await db.collection('Users').getDocuments();
     return qn.documents;
   }
+}
+
+///Generate MD5 hash
+generateMd5(String data) {
+  var content = new Utf8Encoder().convert(data);
+  var md5 = crypto.md5;
+  var digest = md5.convert(content);
+  return hex.encode(digest.bytes);
 }
