@@ -1,27 +1,17 @@
+import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
-import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    // DeviceOrientation.landscapeLeft,
-    // DeviceOrientation.landscapeRight
   ]).then((_) {
-    runApp(MultiProvider(
-      providers: [
-        ChangeNotifierProvider<AuthService>(
-          create: (context) => AuthService(),
-        ),
-      ],
-      child: new MyApp(),
-    ));
+    runApp(MyApp());
   });
 }
 
@@ -39,33 +29,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: ThemeData(
-            scaffoldBackgroundColor: Colors.white,
-            primaryColor: Color.fromARGB(255, 226, 11, 48),
-            buttonTheme: ButtonThemeData(
-              height: 48,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                side: BorderSide(
-                  color: Color.fromARGB(255, 226, 11, 48),
-                  style: BorderStyle.solid,
-                ),
-              ),
-            ),
-            appBarTheme: AppBarTheme(
-              color: Color.fromARGB(255, 226, 11, 48),
-              elevation: 0.0,
-              textTheme: TextTheme(
-                headline6: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontFamily: 'Roboto',
-                ),
-              ),
-            ),
-            textTheme: ThemeData.light()
-                .textTheme
-                .copyWith(headline6: TextStyle(fontFamily: 'Roboto'))),
+        theme: buildThemeData(),
         home: AnonymouseHome(),
         routes: {
           "/back": (_) => AnonymouseHome(),

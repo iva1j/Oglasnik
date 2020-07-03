@@ -1,4 +1,3 @@
-// ignore: camel_case_types
 import 'package:flutter/cupertino.dart';
 
 //klase poredane po folderima iz view-a
@@ -52,7 +51,6 @@ class RegistrationPageAuthPages {
 class RegistrationPageAuthFirstWidget {
   String databaseCollection = "firestoreUsers";
   // print statements and keys arent refactored
-
 }
 
 class RegistrationPageAuthSecondWidget {
