@@ -1,5 +1,8 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+
 import 'package:Oglasnik/utils/validation.dart';
+
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
@@ -32,8 +35,12 @@ class _SigninPageState extends State<SigninPage> {
 
   @override
   initState() {
-    emailInputController = new TextEditingController();
-    passwordInputController = new TextEditingController();
+
+    //emailInputController = new TextEditingController();
+    //passwordInputController = new TextEditingController();
+
+
+    InputFields();
 
     //AuthService().getRegisteredUsers(db);
     super.initState();
