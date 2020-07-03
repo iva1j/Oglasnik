@@ -1,5 +1,5 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
@@ -32,7 +32,6 @@ class _SigninPageState extends State<SigninPage> {
   @override
   initState() {
     InputFields();
-
     //AuthService().getRegisteredUsers(db);
     super.initState();
   }

@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/validation.dart';
@@ -19,10 +20,7 @@ class _PasswordChangeState extends State<PasswordChange> {
   TextEditingController _displayName;
 
   initState() {
-    _email = new TextEditingController();
-    _displayName = new TextEditingController();
-
-    _password = new TextEditingController();
+    PswChangeFields();
     super.initState();
   }
 
