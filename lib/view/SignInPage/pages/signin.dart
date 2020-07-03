@@ -1,13 +1,14 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/signInContainer.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/signInContainer.dart';
 
 class SigninPage extends StatefulWidget {
   final Function toggleView;
@@ -31,29 +32,11 @@ class _SigninPageState extends State<SigninPage> {
 
   @override
   initState() {
-    InputFields();
+    emailInputController = new TextEditingController();
+    passwordInputController = new TextEditingController();
 
     //AuthService().getRegisteredUsers(db);
     super.initState();
-  }
-
-  checkStatus(BuildContext context, String email, String password) {
-    FutureBuilder(
-        future: AuthService().userExistingorNot(email, password),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            print(snapshot);
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
-            print('waiting');
-          }
-          if (snapshot.hasData) {
-            print('korisnik zapisan');
-            return Container();
-          } else {
-            print('user  is not existing');
-            return null;
-          }
-        });
   }
 
   String error = '';
@@ -121,13 +104,16 @@ class _SigninPageState extends State<SigninPage> {
           child: Padding(
             padding: EdgeInsets.only(bottom: bottom),
             child: Container(
-              height: SizeConfig.screenHeight,
-              margin: EdgeInsets.all(50),
-              child: SignInContainer(
-                  registerFormKey: _registerFormKey,
-                  emailInputController: emailInputController,
-                  passwordInputController: passwordInputController),
-            ),
+                height: SizeConfig.screenHeight,
+                margin: EdgeInsets.all(50),
+                child: Column(
+                  children: <Widget>[
+                    SignInContainer(
+                        registerFormKey: _registerFormKey,
+                        emailInputController: emailInputController,
+                        passwordInputController: passwordInputController),
+                  ],
+                )),
           ),
         ),
       ),

@@ -14,8 +14,6 @@ class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final db = Firestore.instance;
 
-  //User get user => null;
-
   Future getRegisteredUsers() async {
     var firestore = Firestore.instance;
     QuerySnapshot qn = await firestore.collection('users').getDocuments();
@@ -142,7 +140,8 @@ class AuthService extends ChangeNotifier {
     return true;
   }
 
-  Future<FirebaseUser> get getUser => _auth.currentUser(); //geting currentUser
+  //geting currentUser
+Future<FirebaseUser> get getUser => _auth.currentUser();
 
 // sign out
   Future signOut() async {
@@ -189,7 +188,7 @@ class AnonymousViewModel implements AnonymousInterface {
     }
   }
 }
-
+//below is the SignOut implemented
 class SignOutModel implements AuthSignOut {
   @override
   Future signOut() async {

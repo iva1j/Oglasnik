@@ -1,4 +1,3 @@
-
 String nameValidator(String value) {
   Pattern pattern = r'(?!\s*$)';
   RegExp regex = new RegExp(pattern);
