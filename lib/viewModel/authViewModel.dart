@@ -9,13 +9,11 @@ import 'package:flutter/material.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
-var doesExist = RegisterEmailTextWidget().emailHint;
+//var doesExist = RegisterEmailTextWidget().emailHint;
 
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final db = Firestore.instance;
-
-  //User get user => null;
 
   Future getRegisteredUsers() async {
     var firestore = Firestore.instance;
@@ -99,7 +97,7 @@ class AuthService extends ChangeNotifier {
         future: AuthService().userExistingorNot(email, password),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
-            print(doesExist);
+            //print(doesExist);
             return Container();
           } else {
             print('korisnik nije u bazi');
@@ -143,7 +141,8 @@ class AuthService extends ChangeNotifier {
     return true;
   }
 
-  Future<FirebaseUser> get getUser => _auth.currentUser(); //geting currentUser
+  //geting currentUser
+  Future<FirebaseUser> get getUser => _auth.currentUser();
 
 // sign out
   Future signOut() async {
@@ -191,6 +190,7 @@ class AnonymousViewModel implements AnonymousInterface {
   }
 }
 
+//below is the SignOut implemented
 class SignOutModel implements AuthSignOut {
   @override
   Future signOut() async {

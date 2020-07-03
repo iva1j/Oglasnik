@@ -101,11 +101,13 @@ class SplashScreen {
   String fontFamily = "Roboto";
 }
 
-class RegisterEmailTextWidget {
-  String emailHint = "Email već postoji";
-}
-
 bool status = false;
 final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> globalKey() => registerFormKey;
+
+class InputFields {
+  TextEditingController emailInputController = new TextEditingController();
+  TextEditingController passwordInputController = new TextEditingController();
+}
+//#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc

@@ -27,11 +27,10 @@ String emailValidator(String value) {
   if (!regex.hasMatch(value)) {
     return 'Email mora biti validan';
   }
-  if (doesExist != null) {
-    return 'Email već postoji';
-  } else {
-    return null;
-  }
+  // if (doesExist != null) {
+  //   return 'Email već postoji';
+  // } else {
+  return null;
 }
 
 // String emailExists(String value) {
