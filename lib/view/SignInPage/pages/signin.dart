@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
@@ -207,7 +205,7 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ),
         Container(
-          child: AuthService().signInOrNot(context, email, password),
+          child: AuthService().checkStatus(context, email, password),
         ),
         Container(
           margin: EdgeInsets.only(top: 20.0),
@@ -217,8 +215,7 @@ class _SigninPageState extends State<SigninPage> {
               email = emailInputController.text;
               password = passwordInputController.text;
               formKey = _registerFormKey;
-              // TODO: Treba napraviti da li ce se navigator vratiti RegisteredHome() ili nece na osnovu true ili false koji dobijamo u konzoli prilikom inputovanja
-              if (true) {
+              if (status == true) {
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (_) => RegisteredHome()));
               } else {
