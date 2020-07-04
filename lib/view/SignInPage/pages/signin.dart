@@ -1,7 +1,9 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 //import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
@@ -221,9 +223,11 @@ class _SigninPageState extends State<SigninPage> {
               email = emailInputController.text;
               password = passwordInputController.text;
               formKey = _registerFormKey;
-              if (formKey.currentState.validate()) {
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (_) => RegisteredHome()));
+              if (status == true) {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (_) => RegisteredHome()));
+              } else {
+                print("access denied");
               }
             },
           ),
