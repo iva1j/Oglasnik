@@ -12,6 +12,7 @@ import 'package:crypto/crypto.dart' as crypto;
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
+bool validSignIn = false;
 
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -110,42 +111,33 @@ class AuthService extends ChangeNotifier {
         });
   }
 
-// this is not working because we are using another approach for signing in (not over the Firebase Auth)
-  Future<bool> signInWithEmailAndPassword(
-      BuildContext context, String email, String password) async {
-    try {
-      await _auth
-          .signInWithEmailAndPassword(email: email, password: password)
-          .whenComplete(
-            () => Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (_) => RegisteredHome(),
-              ),
-            ),
-          );
-      print('user successful signed in ');
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-//Method to handle user sign in using email and password
-  Future<bool> signInOverFirestore(String email, String password) async {
-    db
+// SIGN IN
+// Da li prima prave inpute?
+  Future<bool> isUserRegistered(String email, String password) async {
+    final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
-        .where('email', isEqualTo: email)
-        .getDocuments()
-        .then(
-          (value) => print('User on Firestore : $value'),
-        )
-        .catchError((e) {
-      print('Error no document');
-    });
-    return true;
+        .where('name', isEqualTo: email)
+        .where('password', isEqualTo: password)
+        .limit(1)
+        .getDocuments();
+    final List<DocumentSnapshot> documents = result.documents;
+    return documents.length == 1;
   }
 
-  Future<FirebaseUser> get getUser => _auth.currentUser(); //geting currentUser
+  signInOrNot(BuildContext context, String email, String password) {
+    FutureBuilder(
+        future: AuthService().isUserRegistered(email, password),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            validSignIn = true;
+            print('korisnik postoji');
+            return Container();
+          } else {
+            print('korisnik nije u bazi');
+            return Container();
+          }
+        });
+  }
 
 // sign out
   Future signOut() async {
@@ -213,10 +205,10 @@ class RegisteredUserViewModel implements RegisteredUserInterface {
   }
 }
 
-///Generate MD5 hash
-generateMd5(String data) {
-  var content = new Utf8Encoder().convert(data);
-  var md5 = crypto.md5;
-  var digest = md5.convert(content);
-  return hex.encode(digest.bytes);
-}
+// ///Generate MD5 hash
+// generateMd5(String data) {
+//   var content = new Utf8Encoder().convert(data);
+//   var md5 = crypto.md5;
+//   var digest = md5.convert(content);
+//   return hex.encode(digest.bytes);
+// }

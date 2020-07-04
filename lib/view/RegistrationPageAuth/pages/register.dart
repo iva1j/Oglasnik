@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
 import 'package:Oglasnik/utils/validation.dart';
@@ -36,7 +35,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   initState() {
-    RegisterControllers();
+    fullNameInputController = new TextEditingController();
+    phoneNumberInputController = new TextEditingController();
+    emailInputController = new TextEditingController();
+    passwordInputController = new TextEditingController();
     super.initState();
   }
 
@@ -62,8 +64,7 @@ class _RegisterPageState extends State<RegisterPage> {
         elevation: 0.0,
         leading: backButtonIphone(context),
       ),
-      bottomNavigationBar: 
-      Padding(
+      bottomNavigationBar: Padding(
         padding: EdgeInsets.only(left: 100.0, right: 100.0, bottom: 5.0),
         child: FlatButton(
           shape: RoundedRectangleBorder(
@@ -206,8 +207,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
         button(
-          // App_Labels_Auth().registracija,
-          Text('registracija'),
+          App_Labels_Auth().registracija,
           () {
             fullName = fullNameInputController.text;
             email = emailInputController.text;
