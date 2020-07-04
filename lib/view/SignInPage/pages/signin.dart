@@ -4,7 +4,9 @@ import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/registerForm.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
@@ -53,6 +55,23 @@ class _SigninPageState extends State<SigninPage> {
     }
   }
 
+  signInOrNot(BuildContext context, String email, String password) {
+    FutureBuilder(
+        future: AuthService().isUserRegistered(email, password),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            validSignIn = true;
+            status = true;
+            print('korisnik postoji');
+            return Container();
+          } else {
+            print('korisnik nije u bazi');
+            status = false;
+            return Container();
+          }
+        });
+  }
+/*
   checkStatus(BuildContext context, String email, String password) {
     FutureBuilder(
         future: AuthService().userExistingorNot(email, password),
@@ -70,7 +89,7 @@ class _SigninPageState extends State<SigninPage> {
             return null;
           }
         });
-  }
+  }*/
 
   String passwordValidator(String value) {
     if (value.length == null || value == '')
@@ -202,7 +221,7 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ),
         Container(
-          child: AuthService().checkStatus(context, email, password),
+          child: AuthService().signInOrNot(context, email, password),
         ),
         Container(
           margin: EdgeInsets.only(top: 20.0),
@@ -212,10 +231,7 @@ class _SigninPageState extends State<SigninPage> {
               email = emailInputController.text;
               password = passwordInputController.text;
               formKey = _registerFormKey;
-              if (formKey.currentState.validate()) {
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (_) => RegisteredHome()));
-              }
+              onPressedSignIn(context, email, password, formKey);
             },
           ),
         ),
