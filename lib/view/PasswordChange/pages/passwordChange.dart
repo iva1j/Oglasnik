@@ -1,7 +1,5 @@
-import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/utils/validation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +16,31 @@ class _PasswordChangeState extends State<PasswordChange> {
   TextEditingController _email;
   TextEditingController _password;
   TextEditingController _displayName;
-
   initState() {
-    PswChangeFields();
+    _email = new TextEditingController();
+    _displayName = new TextEditingController();
+    _password = new TextEditingController();
     super.initState();
+  }
+
+  String passwordValidator(String value) {
+    if (value.length == null || value == '')
+      return 'Polje ne smije biti prazno';
+    if (value.length <= 7) {
+      return 'Password ne smije biti manji od 8 char';
+    } else {
+      return null;
+    }
+  }
+
+  String confirmpasswordValidator(String value) {
+    if (value.length == null || value == '')
+      return 'Polje ne smije biti prazno';
+    if (value.length <= 7) {
+      return 'Password ne smije biti manji od 8 char';
+    } else {
+      return null;
+    }
   }
 
   @override
@@ -114,31 +133,13 @@ class _PasswordChangeState extends State<PasswordChange> {
                       Container(
                         margin: EdgeInsets.only(top: 110),
                         child: button('Sačuvaj', () {
-                          //if (formKey.currentState.validate()) {
                           db
                               .collection("firestoreUsers")
                               .document(emailpravi)
                               .updateData({
                             'password': passwordpravi,
                           });
-
-                          // Navigator.of(context).pushReplacement(
-                          //   MaterialPageRoute(
-                          //     builder: (_) {
-                          //       return RegisteredHome();
-                          //     },
-                          //   ),
-                          // );
-                        }
-                            //}
-
-                            // AuthService().updateUserinFirestore(
-                            //   _displayName.text,
-                            //   _email.text,
-                            //   _password.text,
-                            //);
-                            // },
-                            ),
+                        }),
                       ),
                     ]),
                   )

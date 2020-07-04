@@ -3,6 +3,7 @@ import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:random_string/random_string.dart';
 
 final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
 
@@ -63,6 +64,8 @@ Stack homeFloatingAnimatedButton() {
                   onTap: () {
                     Navigator.of(context)
                         .pushReplacement(FadeRoute(page: RegisterPage()));
+                    print('Vas kod je:' + randomAlphaNumeric(5));
+                    // print(randomAlphaNumeric(5));
                   }, // button pressed
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

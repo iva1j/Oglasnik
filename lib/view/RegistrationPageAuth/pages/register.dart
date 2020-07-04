@@ -1,17 +1,13 @@
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-
 import 'package:Oglasnik/utils/validation.dart';
-
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
-
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/shared/logoContainer.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
-
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +20,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
   TextEditingController fullNameInputController;
   TextEditingController phoneNumberInputController;
   TextEditingController emailInputController;
@@ -36,7 +32,12 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   initState() {
-    RegisterControllers();
+    //RegisterControllers();
+    TextEditingController fullNameInputController = new TextEditingController();
+    TextEditingController phoneNumberInputController =
+        new TextEditingController();
+    TextEditingController emailInputController = new TextEditingController();
+    TextEditingController passwordInputController = new TextEditingController();
     super.initState();
   }
 
@@ -130,7 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Form formRegister(String fullName, String email, String password,
       String phoneNumber, formKey, BuildContext context) {
     return Form(
-      key: _registerFormKey,
+      key: registerFormKey,
       child: Column(children: <Widget>[
         new Container(
           margin: EdgeInsets.only(top: 15, bottom: 10),
@@ -211,7 +212,7 @@ class _RegisterPageState extends State<RegisterPage> {
             email = emailInputController.text;
             password = passwordInputController.text;
             phoneNumber = phoneNumberInputController.text;
-            formKey = _registerFormKey;
+            formKey = registerFormKey;
             onPressedRegister(
                 context, fullName, email, password, phoneNumber, formKey);
           },

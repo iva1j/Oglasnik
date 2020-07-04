@@ -16,10 +16,10 @@ class PswChangeFields {
 //   TextEditingController _name = new TextEditingController();
 // }
 
-class RegisterControllers {
-  TextEditingController fullNameInputController = new TextEditingController();
-  TextEditingController phoneNumberInputController =
-      new TextEditingController();
-  TextEditingController emailInputController = new TextEditingController();
-  TextEditingController passwordInputController = new TextEditingController();
-}
+// class RegisterControllers {
+//   TextEditingController fullNameInputController = new TextEditingController();
+//   TextEditingController phoneNumberInputController =
+//       new TextEditingController();
+//   TextEditingController emailInputController = new TextEditingController();
+//   TextEditingController passwordInputController = new TextEditingController();
+// }

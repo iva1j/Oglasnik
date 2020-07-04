@@ -108,6 +108,36 @@ class AuthService extends ChangeNotifier {
         });
   }
 
+  Future<bool> changeUser(String email) async {
+    final QuerySnapshot result = await Firestore.instance
+        .collection('firestoreUsers')
+        .where('email', isEqualTo: email)
+        .limit(1)
+        .getDocuments();
+    final List<DocumentSnapshot> documents = result.documents;
+    print("documents = " + documents.length.toString());
+    documents.length.toString() == '1'
+        ? tokenstatus = false
+        : tokenstatus = true;
+    print('status: ');
+    print(tokenstatus);
+    return documents.length == 1;
+  }
+
+  tokenChange(BuildContext context, String email) {
+    FutureBuilder(
+        future: AuthService().changeUser(email),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            //print(doesExist);
+            return Container();
+          } else {
+            print('korisnik nije u bazi');
+            return Container();
+          }
+        });
+  }
+
 // SIGN IN
 // Da li prima prave inpute?
   Future<bool> isUserRegistered(String email, String password) async {

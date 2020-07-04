@@ -8,7 +8,7 @@ import 'package:Oglasnik/utils/strings.dart';
 class SignInForm extends StatelessWidget {
   const SignInForm({
     final Key key,
-    @required GlobalKey<FormState> registerFormKey,
+    @required GlobalKey<FormState> signInFormKey,
     @required this.emailInputController,
     @required this.passwordInputController,
   }) : super(key: key);
@@ -16,13 +16,15 @@ class SignInForm extends StatelessWidget {
   final TextEditingController emailInputController;
   final TextEditingController passwordInputController;
 
+  get signInFormKey => null;
+
   @override
   Widget build(BuildContext context) {
     String email = emailInputController.text;
     String password = passwordInputController.text;
 
     return Form(
-      key: registerFormKey,
+      key: signInFormKey,
       child: Column(children: <Widget>[
         new Container(
           margin: EdgeInsets.only(bottom: 10),
@@ -67,11 +69,11 @@ class SignInForm extends StatelessWidget {
           child: button(
             'Prijavi se',
             () async {
-              globalKey();
-              if (registerFormKey.currentState.validate()) {
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (_) => RegisteredHome()));
-              }
+              //   if (signInFormKey.currentState.validate()) {
+              displayDialog(context);
+              // Navigator.of(context).pushReplacement(
+              //     MaterialPageRoute(builder: (_) => RegisteredHome()));
+              //    }
             },
           ),
         ),

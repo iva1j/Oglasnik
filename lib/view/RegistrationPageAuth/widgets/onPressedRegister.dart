@@ -20,7 +20,12 @@ class _RegisterButtonState extends State<RegisterButton> {
 
   @override
   initState() {
-    RegisterControllers();
+    TextEditingController fullNameInputController = new TextEditingController();
+    TextEditingController phoneNumberInputController =
+        new TextEditingController();
+    TextEditingController emailInputController = new TextEditingController();
+    TextEditingController passwordInputController = new TextEditingController();
+    //RegisterControllers();
     super.initState();
   }
 

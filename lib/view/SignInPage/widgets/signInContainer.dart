@@ -31,7 +31,7 @@ class SignInContainer extends StatelessWidget {
         ),
         WelcomeLoginScreen(),
         SignInForm(
-          registerFormKey: _registerFormKey,
+          signInFormKey: _registerFormKey,
           emailInputController: emailInputController,
           passwordInputController: passwordInputController,
         ),
