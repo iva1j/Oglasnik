@@ -110,14 +110,19 @@ class AuthService extends ChangeNotifier {
 
 // SIGN IN
 // Da li prima prave inpute?
+
   Future<bool> isUserRegistered(String email, String password) async {
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
-        .where('name', isEqualTo: email)
+        .where('email', isEqualTo: email)
         .where('password', isEqualTo: password)
         .limit(1)
         .getDocuments();
     final List<DocumentSnapshot> documents = result.documents;
+    print("documents = " + documents.length.toString());
+    documents.length.toString() == '1' ? status = true : status = false;
+    print('status: ');
+    print(status);
     return documents.length == 1;
   }
 
@@ -126,8 +131,8 @@ class AuthService extends ChangeNotifier {
         future: AuthService().isUserRegistered(email, password),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
-            validSignIn = true;
             print('korisnik postoji');
+            status = true;
             return Container();
           } else {
             print('korisnik nije u bazi');
