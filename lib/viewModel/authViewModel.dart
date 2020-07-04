@@ -113,12 +113,20 @@ class AuthService extends ChangeNotifier {
   Future<bool> isUserRegistered(String email, String password) async {
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
-        .where('name', isEqualTo: email)
+        .where('email', isEqualTo: email)
         .where('password', isEqualTo: password)
         .limit(1)
         .getDocuments();
-    final List<DocumentSnapshot> documents = result.documents;
-    return documents.length == 1;
+    final List<DocumentSnapshot> dokument = result.documents;
+    if (dokument.length > 0) {
+      status = true;
+      print("Trenutni status:");
+      print(status);
+    } else {
+      status = false;
+      print("Trenutni status:");
+      print(status);
+    }
   }
 
   signInOrNot(BuildContext context, String email, String password) {
