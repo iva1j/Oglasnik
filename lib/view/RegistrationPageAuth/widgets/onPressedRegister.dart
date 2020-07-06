@@ -44,7 +44,7 @@ void onPressedRegister(BuildContext context, String fullName, String email,
       'password': password,
       'phoneNumber': phoneNumber,
     });
-    print('korisnik uspješno ubačen u bazi');
+    print('korisnik uspješno ubačen u bazu');
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) {

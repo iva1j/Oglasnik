@@ -164,7 +164,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: emailInputController,
                 //keyboardType: TextInputType.emailAddress,
                 keyboardType: TextInputType.visiblePassword,
-                validator: emailValidator,
+                validator: emailRegisterCheck,
               ),
             ),
           ),
