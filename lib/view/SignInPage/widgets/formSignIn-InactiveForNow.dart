@@ -2,7 +2,6 @@ import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
-import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/strings.dart';
 
@@ -20,7 +19,7 @@ class SignInForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String email = emailInputController.text;
-    String password = passwordInputController.text;
+    // String password = passwordInputController.text;
 
     return Form(
       key: registerFormKey,
@@ -61,7 +60,7 @@ class SignInForm extends StatelessWidget {
           ),
         ), //#TODO destroy registerFormKey
         Container(
-          child: AuthService().checkStatus(context, email, password),
+          child: AuthService().checkStatus(context, email),
         ),
         Container(
           margin: EdgeInsets.only(top: 20.0),
@@ -76,20 +75,6 @@ class SignInForm extends StatelessWidget {
             },
           ),
         ),
-        // RaisedButton(
-        //     onPressed: () => print(generateMd5),
-        //     textColor: Colors.grey,
-        //     padding: const EdgeInsets.all(0.0),
-        //     child: Container(
-        //       Text('Generate'),
-        //       decoration: const BoxDecoration(
-        //           gradient: LinearGradient(
-        //               begin: Alignment.topRight,
-        //               end: Alignment.bottomLeft,
-        //               colors: [Colors.white, Colors.red])),
-              
-        //     )),
-
         Container(
           margin: EdgeInsets.only(top: 15.0),
           child: new GestureDetector(
