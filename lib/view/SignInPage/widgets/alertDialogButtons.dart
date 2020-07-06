@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
@@ -37,7 +38,7 @@ class AlertDialogButtons extends StatelessWidget {
             child: FlatButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(2.0)),
-                color: Color.fromARGB(255, 226, 11, 48),
+                color: mainAppColor,
                 child: Text(
                   'POŠALJI KOD',
                   style: TextStyle(
