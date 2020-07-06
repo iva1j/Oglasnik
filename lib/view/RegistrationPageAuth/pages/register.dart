@@ -114,8 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     LogoContainer(),
                     WelcomeScreen(),
                     Container(
-                      child:
-                          AuthService().checkStatus(context, email, password),
+                      child: AuthService().checkStatus(context, email),
                     ),
                     nameOfForm(),
                     formRegister(fullName, email, password, phoneNumber,

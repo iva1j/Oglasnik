@@ -102,10 +102,10 @@ class SplashScreen {
 }
 
 bool status = false;
-bool tokenstatus = true;
-// final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
-// final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
-// GlobalKey<FormState> globalKey() => registerFormKey;
+bool tokenstatus = false;
+//final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
+final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> globalKey() => registerFormKey;
 
 class InputFields {
   TextEditingController emailInputController = new TextEditingController();

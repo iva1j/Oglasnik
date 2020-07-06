@@ -1,30 +1,27 @@
-import 'package:Oglasnik/utils/shared/logoContainer.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+//import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/widgets/registerForm.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:random_string/random_string.dart';
 
 class SigninPage extends StatefulWidget {
   final Function toggleView;
   SigninPage({Key key, this.toggleView}) : super(key: key);
+
   @override
   _SigninPageState createState() => _SigninPageState();
 }
 
 class _SigninPageState extends State<SigninPage> {
   FirebaseUser user;
+
   final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
   bool islogin = false;
   TextEditingController emailInputController;
@@ -38,6 +35,7 @@ class _SigninPageState extends State<SigninPage> {
   initState() {
     emailInputController = new TextEditingController();
     passwordInputController = new TextEditingController();
+
     //AuthService().getRegisteredUsers(db);
     super.initState();
   }
@@ -53,6 +51,20 @@ class _SigninPageState extends State<SigninPage> {
     } else {
       return null;
     }
+  }
+
+  checkStatus(BuildContext context, String email) {
+    FutureBuilder(
+        future: AuthService().userExistingorNot(email),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            print('korisnik postoji');
+            return Container();
+          } else {
+            print('korisnik nije u bazi');
+            return Container();
+          }
+        });
   }
 
   signInOrNot(BuildContext context, String email, String password) {
@@ -104,8 +116,6 @@ class _SigninPageState extends State<SigninPage> {
   String error = '';
   @override
   Widget build(BuildContext context) {
-    var idTokenResult = randomAlphaNumeric(5);
-
     // if (showSignIn) {
     //   return SigninPage(toggleView: toggleView);
     // } else {
@@ -143,6 +153,8 @@ class _SigninPageState extends State<SigninPage> {
                     RegisterPage(),
               ),
             );
+            // widget.toggleView();
+            //    islogin ? formSignin(email, password, formKey, context) : formRegister(fullNameInputController.text, email, password, phoneNumber, formKey, context);
           },
           child: Text(
             'Registruj se',
@@ -153,6 +165,8 @@ class _SigninPageState extends State<SigninPage> {
                 fontWeight: FontWeight.normal),
           ),
         ),
+        // height: 60,
+        // width: double.infinity,
       ),
       body: WillPopScope(
         onWillPop: () => Navigator.of(context)
@@ -168,8 +182,8 @@ class _SigninPageState extends State<SigninPage> {
                 margin: EdgeInsets.all(50),
                 child: Column(
                   children: <Widget>[
-                    LogoContainer(),
-                    WelcomeScreen(),
+                    // LogoContainer(),
+                    //welcomeScreen(),
                     nameOfForm(),
                     formSignin(email, password, formKey, context, isRegistered),
                   ],
@@ -197,7 +211,7 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 controller: emailInputController,
                 keyboardType: TextInputType.visiblePassword,
-                validator: emailCheckSignIn,
+                validator: emailValidator,
               ),
             ),
           ),
@@ -215,14 +229,23 @@ class _SigninPageState extends State<SigninPage> {
                 controller: passwordInputController,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
-                validator: passwordCheckSignIn,
+                validator: passwordValidator,
               ),
             ),
           ),
         ),
         Container(
-          child: AuthService().signInOrNot(context, email, password),
-        ),
+            child: Column(
+          children: <Widget>[
+            Container(
+                //   child: AuthService().tokenExistOrNot(context, email, token),
+                ),
+            Container(
+              child: AuthService().signInOrNot(context, email, password),
+            ),
+            Container(child: AuthService().checkStatus(context, email))
+          ],
+        )),
         Container(
           margin: EdgeInsets.only(top: 20.0),
           child: button(
@@ -238,10 +261,7 @@ class _SigninPageState extends State<SigninPage> {
         Container(
           margin: EdgeInsets.only(top: 15.0),
           child: new GestureDetector(
-            onTap: () {
-              displayDialog(context);
-              formKey.currentState.reset();
-            },
+            onTap: () => displayDialog(context),
             child: new Text(
               "Zaboravili ste lozinku?",
               style: TextStyle(
@@ -269,86 +289,4 @@ class _SigninPageState extends State<SigninPage> {
       ),
     );
   }
-}
-
-displayDialog(BuildContext context) async {
-  String email = emailInputController.text;
-  return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-            backgroundColor: Color.fromARGB(255, 239, 232, 232),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-              side: BorderSide(
-                color: Color.fromRGBO(112, 112, 112, 100),
-              ),
-            ),
-            content: Container(
-              margin: EdgeInsets.only(top: 43.0),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                ),
-                controller: emailInputController,
-                keyboardType: TextInputType.visiblePassword,
-                validator: emailValidator,
-              ),
-            ),
-            actions: <Widget>[
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      //margin: EdgeInsets.only(right: 15.0),
-                      child: new FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(2.0)),
-                        color: Color.fromARGB(255, 226, 11, 48),
-                        child: new Text(
-                          'ODUSTANI',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Roboto',
-                              fontSize: 14),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                  ]),
-              Container(
-                child: AuthService().tokenChange(context, email),
-              ),
-              Container(
-                  //margin: EdgeInsets.only(right: 25.0),
-                  child: new FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(2.0)),
-                      color: Color.fromARGB(255, 226, 11, 48),
-                      child: new Text(
-                        'POŠALJI KOD',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Roboto',
-                            fontSize: 14),
-                      ),
-                      onPressed: () {
-                        if (tokenstatus == true) {
-                          db
-                              .collection("firestoreUsers")
-                              .document(email)
-                              .setData({
-                            'email': email,
-                            'token': idTokenResult,
-                          });
-                          print('korisnik uspješno dodijeljen tokenu');
-                          print(idTokenResult);
-                        }
-                        ;
-                      })),
-            ]);
-      });
 }

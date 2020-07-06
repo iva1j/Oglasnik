@@ -1,7 +1,8 @@
 import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
 bool validSignIn = false;
+bool validPasswordReset = false;
 
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -80,7 +82,7 @@ class AuthService extends ChangeNotifier {
   }
 
 //best case for checking user
-  Future<bool> userExistingorNot(String email, String password) async {
+  Future<bool> userExistingorNot(String email) async {
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
         .where('email', isEqualTo: email)
@@ -94,9 +96,9 @@ class AuthService extends ChangeNotifier {
     return documents.length == 1;
   }
 
-  checkStatus(BuildContext context, String email, String password) {
+  checkStatus(BuildContext context, String email) {
     FutureBuilder(
-        future: AuthService().userExistingorNot(email, password),
+        future: AuthService().userExistingorNot(email),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             //print(doesExist);
@@ -138,6 +140,89 @@ class AuthService extends ChangeNotifier {
         });
   }
 
+//if statement must be replaced with correct validation; currently status represents user in firestore (user existed)
+  onPressedAlertDialog(BuildContext context, String email, String token) {
+    if (1>0) {
+      db.collection("firestoreUsers").document(email).updateData({
+        'email': email,
+        'token': token,
+      });
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+        return PasswordChange(email);
+      }));
+      sendemail();
+      print('Za korisnika: ' +
+          email +
+          ' uspješno generisan token(na mail i firestore poslan), a on je: ' +
+          token);
+    } else {
+      print('Korisnik ne postoji u bazi!');
+    }
+  }
+
+//if statement must be replaced with correct validation
+  void onPressedChangePassword(
+    String email,
+    String password,
+    String passwordConfirm,
+    String token,
+  ) {
+    if (tokenstatus == true) {
+      db.collection("firestoreUsers").document(email).updateData({
+        'email': email,
+        'token': '',
+        'password': password,
+      });
+      print(email);
+      print('korisniku sa emailom: ' +
+          email +
+          ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
+          password);
+    } else {
+      print('Nešto nije uredu, molimo provjerite i ispravite grešku');
+    }
+  }
+
+//tokenChecker
+// Da li prima prave inpute?
+  Future<bool> istokenCorrect(String email, String token) async {
+    final QuerySnapshot result = await Firestore.instance
+        .collection('firestoreUsers')
+        .where('email', isEqualTo: email)
+        .where('token', isEqualTo: token)
+        .limit(1)
+        .getDocuments();
+    final List<DocumentSnapshot> dokument = result.documents;
+    if (dokument.length > 0) {
+      tokenstatus = true;
+      print("Email|Token status validacije je: " + tokenstatus.toString());
+      return true;
+    } else {
+      tokenstatus = false;
+      print("Email|Token status validacije je: " + tokenstatus.toString());
+      print(tokenstatus);
+      return false;
+    }
+  }
+
+  //checking users token input (and comparing with firebase token field)
+  tokenExistOrNot(BuildContext context, String email, String token) {
+    FutureBuilder(
+        future: AuthService().istokenCorrect(email, token),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            validPasswordReset = true;
+            status = true;
+            print('Token za korisnika: ' + email + ' postoji u bazi');
+            return Container();
+          } else {
+            print('Token za korisnika: ' + email + 'NE POSTOJI u bazi');
+            status = false;
+            return Container();
+          }
+        });
+  }
+
 // SIGN IN
 // Da li prima prave inpute?
   Future<bool> isUserRegistered(String email, String password) async {
@@ -150,12 +235,10 @@ class AuthService extends ChangeNotifier {
     final List<DocumentSnapshot> dokument = result.documents;
     if (dokument.length > 0) {
       status = true;
-      print("Trenutni status:");
-      print(status);
+      print("Trenutni status (print od SignIn-a):" + status.toString());
     } else {
       status = false;
-      print("Trenutni status:");
-      print(status);
+      print("Trenutni status(print od SignIn-a):" + status.toString());
     }
   }
 
