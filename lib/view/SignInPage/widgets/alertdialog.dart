@@ -68,6 +68,7 @@ displayDialog(BuildContext context) async {
           content: Container(
             margin: EdgeInsets.only(top: 43.0),
             child: TextFormField(
+              
               decoration: InputDecoration(
                 hintText: 'Email',
               ),
@@ -96,6 +97,7 @@ displayDialog(BuildContext context) async {
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
+                        emailInputController.clear();
                       },
                     ),
                   ),
@@ -123,7 +125,9 @@ displayDialog(BuildContext context) async {
                     email = emailInputController.text;
                     AuthService()
                         .onPressedAlertDialog(context, email, tokenCode);
-                  }),
+                        emailInputController.clear();
+                  }
+                  ),
             ),
           ],
         );

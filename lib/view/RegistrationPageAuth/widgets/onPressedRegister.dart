@@ -54,6 +54,7 @@ void onPressedRegister(BuildContext context, String fullName, String email,
 void onPressedSignIn(
     BuildContext context, String email, String password, dynamic formKey) {
   if (formKey.currentState.validate() && status == true) {
+    
     print('Logged in');
 
     Navigator.of(context).pushReplacement(
