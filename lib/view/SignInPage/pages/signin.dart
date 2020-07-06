@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 //import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
@@ -212,7 +213,7 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 controller: emailInputController,
                 keyboardType: TextInputType.visiblePassword,
-                validator: emailValidator,
+                validator: emailCheckSignIn,
               ),
             ),
           ),
@@ -230,7 +231,7 @@ class _SigninPageState extends State<SigninPage> {
                 controller: passwordInputController,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
-                validator: passwordValidator,
+                validator: passwordCheckSignIn,
               ),
             ),
           ),
