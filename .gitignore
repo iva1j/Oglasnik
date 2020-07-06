@@ -29,6 +29,7 @@
 .pub-cache/
 .pub/
 /build/
+.env
 
 # Web related
 lib/generated_plugin_registrant.dart
@@ -39,9 +40,6 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
-var mailgun = MailgunMailer(
-    domain: "sandbox1ea206ede0f448c4a2bc5328e3eb28f3.mailgun.org",
-    apiKey: "181a12651b6077cace838e5fff2d360f-913a5827-cb8d41fb");
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
