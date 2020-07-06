@@ -103,9 +103,12 @@ class SplashScreen {
 
 bool status = false;
 bool tokenstatus = false;
+var nepoklapanje = false;
 //final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
+final GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> globalKey() => registerFormKey;
+GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
 
 class InputFields {
   TextEditingController emailInputController = new TextEditingController();

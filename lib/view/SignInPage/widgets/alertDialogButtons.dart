@@ -22,9 +22,7 @@ class AlertDialogButtons extends StatelessWidget {
               child: Text(
                 'ODUSTANI',
                 style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Roboto',
-                    fontSize: 14),
+                    color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
               ),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -42,13 +40,10 @@ class AlertDialogButtons extends StatelessWidget {
                 child: Text(
                   'POŠALJI KOD',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Roboto',
-                      fontSize: 14),
+                      color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
                 ),
                 onPressed: () {
-                  emailAlertDialog =
-                      emailInputControllerAlertDialog.text;
+                  emailAlertDialog = emailInputControllerAlertDialog.text;
                   AuthService().onPressedAlertDialog(
                       context, emailAlertDialog, tokenCode);
                 }),
