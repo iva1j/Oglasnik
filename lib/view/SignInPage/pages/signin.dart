@@ -3,10 +3,8 @@ import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 //import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -53,6 +51,20 @@ class _SigninPageState extends State<SigninPage> {
     } else {
       return null;
     }
+  }
+
+  checkStatus(BuildContext context, String email) {
+    FutureBuilder(
+        future: AuthService().userExistingorNot(email),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            print('korisnik postoji');
+            return Container();
+          } else {
+            print('korisnik nije u bazi');
+            return Container();
+          }
+        });
   }
 
   signInOrNot(BuildContext context, String email, String password) {
@@ -223,8 +235,17 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ),
         Container(
-          child: AuthService().signInOrNot(context, email, password),
-        ),
+            child: Column(
+          children: <Widget>[
+            Container(
+           //   child: AuthService().tokenExistOrNot(context, email, token),
+            ),
+            Container(
+              child: AuthService().signInOrNot(context, email, password),
+            ),
+            Container(child: AuthService().checkStatus(context, email))
+          ],
+        )),
         Container(
           margin: EdgeInsets.only(top: 20.0),
           child: button(

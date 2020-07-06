@@ -6,9 +6,9 @@ class InputFields {
 }
 
 class PswChangeFields {
-  TextEditingController _email = new TextEditingController();
-  TextEditingController _displayName = new TextEditingController();
-  TextEditingController _password = new TextEditingController();
+  // TextEditingController _email = new TextEditingController();
+  // TextEditingController _displayName = new TextEditingController();
+  // TextEditingController _password = new TextEditingController();
 }
 
 // class PswCopyFields {
