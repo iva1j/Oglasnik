@@ -1,6 +1,6 @@
 import 'package:Oglasnik/utils/shared/logoContainer.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/formSignIn.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/formSignIn-InactiveForNow.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/welcomeLoginScreen.dart';
 
