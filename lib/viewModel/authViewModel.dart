@@ -101,37 +101,7 @@ class AuthService extends ChangeNotifier {
         future: AuthService().userExistingorNot(email),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
-            //print(doesExist);
-            return Container();
-          } else {
-            print('korisnik nije u bazi');
-            return Container();
-          }
-        });
-  }
-
-  Future<bool> changeUser(String email) async {
-    final QuerySnapshot result = await Firestore.instance
-        .collection('firestoreUsers')
-        .where('email', isEqualTo: email)
-        .limit(1)
-        .getDocuments();
-    final List<DocumentSnapshot> documents = result.documents;
-    print("documents = " + documents.length.toString());
-    documents.length.toString() == '1'
-        ? tokenstatus = false
-        : tokenstatus = true;
-    print('status: ');
-    print(tokenstatus);
-    return documents.length == 1;
-  }
-
-  tokenChange(BuildContext context, String email) {
-    FutureBuilder(
-        future: AuthService().changeUser(email),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            //print(doesExist);
+            print('korisnik postoji');
             return Container();
           } else {
             print('korisnik nije u bazi');
@@ -242,8 +212,6 @@ class AuthService extends ChangeNotifier {
     }
   }
 
-  //geting currentUser
-  Future<FirebaseUser> get getUser => _auth.currentUser();
   signInOrNot(BuildContext context, String email, String password) {
     FutureBuilder(
         future: AuthService().isUserRegistered(email, password),
@@ -307,7 +275,6 @@ class AnonymousViewModel implements AnonymousInterface {
   }
 }
 
-//below is the SignOut implemented
 class SignOutModel implements AuthSignOut {
   @override
   Future signOut() async {

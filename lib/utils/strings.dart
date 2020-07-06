@@ -111,8 +111,4 @@ class InputFields {
   TextEditingController emailInputController = new TextEditingController();
   TextEditingController passwordInputController = new TextEditingController();
 }
-
-class RegisterEmailTextWidget {
-  String emailHint = 'Email vec postoji';
-}
 //#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc

@@ -20,12 +20,7 @@ class _RegisterButtonState extends State<RegisterButton> {
 
   @override
   initState() {
-    TextEditingController fullNameInputController = new TextEditingController();
-    TextEditingController phoneNumberInputController =
-        new TextEditingController();
-    TextEditingController emailInputController = new TextEditingController();
-    TextEditingController passwordInputController = new TextEditingController();
-    //RegisterControllers();
+    RegisterControllers();
     super.initState();
   }
 
@@ -44,7 +39,7 @@ void onPressedRegister(BuildContext context, String fullName, String email,
       'password': password,
       'phoneNumber': phoneNumber,
     });
-    print('korisnik uspješno ubačen u bazu');
+    print('korisnik uspješno ubačen u bazi');
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) {

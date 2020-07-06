@@ -17,7 +17,7 @@ String tokenCode = randomAlphaNumeric(5);
 Future<void> sendemail() async {
   var response = await mailgun.send(
       from: 'faruk.cidic@gmail.com',
-      to: ['faruk.cidic@gmail.com'],
+      to: [emailInputController.text],
       subject: "Zaboravili ste lozinku? ",
       text: "Token za resetovanje lozinke je: " + tokenCode);
   print(response);
