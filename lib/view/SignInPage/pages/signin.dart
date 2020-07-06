@@ -4,6 +4,7 @@ import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 //import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/signInContainer.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
@@ -238,8 +239,8 @@ class _SigninPageState extends State<SigninPage> {
             child: Column(
           children: <Widget>[
             Container(
-           //   child: AuthService().tokenExistOrNot(context, email, token),
-            ),
+                //   child: AuthService().tokenExistOrNot(context, email, token),
+                ),
             Container(
               child: AuthService().signInOrNot(context, email, password),
             ),

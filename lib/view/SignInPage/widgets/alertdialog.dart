@@ -17,39 +17,39 @@ String tokenCode = randomAlphaNumeric(5);
 Future<void> sendemail() async {
   var response = await mailgun.send(
       from: 'faruk.cidic@gmail.com',
-      to: ['faruk.cidic@gmail.com'],
+      to: [emailInputController.text],
       subject: "Zaboravili ste lozinku? ",
       text: "Token za resetovanje lozinke je: " + tokenCode);
   print(response);
 }
 
 //best case for checking user
-  Future<bool> userExistingorNot(String email) async {
-    final QuerySnapshot result = await Firestore.instance
-        .collection('firestoreUsers')
-        .where('email', isEqualTo: email)
-        .limit(1)
-        .getDocuments();
-    final List<DocumentSnapshot> documents = result.documents;
-    print("documents - Alert Dialog = " + documents.length.toString());
-    documents.length.toString() == '1' ? status = true : status = false;
-    print('status email-a unešenog na AlerDialogu: ' + status.toString());
-    return documents.length == 1;
-  }
+Future<bool> userExistingorNot(String email) async {
+  final QuerySnapshot result = await Firestore.instance
+      .collection('firestoreUsers')
+      .where('email', isEqualTo: email)
+      .limit(1)
+      .getDocuments();
+  final List<DocumentSnapshot> documents = result.documents;
+  print("documents - Alert Dialog = " + documents.length.toString());
+  documents.length.toString() == '1' ? status = true : status = false;
+  print('status email-a unešenog na AlerDialogu: ' + status.toString());
+  return documents.length == 1;
+}
 
-  checkStatus(BuildContext context, String email) {
-    FutureBuilder(
-        future: AuthService().userExistingorNot(email),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            print('korisnik postoji');
-            return Container();
-          } else {
-            print('korisnik nije u bazi');
-            return Container();
-          }
-        });
-  }
+checkStatus(BuildContext context, String email) {
+  FutureBuilder(
+      future: AuthService().userExistingorNot(email),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          print('korisnik postoji');
+          return Container();
+        } else {
+          print('korisnik nije u bazi');
+          return Container();
+        }
+      });
+}
 
 displayDialog(BuildContext context) async {
   String email;
