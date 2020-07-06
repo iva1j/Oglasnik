@@ -41,9 +41,6 @@ class _SigninPageState extends State<SigninPage> {
     super.initState();
   }
 
-  
-
-
   signInOrNot(BuildContext context, String email, String password) {
     FutureBuilder(
         future: AuthService().isUserRegistered(email, password),
