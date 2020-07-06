@@ -52,6 +52,7 @@ class _PasswordChangeState extends State<PasswordChange> {
               ),
               onPressed: () {
                 Navigator.of(context).pop();
+
               }),
         ),
         body: SingleChildScrollView(
@@ -81,6 +82,10 @@ class _PasswordChangeState extends State<PasswordChange> {
                           width: double.infinity,
                           child: Container(
                             child: TextFormField(
+                              textInputAction: TextInputAction.next,
+                              onFieldSubmitted: (v){
+                                 FocusScope.of(context).nextFocus();
+                                },
                               decoration: InputDecoration(
                                 hintText: 'Unesi kod',
                               ),
@@ -101,6 +106,10 @@ class _PasswordChangeState extends State<PasswordChange> {
                               obscureText: true,
                               validator: passwordValidator,
                               controller: passwordInputController,
+                              textInputAction: TextInputAction.next,
+                              onFieldSubmitted: (v){
+                              FocusScope.of(context).nextFocus();
+                                },
                             ),
                           ),
                         ),
@@ -116,6 +125,10 @@ class _PasswordChangeState extends State<PasswordChange> {
                               ),
                               obscureText: true,
                               controller: confirmPasswordInputController,
+                              textInputAction: TextInputAction.done,
+                              onFieldSubmitted: (v){
+                                FocusScope.of(context).unfocus();
+                                },
                             ),
                           ),
                         ),
@@ -128,12 +141,14 @@ class _PasswordChangeState extends State<PasswordChange> {
                         margin: EdgeInsets.only(top: 110),
                         child: button('Sačuvaj', () {
                           //  email = emailInputController.text;
+                          FocusScope.of(context).unfocus();
                           password = passwordInputController.text;
                           passwordConfirm = confirmPasswordInputController.text;
                           token = tokenInputController.text;
                           print('Nakon klika - ispis je sljedeći:');
                           AuthService().onPressedChangePassword(
                               email, password, passwordConfirm, token);
+
                         }),
                       ),
                     ]),
