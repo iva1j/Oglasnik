@@ -28,6 +28,7 @@ class AuthService extends ChangeNotifier {
     return documents.length == 1;
   }
 
+//futureBuilder function that receives future function that check and ocmpare user input with stored users credentials (email)
   checkStatus(BuildContext context, String email) {
     FutureBuilder(
         future: AuthService().userExistingorNot(email),
@@ -173,7 +174,20 @@ class AuthService extends ChangeNotifier {
   }
 }
 
+// dodjeljivanje uid-a Anonymous useru
 final FirebaseAuth _auth = FirebaseAuth.instance;
+class AnonymousViewModel implements AnonymousInterface {
+  @override
+  Future getAnonymous() async {
+    try {
+      final FirebaseUser user = (await _auth.signInAnonymously()).user;
+      return user;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+}
 
 //   //User get user => null;
 //   Future getRegisteredUsers() async {
@@ -265,23 +279,6 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 //     }
 //   }
 // }
-
-class AnonymousViewModel implements AnonymousInterface {
-  @override
-  Future getAnonymous() async {
-    // dodjeljivanje uid-a Anonymous useru
-    //final FirebaseAuth auth = FirebaseAuth.instance;
-    try {
-      //AuthResult result = await auth.signInAnonymously();
-      //FirebaseUser user =  result.user;
-      final FirebaseUser user = (await _auth.signInAnonymously()).user;
-      return user;
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
-  }
-}
 
 // class SignOutModel implements AuthSignOut {
 //   @override

@@ -26,6 +26,7 @@ displayDialog(BuildContext context) async {
           content: Container(
             margin: EdgeInsets.only(top: 43.0),
             child: TextFormField(
+              
               decoration: InputDecoration(
                 hintText: 'Email',
               ),
@@ -36,6 +37,7 @@ displayDialog(BuildContext context) async {
           ),
           actions: <Widget>[
             AlertDialogButtons(),
+
           ],
         );
       });

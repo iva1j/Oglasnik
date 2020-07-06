@@ -129,6 +129,8 @@ class _SigninPageState extends State<SigninPage> {
             );
             // widget.toggleView();
             //    islogin ? formSignin(email, password, formKey, context) : formRegister(fullNameInputController.text, email, password, phoneNumber, formKey, context);
+            emailInputController.clear();
+            passwordInputController.clear();
           },
           child: Text(
             'Registruj se',
@@ -185,7 +187,13 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 controller: emailInputController,
                 keyboardType: TextInputType.visiblePassword,
-                validator: emailCheckSignIn,
+
+                validator: emailValidator,
+                textInputAction: TextInputAction.next,
+                onFieldSubmitted: (v) {
+                  FocusScope.of(context).nextFocus();
+                },
+
               ),
             ),
           ),
@@ -203,7 +211,13 @@ class _SigninPageState extends State<SigninPage> {
                 controller: passwordInputController,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
-                validator: passwordCheckSignIn,
+
+                validator: passwordValidator,
+                textInputAction: TextInputAction.done,
+                onFieldSubmitted: (v) {
+                  FocusScope.of(context).nextFocus();
+                },
+
               ),
             ),
           ),
@@ -225,10 +239,12 @@ class _SigninPageState extends State<SigninPage> {
           child: button(
             'Prijavi se',
             () async {
+              FocusScopeNode currentFocus = FocusScope.of(context);
+              if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) { currentFocus.focusedChild.unfocus(); }
               email = emailInputController.text;
               password = passwordInputController.text;
               formKey = _registerFormKey;
-              onPressedSignIn(context, email, password, formKey);
+                onPressedSignIn(context, email, password, formKey);
             },
           ),
         ),
@@ -241,7 +257,7 @@ class _SigninPageState extends State<SigninPage> {
               style: TextStyle(
                   fontFamily: 'Roboto',
                   fontSize: 16,
-                  color: Color.fromRGBO(0, 0, 0, 102)),
+                  color: Color.fromRGBO(0, 0, 0, 100)),
             ),
           ),
         )

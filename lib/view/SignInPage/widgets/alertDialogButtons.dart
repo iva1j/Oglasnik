@@ -26,6 +26,7 @@ class AlertDialogButtons extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.of(context).pop();
+                emailInputController.clear();
               },
             ),
           ),
@@ -46,6 +47,7 @@ class AlertDialogButtons extends StatelessWidget {
                   emailAlertDialog = emailInputControllerAlertDialog.text;
                   AuthService().onPressedAlertDialog(
                       context, emailAlertDialog, tokenCode);
+                  emailInputController.clear();
                 }),
           ),
         ]);
