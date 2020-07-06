@@ -244,7 +244,7 @@ class _SigninPageState extends State<SigninPage> {
               style: TextStyle(
                   fontFamily: 'Roboto',
                   fontSize: 16,
-                  color: Color.fromRGBO(0, 0, 0, 102)),
+                  color: Color.fromRGBO(0, 0, 0, 100)),
             ),
           ),
         )
