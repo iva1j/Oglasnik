@@ -112,4 +112,3 @@ class InputFields {
   TextEditingController passwordInputController = new TextEditingController();
 }
 //#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc
-
