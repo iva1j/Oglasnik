@@ -1,35 +1,43 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/validation.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+final GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
+final TextEditingController emailInputController = new TextEditingController();
+final TextEditingController tokenInputController = new TextEditingController();
+final TextEditingController passwordInputController =
+    new TextEditingController();
+final TextEditingController confirmPasswordInputController =
+    new TextEditingController();
+String token, password, confirmPassword, passwordConfirm;
+
+// ignore: must_be_immutable
 class PasswordChange extends StatefulWidget {
+  String email;
+
+  PasswordChange(this.email);
+
   @override
-  _PasswordChangeState createState() => _PasswordChangeState();
+  _PasswordChangeState createState() => _PasswordChangeState(email);
 }
 
 class _PasswordChangeState extends State<PasswordChange> {
   final db = Firestore.instance;
-  final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
   FirebaseUser user;
-  TextEditingController _email;
-  TextEditingController _password;
-  TextEditingController _displayName;
-
   initState() {
-    _email = new TextEditingController();
-    _displayName = new TextEditingController();
-
-    _password = new TextEditingController();
+    // PswChangeFields();
     super.initState();
   }
 
+  String email;
+  _PasswordChangeState(this.email);
+
   @override
   Widget build(BuildContext context) {
-    String passwordpravi = _password.text;
-    String emailpravi = _email.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -65,7 +73,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                     ),
                   ),
                   Form(
-                    key: _registerFormKey,
+                    key: passwordChangeFormKey,
                     child: Column(children: <Widget>[
                       new Container(
                         margin: EdgeInsets.only(bottom: 10),
@@ -76,7 +84,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                               decoration: InputDecoration(
                                 hintText: 'Unesi kod',
                               ),
-                              controller: _displayName,
+                              controller: tokenInputController,
                             ),
                           ),
                         ),
@@ -88,12 +96,11 @@ class _PasswordChangeState extends State<PasswordChange> {
                           child: Container(
                             child: TextFormField(
                               decoration: InputDecoration(
-                                // errorStyle: TextStyle(fontSize: 20),
-                                hintText: 'email',
+                                hintText: 'Nova lozinka',
                               ),
-                              controller: _email,
                               obscureText: true,
                               validator: passwordValidator,
+                              controller: passwordInputController,
                             ),
                           ),
                         ),
@@ -105,42 +112,29 @@ class _PasswordChangeState extends State<PasswordChange> {
                           child: Container(
                             child: TextFormField(
                               decoration: InputDecoration(
-                                hintText: 'Potvrdi šifru',
+                                hintText: 'Potvrdi lozinku',
                               ),
-                              controller: _password,
                               obscureText: true,
+                              controller: confirmPasswordInputController,
                             ),
                           ),
                         ),
                       ),
                       Container(
+                        child: AuthService()
+                            .tokenExistOrNot(context, email, token),
+                      ),
+                      Container(
                         margin: EdgeInsets.only(top: 110),
                         child: button('Sačuvaj', () {
-                          //if (formKey.currentState.validate()) {
-                          db
-                              .collection("firestoreUsers")
-                              .document(emailpravi)
-                              .updateData({
-                            'password': passwordpravi,
-                          });
-
-                          // Navigator.of(context).pushReplacement(
-                          //   MaterialPageRoute(
-                          //     builder: (_) {
-                          //       return RegisteredHome();
-                          //     },
-                          //   ),
-                          // );
-                        }
-                            //}
-
-                            // AuthService().updateUserinFirestore(
-                            //   _displayName.text,
-                            //   _email.text,
-                            //   _password.text,
-                            //);
-                            // },
-                            ),
+                          //  email = emailInputController.text;
+                          password = passwordInputController.text;
+                          passwordConfirm = confirmPasswordInputController.text;
+                          token = tokenInputController.text;
+                          print('Nakon klika - ispis je sljedeći:');
+                          AuthService().onPressedChangePassword(
+                              email, password, passwordConfirm, token);
+                        }),
                       ),
                     ]),
                   )

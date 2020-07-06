@@ -4,7 +4,7 @@ import 'package:Oglasnik/utils/label_button.dart';
 import 'package:Oglasnik/utils/loading_screen.dart';
 import 'package:Oglasnik/utils/primary_button.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/widgets/specialElements.dart';
+//import 'package:Oglasnik/view/widgets/specialElements.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +28,7 @@ class _PasswordChangeState extends State<PasswordChange> {
 
   @override
   initState() {
-    // _email = new TextEditingController();
-    // _name = new TextEditingController();
+    // PswCopyFields();
     super.initState();
   }
 
@@ -38,16 +37,6 @@ class _PasswordChangeState extends State<PasswordChange> {
     _name.dispose();
     _email.dispose();
     super.dispose();
-  }
-
-  String passwordValidator(String value) {
-    if (value.length == null || value == '')
-      return 'Polje ne smije biti prazno';
-    if (value.length <= 8) {
-      return 'Password ne smije biti manji od 8 char';
-    } else {
-      return null;
-    }
   }
 
   @override

@@ -1,8 +1,13 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+//import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/signInContainer.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +39,79 @@ class _SigninPageState extends State<SigninPage> {
 
     //AuthService().getRegisteredUsers(db);
     super.initState();
+  }
+
+  String emailValidator(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|live|outlook)+(\.com)$|@(hotmail|yahoo)+(\.fr|\.co.uk)$|@(orange)+(\.fr)$';
+    RegExp regex = new RegExp(pattern);
+    if (value.length == null || value == '')
+      return 'Polje ne smije biti prazno';
+    if (!regex.hasMatch(value)) {
+      return 'Email mora biti validan';
+    } else {
+      return null;
+    }
+  }
+
+  checkStatus(BuildContext context, String email) {
+    FutureBuilder(
+        future: AuthService().userExistingorNot(email),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            print('korisnik postoji');
+            return Container();
+          } else {
+            print('korisnik nije u bazi');
+            return Container();
+          }
+        });
+  }
+
+  signInOrNot(BuildContext context, String email, String password) {
+    FutureBuilder(
+        future: AuthService().isUserRegistered(email, password),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            validSignIn = true;
+            status = true;
+            print('korisnik postoji');
+            return Container();
+          } else {
+            print('korisnik nije u bazi');
+            status = false;
+            return Container();
+          }
+        });
+  }
+/*
+  checkStatus(BuildContext context, String email, String password) {
+    FutureBuilder(
+        future: AuthService().userExistingorNot(email, password),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            print(snapshot);
+          } else if (snapshot.connectionState == ConnectionState.waiting) {
+            print('waiting');
+          }
+          if (snapshot.hasData) {
+            print('korisnik zapisan');
+            return Container();
+          } else {
+            print('user  is not existing');
+            return null;
+          }
+        });
+  }*/
+
+  String passwordValidator(String value) {
+    if (value.length == null || value == '')
+      return 'Polje ne smije biti prazno';
+    if (value.length <= 7) {
+      return 'Password ne smije biti manji od 8 char';
+    } else {
+      return null;
+    }
   }
 
   String error = '';
@@ -105,13 +183,109 @@ class _SigninPageState extends State<SigninPage> {
                 margin: EdgeInsets.all(50),
                 child: Column(
                   children: <Widget>[
-                    SignInContainer(
-                        registerFormKey: _registerFormKey,
-                        emailInputController: emailInputController,
-                        passwordInputController: passwordInputController),
+                    // LogoContainer(),
+                    //welcomeScreen(),
+                    nameOfForm(),
+                    formSignin(email, password, formKey, context, isRegistered),
                   ],
                 )),
           ),
+        ),
+      ),
+    );
+  }
+
+  Form formSignin(String email, String password, formKey, BuildContext context,
+      bool isRegistered) {
+    return Form(
+      key: _registerFormKey,
+      child: Column(children: <Widget>[
+        new Container(
+          margin: EdgeInsets.only(bottom: 10),
+          child: new SizedBox(
+            width: double.infinity,
+            child: Container(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  contentPadding: EdgeInsets.only(left: 20),
+                ),
+                controller: emailInputController,
+                keyboardType: TextInputType.visiblePassword,
+                validator: emailValidator,
+              ),
+            ),
+          ),
+        ),
+        new Container(
+          margin: EdgeInsets.only(bottom: 10),
+          child: new SizedBox(
+            width: double.infinity,
+            child: Container(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Lozinka',
+                  contentPadding: EdgeInsets.only(left: 20),
+                ),
+                controller: passwordInputController,
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: true,
+                validator: passwordValidator,
+              ),
+            ),
+          ),
+        ),
+        Container(
+            child: Column(
+          children: <Widget>[
+            Container(
+                //   child: AuthService().tokenExistOrNot(context, email, token),
+                ),
+            Container(
+              child: AuthService().signInOrNot(context, email, password),
+            ),
+            Container(child: AuthService().checkStatus(context, email))
+          ],
+        )),
+        Container(
+          margin: EdgeInsets.only(top: 20.0),
+          child: button(
+            'Prijavi se',
+            () async {
+              email = emailInputController.text;
+              password = passwordInputController.text;
+              formKey = _registerFormKey;
+              onPressedSignIn(context, email, password, formKey);
+            },
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 15.0),
+          child: new GestureDetector(
+            onTap: () => displayDialog(context),
+            child: new Text(
+              "Zaboravili ste lozinku?",
+              style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 16,
+                  color: Color.fromRGBO(0, 0, 0, 102)),
+            ),
+          ),
+        )
+      ]),
+    );
+  }
+
+  Container nameOfForm() {
+    return Container(
+      margin: EdgeInsets.only(top: 10, bottom: 10.0),
+      alignment: Alignment.centerLeft,
+      child: Text(
+        'Prijava',
+        textDirection: TextDirection.ltr,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 23,
         ),
       ),
     );
