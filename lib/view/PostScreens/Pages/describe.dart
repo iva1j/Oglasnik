@@ -29,15 +29,18 @@ class _DescribeState extends State<Describe> {
               children: <Widget>[
                 Container(
                     margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
-                TextField(
-                  maxLines: null,
-                  keyboardType: TextInputType.multiline,
-                  decoration: const InputDecoration(
-                    labelText: 'Opis',
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 15.0),
+                                  child: TextField(
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                    decoration: const InputDecoration(
+                      labelText: 'Opis',
+                    ),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 100.0),
+                  margin: EdgeInsets.only(top: 242.0),
                   child: button('Dalje', () async {
                     Navigator.pushReplacement(
                         context,
