@@ -45,7 +45,7 @@ class AuthService extends ChangeNotifier {
 
 //if statement must be replaced with correct validation; currently status represents user in firestore (user existed)
   onPressedAlertDialog(BuildContext context, String email, String token) {
-    if (1 > 0) {
+    if (status == true) {
       db.collection("firestoreUsers").document(email).updateData({
         'email': email,
         'token': token,
@@ -84,9 +84,7 @@ class AuthService extends ChangeNotifier {
           email +
           ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
           newPassword);
-      tokenInputController.clear();
-      passwordInputController.clear();
-      confirmPasswordInputController.clear();
+
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
     } else if (newPassword != passwordConfirm) {
@@ -176,6 +174,7 @@ class AuthService extends ChangeNotifier {
 
 // dodjeljivanje uid-a Anonymous useru
 final FirebaseAuth _auth = FirebaseAuth.instance;
+
 class AnonymousViewModel implements AnonymousInterface {
   @override
   Future getAnonymous() async {

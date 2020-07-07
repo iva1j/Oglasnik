@@ -50,19 +50,3 @@ void onPressedRegister(BuildContext context, String fullName, String email,
     print('korisnik već u bazi, registracija nije uspjela');
   }
 }
-
-void onPressedSignIn(
-    BuildContext context, String email, String password, dynamic formKey) {
-  if (formKey.currentState.validate() && status == true) {
-    
-    print('Logged in');
-
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) {
-        return RegisteredHome();
-      }),
-    );
-  } else {
-    print('email ili password nisu tacni');
-  }
-}
