@@ -1,11 +1,12 @@
 import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 
-final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
+dynamic formAlertKey;
 
 class AlertDialogWidget extends StatefulWidget {
   const AlertDialogWidget({
@@ -20,7 +21,6 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      key: alertFormKey,
       backgroundColor: alertDialogBgColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
@@ -30,21 +30,22 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
       ),
       content: Container(
         margin: EdgeInsets.only(top: 43.0),
-        child: TextFormField(
-          decoration: InputDecoration(
-            hintText: 'Email',
-            contentPadding: EdgeInsets.only(left: 10),
+        child: Form(
+          child: TextFormField(
+            decoration: InputDecoration(
+              hintText: 'Email',
+              contentPadding: EdgeInsets.only(left: 10),
+            ),
+            keyboardType: TextInputType.visiblePassword,
+            validator: emailAlertDialogValidation,
+            controller: emailInputControllerAlertDialog,
           ),
-          keyboardType: TextInputType.visiblePassword,
-          validator: emailValidator,
-          controller: emailInputControllerAlertDialog,
         ),
       ),
       actions: <Widget>[
         Container(
-          child: AuthService()
-              .checkStatus(context, emailInputControllerAlertDialog.text),
-        ),
+            child: AuthService().checkStatusAlert(
+                context, emailInputControllerAlertDialog.text)),
         AlertDialogButtons(),
       ],
     );
