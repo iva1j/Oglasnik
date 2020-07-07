@@ -113,3 +113,11 @@ class InputFields {
 }
 //#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc
 
+class NewPostScreen {
+  String unosNaslov = "Novi unos";
+  String fontstyle = "Roboto";
+  var fontSize = 20;
+}
+class MoneyText {
+  String kmText = "KM";
+}
