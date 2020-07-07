@@ -112,15 +112,3 @@ class InputFields {
   TextEditingController passwordInputController = new TextEditingController();
 }
 //#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc
-<<<<<<< HEAD
-
-class NewPostScreen {
-  String unosNaslov = "Novi unos";
-  String fontstyle = "Roboto";
-  var fontSize = 20;
-}
-class MoneyText {
-  String kmText = "KM";
-}
-=======
->>>>>>> 5757fa3155d6b05e8cb538d866d8a9a878496692
