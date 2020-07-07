@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/view/PostScreens/Pages/city.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LifeCycleManager(
-    child: GestureDetector(
+        child: GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus &&
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: buildThemeData(),
+        // ignore: missing_required_param
         home: AnonymouseHome(),
         routes: {
           "/back": (_) => AnonymouseHome(),
@@ -42,7 +44,6 @@ class MyApp extends StatelessWidget {
           "/signin": (_) => SigninPage(),
         },
       ),
-    )
-    );
+    ));
   }
 }
