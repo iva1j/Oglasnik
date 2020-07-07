@@ -6,7 +6,9 @@ import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/FormSignIn.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/PrijavaWelcomeScreen.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -84,6 +86,9 @@ class _SigninPageState extends State<SigninPage> {
                 margin: EdgeInsets.all(50),
                 child: Column(
                   children: <Widget>[
+                    Container(
+                        child: AuthService().checkStatusAlert(
+                            context, emailInputControllerAlertDialog.text)),
                     LogoContainer(),
                     WelcomeScreen(),
                     PrijavaWelcomeScreen(),
