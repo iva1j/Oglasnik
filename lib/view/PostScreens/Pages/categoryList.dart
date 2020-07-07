@@ -61,7 +61,13 @@ class _CategoryState extends State<Category> {
               ),
               Container(
                   margin: EdgeInsets.only(top: 100.0),
-                  child: button('Dalje', () async {Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Category()));})),
+                  child: button('Dalje', () async {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => Category(),
+                      ),
+                    );
+                  })),
             ],
           )
         ],

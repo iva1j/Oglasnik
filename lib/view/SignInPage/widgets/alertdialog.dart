@@ -1,6 +1,3 @@
-import 'package:Oglasnik/utils/colorThemes.dart';
-import 'package:Oglasnik/utils/validation.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertDialogWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
