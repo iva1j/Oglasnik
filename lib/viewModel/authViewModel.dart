@@ -5,6 +5,7 @@ import 'package:Oglasnik/view/SignInPage/widgets/sendMail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
@@ -65,22 +66,33 @@ class AuthService extends ChangeNotifier {
 
 //if statement must be replaced with correct validation
   void onPressedChangePassword(
-    String email,
-    String password,
-    String passwordConfirm,
-    String token,
-  ) {
-    if (tokenstatus == true) {
+      BuildContext context,
+      String email,
+      String newPassword,
+      String passwordConfirm,
+      String token,
+      dynamic formKey) {
+    if (formKey.currentState.validate() &&
+        tokenstatus == true &&
+        newPassword == passwordConfirm) {
       db.collection("firestoreUsers").document(email).updateData({
         'email': email,
         'token': '',
-        'password': password,
+        'password': newPassword,
       });
       print(email);
       print('korisniku sa emailom: ' +
           email +
           ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
-          password);
+          newPassword);
+      tokenInputController.clear();
+      passwordInputController.clear();
+      confirmPasswordInputController.clear();
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
+    } else if (newPassword != passwordConfirm) {
+      nepoklapanje = true;
+      print('lozinke se ne poklapaju');
     } else {
       print('Nešto nije uredu, molimo provjerite i ispravite grešku');
     }

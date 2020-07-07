@@ -83,8 +83,22 @@ String passwordValidator(String value) {
 String confirmpasswordValidator(String value) {
   if (value.length == null || value == '') return 'Polje ne smije biti prazno';
   if (value.length <= 7) {
+    print('Password ne smije biti manji od 8 char');
     return 'Password ne smije biti manji od 8 char';
+  } else if (nepoklapanje == true) {
+    print('status poklapanja: ' + nepoklapanje.toString());
+    return 'Šifre se ne podudaraju';
   } else {
     return null;
   }
+}
+
+String tokenValidator(String value) {
+  if (value.length == null || value == '') return 'Polje ne smije biti prazno';
+  if (tokenstatus == false) {
+    return 'Uneseni token nije ispravan';
+  } else if (value.length != 5) {
+    return 'Token mora biti dužine 5 karaktera';
+  } else
+    return null;
 }
