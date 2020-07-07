@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: buildThemeData(),
-        home: SigninPage(),
+        home: ImageUpload(),
         routes: {
           "/back": (_) => AnonymouseHome(),
           "/homeregister": (_) => RegisteredHome(),

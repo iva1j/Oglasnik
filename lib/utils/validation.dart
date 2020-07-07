@@ -87,7 +87,7 @@ String confirmpasswordValidator(String value) {
     return 'Password ne smije biti manji od 8 char';
   } else if (nepoklapanje == true) {
     print('status poklapanja: ' + nepoklapanje.toString());
-    return 'Šifre se ne podudaraju';
+    return 'Šifra se ne podudara!';
   } else {
     return null;
   }
@@ -96,7 +96,7 @@ String confirmpasswordValidator(String value) {
 String tokenValidator(String value) {
   if (value.length == null || value == '') return 'Polje ne smije biti prazno';
   if (tokenstatus == false) {
-    return 'Uneseni token nije ispravan';
+    return 'Kod nije validan';
   } else if (value.length != 5) {
     return 'Token mora biti dužine 5 karaktera';
   } else

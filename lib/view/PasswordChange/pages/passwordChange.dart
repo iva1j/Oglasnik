@@ -120,17 +120,20 @@ class _PasswordChangeState extends State<PasswordChange> {
                     child: new SizedBox(
                       width: double.infinity,
                       child: Container(
-                        child: TextFormField(
-                          textInputAction: TextInputAction.done,
-                          onFieldSubmitted: (v) {
-                            FocusScope.of(context).unfocus();
-                          },
-                          decoration: InputDecoration(
-                            hintText: 'Potvrdi lozinku',
+                        child: Theme(
+                          data: new ThemeData(hintColor: Colors.red),
+                          child: TextFormField(
+                            textInputAction: TextInputAction.done,
+                            onFieldSubmitted: (v) {
+                              FocusScope.of(context).unfocus();
+                            },
+                            decoration: InputDecoration(
+                              hintText: 'Potvrdi lozinku',
+                            ),
+                            obscureText: true,
+                            controller: confirmPasswordInputController,
+                            validator: confirmpasswordValidator,
                           ),
-                          obscureText: true,
-                          controller: confirmPasswordInputController,
-                          validator: confirmpasswordValidator,
                         ),
                       ),
                     ),

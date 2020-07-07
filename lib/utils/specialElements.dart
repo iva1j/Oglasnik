@@ -1,5 +1,6 @@
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 
 SizedBox button(dynamic nameFunction, dynamic function) {
   return SizedBox(
@@ -51,6 +52,19 @@ IconButton backButtonIphone(BuildContext context) {
       onPressed: () =>
           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
             return AnonymouseHome();
+          })));
+}
+
+IconButton newInputBackButtonIphone(BuildContext context) {
+  return IconButton(
+      icon: Icon(
+        Icons.clear,
+        color: Colors.black,
+        size: 30,
+      ),
+      onPressed: () =>
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+            return RegisteredHome();
           })));
 }
 
