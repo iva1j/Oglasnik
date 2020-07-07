@@ -1,6 +1,8 @@
 import 'package:Oglasnik/interface/authUserInterface.dart';
+import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
+// import 'package:Oglasnik/view/PasswordChange/passwordChange%20copy.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/sendMail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -84,7 +86,9 @@ class AuthService extends ChangeNotifier {
           email +
           ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
           newPassword);
+
       
+
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
     } else if (newPassword != passwordConfirm) {
@@ -170,10 +174,13 @@ class AuthService extends ChangeNotifier {
           }
         });
   }
+
+  updateUser(User updatedUser, String oldEmail, String text) {}
 }
 
 // dodjeljivanje uid-a Anonymous useru
 final FirebaseAuth _auth = FirebaseAuth.instance;
+
 class AnonymousViewModel implements AnonymousInterface {
   @override
   Future getAnonymous() async {

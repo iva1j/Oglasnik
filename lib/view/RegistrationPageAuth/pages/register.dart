@@ -51,8 +51,6 @@ class _RegisterPageState extends State<RegisterPage> {
     password = passwordInputController.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
 
-    
-
     // if (showSignIn) {
     //   return SigninPage(toggleView: toggleView);
     // } else {
@@ -78,16 +76,18 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           color: Colors.white,
           onPressed: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(
                 pageBuilder: (context, animation1, animation2) => SigninPage(),
               ),
             );
-          fullNameInputController.clear();
-          emailInputController.clear();
-          phoneNumberInputController.clear();
-          passwordInputController.clear();
+            fullNameInputController.clear();
+            emailInputController.clear();
+            phoneNumberInputController.clear();
+            passwordInputController.clear();
             //widget.toggleView();
             //isRegistered ? formRegister(fullNameInputController.text, email, password, phoneNumber, formKey, context) : formSignin(email, password, formKey, context);
           },
@@ -135,12 +135,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Form formRegister(String fullName, String email, String password,
       String phoneNumber, formKey, BuildContext context) {
-
     final FocusNode imeprezime = FocusNode();
     final FocusNode emailnode = FocusNode();
     final FocusNode lozinkanode = FocusNode();
     final FocusNode phonenode = FocusNode();
-
 
     return Form(
       key: _registerFormKey,
@@ -159,120 +157,121 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: fullNameInputController,
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
-              //  autofocus: true,
-                onFieldSubmitted: (v){
+                //  autofocus: true,
+                onFieldSubmitted: (v) {
                   FocusScope.of(context).nextFocus();
-                                },
-                                validator: nameValidator,
-                              ),
-                            ),
-                          ),
-                        ),
-                        new Container(
-                          margin: EdgeInsets.only(bottom: 10),
-                          child: new SizedBox(
-                            width: double.infinity,
-                            child: Container(
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                  hintText: 'Email',
-                                  contentPadding: EdgeInsets.only(left: 20),
-                                ),
-                                controller: emailInputController,
-                                //keyboardType: TextInputType.emailAddress,
-                                keyboardType: TextInputType.visiblePassword,
-                                validator: emailValidator,
-                                textInputAction: TextInputAction.next,
-                              //  focusNode: emailnode,
-                                onFieldSubmitted: (v){
-                                FocusScope.of(context).nextFocus();;
-                                
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                        new Container(
-                          margin: EdgeInsets.only(bottom: 10),
-                          child: new SizedBox(
-                            width: double.infinity,
-                            child: Container(
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                  labelStyle: TextStyle(),
-                                  hintText: 'Lozinka',
-                                  contentPadding: EdgeInsets.only(left: 20),
-                                ),
-                                controller: passwordInputController,
-                                keyboardType: TextInputType.visiblePassword,
-                                obscureText: true,
-                                textInputAction: TextInputAction.next,
-                              //  focusNode: lozinkanode,
-                                onFieldSubmitted: (v){
-                                  FocusScope.of(context).nextFocus();;
-                                  },
-                                
-                                validator: passwordValidator,
-                              ),
-                            ),
-                          ),
-                        ),
-                        new Container(
-                          margin: EdgeInsets.only(bottom: 30),
-                          child: new SizedBox(
-                            width: double.infinity,
-                            child: Container(
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.only(left: 20),
-                                  hintText: 'Broj telefona',
-                                ),
-                                controller: phoneNumberInputController,
-                                keyboardType: TextInputType.phone,
-                                validator: phoneValidator,
-                                textInputAction: TextInputAction.done,
-                               // focusNode: phonenode,
-                                onFieldSubmitted: (v){
-                                  FocusScope.of(context).unfocus();
-                                //  _calculator();
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                        button(
-                          App_Labels_Auth().registracija,
-                          () {
-                            fullName = fullNameInputController.text;
-                            email = emailInputController.text;
-                            password = passwordInputController.text;
-                            phoneNumber = phoneNumberInputController.text;
-                            formKey = _registerFormKey;
-                            onPressedRegister(
-                                context, fullName, email, password, phoneNumber, formKey);
-                          },
-                        ),
-                      ]),
-                    );
-                  }
-                
-                  Container nameOfForm() {
-                    return Container(
-                      margin: EdgeInsets.only(top: 10),
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Registracija',
-                        textDirection: TextDirection.ltr,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 23,
-                        ),
-                      ),
-                    );
-                  }
-                }
-                
- fieldFocusChange(BuildContext context, FocusNode currentFocus,FocusNode nextFocus) {
-    FocusScope.of(context).requestFocus(nextFocus);  
+                },
+                validator: nameValidator,
+              ),
+            ),
+          ),
+        ),
+        new Container(
+          margin: EdgeInsets.only(bottom: 10),
+          child: new SizedBox(
+            width: double.infinity,
+            child: Container(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  contentPadding: EdgeInsets.only(left: 20),
+                ),
+                controller: emailInputController,
+                //keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.visiblePassword,
+                validator: emailValidator,
+                textInputAction: TextInputAction.next,
+                //  focusNode: emailnode,
+                onFieldSubmitted: (v) {
+                  FocusScope.of(context).nextFocus();
+                  ;
+                },
+              ),
+            ),
+          ),
+        ),
+        new Container(
+          margin: EdgeInsets.only(bottom: 10),
+          child: new SizedBox(
+            width: double.infinity,
+            child: Container(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(),
+                  hintText: 'Lozinka',
+                  contentPadding: EdgeInsets.only(left: 20),
+                ),
+                controller: passwordInputController,
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: true,
+                textInputAction: TextInputAction.next,
+                //  focusNode: lozinkanode,
+                onFieldSubmitted: (v) {
+                  FocusScope.of(context).nextFocus();
+                  ;
+                },
+
+                validator: passwordValidator,
+              ),
+            ),
+          ),
+        ),
+        new Container(
+          margin: EdgeInsets.only(bottom: 30),
+          child: new SizedBox(
+            width: double.infinity,
+            child: Container(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(left: 20),
+                  hintText: 'Broj telefona',
+                ),
+                controller: phoneNumberInputController,
+                keyboardType: TextInputType.phone,
+                validator: phoneValidator,
+                textInputAction: TextInputAction.done,
+                // focusNode: phonenode,
+                onFieldSubmitted: (v) {
+                  FocusScope.of(context).unfocus();
+                  //  _calculator();
+                },
+              ),
+            ),
+          ),
+        ),
+        button(
+          App_Labels_Auth().registracija,
+          () {
+            fullName = fullNameInputController.text;
+            email = emailInputController.text;
+            password = passwordInputController.text;
+            phoneNumber = phoneNumberInputController.text;
+            formKey = _registerFormKey;
+            onPressedRegister(
+                context, fullName, email, password, phoneNumber, formKey);
+          },
+        ),
+      ]),
+    );
+  }
+
+  Container nameOfForm() {
+    return Container(
+      margin: EdgeInsets.only(top: 10),
+      alignment: Alignment.centerLeft,
+      child: Text(
+        'Registracija',
+        textDirection: TextDirection.ltr,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 23,
+        ),
+      ),
+    );
+  }
 }
 
+fieldFocusChange(
+    BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
+  FocusScope.of(context).requestFocus(nextFocus);
+}

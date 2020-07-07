@@ -11,6 +11,17 @@ import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'dart:convert';
+// import 'package:convert/convert.dart';
+// import 'package:crypto/crypto.dart' as crypto;
+
+import '../../../viewModel/authViewModel.dart';
+import '../../../viewModel/authViewModel.dart';
+import '../../../viewModel/authViewModel.dart';
+import '../../../viewModel/authViewModel.dart';
+import '../../../viewModel/authViewModel.dart';
+import '../../../viewModel/authViewModel.dart';
 
 class SigninPage extends StatefulWidget {
   final Function toggleView;
@@ -22,6 +33,8 @@ class SigninPage extends StatefulWidget {
 
 class _SigninPageState extends State<SigninPage> {
   FirebaseUser user;
+
+  String data;
 
   final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
   bool islogin = false;
@@ -90,11 +103,6 @@ class _SigninPageState extends State<SigninPage> {
   String error = '';
   @override
   Widget build(BuildContext context) {
-    // if (showSignIn) {
-    //   return SigninPage(toggleView: toggleView);
-    // } else {
-    //   return RegisterPage(toggleView: toggleView);
-    // }
     String email, password;
     bool isRegistered;
     email = emailInputController.text;
@@ -120,6 +128,7 @@ class _SigninPageState extends State<SigninPage> {
           ),
           color: Colors.white,
           onPressed: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(
@@ -247,6 +256,18 @@ class _SigninPageState extends State<SigninPage> {
             },
           ),
         ),
+        // Container(
+        //   margin: EdgeInsets.only(top: 20.0),
+        //   child: button('Generisi', () => {print(generateMd5)}),
+        // ),
+        // Container(
+        //   margin: const EdgeInsets.only(top: 10.0),
+        //   child: RaisedButton(
+        //     onPressed: () =>
+        //         {print('Code is ' + generateMd5(passwordInputController.text))},
+        //     child: Text('Generate'),
+        //   ),
+        // ),
         Container(
           margin: EdgeInsets.only(top: 15.0),
           child: new GestureDetector(
@@ -279,3 +300,11 @@ class _SigninPageState extends State<SigninPage> {
     );
   }
 }
+
+///Generate MD5 hash
+// generateMd5(String data) {
+//   var content = new Utf8Encoder().convert(data);
+//   var md5 = crypto.md5;
+//   var digest = md5.convert(content);
+//   return hex.encode(digest.bytes);
+// }
