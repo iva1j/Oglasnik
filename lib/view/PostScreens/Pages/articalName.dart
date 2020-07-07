@@ -34,8 +34,7 @@ class ArticalName extends StatelessWidget {
                       child: MainTitle()),
                   TextFormField(
                     decoration: const InputDecoration(
-                      hintText: 'Naziv artikla',
-                    ),
+                        hintText: 'Naziv artikla', hintMaxLines: 26),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 100.0),

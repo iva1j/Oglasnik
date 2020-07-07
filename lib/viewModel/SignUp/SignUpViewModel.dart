@@ -104,7 +104,7 @@ Container emailInputField(BuildContext context) {
           controller: signUpEmailInputController,
           //keyboardType: TextInputType.emailAddress,
           keyboardType: TextInputType.visiblePassword,
-          validator: emailValidator,
+          validator: emailRegisterCheck,
           textInputAction: TextInputAction.next,
           //  focusNode: emailnode,
           onFieldSubmitted: (v) {

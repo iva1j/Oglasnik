@@ -5,6 +5,8 @@ import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 
+final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
+
 class AlertDialogWidget extends StatefulWidget {
   const AlertDialogWidget({
     Key key,
@@ -18,7 +20,7 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      key: alertDialogKey,
+      key: alertFormKey,
       backgroundColor: alertDialogBgColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),

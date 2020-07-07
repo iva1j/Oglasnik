@@ -107,6 +107,8 @@ String tokenValidator(String value) {
 String priceValidator(String value) {
   if (value.length == null || value == '')
     return 'Polje ne može biti prazno';
+  // if ()
+  //   return 'Polje ne može biti prazno';
   else {
     return null;
   }
