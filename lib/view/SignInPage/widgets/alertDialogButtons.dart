@@ -13,9 +13,9 @@ class AlertDialogButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         Container(
+          margin: EdgeInsets.symmetric(horizontal: 35.0),
           child: FlatButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(2.0)),
@@ -34,6 +34,7 @@ class AlertDialogButtons extends StatelessWidget {
             child: AuthService()
                 .tokenExistOrNot(context, emailAlertDialog, token)),
         Container(
+          margin: EdgeInsets.only(right: 40.0),
           child: FlatButton(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0)),
