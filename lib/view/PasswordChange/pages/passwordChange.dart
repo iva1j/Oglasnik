@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -85,6 +86,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                           },
                           decoration: InputDecoration(
                             hintText: 'Unesi kod',
+                            contentPadding: EdgeInsets.only(left: 10),
                           ),
                           controller: tokenInputController,
                           validator: tokenValidator,
@@ -104,6 +106,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                           },
                           decoration: InputDecoration(
                             hintText: 'Nova lozinka',
+                            contentPadding: EdgeInsets.only(left: 10),
                           ),
                           obscureText: true,
                           validator: passwordValidator,
@@ -122,8 +125,14 @@ class _PasswordChangeState extends State<PasswordChange> {
                           onFieldSubmitted: (v) {
                             FocusScope.of(context).unfocus();
                           },
+                          style: TextStyle(
+                            color: (nepoklapanje == true)
+                                ? Colors.red
+                                : Colors.black,
+                          ),
                           decoration: InputDecoration(
                             hintText: 'Potvrdi lozinku',
+                            contentPadding: EdgeInsets.only(left: 10),
                           ),
                           obscureText: true,
                           controller: confirmPasswordInputController,

@@ -29,7 +29,6 @@ class AuthService extends ChangeNotifier {
     return documents.length == 1;
   }
 
-//futureBuilder function that receives future function that check and ocmpare user input with stored users credentials (email)
   checkStatus(BuildContext context, String email) {
     FutureBuilder(
         future: AuthService().userExistingorNot(email),
@@ -175,7 +174,6 @@ class AuthService extends ChangeNotifier {
   updateUser(User updatedUser, String oldEmail, String text) {}
 }
 
-// dodjeljivanje uid-a Anonymous useru
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class AnonymousViewModel implements AnonymousInterface {

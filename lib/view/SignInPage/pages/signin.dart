@@ -10,6 +10,7 @@ import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 class SigninPage extends StatefulWidget {
   final Function toggleView;
   SigninPage({Key key, this.toggleView}) : super(key: key);
@@ -21,7 +22,6 @@ class SigninPage extends StatefulWidget {
 class _SigninPageState extends State<SigninPage> {
   FirebaseUser user;
 
-  
   bool islogin = false;
   TextEditingController signInEmailInputController;
   TextEditingController signInPasswordInputController;
