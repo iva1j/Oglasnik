@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/view/PostScreens/Pages/categoryList.dart';
 import 'package:Oglasnik/view/PostScreens/Pages/city.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class ArticalName extends StatelessWidget {
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
+        resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
@@ -39,7 +41,7 @@ class ArticalName extends StatelessWidget {
                         context,
                         PageRouteBuilder(
                             pageBuilder: (context, animation1, animation2) =>
-                                City()));
+                                Category()));
                   }),
                 ),
               ],
