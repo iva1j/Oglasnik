@@ -102,3 +102,11 @@ String tokenValidator(String value) {
   } else
     return null;
 }
+
+String priceValidator(String value) {
+  if (value.length == null || value == '')
+    return 'Polje ne može biti prazno';
+  else {
+    return null;
+  }
+}

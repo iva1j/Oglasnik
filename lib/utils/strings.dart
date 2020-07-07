@@ -2,6 +2,16 @@ import 'package:flutter/cupertino.dart';
 
 //klase poredane po folderima iz view-a
 
+class NewPostScreen {
+  String unosNaslov = "Novi unos";
+  String fontstyle = "Roboto";
+  var fontSize = 20;
+}
+
+class MoneyText {
+  String kmText = "KM";
+}
+
 class App_Labels_Auth {
   String signInButton = 'testing';
   String registracija = 'registracija amer';
