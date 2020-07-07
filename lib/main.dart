@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PostScreen/pages/image_price_upload.dart';
@@ -6,9 +7,10 @@ import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future<void> main() async {
+  await DotEnv().load('.env');
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -20,7 +22,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return LifeCycleManager(
+        child: GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus &&
@@ -40,6 +43,6 @@ class MyApp extends StatelessWidget {
           "/signin": (_) => SigninPage(),
         },
       ),
-    );
+    ));
   }
 }

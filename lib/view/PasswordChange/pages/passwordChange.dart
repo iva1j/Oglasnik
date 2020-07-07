@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,9 +17,7 @@ String token, newPassword, confirmPassword, passwordConfirm;
 // ignore: must_be_immutable
 class PasswordChange extends StatefulWidget {
   String email;
-
   PasswordChange(this.email);
-
   @override
   _PasswordChangeState createState() => _PasswordChangeState(email);
 }
@@ -36,12 +33,10 @@ class _PasswordChangeState extends State<PasswordChange> {
 
   String email;
   _PasswordChangeState(this.email);
-
   @override
   Widget build(BuildContext context) {
     dynamic formKey;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
@@ -90,7 +85,6 @@ class _PasswordChangeState extends State<PasswordChange> {
                           },
                           decoration: InputDecoration(
                             hintText: 'Unesi kod',
-                            contentPadding: EdgeInsets.only(left: 10),
                           ),
                           controller: tokenInputController,
                           validator: tokenValidator,
@@ -110,7 +104,6 @@ class _PasswordChangeState extends State<PasswordChange> {
                           },
                           decoration: InputDecoration(
                             hintText: 'Nova lozinka',
-                            contentPadding: EdgeInsets.only(left: 10),
                           ),
                           obscureText: true,
                           validator: passwordValidator,
@@ -129,14 +122,8 @@ class _PasswordChangeState extends State<PasswordChange> {
                           onFieldSubmitted: (v) {
                             FocusScope.of(context).unfocus();
                           },
-                          style: TextStyle(
-                            color: (nepoklapanje == true)
-                                ? Colors.red
-                                : Colors.black,
-                          ),
                           decoration: InputDecoration(
                             hintText: 'Potvrdi lozinku',
-                            contentPadding: EdgeInsets.only(left: 10),
                           ),
                           obscureText: true,
                           controller: confirmPasswordInputController,
@@ -151,13 +138,11 @@ class _PasswordChangeState extends State<PasswordChange> {
                   Container(
                     margin: EdgeInsets.only(top: 110),
                     child: button('Sačuvaj', () {
-                      //  email = emailInputController.text;
                       newPassword = passwordInputController.text;
                       passwordConfirm = confirmPasswordInputController.text;
                       token = tokenInputController.text;
                       formKey = _passwordChangeFormKey;
                       print('Nakon klika - ispis je sljedeći:');
-
                       AuthService().onPressedChangePassword(context, email,
                           newPassword, passwordConfirm, token, formKey);
                     }),

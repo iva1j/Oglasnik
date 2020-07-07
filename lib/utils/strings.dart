@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 //klase poredane po folderima iz view-a
 
-class App_Labels_Auth {
+class AppLabelsAuth {
   String signInButton = 'testing';
   String registracija = 'Registruj se';
 }
@@ -117,8 +117,11 @@ var nepoklapanje = false;
 //final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
+final GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> globalKey() => registerFormKey;
 GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
+
+
 
 class InputFields {
   TextEditingController emailInputController = new TextEditingController();
