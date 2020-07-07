@@ -1,6 +1,8 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/view/PostScreens/Pages/describe.dart';
 import 'package:Oglasnik/view/PostScreens/Pages/image_price_upload.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:flutter/material.dart';
 
 class City extends StatefulWidget {
@@ -10,16 +12,21 @@ class City extends StatefulWidget {
 
 class _CityState extends State<City> {
   String dropdownValue = 'Sarajevo';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        leading: newInputBackButtonIphone(context),
+      ),
       body: Column(
         children: <Widget>[
-          SizedBox(height: 80.0),
+          Container(margin: EdgeInsets.only(bottom: 40.0), child: MainTitle()),
           Container(
             height: SizeConfig.screenHeight,
-            //height: 55, //gives the height of the dropdown button
+            //height: 85, //gives the height of the dropdown button
             width: 300,
             //width: SizeConfig.screenWidth,
             child: Card(
@@ -27,28 +34,31 @@ class _CityState extends State<City> {
               //  margin: EdgeInsets.zero,
               //margin: EdgeInsets.only(left: 20.0),
               child: Container(
-                margin: EdgeInsets.only(left: 20.0),
+                margin: EdgeInsets.only(left: 10.0),
                 // width: 550,
                 width: SizeConfig.screenWidth,
-
-                child: DropdownButton<String>(
-                  value: dropdownValue,
-                  icon: Icon(Icons.arrow_drop_down),
-                  iconSize: 24,
-                  elevation: 16,
-                  isExpanded: true,
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownValue = newValue;
-                    });
-                  },
-                  items: <String>['Sarajevo', 'Beograd', 'Zagreb']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
+                child: Container(
+                  //margin: EdgeInsets.only(bottom: 150.0),
+                  child: DropdownButton<String>(
+                    value: dropdownValue,
+                    icon: Icon(Icons.arrow_drop_down),
+                    iconSize: 24,
+                    elevation: 16,
+                    isExpanded: true,
+                    underline: Container(),
+                    onChanged: (String newValue) {
+                      setState(() {
+                        dropdownValue = newValue;
+                      });
+                    },
+                    items: <String>['Sarajevo', 'Beograd', 'Zagreb']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
             ),
@@ -64,7 +74,7 @@ class _CityState extends State<City> {
                   maxLines: null,
                   keyboardType: TextInputType.multiline,
                   decoration: const InputDecoration(
-                      labelText: 'Proizvođač',
+                      labelText: 'Oznake',
                       labelStyle: TextStyle(
                           //color: myFocusNode.hasFocus ? Colors.grey : Colors.black
                           )),
@@ -77,7 +87,7 @@ class _CityState extends State<City> {
                         context,
                         PageRouteBuilder(
                             pageBuilder: (context, animation1, animation2) =>
-                                ImagePriceScreen()));
+                                Describe()));
                   })),
             ],
           )
