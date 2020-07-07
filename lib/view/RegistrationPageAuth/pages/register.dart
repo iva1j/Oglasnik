@@ -37,6 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
+    dynamic formKey;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
@@ -56,12 +57,15 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           color: Colors.white,
           onPressed: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(
                 pageBuilder: (context, animation1, animation2) => SigninPage(),
               ),
             );
+
             cleanInputFields(
                 signUpFullNameInputController,
                 signUpPhoneNumberInputController,

@@ -1,6 +1,8 @@
 import 'package:Oglasnik/interface/authUserInterface.dart';
+import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
+// import 'package:Oglasnik/view/PasswordChange/passwordChange%20copy.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/sendMail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -170,6 +172,8 @@ class AuthService extends ChangeNotifier {
           }
         });
   }
+
+  updateUser(User updatedUser, String oldEmail, String text) {}
 }
 
 // dodjeljivanje uid-a Anonymous useru
@@ -187,114 +191,3 @@ class AnonymousViewModel implements AnonymousInterface {
     }
   }
 }
-
-//   //User get user => null;
-//   Future getRegisteredUsers() async {
-//     var firestore = Firestore.instance;
-//     QuerySnapshot qn = await firestore.collection('users').getDocuments();
-//     return qn.documents;
-//   }
-
-// //updates the firestore users collection
-//   void _updateUserFirestore(User user, FirebaseUser firebaseUser) {
-//     db
-//         .document('/users/${firebaseUser.email}')
-//         .setData(user.toJson(), merge: true);
-//   }
-
-// // User registration using email and password                   //currently, this function is in use for registering (and works fine)
-//   Future<bool> registerWithEmailAndPassword(
-//       String name, String email, String password) async {
-//     try {
-//       await _auth
-//           .createUserWithEmailAndPassword(email: email, password: password)
-//           .then((result) async {
-//         print('userID: ' + result.user.uid);
-//         print('email: ' + result.user.email);
-
-//         //create the new user object
-//         User _newUser = User(
-//             userID: result.user.uid,
-//             email: result.user.email,
-//             fullName: name,
-//             password: password);
-//         //update the user in firestore
-//         _updateUserFirestore(_newUser, result.user);
-//       });
-//       return true;
-//     } catch (e) {
-//       return false;
-//     }
-//   }
-
-// //handles updating the user when updating profile
-//   Future<bool> updateUser(User user, String oldEmail, String password) async {
-//     bool _result = false;
-//     await _auth
-//         .signInWithEmailAndPassword(email: oldEmail, password: password)
-//         .then((_firebaseUser) {
-//       _firebaseUser.user.updateEmail(user.email);
-//       _updateUserFirestore(user, _firebaseUser.user);
-//       _result = true;
-//     });
-//     return _result;
-//   }
-
-// //Streams the firestore user from the firestore collection
-//   Stream<User> streamFirestoreUser(FirebaseUser firebaseUser) {
-//     if (firebaseUser?.email != null) {
-//       return db
-//           .document('/users/${firebaseUser.email}')
-//           .snapshots()
-//           .map((snapshot) => User.fromDocument(snapshot.data));
-//     }
-//     return null;
-//   }
-
-// // sign out
-//   Future signOut() async {
-//     try {
-//       return await _auth.signOut();
-//     } catch (error) {
-//       print(error.toString());
-//       return null;
-//     }
-//   }
-
-// User userFromFirebaseUser(FirebaseUser user) {
-//   return user != null ? User(userID: user.uid) : null;
-// }
-
-// class SignInAnonViewModel implements AuthSignInAnon{
-//   @override
-//   Future signInAnon() async {
-//     try {
-//       AuthResult result = await _auth.signInAnonymously();
-//       FirebaseUser user = result.user;
-//       return userFromFirebaseUser(user);
-//     } catch (e) {
-//       print(e.toString());
-//       return null;
-//     }
-//   }
-// }
-
-// class SignOutModel implements AuthSignOut {
-//   @override
-//   Future signOut() async {
-//     try {
-//       return await _auth.signOut();
-//     } catch (error) {
-//       print(error.toString());
-//       return null;
-//     }
-//   }
-// }
-
-// class RegisteredUserViewModel implements RegisteredUserInterface {
-//   @override
-//   Future getRegisterUser() async {
-//     QuerySnapshot qn = await db.collection('Users').getDocuments();
-//     return qn.documents;
-//   }
-// }

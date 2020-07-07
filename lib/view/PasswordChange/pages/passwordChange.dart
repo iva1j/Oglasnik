@@ -5,6 +5,7 @@ import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 final TextEditingController emailInputController = new TextEditingController();
 final TextEditingController tokenInputController = new TextEditingController();
 final TextEditingController passwordInputController =
@@ -20,6 +21,7 @@ class PasswordChange extends StatefulWidget {
   @override
   _PasswordChangeState createState() => _PasswordChangeState(email);
 }
+
 class _PasswordChangeState extends State<PasswordChange> {
   final GlobalKey<FormState> _passwordChangeFormKey = GlobalKey<FormState>();
   final db = Firestore.instance;
@@ -28,6 +30,7 @@ class _PasswordChangeState extends State<PasswordChange> {
     // PswChangeFields();
     super.initState();
   }
+
   String email;
   _PasswordChangeState(this.email);
   @override
