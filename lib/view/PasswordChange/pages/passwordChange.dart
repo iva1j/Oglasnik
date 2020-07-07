@@ -138,7 +138,6 @@ class _PasswordChangeState extends State<PasswordChange> {
                   Container(
                     margin: EdgeInsets.only(top: 110),
                     child: button('Sačuvaj', () {
-                      //  email = emailInputController.text;
                       newPassword = passwordInputController.text;
                       passwordConfirm = confirmPasswordInputController.text;
                       token = tokenInputController.text;

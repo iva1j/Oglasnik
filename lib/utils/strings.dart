@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 //klase poredane po folderima iz view-a
 
+
 class NewPostScreen {
   String unosNaslov = "Novi unos";
   String fontstyle = "Roboto";
@@ -12,9 +13,11 @@ class MoneyText {
   String kmText = "KM";
 }
 
-class App_Labels_Auth {
+
+class AppLabelsAuth {
+
   String signInButton = 'testing';
-  String registracija = 'registracija amer';
+  String registracija = 'Registruj se';
 }
 
 //..view//AnonymusHome
@@ -117,8 +120,11 @@ var nepoklapanje = false;
 //final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
+final GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> globalKey() => registerFormKey;
 GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
+
+
 
 class InputFields {
   TextEditingController emailInputController = new TextEditingController();
