@@ -20,33 +20,37 @@ class _DescribeState extends State<Describe> {
           elevation: 0.0,
           leading: newInputBackButtonIphone(context),
         ),
-        body: Padding(
-          padding: EdgeInsets.only(bottom: bottom),
-          child: Container(
-            height: SizeConfig.screenHeight,
-            margin: EdgeInsets.all(15),
-            child: Column(
-              children: <Widget>[
-                Container(
-                    margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
-                TextField(
-                  maxLines: null,
-                  keyboardType: TextInputType.multiline,
-                  decoration: const InputDecoration(
-                    labelText: 'Opis',
+        body: SingleChildScrollView(
+          reverse: true,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: bottom),
+            child: Container(
+              height: SizeConfig.screenHeight,
+              margin: EdgeInsets.all(15),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                      margin: EdgeInsets.only(bottom: 80.0),
+                      child: MainTitle()),
+                  TextField(
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                    decoration: const InputDecoration(
+                      labelText: 'Opis',
+                    ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 100.0),
-                  child: button('Dalje', () async {
-                    Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                            pageBuilder: (context, animation1, animation2) =>
-                                ImagePriceScreen()));
-                  }),
-                ),
-              ],
+                  Container(
+                    margin: EdgeInsets.only(top: 100.0),
+                    child: button('Dalje', () async {
+                      Navigator.pushReplacement(
+                          context,
+                          PageRouteBuilder(
+                              pageBuilder: (context, animation1, animation2) =>
+                                  ImagePriceScreen()));
+                    }),
+                  ),
+                ],
+              ),
             ),
           ),
         ));
