@@ -47,7 +47,7 @@ class AuthService extends ChangeNotifier {
 
 //if statement must be replaced with correct validation; currently status represents user in firestore (user existed)
   onPressedAlertDialog(BuildContext context, String email, String token) {
-    if (1 > 0) {
+    if (allowUserToChangePassword == true) {
       db.collection("firestoreUsers").document(email).updateData({
         'email': email,
         'token': token,
@@ -86,8 +86,6 @@ class AuthService extends ChangeNotifier {
           email +
           ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
           newPassword);
-
-      
 
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
@@ -139,6 +137,41 @@ class AuthService extends ChangeNotifier {
         });
   }
 
+//ALERT DIALOG FUTURE BUILDER
+  Future<bool> isEmailValid(String email) async {
+    final QuerySnapshot result = await Firestore.instance
+        .collection('firestoreUsers')
+        .where('email', isEqualTo: email)
+        .limit(1)
+        .getDocuments();
+    final List<DocumentSnapshot> emailDoc = result.documents;
+    if (emailDoc.length > 0) {
+      allowUserToChangePassword = true;
+      print("Trenutni status Alert Dialoga:" +
+          allowUserToChangePassword.toString());
+    } else {
+      allowUserToChangePassword = false;
+      print("Trenutni status Alert Dialoga:" +
+          allowUserToChangePassword.toString());
+    }
+  }
+
+  allowPasswordChange(BuildContext context, String email) {
+    FutureBuilder(
+        future: AuthService().isEmailValid(email),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            allowUserToChangePassword = true;
+            print('korisnik postoji');
+            return Container();
+          } else {
+            print('korisnik nije u bazi');
+            allowUserToChangePassword = false;
+            return Container();
+          }
+        });
+  }
+
 // SIGN IN
 // Da li prima prave inpute?
   Future<bool> isUserRegistered(String email, String password) async {
@@ -151,10 +184,10 @@ class AuthService extends ChangeNotifier {
     final List<DocumentSnapshot> dokument = result.documents;
     if (dokument.length > 0) {
       status = true;
-      print("Trenutni status (print od SignIn-a):" + status.toString());
+      print("Trenutni status Sign INa:" + status.toString());
     } else {
       status = false;
-      print("Trenutni status(print od SignIn-a):" + status.toString());
+      print("Trenutni status Sign INa:" + status.toString());
     }
   }
 

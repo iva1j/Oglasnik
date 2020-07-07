@@ -236,7 +236,11 @@ class _SigninPageState extends State<SigninPage> {
             Container(
               child: AuthService().signInOrNot(context, email, password),
             ),
-            Container(child: AuthService().checkStatus(context, email))
+            Container(child: AuthService().checkStatus(context, email)),
+            Container(
+              child: AuthService().allowPasswordChange(
+                  context, emailInputControllerAlertDialog.text),
+            )
           ],
         )),
         Container(

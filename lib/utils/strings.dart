@@ -104,6 +104,7 @@ class SplashScreen {
 bool status = false;
 bool tokenstatus = false;
 var nepoklapanje = false;
+bool allowUserToChangePassword = false;
 //final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
