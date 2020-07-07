@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 
 class App_Labels_Auth {
   String signInButton = 'testing';
-  String registracija = 'registracija amer';
+  String registracija = 'Registruj se';
 }
 
 //..view//AnonymusHome
@@ -99,6 +99,16 @@ class SignInPageWidgetFout {
 class SplashScreen {
   String splashText = "OGLASNIK";
   String fontFamily = "Roboto";
+}
+
+class NewPostScreen {
+  String unosNaslov = "Novi unos";
+  String fontstyle = "Roboto";
+  var fontSize = 20;
+}
+
+class MoneyText {
+  String kmText = "KM";
 }
 
 bool status = false;

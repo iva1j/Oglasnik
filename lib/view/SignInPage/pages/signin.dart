@@ -2,7 +2,6 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-//import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
@@ -11,6 +10,8 @@ import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
+import 'package:Oglasnik/utils/shared/logoContainer.dart';
 
 class SigninPage extends StatefulWidget {
   final Function toggleView;
@@ -156,8 +157,8 @@ class _SigninPageState extends State<SigninPage> {
                 margin: EdgeInsets.all(50),
                 child: Column(
                   children: <Widget>[
-                    // LogoContainer(),
-                    //welcomeScreen(),
+                    LogoContainer(),
+                    WelcomeScreen(),
                     nameOfForm(),
                     formSignin(email, password, formKey, context, isRegistered),
                   ],

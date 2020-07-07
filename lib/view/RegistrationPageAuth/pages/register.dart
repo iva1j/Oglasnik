@@ -1,16 +1,12 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-
 import 'package:Oglasnik/utils/validation.dart';
-
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
-
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/shared/logoContainer.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
-
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 
@@ -162,7 +158,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   contentPadding: EdgeInsets.only(left: 20),
                 ),
                 controller: emailInputController,
-                //keyboardType: TextInputType.emailAddress,
                 keyboardType: TextInputType.visiblePassword,
                 validator: emailRegisterCheck,
               ),

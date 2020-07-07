@@ -26,18 +26,27 @@ class _AnonymouseHomeState extends State<AnonymouseHome> {
   final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppBarTheme.of(context).color,
-        centerTitle: true,
-        title: Text('Oglasnik'),
-      ),
-      body: Container(color: Colors.white),
-      floatingActionButton: homeFloatingAnimatedButton(),
-      bottomSheet: Container(
-        height: 55,
-        width: double.infinity,
-        color: Color.fromARGB(255, 226, 11, 48),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          currentFocus.focusedChild.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppBarTheme.of(context).color,
+          centerTitle: true,
+          title: Text('Oglasnik'),
+        ),
+        body: Container(color: Colors.white),
+        floatingActionButton: homeFloatingAnimatedButton(),
+        bottomSheet: Container(
+          height: 55,
+          width: double.infinity,
+          color: Color.fromARGB(255, 226, 11, 48),
+        ),
       ),
     );
   }
