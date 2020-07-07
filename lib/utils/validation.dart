@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:flutter/material.dart';
 
 String nameValidator(String value) {
   Pattern pattern = r'(?!\s*$)';
@@ -85,12 +86,12 @@ String confirmpasswordValidator(String value) {
   if (value.length <= 7) {
     print('Password ne smije biti manji od 8 char');
     return 'Password ne smije biti manji od 8 char';
-  } else if (nepoklapanje == true) {
+  }
+  if (nepoklapanje == true) {
     print('status poklapanja: ' + nepoklapanje.toString());
     return 'Šifra se ne podudara!';
-  } else {
-    return null;
   }
+  return null;
 }
 
 String tokenValidator(String value) {

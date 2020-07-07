@@ -28,6 +28,7 @@ displayDialog(BuildContext context) async {
             child: TextFormField(
               decoration: InputDecoration(
                 hintText: 'Email',
+                contentPadding: EdgeInsets.only(left: 10),
               ),
               keyboardType: TextInputType.visiblePassword,
               validator: emailValidator,

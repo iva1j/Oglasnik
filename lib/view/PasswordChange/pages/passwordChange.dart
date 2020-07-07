@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -40,6 +41,7 @@ class _PasswordChangeState extends State<PasswordChange> {
   Widget build(BuildContext context) {
     dynamic formKey;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
+
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
@@ -88,6 +90,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                           },
                           decoration: InputDecoration(
                             hintText: 'Unesi kod',
+                            contentPadding: EdgeInsets.only(left: 10),
                           ),
                           controller: tokenInputController,
                           validator: tokenValidator,
@@ -107,6 +110,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                           },
                           decoration: InputDecoration(
                             hintText: 'Nova lozinka',
+                            contentPadding: EdgeInsets.only(left: 10),
                           ),
                           obscureText: true,
                           validator: passwordValidator,
@@ -120,20 +124,23 @@ class _PasswordChangeState extends State<PasswordChange> {
                     child: new SizedBox(
                       width: double.infinity,
                       child: Container(
-                        child: Theme(
-                          data: new ThemeData(hintColor: Colors.red),
-                          child: TextFormField(
-                            textInputAction: TextInputAction.done,
-                            onFieldSubmitted: (v) {
-                              FocusScope.of(context).unfocus();
-                            },
-                            decoration: InputDecoration(
-                              hintText: 'Potvrdi lozinku',
-                            ),
-                            obscureText: true,
-                            controller: confirmPasswordInputController,
-                            validator: confirmpasswordValidator,
+                        child: TextFormField(
+                          textInputAction: TextInputAction.done,
+                          onFieldSubmitted: (v) {
+                            FocusScope.of(context).unfocus();
+                          },
+                          style: TextStyle(
+                            color: (nepoklapanje == true)
+                                ? Colors.red
+                                : Colors.black,
                           ),
+                          decoration: InputDecoration(
+                            hintText: 'Potvrdi lozinku',
+                            contentPadding: EdgeInsets.only(left: 10),
+                          ),
+                          obscureText: true,
+                          controller: confirmPasswordInputController,
+                          validator: confirmpasswordValidator,
                         ),
                       ),
                     ),

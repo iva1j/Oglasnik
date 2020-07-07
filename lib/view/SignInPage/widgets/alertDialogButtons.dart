@@ -11,43 +11,42 @@ class AlertDialogButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-        //crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            child: FlatButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(2.0)),
-              color: Color.fromARGB(255, 226, 11, 48),
-              child: Text(
-                'ODUSTANI',
-                style: TextStyle(
-                    color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+    return Row(children: <Widget>[
+      Container(
+        margin: EdgeInsets.symmetric(horizontal: 35.0),
+        child: FlatButton(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(2.0)),
+          color: Color.fromARGB(255, 226, 11, 48),
+          child: Text(
+            'ODUSTANI',
+            style: TextStyle(
+                color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+      Container(
+          child:
+              AuthService().tokenExistOrNot(context, emailAlertDialog, token)),
+      Container(
+        child: FlatButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(2.0)),
+            color: mainAppColor,
+            child: Text(
+              'POŠALJI KOD',
+              style: TextStyle(
+                  color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
             ),
-          ),
-          Container(
-              child: AuthService()
-                  .tokenExistOrNot(context, emailAlertDialog, token)),
-          Container(
-            child: FlatButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(2.0)),
-                color: mainAppColor,
-                child: Text(
-                  'POŠALJI KOD',
-                  style: TextStyle(
-                      color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
-                ),
-                onPressed: () {
-                  emailAlertDialog = emailInputControllerAlertDialog.text;
-                  AuthService().onPressedAlertDialog(
-                      context, emailAlertDialog, tokenCode);
-                }),
-          ),
-        ]);
+            onPressed: () {
+              emailAlertDialog = emailInputControllerAlertDialog.text;
+              AuthService()
+                  .onPressedAlertDialog(context, emailAlertDialog, tokenCode);
+            }),
+      ),
+    ]);
   }
 }
