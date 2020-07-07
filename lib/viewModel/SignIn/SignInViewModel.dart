@@ -8,9 +8,12 @@ import 'package:flutter/material.dart';
 
 //When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
-  emailAlertDialog = emailInputControllerAlertDialog.text;
-  AuthService().onPressedAlertDialog(context, emailAlertDialog, tokenCode);
-  emailInputControllerAlertDialog.clear();
+  //emailAlertDialog = emailInputControllerAlertDialog.text;
+  Container(
+      child: AuthService()
+          .checkStatusAlert(context, emailInputControllerAlertDialog.text));
+  AuthService().onPressedAlertDialog(context, emailInputControllerAlertDialog.text, tokenCode);
+  //emailInputControllerAlertDialog.clear();
 }
 
 //When user enter his email on AlertDialog, onPressed "odustani" is bellow:

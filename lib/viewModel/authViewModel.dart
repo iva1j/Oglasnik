@@ -2,6 +2,7 @@ import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/sendMail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -45,7 +46,7 @@ class AuthService extends ChangeNotifier {
 
 //if statement must be replaced with correct validation; currently status represents user in firestore (user existed)
   onPressedAlertDialog(BuildContext context, String email, String token) {
-    if (status == true) {
+    if (alertFormKey.currentState.validate() && status == true) {
       db.collection("firestoreUsers").document(email).updateData({
         'email': email,
         'token': token,
@@ -153,6 +154,52 @@ class AuthService extends ChangeNotifier {
       print("Trenutni status(print od SignIn-a):" + status.toString());
     }
   }
+
+
+//alert dialog checker
+//best case for checking user in database!
+  Future<bool> userExistingorNotAlert(String emailAlert) async {
+    final QuerySnapshot result = await Firestore.instance
+        .collection('firestoreUsers')
+        .where('email', isEqualTo: emailAlert)
+        .limit(1)
+        .getDocuments();
+    final List<DocumentSnapshot> documents = result.documents;
+    print("documents = " + documents.length.toString());
+    documents.length.toString() == '1' ? alertstatus = true : alertstatus = false;
+    print('alertstatus: ');
+    print(alertstatus);
+    return documents.length == 1;
+  }
+
+  checkStatusAlert(BuildContext context, String emailAlert) {
+    FutureBuilder(
+        future: AuthService().userExistingorNot(emailAlert),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            print('korisnik postoji alert: ');
+            return Container();
+          } else {
+            print('korisnik nije u bazi alert: ');
+            return Container();
+          }
+        });
+  }
+
+
+  //above alert dialog checker
+
+
+
+
+
+
+
+
+
+
+
+
 
   signInOrNot(BuildContext context, String email, String password) {
     FutureBuilder(

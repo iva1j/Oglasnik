@@ -153,7 +153,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                       formKey = _passwordChangeFormKey;
                       print('Nakon klika - ispis je sljedeći:');
                       AuthService().onPressedChangePassword(context, email,
-                          newPassword, passwordConfirm, token, formKey);
+                          passwordInputController.text, confirmPasswordInputController.text, token, formKey);
                     }),
                   ),
                 ]),
