@@ -2,6 +2,16 @@ import 'package:flutter/cupertino.dart';
 
 //klase poredane po folderima iz view-a
 
+class NewPostScreen {
+  String unosNaslov = "Novi unos";
+  String fontstyle = "Roboto";
+  var fontSize = 20;
+}
+
+class MoneyText {
+  String kmText = "KM";
+}
+
 class AppLabelsAuth {
   String signInButton = 'testing';
   String registracija = 'Registruj se';
@@ -101,16 +111,6 @@ class SplashScreen {
   String fontFamily = "Roboto";
 }
 
-class NewPostScreen {
-  String unosNaslov = "Novi unos";
-  String fontstyle = "Roboto";
-  var fontSize = 20;
-}
-
-class MoneyText {
-  String kmText = "KM";
-}
-
 bool status = false;
 bool tokenstatus = false;
 var nepoklapanje = false;
@@ -120,8 +120,6 @@ final GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> globalKey() => registerFormKey;
 GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
-
-
 
 class InputFields {
   TextEditingController emailInputController = new TextEditingController();

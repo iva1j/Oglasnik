@@ -1,3 +1,4 @@
+import 'package:Oglasnik/view/PostScreens/Pages/articalNamePart.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,7 @@ Stack mainFloatingButton() {
                   child: InkWell(
                     splashColor: Colors.transparent, // splash color
                     // button pressed
+                    onTap: null,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
