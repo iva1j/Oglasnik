@@ -1,13 +1,14 @@
 import 'package:Oglasnik/interface/authUserInterface.dart';
+import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
+// import 'package:Oglasnik/view/PasswordChange/passwordChange%20copy.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/sendMail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
 
 final db = Firestore.instance;
 bool validSignIn = false;
@@ -85,9 +86,9 @@ class AuthService extends ChangeNotifier {
           email +
           ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
           newPassword);
-      tokenInputController.clear();
-      passwordInputController.clear();
-      confirmPasswordInputController.clear();
+      // tokenInputController.clear();
+      // passwordInputController.clear();
+      // confirmPasswordInputController.clear();
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
     } else if (newPassword != passwordConfirm) {
@@ -173,10 +174,13 @@ class AuthService extends ChangeNotifier {
           }
         });
   }
+
+  updateUser(User updatedUser, String oldEmail, String text) {}
 }
 
 // dodjeljivanje uid-a Anonymous useru
 final FirebaseAuth _auth = FirebaseAuth.instance;
+
 class AnonymousViewModel implements AnonymousInterface {
   @override
   Future getAnonymous() async {

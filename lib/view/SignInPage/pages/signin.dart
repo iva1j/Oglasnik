@@ -128,6 +128,7 @@ class _SigninPageState extends State<SigninPage> {
           ),
           color: Colors.white,
           onPressed: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(
@@ -195,13 +196,11 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 controller: emailInputController,
                 keyboardType: TextInputType.visiblePassword,
-
                 validator: emailValidator,
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (v) {
                   FocusScope.of(context).nextFocus();
                 },
-
               ),
             ),
           ),
@@ -219,13 +218,11 @@ class _SigninPageState extends State<SigninPage> {
                 controller: passwordInputController,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
-
                 validator: passwordValidator,
                 textInputAction: TextInputAction.done,
                 onFieldSubmitted: (v) {
                   FocusScope.of(context).nextFocus();
                 },
-
               ),
             ),
           ),
@@ -248,11 +245,14 @@ class _SigninPageState extends State<SigninPage> {
             'Prijavi se',
             () async {
               FocusScopeNode currentFocus = FocusScope.of(context);
-              if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) { currentFocus.focusedChild.unfocus(); }
+              if (!currentFocus.hasPrimaryFocus &&
+                  currentFocus.focusedChild != null) {
+                currentFocus.focusedChild.unfocus();
+              }
               email = emailInputController.text;
               password = passwordInputController.text;
               formKey = _registerFormKey;
-                onPressedSignIn(context, email, password, formKey);
+              onPressedSignIn(context, email, password, formKey);
             },
           ),
         ),

@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PasswordChange extends StatefulWidget {
+  PasswordChange(String email);
+
   @override
   _PasswordChangeState createState() => _PasswordChangeState();
 }
