@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/view/PostScreens/Pages/image_price_upload.dart';
 import 'package:flutter/material.dart';
 
 class City extends StatefulWidget {
@@ -71,7 +72,13 @@ class _CityState extends State<City> {
               ),
               Container(
                   margin: EdgeInsets.only(top: 100.0),
-                  child: button('Dalje', () async {})),
+                  child: button('Dalje', () async {
+                    Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                            pageBuilder: (context, animation1, animation2) =>
+                                ImagePriceScreen()));
+                  })),
             ],
           )
         ],

@@ -37,7 +37,6 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-    dynamic formKey;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(

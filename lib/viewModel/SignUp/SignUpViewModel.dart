@@ -81,7 +81,6 @@ Container passwordInputField(BuildContext context) {
           //  focusNode: lozinkanode,
           onFieldSubmitted: (v) {
             FocusScope.of(context).nextFocus();
-            ;
           },
 
           validator: passwordValidator,
