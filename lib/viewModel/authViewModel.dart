@@ -84,9 +84,7 @@ class AuthService extends ChangeNotifier {
           email +
           ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
           newPassword);
-      tokenInputController.clear();
-      passwordInputController.clear();
-      confirmPasswordInputController.clear();
+      
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
     } else if (newPassword != passwordConfirm) {

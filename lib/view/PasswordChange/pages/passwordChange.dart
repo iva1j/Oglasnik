@@ -1,261 +1,153 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/validation.dart';
-import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-//import 'package:Oglasnik/utils/logoContainer.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
+import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-class SigninPage extends StatefulWidget {
-  final Function toggleView;
-  SigninPage({Key key, this.toggleView}) : super(key: key);
+final TextEditingController emailInputController = new TextEditingController();
+final TextEditingController tokenInputController = new TextEditingController();
+final TextEditingController passwordInputController =
+    new TextEditingController();
+final TextEditingController confirmPasswordInputController =
+    new TextEditingController();
+String token, newPassword, confirmPassword, passwordConfirm;
+// ignore: must_be_immutable
+class PasswordChange extends StatefulWidget {
+  String email;
+  PasswordChange(this.email);
   @override
-  _SigninPageState createState() => _SigninPageState();
+  _PasswordChangeState createState() => _PasswordChangeState(email);
 }
-
-class _SigninPageState extends State<SigninPage> {
+class _PasswordChangeState extends State<PasswordChange> {
+  final GlobalKey<FormState> _passwordChangeFormKey = GlobalKey<FormState>();
+  final db = Firestore.instance;
   FirebaseUser user;
-  final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
-  bool islogin = false;
-  TextEditingController emailInputController;
-  TextEditingController passwordInputController;
-  bool showSignIn = true;
-  void toggleView() {
-    setState(() => showSignIn = !showSignIn);
-  }
-
-  @override
   initState() {
-    emailInputController = new TextEditingController();
-    passwordInputController = new TextEditingController();
-    //AuthService().getRegisteredUsers(db);
+    // PswChangeFields();
     super.initState();
   }
-
-  signInOrNot(BuildContext context, String email, String password) {
-    FutureBuilder(
-        future: AuthService().isUserRegistered(email, password),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            validSignIn = true;
-            status = true;
-            print('korisnik postoji');
-            return Container();
-          } else {
-            print('korisnik nije u bazi');
-            status = false;
-            return Container();
-          }
-        });
-  }
-
-/*
-  checkStatus(BuildContext context, String email, String password) {
-    FutureBuilder(
-        future: AuthService().userExistingorNot(email, password),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            print(snapshot);
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
-            print('waiting');
-          }
-          if (snapshot.hasData) {
-            print('korisnik zapisan');
-            return Container();
-          } else {
-            print('user  is not existing');
-            return null;
-          }
-        });
-  }*/
-  String passwordValidator(String value) {
-    if (value.length == null || value == '')
-      return 'Polje ne smije biti prazno';
-    if (value.length <= 7) {
-      return 'Password ne smije biti manji od 8 char';
-    } else {
-      return null;
-    }
-  }
-
-  String error = '';
+  String email;
+  _PasswordChangeState(this.email);
   @override
   Widget build(BuildContext context) {
-    // if (showSignIn) {
-    //   return SigninPage(toggleView: toggleView);
-    // } else {
-    //   return RegisterPage(toggleView: toggleView);
-    // }
-    String email, password;
-    bool isRegistered;
-    email = emailInputController.text;
-    password = passwordInputController.text;
-    final bottom = MediaQuery.of(context).viewInsets.bottom;
     dynamic formKey;
+    final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: backButtonIphone(context),
+        leading: IconButton(
+            icon: Icon(
+              Icons.clear,
+              color: Colors.black,
+              size: 24,
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            }),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(left: 100.0, right: 100.0, bottom: 5.0),
-        child: FlatButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            side: BorderSide(
-              color: Colors.white,
-              style: BorderStyle.solid,
-            ),
-          ),
-          color: Colors.white,
-          onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              PageRouteBuilder(
-                pageBuilder: (context, animation1, animation2) =>
-                    RegisterPage(),
-              ),
-            );
-            // widget.toggleView();
-            //    islogin ? formSignin(email, password, formKey, context) : formRegister(fullNameInputController.text, email, password, phoneNumber, formKey, context);
-          },
-          child: Text(
-            'Registruj se',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.normal),
-          ),
-        ),
-        // height: 60,
-        // width: double.infinity,
-      ),
-      body: WillPopScope(
-        onWillPop: () => Navigator.of(context)
-            .pushReplacement(MaterialPageRoute(builder: (_) {
-          return AnonymouseHome();
-        })),
-        child: SingleChildScrollView(
-          reverse: true,
-          child: Padding(
-            padding: EdgeInsets.only(bottom: bottom),
-            child: Container(
-                height: SizeConfig.screenHeight,
-                margin: EdgeInsets.all(50),
-                child: Column(
-                  children: <Widget>[
-                    // LogoContainer(),
-                    //welcomeScreen(),
-                    nameOfForm(),
-                    formSignin(email, password, formKey, context, isRegistered),
-                  ],
-                )),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Form formSignin(String email, String password, formKey, BuildContext context,
-      bool isRegistered) {
-    return Form(
-      key: _registerFormKey,
-      child: Column(children: <Widget>[
-        new Container(
-          margin: EdgeInsets.only(bottom: 10),
-          child: new SizedBox(
-            width: double.infinity,
-            child: Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  contentPadding: EdgeInsets.only(left: 20),
+      body: SingleChildScrollView(
+        reverse: true,
+        child: Padding(
+          padding: EdgeInsets.only(bottom: bottom),
+          child: Container(
+            height: SizeConfig.screenHeight,
+            margin: EdgeInsets.all(50),
+            child: Column(children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(bottom: 120.0),
+                child: Text(
+                  "Promijeni šifru",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.normal),
                 ),
-                controller: emailInputController,
-                keyboardType: TextInputType.visiblePassword,
-                validator: emailCheckSignIn,
               ),
-            ),
-          ),
-        ),
-        new Container(
-          margin: EdgeInsets.only(bottom: 10),
-          child: new SizedBox(
-            width: double.infinity,
-            child: Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Lozinka',
-                  contentPadding: EdgeInsets.only(left: 20),
-                ),
-                controller: passwordInputController,
-                keyboardType: TextInputType.visiblePassword,
-                obscureText: true,
-                validator: passwordCheckSignIn,
+              Form(
+                key: _passwordChangeFormKey,
+                child: Column(children: <Widget>[
+                  new Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    child: new SizedBox(
+                      width: double.infinity,
+                      child: Container(
+                        child: TextFormField(
+                          textInputAction: TextInputAction.next,
+                          onFieldSubmitted: (v) {
+                            FocusScope.of(context).nextFocus();
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Unesi kod',
+                          ),
+                          controller: tokenInputController,
+                          validator: tokenValidator,
+                        ),
+                      ),
+                    ),
+                  ),
+                  new Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    child: new SizedBox(
+                      width: double.infinity,
+                      child: Container(
+                        child: TextFormField(
+                          textInputAction: TextInputAction.next,
+                          onFieldSubmitted: (v) {
+                            FocusScope.of(context).nextFocus();
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Nova lozinka',
+                          ),
+                          obscureText: true,
+                          validator: passwordValidator,
+                          controller: passwordInputController,
+                        ),
+                      ),
+                    ),
+                  ),
+                  new Container(
+                    margin: EdgeInsets.only(bottom: 30),
+                    child: new SizedBox(
+                      width: double.infinity,
+                      child: Container(
+                        child: TextFormField(
+                          textInputAction: TextInputAction.done,
+                          onFieldSubmitted: (v) {
+                            FocusScope.of(context).unfocus();
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Potvrdi lozinku',
+                          ),
+                          obscureText: true,
+                          controller: confirmPasswordInputController,
+                          validator: confirmpasswordValidator,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: AuthService().tokenExistOrNot(context, email, token),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 110),
+                    child: button('Sačuvaj', () {
+                      //  email = emailInputController.text;
+                      newPassword = passwordInputController.text;
+                      passwordConfirm = confirmPasswordInputController.text;
+                      token = tokenInputController.text;
+                      formKey = _passwordChangeFormKey;
+                      print('Nakon klika - ispis je sljedeći:');
+                      AuthService().onPressedChangePassword(context, email,
+                          newPassword, passwordConfirm, token, formKey);
+                    }),
+                  ),
+                ]),
               ),
-            ),
+            ]),
           ),
-        ),
-        Container(
-            child: Column(
-          children: <Widget>[
-            Container(
-                //   child: AuthService().tokenExistOrNot(context, email, token),
-                ),
-            Container(
-              child: AuthService().signInOrNot(context, email, password),
-            ),
-            Container(child: AuthService().checkStatus(context, email))
-          ],
-        )),
-        Container(
-          margin: EdgeInsets.only(top: 20.0),
-          child: button(
-            'Prijavi se',
-            () async {
-              email = emailInputController.text;
-              password = passwordInputController.text;
-              formKey = _registerFormKey;
-              onPressedSignIn(context, email, password, formKey);
-            },
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 15.0),
-          child: new GestureDetector(
-            onTap: () => displayDialog(context),
-            child: new Text(
-              "Zaboravili ste lozinku?",
-              style: TextStyle(
-                  fontFamily: 'Roboto',
-                  fontSize: 16,
-                  color: Color.fromRGBO(0, 0, 0, 102)),
-            ),
-          ),
-        )
-      ]),
-    );
-  }
-
-  Container nameOfForm() {
-    return Container(
-      margin: EdgeInsets.only(top: 10, bottom: 10.0),
-      alignment: Alignment.centerLeft,
-      child: Text(
-        'Prijava',
-        textDirection: TextDirection.ltr,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 23,
         ),
       ),
     );
