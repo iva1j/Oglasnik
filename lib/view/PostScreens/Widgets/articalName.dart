@@ -20,31 +20,35 @@ class ArticalName extends StatelessWidget {
           elevation: 0.0,
           leading: newInputBackButtonIphone(context),
         ),
-        body: Padding(
-          padding: EdgeInsets.only(bottom: bottom),
-          child: Container(
-            height: SizeConfig.screenHeight,
-            margin: EdgeInsets.all(15),
-            child: Column(
-              children: <Widget>[
-                Container(
-                    margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Naziv artikla',
+        body: SingleChildScrollView(
+          reverse: true,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: bottom),
+            child: Container(
+              height: SizeConfig.screenHeight,
+              margin: EdgeInsets.all(15),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                      margin: EdgeInsets.only(bottom: 80.0),
+                      child: MainTitle()),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: 'Naziv artikla',
+                    ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 100.0),
-                  child: button('Dalje', () async {
-                    Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                            pageBuilder: (context, animation1, animation2) =>
-                                Category()));
-                  }),
-                ),
-              ],
+                  Container(
+                    margin: EdgeInsets.only(top: 100.0),
+                    child: button('Dalje', () async {
+                      Navigator.pushReplacement(
+                          context,
+                          PageRouteBuilder(
+                              pageBuilder: (context, animation1, animation2) =>
+                                  Category()));
+                    }),
+                  ),
+                ],
+              ),
             ),
           ),
         ));
