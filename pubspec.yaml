@@ -31,6 +31,7 @@ dependencies:
   fab_circular_menu: ^1.0.0
   random_string: ^2.1.0
   mailgun: ^0.1.0
+  flutter_dotenv: ^2.1.0
 
   provider:
   # The following adds the Cupertino Icons font to your application.
@@ -52,7 +53,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - .env
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
