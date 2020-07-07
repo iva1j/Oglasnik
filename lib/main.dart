@@ -1,13 +1,13 @@
 import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/city.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 Future<void> main() async {
   await DotEnv().load('.env');
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: buildThemeData(),
         // ignore: missing_required_param
-        home: AnonymouseHome(),
+        home: RegisteredHome(),
         routes: {
           "/back": (_) => AnonymouseHome(),
           "/homeregister": (_) => RegisteredHome(),
