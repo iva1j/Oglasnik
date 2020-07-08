@@ -22,7 +22,8 @@ class _DescribeState extends State<Describe> {
         ),
         body: SingleChildScrollView(
           reverse: true,
-          child: Padding(
+                  child: Padding(
+
             padding: EdgeInsets.only(bottom: bottom),
             child: Container(
               height: SizeConfig.screenHeight,
@@ -30,17 +31,20 @@ class _DescribeState extends State<Describe> {
               child: Column(
                 children: <Widget>[
                   Container(
-                      margin: EdgeInsets.only(bottom: 80.0),
-                      child: MainTitle()),
-                  TextField(
-                    maxLines: null,
-                    keyboardType: TextInputType.multiline,
-                    decoration: const InputDecoration(
-                      labelText: 'Opis',
+                      margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
+                  Container(                                                //dodati ovaj dio
+                    margin: EdgeInsets.symmetric(horizontal: 15.0),
+                                    child: TextField(
+                      maxLines: null,
+                      keyboardType: TextInputType.multiline,
+                      decoration: const InputDecoration(
+                        labelText: 'Opis',
+                      ),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 100.0),
+                    margin: EdgeInsets.only(top: 198.0),                    //kraj dijela
+
                     child: button('Dalje', () async {
                       Navigator.pushReplacement(
                           context,

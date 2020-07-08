@@ -1,6 +1,7 @@
 import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/sendMail.dart';
@@ -87,7 +88,7 @@ class AuthService extends ChangeNotifier {
           newPassword);
 
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
+          .pushReplacement(MaterialPageRoute(builder: (_) => AnonymouseHome()));
     } else if (newPassword != passwordConfirm) {
       nepoklapanje = true;
       print('lozinke se ne poklapaju');
