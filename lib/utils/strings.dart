@@ -2,9 +2,19 @@ import 'package:flutter/cupertino.dart';
 
 //klase poredane po folderima iz view-a
 
-class App_Labels_Auth {
+class NewPostScreen {
+  String unosNaslov = "Novi unos";
+  String fontstyle = "Roboto";
+  var fontSize = 20;
+}
+
+class MoneyText {
+  String kmText = "KM";
+}
+
+class AppLabelsAuth {
   String signInButton = 'testing';
-  String registracija = 'registracija amer';
+  String registracija = 'Registruj se';
 }
 
 //..view//AnonymusHome
@@ -100,7 +110,7 @@ class SplashScreen {
   String splashText = "OGLASNIK";
   String fontFamily = "Roboto";
 }
-
+var alertstatus = false;
 bool status = false;
 bool tokenstatus = false;
 var nepoklapanje = false;
@@ -108,6 +118,8 @@ bool allowUserToChangePassword = false;
 //final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
+final GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
+final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> globalKey() => registerFormKey;
 GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
 

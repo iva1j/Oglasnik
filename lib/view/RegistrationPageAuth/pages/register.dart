@@ -1,18 +1,20 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-
-import 'package:Oglasnik/utils/validation.dart';
-
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/utils/strings.dart';
-
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/shared/logoContainer.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/widgets/formSignUp.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/widgets/signUpFormName.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
-
+import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
+
+final GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
+TextEditingController signUpFullNameInputController;
+TextEditingController signUpPhoneNumberInputController;
+TextEditingController signUpEmailInputController;
+TextEditingController signUpPasswordInputController;
 
 class RegisterPage extends StatefulWidget {
   final Function toggleView;
@@ -23,40 +25,18 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
-  TextEditingController fullNameInputController;
-  TextEditingController phoneNumberInputController;
-  TextEditingController emailInputController;
-  TextEditingController passwordInputController;
-
-  // void toggleView() {
-  //   setState(() => showSignIn = !showSignIn);
-  // }
-
   @override
   initState() {
-    fullNameInputController = new TextEditingController();
-    phoneNumberInputController = new TextEditingController();
-    emailInputController = new TextEditingController();
-    passwordInputController = new TextEditingController();
+    signUpFullNameInputController = new TextEditingController();
+    signUpPhoneNumberInputController = new TextEditingController();
+    signUpEmailInputController = new TextEditingController();
+    signUpPasswordInputController = new TextEditingController();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    String fullName, email, password, phoneNumber;
-    fullName = fullNameInputController.text;
-    email = emailInputController.text;
-    phoneNumber = phoneNumberInputController.text;
-    password = passwordInputController.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-
-    // if (showSignIn) {
-    //   return SigninPage(toggleView: toggleView);
-    // } else {
-    //   return RegisterPage(toggleView: toggleView);
-    // }
-    dynamic formKey;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
@@ -84,12 +64,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 pageBuilder: (context, animation1, animation2) => SigninPage(),
               ),
             );
-            fullNameInputController.clear();
-            emailInputController.clear();
-            phoneNumberInputController.clear();
-            passwordInputController.clear();
-            //widget.toggleView();
-            //isRegistered ? formRegister(fullNameInputController.text, email, password, phoneNumber, formKey, context) : formSignin(email, password, formKey, context);
+
+            cleanInputFields(
+                signUpFullNameInputController,
+                signUpPhoneNumberInputController,
+                signUpEmailInputController,
+                signUpPasswordInputController);
           },
           child: Text(
             'Prijavi se',
@@ -100,8 +80,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 fontWeight: FontWeight.normal),
           ),
         ),
-        // height: 60,
-        // width: double.infinity,
       ),
       body: WillPopScope(
         onWillPop: () => Navigator.of(context)
@@ -120,11 +98,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     LogoContainer(),
                     WelcomeScreen(),
                     Container(
-                      child: AuthService().checkStatus(context, email),
+                      child: AuthService().checkStatus(context, emailRegister),
                     ),
-                    nameOfForm(),
-                    formRegister(fullName, email, password, phoneNumber,
-                        formKey, context)
+                    SignUpFormName(),
+                    FormSignUp(
+                        registerFormKey: signUpRegisterFormKey,
+                        signUpFullNameInputController:
+                            signUpFullNameInputController,
+                        signUpEmailInputController: signUpEmailInputController,
+                        signUpPasswordInputController:
+                            signUpPasswordInputController,
+                        signUpPhoneNumberInputController:
+                            signUpPhoneNumberInputController),
                   ],
                 )),
           ),
@@ -132,146 +117,4 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
-
-  Form formRegister(String fullName, String email, String password,
-      String phoneNumber, formKey, BuildContext context) {
-    final FocusNode imeprezime = FocusNode();
-    final FocusNode emailnode = FocusNode();
-    final FocusNode lozinkanode = FocusNode();
-    final FocusNode phonenode = FocusNode();
-
-    return Form(
-      key: _registerFormKey,
-      child: Column(children: <Widget>[
-        new Container(
-          margin: EdgeInsets.only(top: 15, bottom: 10),
-          child: new SizedBox(
-            width: double.infinity,
-            child: Container(
-              child: TextFormField(
-                textCapitalization: TextCapitalization.words,
-                decoration: InputDecoration(
-                  hintText: 'Ime i prezime',
-                  contentPadding: EdgeInsets.only(left: 20),
-                ),
-                controller: fullNameInputController,
-                keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.next,
-                //  autofocus: true,
-                onFieldSubmitted: (v) {
-                  FocusScope.of(context).nextFocus();
-                },
-                validator: nameValidator,
-              ),
-            ),
-          ),
-        ),
-        new Container(
-          margin: EdgeInsets.only(bottom: 10),
-          child: new SizedBox(
-            width: double.infinity,
-            child: Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Email',
-                  contentPadding: EdgeInsets.only(left: 20),
-                ),
-                controller: emailInputController,
-                //keyboardType: TextInputType.emailAddress,
-                keyboardType: TextInputType.visiblePassword,
-                validator: emailValidator,
-                textInputAction: TextInputAction.next,
-                //  focusNode: emailnode,
-                onFieldSubmitted: (v) {
-                  FocusScope.of(context).nextFocus();
-                  ;
-                },
-              ),
-            ),
-          ),
-        ),
-        new Container(
-          margin: EdgeInsets.only(bottom: 10),
-          child: new SizedBox(
-            width: double.infinity,
-            child: Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(),
-                  hintText: 'Lozinka',
-                  contentPadding: EdgeInsets.only(left: 20),
-                ),
-                controller: passwordInputController,
-                keyboardType: TextInputType.visiblePassword,
-                obscureText: true,
-                textInputAction: TextInputAction.next,
-                //  focusNode: lozinkanode,
-                onFieldSubmitted: (v) {
-                  FocusScope.of(context).nextFocus();
-                  ;
-                },
-
-                validator: passwordValidator,
-              ),
-            ),
-          ),
-        ),
-        new Container(
-          margin: EdgeInsets.only(bottom: 30),
-          child: new SizedBox(
-            width: double.infinity,
-            child: Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 20),
-                  hintText: 'Broj telefona',
-                ),
-                controller: phoneNumberInputController,
-                keyboardType: TextInputType.phone,
-                validator: phoneValidator,
-                textInputAction: TextInputAction.done,
-                // focusNode: phonenode,
-                onFieldSubmitted: (v) {
-                  FocusScope.of(context).unfocus();
-                  //  _calculator();
-                },
-              ),
-            ),
-          ),
-        ),
-        button(
-          App_Labels_Auth().registracija,
-          () {
-            fullName = fullNameInputController.text;
-            email = emailInputController.text;
-            password = passwordInputController.text;
-            phoneNumber = phoneNumberInputController.text;
-            formKey = _registerFormKey;
-            onPressedRegister(
-                context, fullName, email, password, phoneNumber, formKey);
-          },
-        ),
-      ]),
-    );
-  }
-
-  Container nameOfForm() {
-    return Container(
-      margin: EdgeInsets.only(top: 10),
-      alignment: Alignment.centerLeft,
-      child: Text(
-        'Registracija',
-        textDirection: TextDirection.ltr,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 23,
-        ),
-      ),
-    );
-  }
-}
-
-fieldFocusChange(
-    BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
-  FocusScope.of(context).requestFocus(nextFocus);
 }

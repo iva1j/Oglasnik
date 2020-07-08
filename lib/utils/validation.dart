@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:flutter/material.dart';
 
 String nameValidator(String value) {
   Pattern pattern = r'(?!\s*$)';
@@ -59,6 +60,23 @@ String emailCheckSignIn(String value) {
   }
 }
 
+String emailAlertDialogValidation(String value) {
+  Pattern pattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|live|outlook)+(\.com)$|@(hotmail|yahoo)+(\.fr|\.co.uk)$|@(orange)+(\.fr)$';
+  RegExp regex = new RegExp(pattern);
+  if (value.length == null || value == '') return 'Polje ne smije biti prazno';
+  if (!regex.hasMatch(value)) {
+    return 'Email mora biti validan';
+  }
+  if (status == false) {
+    return 'Email ne postoji u bazi';
+  } else {
+    return null;
+  }
+}
+
+
+
 String passwordCheckSignIn(String value) {
   if (value.length == null || value == '') return 'Polje ne smije biti prazno';
   if (value.length <= 7) {
@@ -85,20 +103,28 @@ String confirmpasswordValidator(String value) {
   if (value.length <= 7) {
     print('Password ne smije biti manji od 8 char');
     return 'Password ne smije biti manji od 8 char';
-  } else if (nepoklapanje == true) {
-    print('status poklapanja: ' + nepoklapanje.toString());
-    return 'Šifre se ne podudaraju';
-  } else {
-    return null;
   }
+  if (nepoklapanje == true) {
+    print('status poklapanja: ' + nepoklapanje.toString());
+    return 'Šifra se ne podudara!';
+  }
+  return null;
 }
 
 String tokenValidator(String value) {
   if (value.length == null || value == '') return 'Polje ne smije biti prazno';
   if (tokenstatus == false) {
-    return 'Uneseni token nije ispravan';
+    return 'Kod nije validan';
   } else if (value.length != 5) {
     return 'Token mora biti dužine 5 karaktera';
   } else
     return null;
+}
+
+String priceValidator(String value) {
+  if (value.length == null || value == '')
+    return 'Polje ne može biti prazno';
+  else {
+    return null;
+  }
 }

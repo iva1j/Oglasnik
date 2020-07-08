@@ -1,4 +1,3 @@
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:mailgun/mailgun.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -11,7 +10,7 @@ var mailgun = MailgunMailer(
 Future<void> sendemail() async {
   var response = await mailgun.send(
       from: 'fcidicwebmail@gmail.com',
-      to: [emailAlertDialog],
+      to: ["faruk.cidic@gmail.com"],
       subject: "Zaboravili ste lozinku? ",
       text: "Token za resetovanje lozinke je: " + tokenCode);
   print(response.status);

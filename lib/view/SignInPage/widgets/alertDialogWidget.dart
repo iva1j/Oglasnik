@@ -1,9 +1,12 @@
 import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
+
+dynamic formAlertKey;
 
 class AlertDialogWidget extends StatefulWidget {
   const AlertDialogWidget({
@@ -28,21 +31,24 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
       ),
       content: Container(
         margin: EdgeInsets.only(top: 43.0),
-        child: TextFormField(
-          decoration: InputDecoration(
-            hintText: 'Email',
+        child: Form(
+          key: alertFormKey,
+          child: TextFormField(
+            decoration: InputDecoration(
+              hintText: 'Email',
+              contentPadding: EdgeInsets.only(left: 10),
+            ),
+            keyboardType: TextInputType.visiblePassword,
+            validator: emailAlertDialogValidation,
+            controller: emailInputControllerAlertDialog,
           ),
-          keyboardType: TextInputType.visiblePassword,
-          validator: emailValidator,
-          controller: emailInputControllerAlertDialog,
         ),
       ),
       actions: <Widget>[
-        AlertDialogButtons(),
         Container(
-          child: AuthService().allowPasswordChange(
-              context, emailInputControllerAlertDialog.text),
-        )
+            child: AuthService().checkStatusAlert(
+                context, emailInputControllerAlertDialog.text)),
+        AlertDialogButtons(),
       ],
     );
   }
