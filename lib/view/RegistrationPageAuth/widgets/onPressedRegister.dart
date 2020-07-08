@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,19 @@ class _RegisterButtonState extends State<RegisterButton> {
 
 void onPressedRegister(BuildContext context, String fullName, String email,
     String password, String phoneNumber, dynamic formKey) {
+  FocusScope.of(context).unfocus();
+  FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
+ 
   if (formKey.currentState.validate() && status == false) {
+    // FocusScope.of(context).unfocus();
+    // FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      signUpPhoneNumberInputController.clear();
+      signUpPasswordInputController.clear();
+      signUpEmailInputController.clear();
+      signUpFullNameInputController.clear();
+    }); // clear content
+
     db.collection("firestoreUsers").document(email).setData({
       'fullName': fullName,
       'email': email,
