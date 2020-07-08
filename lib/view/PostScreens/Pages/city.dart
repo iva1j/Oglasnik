@@ -24,27 +24,20 @@ class _CityState extends State<City> {
       ),
       body: SingleChildScrollView(
         reverse: true,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: bottom),
-          child: Column(
+              child: Padding(
+                padding: EdgeInsets.only(bottom: bottom),
+                child: Column(
             children: <Widget>[
-              Container(
-                  margin: EdgeInsets.only(bottom: 40.0), child: MainTitle()),
+              Container(margin: EdgeInsets.only(bottom: 80.0, top:15), child: MainTitle()),
               Container(
                 height: SizeConfig.screenHeight,
-                //height: 85, //gives the height of the dropdown button
-                width: 300,
-                //width: SizeConfig.screenWidth,
+                margin: EdgeInsets.symmetric(horizontal: 30.0),
                 child: Card(
                   elevation: 16,
-                  //  margin: EdgeInsets.zero,
-                  //margin: EdgeInsets.only(left: 20.0),
                   child: Container(
                     margin: EdgeInsets.only(left: 10.0),
-                    // width: 550,
                     width: SizeConfig.screenWidth,
                     child: Container(
-                      //margin: EdgeInsets.only(bottom: 150.0),
                       child: DropdownButton<String>(
                         value: dropdownValue,
                         icon: Icon(Icons.arrow_drop_down),
@@ -52,12 +45,15 @@ class _CityState extends State<City> {
                         elevation: 16,
                         isExpanded: true,
                         underline: Container(),
+                        onTap: (){dropdownValue = 'Sarajevo';},
+
                         onChanged: (String newValue) {
                           setState(() {
                             dropdownValue = newValue;
                           });
                         },
-                        items: <String>['Sarajevo', 'Beograd', 'Zagreb']
+                        items: <String>['Sarajevo', 'Beograd', 'Zagreb','Moskva', 'Berlin', 'Pariz', 'London', 'Lisabon', 'Amsterdam', 'LA', 'Madrid', 'Barcelona', 'Tokyo', 'Peking']
+
                             .map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
@@ -72,17 +68,17 @@ class _CityState extends State<City> {
               Column(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(bottom: 80.0),
+                    margin: EdgeInsets.only(bottom: 40.0),
                   ),
                   Container(
-                    width: 300,
+                    margin: EdgeInsets.symmetric(horizontal: 30.0),
+
                     child: TextFormField(
                       maxLines: null,
                       keyboardType: TextInputType.multiline,
                       decoration: const InputDecoration(
                           labelText: 'Oznake',
                           labelStyle: TextStyle(
-                              //color: myFocusNode.hasFocus ? Colors.grey : Colors.black
                               )),
                     ),
                   ),
@@ -92,9 +88,9 @@ class _CityState extends State<City> {
                         Navigator.pushReplacement(
                             context,
                             PageRouteBuilder(
-                                pageBuilder:
-                                    (context, animation1, animation2) =>
-                                        Describe()));
+                                pageBuilder: (context, animation1, animation2) =>
+                                    Describe()));
+
                       })),
                 ],
               )

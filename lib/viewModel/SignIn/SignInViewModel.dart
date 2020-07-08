@@ -12,7 +12,8 @@ void onPressedPosaljiKod(BuildContext context) {
   Container(
       child: AuthService()
           .checkStatusAlert(context, emailInputControllerAlertDialog.text));
-  AuthService().onPressedAlertDialog(context, emailInputControllerAlertDialog.text, tokenCode);
+  AuthService().onPressedAlertDialog(
+      context, emailInputControllerAlertDialog.text, tokenCode);
   //emailInputControllerAlertDialog.clear();
 }
 
@@ -40,6 +41,9 @@ void cleanLoginInputFields() {
 
 void onPressedSignInModel(
     BuildContext context, String email, String password, dynamic formKey) {
+  //ovdje pozvati
+  FocusScopeNode currentFocus = FocusScope.of(context);
+
   if (formKey.currentState.validate() && status == true) {
     print('Logged in');
 

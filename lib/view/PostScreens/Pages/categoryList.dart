@@ -14,7 +14,7 @@ class _CategoryState extends State<Category> {
 
   @override
   Widget build(BuildContext context) {
-    final bottom = MediaQuery.of(context).viewInsets.bottom;
+    final bottom= MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
@@ -23,28 +23,24 @@ class _CategoryState extends State<Category> {
         leading: newInputBackButtonIphone(context),
       ),
       body: SingleChildScrollView(
-        reverse: true,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: bottom),
-          child: Column(
+
+        reverse:true,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: bottom),
+                child: Column(
             children: <Widget>[
               Container(
-                  margin: EdgeInsets.only(bottom: 40.0), child: MainTitle()),
+                  margin: EdgeInsets.only(bottom: 80.0, top: 15),
+                  child: MainTitle()),
               Container(
                 height: SizeConfig.screenHeight,
-                //height: 85, //gives the height of the dropdown button
-                width: 300,
-                //width: SizeConfig.screenWidth,
+                margin: EdgeInsets.symmetric(horizontal: 30.0),
                 child: Card(
                   elevation: 16,
-                  //  margin: EdgeInsets.zero,
-                  //margin: EdgeInsets.only(left: 20.0),
                   child: Container(
                     margin: EdgeInsets.only(left: 10.0),
-                    // width: 550,
                     width: SizeConfig.screenWidth,
                     child: Container(
-                      //margin: EdgeInsets.only(bottom: 150.0),
                       child: DropdownButton<String>(
                         value: dropdownValue,
                         icon: Icon(Icons.arrow_drop_down),
@@ -60,7 +56,19 @@ class _CategoryState extends State<Category> {
                         items: <String>[
                           'Kategorija',
                           'Kategorija 2',
-                          'Kategorija 3'
+                          'Kategorija 3',
+                          'Kategorija 4',
+                          'Kategorija 5',
+                          'Kategorija 6',
+                          'Kategorija 7',
+                          'Kategorija 8',
+                          'Kategorija 9',
+                          'Kategorija 0',
+                          'Kategorija 11',
+                          'Kategorija 32',
+                          'Kategorija 33',
+                          'Kategorija 42',
+                          'Kategorija 321',
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
@@ -75,10 +83,10 @@ class _CategoryState extends State<Category> {
               Column(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(bottom: 80.0),
+                    margin: EdgeInsets.only(bottom: 40.0),
                   ),
                   Container(
-                    width: 300,
+                    margin: EdgeInsets.symmetric(horizontal: 30.0),
                     child: TextFormField(
                       maxLines: null,
                       keyboardType: TextInputType.multiline,
@@ -95,9 +103,8 @@ class _CategoryState extends State<Category> {
                         Navigator.pushReplacement(
                             context,
                             PageRouteBuilder(
-                                pageBuilder:
-                                    (context, animation1, animation2) =>
-                                        City()));
+                                pageBuilder: (context, animation1, animation2) =>
+                                    City()));
                       })),
                 ],
               )
