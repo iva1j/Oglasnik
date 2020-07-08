@@ -42,8 +42,6 @@ void cleanLoginInputFields() {
 void onPressedSignInModel(
     BuildContext context, String email, String password, dynamic formKey) {
   //ovdje pozvati
-  FocusScopeNode currentFocus = FocusScope.of(context);
-
   if (formKey.currentState.validate() && status == true) {
     print('Logged in');
 
