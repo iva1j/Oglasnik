@@ -47,7 +47,7 @@ class AuthService extends ChangeNotifier {
 
 //if statement must be replaced with correct validation; currently status represents user in firestore (user existed)
   onPressedAlertDialog(BuildContext context, String email, String token) {
-    if (alertFormKey.currentState.validate() && status == true) {
+    if (status == true) {
       db.collection("firestoreUsers").document(email).updateData({
         'email': email,
         'token': token,
@@ -156,7 +156,6 @@ class AuthService extends ChangeNotifier {
     }
   }
 
-
 //alert dialog checker
 //best case for checking user in database!
   Future<bool> userExistingorNotAlert(String emailAlert) async {
@@ -167,7 +166,9 @@ class AuthService extends ChangeNotifier {
         .getDocuments();
     final List<DocumentSnapshot> documents = result.documents;
     print("documents = " + documents.length.toString());
-    documents.length.toString() == '1' ? alertstatus = true : alertstatus = false;
+    documents.length.toString() == '1'
+        ? alertstatus = true
+        : alertstatus = false;
     print('alertstatus: ');
     print(alertstatus);
     return documents.length == 1;
@@ -187,20 +188,7 @@ class AuthService extends ChangeNotifier {
         });
   }
 
-
   //above alert dialog checker
-
-
-
-
-
-
-
-
-
-
-
-
 
   signInOrNot(BuildContext context, String email, String password) {
     FutureBuilder(

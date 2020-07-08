@@ -110,6 +110,7 @@ class SplashScreen {
   String splashText = "OGLASNIK";
   String fontFamily = "Roboto";
 }
+
 var alertstatus = false;
 bool status = false;
 bool tokenstatus = false;
