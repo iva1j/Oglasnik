@@ -14,6 +14,7 @@ class _CategoryState extends State<Category> {
 
   @override
   Widget build(BuildContext context) {
+    final bottom= MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
@@ -21,76 +22,94 @@ class _CategoryState extends State<Category> {
         elevation: 0.0,
         leading: newInputBackButtonIphone(context),
       ),
-      body: Column(
-        children: <Widget>[
-          Container(
-              margin: EdgeInsets.only(bottom: 40.0, top: 15),
-              child: MainTitle()),
-          Container(
-            height: SizeConfig.screenHeight,
-            margin: EdgeInsets.symmetric(horizontal: 30.0),
-            child: Card(
-              elevation: 16,
-              child: Container(
-                margin: EdgeInsets.only(left: 10.0),
-                width: SizeConfig.screenWidth,
-                child: Container(
-                  child: DropdownButton<String>(
-                    value: dropdownValue,
-                    icon: Icon(Icons.arrow_drop_down),
-                    iconSize: 24,
-                    elevation: 16,
-                    isExpanded: true,
-                    underline: Container(),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        dropdownValue = newValue;
-                      });
-                    },
-                    items: <String>[
-                      'Kategorija',
-                      'Kategorija 2',
-                      'Kategorija 3'
-                    ].map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
+      body: SingleChildScrollView(
+        reverse:true,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: bottom),
+                child: Column(
+            children: <Widget>[
+              Container(
+                  margin: EdgeInsets.only(bottom: 80.0, top: 15),
+                  child: MainTitle()),
+              Container(
+                height: SizeConfig.screenHeight,
+                margin: EdgeInsets.symmetric(horizontal: 30.0),
+                child: Card(
+                  elevation: 16,
+                  child: Container(
+                    margin: EdgeInsets.only(left: 10.0),
+                    width: SizeConfig.screenWidth,
+                    child: Container(
+                      child: DropdownButton<String>(
+                        value: dropdownValue,
+                        icon: Icon(Icons.arrow_drop_down),
+                        iconSize: 24,
+                        elevation: 16,
+                        isExpanded: true,
+                        underline: Container(),
+                        onChanged: (String newValue) {
+                          setState(() {
+                            dropdownValue = newValue;
+                          });
+                        },
+                        items: <String>[
+                          'Kategorija',
+                          'Kategorija 2',
+                          'Kategorija 3',
+                          'Kategorija 4',
+                          'Kategorija 5',
+                          'Kategorija 6',
+                          'Kategorija 7',
+                          'Kategorija 8',
+                          'Kategorija 9',
+                          'Kategorija 0',
+                          'Kategorija 11',
+                          'Kategorija 32',
+                          'Kategorija 33',
+                          'Kategorija 42',
+                          'Kategorija 321',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-          Column(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(bottom: 80.0),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 30.0),
-                child: TextFormField(
-                  maxLines: null,
-                  keyboardType: TextInputType.multiline,
-                  decoration: const InputDecoration(
-                      labelText: 'Proizvođač',
-                      labelStyle: TextStyle(
-                          //color: myFocusNode.hasFocus ? Colors.grey : Colors.black
-                          )),
-                ),
-              ),
-              Container(
-                  margin: EdgeInsets.only(top: 100.0),
-                  child: button('Dalje', () async {
-                    Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                            pageBuilder: (context, animation1, animation2) =>
-                                City()));
-                  })),
+              Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(bottom: 40.0),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 30.0),
+                    child: TextFormField(
+                      maxLines: null,
+                      keyboardType: TextInputType.multiline,
+                      decoration: const InputDecoration(
+                          labelText: 'Proizvođač',
+                          labelStyle: TextStyle(
+                              //color: myFocusNode.hasFocus ? Colors.grey : Colors.black
+                              )),
+                    ),
+                  ),
+                  Container(
+                      margin: EdgeInsets.only(top: 100.0),
+                      child: button('Dalje', () async {
+                        Navigator.pushReplacement(
+                            context,
+                            PageRouteBuilder(
+                                pageBuilder: (context, animation1, animation2) =>
+                                    City()));
+                      })),
+                ],
+              )
             ],
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

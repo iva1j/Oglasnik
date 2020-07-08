@@ -20,36 +20,39 @@ class _DescribeState extends State<Describe> {
           elevation: 0.0,
           leading: newInputBackButtonIphone(context),
         ),
-        body: Padding(
-          padding: EdgeInsets.only(bottom: bottom),
-          child: Container(
-            height: SizeConfig.screenHeight,
-            margin: EdgeInsets.all(15),
-            child: Column(
-              children: <Widget>[
-                Container(
-                    margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15.0),
-                                  child: TextField(
-                    maxLines: null,
-                    keyboardType: TextInputType.multiline,
-                    decoration: const InputDecoration(
-                      labelText: 'Opis',
+        body: SingleChildScrollView(
+          reverse: true,
+                  child: Padding(
+            padding: EdgeInsets.only(bottom: bottom),
+            child: Container(
+              height: SizeConfig.screenHeight,
+              margin: EdgeInsets.all(15),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                      margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
+                  Container(                                                //dodati ovaj dio
+                    margin: EdgeInsets.symmetric(horizontal: 15.0),
+                                    child: TextField(
+                      maxLines: null,
+                      keyboardType: TextInputType.multiline,
+                      decoration: const InputDecoration(
+                        labelText: 'Opis',
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 242.0),
-                  child: button('Dalje', () async {
-                    Navigator.pushReplacement(
-                        context,
-                        PageRouteBuilder(
-                            pageBuilder: (context, animation1, animation2) =>
-                                ImagePriceScreen()));
-                  }),
-                ),
-              ],
+                  Container(
+                    margin: EdgeInsets.only(top: 198.0),                    //kraj dijela
+                    child: button('Dalje', () async {
+                      Navigator.pushReplacement(
+                          context,
+                          PageRouteBuilder(
+                              pageBuilder: (context, animation1, animation2) =>
+                                  ImagePriceScreen()));
+                    }),
+                  ),
+                ],
+              ),
             ),
           ),
         ));
