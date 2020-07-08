@@ -16,7 +16,7 @@ class AlertDialogButtons extends StatelessWidget {
     return Row(
       children: <Widget>[
         Container(
-          // margin: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal*2),
+          margin: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal*2),
           child: FlatButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(2.0)),

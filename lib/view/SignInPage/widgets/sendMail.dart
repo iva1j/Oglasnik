@@ -10,9 +10,23 @@ var mailgun = MailgunMailer(
 Future<void> sendemail() async {
   var response = await mailgun.send(
       from: 'fcidicwebmail@gmail.com',
-      to: ["faruk.cidic@gmail.com"],
+      to: [emailInputControllerAlertDialog.text],
       subject: "Zaboravili ste lozinku? ",
       text: "Token za resetovanje lozinke je: " + tokenCode);
+  print(response.status);
+  print(response.message);
+}
+
+Future<void> sendemail3() async {
+  var response = await mailgun.send(
+    from: 'fcidicwebmail@gmail.com',
+    to: [emailInputControllerAlertDialog.text],
+    subject: "Test email",
+    template: "prvitemplate",
+    // options: {
+    //   'template_variables': {'tokenCode': tokenCode}
+    // },
+  );
   print(response.status);
   print(response.message);
 }

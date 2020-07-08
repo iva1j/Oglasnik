@@ -75,8 +75,6 @@ String emailAlertDialogValidation(String value) {
   }
 }
 
-
-
 String passwordCheckSignIn(String value) {
   if (value.length == null || value == '') return 'Polje ne smije biti prazno';
   if (value.length <= 7) {
