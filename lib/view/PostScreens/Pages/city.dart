@@ -46,12 +46,14 @@ class _CityState extends State<City> {
                         isExpanded: true,
                         underline: Container(),
                         onTap: (){dropdownValue = 'Sarajevo';},
+
                         onChanged: (String newValue) {
                           setState(() {
                             dropdownValue = newValue;
                           });
                         },
                         items: <String>['Sarajevo', 'Beograd', 'Zagreb','Moskva', 'Berlin', 'Pariz', 'London', 'Lisabon', 'Amsterdam', 'LA', 'Madrid', 'Barcelona', 'Tokyo', 'Peking']
+
                             .map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
@@ -70,6 +72,7 @@ class _CityState extends State<City> {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 30.0),
+
                     child: TextFormField(
                       maxLines: null,
                       keyboardType: TextInputType.multiline,
@@ -87,6 +90,7 @@ class _CityState extends State<City> {
                             PageRouteBuilder(
                                 pageBuilder: (context, animation1, animation2) =>
                                     Describe()));
+
                       })),
                 ],
               )

@@ -23,6 +23,7 @@ class _CategoryState extends State<Category> {
         leading: newInputBackButtonIphone(context),
       ),
       body: SingleChildScrollView(
+
         reverse:true,
               child: Padding(
                 padding: EdgeInsets.only(bottom: bottom),

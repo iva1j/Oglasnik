@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
@@ -15,7 +16,7 @@ class AlertDialogButtons extends StatelessWidget {
     return Row(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 35.0),
+          // margin: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal*2),
           child: FlatButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(2.0)),

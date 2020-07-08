@@ -23,6 +23,7 @@ class _DescribeState extends State<Describe> {
         body: SingleChildScrollView(
           reverse: true,
                   child: Padding(
+
             padding: EdgeInsets.only(bottom: bottom),
             child: Container(
               height: SizeConfig.screenHeight,
@@ -43,6 +44,7 @@ class _DescribeState extends State<Describe> {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 198.0),                    //kraj dijela
+
                     child: button('Dalje', () async {
                       Navigator.pushReplacement(
                           context,

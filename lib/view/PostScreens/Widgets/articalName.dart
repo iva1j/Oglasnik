@@ -42,6 +42,7 @@ class ArticalName extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 217.5),
+
                     child: button('Dalje', () async {
                       Navigator.pushReplacement(
                           context,
