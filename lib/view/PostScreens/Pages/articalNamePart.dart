@@ -1,8 +1,3 @@
-import 'package:Oglasnik/view/PostScreens/Pages/categoryList.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/city.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/describe.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/image_price_upload.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/articalName.dart';
 import 'package:flutter/material.dart';
 
 ScrollController c;
