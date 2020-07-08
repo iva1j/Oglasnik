@@ -1,5 +1,4 @@
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:flutter/material.dart';
 
 String nameValidator(String value) {
   Pattern pattern = r'(?!\s*$)';
