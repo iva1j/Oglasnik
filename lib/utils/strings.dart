@@ -110,6 +110,7 @@ class SplashScreen {
   String splashText = "OGLASNIK";
   String fontFamily = "Roboto";
 }
+
 var alertstatus = false;
 bool status = false;
 bool tokenstatus = false;
@@ -118,7 +119,7 @@ var nepoklapanje = false;
 final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
-final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
+//final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> globalKey() => registerFormKey;
 GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
 

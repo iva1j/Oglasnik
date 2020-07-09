@@ -5,7 +5,9 @@ import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
+
 dynamic formAlertKey;
+
 class AlertDialogWidget extends StatefulWidget {
   const AlertDialogWidget({
     Key key,
@@ -19,7 +21,6 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      key: alertDialogKey,
       backgroundColor: alertDialogBgColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
@@ -29,10 +30,9 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
       ),
       content: Container(
         margin: EdgeInsets.only(top: 43.0),
-        child: 
-        Form(
+        child: Form(
           key: alertFormKey,
-                  child: TextFormField(
+          child: TextFormField(
             decoration: InputDecoration(
               hintText: 'Email',
               contentPadding: EdgeInsets.only(left: 10),
@@ -44,11 +44,9 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
         ),
       ),
       actions: <Widget>[
-        // Container(
-        //   child: AuthService()
-        //       .checkStatusAlert(context, emailInputControllerAlertDialog.text)
-        // ),
-
+        Container(
+            child: AuthService().checkStatusAlert(
+                context, emailInputControllerAlertDialog.text)),
         AlertDialogButtons(),
       ],
     );

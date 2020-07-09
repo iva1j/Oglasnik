@@ -35,10 +35,8 @@ void onPressedRegister(BuildContext context, String fullName, String email,
     String password, String phoneNumber, dynamic formKey) {
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
- 
+
   if (formKey.currentState.validate() && status == false) {
-    // FocusScope.of(context).unfocus();
-    // FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
     WidgetsBinding.instance.addPostFrameCallback((_) {
       signUpPhoneNumberInputController.clear();
       signUpPasswordInputController.clear();

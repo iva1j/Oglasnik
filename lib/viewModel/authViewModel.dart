@@ -46,6 +46,7 @@ class AuthService extends ChangeNotifier {
 
 //if statement must be replaced with correct validation; currently status represents user in firestore (user existed)
   onPressedAlertDialog(BuildContext context, String email, String token) {
+
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
 
