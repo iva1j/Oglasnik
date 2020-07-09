@@ -3,6 +3,7 @@ import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/sendMail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -45,7 +46,15 @@ class AuthService extends ChangeNotifier {
 
 //if statement must be replaced with correct validation; currently status represents user in firestore (user existed)
   onPressedAlertDialog(BuildContext context, String email, String token) {
+    FocusScope.of(context).unfocus();
+    FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
+
     if (alertFormKey.currentState.validate() && status == true) {
+      FocusScope.of(context).unfocus();
+      FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        emailInputControllerAlertDialog.clear();
+      });
       db.collection("firestoreUsers").document(email).updateData({
         'email': email,
         'token': token,
@@ -155,7 +164,6 @@ class AuthService extends ChangeNotifier {
     }
   }
 
-
 //alert dialog checker
 //best case for checking user in database!
   Future<bool> userExistingorNotAlert(String emailAlert) async {
@@ -166,7 +174,9 @@ class AuthService extends ChangeNotifier {
         .getDocuments();
     final List<DocumentSnapshot> documents = result.documents;
     print("documents = " + documents.length.toString());
-    documents.length.toString() == '1' ? alertstatus = true : alertstatus = false;
+    documents.length.toString() == '1'
+        ? alertstatus = true
+        : alertstatus = false;
     print('alertstatus: ');
     print(alertstatus);
     return documents.length == 1;
@@ -186,20 +196,7 @@ class AuthService extends ChangeNotifier {
         });
   }
 
-
   //above alert dialog checker
-
-
-
-
-
-
-
-
-
-
-
-
 
   signInOrNot(BuildContext context, String email, String password) {
     FutureBuilder(

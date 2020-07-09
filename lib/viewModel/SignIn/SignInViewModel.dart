@@ -9,9 +9,12 @@ import 'package:flutter/material.dart';
 //When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
   //emailAlertDialog = emailInputControllerAlertDialog.text;
+  // Container(
+  //     child: AuthService()
+  //         .checkStatusAlert(context, emailInputControllerAlertDialog.text));
   Container(
-      child: AuthService()
-          .checkStatusAlert(context, emailInputControllerAlertDialog.text));
+      child: AuthService().tokenExistOrNot(
+          context, emailInputControllerAlertDialog.text, token));
   AuthService().onPressedAlertDialog(
       context, emailInputControllerAlertDialog.text, tokenCode);
   //emailInputControllerAlertDialog.clear();
