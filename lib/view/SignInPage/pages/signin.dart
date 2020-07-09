@@ -87,9 +87,13 @@ class _SigninPageState extends State<SigninPage> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                        child: AuthService().checkStatusAlert(
+                        child: AuthService().allowPasswordChange(
                             context, emailInputControllerAlertDialog.text)),
                     LogoContainer(),
+                    Container(
+                      child: AuthService().allowPasswordChange(
+                          context, emailInputControllerAlertDialog.text),
+                    ),
                     WelcomeScreen(),
                     PrijavaWelcomeScreen(),
                     FormSignIn(

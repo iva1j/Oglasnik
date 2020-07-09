@@ -45,7 +45,7 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
       ),
       actions: <Widget>[
         Container(
-            child: AuthService().checkStatusAlert(
+            child: AuthService().allowPasswordChange(
                 context, emailInputControllerAlertDialog.text)),
         AlertDialogButtons(),
       ],

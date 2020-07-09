@@ -72,7 +72,7 @@ String emailAlertDialogValidation(String value) {
   if (!regex.hasMatch(value)) {
     return 'Email mora biti validan';
   }
-  if (status == false) {
+  if (allowUserToChangePassword == false) {
     return 'Email ne postoji u bazi';
   } else {
     return null;
