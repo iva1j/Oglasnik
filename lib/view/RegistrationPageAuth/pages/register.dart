@@ -57,7 +57,6 @@ class _RegisterPageState extends State<RegisterPage> {
           color: Colors.white,
           onPressed: () {
             FocusScope.of(context).requestFocus(new FocusNode());
-
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(

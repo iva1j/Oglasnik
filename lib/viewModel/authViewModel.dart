@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -48,29 +50,31 @@ class AuthService extends ChangeNotifier {
   onPressedAlertDialog(BuildContext context, String email, String token) {
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-
-    if (alertFormKey.currentState.validate() &&
-        allowUserToChangePassword == true) {
-      FocusScope.of(context).unfocus();
-      FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        emailInputControllerAlertDialog.clear();
-      });
-      db.collection("firestoreUsers").document(email).updateData({
-        'email': email,
-        'token': token,
-      });
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-        return PasswordChange(email);
-      }));
-      // sendemail();
-      print('Za korisnika: ' +
-          email +
-          ' uspješno generisan token(na mail i firestore poslan), a on je: ' +
-          token);
-    } else {
-      print('Korisnik ne postoji u bazi!');
-    }
+    Timer(Duration(milliseconds: 300), () {
+      if (alertFormKey.currentState.validate() &&
+          allowUserToChangePassword == true) {
+        // FocusScope.of(context).unfocus();
+        // FocusScope.of(context).requestFocus(new FocusNode());
+        //remove focus
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          emailInputControllerAlertDialog.clear();
+        });
+        db.collection("firestoreUsers").document(email).updateData({
+          'email': email,
+          'token': token,
+        });
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+          return PasswordChange(email);
+        }));
+        // sendemail();
+        print('Za korisnika: ' +
+            email +
+            ' uspješno generisan token(na mail i firestore poslan), a on je: ' +
+            token);
+      } else {
+        print('Korisnik ne postoji u bazi!');
+      }
+    });
   }
 
 //if statement must be replaced with correct validation

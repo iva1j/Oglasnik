@@ -90,11 +90,7 @@ class _SigninPageState extends State<SigninPage> {
                         child: AuthService().allowPasswordChange(
                             context, emailInputControllerAlertDialog.text)),
                     LogoContainer(),
-                    Container(
-                      child: AuthService().allowPasswordChange(
-                          context, emailInputControllerAlertDialog.text),
-                    ),
-                    WelcomeScreen(),
+                     WelcomeScreen(),
                     PrijavaWelcomeScreen(),
                     FormSignIn(
                         //signInRegisterFormKey: signInRegisterFormKey,
