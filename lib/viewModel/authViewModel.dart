@@ -5,6 +5,7 @@ import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/sendMail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -85,28 +86,32 @@ class AuthService extends ChangeNotifier {
       String passwordConfirm,
       String token,
       dynamic formKey) {
-    if (formKey.currentState.validate() &&
-        tokenstatus == true &&
-        newPassword == passwordConfirm) {
-      db.collection("firestoreUsers").document(email).updateData({
-        'email': email,
-        'token': '',
-        'password': newPassword,
-      });
-      print(email);
-      print('korisniku sa emailom: ' +
-          email +
-          ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
-          newPassword);
+    FocusScope.of(context).unfocus();
+    FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
+    Timer(Duration(seconds: 1), () {
+      if (formKey.currentState.validate() &&
+          tokenstatus == true &&
+          newPassword == passwordConfirm) {
+        db.collection("firestoreUsers").document(email).updateData({
+          'email': email,
+          'token': '',
+          'password': newPassword,
+        });
+        print(email);
+        print('korisniku sa emailom: ' +
+            email +
+            ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
+            newPassword);
 
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => AnonymouseHome()));
-    } else if (newPassword != passwordConfirm) {
-      nepoklapanje = true;
-      print('lozinke se ne poklapaju');
-    } else {
-      print('Nešto nije uredu, molimo provjerite i ispravite grešku');
-    }
+        Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
+      } else if (newPassword != passwordConfirm) {
+        nepoklapanje = true;
+        print('lozinke se ne poklapaju');
+      } else {
+        print('Nešto nije uredu, molimo provjerite i ispravite grešku');
+      }
+    });
   }
 
 //tokenChecker

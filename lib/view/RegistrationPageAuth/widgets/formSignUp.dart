@@ -1,7 +1,7 @@
 import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:flutter/material.dart';
 
-class FormSignUp extends StatelessWidget {
+class FormSignUp extends StatefulWidget {
   const FormSignUp({
     Key key,
     @required GlobalKey<FormState> registerFormKey,
@@ -19,9 +19,14 @@ class FormSignUp extends StatelessWidget {
   final TextEditingController signUpPhoneNumberInputController;
 
   @override
+  _FormSignUpState createState() => _FormSignUpState();
+}
+
+class _FormSignUpState extends State<FormSignUp> {
+  @override
   Widget build(BuildContext context) {
     return Form(
-      key: signUpRegisterFormKey,
+      key: widget.signUpRegisterFormKey,
       child: Column(children: <Widget>[
         fullNameInputField(context),
         emailInputField(context),

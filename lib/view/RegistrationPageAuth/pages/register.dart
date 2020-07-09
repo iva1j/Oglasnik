@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/utils/shared/logoContainer.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/formSignUp.dart';
@@ -10,7 +11,7 @@ import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 
-final GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
+ GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
 TextEditingController signUpFullNameInputController;
 TextEditingController signUpPhoneNumberInputController;
 TextEditingController signUpEmailInputController;
@@ -31,7 +32,15 @@ class _RegisterPageState extends State<RegisterPage> {
     signUpPhoneNumberInputController = new TextEditingController();
     signUpEmailInputController = new TextEditingController();
     signUpPasswordInputController = new TextEditingController();
+    signUpRegisterFormKey = GlobalKey<FormState>();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    signUpRegisterFormKey.currentState.dispose();
+    //signInRegisterFormKey.currentState.dispose();
+    super.dispose();
   }
 
   @override

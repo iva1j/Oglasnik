@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
@@ -10,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 String email, password;
 dynamic formKey;
 
-class FormSignIn extends StatelessWidget {
+class FormSignIn extends StatefulWidget {
   const FormSignIn({
     Key key,
     //@required this.signInRegisterFormKey,
@@ -21,6 +22,24 @@ class FormSignIn extends StatelessWidget {
   //final GlobalKey<FormState> signInRegisterFormKey;
   final TextEditingController signInEmailInputController;
   final TextEditingController signInPasswordInputController;
+
+  @override
+  _FormSignInState createState() => _FormSignInState();
+}
+
+class _FormSignInState extends State<FormSignIn> {
+  @override
+  void initState() {
+    signInRegisterFormKey = GlobalKey<FormState>();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    signInRegisterFormKey.currentState.dispose();
+    //signUpRegisterFormKey.currentState.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +57,7 @@ class FormSignIn extends StatelessWidget {
                     hintText: 'Email',
                     contentPadding: EdgeInsets.only(left: 20),
                   ),
-                  controller: signInEmailInputController,
+                  controller: widget.signInEmailInputController,
                   keyboardType: TextInputType.visiblePassword,
                   validator: emailCheckSignIn,
                   textInputAction: TextInputAction.next,
@@ -59,7 +78,7 @@ class FormSignIn extends StatelessWidget {
                     hintText: 'Lozinka',
                     contentPadding: EdgeInsets.only(left: 20),
                   ),
-                  controller: signInPasswordInputController,
+                  controller: widget.signInPasswordInputController,
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: true,
                   validator: passwordCheckSignIn,
@@ -91,8 +110,8 @@ class FormSignIn extends StatelessWidget {
             child: button(
               'Prijavi se',
               () async {
-                email = signInEmailInputController.text;
-                password = signInPasswordInputController.text;
+                email = widget.signInEmailInputController.text;
+                password = widget.signInPasswordInputController.text;
                 formKey = signInRegisterFormKey;
                 onPressedSignInModel(context, email, password, formKey);
               },
