@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
-class PrijavaWelcomeScreen extends StatelessWidget {
+class PrijavaWelcomeScreen extends StatefulWidget {
   const PrijavaWelcomeScreen({
     Key key,
   }) : super(key: key);
 
+  @override
+  _PrijavaWelcomeScreenState createState() => _PrijavaWelcomeScreenState();
+}
+
+class _PrijavaWelcomeScreenState extends State<PrijavaWelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -24,11 +24,18 @@ class PasswordChange extends StatefulWidget {
 }
 
 class _PasswordChangeState extends State<PasswordChange> {
-  final GlobalKey<FormState> _passwordChangeFormKey = GlobalKey<FormState>();
+  //final GlobalKey<FormState> _passwordChangeFormKey = GlobalKey<FormState>();
   final db = Firestore.instance;
   FirebaseUser user;
+
+  @override
+  void dispose() {
+    passwordChangeFormKey.currentState.dispose();
+    super.dispose();
+  }
+
   initState() {
-    // PswChangeFields();
+    passwordChangeFormKey = GlobalKey<FormState>();
     super.initState();
   }
 
@@ -72,7 +79,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 ),
               ),
               Form(
-                key: _passwordChangeFormKey,
+                key: passwordChangeFormKey,
                 child: Column(children: <Widget>[
                   new Container(
                     margin: EdgeInsets.only(bottom: 10),
@@ -150,10 +157,15 @@ class _PasswordChangeState extends State<PasswordChange> {
                       newPassword = passwordInputController.text;
                       passwordConfirm = confirmPasswordInputController.text;
                       token = tokenInputController.text;
-                      formKey = _passwordChangeFormKey;
+                      formKey = passwordChangeFormKey;
                       print('Nakon klika - ispis je sljedeći:');
-                      AuthService().onPressedChangePassword(context, email,
-                          passwordInputController.text, confirmPasswordInputController.text, token, formKey);
+                      AuthService().onPressedChangePassword(
+                          context,
+                          email,
+                          passwordInputController.text,
+                          confirmPasswordInputController.text,
+                          token,
+                          formKey);
                     }),
                   ),
                 ]),

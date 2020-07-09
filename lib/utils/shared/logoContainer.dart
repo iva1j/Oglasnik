@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
-class LogoContainer extends StatelessWidget {
+class LogoContainer extends StatefulWidget {
   const LogoContainer({
     Key key,
   }) : super(key: key);
 
+  @override
+  _LogoContainerState createState() => _LogoContainerState();
+}
+
+class _LogoContainerState extends State<LogoContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(

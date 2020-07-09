@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
-class SignUpFormName extends StatelessWidget {
+class SignUpFormName extends StatefulWidget {
   const SignUpFormName({
     Key key,
   }) : super(key: key);
 
+  @override
+  _SignUpFormNameState createState() => _SignUpFormNameState();
+}
+
+class _SignUpFormNameState extends State<SignUpFormName> {
   @override
   Widget build(BuildContext context) {
     return Container(
