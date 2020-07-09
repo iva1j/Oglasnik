@@ -10,16 +10,11 @@ TextEditingController signInEmailInputController;
 TextEditingController signInPasswordInputController;
 //When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
-  //emailAlertDialog = emailInputControllerAlertDialog.text;
   // Container(
   //     child: AuthService()
-  //         .checkStatusAlert(context, emailInputControllerAlertDialog.text));
-  Container(
-      child: AuthService().tokenExistOrNot(
-          context, emailInputControllerAlertDialog.text, token));
+  //         .allowPasswordChange(context, emailInputControllerAlertDialog.text));
   AuthService().onPressedAlertDialog(
       context, emailInputControllerAlertDialog.text, tokenCode);
-  //emailInputControllerAlertDialog.clear();
 }
 
 //When user enter his email on AlertDialog, onPressed "odustani" is bellow:
