@@ -15,8 +15,7 @@ class AlertDialogButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Container(
+    return Container(
       width: double.maxFinite,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -53,6 +52,9 @@ class AlertDialogButtons extends StatelessWidget {
                   onPressedPosaljiKod(context);
                 }),
           ),
+          Container(
+              child:
+                  AuthService().allowPasswordChange(context, emailAlertDialog))
         ],
       ),
     );

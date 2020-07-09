@@ -49,7 +49,8 @@ class AuthService extends ChangeNotifier {
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
 
-    if (alertFormKey.currentState.validate() && status == true) {
+    if (alertFormKey.currentState.validate() &&
+        allowUserToChangePassword == true) {
       FocusScope.of(context).unfocus();
       FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -62,7 +63,7 @@ class AuthService extends ChangeNotifier {
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
         return PasswordChange(email);
       }));
-      sendemail();
+      // sendemail();
       print('Za korisnika: ' +
           email +
           ' uspješno generisan token(na mail i firestore poslan), a on je: ' +
@@ -166,31 +167,35 @@ class AuthService extends ChangeNotifier {
 
 //alert dialog checker
 //best case for checking user in database!
-  Future<bool> userExistingorNotAlert(String emailAlert) async {
+  Future<bool> isEmailValid(String email) async {
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
-        .where('email', isEqualTo: emailAlert)
+        .where('email', isEqualTo: email)
         .limit(1)
         .getDocuments();
-    final List<DocumentSnapshot> documents = result.documents;
-    print("documents = " + documents.length.toString());
-    documents.length.toString() == '1'
-        ? alertstatus = true
-        : alertstatus = false;
-    print('alertstatus: ');
-    print(alertstatus);
-    return documents.length == 1;
+    final List<DocumentSnapshot> emailDoc = result.documents;
+    if (emailDoc.length > 0) {
+      allowUserToChangePassword = true;
+      print("Trenutni status Alert Dialoga:" +
+          allowUserToChangePassword.toString());
+    } else {
+      allowUserToChangePassword = false;
+      print("Trenutni status Alert Dialoga:" +
+          allowUserToChangePassword.toString());
+    }
   }
 
-  checkStatusAlert(BuildContext context, String emailAlert) {
+  allowPasswordChange(BuildContext context, String email) {
     FutureBuilder(
-        future: AuthService().userExistingorNot(emailAlert),
+        future: AuthService().isEmailValid(email),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
-            print('korisnik postoji alert: ');
+            allowUserToChangePassword = true;
+            print('korisnik postoji');
             return Container();
           } else {
-            print('korisnik nije u bazi alert: ');
+            print('korisnik nije u bazi');
+            allowUserToChangePassword = false;
             return Container();
           }
         });

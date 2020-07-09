@@ -111,7 +111,7 @@ class SplashScreen {
   String fontFamily = "Roboto";
 }
 
-var alertstatus = false;
+bool alertstatus = false;
 bool status = false;
 bool tokenstatus = false;
 var nepoklapanje = false;
