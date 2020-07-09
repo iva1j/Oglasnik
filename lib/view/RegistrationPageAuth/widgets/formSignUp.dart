@@ -12,18 +12,17 @@ class FormSignUp extends StatelessWidget {
   })  : signUpRegisterFormKey = registerFormKey,
         super(key: key);
 
-final GlobalKey<FormState> signUpRegisterFormKey;
+  final GlobalKey<FormState> signUpRegisterFormKey;
   final TextEditingController signUpFullNameInputController;
   final TextEditingController signUpEmailInputController;
   final TextEditingController signUpPasswordInputController;
-  final TextEditingController signUpPhoneNumberInputController;  
+  final TextEditingController signUpPhoneNumberInputController;
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: signUpRegisterFormKey,
       child: Column(children: <Widget>[
-
         fullNameInputField(context),
         emailInputField(context),
         passwordInputField(context),
@@ -32,5 +31,4 @@ final GlobalKey<FormState> signUpRegisterFormKey;
       ]),
     );
   }
-
 }

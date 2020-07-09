@@ -9,7 +9,7 @@ Container priceTextField() {
         hintText: 'Cijena',
         contentPadding: EdgeInsets.only(left: 20),
       ),
-      keyboardType: TextInputType.text,
+      keyboardType: TextInputType.phone,
       validator: priceValidator,
     ),
   );

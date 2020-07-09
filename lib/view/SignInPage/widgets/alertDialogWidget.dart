@@ -21,7 +21,6 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      key: alertDialogKey,
       backgroundColor: alertDialogBgColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),

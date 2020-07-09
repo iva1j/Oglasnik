@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
 import 'alertDialogWidget.dart';
 
-final GlobalKey<FormState> alertDialogKey = GlobalKey<FormState>();
+final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
 final TextEditingController emailInputControllerAlertDialog =
     new TextEditingController();
 String emailAlertDialog;

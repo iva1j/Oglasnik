@@ -88,11 +88,6 @@ class FormSignIn extends StatelessWidget {
             child: button(
               'Prijavi se',
               () async {
-                FocusScopeNode currentFocus = FocusScope.of(context);
-                if (!currentFocus.hasPrimaryFocus &&
-                    currentFocus.focusedChild != null) {
-                  currentFocus.focusedChild.unfocus();
-                }
                 email = signInEmailInputController.text;
                 password = signInPasswordInputController.text;
                 formKey = signInRegisterFormKey;

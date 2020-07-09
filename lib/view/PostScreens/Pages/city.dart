@@ -1,7 +1,6 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/Pages/describe.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/image_price_upload.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:flutter/material.dart';
 

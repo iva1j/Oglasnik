@@ -6,12 +6,17 @@ import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 
+TextEditingController signInEmailInputController;
+TextEditingController signInPasswordInputController;
 //When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
   //emailAlertDialog = emailInputControllerAlertDialog.text;
+  // Container(
+  //     child: AuthService()
+  //         .checkStatusAlert(context, emailInputControllerAlertDialog.text));
   Container(
-      child: AuthService()
-          .checkStatusAlert(context, emailInputControllerAlertDialog.text));
+      child: AuthService().tokenExistOrNot(
+          context, emailInputControllerAlertDialog.text, token));
   AuthService().onPressedAlertDialog(
       context, emailInputControllerAlertDialog.text, tokenCode);
   //emailInputControllerAlertDialog.clear();
@@ -42,9 +47,14 @@ void cleanLoginInputFields() {
 void onPressedSignInModel(
     BuildContext context, String email, String password, dynamic formKey) {
   //ovdje pozvati
-  FocusScopeNode currentFocus = FocusScope.of(context);
+  FocusScope.of(context).unfocus();
+  FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
 
   if (formKey.currentState.validate() && status == true) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      signInEmailInputController.clear();
+      signInPasswordInputController.clear();
+    });
     print('Logged in');
 
     Navigator.of(context).pushReplacement(
