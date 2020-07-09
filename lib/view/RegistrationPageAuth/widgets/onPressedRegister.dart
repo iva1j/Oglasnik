@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
@@ -35,29 +37,30 @@ void onPressedRegister(BuildContext context, String fullName, String email,
     String password, String phoneNumber, dynamic formKey) {
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
+  Timer(Duration(milliseconds: 300), () {
+    if (formKey.currentState.validate() && status == false) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        signUpPhoneNumberInputController.clear();
+        signUpPasswordInputController.clear();
+        signUpEmailInputController.clear();
+        signUpFullNameInputController.clear();
+      }); // clear content
 
-  if (formKey.currentState.validate() && status == false) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      signUpPhoneNumberInputController.clear();
-      signUpPasswordInputController.clear();
-      signUpEmailInputController.clear();
-      signUpFullNameInputController.clear();
-    }); // clear content
+      db.collection("firestoreUsers").document(email).setData({
+        'fullName': fullName,
+        'email': email,
+        'password': password,
+        'phoneNumber': phoneNumber,
+      });
+      print('korisnik uspješno ubačen u bazi');
 
-    db.collection("firestoreUsers").document(email).setData({
-      'fullName': fullName,
-      'email': email,
-      'password': password,
-      'phoneNumber': phoneNumber,
-    });
-    print('korisnik uspješno ubačen u bazi');
-
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) {
-        return RegisteredHome();
-      }),
-    );
-  } else {
-    print('korisnik već u bazi, registracija nije uspjela');
-  }
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) {
+          return RegisteredHome();
+        }),
+      );
+    } else {
+      print('korisnik već u bazi, registracija nije uspjela');
+    }
+  });
 }
