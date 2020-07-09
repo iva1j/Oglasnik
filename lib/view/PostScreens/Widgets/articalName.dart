@@ -31,12 +31,17 @@ class ArticalName extends StatelessWidget {
                   Container(
                       margin: EdgeInsets.only(bottom: 80.0),
                       child: MainTitle()),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                        hintText: 'Naziv artikla', hintMaxLines: 26),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 15.0),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        hintText: 'Naziv artikla',
+                      ),
+                    ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 100.0),
+                    margin: EdgeInsets.only(top: 217.5),
+
                     child: button('Dalje', () async {
                       Navigator.pushReplacement(
                           context,

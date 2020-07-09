@@ -31,6 +31,7 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
       content: Container(
         margin: EdgeInsets.only(top: 43.0),
         child: Form(
+          key: alertFormKey,
           child: TextFormField(
             decoration: InputDecoration(
               hintText: 'Email',
