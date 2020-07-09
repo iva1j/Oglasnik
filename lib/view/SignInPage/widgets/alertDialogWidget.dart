@@ -29,7 +29,8 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
       ),
       content: Container(
         margin: EdgeInsets.only(top: 43.0),
-        child: Form(
+        child: 
+        Form(
           key: alertFormKey,
                   child: TextFormField(
             decoration: InputDecoration(
@@ -38,16 +39,15 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
             ),
             keyboardType: TextInputType.visiblePassword,
             validator: emailAlertDialogValidation,
-
             controller: emailInputControllerAlertDialog,
           ),
         ),
       ),
       actions: <Widget>[
-        Container(
-          child: AuthService()
-              .checkStatusAlert(context, emailInputControllerAlertDialog.text)
-        ),
+        // Container(
+        //   child: AuthService()
+        //       .checkStatusAlert(context, emailInputControllerAlertDialog.text)
+        // ),
 
         AlertDialogButtons(),
       ],

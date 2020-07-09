@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
@@ -13,43 +15,46 @@ class AlertDialogButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal*2),
-          child: FlatButton(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(2.0)),
-            color: Color.fromARGB(255, 226, 11, 48),
-            child: Text(
-              'ODUSTANI',
-              style: TextStyle(
-                  color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
-            ),
-            onPressed: () {
-              alerDialogOnPressedOdustani(context);
-            },
-          ),
-        ),
-        Container(
-            child: AuthService()
-                .tokenExistOrNot(context, emailAlertDialog, token)),
-        Container(
-          margin: EdgeInsets.only(right: 40.0),
-          child: FlatButton(
+    return 
+    Container(
+      width: double.maxFinite,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Container(
+            child: FlatButton(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(2.0)),
-              color: mainAppColor,
+              color: Color.fromARGB(255, 226, 11, 48),
               child: Text(
-                'POŠALJI KOD',
+                'ODUSTANI',
                 style: TextStyle(
                     color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
               ),
               onPressed: () {
-                onPressedPosaljiKod(context);
-              }),
-        ),
-      ],
+                alerDialogOnPressedOdustani(context);
+              },
+            ),
+          ),
+          Container(
+              child: AuthService()
+                  .tokenExistOrNot(context, emailAlertDialog, token)),
+          Container(
+            child: FlatButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2.0)),
+                color: mainAppColor,
+                child: Text(
+                  'POŠALJI KOD',
+                  style: TextStyle(
+                      color: Colors.white, fontFamily: 'Roboto', fontSize: 14),
+                ),
+                onPressed: () {
+                  onPressedPosaljiKod(context);
+                }),
+          ),
+        ],
+      ),
     );
   }
 }

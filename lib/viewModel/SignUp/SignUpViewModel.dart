@@ -21,6 +21,32 @@ void cleanInputFields(signUpFullNameInputController, signUpEmailInputController,
   signUpPasswordInputController.clear();
 }
 
+Container fullNameInputField(BuildContext context) {
+  return new Container(
+    margin: EdgeInsets.only(top: 15, bottom: 10),
+    child: new SizedBox(
+      width: double.infinity,
+      child: Container(
+        child: TextFormField(
+          textCapitalization: TextCapitalization.words,
+          decoration: InputDecoration(
+            hintText: 'Ime i prezime',
+            contentPadding: EdgeInsets.only(left: 20),
+          ),
+          controller: signUpFullNameInputController,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.next,
+          //  autofocus: true,
+          onFieldSubmitted: (v) {
+            FocusScope.of(context).nextFocus();
+          },
+          validator: nameValidator,
+        ),
+      ),
+    ),
+  );
+}
+
 SizedBox registerButton(BuildContext context) {
   return button(
     AppLabelsAuth().registracija,

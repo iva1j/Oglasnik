@@ -1,5 +1,4 @@
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:flutter/material.dart';
 
 String nameValidator(String value) {
   Pattern pattern = r'(?!\s*$)';
@@ -12,8 +11,13 @@ String nameValidator(String value) {
 }
 
 String phoneValidator(String value) {
-  if (value.length == 0) {
-    return 'Polje ne smije biti prazno';
+  Pattern pattern = r'^[0-9]+$';
+  RegExp regex = new RegExp(pattern);
+  if (value.length == null || value == '') {
+    return "Polje ne smije biti prazno";
+  }
+  if (!regex.hasMatch(value)) {
+    return 'Molimo unesite validan broj telefona';
   }
   return null;
 }

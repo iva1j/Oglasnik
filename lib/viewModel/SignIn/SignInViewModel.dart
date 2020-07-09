@@ -9,9 +9,12 @@ import 'package:flutter/material.dart';
 //When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
   //emailAlertDialog = emailInputControllerAlertDialog.text;
+  // Container(
+  //     child: AuthService()
+  //         .checkStatusAlert(context, emailInputControllerAlertDialog.text));
   Container(
-      child: AuthService()
-          .checkStatusAlert(context, emailInputControllerAlertDialog.text));
+      child: AuthService().tokenExistOrNot(
+          context, emailInputControllerAlertDialog.text, token));
   AuthService().onPressedAlertDialog(
       context, emailInputControllerAlertDialog.text, tokenCode);
   //emailInputControllerAlertDialog.clear();
@@ -42,8 +45,6 @@ void cleanLoginInputFields() {
 void onPressedSignInModel(
     BuildContext context, String email, String password, dynamic formKey) {
   //ovdje pozvati
-  FocusScopeNode currentFocus = FocusScope.of(context);
-
   if (formKey.currentState.validate() && status == true) {
     print('Logged in');
 

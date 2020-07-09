@@ -1,6 +1,5 @@
 import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/utils/validation.dart';
 
 class FormSignUp extends StatelessWidget {
   const FormSignUp({
@@ -13,40 +12,19 @@ class FormSignUp extends StatelessWidget {
   })  : signUpRegisterFormKey = registerFormKey,
         super(key: key);
 
-  final GlobalKey<FormState> signUpRegisterFormKey;
+final GlobalKey<FormState> signUpRegisterFormKey;
   final TextEditingController signUpFullNameInputController;
   final TextEditingController signUpEmailInputController;
   final TextEditingController signUpPasswordInputController;
-  final TextEditingController signUpPhoneNumberInputController;
+  final TextEditingController signUpPhoneNumberInputController;  
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: signUpRegisterFormKey,
       child: Column(children: <Widget>[
-        new Container(
-          margin: EdgeInsets.only(top: 15, bottom: 10),
-          child: new SizedBox(
-            width: double.infinity,
-            child: Container(
-              child: TextFormField(
-                textCapitalization: TextCapitalization.words,
-                decoration: InputDecoration(
-                  hintText: 'Ime i prezime',
-                  contentPadding: EdgeInsets.only(left: 20),
-                ),
-                controller: signUpFullNameInputController,
-                keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.next,
-                //  autofocus: true,
-                onFieldSubmitted: (v) {
-                  FocusScope.of(context).nextFocus();
-                },
-                validator: nameValidator,
-              ),
-            ),
-          ),
-        ),
+
+        fullNameInputField(context),
         emailInputField(context),
         passwordInputField(context),
         phoneNumberInputField(context),
@@ -54,4 +32,5 @@ class FormSignUp extends StatelessWidget {
       ]),
     );
   }
+
 }
