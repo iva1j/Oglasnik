@@ -105,6 +105,15 @@ class SignInPageWidgetFout {
   String prijavaTekst = "Prijava";
 }
 
+class SuccessAlertDialog {
+  String odlicno = "Odlično!";
+  String opis1 =
+      "Uspješno ste se registrovali na našu platformu Oglasnik.Sada možete napraviti svoj prvi artikal i ponuditi ga našim korisnicima.";
+  String opis2 = "Želimo Vam uspješno trgovanje.";
+  String uredu = "UREDU";
+  String kreiraj = "KREIRAJ";
+}
+
 //..view/SplashScreen
 class SplashScreen {
   String splashText = "OGLASNIK";

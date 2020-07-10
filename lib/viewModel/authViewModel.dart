@@ -56,7 +56,7 @@ class AuthService extends ChangeNotifier {
   onPressedAlertDialog(BuildContext context, String email, String token) {
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-    Timer(Duration(milliseconds: 300), () {
+    Timer(Duration(milliseconds: 800), () {
       if (alertFormKey.currentState.validate() &&
           allowUserToChangePassword == true) {
         // FocusScope.of(context).unfocus();
