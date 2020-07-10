@@ -80,15 +80,18 @@ class AuthService extends ChangeNotifier {
 
 //if statement must be replaced with correct validation
   void onPressedChangePassword(
-      BuildContext context,
-      String email,
-      String newPassword,
-      String passwordConfirm,
-      String token,
-      dynamic formKey) {
+    BuildContext context,
+    String email,
+    String newPassword,
+    String passwordConfirm,
+    String token,
+    dynamic formKey,
+  ) {
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
     Timer(Duration(seconds: 1), () {
+      allowAutoValidatePasswordChange = true;
+
       if (formKey.currentState.validate() &&
           tokenstatus == true &&
           newPassword == passwordConfirm) {
@@ -107,7 +110,13 @@ class AuthService extends ChangeNotifier {
             .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
       } else if (newPassword != passwordConfirm) {
         nepoklapanje = true;
-        print('lozinke se ne poklapaju');
+        // doesMatch = true;
+        // print('Does match status: ' + doesMatch.toString());
+        // Timer(Duration(seconds: 1), () {
+        //   doesMatch = false;
+        //   print('Does match status nakon jedne sec: ' + doesMatch.toString());
+        // });
+        // print('lozinke se ne poklapaju');
       } else {
         print('Nešto nije uredu, molimo provjerite i ispravite grešku');
       }

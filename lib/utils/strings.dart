@@ -116,6 +116,11 @@ bool status = false;
 bool tokenstatus = false;
 var nepoklapanje = false;
 bool allowUserToChangePassword = false;
+bool allowAutoValidatePasswordChange = false;
+bool allowAutoValideRegister = false;
+bool allowAutoValidateSignIn = false;
+bool allowAutoValidateAlertDialog = false;
+
 //final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 //final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();

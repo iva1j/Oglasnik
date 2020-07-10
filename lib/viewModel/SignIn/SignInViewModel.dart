@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
@@ -10,11 +12,18 @@ TextEditingController signInEmailInputController;
 TextEditingController signInPasswordInputController;
 //When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
-  // Container(
-  //     child: AuthService()
-  //         .allowPasswordChange(context, emailInputControllerAlertDialog.text));
-  AuthService().onPressedAlertDialog(
-      context, emailInputControllerAlertDialog.text, tokenCode);
+  FocusScope.of(context).unfocus();
+  FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
+
+  allowAutoValidateAlertDialog = true;
+
+  Timer(Duration(seconds: 1), () {
+    // Container(
+    //     child: AuthService()
+    //         .allowPasswordChange(context, emailInputControllerAlertDialog.text));
+    AuthService().onPressedAlertDialog(
+        context, emailInputControllerAlertDialog.text, tokenCode);
+  });
 }
 
 //When user enter his email on AlertDialog, onPressed "odustani" is bellow:
@@ -45,19 +54,23 @@ void onPressedSignInModel(
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
 
-  if (formKey.currentState.validate() && allowUserToChangePassword == true) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      signInEmailInputController.clear();
-      signInPasswordInputController.clear();
-    });
-    print('Logged in');
+  allowAutoValidateSignIn = true;
 
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) {
-        return RegisteredHome();
-      }),
-    );
-  } else {
-    print('Email ili password nisu tacni');
-  }
+  Timer(Duration(seconds: 1), () {
+    if (formKey.currentState.validate() && allowUserToChangePassword == true) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        signInEmailInputController.clear();
+        signInPasswordInputController.clear();
+      });
+      print('Logged in');
+
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) {
+          return RegisteredHome();
+        }),
+      );
+    } else {
+      print('Email ili password nisu tacni');
+    }
+  });
 }

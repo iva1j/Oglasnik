@@ -33,6 +33,7 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
         child: Form(
           key: alertFormKey,
           child: TextFormField(
+            autovalidate: allowAutoValidateAlertDialog,
             decoration: InputDecoration(
               hintText: 'Email',
               contentPadding: EdgeInsets.only(left: 10),

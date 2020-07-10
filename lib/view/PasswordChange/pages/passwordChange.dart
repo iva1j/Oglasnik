@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:Oglasnik/utils/colorThemes.dart';
+
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -15,6 +19,8 @@ final TextEditingController confirmPasswordInputController =
     new TextEditingController();
 String token, newPassword, confirmPassword, passwordConfirm;
 
+bool doesMatch = false;
+
 // ignore: must_be_immutable
 class PasswordChange extends StatefulWidget {
   String email;
@@ -27,6 +33,20 @@ class _PasswordChangeState extends State<PasswordChange> {
   //final GlobalKey<FormState> _passwordChangeFormKey = GlobalKey<FormState>();
   final db = Firestore.instance;
   FirebaseUser user;
+
+  // void validateCheck() {
+  //   if (passwordConfirm != newPassword) {
+  //     // setState(() {
+  //     //   doesMatch = false;
+  //     // });
+  //     doesMatch = true;
+  //     Timer(Duration(seconds: 1), () {
+  //       setState(() {
+  //         doesMatch = false;
+  //       });
+  //     });
+  //   }
+  // }
 
   @override
   void dispose() {
@@ -79,6 +99,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 ),
               ),
               Form(
+                autovalidate: allowAutoValidatePasswordChange,
                 key: passwordChangeFormKey,
                 child: Column(children: <Widget>[
                   new Container(
@@ -116,8 +137,12 @@ class _PasswordChangeState extends State<PasswordChange> {
                             contentPadding: EdgeInsets.only(left: 10),
                           ),
                           obscureText: true,
-                          validator: passwordValidator,
+                          //validator: passwordValidator,
                           controller: passwordInputController,
+                          validator: (value) => value.isEmpty
+                              ? 'Polje ne može biti prazno!'
+                              : null,
+                          //onSaved: (value) => newPassword = value,
                         ),
                       ),
                     ),
@@ -128,23 +153,29 @@ class _PasswordChangeState extends State<PasswordChange> {
                       width: double.infinity,
                       child: Container(
                         child: TextFormField(
-                          textInputAction: TextInputAction.done,
-                          onFieldSubmitted: (v) {
-                            FocusScope.of(context).unfocus();
-                          },
-                          style: TextStyle(
-                            color: (nepoklapanje == true)
-                                ? Colors.red
-                                : Colors.black,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: 'Potvrdi lozinku',
-                            contentPadding: EdgeInsets.only(left: 10),
-                          ),
-                          obscureText: true,
-                          controller: confirmPasswordInputController,
-                          validator: confirmpasswordValidator,
-                        ),
+                            textInputAction: TextInputAction.done,
+                            onFieldSubmitted: (v) {
+                              FocusScope.of(context).unfocus();
+                            },
+                            style: TextStyle(
+                                // color: (nepoklapanje == true)
+                                //     ? Colors.red
+                                //     : Colors.black,
+                                color: doesMatch ? Colors.red : Colors.black),
+                            decoration: InputDecoration(
+                              //color: Colors.purple,
+
+                              hintText: 'Potvrdi lozinku',
+                              contentPadding: EdgeInsets.only(left: 10),
+                            ),
+                            obscureText: true,
+                            controller: confirmPasswordInputController,
+                            //validator: confirmpasswordValidator,
+                            validator: (value) {
+                              if (value != passwordInputController.text) {
+                                return 'Lozinke se ne podudaraju!';
+                              }
+                            }),
                       ),
                     ),
                   ),
@@ -159,6 +190,8 @@ class _PasswordChangeState extends State<PasswordChange> {
                       token = tokenInputController.text;
                       formKey = passwordChangeFormKey;
                       print('Nakon klika - ispis je sljedeći:');
+                      //validateCheck();
+
                       AuthService().onPressedChangePassword(
                           context,
                           email,

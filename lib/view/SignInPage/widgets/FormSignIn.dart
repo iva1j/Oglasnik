@@ -53,6 +53,7 @@ class _FormSignInState extends State<FormSignIn> {
               width: double.infinity,
               child: Container(
                 child: TextFormField(
+                  autovalidate: allowAutoValidateSignIn,
                   decoration: InputDecoration(
                     hintText: 'Email',
                     contentPadding: EdgeInsets.only(left: 20),
@@ -74,6 +75,7 @@ class _FormSignInState extends State<FormSignIn> {
               width: double.infinity,
               child: Container(
                 child: TextFormField(
+                  autovalidate: allowAutoValidateSignIn,
                   decoration: InputDecoration(
                     hintText: 'Lozinka',
                     contentPadding: EdgeInsets.only(left: 20),
