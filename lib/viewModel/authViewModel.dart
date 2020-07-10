@@ -51,12 +51,9 @@ class AuthService extends ChangeNotifier {
   onPressedAlertDialog(BuildContext context, String email, String token) {
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-    Timer(Duration(milliseconds: 300), () {
+    Timer(Duration(milliseconds: 1000), () {
       if (alertFormKey.currentState.validate() &&
           allowUserToChangePassword == true) {
-        // FocusScope.of(context).unfocus();
-        // FocusScope.of(context).requestFocus(new FocusNode());
-        //remove focus
         WidgetsBinding.instance.addPostFrameCallback((_) {
           emailInputControllerAlertDialog.clear();
         });
@@ -73,6 +70,7 @@ class AuthService extends ChangeNotifier {
             ' uspješno generisan token(na mail i firestore poslan), a on je: ' +
             token);
       } else {
+        emailInputControllerAlertDialog.clear();
         print('Korisnik ne postoji u bazi!');
       }
     });

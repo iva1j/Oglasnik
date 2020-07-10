@@ -5,13 +5,15 @@ import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
-
 dynamic formAlertKey;
 
 class AlertDialogWidget extends StatefulWidget {
+  
   const AlertDialogWidget({
     Key key,
   }) : super(key: key);
+ 
+  
 
   @override
   _AlertDialogWidgetState createState() => _AlertDialogWidgetState();

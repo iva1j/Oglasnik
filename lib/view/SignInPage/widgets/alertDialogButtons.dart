@@ -7,12 +7,29 @@ import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/utils/strings.dart';
 
-class AlertDialogButtons extends StatelessWidget {
+class AlertDialogButtons extends StatefulWidget {
   const AlertDialogButtons({
     Key key,
   }) : super(key: key);
 
+  @override
+  _AlertDialogButtonsState createState() => _AlertDialogButtonsState();
+}
+
+// @override
+// void initState() {
+//   alertFormKey = GlobalKey<FormState>();
+//   super.initState();
+// }
+
+// void dispose() {
+//   alertFormKey = GlobalKey<FormState>();
+//   super.dispose();
+// }
+
+class _AlertDialogButtonsState extends State<AlertDialogButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(

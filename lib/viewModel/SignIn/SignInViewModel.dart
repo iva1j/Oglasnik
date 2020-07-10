@@ -5,6 +5,7 @@ import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 TextEditingController signInEmailInputController;
 TextEditingController signInPasswordInputController;
@@ -44,20 +45,23 @@ void onPressedSignInModel(
   //ovdje pozvati
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
+  Timer(Duration(milliseconds: 1000), () {
+    if (formKey.currentState.validate() && status == true
+        //&& allowUserToChangePassword == true
+        ) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        signInEmailInputController.clear();
+        signInPasswordInputController.clear();
+      });
+      print('Logged in');
 
-  if (formKey.currentState.validate() && allowUserToChangePassword == true) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      signInEmailInputController.clear();
-      signInPasswordInputController.clear();
-    });
-    print('Logged in');
-
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) {
-        return RegisteredHome();
-      }),
-    );
-  } else {
-    print('Email ili password nisu tacni');
-  }
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) {
+          return RegisteredHome();
+        }),
+      );
+    } else {
+      print('Email ili password nisu tacni');
+    }
+  });
 }

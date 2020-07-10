@@ -36,11 +36,12 @@ class _SigninPageState extends State<SigninPage> {
     super.initState();
   }
 
-void dispose() { 
-  signInEmailInputController.dispose();
-  signInPasswordInputController.dispose(); 
-  super.dispose();
-}
+  void dispose() {
+    signInEmailInputController.dispose();
+    signInPasswordInputController.dispose();
+    super.dispose();
+  }
+
   String error = '';
   @override
   Widget build(BuildContext context) {
@@ -96,7 +97,7 @@ void dispose() {
                         child: AuthService().allowPasswordChange(
                             context, emailInputControllerAlertDialog.text)),
                     LogoContainer(),
-                     WelcomeScreen(),
+                    WelcomeScreen(),
                     PrijavaWelcomeScreen(),
                     FormSignIn(
                         //signInRegisterFormKey: signInRegisterFormKey,
