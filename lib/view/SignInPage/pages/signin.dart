@@ -12,7 +12,6 @@ import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SigninPage extends StatefulWidget {
   final Function toggleView;
@@ -26,6 +25,7 @@ class _SigninPageState extends State<SigninPage> {
   FirebaseUser user;
 
   bool islogin = false;
+
   TextEditingController signInEmailInputController;
   TextEditingController signInPasswordInputController;
 
@@ -36,11 +36,12 @@ class _SigninPageState extends State<SigninPage> {
     super.initState();
   }
 
-void dispose() { 
-  signInEmailInputController.dispose();
-  signInPasswordInputController.dispose(); 
-  super.dispose();
-}
+  void dispose() {
+    signInEmailInputController.dispose();
+    signInPasswordInputController.dispose();
+    super.dispose();
+  }
+
   String error = '';
   @override
   Widget build(BuildContext context) {
@@ -96,7 +97,7 @@ void dispose() {
                         child: AuthService().allowPasswordChange(
                             context, emailInputControllerAlertDialog.text)),
                     LogoContainer(),
-                     WelcomeScreen(),
+                    WelcomeScreen(),
                     PrijavaWelcomeScreen(),
                     FormSignIn(
                         //signInRegisterFormKey: signInRegisterFormKey,
