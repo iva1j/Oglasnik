@@ -12,6 +12,7 @@ class ArticalName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
+    SizeConfig().init(context);
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         appBar: AppBar(
@@ -31,9 +32,15 @@ class ArticalName extends StatelessWidget {
                   Container(
                       margin: EdgeInsets.only(bottom: 80.0),
                       child: MainTitle()),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                        hintText: 'Naziv artikla', hintMaxLines: 26),
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 10,
+                        right: SizeConfig.blockSizeHorizontal * 10),
+                    child: TextFormField(
+                      maxLength: 28,
+                      decoration: const InputDecoration(
+                          hintText: 'Naziv artikla', hintMaxLines: 26),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 100.0),
