@@ -31,6 +31,8 @@ class _FormSignInState extends State<FormSignIn> {
   @override
   void initState() {
     signInRegisterFormKey = GlobalKey<FormState>();
+    signInEmailInputController = new TextEditingController();
+    signInPasswordInputController = new TextEditingController();
     super.initState();
   }
 
@@ -38,6 +40,8 @@ class _FormSignInState extends State<FormSignIn> {
   void dispose() {
     signInRegisterFormKey.currentState.dispose();
     //signUpRegisterFormKey.currentState.dispose();
+    signInEmailInputController.dispose();
+    signInPasswordInputController.dispose();
     super.dispose();
   }
 
@@ -97,7 +101,10 @@ class _FormSignInState extends State<FormSignIn> {
                   //  child: AuthService().tokenExistOrNot(context, email, token),
                   ),
               Container(
-                child: AuthService().signInOrNot(context, email, password),
+                child: AuthService().signInOrNot(
+                    context,
+                    signInEmailInputController.text,
+                    signInPasswordInputController.text),
               ),
               Container(child: AuthService().checkStatus(context, email)),
               Container(

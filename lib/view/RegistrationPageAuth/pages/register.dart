@@ -11,7 +11,7 @@ import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 
- GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
 TextEditingController signUpFullNameInputController;
 TextEditingController signUpPhoneNumberInputController;
 TextEditingController signUpEmailInputController;

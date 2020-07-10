@@ -100,10 +100,13 @@ class AuthService extends ChangeNotifier {
             email +
             ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
             newPassword);
-
         Navigator.of(context)
             .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
       } else if (newPassword != passwordConfirm) {
+        doesMatch = true;
+        Timer(Duration(seconds: 1), () {
+          doesMatch = false;
+        });
         nepoklapanje = true;
         print('lozinke se ne poklapaju');
       } else {

@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -6,7 +8,6 @@ import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 final TextEditingController emailInputController = new TextEditingController();
 final TextEditingController tokenInputController = new TextEditingController();
 final TextEditingController passwordInputController =
@@ -14,7 +15,7 @@ final TextEditingController passwordInputController =
 final TextEditingController confirmPasswordInputController =
     new TextEditingController();
 String token, newPassword, confirmPassword, passwordConfirm;
-
+bool doesMatch = false;
 // ignore: must_be_immutable
 class PasswordChange extends StatefulWidget {
   String email;
@@ -22,23 +23,19 @@ class PasswordChange extends StatefulWidget {
   @override
   _PasswordChangeState createState() => _PasswordChangeState(email);
 }
-
 class _PasswordChangeState extends State<PasswordChange> {
   //final GlobalKey<FormState> _passwordChangeFormKey = GlobalKey<FormState>();
   final db = Firestore.instance;
   FirebaseUser user;
-
   @override
   void dispose() {
     passwordChangeFormKey.currentState.dispose();
     super.dispose();
   }
-
   initState() {
     passwordChangeFormKey = GlobalKey<FormState>();
     super.initState();
   }
-
   String email;
   _PasswordChangeState(this.email);
   @override
@@ -79,6 +76,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 ),
               ),
               Form(
+                //autovalidate: true,
                 key: passwordChangeFormKey,
                 child: Column(children: <Widget>[
                   new Container(
@@ -118,6 +116,10 @@ class _PasswordChangeState extends State<PasswordChange> {
                           obscureText: true,
                           validator: passwordValidator,
                           controller: passwordInputController,
+                          // validator: (value) => value.isEmpty
+                          //     ? 'Polje ne može biti prazno!'
+                          //     : null,
+                          // onSaved: (value) => newPassword = value,
                         ),
                       ),
                     ),
@@ -133,17 +135,24 @@ class _PasswordChangeState extends State<PasswordChange> {
                             FocusScope.of(context).unfocus();
                           },
                           style: TextStyle(
-                            color: (nepoklapanje == true)
-                                ? Colors.red
-                                : Colors.black,
-                          ),
+                              // color: (nepoklapanje == true)
+                              //     ? Colors.red
+                              //     : Colors.black,
+
+                              color: doesMatch ? Colors.red : Colors.black),
                           decoration: InputDecoration(
+                            
                             hintText: 'Potvrdi lozinku',
                             contentPadding: EdgeInsets.only(left: 10),
                           ),
                           obscureText: true,
                           controller: confirmPasswordInputController,
                           validator: confirmpasswordValidator,
+                          // validator: (value) {
+                          //   if (value != passwordInputController.text) {
+                          //     return 'Lozinke se ne podudaraju!';
+                          //   }
+                          // }
                         ),
                       ),
                     ),
