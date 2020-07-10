@@ -45,7 +45,7 @@ void onPressedSignInModel(
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
 
-  if (formKey.currentState.validate() && allowUserToChangePassword == true) {
+  if (formKey.currentState.validate() && status == true) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       signInEmailInputController.clear();
       signInPasswordInputController.clear();

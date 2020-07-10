@@ -194,6 +194,23 @@ class AuthService extends ChangeNotifier {
     }
   }
 
+  signInOrNot(BuildContext context, String email, String password) {
+    FutureBuilder(
+        future: AuthService().isUserRegistered(email, password),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            validSignIn = true;
+            status = true;
+            print('korisnik postoji');
+            return Container();
+          } else {
+            print('korisnik nije u bazi');
+            status = false;
+            return Container();
+          }
+        });
+  }
+
   allowPasswordChange(BuildContext context, String email) {
     FutureBuilder(
         future: AuthService().isEmailValid(email),
@@ -211,23 +228,6 @@ class AuthService extends ChangeNotifier {
   }
 
   //above alert dialog checker
-
-  signInOrNot(BuildContext context, String email, String password) {
-    FutureBuilder(
-        future: AuthService().isUserRegistered(email, password),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            validSignIn = true;
-            status = true;
-            print('korisnik postoji');
-            return Container();
-          } else {
-            print('korisnik nije u bazi');
-            status = false;
-            return Container();
-          }
-        });
-  }
 
   updateUser(User updatedUser, String oldEmail, String text) {}
 }
