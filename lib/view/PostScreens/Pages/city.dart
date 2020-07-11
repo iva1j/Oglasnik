@@ -3,6 +3,104 @@ import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/Pages/describe.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/PostScreens/Pages/custom_dropdown.dart' as custom;
+
+// class City extends StatefulWidget {
+//   @override
+//   _CityState createState() => _CityState();
+// }
+
+// class _CityState extends State<City> {
+//   String dropdownValue = 'Sarajevo';
+//   @override
+//   Widget build(BuildContext context) {
+//     final bottom = MediaQuery.of(context).viewInsets.bottom;
+//     return Scaffold(
+//       resizeToAvoidBottomPadding: false,
+//       appBar: AppBar(
+//         backgroundColor: Colors.white,
+//         elevation: 0.0,
+//         leading: newInputBackButtonIphone(context),
+//       ),
+//       body: SingleChildScrollView(
+//         reverse: true,
+//               child: Padding(
+//                 padding: EdgeInsets.only(bottom: bottom),
+//                 child: Column(
+//             children: <Widget>[
+//               Container(margin: EdgeInsets.only(bottom: 80.0, top:15), child: MainTitle()),
+//               Container(
+//                 height: SizeConfig.screenHeight,
+//                 margin: EdgeInsets.symmetric(horizontal: 30.0),
+//                 child: Card(
+//                   elevation: 16,
+//                   child: Container(
+//                     margin: EdgeInsets.only(left: 10.0),
+//                     width: SizeConfig.screenWidth,
+//                     child: Container(
+//                       child: DropdownButton<String>(
+//                         value: dropdownValue,
+//                         icon: Icon(Icons.arrow_drop_down),
+//                         iconSize: 24,
+//                         elevation: 16,
+//                         isExpanded: true,
+//                         underline: Container(),
+//                         onTap: (){dropdownValue = 'Sarajevo';},
+
+//                         onChanged: (String newValue) {
+//                           setState(() {
+//                             dropdownValue = newValue;
+//                           });
+//                         },
+//                         items: <String>['Sarajevo', 'Beograd', 'Zagreb','Moskva', 'Berlin', 'Pariz', 'London', 'Lisabon', 'Amsterdam', 'LA', 'Madrid', 'Barcelona', 'Tokyo', 'Peking']
+
+//                             .map<DropdownMenuItem<String>>((String value) {
+//                           return DropdownMenuItem<String>(
+//                             value: value,
+//                             child: Text(value),
+//                           );
+//                         }).toList(),
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               Column(
+//                 children: <Widget>[
+//                   Container(
+//                     margin: EdgeInsets.only(bottom: 40.0),
+//                   ),
+//                   Container(
+//                     margin: EdgeInsets.symmetric(horizontal: 30.0),
+
+//                     child: TextFormField(
+//                       maxLines: null,
+//                       keyboardType: TextInputType.multiline,
+//                       decoration: const InputDecoration(
+//                           labelText: 'Oznake',
+//                           labelStyle: TextStyle(
+//                               )),
+//                     ),
+//                   ),
+//                   Container(
+//                       margin: EdgeInsets.only(top: 100.0),
+//                       child: button('Dalje', () async {
+//                         Navigator.pushReplacement(
+//                             context,
+//                             PageRouteBuilder(
+//                                 pageBuilder: (context, animation1, animation2) =>
+//                                     Describe()));
+
+//                       })),
+//                 ],
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class City extends StatefulWidget {
   @override
@@ -11,6 +109,7 @@ class City extends StatefulWidget {
 
 class _CityState extends State<City> {
   String dropdownValue = 'Sarajevo';
+
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -23,46 +122,69 @@ class _CityState extends State<City> {
       ),
       body: SingleChildScrollView(
         reverse: true,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: bottom),
-                child: Column(
+        child: Padding(
+          padding: EdgeInsets.only(bottom: bottom),
+          child: Column(
             children: <Widget>[
-              Container(margin: EdgeInsets.only(bottom: 80.0, top:15), child: MainTitle()),
+              Container(
+                  margin: EdgeInsets.only(bottom: 80.0, top: 15),
+                  child: MainTitle()),
               Container(
                 height: SizeConfig.screenHeight,
                 margin: EdgeInsets.symmetric(horizontal: 30.0),
                 child: Card(
-                  elevation: 16,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 10.0),
-                    width: SizeConfig.screenWidth,
+                    elevation: 16,
                     child: Container(
-                      child: DropdownButton<String>(
-                        value: dropdownValue,
-                        icon: Icon(Icons.arrow_drop_down),
-                        iconSize: 24,
-                        elevation: 16,
-                        isExpanded: true,
-                        underline: Container(),
-                        onTap: (){dropdownValue = 'Sarajevo';},
+                        //width: MediaQuery.of(context).size.width * 7,
+                        //margin: EdgeInsets.only(left: 0),
+                        margin: EdgeInsets.only(left: 1.5),
 
-                        onChanged: (String newValue) {
-                          setState(() {
-                            dropdownValue = newValue;
-                          });
-                        },
-                        items: <String>['Sarajevo', 'Beograd', 'Zagreb','Moskva', 'Berlin', 'Pariz', 'London', 'Lisabon', 'Amsterdam', 'LA', 'Madrid', 'Barcelona', 'Tokyo', 'Peking']
-
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                  ),
-                ),
+                        //left: MediaQuery.of(context).size.width * 0.75),
+                        padding: EdgeInsets.only(),
+                        child: Center(
+                            child: Align(
+                                alignment: Alignment.topRight,
+                                child: custom.DropdownButton<String>(
+                                  value: dropdownValue,
+                                  height: MediaQuery.of(context).size.height /
+                                      2.229,
+                                  icon: Icon(Icons.arrow_drop_down),
+                                  iconSize: 24,
+                                  elevation: 16,
+                                  isExpanded: true,
+                                  style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 14,
+                                    height: 1.5,
+                                  ),
+                                  underline: Container(),
+                                  onChanged: (String newValue) {
+                                    setState(() {
+                                      dropdownValue = newValue;
+                                    });
+                                  },
+                                  items: <String>[
+                                    'Sarajevo',
+                                    'London',
+                                    'Lisabon',
+                                    'Berlin',
+                                    'New York',
+                                    'Beč',
+                                    'Madrid',
+                                    'Rim',
+                                    'Bukurešt',
+                                    'Moskva',
+                                    'Kopenhagen',
+                                    'Basel',
+                                    'Pariz'
+                                  ].map<custom.DropdownMenuItem<String>>(
+                                      (String value) {
+                                    return custom.DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                ))))),
               ),
               Column(
                 children: <Widget>[
@@ -71,13 +193,13 @@ class _CityState extends State<City> {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 30.0),
-
                     child: TextFormField(
                       maxLines: null,
                       keyboardType: TextInputType.multiline,
                       decoration: const InputDecoration(
                           labelText: 'Oznake',
                           labelStyle: TextStyle(
+                              //color: myFocusNode.hasFocus ? Colors.grey : Colors.black
                               )),
                     ),
                   ),
@@ -87,9 +209,9 @@ class _CityState extends State<City> {
                         Navigator.pushReplacement(
                             context,
                             PageRouteBuilder(
-                                pageBuilder: (context, animation1, animation2) =>
-                                    Describe()));
-
+                                pageBuilder:
+                                    (context, animation1, animation2) =>
+                                        Describe()));
                       })),
                 ],
               )

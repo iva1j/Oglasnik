@@ -3,6 +3,7 @@ import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/Pages/city.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/PostScreens/Pages/custom_dropdown.dart' as custom;
 
 class Category extends StatefulWidget {
   @override
@@ -10,11 +11,11 @@ class Category extends StatefulWidget {
 }
 
 class _CategoryState extends State<Category> {
-  String dropdownValue = 'Kategorija';
+  String dropdownValue = 'Kategorija1';
 
   @override
   Widget build(BuildContext context) {
-    final bottom= MediaQuery.of(context).viewInsets.bottom;
+    final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
@@ -23,11 +24,10 @@ class _CategoryState extends State<Category> {
         leading: newInputBackButtonIphone(context),
       ),
       body: SingleChildScrollView(
-
-        reverse:true,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: bottom),
-                child: Column(
+        reverse: true,
+        child: Padding(
+          padding: EdgeInsets.only(bottom: bottom),
+          child: Column(
             children: <Widget>[
               Container(
                   margin: EdgeInsets.only(bottom: 80.0, top: 15),
@@ -36,49 +36,54 @@ class _CategoryState extends State<Category> {
                 height: SizeConfig.screenHeight,
                 margin: EdgeInsets.symmetric(horizontal: 30.0),
                 child: Card(
-                  elevation: 16,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 10.0),
-                    width: SizeConfig.screenWidth,
+                    elevation: 16,
                     child: Container(
-                      child: DropdownButton<String>(
-                        value: dropdownValue,
-                        icon: Icon(Icons.arrow_drop_down),
-                        iconSize: 24,
-                        elevation: 16,
-                        isExpanded: true,
-                        underline: Container(),
-                        onChanged: (String newValue) {
-                          setState(() {
-                            dropdownValue = newValue;
-                          });
-                        },
-                        items: <String>[
-                          'Kategorija',
-                          'Kategorija 2',
-                          'Kategorija 3',
-                          'Kategorija 4',
-                          'Kategorija 5',
-                          'Kategorija 6',
-                          'Kategorija 7',
-                          'Kategorija 8',
-                          'Kategorija 9',
-                          'Kategorija 0',
-                          'Kategorija 11',
-                          'Kategorija 32',
-                          'Kategorija 33',
-                          'Kategorija 42',
-                          'Kategorija 321',
-                        ].map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                  ),
-                ),
+                        //width: MediaQuery.of(context).size.width * 0.3,
+                        margin: const EdgeInsets.only(left: 2.0, right: 2.0),
+
+                        //left: MediaQuery.of(context).size.width * 0.75),
+                        //padding: EdgeInsets.only(),
+                        child: Center(
+                            child: Align(
+                                alignment: Alignment.topRight,
+                                child: custom.DropdownButton<String>(
+                                  value: dropdownValue,
+                                  height: MediaQuery.of(context).size.height /
+                                      2.229,
+                                  icon: Icon(Icons.arrow_drop_down),
+                                  iconSize: 24,
+                                  elevation: 16,
+                                  isExpanded: true,
+                                  style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 14,
+                                    height: 1.5,
+                                  ),
+                                  underline: Container(),
+                                  onChanged: (String newValue) =>
+                                      setState(() => dropdownValue = newValue),
+                                  items: <String>[
+                                    'Kategorija1',
+                                    'Kategorija2',
+                                    'Kategorija3',
+                                    'Kategorija4',
+                                    'Kategorija5',
+                                    'Kategorija6',
+                                    'Kategorija7',
+                                    'Kategorija8',
+                                    'Kategorija9',
+                                    'Kategorija10',
+                                    'Kategorija11',
+                                    'Kategorija12',
+                                    'Kategorija13'
+                                  ].map<custom.DropdownMenuItem<String>>(
+                                      (String value) {
+                                    return custom.DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                ))))),
               ),
               Column(
                 children: <Widget>[
@@ -103,8 +108,9 @@ class _CategoryState extends State<Category> {
                         Navigator.pushReplacement(
                             context,
                             PageRouteBuilder(
-                                pageBuilder: (context, animation1, animation2) =>
-                                    City()));
+                                pageBuilder:
+                                    (context, animation1, animation2) =>
+                                        City()));
                       })),
                 ],
               )
