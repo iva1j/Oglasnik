@@ -23,7 +23,6 @@ class _CategoryState extends State<Category> {
         leading: newInputBackButtonIphone(context),
       ),
       body: SingleChildScrollView(
-
         reverse:true,
               child: Padding(
                 padding: EdgeInsets.only(bottom: bottom),
@@ -80,38 +79,88 @@ class _CategoryState extends State<Category> {
                   ),
                 ),
               ),
-              Column(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(bottom: 40.0),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 30.0),
-                    child: TextFormField(
-                      maxLines: null,
-                      keyboardType: TextInputType.multiline,
-                      decoration: const InputDecoration(
-                          labelText: 'Proizvođač',
-                          labelStyle: TextStyle(
-                              //color: myFocusNode.hasFocus ? Colors.grey : Colors.black
-                              )),
-                    ),
-                  ),
-                  Container(
-                      margin: EdgeInsets.only(top: 100.0),
-                      child: button('Dalje', () async {
-                        Navigator.pushReplacement(
-                            context,
-                            PageRouteBuilder(
-                                pageBuilder: (context, animation1, animation2) =>
-                                    City()));
-                      })),
-                ],
-              )
+              Proizvodjac()
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+List<String> suggestionsList = [
+    "Apple",
+    "Armidillo",
+    "Actual",
+    "Actuary",
+    "America",
+    "Argentina",
+    "Australia",
+    "Antarctica",
+    "Blueberry",
+    "Cheese",
+    "Danish",
+    "Eclair",
+    "Fudge",
+    "Granola",
+    "Hazelnut",
+    "Ice Cream",
+    "Jely",
+    "Kiwi Fruit",
+    "Lamb",
+    "Macadamia",
+    "Nachos",
+    "Oatmeal",
+    "Palm Oil",
+    "Quail",
+    "Rabbit",
+    "Salad",
+    "T-Bone Steak",
+    "Urid Dal",
+    "Vanilla",
+    "Waffles",
+    "Yam",
+    "Zest"
+  ];
+
+
+class Proizvodjac extends StatelessWidget {
+  const Proizvodjac({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(bottom: 40.0),
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 30.0),
+          child: TextFormField(
+            maxLines: null,
+            keyboardType: TextInputType.multiline,
+            decoration: const InputDecoration(
+              
+                labelText: 'Proizvođač',
+                labelStyle: TextStyle(
+                    //color: myFocusNode.hasFocus ? Colors.grey : Colors.black
+                    )),
+          ),
+        ),
+       
+        // Container(
+        //     margin: EdgeInsets.only(top: 100.0),
+        //     child: button('Dalje', () async {
+        //       Navigator.pushReplacement(
+        //           context,
+        //           PageRouteBuilder(
+        //               pageBuilder: (context, animation1, animation2) =>
+        //                   City()));
+        //     })),
+      
+      ],
     );
   }
 }

@@ -1,13 +1,10 @@
 import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/articalName.dart';
+import 'package:Oglasnik/view/PostScreens/Pages/categoryListCopy.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
-import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

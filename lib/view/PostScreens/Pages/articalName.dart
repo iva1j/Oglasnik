@@ -47,6 +47,7 @@ class _ArticalNameState extends State<ArticalName> {
               children: <Widget>[
                 Page1(bottom: bottom),
                 Page5(bottom: bottom),
+                Proizvodjac(),
               ],
             ),
           ),
