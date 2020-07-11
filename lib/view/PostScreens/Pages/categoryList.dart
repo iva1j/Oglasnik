@@ -1,8 +1,10 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Pages/city.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class Category extends StatefulWidget {
   @override
@@ -14,7 +16,7 @@ class _CategoryState extends State<Category> {
 
   @override
   Widget build(BuildContext context) {
-    final bottom= MediaQuery.of(context).viewInsets.bottom;
+    final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
@@ -23,11 +25,10 @@ class _CategoryState extends State<Category> {
         leading: newInputBackButtonIphone(context),
       ),
       body: SingleChildScrollView(
-
-        reverse:true,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: bottom),
-                child: Column(
+        reverse: true,
+        child: Padding(
+          padding: EdgeInsets.only(bottom: bottom),
+          child: Column(
             children: <Widget>[
               Container(
                   margin: EdgeInsets.only(bottom: 80.0, top: 15),
@@ -80,38 +81,123 @@ class _CategoryState extends State<Category> {
                   ),
                 ),
               ),
-              Column(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(bottom: 40.0),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 30.0),
-                    child: TextFormField(
-                      maxLines: null,
-                      keyboardType: TextInputType.multiline,
-                      decoration: const InputDecoration(
-                          labelText: 'Proizvođač',
-                          labelStyle: TextStyle(
-                              //color: myFocusNode.hasFocus ? Colors.grey : Colors.black
-                              )),
-                    ),
-                  ),
-                  Container(
-                      margin: EdgeInsets.only(top: 100.0),
-                      child: button('Dalje', () async {
-                        Navigator.pushReplacement(
-                            context,
-                            PageRouteBuilder(
-                                pageBuilder: (context, animation1, animation2) =>
-                                    City()));
-                      })),
-                ],
+              Proizvodjac()
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+List<String> suggestionsList = [
+  "Apple",
+  "Armidillo",
+  "Actual",
+  "Actuary",
+  "America",
+  "Argentina",
+  "Australia",
+  "Antarctica",
+  "Blueberry",
+  "Cheese",
+  "Danish",
+  "Eclair",
+  "Fudge",
+  "Granola",
+  "Hazelnut",
+  "Ice Cream",
+  "Jely",
+  "Kiwi Fruit",
+  "Lamb",
+  "Macadamia",
+  "Nachos",
+  "Oatmeal",
+  "Palm Oil",
+  "Quail",
+  "Rabbit",
+  "Salad",
+  "T-Bone Steak",
+  "Urid Dal",
+  "Vanilla",
+  "Waffles",
+  "Yam",
+  "Zest"
+];
+
+class Proizvodjac extends StatefulWidget {
+  const Proizvodjac({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  _ProizvodjacState createState() => _ProizvodjacState();
+}
+
+class _ProizvodjacState extends State<Proizvodjac> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _typeAheadController = TextEditingController();
+  String _selectedCity;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Form(
+        key: this._formKey,
+        child: Padding(
+          padding: EdgeInsets.all(32.0),
+          child: Column(
+            children: <Widget>[
+              Text('What is your favorite city?'),
+              TypeAheadFormField(
+                textFieldConfiguration: TextFieldConfiguration(
+                  decoration: InputDecoration(labelText: 'City'),
+                  controller: this._typeAheadController,
+                ),
+                suggestionsCallback: (pattern) {
+                  return CitiesService.getSuggestions(pattern);
+                },
+                itemBuilder: (context, suggestion) {
+                  return ListTile(title: Text(suggestion));
+                },
+                onSuggestionSelected: (suggestion) {
+                  this._typeAheadController.text = suggestion;
+                },
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              RaisedButton(
+                child: Text('Submit'),
+                onPressed: () {
+                  if (this._formKey.currentState.validate()) {
+                    this._formKey.currentState.save();
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                            'Your Favorite City is ${this._selectedCity}')));
+                  }
+                },
               )
             ],
           ),
         ),
       ),
     );
+
+    // Column(
+    //   children: <Widget>[
+    //     Container(
+    //       margin: EdgeInsets.only(bottom: 40.0),
+    //     ),
+    //     Container(
+    //       margin: EdgeInsets.symmetric(horizontal: 30.0),
+    //       child: TextFormField(
+    //         maxLines: null,
+    //         keyboardType: TextInputType.multiline,
+    //         decoration: const InputDecoration(
+    //             labelText: 'Proizvođač', labelStyle: TextStyle()),
+    //       ),
+    //     ),      ],
+    // );
   }
 }
