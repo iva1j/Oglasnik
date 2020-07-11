@@ -26,8 +26,8 @@ class _SigninPageState extends State<SigninPage> {
 
   bool islogin = false;
 
-  TextEditingController signInEmailInputController;
-  TextEditingController signInPasswordInputController;
+  // TextEditingController signInEmailInputController;
+  // TextEditingController signInPasswordInputController;
 
   @override
   initState() {
@@ -100,7 +100,6 @@ class _SigninPageState extends State<SigninPage> {
                     WelcomeScreen(),
                     PrijavaWelcomeScreen(),
                     FormSignIn(
-                        //signInRegisterFormKey: signInRegisterFormKey,
                         signInEmailInputController: signInEmailInputController,
                         signInPasswordInputController:
                             signInPasswordInputController),

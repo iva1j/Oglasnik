@@ -56,12 +56,9 @@ class AuthService extends ChangeNotifier {
   onPressedAlertDialog(BuildContext context, String email, String token) {
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-    Timer(Duration(milliseconds: 800), () {
+    Timer(Duration(milliseconds: 1000), () {
       if (alertFormKey.currentState.validate() &&
           allowUserToChangePassword == true) {
-        // FocusScope.of(context).unfocus();
-        // FocusScope.of(context).requestFocus(new FocusNode());
-        //remove focus
         WidgetsBinding.instance.addPostFrameCallback((_) {
           emailInputControllerAlertDialog.clear();
         });
@@ -78,6 +75,7 @@ class AuthService extends ChangeNotifier {
             ' uspješno generisan token(na mail i firestore poslan), a on je: ' +
             token);
       } else {
+        emailInputControllerAlertDialog.clear();
         print('Korisnik ne postoji u bazi!');
       }
     });
@@ -85,16 +83,16 @@ class AuthService extends ChangeNotifier {
 
 //if statement must be replaced with correct validation
   void onPressedChangePassword(
-      BuildContext context,
-      String email,
-      String newPassword,
-      String passwordConfirm,
-      String token,
-      dynamic formKey) {
+    BuildContext context,
+    String email,
+    String newPassword,
+    String passwordConfirm,
+    String token,
+  ) {
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
     Timer(Duration(seconds: 1), () {
-      if (formKey.currentState.validate() &&
+      if (passwordChangeFormKey.currentState.validate() &&
           tokenstatus == true &&
           newPassword == passwordConfirm) {
         db.collection("firestoreUsers").document(email).updateData({
@@ -107,10 +105,29 @@ class AuthService extends ChangeNotifier {
             email +
             ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
             newPassword);
+        passwordInputController.clear();
+        confirmPasswordInputController.clear();
+        tokenInputController.clear();
+        // emailInputControllerAlertDialog.clear();
+        // passwordInputController.dispose();
+        // confirmPasswordInputController.dispose();
+        //tokenInputController.dispose();
+        // emailInputControllerAlertDialog.dispose();
+        // emailInputController.dispose();
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (context, animation1, animation2) => AnonymouseHome(),
+          ),
+        );
 
-        Navigator.of(context)
-            .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
+        // Navigator.of(context)
+        //     .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
       } else if (newPassword != passwordConfirm) {
+        doesMatch = true;
+        Timer(Duration(seconds: 1), () {
+          doesMatch = false;
+        });
         nepoklapanje = true;
         print('lozinke se ne poklapaju');
       } else {

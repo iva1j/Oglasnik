@@ -5,8 +5,7 @@ import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
-
-dynamic formAlertKey;
+//dynamic formAlertKey;
 
 class AlertDialogWidget extends StatefulWidget {
   const AlertDialogWidget({
@@ -18,6 +17,19 @@ class AlertDialogWidget extends StatefulWidget {
 }
 
 class _AlertDialogWidgetState extends State<AlertDialogWidget> {
+  @override
+  void initState() {
+    alertFormKey = GlobalKey<FormState>();
+    emailInputControllerAlertDialog = new TextEditingController();
+    super.initState();
+  }
+
+  void dispose() {
+    alertFormKey = GlobalKey<FormState>();
+    emailInputControllerAlertDialog.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

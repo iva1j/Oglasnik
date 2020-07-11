@@ -47,25 +47,20 @@ void onPressedSignInModel(
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   Timer(Duration(seconds: 1), () {
-    if (formKey.currentState.validate() && allowUserToChangePassword == true) {
+    if (formKey.currentState.validate() && status == true) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         signInEmailInputController.clear();
         signInPasswordInputController.clear();
       });
       print('Logged in');
-  if (formKey.currentState.validate() && status == true) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      signInEmailInputController.clear();
-      signInPasswordInputController.clear();
-    });
-    print('Logged in');
 
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) {
-        return RegisteredHome();
-      }),
-    );
-  } else {
-    print('Email ili password nisu tacni');
-  }
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) {
+          return RegisteredHome();
+        }),
+      );
+    } else {
+      print('Email ili password nisu tacni');
+    }
+  });
 }
