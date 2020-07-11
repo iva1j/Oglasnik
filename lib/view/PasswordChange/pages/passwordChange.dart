@@ -8,14 +8,15 @@ import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-final TextEditingController emailInputController = new TextEditingController();
-final TextEditingController tokenInputController = new TextEditingController();
-final TextEditingController passwordInputController =
-    new TextEditingController();
-final TextEditingController confirmPasswordInputController =
+
+TextEditingController emailInputController = new TextEditingController();
+TextEditingController tokenInputController = new TextEditingController();
+TextEditingController passwordInputController = new TextEditingController();
+TextEditingController confirmPasswordInputController =
     new TextEditingController();
 String token, newPassword, confirmPassword, passwordConfirm;
 bool doesMatch = false;
+
 // ignore: must_be_immutable
 class PasswordChange extends StatefulWidget {
   String email;
@@ -23,24 +24,33 @@ class PasswordChange extends StatefulWidget {
   @override
   _PasswordChangeState createState() => _PasswordChangeState(email);
 }
+
 class _PasswordChangeState extends State<PasswordChange> {
   //final GlobalKey<FormState> _passwordChangeFormKey = GlobalKey<FormState>();
   final db = Firestore.instance;
   FirebaseUser user;
   @override
   void dispose() {
-    passwordChangeFormKey.currentState.dispose();
+    // passwordChangeFormKey.currentState.dispose();
+    //emailInputController.dispose();
+    tokenInputController.dispose();
+    confirmPasswordInputController.dispose();
     super.dispose();
   }
+
   initState() {
+    emailInputController = new TextEditingController();
+    tokenInputController = new TextEditingController();
+    confirmPasswordInputController = new TextEditingController();
     passwordChangeFormKey = GlobalKey<FormState>();
     super.initState();
   }
+
   String email;
   _PasswordChangeState(this.email);
   @override
   Widget build(BuildContext context) {
-    dynamic formKey;
+    // dynamic formKey;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -138,10 +148,8 @@ class _PasswordChangeState extends State<PasswordChange> {
                               // color: (nepoklapanje == true)
                               //     ? Colors.red
                               //     : Colors.black,
-
                               color: doesMatch ? Colors.red : Colors.black),
                           decoration: InputDecoration(
-                            
                             hintText: 'Potvrdi lozinku',
                             contentPadding: EdgeInsets.only(left: 10),
                           ),
@@ -166,15 +174,14 @@ class _PasswordChangeState extends State<PasswordChange> {
                       newPassword = passwordInputController.text;
                       passwordConfirm = confirmPasswordInputController.text;
                       token = tokenInputController.text;
-                      formKey = passwordChangeFormKey;
                       print('Nakon klika - ispis je sljedeći:');
                       AuthService().onPressedChangePassword(
-                          context,
-                          email,
-                          passwordInputController.text,
-                          confirmPasswordInputController.text,
-                          token,
-                          formKey);
+                        context,
+                        email,
+                        passwordInputController.text,
+                        confirmPasswordInputController.text,
+                        token,
+                      );
                     }),
                   ),
                 ]),

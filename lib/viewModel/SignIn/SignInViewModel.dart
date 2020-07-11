@@ -7,7 +7,6 @@ import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/authViewModel.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/viewModel/authViewModel.dart';
 
 TextEditingController signInEmailInputController;
 TextEditingController signInPasswordInputController;
@@ -48,7 +47,7 @@ void onPressedSignInModel(
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   Timer(Duration(seconds: 1), () {
-    if (formKey.currentState.validate() && allowUserToChangePassword == true) {
+    if (formKey.currentState.validate() && status == true) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         signInEmailInputController.clear();
         signInPasswordInputController.clear();
@@ -62,7 +61,6 @@ void onPressedSignInModel(
       );
     } else {
       print('Email ili password nisu tacni');
-      print("validSignIn: " + validSignIn.toString());
     }
   });
 }

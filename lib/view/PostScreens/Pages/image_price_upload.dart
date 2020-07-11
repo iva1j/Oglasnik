@@ -18,10 +18,24 @@ class _ImagePriceScreenState extends State<ImagePriceScreen> {
         elevation: 0.0,
         leading: newInputBackButtonIphone(context),
       ),
-      body: SingleChildScrollView(
-        reverse: true,
-        child: ImageUploadPart(bottom: bottom),
-      ),
+      body: Page5(bottom: bottom),
+    );
+  }
+}
+
+class Page5 extends StatelessWidget {
+  const Page5({
+    Key key,
+    @required this.bottom,
+  }) : super(key: key);
+
+  final double bottom;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      reverse: true,
+      child: ImageUploadPart(bottom: bottom),
     );
   }
 }

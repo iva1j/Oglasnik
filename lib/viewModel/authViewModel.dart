@@ -18,7 +18,7 @@ bool validSignIn = false;
 bool validPasswordReset = false;
 
 class AuthService extends ChangeNotifier {
-//best case for checking user in database!
+// FUTURE BUILDER FOR REGISTER
   Future<bool> userExistingorNot(String email) async {
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
@@ -26,11 +26,16 @@ class AuthService extends ChangeNotifier {
         .limit(1)
         .getDocuments();
     final List<DocumentSnapshot> documents = result.documents;
-    print("documents = " + documents.length.toString());
-    documents.length.toString() == '1' ? status = true : status = false;
-    print('status: ');
-    print(status);
-    return documents.length == 1;
+    if (documents.length > 0) {
+      allowUserToRegister = false;
+      print("Hoce li pustiti Usera da se registruje: " +
+          allowUserToRegister.toString());
+    } else {
+      print("Hoce li pustiti Usera da se registruje" +
+          allowUserToRegister.toString());
+      allowUserToRegister = true;
+      print(allowUserToRegister);
+    }
   }
 
   checkStatus(BuildContext context, String email) {
@@ -78,16 +83,16 @@ class AuthService extends ChangeNotifier {
 
 //if statement must be replaced with correct validation
   void onPressedChangePassword(
-      BuildContext context,
-      String email,
-      String newPassword,
-      String passwordConfirm,
-      String token,
-      dynamic formKey) {
+    BuildContext context,
+    String email,
+    String newPassword,
+    String passwordConfirm,
+    String token,
+  ) {
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
     Timer(Duration(seconds: 1), () {
-      if (formKey.currentState.validate() &&
+      if (passwordChangeFormKey.currentState.validate() &&
           tokenstatus == true &&
           newPassword == passwordConfirm) {
         db.collection("firestoreUsers").document(email).updateData({
@@ -100,8 +105,24 @@ class AuthService extends ChangeNotifier {
             email +
             ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
             newPassword);
-        Navigator.of(context)
-            .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
+        passwordInputController.clear();
+        confirmPasswordInputController.clear();
+        tokenInputController.clear();
+        // emailInputControllerAlertDialog.clear();
+        // passwordInputController.dispose();
+        // confirmPasswordInputController.dispose();
+        //tokenInputController.dispose();
+        // emailInputControllerAlertDialog.dispose();
+        // emailInputController.dispose();
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (context, animation1, animation2) => AnonymouseHome(),
+          ),
+        );
+
+        // Navigator.of(context)
+        //     .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
       } else if (newPassword != passwordConfirm) {
         doesMatch = true;
         Timer(Duration(seconds: 1), () {
@@ -144,19 +165,17 @@ class AuthService extends ChangeNotifier {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             validPasswordReset = true;
-            status = true;
             print('Token za korisnika: ' + email + ' postoji u bazi');
             return Container();
           } else {
             print('Token za korisnika: ' + email + 'NE POSTOJI u bazi');
-            status = false;
             return Container();
           }
         });
   }
 
 // SIGN IN
-// Da li prima prave inpute?
+// FUTURE BUILDER ZA LOGIN (HOCE LI GA PUSTITI DA SE LOG IN)
   // ignore: missing_return
   Future<bool> isUserRegistered(String email, String password) async {
     final QuerySnapshot result = await Firestore.instance
@@ -175,7 +194,25 @@ class AuthService extends ChangeNotifier {
     }
   }
 
+  signInOrNot(BuildContext context, String email, String password) {
+    FutureBuilder(
+        future: AuthService().isUserRegistered(email, password),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            validSignIn = true;
+            status = true;
+            print('korisnik postoji');
+            return Container();
+          } else {
+            print('korisnik nije u bazi');
+            status = false;
+            return Container();
+          }
+        });
+  }
+
 //alert dialog checker
+//FUTURE BUILDER ZA ALERT DIALOG (HOCE LI MU PUSTITI DA PROMIJENI PASSWORD)
 //best case for checking user in database!
   Future<bool> isEmailValid(String email) async {
     final QuerySnapshot result = await Firestore.instance
@@ -212,23 +249,6 @@ class AuthService extends ChangeNotifier {
   }
 
   //above alert dialog checker
-
-  signInOrNot(BuildContext context, String email, String password) {
-    FutureBuilder(
-        future: AuthService().isUserRegistered(email, password),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            validSignIn = true;
-            status = true;
-            print('korisnik postoji');
-            return Container();
-          } else {
-            print('korisnik nije u bazi');
-            status = false;
-            return Container();
-          }
-        });
-  }
 
   updateUser(User updatedUser, String oldEmail, String text) {}
 }
