@@ -12,6 +12,12 @@ class CityPage extends StatefulWidget {
 }
 
 class _CityPageState extends State<CityPage> {
+  @override
+  void initState() {
+    productTagController = new TextEditingController();
+    super.initState();
+  }
+
   String dropdownValue = 'Sarajevo';
   @override
   Widget build(BuildContext context) {
