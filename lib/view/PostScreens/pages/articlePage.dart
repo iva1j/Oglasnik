@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
@@ -28,7 +29,10 @@ class _ArticlePageState extends State<ArticlePage> {
       ),
       body: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            MainTitle(),
             Expanded(
               child: PageView(
                 physics: new NeverScrollableScrollPhysics(),
@@ -67,16 +71,28 @@ class PageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: () => Navigator.of(context)
-                .pushReplacement(MaterialPageRoute(builder: (_) {
-              return RegisteredHome();
-            })),
-        child: Scaffold(
-          resizeToAvoidBottomPadding: false,
-          body: SingleChildScrollView(
-            reverse: true,
-            child: ArticlePageWidget(bottom: bottom),
-          ),
-        ));
+      onWillPop: () =>
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+        return RegisteredHome();
+      })),
+      child: Scaffold(
+        // appBar: AppBar(
+        //   backgroundColor: Colors.white,
+        //   elevation: 0.0,
+        //   leading: newInputBackButtonIphone(context),
+        // ),
+        // resizeToAvoidBottomPadding: false,
+        body: SingleChildScrollView(
+          reverse: true,
+          child: ArticlePageWidget(bottom: bottom),
+        ),
+      ),
+    );
   }
 }
+
+//  appBar: AppBar(
+//         backgroundColor: Colors.white,
+//         elevation: 0.0,
+//         leading: newInputBackButtonIphone(context),
+//       ),

@@ -12,20 +12,22 @@ class _DescribePageState extends State<DescribePage> {
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-    return WillPopScope(
-      onWillPop: () =>
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-        return CityPage();
-      })),
-      child: Scaffold(
+    return 
+    // WillPopScope(
+    //   onWillPop: () =>
+    //       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+    //     return CityPage();
+    //   })),
+    //   child: 
+      Scaffold(
           resizeToAvoidBottomPadding: false,
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            elevation: 0.0,
-            leading: newInputBackButtonIphone(context),
-          ),
-          body: PageFour(bottom: bottom)),
-    );
+          // appBar: AppBar(
+          //   backgroundColor: Colors.white,
+          //   elevation: 0.0,
+          //   leading: newInputBackButtonIphone(context),
+          // ),
+          body: PageFour(bottom: bottom));
+ //    );
   }
 }
 
@@ -39,18 +41,24 @@ class PageFour extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () =>
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-        return CityPage();
-      })),
-      child: Scaffold(
+    // return WillPopScope(
+    //   onWillPop: () =>
+    //       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+    //     return CityPage();
+    //   })),
+     // child: 
+    return  Scaffold(
+        // appBar: AppBar(
+        //   backgroundColor: Colors.white,
+        //   elevation: 0.0,
+        //   leading: newInputBackButtonIphone(context),
+        // ),
         resizeToAvoidBottomPadding: false,
         body: SingleChildScrollView(
           reverse: true,
           child: DescriptionPageWidget(bottom: bottom),
         ),
-      ),
-     );
+    //  ),
+    );
   }
 }

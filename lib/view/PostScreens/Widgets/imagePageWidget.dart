@@ -24,7 +24,8 @@ class ImagePageWidget extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-                margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
+              margin: EdgeInsets.only(bottom: 80.0),
+            ),
             imageOneUploadButton(() {}), //dodati funkcije
             imageTwoUploadButton(() {}),
             imageThreeUploadButton(() {}),
