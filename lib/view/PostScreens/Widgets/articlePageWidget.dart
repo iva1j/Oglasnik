@@ -1,10 +1,9 @@
-import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
-import 'package:Oglasnik/view/PostScreens/widgets/mainTitle.dart';
+import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 
-class ArticlePageWidget extends StatelessWidget {
+class ArticlePageWidget extends StatefulWidget {
   const ArticlePageWidget({
     Key key,
     @required this.bottom,
@@ -13,19 +12,25 @@ class ArticlePageWidget extends StatelessWidget {
   final double bottom;
 
   @override
+  _ArticlePageWidgetState createState() => _ArticlePageWidgetState();
+}
+
+class _ArticlePageWidgetState extends State<ArticlePageWidget> {
+  @override
+  void initState() {
+    productNameController = new TextEditingController();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return
-        // Padding(
-        //   padding: EdgeInsets.only(bottom: bottom),
-        //   child:
-        Container(
-      // height: SizeConfig.screenHeight,
+    return Container(
       child: Column(
         children: <Widget>[
-          // Container(child: MainTitle()),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 140),
             child: TextFormField(
+              controller: productNameController,
               maxLength: 28,
               decoration: const InputDecoration(
                   hintText: 'Naziv artikla',
@@ -35,7 +40,5 @@ class ArticlePageWidget extends StatelessWidget {
         ],
       ),
     );
-    // ),
-    //);
   }
 }

@@ -40,10 +40,6 @@ class ImagePageWidget extends StatelessWidget {
                     child: Text(MoneyText().kmText)),
               ],
             ),
-
-            // Container(
-            //     margin: EdgeInsets.only(top: 100.0),
-            //     child: button('Završi', () async {})),
           ],
         ),
       ),

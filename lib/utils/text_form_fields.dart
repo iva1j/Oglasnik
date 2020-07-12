@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ Container priceTextField() {
       ),
       keyboardType: TextInputType.phone,
       validator: priceValidator,
+      controller: productPriceController,
     ),
   );
 }
