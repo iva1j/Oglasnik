@@ -21,8 +21,6 @@ void cleanInputFields(signUpFullNameInputController, signUpEmailInputController,
   signUpPasswordInputController.clear();
 }
 
-void registerCheckField() {}
-
 Container fullNameInputField(BuildContext context) {
   return new Container(
     margin: EdgeInsets.only(top: 15, bottom: 10),
@@ -30,7 +28,6 @@ Container fullNameInputField(BuildContext context) {
       width: double.infinity,
       child: Container(
         child: TextFormField(
-          autovalidate: allowAutoValideRegister,
           textCapitalization: TextCapitalization.words,
           decoration: InputDecoration(
             hintText: 'Ime i prezime',
@@ -72,7 +69,6 @@ Container phoneNumberInputField(BuildContext context) {
       width: double.infinity,
       child: Container(
         child: TextFormField(
-          autovalidate: allowAutoValideRegister,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.only(left: 20),
             hintText: 'Broj telefona',
@@ -99,7 +95,6 @@ Container passwordInputField(BuildContext context) {
       width: double.infinity,
       child: Container(
         child: TextFormField(
-          autovalidate: allowAutoValideRegister,
           decoration: InputDecoration(
             labelStyle: TextStyle(),
             hintText: 'Lozinka',
@@ -128,7 +123,6 @@ Container emailInputField(BuildContext context) {
       width: double.infinity,
       child: Container(
         child: TextFormField(
-          autovalidate: allowAutoValideRegister,
           decoration: InputDecoration(
             hintText: 'Email',
             contentPadding: EdgeInsets.only(left: 20),

@@ -2,7 +2,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
-import 'package:Oglasnik/view/PostScreens/widgets/imagePageWidget.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/imagePageWidget.dart';
 import 'package:flutter/material.dart';
 
 class ImagePage extends StatefulWidget {

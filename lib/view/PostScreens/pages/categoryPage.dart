@@ -6,7 +6,8 @@ import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:Oglasnik/view/PostScreens/widgets/custom_dropdown.dart'
+
+import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
     as custom;
 
 class CategoryPage extends StatefulWidget {

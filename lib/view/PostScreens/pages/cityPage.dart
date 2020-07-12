@@ -3,7 +3,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/PostScreens/widgets/custom_dropdown.dart'
+import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
     as custom;
 
 class CityPage extends StatefulWidget {
