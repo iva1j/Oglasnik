@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +35,8 @@ class _CityPageState extends State<CityPage> {
             child: Column(
               children: <Widget>[
                 Container(
-                    margin: EdgeInsets.only(bottom: 80.0, top: 15),
-                    child: MainTitle()),
+                  margin: EdgeInsets.only(bottom: 80.0, top: 15),
+                ),
                 Container(
                   height: SizeConfig.screenHeight,
                   margin: EdgeInsets.symmetric(horizontal: 35.0),

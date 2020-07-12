@@ -14,25 +14,28 @@ class ArticlePageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: bottom),
-      child: Container(
-        height: SizeConfig.screenHeight,
-        child: Column(
-          children: <Widget>[
-            Container(child: MainTitle()),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 140),
-              child: TextFormField(
-                maxLength: 28,
-                decoration: const InputDecoration(
-                    hintText: 'Naziv artikla',
-                    contentPadding: EdgeInsets.only(left: 15.0)),
-              ),
+    return
+        // Padding(
+        //   padding: EdgeInsets.only(bottom: bottom),
+        //   child:
+        Container(
+      // height: SizeConfig.screenHeight,
+      child: Column(
+        children: <Widget>[
+          // Container(child: MainTitle()),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 140),
+            child: TextFormField(
+              maxLength: 28,
+              decoration: const InputDecoration(
+                  hintText: 'Naziv artikla',
+                  contentPadding: EdgeInsets.only(left: 15.0)),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+    // ),
+    //);
   }
 }
