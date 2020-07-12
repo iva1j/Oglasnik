@@ -1,4 +1,6 @@
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
@@ -8,16 +10,19 @@ import 'package:Oglasnik/view/PostScreens/widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/material.dart';
 
+PageController pageController = PageController(initialPage: 0);
+
 class ArticlePage extends StatefulWidget {
   @override
   _ArticlePageState createState() => _ArticlePageState();
 }
 
 class _ArticlePageState extends State<ArticlePage> {
-  PageController pageController = PageController(initialPage: 0);
-
   @override
   Widget build(BuildContext context) {
+    // print(pageController.offset.toString() +
+    //     '<---->' +
+    //     pageController.page.toString());
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -47,9 +52,19 @@ class _ArticlePageState extends State<ArticlePage> {
             ),
             Container(
               margin: EdgeInsets.only(bottom: 140.0),
-              child: button('Dalje', () async {
-                pageController.nextPage(
-                    duration: Duration(milliseconds: 800), curve: Curves.ease);
+              child: button(
+                  // pageController.offset == null || pageController.offset <= 1439
+                  //     ? next
+                  //     : lastPage,
+                  "Dalje", () async {
+                (pageController.offset == 1440.0)
+                    ? Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (_) => AnonymousHome()))
+                    : pageController.nextPage(
+                        duration: Duration(milliseconds: 800),
+                        curve: Curves.ease);
+                print(pageController.toString());
+                print(pageController.page);
               }),
             ),
           ],

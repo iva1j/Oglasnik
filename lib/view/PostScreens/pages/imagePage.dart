@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/imagePageWidget.dart';
 import 'package:flutter/material.dart';
@@ -45,10 +46,7 @@ class PageFive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () =>
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-        return DescribePage();
-      })),
+      onWillPop: () => Future.sync(onWillPop),
       child: Scaffold(
         // appBar: AppBar(
         //   backgroundColor: Colors.white,

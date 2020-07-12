@@ -22,10 +22,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return WillPopScope(
-      onWillPop: () =>
-          Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-        return ArticlePage();
-      })),
+      onWillPop: () => Future.sync(onWillPop),
       child: Scaffold(
         // appBar: AppBar(
         //   backgroundColor: Colors.white,

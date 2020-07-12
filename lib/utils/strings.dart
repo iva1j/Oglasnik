@@ -120,6 +120,8 @@ class SplashScreen {
   String fontFamily = "Roboto";
 }
 
+String next = 'Dalje';
+String lastPage = 'Završi';
 bool alertstatus = false;
 bool status = false;
 bool tokenstatus = false;

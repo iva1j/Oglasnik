@@ -1,3 +1,6 @@
+import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
+import 'package:flutter/animation.dart';
+
 class Proizvodjac {
   static final List<String> proizvodjac = [
     'Yoda',
@@ -22,3 +25,12 @@ class Proizvodjac {
       return null;
   }
 }
+
+
+  bool onWillPop() {
+    pageController.previousPage(
+      duration: Duration(milliseconds: 200),
+      curve: Curves.linear,
+    );
+    return false;
+  }
