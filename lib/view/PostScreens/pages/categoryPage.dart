@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -13,10 +14,16 @@ class CategoryPage extends StatefulWidget {
   _CategoryPageState createState() => _CategoryPageState();
 }
 
+//TextEditingController brandTypeAheadController;
+
 class _CategoryPageState extends State<CategoryPage> {
+  @override
+  void initState() {
+    brandTypeAheadController = new TextEditingController();
+    super.initState();
+  }
+
   String dropdownValue = 'Kategorija1';
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _typeAheadController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +71,9 @@ class _CategoryPageState extends State<CategoryPage> {
                                       height: 1.5,
                                     ),
                                     underline: Container(),
-                                    onChanged: (String newValue) => setState(
-                                        () => dropdownValue = newValue),
+                                    onChanged: (String productCategoryList) =>
+                                        setState(() => dropdownValue =
+                                            productCategoryList),
                                     items: <String>[
                                       'Kategorija1',
                                       'Kategorija2',
@@ -90,7 +98,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                   ))))),
                 ),
                 Form(
-                  key: this._formKey,
+                  key: brandFormKey,
                   child: Column(
                     children: <Widget>[
                       Container(
@@ -101,7 +109,7 @@ class _CategoryPageState extends State<CategoryPage> {
                             decoration: InputDecoration(
                                 hintText: 'Proizvođač',
                                 contentPadding: EdgeInsets.only(left: 15.0)),
-                            controller: this._typeAheadController,
+                            controller: brandTypeAheadController,
                           ),
                           suggestionsCallback: (pattern) {
                             return Proizvodjac.getSuggestions(pattern);
@@ -110,7 +118,7 @@ class _CategoryPageState extends State<CategoryPage> {
                             return ListTile(title: Text(suggestion));
                           },
                           onSuggestionSelected: (suggestion) {
-                            this._typeAheadController.text = suggestion;
+                            brandTypeAheadController.text = suggestion;
                           },
                         ),
                       ),
