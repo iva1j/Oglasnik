@@ -1,9 +1,9 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
-import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/PostScreens/widgets/custom_dropdown.dart'
+    as custom;
 
 class CityPage extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class CityPage extends StatefulWidget {
 }
 
 class _CityPageState extends State<CityPage> {
-  String dropdownValue = 'Grad';
+  String dropdownValue = 'Sarajevo';
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -42,46 +42,51 @@ class _CityPageState extends State<CityPage> {
                   child: Card(
                     elevation: 16,
                     child: Container(
-                      margin: EdgeInsets.only(left: 10.0),
-                      width: SizeConfig.screenWidth,
-                      child: Container(
-                        child: DropdownButton<String>(
-                          value: dropdownValue,
-                          icon: Icon(Icons.arrow_drop_down),
-                          iconSize: 24,
-                          elevation: 16,
-                          isExpanded: true,
-                          underline: Container(),
-                          onTap: () {},
-                          onChanged: (String newValue) {
-                            setState(() {
-                              dropdownValue = newValue;
-                            });
-                          },
-                          items: <String>[
-                            'Grad',
-                            'Beograd',
-                            'Zagreb',
-                            'Moskva',
-                            'Berlin',
-                            'Pariz',
-                            'London',
-                            'Lisabon',
-                            'Amsterdam',
-                            'LA',
-                            'Madrid',
-                            'Barcelona',
-                            'Tokyo',
-                            'Peking'
-                          ].map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                    ),
+                        margin: EdgeInsets.only(left: 5.0, right: 5.0),
+                        child: Center(
+                            child: Align(
+                                alignment: Alignment.topRight,
+                                child: custom.DropdownButton<String>(
+                                  value: dropdownValue,
+                                  height: MediaQuery.of(context).size.height /
+                                      2.229,
+                                  icon: Icon(Icons.arrow_drop_down),
+                                  iconSize: 24,
+                                  elevation: 16,
+                                  isExpanded: true,
+                                  style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 14,
+                                    height: 1.5,
+                                  ),
+                                  underline: Container(),
+                                  onChanged: (String newValue) {
+                                    setState(() {
+                                      dropdownValue = newValue;
+                                    });
+                                  },
+                                  items: <String>[
+                                    'Sarajevo',
+                                    'London',
+                                    'Lisabon',
+                                    'Berlin',
+                                    'New York',
+                                    'Beč',
+                                    'Madrid',
+                                    'Rim',
+                                    'Bukurešt',
+                                    'Moskva',
+                                    'Kopenhagen',
+                                    'Basel',
+                                    'Pariz'
+                                  ].map<custom.DropdownMenuItem<String>>(
+                                      (String value) {
+                                    return custom.DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                )))),
                   ),
                 ),
                 Column(
