@@ -27,11 +27,6 @@ class _CategoryPageState extends State<CategoryPage> {
       })),
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
-        // appBar: AppBar(
-        //   backgroundColor: Colors.white,
-        //   elevation: 0.0,
-        //   leading: newInputBackButtonIphone(context),
-        // ),
         body: SingleChildScrollView(
           reverse: true,
           child: Padding(
