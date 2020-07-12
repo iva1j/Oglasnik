@@ -1,8 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
@@ -10,7 +7,6 @@ import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 
@@ -57,9 +53,9 @@ class _ArticlePageState extends State<ArticlePage> {
                 if (pageController.page == 4) {
                   email = 'nekimail';
                   productName = productNameController.text;
-                  productCategory = 'adjasdjasp';
+                  productCategory = dropdownValueCategory;
                   productBrand = brandTypeAheadController.text;
-                  productLocation = 'adjasdjasp';
+                  productLocation = dropdownValueCity;
                   productID = 'adjasdjasp';
                   productTag = productTagController.text;
                   productDesc = productDescController.text;
