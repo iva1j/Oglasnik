@@ -32,7 +32,7 @@ class ImagePageWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                    margin: EdgeInsets.only(left: 35.0),
+                    margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
                     child: priceTextField()),
                 Padding(
                     padding: EdgeInsets.only(left: 7),
@@ -40,9 +40,9 @@ class ImagePageWidget extends StatelessWidget {
               ],
             ),
 
-            Container(
-                margin: EdgeInsets.only(top: 100.0),
-                child: button('Završi', () async {})),
+            // Container(
+            //     margin: EdgeInsets.only(top: 100.0),
+            //     child: button('Završi', () async {})),
           ],
         ),
       ),

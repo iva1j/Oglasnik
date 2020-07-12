@@ -1,3 +1,4 @@
+import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/descriptionPageWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
@@ -11,14 +12,20 @@ class _DescribePageState extends State<DescribePage> {
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-    return Scaffold(
-        resizeToAvoidBottomPadding: false,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0.0,
-          leading: newInputBackButtonIphone(context),
-        ),
-        body: PageFour(bottom: bottom));
+    return WillPopScope(
+      onWillPop: () =>
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+        return CityPage();
+      })),
+      child: Scaffold(
+          resizeToAvoidBottomPadding: false,
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            elevation: 0.0,
+            leading: newInputBackButtonIphone(context),
+          ),
+          body: PageFour(bottom: bottom)),
+    );
   }
 }
 

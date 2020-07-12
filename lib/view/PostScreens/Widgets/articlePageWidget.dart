@@ -18,28 +18,16 @@ class ArticlePageWidget extends StatelessWidget {
       padding: EdgeInsets.only(bottom: bottom),
       child: Container(
         height: SizeConfig.screenHeight,
-        margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
+            Container(child: MainTitle()),
             Container(
-                margin: EdgeInsets.only(bottom: 120.0), child: MainTitle()),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 35.0),
+              margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 140),
               child: TextFormField(
                 decoration: const InputDecoration(
                     hintText: 'Naziv artikla',
                     contentPadding: EdgeInsets.only(left: 15.0)),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 217.5),
-              child: button('Dalje', () async {
-                Navigator.pushReplacement(
-                    context,
-                    PageRouteBuilder(
-                        pageBuilder: (context, animation1, animation2) =>
-                            CategoryPage()));
-              }),
             ),
           ],
         ),

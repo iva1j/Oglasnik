@@ -25,7 +25,7 @@ class DescriptionPageWidget extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
             Container(
               //dodati ovaj dio
-              margin: EdgeInsets.symmetric(horizontal: 35.0),
+              margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 90),
               child: TextField(
                 maxLines: null,
                 keyboardType: TextInputType.multiline,
@@ -34,17 +34,17 @@ class DescriptionPageWidget extends StatelessWidget {
                     contentPadding: EdgeInsets.only(left: 15.0)),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 198.0), //kraj dijela
+            // Container(
+            //   margin: EdgeInsets.only(top: 198.0), //kraj dijela
 
-              child: button('Dalje', () async {
-                Navigator.pushReplacement(
-                    context,
-                    PageRouteBuilder(
-                        pageBuilder: (context, animation1, animation2) =>
-                            ImagePage()));
-              }),
-            ),
+            //   child: button('Dalje', () async {
+            //     Navigator.pushReplacement(
+            //         context,
+            //         PageRouteBuilder(
+            //             pageBuilder: (context, animation1, animation2) =>
+            //                 ImagePage()));
+            //   }),
+            // ),
           ],
         ),
       ),

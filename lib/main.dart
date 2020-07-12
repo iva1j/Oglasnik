@@ -4,6 +4,7 @@ import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
+import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
