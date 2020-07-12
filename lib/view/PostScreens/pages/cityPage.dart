@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/custom_dropdown.dart'
     as custom;
 
+String dropdownValueCity = 'Sarajevo';
+
 class CityPage extends StatefulWidget {
   @override
   _CityPageState createState() => _CityPageState();
@@ -18,7 +20,6 @@ class _CityPageState extends State<CityPage> {
     super.initState();
   }
 
-  String dropdownValue = 'Sarajevo';
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -46,7 +47,7 @@ class _CityPageState extends State<CityPage> {
                         child: Align(
                           alignment: Alignment.topRight,
                           child: custom.DropdownButton<String>(
-                            value: dropdownValue,
+                            value: dropdownValueCity,
                             height: MediaQuery.of(context).size.height / 2.229,
                             icon: Icon(Icons.arrow_drop_down),
                             iconSize: 24,
@@ -60,7 +61,7 @@ class _CityPageState extends State<CityPage> {
                             underline: Container(),
                             onChanged: (String newValue) {
                               setState(() {
-                                dropdownValue = newValue;
+                                dropdownValueCity = newValue;
                               });
                             },
                             items: <String>[
