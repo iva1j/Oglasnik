@@ -44,8 +44,10 @@ class AuthService extends ChangeNotifier {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             print('korisnik postoji');
+            allowUserToRegister = false;
             return Container();
           } else {
+            allowUserToRegister = true;
             print('korisnik nije u bazi');
             return Container();
           }
