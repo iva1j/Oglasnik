@@ -45,10 +45,7 @@ class _ArticlePageState extends State<ArticlePage> {
                 physics: new NeverScrollableScrollPhysics(),
                 controller: pageController,
                 children: [
-                  Container(
-                      child: PageOne(
-                    bottom: bottom,
-                  )),
+                  Container(child: PageOne(bottom: bottom)),
                   Container(child: CategoryPage()),
                   Container(child: CityPage()),
                   Container(child: PageFour(bottom: bottom)),
@@ -66,12 +63,12 @@ class _ArticlePageState extends State<ArticlePage> {
                   productBrand = brandTypeAheadController.text;
                   productLocation = 'adjasdjasp';
                   productID = 'adjasdjasp';
-                  productTag = 'productTagController.text';
-                  productDesc = 'productDescController.text';
+                  productTag = productTagController.text;
+                  productDesc = productDescController.text;
                   productImg1 = 'adjasdjasp';
                   productImg2 = 'adjasdjasp';
                   productImg3 = 'adjasdjasp';
-                  productprice = 'productPriceController.text';
+                  productprice = productPriceController.text;
                   print(email + productName + productTag);
                   CreateProduct().createProduct(
                       context,

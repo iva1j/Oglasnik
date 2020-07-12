@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
@@ -35,13 +36,24 @@ class _ImagePageState extends State<ImagePage> {
   }
 }
 
-class PageFive extends StatelessWidget {
+class PageFive extends StatefulWidget {
   const PageFive({
     Key key,
     @required this.bottom,
   }) : super(key: key);
 
   final double bottom;
+
+  @override
+  _PageFiveState createState() => _PageFiveState();
+}
+
+class _PageFiveState extends State<PageFive> {
+  @override
+  void initState() {
+    productPriceController = new TextEditingController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +68,7 @@ class PageFive extends StatelessWidget {
         resizeToAvoidBottomPadding: false,
         body: SingleChildScrollView(
           reverse: true,
-          child: ImagePageWidget(bottom: bottom),
+          child: ImagePageWidget(bottom: widget.bottom),
         ),
       ),
     );

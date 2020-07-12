@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/descriptionPageWidget.dart';
@@ -32,7 +33,7 @@ class _DescribePageState extends State<DescribePage> {
   }
 }
 
-class PageFour extends StatelessWidget {
+class PageFour extends StatefulWidget {
   const PageFour({
     Key key,
     @required this.bottom,
@@ -40,6 +41,11 @@ class PageFour extends StatelessWidget {
 
   final double bottom;
 
+  @override
+  _PageFourState createState() => _PageFourState();
+}
+
+class _PageFourState extends State<PageFour> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -57,7 +63,7 @@ class PageFour extends StatelessWidget {
           resizeToAvoidBottomPadding: false,
           body: SingleChildScrollView(
             reverse: true,
-            child: DescriptionPageWidget(bottom: bottom),
+            child: DescriptionPageWidget(bottom: widget.bottom),
           ),
           //  ),
         ));
