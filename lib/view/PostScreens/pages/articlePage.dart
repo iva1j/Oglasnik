@@ -66,9 +66,17 @@ class PageOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      reverse: true,
-      child: ArticlePageWidget(bottom: bottom),
-    );
+    return WillPopScope(
+        onWillPop: () => Navigator.of(context)
+                .pushReplacement(MaterialPageRoute(builder: (_) {
+              return RegisteredHome();
+            })),
+        child: Scaffold(
+          resizeToAvoidBottomPadding: false,
+          body: SingleChildScrollView(
+            reverse: true,
+            child: ArticlePageWidget(bottom: bottom),
+          ),
+        ));
   }
 }

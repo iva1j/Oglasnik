@@ -1,9 +1,7 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
-import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
@@ -27,11 +25,6 @@ class _CategoryPageState extends State<CategoryPage> {
       })),
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
-        // appBar: AppBar(
-        //   backgroundColor: Colors.white,
-        //   elevation: 0.0,
-        //   leading: newInputBackButtonIphone(context),
-        // ),
         body: SingleChildScrollView(
           reverse: true,
           child: Padding(

@@ -40,9 +40,18 @@ class PageFive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      reverse: true,
-      child: ImagePageWidget(bottom: bottom),
+    return WillPopScope(
+      onWillPop: () =>
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+        return DescribePage();
+      })),
+      child: Scaffold(
+        resizeToAvoidBottomPadding: false,
+        body: SingleChildScrollView(
+          reverse: true,
+          child: ImagePageWidget(bottom: bottom),
+        ),
+      ),
     );
   }
 }

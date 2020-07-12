@@ -39,9 +39,18 @@ class PageFour extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      reverse: true,
-      child: DescriptionPageWidget(bottom: bottom),
-    );
+    return WillPopScope(
+      onWillPop: () =>
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+        return CityPage();
+      })),
+      child: Scaffold(
+        resizeToAvoidBottomPadding: false,
+        body: SingleChildScrollView(
+          reverse: true,
+          child: DescriptionPageWidget(bottom: bottom),
+        ),
+      ),
+     );
   }
 }
