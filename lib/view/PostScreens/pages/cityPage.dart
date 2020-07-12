@@ -1,15 +1,15 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/describe.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
 import 'package:flutter/material.dart';
 
-class City extends StatefulWidget {
+class CityPage extends StatefulWidget {
   @override
-  _CityState createState() => _CityState();
+  _CityPageState createState() => _CityPageState();
 }
 
-class _CityState extends State<City> {
+class _CityPageState extends State<CityPage> {
   String dropdownValue = 'Sarajevo';
   @override
   Widget build(BuildContext context) {
@@ -23,14 +23,16 @@ class _CityState extends State<City> {
       ),
       body: SingleChildScrollView(
         reverse: true,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: bottom),
-                child: Column(
+        child: Padding(
+          padding: EdgeInsets.only(bottom: bottom),
+          child: Column(
             children: <Widget>[
-              Container(margin: EdgeInsets.only(bottom: 80.0, top:15), child: MainTitle()),
+              Container(
+                  margin: EdgeInsets.only(bottom: 80.0, top: 15),
+                  child: MainTitle()),
               Container(
                 height: SizeConfig.screenHeight,
-                margin: EdgeInsets.symmetric(horizontal: 30.0),
+                margin: EdgeInsets.symmetric(horizontal: 35.0),
                 child: Card(
                   elevation: 16,
                   child: Container(
@@ -44,16 +46,30 @@ class _CityState extends State<City> {
                         elevation: 16,
                         isExpanded: true,
                         underline: Container(),
-                        onTap: (){dropdownValue = 'Sarajevo';},
-
+                        onTap: () {
+                          dropdownValue = 'Sarajevo';
+                        },
                         onChanged: (String newValue) {
                           setState(() {
                             dropdownValue = newValue;
                           });
                         },
-                        items: <String>['Sarajevo', 'Beograd', 'Zagreb','Moskva', 'Berlin', 'Pariz', 'London', 'Lisabon', 'Amsterdam', 'LA', 'Madrid', 'Barcelona', 'Tokyo', 'Peking']
-
-                            .map<DropdownMenuItem<String>>((String value) {
+                        items: <String>[
+                          'Sarajevo',
+                          'Beograd',
+                          'Zagreb',
+                          'Moskva',
+                          'Berlin',
+                          'Pariz',
+                          'London',
+                          'Lisabon',
+                          'Amsterdam',
+                          'LA',
+                          'Madrid',
+                          'Barcelona',
+                          'Tokyo',
+                          'Peking'
+                        ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
@@ -70,15 +86,13 @@ class _CityState extends State<City> {
                     margin: EdgeInsets.only(bottom: 40.0),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 30.0),
-
+                    margin: EdgeInsets.symmetric(horizontal: 35.0),
                     child: TextFormField(
                       maxLines: null,
                       keyboardType: TextInputType.multiline,
                       decoration: const InputDecoration(
                           labelText: 'Oznake',
-                          labelStyle: TextStyle(
-                              )),
+                          contentPadding: EdgeInsets.only(left: 15.0)),
                     ),
                   ),
                   Container(
@@ -87,9 +101,9 @@ class _CityState extends State<City> {
                         Navigator.pushReplacement(
                             context,
                             PageRouteBuilder(
-                                pageBuilder: (context, animation1, animation2) =>
-                                    Describe()));
-
+                                pageBuilder:
+                                    (context, animation1, animation2) =>
+                                        DescribePage()));
                       })),
                 ],
               )

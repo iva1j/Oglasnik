@@ -117,7 +117,7 @@ class AuthService extends ChangeNotifier {
         Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-            pageBuilder: (context, animation1, animation2) => AnonymouseHome(),
+            pageBuilder: (context, animation1, animation2) => AnonymousHome(),
           ),
         );
 

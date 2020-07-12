@@ -1,23 +1,19 @@
-class CitiesService {
-  static final List<String> cities = [
-    'Beirut',
-    'Damascus',
-    'San Fransisco',
-    'Rome',
-    'Los Angeles',
-    'Madrid',
-    'Bali',
-    'Barcelona',
-    'Paris',
-    'Bucharest',
-    'New York City',
-    'Philadelphia',
-    'Sydney',
+class Proizvodjac {
+  static final List<String> proizvodjac = [
+    'Yoda',
+    'Mercedes',
+    'BMW',
+    'Google',
+    'facebook',
+    'Yahoo',
+    'Marvel',
+    'Milka',
+    'Zara',
   ];
 
   static List<String> getSuggestions(String query) {
     List<String> matches = List();
-    matches.addAll(cities);
+    matches.addAll(proizvodjac);
 
     matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
     if (query.length >= 3)

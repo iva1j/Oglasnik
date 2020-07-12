@@ -92,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
       body: WillPopScope(
         onWillPop: () => Navigator.of(context)
             .pushReplacement(MaterialPageRoute(builder: (_) {
-          return AnonymouseHome();
+          return AnonymousHome();
         })),
         child: SingleChildScrollView(
           reverse: true,

@@ -6,8 +6,8 @@ import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 
 import 'package:flutter/material.dart';
 
-class ImageUploadPart extends StatelessWidget {
-  const ImageUploadPart({
+class ImagePageWidget extends StatelessWidget {
+  const ImagePageWidget({
     Key key,
     @required this.bottom,
   }) : super(key: key);

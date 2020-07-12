@@ -1,13 +1,13 @@
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/imageUploadPart.dart';
+import 'package:Oglasnik/view/PostScreens/widgets/imagePageWidget.dart';
 import 'package:flutter/material.dart';
 
-class ImagePriceScreen extends StatefulWidget {
+class ImagePage extends StatefulWidget {
   @override
-  _ImagePriceScreenState createState() => _ImagePriceScreenState();
+  _ImagePageState createState() => _ImagePageState();
 }
 
-class _ImagePriceScreenState extends State<ImagePriceScreen> {
+class _ImagePageState extends State<ImagePage> {
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -35,7 +35,7 @@ class Page5 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       reverse: true,
-      child: ImageUploadPart(bottom: bottom),
+      child: ImagePageWidget(bottom: bottom),
     );
   }
 }
