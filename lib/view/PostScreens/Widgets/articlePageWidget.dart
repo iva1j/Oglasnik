@@ -24,6 +24,7 @@ class ArticlePageWidget extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 140),
               child: TextFormField(
+                maxLength: 28,
                 decoration: const InputDecoration(
                     hintText: 'Naziv artikla',
                     contentPadding: EdgeInsets.only(left: 15.0)),
