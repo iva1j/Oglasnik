@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
@@ -8,6 +9,11 @@ import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+<<<<<<< HEAD
+=======
+import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
+import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
+>>>>>>> master
 import 'package:flutter/material.dart';
 
 PageController pageController = PageController(initialPage: 0);
@@ -20,9 +26,6 @@ class ArticlePage extends StatefulWidget {
 class _ArticlePageState extends State<ArticlePage> {
   @override
   Widget build(BuildContext context) {
-    // print(pageController.offset.toString() +
-    //     '<---->' +
-    //     pageController.page.toString());
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -42,7 +45,10 @@ class _ArticlePageState extends State<ArticlePage> {
                 physics: new NeverScrollableScrollPhysics(),
                 controller: pageController,
                 children: [
-                  Container(child: PageOne(bottom: bottom)),
+                  Container(
+                      child: PageOne(
+                    bottom: bottom,
+                  )),
                   Container(child: CategoryPage()),
                   Container(child: CityPage()),
                   Container(child: PageFour(bottom: bottom)),
@@ -52,19 +58,45 @@ class _ArticlePageState extends State<ArticlePage> {
             ),
             Container(
               margin: EdgeInsets.only(bottom: 140.0),
-              child: button(
-                  // pageController.offset == null || pageController.offset <= 1439
-                  //     ? next
-                  //     : lastPage,
-                  "Dalje", () async {
-                (pageController.offset == 1440.0)
-                    ? Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (_) => AnonymousHome()))
-                    : pageController.nextPage(
-                        duration: Duration(milliseconds: 800),
-                        curve: Curves.ease);
-                print(pageController.toString());
-                print(pageController.page);
+              child: button("Dalje", () async {
+                if (pageController.page == 4) {
+                  email = 'nekimail';
+                  productName = productNameController.text;
+                  productCategory = 'adjasdjasp';
+                  productBrand = brandTypeAheadController.text;
+                  productLocation = 'adjasdjasp';
+                  productID = 'adjasdjasp';
+                  productTag = 'productTagController.text';
+                  productDesc = 'productDescController.text';
+                  productImg1 = 'adjasdjasp';
+                  productImg2 = 'adjasdjasp';
+                  productImg3 = 'adjasdjasp';
+                  productprice = 'productPriceController.text';
+                  print(email + productName + productTag);
+                  CreateProduct().createProduct(
+                      context,
+                      email,
+                      productName,
+                      productID,
+                      productCategory,
+                      productBrand,
+                      productLocation,
+                      productTag,
+                      productDesc,
+                      productImg1,
+                      productImg2,
+                      productImg3,
+                      productprice);
+                } else {
+                  pageController.nextPage(
+                      duration: Duration(milliseconds: 800),
+                      curve: Curves.ease);
+                  productName = productNameController.text;
+                  print(productName);
+
+                  print(pageController.toString());
+                  print(pageController.page);
+                }
               }),
             ),
           ],
@@ -78,6 +110,7 @@ class PageOne extends StatelessWidget {
   const PageOne({
     Key key,
     @required this.bottom,
+    TextEditingController productNameController,
   }) : super(key: key);
 
   final double bottom;
@@ -85,17 +118,12 @@ class PageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () =>
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-        return RegisteredHome();
-      })),
+      onWillPop: () => Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) {
+          return RegisteredHome();
+        }),
+      ),
       child: Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: Colors.white,
-        //   elevation: 0.0,
-        //   leading: newInputBackButtonIphone(context),
-        // ),
-        // resizeToAvoidBottomPadding: false,
         body: SingleChildScrollView(
           reverse: true,
           child: ArticlePageWidget(bottom: bottom),
@@ -104,9 +132,3 @@ class PageOne extends StatelessWidget {
     );
   }
 }
-
-//  appBar: AppBar(
-//         backgroundColor: Colors.white,
-//         elevation: 0.0,
-//         leading: newInputBackButtonIphone(context),
-//       ),
