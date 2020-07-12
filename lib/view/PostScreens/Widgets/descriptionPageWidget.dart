@@ -30,10 +30,7 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
         margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
-            // Container(
-            //     margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
             Container(
-              //dodati ovaj dio
               margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 90),
               child: TextField(
                 maxLines: null,
