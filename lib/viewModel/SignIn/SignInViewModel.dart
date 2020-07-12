@@ -5,25 +5,18 @@ import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
-import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
 
 TextEditingController signInEmailInputController;
 TextEditingController signInPasswordInputController;
 //When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
-  FocusScope.of(context).unfocus();
-  FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-
-  allowAutoValidateAlertDialog = true;
-
-  Timer(Duration(seconds: 1), () {
-    // Container(
-    //     child: AuthService()
-    //         .allowPasswordChange(context, emailInputControllerAlertDialog.text));
-    AuthService().onPressedAlertDialog(
-        context, emailInputControllerAlertDialog.text, tokenCode);
-  });
+  // Container(
+  //     child: AuthService()
+  //         .allowPasswordChange(context, emailInputControllerAlertDialog.text));
+  AuthService().onPressedAlertDialog(
+      context, emailInputControllerAlertDialog.text, tokenCode);
 }
 
 //When user enter his email on AlertDialog, onPressed "odustani" is bellow:
@@ -53,11 +46,8 @@ void onPressedSignInModel(
   //ovdje pozvati
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-
-  allowAutoValidateSignIn = true;
-
   Timer(Duration(seconds: 1), () {
-    if (formKey.currentState.validate() && allowUserToChangePassword == true) {
+    if (formKey.currentState.validate() && status == true) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         signInEmailInputController.clear();
         signInPasswordInputController.clear();

@@ -1,10 +1,13 @@
 import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
+import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
+import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
+import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
-import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -23,27 +26,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LifeCycleManager(
-        child: GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus &&
-            currentFocus.focusedChild != null) {
-          currentFocus.focusedChild.unfocus();
-        }
-      },
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: buildThemeData(),
-        // ignore: missing_required_param
-        home: RegisteredHome(),
-        routes: {
-          "/back": (_) => AnonymouseHome(),
-          "/homeregister": (_) => RegisteredHome(),
-          "/register": (_) => RegisterPage(),
-          "/signin": (_) => SigninPage(),
+      child: GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            currentFocus.focusedChild.unfocus();
+          }
         },
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: buildThemeData(),
+          // ignore: missing_required_param
+          home: ArticlePage(),
+          routes: {
+            "/back": (_) => AnonymousHome(),
+            "/homeregister": (_) => RegisteredHome(),
+            "/register": (_) => RegisterPage(),
+            "/signin": (_) => SigninPage(),
+          },
+        ),
       ),
-    ));
+    );
   }
 }

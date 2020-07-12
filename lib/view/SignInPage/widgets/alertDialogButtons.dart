@@ -5,14 +5,19 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
-import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
 
-class AlertDialogButtons extends StatelessWidget {
+class AlertDialogButtons extends StatefulWidget {
   const AlertDialogButtons({
     Key key,
   }) : super(key: key);
 
+  @override
+  _AlertDialogButtonsState createState() => _AlertDialogButtonsState();
+}
+
+class _AlertDialogButtonsState extends State<AlertDialogButtons> {
   @override
   Widget build(BuildContext context) {
     return Container(

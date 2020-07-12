@@ -1,27 +1,25 @@
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
-import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/cupertino.dart';
 
 String email, password;
 dynamic formKey;
 
+// ignore: must_be_immutable
 class FormSignIn extends StatefulWidget {
-  const FormSignIn({
+  FormSignIn({
     Key key,
-    //@required this.signInRegisterFormKey,
     @required this.signInEmailInputController,
     @required this.signInPasswordInputController,
   }) : super(key: key);
 
-  //final GlobalKey<FormState> signInRegisterFormKey;
-  final TextEditingController signInEmailInputController;
-  final TextEditingController signInPasswordInputController;
+  TextEditingController signInEmailInputController;
+  TextEditingController signInPasswordInputController;
 
   @override
   _FormSignInState createState() => _FormSignInState();
@@ -31,13 +29,16 @@ class _FormSignInState extends State<FormSignIn> {
   @override
   void initState() {
     signInRegisterFormKey = GlobalKey<FormState>();
+    signInEmailInputController = new TextEditingController();
+    signInPasswordInputController = new TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
     signInRegisterFormKey.currentState.dispose();
-    //signUpRegisterFormKey.currentState.dispose();
+    signInEmailInputController.dispose();
+    signInPasswordInputController.dispose();
     super.dispose();
   }
 
@@ -99,9 +100,12 @@ class _FormSignInState extends State<FormSignIn> {
                   //  child: AuthService().tokenExistOrNot(context, email, token),
                   ),
               Container(
-                child: AuthService().signInOrNot(context, email, password),
+                child: AuthService().signInOrNot(
+                    context,
+                    signInEmailInputController.text,
+                    signInPasswordInputController.text),
               ),
-              Container(child: AuthService().checkStatus(context, email)),
+              // Container(child: AuthService().checkStatus(context, email)),
               Container(
                   child: AuthService().allowPasswordChange(
                       context, emailInputControllerAlertDialog.text))
@@ -119,19 +123,21 @@ class _FormSignInState extends State<FormSignIn> {
               },
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 15.0),
-            child: new GestureDetector(
-              onTap: () => displayDialog(context),
-              child: new Text(
-                "Zaboravili ste lozinku?",
-                style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 16,
-                    color: Color.fromRGBO(0, 0, 0, 100)),
-              ),
-            ),
-          )
+
+          // Container(
+          //   margin: EdgeInsets.only(top: 15.0),
+          //   child: new GestureDetector(
+          //     onTap: () => displayDialog(context),
+          //     child: new Text(
+          //       "Zaboravili ste lozinku?",
+          //       style: TextStyle(
+          //           fontFamily: 'Roboto',
+          //           fontSize: 16,
+          //           color: Color.fromRGBO(0, 0, 0, 100)),
+          //     ),
+          //   ),
+          // )
+       
         ],
       ),
     );

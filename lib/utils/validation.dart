@@ -43,7 +43,7 @@ String emailRegisterCheck(String value) {
   if (!regex.hasMatch(value)) {
     return 'Email mora biti validan';
   }
-  if (status == true) {
+  if (allowUserToRegister == false) {
     return 'Email se već koristi';
   } else {
     return null;
@@ -128,11 +128,13 @@ String tokenValidator(String value) {
 }
 
 String priceValidator(String value) {
-  if (value.length == null || value == '')
-    return 'Polje ne može biti prazno';
-  // if ()
-  //   return 'Polje ne može biti prazno';
-  else {
-    return null;
+  Pattern pattern = r'^[0-9]+$';
+  RegExp regex = new RegExp(pattern);
+  if (value.length == null || value == '') {
+    return "Polje ne smije biti prazno";
   }
+  if (!regex.hasMatch(value) && value.length > 6) {
+    return 'Cijena mora biti validna';
+  }
+  return null;
 }

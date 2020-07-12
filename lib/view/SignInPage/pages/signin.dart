@@ -8,11 +8,10 @@ import 'package:Oglasnik/view/SignInPage/widgets/FormSignIn.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/PrijavaWelcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
-import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SigninPage extends StatefulWidget {
   final Function toggleView;
@@ -26,8 +25,9 @@ class _SigninPageState extends State<SigninPage> {
   FirebaseUser user;
 
   bool islogin = false;
-  TextEditingController signInEmailInputController;
-  TextEditingController signInPasswordInputController;
+
+  // TextEditingController signInEmailInputController;
+  // TextEditingController signInPasswordInputController;
 
   @override
   initState() {
@@ -36,11 +36,12 @@ class _SigninPageState extends State<SigninPage> {
     super.initState();
   }
 
-void dispose() { 
-  signInEmailInputController.dispose();
-  signInPasswordInputController.dispose(); 
-  super.dispose();
-}
+  void dispose() {
+    signInEmailInputController.dispose();
+    signInPasswordInputController.dispose();
+    super.dispose();
+  }
+
   String error = '';
   @override
   Widget build(BuildContext context) {
@@ -81,7 +82,7 @@ void dispose() {
       body: WillPopScope(
         onWillPop: () => Navigator.of(context)
             .pushReplacement(MaterialPageRoute(builder: (_) {
-          return AnonymouseHome();
+          return AnonymousHome();
         })),
         child: SingleChildScrollView(
           reverse: true,
@@ -96,10 +97,9 @@ void dispose() {
                         child: AuthService().allowPasswordChange(
                             context, emailInputControllerAlertDialog.text)),
                     LogoContainer(),
-                     WelcomeScreen(),
+                    WelcomeScreen(),
                     PrijavaWelcomeScreen(),
                     FormSignIn(
-                        //signInRegisterFormKey: signInRegisterFormKey,
                         signInEmailInputController: signInEmailInputController,
                         signInPasswordInputController:
                             signInPasswordInputController),

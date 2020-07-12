@@ -105,26 +105,35 @@ class SignInPageWidgetFout {
   String prijavaTekst = "Prijava";
 }
 
+class SuccessAlertDialog {
+  String odlicno = "Odlično!";
+  String opis1 =
+      "Uspješno ste se registrovali na našu platformu Oglasnik.Sada možete napraviti svoj prvi artikal i ponuditi ga našim korisnicima.";
+  String opis2 = "Želimo Vam uspješno trgovanje.";
+  String uredu = "UREDU";
+  String kreiraj = "KREIRAJ";
+}
+
 //..view/SplashScreen
 class SplashScreen {
   String splashText = "OGLASNIK";
   String fontFamily = "Roboto";
 }
 
+String next = 'Dalje';
+String lastPage = 'Završi';
 bool alertstatus = false;
 bool status = false;
 bool tokenstatus = false;
 var nepoklapanje = false;
 bool allowUserToChangePassword = false;
-bool allowAutoValidatePasswordChange = false;
-bool allowAutoValideRegister = false;
-bool allowAutoValidateSignIn = false;
-bool allowAutoValidateAlertDialog = false;
-
+bool allowUserToRegister = true;
 //final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 //final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
+
 //final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
 //GlobalKey<FormState> globalKey() => registerFormKey;
 GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
@@ -134,3 +143,12 @@ class InputFields {
   TextEditingController passwordInputController = new TextEditingController();
 }
 //#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc
+
+
+List<String> suggestions = [
+    "Apple",
+    "Microsoft",
+    "Tefal",
+    "Audi",
+    "Beko",
+  ];
