@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/descriptionPageWidget.dart';
 import 'package:flutter/material.dart';
@@ -12,22 +13,22 @@ class _DescribePageState extends State<DescribePage> {
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-    return 
-    // WillPopScope(
-    //   onWillPop: () =>
-    //       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-    //     return CityPage();
-    //   })),
-    //   child: 
-      Scaffold(
-          resizeToAvoidBottomPadding: false,
-          // appBar: AppBar(
-          //   backgroundColor: Colors.white,
-          //   elevation: 0.0,
-          //   leading: newInputBackButtonIphone(context),
-          // ),
-          body: PageFour(bottom: bottom));
- //    );
+    return
+        // WillPopScope(
+        //   onWillPop: () =>
+        //       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+        //     return CityPage();
+        //   })),
+        //   child:
+        Scaffold(
+            resizeToAvoidBottomPadding: false,
+            // appBar: AppBar(
+            //   backgroundColor: Colors.white,
+            //   elevation: 0.0,
+            //   leading: newInputBackButtonIphone(context),
+            // ),
+            body: PageFour(bottom: bottom));
+    //    );
   }
 }
 
@@ -41,24 +42,24 @@ class PageFour extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return WillPopScope(
-    //   onWillPop: () =>
-    //       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-    //     return CityPage();
-    //   })),
-     // child: 
-    return  Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: Colors.white,
-        //   elevation: 0.0,
-        //   leading: newInputBackButtonIphone(context),
-        // ),
-        resizeToAvoidBottomPadding: false,
-        body: SingleChildScrollView(
-          reverse: true,
-          child: DescriptionPageWidget(bottom: bottom),
-        ),
-    //  ),
-    );
+    return WillPopScope(
+        onWillPop: () => Future.sync(onWillPop),
+        //       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+        //     return CityPage();
+        //   })),
+        // child:
+        child: Scaffold(
+          // appBar: AppBar(
+          //   backgroundColor: Colors.white,
+          //   elevation: 0.0,
+          //   leading: newInputBackButtonIphone(context),
+          // ),
+          resizeToAvoidBottomPadding: false,
+          body: SingleChildScrollView(
+            reverse: true,
+            child: DescriptionPageWidget(bottom: bottom),
+          ),
+          //  ),
+        ));
   }
 }
