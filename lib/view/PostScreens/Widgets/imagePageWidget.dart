@@ -6,8 +6,8 @@ import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 
 import 'package:flutter/material.dart';
 
-class ImageUploadPart extends StatelessWidget {
-  const ImageUploadPart({
+class ImagePageWidget extends StatelessWidget {
+  const ImagePageWidget({
     Key key,
     @required this.bottom,
   }) : super(key: key);
@@ -24,7 +24,8 @@ class ImageUploadPart extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-                margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
+              margin: EdgeInsets.only(bottom: 80.0),
+            ),
             imageOneUploadButton(() {}), //dodati funkcije
             imageTwoUploadButton(() {}),
             imageThreeUploadButton(() {}),
@@ -32,17 +33,13 @@ class ImageUploadPart extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                    margin: EdgeInsets.only(left: 35.0),
+                    margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
                     child: priceTextField()),
                 Padding(
                     padding: EdgeInsets.only(left: 7),
                     child: Text(MoneyText().kmText)),
               ],
             ),
-
-            Container(
-                margin: EdgeInsets.only(top: 100.0),
-                child: button('Završi', () async {})),
           ],
         ),
       ),

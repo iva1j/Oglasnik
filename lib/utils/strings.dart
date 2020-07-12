@@ -120,6 +120,8 @@ class SplashScreen {
   String fontFamily = "Roboto";
 }
 
+String next = 'Dalje';
+String lastPage = 'Završi';
 bool alertstatus = false;
 bool status = false;
 bool tokenstatus = false;
@@ -141,3 +143,12 @@ class InputFields {
   TextEditingController passwordInputController = new TextEditingController();
 }
 //#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc
+
+
+List<String> suggestions = [
+    "Apple",
+    "Microsoft",
+    "Tefal",
+    "Audi",
+    "Beko",
+  ];

@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
-import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,7 @@ void onPressedRegister(BuildContext context, String fullName, String email,
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   Timer(Duration(seconds: 1), () {
-    if (formKey.currentState.validate() && status == false) {
+    if (formKey.currentState.validate() && allowUserToRegister == true) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         signUpPhoneNumberInputController.clear();
         signUpPasswordInputController.clear();

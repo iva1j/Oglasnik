@@ -34,6 +34,8 @@ dependencies:
   mailgun: ^0.1.0
   flutter_dotenv: ^2.1.0
   flutter_spinkit: ^4.1.2+1
+  flutter_typeahead: ^1.8.5
+  flutter_keyboard_visibility: ^3.2.1
 
 
   provider: ^4.3.0
