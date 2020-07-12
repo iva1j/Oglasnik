@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:flutter/material.dart';
 
@@ -7,10 +8,11 @@ Container priceTextField() {
     child: TextFormField(
       decoration: InputDecoration(
         hintText: 'Cijena',
-        contentPadding: EdgeInsets.only(left: 20),
+        contentPadding: EdgeInsets.only(left: 15),
       ),
       keyboardType: TextInputType.phone,
       validator: priceValidator,
+      controller: productPriceController,
     ),
   );
 }

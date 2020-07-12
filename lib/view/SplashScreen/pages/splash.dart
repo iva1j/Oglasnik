@@ -19,7 +19,7 @@ class _SplashState extends State<Splash> {
         () => Navigator.of(context).pushReplacement(
             FirebaseAuth.instance.currentUser() != null
                 ? MaterialPageRoute(
-                    builder: (BuildContext context) => AnonymouseHome())
+                    builder: (BuildContext context) => AnonymousHome())
                 : MaterialPageRoute(
                     builder: (BuildContext context) => RegisteredHome())));
     return Scaffold(
