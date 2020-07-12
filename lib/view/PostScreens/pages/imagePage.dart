@@ -2,6 +2,10 @@ import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/imagePageWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
 
 class ImagePage extends StatefulWidget {
   @override

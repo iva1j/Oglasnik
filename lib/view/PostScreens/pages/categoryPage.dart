@@ -22,7 +22,7 @@ class _CategoryPageState extends State<CategoryPage> {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return WillPopScope(
       onWillPop: () =>
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) {
         return ArticlePage();
       })),
       child: Scaffold(

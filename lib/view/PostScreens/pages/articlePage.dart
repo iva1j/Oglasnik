@@ -5,7 +5,6 @@ import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:flutter/material.dart';
 
 class ArticlePage extends StatefulWidget {
