@@ -98,6 +98,7 @@ class _CategoryPageState extends State<CategoryPage> {
                         margin: EdgeInsets.symmetric(horizontal: 50.0),
                         child: TypeAheadFormField(
                           textFieldConfiguration: TextFieldConfiguration(
+                            maxLength: 18,
                             decoration: InputDecoration(
                                 hintText: 'Proizvođač',
                                 contentPadding: EdgeInsets.only(left: 15.0)),

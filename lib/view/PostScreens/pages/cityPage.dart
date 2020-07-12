@@ -11,7 +11,7 @@ class CityPage extends StatefulWidget {
 }
 
 class _CityPageState extends State<CityPage> {
-  String dropdownValue = 'Sarajevo';
+  String dropdownValue = 'Grad';
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -52,16 +52,14 @@ class _CityPageState extends State<CityPage> {
                           elevation: 16,
                           isExpanded: true,
                           underline: Container(),
-                          onTap: () {
-                            dropdownValue = 'Sarajevo';
-                          },
+                          onTap: () {},
                           onChanged: (String newValue) {
                             setState(() {
                               dropdownValue = newValue;
                             });
                           },
                           items: <String>[
-                            'Sarajevo',
+                            'Grad',
                             'Beograd',
                             'Zagreb',
                             'Moskva',
@@ -97,7 +95,9 @@ class _CityPageState extends State<CityPage> {
                         maxLines: null,
                         keyboardType: TextInputType.multiline,
                         decoration: const InputDecoration(
-                            labelText: 'Oznake',
+                            hintText: 'Oznake',
+                            helperText:
+                                'Oznake razdvojiti zarezom: Sarajevo, zamjena, Yoda',
                             contentPadding: EdgeInsets.only(left: 15.0)),
                       ),
                     ),
