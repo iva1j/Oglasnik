@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: buildThemeData(),
           // ignore: missing_required_param
-          home: AnonymouseHome(),
+          home: Splash(),
           routes: {
             "/back": (_) => AnonymouseHome(),
             "/homeregister": (_) => RegisteredHome(),
