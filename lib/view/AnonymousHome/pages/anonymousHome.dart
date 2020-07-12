@@ -4,12 +4,12 @@ import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class AnonymouseHome extends StatefulWidget {
+class AnonymousHome extends StatefulWidget {
   @override
-  _AnonymouseHomeState createState() => _AnonymouseHomeState();
+  _AnonymousHomeState createState() => _AnonymousHomeState();
 }
 
-class _AnonymouseHomeState extends State<AnonymouseHome> {
+class _AnonymousHomeState extends State<AnonymousHome> {
   final AnonymousViewModel auth = AnonymousViewModel();
 
   @override

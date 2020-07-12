@@ -1,5 +1,5 @@
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/articalName.dart';
+import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +36,7 @@ Stack mainFloatingButton() {
 
                     onTap: () {
                       Navigator.of(context)
-                          .pushReplacement(FadeRoute(page: ArticalName()));
+                          .pushReplacement(FadeRoute(page: ArticlePage()));
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
