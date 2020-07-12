@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
@@ -26,6 +27,11 @@ class _CategoryPageState extends State<CategoryPage> {
         return ArticlePage();
       })),
       child: Scaffold(
+        // appBar: AppBar(
+        //   backgroundColor: Colors.white,
+        //   elevation: 0.0,
+        //   leading: newInputBackButtonIphone(context),
+        // ),
         resizeToAvoidBottomPadding: false,
         body: SingleChildScrollView(
           reverse: true,
@@ -34,8 +40,8 @@ class _CategoryPageState extends State<CategoryPage> {
             child: Column(
               children: <Widget>[
                 Container(
-                    margin: EdgeInsets.only(bottom: 80.0, top: 15),
-                    child: MainTitle()),
+                  margin: EdgeInsets.only(bottom: 80.0, top: 15),
+                ),
                 Container(
                   height: SizeConfig.screenHeight,
                   margin:
@@ -114,16 +120,6 @@ class _CategoryPageState extends State<CategoryPage> {
                     ],
                   ),
                 ),
-                // Container(
-                //   margin: EdgeInsets.only(top: 150.0),
-                //   child: button('Dalje', () async {
-                //     Navigator.pushReplacement(
-                //         context,
-                //         PageRouteBuilder(
-                //             pageBuilder: (context, animation1, animation2) =>
-                //                 CityPage()));
-                //   }),
-                // ),
               ],
             ),
           ),

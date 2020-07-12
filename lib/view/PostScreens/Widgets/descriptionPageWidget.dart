@@ -1,7 +1,4 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
-import 'package:Oglasnik/view/PostScreens/widgets/mainTitle.dart';
 import 'package:flutter/material.dart';
 
 class DescriptionPageWidget extends StatelessWidget {
@@ -21,8 +18,8 @@ class DescriptionPageWidget extends StatelessWidget {
         margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
-            Container(
-                margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
+            // Container(
+            //     margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
             Container(
               //dodati ovaj dio
               margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 90),
