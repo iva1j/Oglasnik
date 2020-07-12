@@ -43,9 +43,11 @@ class AuthService extends ChangeNotifier {
         future: AuthService().userExistingorNot(email),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
+            allowUserToRegister = false;
             print('korisnik postoji');
             return Container();
           } else {
+            allowUserToRegister = true;
             print('korisnik nije u bazi');
             return Container();
           }
