@@ -1,7 +1,6 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
-import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
+import 'package:Oglasnik/utils/suggestionFunction.dart';
+
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/custom_dropdown.dart'
     as custom;
@@ -17,10 +16,7 @@ class _CityPageState extends State<CityPage> {
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return WillPopScope(
-      onWillPop: () =>
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-        return CategoryPage();
-      })),
+      onWillPop: () => Future.sync(onWillPop),
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
         // appBar: AppBar(
@@ -28,6 +24,7 @@ class _CityPageState extends State<CityPage> {
         //   elevation: 0.0,
         //   leading: newInputBackButtonIphone(context),
         // ),
+
         body: SingleChildScrollView(
           reverse: true,
           child: Padding(
