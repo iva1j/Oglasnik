@@ -1,6 +1,9 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
+<<<<<<< HEAD
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+=======
+>>>>>>> 402c8fef329378e969e6011376bb443ca3f9fdb2
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -40,7 +43,11 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
                 bottom: SizeConfig.blockSizeVertical * 20),
             child: NazivTextField(),
           ),
+<<<<<<< HEAD
           PageViewButton()
+=======
+          PageViewButton(),
+>>>>>>> 402c8fef329378e969e6011376bb443ca3f9fdb2
         ],
       ),
     );

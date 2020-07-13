@@ -1,6 +1,10 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
+<<<<<<< HEAD
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+=======
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
+>>>>>>> 402c8fef329378e969e6011376bb443ca3f9fdb2
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -41,6 +45,8 @@ class BrandForm extends StatelessWidget {
               },
             ),
           ),
+                    PageViewButton(),
+
         ],
       ),
     );
