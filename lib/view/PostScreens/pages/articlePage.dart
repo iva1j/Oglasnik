@@ -1,17 +1,6 @@
 import 'package:Oglasnik/utils/specialElements.dart';
-
-import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
-import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
-import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
-import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
-import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/pageViewPages.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/PostScreens/pages/pageView/mainPageView.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
-import 'package:random_string/random_string.dart';
 
 class ArticlePage extends StatefulWidget {
   @override
@@ -30,35 +19,6 @@ class _ArticlePageState extends State<ArticlePage> {
         leading: newInputBackButtonIphone(context),
       ),
       body: PageViewPages(bottom: bottom),
-    );
-  }
-}
-
-class PageOne extends StatelessWidget {
-  const PageOne({
-    Key key,
-    @required this.bottom,
-    TextEditingController productNameController,
-  }) : super(key: key);
-
-  final double bottom;
-
-  @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) {
-          return RegisteredHome();
-        }),
-      ),
-      child: Scaffold(
-        resizeToAvoidBottomPadding: false,
-        body: SingleChildScrollView(
-          reverse: true,
-          child: ArticlePageWidget(bottom: bottom),
-
-        ),
-      ),
     );
   }
 }

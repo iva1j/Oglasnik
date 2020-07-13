@@ -1,5 +1,4 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +27,6 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
     return Padding(
       padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(
-        height: SizeConfig.screenHeight,
         margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[

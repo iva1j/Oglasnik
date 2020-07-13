@@ -1,8 +1,8 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:random_string/random_string.dart';
 
 class PageViewButton extends StatelessWidget {
   const PageViewButton({
@@ -20,7 +20,6 @@ class PageViewButton extends StatelessWidget {
           productCategory = dropdownValueCategory;
           productBrand = brandTypeAheadController.text;
           productLocation = dropdownValueCity;
-          productID = 'adjasdjasp';
           productTag = productTagController.text;
           productDesc = productDescController.text;
           productImg1 = 'adjasdjasp';
@@ -32,7 +31,7 @@ class PageViewButton extends StatelessWidget {
               context,
               email,
               productName,
-              productID,
+              productID = randomAlphaNumeric(20),
               productCategory,
               productBrand,
               productLocation,
