@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 TextEditingController signInEmailInputController;
 TextEditingController signInPasswordInputController;
@@ -54,6 +56,8 @@ void onPressedSignInModel(
       });
       print('Logged in');
 
+      loginPrefs(context, email);
+
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
           return RegisteredHome();
@@ -63,4 +67,9 @@ void onPressedSignInModel(
       print('Email ili password nisu tacni');
     }
   });
+}
+
+void loginPrefs(BuildContext context, String email) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('email', email);
 }

@@ -3,6 +3,7 @@ import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/utils/colorThemes.dart';
 
 class AnonymousHome extends StatefulWidget {
   @override
@@ -37,6 +38,8 @@ class _AnonymousHomeState extends State<AnonymousHome> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppBarTheme.of(context).color,
+          //backgroundColor: mainAppColor,
+          //backgroundColor: Color.fromARGB(255, 0, 11, 48),
           centerTitle: true,
           title: Text('Oglasnik'),
         ),
