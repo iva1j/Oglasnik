@@ -1,11 +1,8 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/tagsForm.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
-    as custom;
 
 class CityPage extends StatefulWidget {
   @override

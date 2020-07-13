@@ -1,15 +1,9 @@
-import 'dart:io';
-import 'package:path/path.dart' as path;
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
-import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-
 
 class ImagePageWidget extends StatefulWidget {
   const ImagePageWidget({
@@ -24,8 +18,6 @@ class ImagePageWidget extends StatefulWidget {
 }
 
 class _ImagePageWidgetState extends State<ImagePageWidget> {
-
-
   /*
   File sampleImage;
 
@@ -50,13 +42,11 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   }
 */
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(
-        height: SizeConfig.screenHeight,
         margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
@@ -70,7 +60,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                 ? Text("Select an image")
                 : enableUpload(), //dodati funkcije
 */
-                margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
+              margin: EdgeInsets.only(bottom: 80.0),
+              //  child: MainTitle()
+            ),
             imageOneUploadButton(() {}), //dodati funkcije
 
             imageTwoUploadButton(() {}),

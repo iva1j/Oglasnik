@@ -1,12 +1,15 @@
+import 'package:Oglasnik/lib/view/PostScreens/Widgets/pageViewPages.dart';
+import 'package:Oglasnik/lib/view/PostScreens/widgets/pageViewPages.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/view/PostScreens/Pages/pageView/mainPageView.dart';
 
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/pageViewPages.dart';
+import 'package:Oglasnik/view/PostScreens/widgets/articlePageWidget.dart';
+import 'package:Oglasnik/view/PostScreens/widgets/pageViewPages.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
