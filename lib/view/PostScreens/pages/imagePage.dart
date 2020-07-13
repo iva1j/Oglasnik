@@ -1,7 +1,8 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/imagePageWidget.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/imagePageWidget.dart';
 import 'package:flutter/material.dart';
 
@@ -15,17 +16,9 @@ class _ImagePageState extends State<ImagePage> {
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return WillPopScope(
-      onWillPop: () =>
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-        return DescribePage();
-      })),
+      onWillPop: () => Future.sync(onWillPop),
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0.0,
-          leading: newInputBackButtonIphone(context),
-        ),
         body: PageFive(bottom: bottom),
       ),
     );
@@ -56,7 +49,6 @@ class _PageFiveState extends State<PageFive> {
     return WillPopScope(
       onWillPop: () => Future.sync(onWillPop),
       child: Scaffold(
-
         resizeToAvoidBottomPadding: false,
         body: SingleChildScrollView(
           reverse: true,

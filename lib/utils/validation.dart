@@ -43,7 +43,7 @@ String emailRegisterCheck(String value) {
   if (!regex.hasMatch(value)) {
     return 'Email mora biti validan';
   }
-  if (allowUserToRegister == false) {
+  if (!allowUserToRegister) {
     return 'Email se već koristi';
   } else {
     return null;

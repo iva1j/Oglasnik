@@ -1,8 +1,12 @@
 import 'dart:ui';
+
+import 'package:Oglasnik/utils/text_form_fields.dart';
+
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 
+//pink button used in most places in the application
 SizedBox button(dynamic nameFunction, dynamic function) {
   return SizedBox(
     height: 50,
@@ -23,6 +27,7 @@ SizedBox button(dynamic nameFunction, dynamic function) {
   );
 }
 
+//all white button, used as toggle between signin and register pages
 SizedBox buttons(String text, dynamic function) {
   return SizedBox(
     height: 50,
@@ -43,6 +48,7 @@ SizedBox buttons(String text, dynamic function) {
   );
 }
 
+//back button for ios //route AnonymousHome
 IconButton backButtonIphone(BuildContext context) {
   return IconButton(
       icon: Icon(
@@ -56,6 +62,7 @@ IconButton backButtonIphone(BuildContext context) {
           })));
 }
 
+//back button for ios //route RegisteredHome
 IconButton newInputBackButtonIphone(BuildContext context) {
   return IconButton(
     icon: Icon(
@@ -71,6 +78,7 @@ IconButton newInputBackButtonIphone(BuildContext context) {
   );
 }
 
+//buttons for image upload located in imagePageWidget
 Container imageOneUploadButton(dynamic function) {
   return Container(
     alignment: Alignment.centerLeft,
@@ -88,18 +96,14 @@ Container imageOneUploadButton(dynamic function) {
         color: Colors.black,
         size: 25,
       ),
-      label: Text(
-        'Dodaj sliku 1',
-        style: TextStyle(
-          fontSize: 12.0,
-          fontWeight: FontWeight.normal,
-        ),
-      ),
+
+      label: AddImageOne(),
       onPressed: function,
     ),
   );
 }
 
+//buttons for image upload located in imagePageWidget
 Container imageTwoUploadButton(dynamic function) {
   return Container(
     alignment: Alignment.centerLeft,
@@ -117,18 +121,13 @@ Container imageTwoUploadButton(dynamic function) {
         color: Colors.black,
         size: 25,
       ),
-      label: Text(
-        'Dodaj sliku 2',
-        style: TextStyle(
-          fontSize: 12.0,
-          fontWeight: FontWeight.normal,
-        ),
-      ),
+      label: AddImageTwo(),
       onPressed: function,
     ),
   );
 }
 
+//buttons for image upload located in imagePageWidget
 Container imageThreeUploadButton(dynamic function) {
   return Container(
     alignment: Alignment.centerLeft,
@@ -146,18 +145,13 @@ Container imageThreeUploadButton(dynamic function) {
         color: Colors.black,
         size: 25,
       ),
-      label: Text(
-        'Dodaj sliku 3',
-        style: TextStyle(
-          fontSize: 12.0,
-          fontWeight: FontWeight.normal,
-        ),
-      ),
+      label: AddImageThree(),
       onPressed: function,
     ),
   );
 }
 
+//transition used in anonymous screen
 class FadeRoute extends PageRouteBuilder {
   final Widget page;
   FadeRoute({this.page})

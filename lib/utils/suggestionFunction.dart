@@ -1,4 +1,4 @@
-import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:flutter/animation.dart';
 
 class Proizvodjac {
@@ -26,11 +26,18 @@ class Proizvodjac {
   }
 }
 
+List<String> suggestions = [
+  "Apple",
+  "Microsoft",
+  "Tefal",
+  "Audi",
+  "Beko",
+];
 
-  bool onWillPop() {
-    pageController.previousPage(
-      duration: Duration(milliseconds: 200),
-      curve: Curves.linear,
-    );
-    return false;
-  }
+bool onWillPop() {
+  pageController.previousPage(
+    duration: Duration(milliseconds: 200),
+    curve: Curves.linear,
+  );
+  return false;
+}

@@ -39,7 +39,7 @@ void onPressedRegister(BuildContext context, String fullName, String email,
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   Timer(Duration(seconds: 1), () {
-    if (formKey.currentState.validate() && allowUserToRegister == true) {
+    if (formKey.currentState.validate() && allowUserToRegister) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         signUpPhoneNumberInputController.clear();
         signUpPasswordInputController.clear();

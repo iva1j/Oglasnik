@@ -1,14 +1,16 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/articlePageWidget.dart';
+import 'package:Oglasnik/view/PostScreens/widgets/pageViewPages.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
 import 'package:random_string/random_string.dart';
 
 PageController pageController = PageController(initialPage: 0);
@@ -29,69 +31,7 @@ class _ArticlePageState extends State<ArticlePage> {
         elevation: 0.0,
         leading: newInputBackButtonIphone(context),
       ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            MainTitle(),
-            Expanded(
-              child: PageView(
-                physics: new NeverScrollableScrollPhysics(),
-                controller: pageController,
-                children: [
-                  Container(child: PageOne(bottom: bottom)),
-                  Container(child: CategoryPage()),
-                  Container(child: CityPage()),
-                  Container(child: PageFour(bottom: bottom)),
-                  Container(child: PageFive(bottom: bottom)),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(bottom: 140.0),
-              child: button("Dalje", () async {
-                if (pageController.page == 4) {
-                  email = email;
-                  productName = productNameController.text;
-                  productCategory = dropdownValueCategory;
-                  productBrand = brandTypeAheadController.text;
-                  productLocation = dropdownValueCity;
-                  productTag = productTagController.text;
-                  productDesc = productDescController.text;
-                  productImg1 = 'adjasdjasp';
-                  productImg2 = 'adjasdjasp';
-                  productImg3 = 'adjasdjasp';
-                  productprice = productPriceController.text;
-                  CreateProduct().createProduct(
-                      context,
-                      email,
-                      productName,
-                      productID = randomAlphaNumeric(20),
-                      productCategory,
-                      productBrand,
-                      productLocation,
-                      productTag,
-                      productDesc,
-                      productImg1,
-                      productImg2,
-                      productImg3,
-                      productprice);
-                } else {
-                  pageController.nextPage(
-                      duration: Duration(milliseconds: 800),
-                      curve: Curves.ease);
-                  productName = productNameController.text;
-                  print(productName);
-                  print(email);
-                  print(pageController.toString());
-                  print(pageController.page);
-                }
-              }),
-            ),
-          ],
-        ),
-      ),
+      body: PageViewPages(bottom: bottom),
     );
   }
 }
