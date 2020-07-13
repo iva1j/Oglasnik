@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
+import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:flutter/material.dart';
 
 class ArticlePageWidget extends StatefulWidget {
@@ -29,13 +28,7 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
         children: <Widget>[
           Container(
             margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 140),
-            child: TextFormField(
-              controller: productNameController,
-              maxLength: 28,
-              decoration: const InputDecoration(
-                  hintText: 'Naziv artikla',
-                  contentPadding: EdgeInsets.only(left: 15.0)),
-            ),
+            child: NazivTextField(),
           ),
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
@@ -17,6 +18,7 @@ class RegisteredHome extends StatefulWidget {
 final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
 
 class _RegisteredHomeState extends State<RegisteredHome> {
+  final keyIsFirstLoaded = 'is_first_loaded';
   @override
   void initState() {
     super.initState();
@@ -39,7 +41,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
         title: Text('Oglasnik'),
         leading: LogoutButton(),
       ),
-      floatingActionButton: mainFloatingButton(),
+      floatingActionButton: mainFloatingButton(email),
       bottomSheet: Container(
         height: 55,
         width: double.infinity,

@@ -1,23 +1,6 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
-import 'package:Oglasnik/view/PostScreens/widgets/descriptionPageWidget.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/descriptionPageWidget.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
-
-class DescribePage extends StatefulWidget {
-  @override
-  _DescribePageState createState() => _DescribePageState();
-}
-
-class _DescribePageState extends State<DescribePage> {
-  @override
-  Widget build(BuildContext context) {
-    final bottom = MediaQuery.of(context).viewInsets.bottom;
-    return Scaffold(
-        resizeToAvoidBottomPadding: false, body: PageFour(bottom: bottom));
-  }
-}
 
 class PageFour extends StatefulWidget {
   const PageFour({
