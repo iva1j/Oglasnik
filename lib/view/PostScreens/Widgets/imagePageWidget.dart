@@ -1,4 +1,4 @@
-import 'package:Oglasnik/utils/sizeconfig.dart';
+/*import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
@@ -18,10 +18,10 @@ class ImagePageWidget extends StatefulWidget {
 }
 
 class _ImagePageWidgetState extends State<ImagePageWidget> {
-  /*
+  
   File sampleImage;
 
-/*
+
   Future getImage() async {
     var tempImage = await ImagePicker.pickImage(source: ImageSource.gallery);
 
@@ -29,7 +29,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       sampleImage = tempImage;
     });
   }
-*/
+
 
   Future pickImage() async {
     //for (int i = 0; i < 100; i++) print(sampleImage.toString() + '$i');
@@ -41,7 +41,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     });
   }
 */
-
+/*
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -84,6 +84,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     );
   }
 }
+*/
 /*
   Widget enableUpload() {
     return Container(
@@ -115,3 +116,77 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     );
   }
   */
+
+import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/text_form_fields.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:path/path.dart' as path;
+//import 'package:file_picker/file_picker.dart';
+
+class ImagePageWidget extends StatefulWidget {
+  const ImagePageWidget({
+    Key key,
+    @required this.bottom,
+  }) : super(key: key);
+  final double bottom;
+  @override
+  _ImagePageWidgetState createState() => _ImagePageWidgetState();
+}
+
+class _ImagePageWidgetState extends State<ImagePageWidget> {
+  File _image;
+  String _basename = '';
+
+  final picker = ImagePicker();
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      _image = new File(pickedFile.path);
+      _basename = pickedFile.path;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: widget.bottom),
+      child: Container(
+        height: SizeConfig.screenHeight,
+        margin: EdgeInsets.all(15),
+        child: Column(
+          children: <Widget>[
+            Container(
+                margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
+            imageOneUploadButton(getImage),
+            imageTwoUploadButton(() {}),
+            imageThreeUploadButton(() {}),
+            _basename == '' ? Container() : Text(_basename),
+            CircleAvatar(
+              backgroundImage: _image != null
+                  ? FileImage(_image)
+                  : null, // mora samo biti url i na textu
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                    margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
+                    child: priceTextField()),
+                Padding(
+                    padding: EdgeInsets.only(left: 7),
+                    child: Text(MoneyText().kmText)),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
