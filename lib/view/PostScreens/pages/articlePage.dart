@@ -116,8 +116,10 @@ class PageOne extends StatelessWidget {
         }),
       ),
       child: Scaffold(
+        resizeToAvoidBottomPadding: false,
         body: SingleChildScrollView(
           reverse: true,
+          
           child: ArticlePageWidget(bottom: bottom),
         ),
       ),
