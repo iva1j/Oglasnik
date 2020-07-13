@@ -5,7 +5,6 @@ import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageOne.dart';
 import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageThreeCityPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageTwoCategoryPage.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 
 class PageViewPages extends StatelessWidget {

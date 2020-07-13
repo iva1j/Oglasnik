@@ -118,9 +118,7 @@ class SplashScreen {
   String fontFamily = "Roboto";
 }
 
-class ImageOneUpload {
-  String img1 = "Dodaj sliku 1";
-}
+class ImageOneUpload {}
 
 class ImageTwoUpload {
   String img2 = "Dodaj sliku 2";
@@ -152,4 +150,6 @@ class InputFields {
   TextEditingController emailInputController = new TextEditingController();
   TextEditingController passwordInputController = new TextEditingController();
 }
+
 //#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc
+String img1 = "Dodaj sliku 1"; // pitati faruka smije li ovako

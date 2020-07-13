@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/imagePageWidget.dart';
@@ -23,25 +25,27 @@ class PageViewButton extends StatelessWidget {
           productLocation = dropdownValueCity;
           productTag = productTagController.text;
           productDesc = productDescController.text;
-          productImg1 = 'adjasdjasp';
+          productImg1;
           productImg2 = 'adjasdjasp';
           productImg3 = 'adjasdjasp';
           productprice = productPriceController.text;
           print(email + productName + productTag);
-          CreateProduct().createProduct(
-              context,
-              email,
-              productName,
-              productID = randomAlphaNumeric(20),
-              productCategory,
-              productBrand,
-              productLocation,
-              productTag,
-              productDesc,
-              productImg1,
-              productImg2,
-              productImg3,
-              productprice);
+          Timer(Duration(seconds: 7), () {
+            CreateProduct().createProduct(
+                context,
+                email,
+                productName,
+                productID = randomAlphaNumeric(20),
+                productCategory,
+                productBrand,
+                productLocation,
+                productTag,
+                productDesc,
+                productImg1,
+                productImg2,
+                productImg3,
+                productprice);
+          });
         } else {
           pageController.nextPage(
               duration: Duration(milliseconds: 800), curve: Curves.ease);

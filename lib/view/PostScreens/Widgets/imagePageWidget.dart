@@ -1,7 +1,8 @@
+import 'dart:async';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -37,11 +38,16 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   uploadToFirebase() {
     String fileName = _path.split('/').last;
+    print(fileName);
+    if (!mounted) return;
+    setState(() {
+      img1 = fileName;
+    });
     String filePath = _path;
     upload(fileName, filePath);
   }
 
-  upload(fileName, filePath) {
+  upload(fileName, filePath) async {
     _extension = fileName.toString().split('.').last;
     StorageReference storageRef =
         FirebaseStorage.instance.ref().child(fileName);
@@ -51,8 +57,15 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         contentType: '$_imageType/$_extension',
       ),
     );
-    setState(() {
-      _tasks.add(uploadTask);
+
+    Timer(Duration(seconds: 5), () async {
+      final String url = await storageRef.getDownloadURL();
+      print(url);
+      if (!mounted) return;
+      setState(() {
+        productImg1 = url;
+        _tasks.add(uploadTask);
+      });
     });
   }
 
@@ -75,7 +88,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             Container(
               margin: EdgeInsets.only(bottom: 80.0),
             ),
-            imageOneUploadButton(openFileExplorer), //dodati funkcije
+            imageOneUploadButton(openFileExplorer),
+            //dodati funkcije
             imageTwoUploadButton(openFileExplorer),
             imageThreeUploadButton(openFileExplorer),
             Row(

@@ -60,7 +60,7 @@ class AddImageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      ImageOneUpload().img1,
+      img1,
       style: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,
