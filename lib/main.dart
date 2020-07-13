@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
@@ -37,7 +38,11 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: buildThemeData(),
           // ignore: missing_required_param
+<<<<<<< HEAD
+          home: AnonymousHome(),
+=======
           home: RegisteredHome(),
+>>>>>>> 402c8fef329378e969e6011376bb443ca3f9fdb2
           routes: {
             "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),

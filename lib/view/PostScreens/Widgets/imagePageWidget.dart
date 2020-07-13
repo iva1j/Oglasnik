@@ -98,15 +98,112 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     );
   }
 }
+<<<<<<< HEAD
+*/
+/*
+  Widget enableUpload() {
+    return Container(
+      margin: EdgeInsets.only(
+        top: SizeConfig.blockSizeVertical * 5,
+        bottom: SizeConfig.blockSizeVertical * 5,
+      ),
+      child: Column(
+        children: <Widget>[
+          Image.file(
+            sampleImage,
+            height: 10.0,
+            width: 10.0,
+          ),
+          RaisedButton(
+            color: Colors.black,
+            elevation: 0,
+            child: Text("Upload"),
+            onPressed: () {
+              /*
+              final StorageReference firebaseStorageRef =
+                  FirebaseStorage.instance.ref().child('images/');
+              final StorageUploadTask task =
+                  firebaseStorageRef.putFile(sampleImage);*/
+            },
+          ),
+        ],
+      ),
+    );
+  }
+  */
+
+import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/text_form_fields.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:path/path.dart' as path;
+//import 'package:file_picker/file_picker.dart';
+
+class ImagePageWidget extends StatefulWidget {
+  const ImagePageWidget({
+    Key key,
+    @required this.bottom,
+  }) : super(key: key);
+  final double bottom;
+  @override
+  _ImagePageWidgetState createState() => _ImagePageWidgetState();
+}
+=======
 class UploadTaskListTile extends StatelessWidget {
   const UploadTaskListTile({Key key, this.task, this.onDismissed})
       : super(key: key);
+>>>>>>> 402c8fef329378e969e6011376bb443ca3f9fdb2
 
   final StorageUploadTask task;
   final VoidCallback onDismissed;
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
+    SizeConfig().init(context);
+    return Padding(
+      padding: EdgeInsets.only(bottom: widget.bottom),
+      child: Container(
+        height: SizeConfig.screenHeight,
+        margin: EdgeInsets.all(15),
+        child: Column(
+          children: <Widget>[
+            MainTitle(),
+            Container(
+              margin: EdgeInsets.only(bottom: 80.0),
+            ),
+            imageOneUploadButton(getImage),
+            imageTwoUploadButton(() {}),
+            imageThreeUploadButton(() {}),
+            _basename == '' ? Container() : Text(_basename),
+            CircleAvatar(
+              backgroundImage: _image != null
+                  ? FileImage(_image)
+                  : null, // mora samo biti url i na textu
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                    margin: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 10,
+                        right: SizeConfig.blockSizeHorizontal * 10,
+                        bottom: SizeConfig.blockSizeVertical * 18),
+                    child: priceTextField()),
+                Text(MoneyText().kmText),
+              ],
+            ),
+            PageViewButton()
+          ],
+        ),
+      ),
+=======
     return StreamBuilder<StorageTaskEvent>(
       stream: task.events,
       builder: (BuildContext context,
@@ -124,6 +221,7 @@ class UploadTaskListTile extends StatelessWidget {
           ),
         );
       },
+>>>>>>> 402c8fef329378e969e6011376bb443ca3f9fdb2
     );
   }
 }
