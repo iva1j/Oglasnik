@@ -1,9 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
     as custom;
 
@@ -20,7 +16,6 @@ class _CityDropDownState extends State<CityDropDown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.screenHeight,
       margin: EdgeInsets.symmetric(horizontal: 35.0),
       child: Card(
         elevation: 16,
