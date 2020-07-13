@@ -12,7 +12,7 @@ Container priceTextField() {
         contentPadding: EdgeInsets.only(left: 15),
       ),
       keyboardType: TextInputType.phone,
-      validator: priceValidator,
+      validator: productPriceValidator,
       controller: productPriceController,
     ),
   );

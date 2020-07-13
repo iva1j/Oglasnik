@@ -127,7 +127,7 @@ String tokenValidator(String value) {
     return null;
 }
 
-String priceValidator(String value) {
+String productPriceValidator(String value) {
   Pattern pattern = r'^[0-9]+$';
   RegExp regex = new RegExp(pattern);
   if (value.length == null || value == '') {
@@ -135,6 +135,34 @@ String priceValidator(String value) {
   }
   if (!regex.hasMatch(value) && value.length > 6) {
     return 'Cijena mora biti validna';
+  }
+  return null;
+}
+
+String productNameValidation(String value) {
+  if (value.length == null || value == '') {
+    return 'Polje ne smije biti prazno';
+  }
+  return null;
+}
+
+String productBrandValidation(String value) {
+  if (value.length == null || value == '') {
+    return 'Polje ne smije biti prazno';
+  }
+  return null;
+}
+
+String productTagValidation(String value) {
+  if (value.length == null || value == '') {
+    return 'Polje ne smije biti prazno';
+  }
+  return null;
+}
+
+String productDescValidation(String value) {
+  if (value.length == null || value == '') {
+    return 'Polje ne smije biti prazno';
   }
   return null;
 }

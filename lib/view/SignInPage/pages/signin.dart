@@ -86,22 +86,23 @@ class _SigninPageState extends State<SigninPage> {
           child: Padding(
             padding: EdgeInsets.only(bottom: bottom),
             child: Container(
-                height: SizeConfig.screenHeight,
-                margin: EdgeInsets.all(50),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                        child: AuthService().allowPasswordChange(
-                            context, emailInputControllerAlertDialog.text)),
-                    LogoContainer(),
-                    WelcomeScreen(),
-                    PrijavaWelcomeScreen(),
-                    FormSignIn(
-                        signInEmailInputController: signInEmailInputController,
-                        signInPasswordInputController:
-                            signInPasswordInputController),
-                  ],
-                )),
+              height: SizeConfig.screenHeight,
+              margin: EdgeInsets.all(50),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                      child: AuthService().allowPasswordChange(
+                          context, emailInputControllerAlertDialog.text)),
+                  LogoContainer(),
+                  WelcomeScreen(),
+                  PrijavaWelcomeScreen(),
+                  FormSignIn(
+                      signInEmailInputController: signInEmailInputController,
+                      signInPasswordInputController:
+                          signInPasswordInputController),
+                ],
+              ),
+            ),
           ),
         ),
       ),
