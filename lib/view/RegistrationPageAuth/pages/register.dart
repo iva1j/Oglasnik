@@ -8,7 +8,7 @@ import 'package:Oglasnik/view/RegistrationPageAuth/widgets/signUpFormName.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
-import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
 
 GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
@@ -92,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
       body: WillPopScope(
         onWillPop: () => Navigator.of(context)
             .pushReplacement(MaterialPageRoute(builder: (_) {
-          return AnonymouseHome();
+          return AnonymousHome();
         })),
         child: SingleChildScrollView(
           reverse: true,

@@ -51,7 +51,7 @@ IconButton backButtonIphone(BuildContext context) {
       ),
       onPressed: () =>
           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-            return AnonymouseHome();
+            return AnonymousHome();
           })));
 }
 
@@ -92,7 +92,7 @@ Container imageOneUploadButton(dynamic function) {
           fontWeight: FontWeight.normal,
         ),
       ),
-      onPressed: function,
+      onPressed: () => function(),
     ),
   );
 }

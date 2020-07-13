@@ -1,10 +1,11 @@
 import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/articalName.dart';
+import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
+import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
+import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
+import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
           // ignore: missing_required_param
           home: Splash(),
           routes: {
-            "/back": (_) => AnonymouseHome(),
+            "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),
             "/register": (_) => RegisterPage(),
             "/signin": (_) => SigninPage(),

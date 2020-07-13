@@ -1,19 +1,16 @@
 import 'dart:async';
-
 import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
-import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/sendMail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-final db = Firestore.instance;
 bool validSignIn = false;
 bool validPasswordReset = false;
 
@@ -45,6 +42,7 @@ class AuthService extends ChangeNotifier {
           if (snapshot.hasData) {
             allowUserToRegister = false;
             print('korisnik postoji');
+            allowUserToRegister = false;
             return Container();
           } else {
             allowUserToRegister = true;
@@ -119,7 +117,7 @@ class AuthService extends ChangeNotifier {
         Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-            pageBuilder: (context, animation1, animation2) => AnonymouseHome(),
+            pageBuilder: (context, animation1, animation2) => AnonymousHome(),
           ),
         );
 

@@ -6,7 +6,7 @@ import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
-import 'package:Oglasnik/viewModel/authViewModel.dart';
+import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -72,6 +72,4 @@ void onPressedSignInModel(
 void loginPrefs(BuildContext context, String email) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setString('email', email);
-  /*Navigator.pushReplacement(context,
-      MaterialPageRoute(builder: (BuildContext ctx) => AnonymouseHome()));*/
 }

@@ -7,6 +7,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 
 class RegisteredHome extends StatefulWidget {
   @override
@@ -34,29 +35,9 @@ class _RegisteredHomeState extends State<RegisteredHome> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppBarTheme.of(context).color,
-        //backgroundColor: mainAppColor,
-        //backgroundColor: Color.fromARGB(255, 226, 11, 48),
         centerTitle: true,
         title: Text('Oglasnik'),
-        leading: IconButton(
-          onPressed: () async {
-            await FirebaseAuth.instance.signOut();
-            /*
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AnonymouseHome()));*/
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-            prefs.remove('email');
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (BuildContext ctx) => AnonymouseHome()));
-          },
-          icon: Icon(
-            Icons.power_settings_new,
-            color: Colors.black,
-            size: SizeConfig.blockSizeHorizontal * 10,
-          ),
-        ),
+        leading: LogoutButton(),
       ),
       floatingActionButton: mainFloatingButton(),
       bottomSheet: Container(
