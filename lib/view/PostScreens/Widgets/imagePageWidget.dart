@@ -1,7 +1,13 @@
+import 'dart:io';
+import 'package:path/path.dart' as path;
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
+
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 
 import 'package:image_picker/image_picker.dart';
@@ -9,6 +15,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:flutter/material.dart';
 import 'dart:io';
+
 
 class ImagePageWidget extends StatefulWidget {
   const ImagePageWidget({
@@ -23,6 +30,7 @@ class ImagePageWidget extends StatefulWidget {
 }
 
 class _ImagePageWidgetState extends State<ImagePageWidget> {
+
 
   /*
   File sampleImage;
@@ -47,6 +55,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     });
   }
 */
+
 
   @override
   Widget build(BuildContext context) {

@@ -6,12 +6,14 @@ import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/imagePage.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
-
 import 'package:Oglasnik/view/PostScreens/widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/pageViewPages.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
+import 'package:random_string/random_string.dart';
+
+PageController pageController = PageController(initialPage: 0);
 
 class ArticlePage extends StatefulWidget {
   @override
