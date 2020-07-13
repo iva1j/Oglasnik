@@ -1,10 +1,11 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 
 final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
-Stack mainFloatingButton() {
+Stack mainFloatingButton(String email) {
   return Stack(overflow: Overflow.visible, children: <Widget>[
     Builder(
       builder: (context) => FabCircularMenu(
