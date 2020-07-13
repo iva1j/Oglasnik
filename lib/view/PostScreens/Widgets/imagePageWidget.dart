@@ -1,13 +1,9 @@
-import 'dart:io';
-
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ImagePageWidget extends StatefulWidget {
   const ImagePageWidget({
@@ -22,20 +18,6 @@ class ImagePageWidget extends StatefulWidget {
 }
 
 class _ImagePageWidgetState extends State<ImagePageWidget> {
-  File _imageFile;
-
-  Future<void> pickImage(ImageSource source) async {
-    File selected = ImagePicker().getImage(source: ImageSource.gallery) as File;
-
-    setState(() {
-      _imageFile = selected;
-    });
-  }
-
-  void _clear() {
-    setState(() => _imageFile = null);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -47,10 +29,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           children: <Widget>[
             Container(
                 margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
-            imageOneUploadButton(
-                () => pickImage(ImageSource.gallery)), //dodati funkcije
-            imageTwoUploadButton(() => pickImage(ImageSource.gallery)),
-            imageThreeUploadButton(() => pickImage(ImageSource.gallery)),
+            imageOneUploadButton(() {}), //dodati funkcije
+            imageTwoUploadButton(() {}),
+            imageThreeUploadButton(() {}),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[

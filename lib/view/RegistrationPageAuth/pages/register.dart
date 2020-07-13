@@ -80,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 signUpPasswordInputController);
           },
           child: Text(
-            'Prijavi se',
+            RegistrationPageAuthPages().prijava,
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.black,
