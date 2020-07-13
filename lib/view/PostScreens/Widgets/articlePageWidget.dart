@@ -32,6 +32,7 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
         children: <Widget>[
           MainTitle(),
           Container(
+            //evo neki komentar
             margin: EdgeInsets.only(
                 top: SizeConfig.blockSizeVertical * 20,
                 left: SizeConfig.blockSizeHorizontal * 10,
