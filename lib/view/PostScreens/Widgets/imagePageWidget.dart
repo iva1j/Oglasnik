@@ -122,6 +122,7 @@ import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -155,6 +156,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Padding(
       padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(
@@ -162,8 +164,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
+            MainTitle(),
             Container(
-                margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
+              margin: EdgeInsets.only(bottom: 80.0),
+            ),
             imageOneUploadButton(getImage),
             imageTwoUploadButton(() {}),
             imageThreeUploadButton(() {}),
@@ -177,13 +181,15 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                    margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
+                    margin: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 10,
+                        right: SizeConfig.blockSizeHorizontal * 10,
+                        bottom: SizeConfig.blockSizeVertical * 18),
                     child: priceTextField()),
-                Padding(
-                    padding: EdgeInsets.only(left: 7),
-                    child: Text(MoneyText().kmText)),
+                Text(MoneyText().kmText),
               ],
             ),
+            PageViewButton()
           ],
         ),
       ),
