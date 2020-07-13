@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/descriptionPageWidget.dart';
 import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/descriptionPageWidget.dart';
 import 'package:flutter/material.dart';

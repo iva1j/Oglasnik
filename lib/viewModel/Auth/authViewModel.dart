@@ -128,13 +128,7 @@ class AuthService extends ChangeNotifier {
           doesMatch = false;
         });
         nepoklapanje = true;
-        // doesMatch = true;
-        // print('Does match status: ' + doesMatch.toString());
-        // Timer(Duration(seconds: 1), () {
-        //   doesMatch = false;
-        //   print('Does match status nakon jedne sec: ' + doesMatch.toString());
-        // });
-        // print('lozinke se ne poklapaju');
+        print('lozinke se ne poklapaju');
       } else {
         print('Nešto nije uredu, molimo provjerite i ispravite grešku');
       }

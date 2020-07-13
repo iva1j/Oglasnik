@@ -9,6 +9,7 @@ import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
 
 PageController pageController = PageController(initialPage: 0);
 

@@ -17,7 +17,6 @@ TextEditingController confirmPasswordInputController =
 String token, newPassword, confirmPassword, passwordConfirm;
 bool doesMatch = false;
 
-
 // ignore: must_be_immutable
 class PasswordChange extends StatefulWidget {
   String email;
@@ -125,7 +124,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                             contentPadding: EdgeInsets.only(left: 10),
                           ),
                           obscureText: true,
-                          //validator: passwordValidator,
+                          validator: passwordValidator,
                           controller: passwordInputController,
                           // validator: (value) => value.isEmpty
                           //     ? 'Polje ne može biti prazno!'
@@ -176,8 +175,6 @@ class _PasswordChangeState extends State<PasswordChange> {
                       passwordConfirm = confirmPasswordInputController.text;
                       token = tokenInputController.text;
                       print('Nakon klika - ispis je sljedeći:');
-                      //validateCheck();
-
                       AuthService().onPressedChangePassword(
                         context,
                         email,

@@ -26,7 +26,6 @@ class _FormSignUpState extends State<FormSignUp> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      //autovalidate: true,
       key: widget.signUpRegisterFormKey,
       child: Column(children: <Widget>[
         fullNameInputField(context),

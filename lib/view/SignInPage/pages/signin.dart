@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/logoContainer.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -48,7 +47,6 @@ class _SigninPageState extends State<SigninPage> {
   Widget build(BuildContext context) {
     email = signInEmailInputController.text;
     password = signInPasswordInputController.text;
-
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
