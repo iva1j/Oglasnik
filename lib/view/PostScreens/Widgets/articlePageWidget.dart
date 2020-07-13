@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 
 class ArticlePageWidget extends StatefulWidget {
@@ -30,6 +31,7 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
             margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 140),
             child: NazivTextField(),
           ),
+          PageViewButton(),
         ],
       ),
     );
