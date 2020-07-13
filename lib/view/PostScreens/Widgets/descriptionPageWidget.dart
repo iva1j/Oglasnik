@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:flutter/material.dart';
 
 class DescriptionPageWidget extends StatefulWidget {
@@ -32,14 +33,7 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
           children: <Widget>[
             Container(
               margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 90),
-              child: TextField(
-                maxLines: null,
-                keyboardType: TextInputType.multiline,
-                controller: productDescController,
-                decoration: const InputDecoration(
-                    labelText: 'Opis',
-                    contentPadding: EdgeInsets.only(left: 15.0)),
-              ),
+              child: OpisTextField(),
             ),
           ],
         ),

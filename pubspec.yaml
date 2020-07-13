@@ -32,10 +32,12 @@ dependencies:
   fab_circular_menu: ^1.0.0
   random_string: ^2.1.0
   mailgun: ^0.1.0
+  image_picker: ^0.6.7+4
   flutter_dotenv: ^2.1.0
   flutter_spinkit: ^4.1.2+1
   flutter_typeahead: ^1.8.5
   flutter_keyboard_visibility: ^3.2.1
+  shared_preferences: ^0.5.8
 
   provider: ^4.3.0
   # The following adds the Cupertino Icons font to your application.
