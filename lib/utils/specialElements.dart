@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
@@ -57,15 +58,17 @@ IconButton backButtonIphone(BuildContext context) {
 
 IconButton newInputBackButtonIphone(BuildContext context) {
   return IconButton(
-      icon: Icon(
-        Icons.clear,
-        color: Colors.black,
-        size: 30,
-      ),
-      onPressed: () =>
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-            return RegisteredHome();
-          })));
+    icon: Icon(
+      Icons.clear,
+      color: Colors.black,
+      size: 30,
+    ),
+    onPressed: () => Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (_) {
+        return RegisteredHome();
+      }),
+    ),
+  );
 }
 
 Container imageOneUploadButton(dynamic function) {

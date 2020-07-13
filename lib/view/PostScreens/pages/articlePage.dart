@@ -9,6 +9,7 @@ import 'package:Oglasnik/view/PostScreens/widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:random_string/random_string.dart';
 
 PageController pageController = PageController(initialPage: 0);
 
@@ -51,24 +52,22 @@ class _ArticlePageState extends State<ArticlePage> {
               margin: EdgeInsets.only(bottom: 140.0),
               child: button("Dalje", () async {
                 if (pageController.page == 4) {
-                  email = 'nekimail';
+                  email = email;
                   productName = productNameController.text;
                   productCategory = dropdownValueCategory;
                   productBrand = brandTypeAheadController.text;
                   productLocation = dropdownValueCity;
-                  productID = 'adjasdjasp';
                   productTag = productTagController.text;
                   productDesc = productDescController.text;
                   productImg1 = 'adjasdjasp';
                   productImg2 = 'adjasdjasp';
                   productImg3 = 'adjasdjasp';
                   productprice = productPriceController.text;
-                  print(email + productName + productTag);
                   CreateProduct().createProduct(
                       context,
                       email,
                       productName,
-                      productID,
+                      productID = randomAlphaNumeric(20),
                       productCategory,
                       productBrand,
                       productLocation,
@@ -84,7 +83,7 @@ class _ArticlePageState extends State<ArticlePage> {
                       curve: Curves.ease);
                   productName = productNameController.text;
                   print(productName);
-
+                  print(email);
                   print(pageController.toString());
                   print(pageController.page);
                 }

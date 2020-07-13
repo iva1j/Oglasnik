@@ -56,11 +56,7 @@ class _PageFiveState extends State<PageFive> {
     return WillPopScope(
       onWillPop: () => Future.sync(onWillPop),
       child: Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: Colors.white,
-        //   elevation: 0.0,
-        //   leading: newInputBackButtonIphone(context),
-        // ),
+
         resizeToAvoidBottomPadding: false,
         body: SingleChildScrollView(
           reverse: true,

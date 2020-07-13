@@ -1,12 +1,13 @@
+import 'dart:io';
+import 'package:path/path.dart' as path;
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
-
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ImagePageWidget extends StatelessWidget {
+class ImagePageWidget extends StatefulWidget {
   const ImagePageWidget({
     Key key,
     @required this.bottom,
@@ -15,9 +16,14 @@ class ImagePageWidget extends StatelessWidget {
   final double bottom;
 
   @override
+  _ImagePageWidgetState createState() => _ImagePageWidgetState();
+}
+
+class _ImagePageWidgetState extends State<ImagePageWidget> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: bottom),
+      padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(
         height: SizeConfig.screenHeight,
         margin: EdgeInsets.all(15),
