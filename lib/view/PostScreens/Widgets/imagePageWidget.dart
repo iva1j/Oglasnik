@@ -3,6 +3,7 @@ import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -22,6 +23,7 @@ class ImagePageWidget extends StatefulWidget {
 }
 
 class _ImagePageWidgetState extends State<ImagePageWidget> {
+
   /*
   File sampleImage;
 
@@ -45,6 +47,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     });
   }
 */
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -55,13 +58,18 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         child: Column(
           children: <Widget>[
             Container(
+/*
               margin: EdgeInsets.only(bottom: 80.0),
             ),
             imageOneUploadButton(() {}),
-/*
+
             sampleImage == null
                 ? Text("Select an image")
-                : enableUpload(), //dodati funkcije*/
+                : enableUpload(), //dodati funkcije
+*/
+                margin: EdgeInsets.only(bottom: 80.0), child: MainTitle()),
+            imageOneUploadButton(() {}), //dodati funkcije
+
             imageTwoUploadButton(() {}),
             imageThreeUploadButton(() {}),
             Row(

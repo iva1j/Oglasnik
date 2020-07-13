@@ -26,9 +26,6 @@ class _SigninPageState extends State<SigninPage> {
 
   bool islogin = false;
 
-  // TextEditingController signInEmailInputController;
-  // TextEditingController signInPasswordInputController;
-
   @override
   initState() {
     signInEmailInputController = new TextEditingController();

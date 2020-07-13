@@ -4,8 +4,6 @@ import 'package:flutter/cupertino.dart';
 
 class NewPostScreen {
   String unosNaslov = "Novi unos";
-  String fontstyle = "Roboto";
-  var fontSize = 20;
 }
 
 class MoneyText {
@@ -120,6 +118,18 @@ class SplashScreen {
   String fontFamily = "Roboto";
 }
 
+class ImageOneUpload {
+  String img1 = "Dodaj sliku 1";
+}
+
+class ImageTwoUpload {
+  String img2 = "Dodaj sliku 2";
+}
+
+class ImageThreeUpload {
+  String img3 = "Dodaj sliku 3";
+}
+
 String next = 'Dalje';
 String lastPage = 'Završi';
 bool alertstatus = false;
@@ -143,12 +153,3 @@ class InputFields {
   TextEditingController passwordInputController = new TextEditingController();
 }
 //#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc
-
-
-List<String> suggestions = [
-    "Apple",
-    "Microsoft",
-    "Tefal",
-    "Audi",
-    "Beko",
-  ];

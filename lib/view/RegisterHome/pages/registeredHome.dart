@@ -17,6 +17,7 @@ class RegisteredHome extends StatefulWidget {
 final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
 
 class _RegisteredHomeState extends State<RegisteredHome> {
+  final keyIsFirstLoaded = 'is_first_loaded';
   @override
   void initState() {
     super.initState();
