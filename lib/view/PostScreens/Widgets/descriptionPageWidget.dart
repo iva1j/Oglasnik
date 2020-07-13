@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 
 class DescriptionPageWidget extends StatefulWidget {
@@ -35,6 +36,7 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
               margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 90),
               child: OpisTextField(),
             ),
+            PageViewButton(),
           ],
         ),
       ),

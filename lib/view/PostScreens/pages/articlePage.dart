@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/specialElements.dart';
 
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:Oglasnik/view/PostScreens/pages/categoryPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/cityPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/descriptionPage.dart';
@@ -55,6 +56,7 @@ class PageOne extends StatelessWidget {
         body: SingleChildScrollView(
           reverse: true,
           child: ArticlePageWidget(bottom: bottom),
+
         ),
       ),
     );

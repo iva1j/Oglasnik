@@ -18,7 +18,7 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.screenHeight,
+      //height: SizeConfig.screenHeight,
       margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 20.0),
       child: Card(
           elevation: 16,

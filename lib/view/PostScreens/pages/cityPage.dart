@@ -2,6 +2,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/tagsForm.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
@@ -36,7 +37,8 @@ class _CityPageState extends State<CityPage> {
                   margin: EdgeInsets.only(bottom: 80.0, top: 15),
                 ),
                 CityDropDown(),
-                TagsForm()
+                TagsForm(),
+                PageViewButton(),
               ],
             ),
           ),
