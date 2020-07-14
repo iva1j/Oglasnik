@@ -26,3 +26,5 @@ String dropdownValueCity = 'Sarajevo';
 
 final GlobalKey<FormState> brandFormKey = GlobalKey<FormState>();
 TextEditingController brandTypeAheadController;
+
+bool uploadSlike = false;

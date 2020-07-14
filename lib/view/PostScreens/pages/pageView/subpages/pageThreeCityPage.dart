@@ -2,10 +2,10 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/tagsForm.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
-    as custom;
 
 class CityPage extends StatefulWidget {
   @override
@@ -20,7 +20,14 @@ class _CityPageState extends State<CityPage> {
   }
 
   @override
+  void dispose() {
+    productTagController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return WillPopScope(
       onWillPop: () => Future.sync(onWillPop),
@@ -32,11 +39,17 @@ class _CityPageState extends State<CityPage> {
             padding: EdgeInsets.only(bottom: bottom),
             child: Column(
               children: <Widget>[
+                MainTitle(),
                 Container(
-                  margin: EdgeInsets.only(bottom: 80.0, top: 15),
+                  margin: EdgeInsets.only(
+                    //bottom: 80.0,
+                    top: SizeConfig.blockSizeVertical * 6,
+                  ),
+                  color: Colors.red,
                 ),
                 CityDropDown(),
-                TagsForm()
+                TagsForm(),
+                PageViewButton()
               ],
             ),
           ),
