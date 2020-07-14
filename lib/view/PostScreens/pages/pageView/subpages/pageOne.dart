@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +15,7 @@ class PageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) {
-          return RegisteredHome();
-        }),
-      ),
+      onWillPop: () => Future.sync(onWillPop),
       child: Scaffold(
         body: SingleChildScrollView(
           reverse: true,

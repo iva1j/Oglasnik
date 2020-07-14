@@ -23,7 +23,7 @@ class _PageViewButtonSubmitState extends State<PageViewButtonSubmit> {
             productImg2 = 'slika2';
             productImg3 = 'slika3';
             productprice = productPriceController.text;
-            if (productPriceFormKey.currentState.validate())
+            if (productPriceFormKey.currentState.validate()) {
               CreateProduct().createProduct(
                   context,
                   email,
@@ -38,7 +38,7 @@ class _PageViewButtonSubmitState extends State<PageViewButtonSubmit> {
                   productImg2,
                   productImg3,
                   productprice);
-            else
+            } else
               return null;
           }
         },

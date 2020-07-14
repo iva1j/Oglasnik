@@ -23,6 +23,7 @@ class _PageViewButtonState extends State<PageViewButton> {
             pageController.nextPage(
                 duration: Duration(milliseconds: 800), curve: Curves.ease);
             print(productBrand);
+
           } else
             print('molimo popunite polje opis!');
           return null;

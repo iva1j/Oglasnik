@@ -138,6 +138,8 @@ bool tokenstatus = false;
 var nepoklapanje = false;
 bool allowUserToChangePassword = false;
 bool allowUserToRegister = true;
+
+String img1, img2, img3;
 //final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 //final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
