@@ -28,16 +28,20 @@ class OpisTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      textInputAction: TextInputAction.done,
-      onFieldSubmitted: (v) {
-        FocusScope.of(context).nextFocus();
-      },
-      maxLines: null,
-      keyboardType: TextInputType.multiline,
-      controller: productDescController,
-      decoration: const InputDecoration(
-          labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
+    return Form(
+      key: productDescFormKey,
+      child: TextFormField(
+        textInputAction: TextInputAction.done,
+        onFieldSubmitted: (v) {
+          FocusScope.of(context).nextFocus();
+        },
+        maxLines: null,
+        keyboardType: TextInputType.multiline,
+        controller: productDescController,
+        validator: productFieldsValidator,
+        decoration: const InputDecoration(
+            labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
+      ),
     );
   }
 }

@@ -46,18 +46,19 @@ class _CityPageState extends State<CityPage> {
                 //     //bottom: 80.0,
                 //     top: SizeConfig.blockSizeVertical * 6,
                 //   ),
+                //   color: Colors.red,
+                // ),
                 Container(
                   margin: EdgeInsets.only(
-                    top: SizeConfig.blockSizeVertical * 12,
+                    top: SizeConfig.blockSizeVertical * 10,
                     left: SizeConfig.blockSizeHorizontal * 10,
                     right: SizeConfig.blockSizeHorizontal * 10,
                     //bottom: SizeConfig.blockSizeVertical * 20
                   ),
-                  color: Colors.red,
                 ),
                 CityDropDown(),
                 TagsForm(),
-                PageViewButton()
+                PageViewButton(),
               ],
             ),
           ),

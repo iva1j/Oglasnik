@@ -22,6 +22,8 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   void initState() {
     productNameController = new TextEditingController();
    // productNameFormKey = new GlobalKey();
+  
+
     super.initState();
   }
 
@@ -45,7 +47,7 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
                 top: SizeConfig.blockSizeVertical * 20,
                 left: SizeConfig.blockSizeHorizontal * 10,
                 right: SizeConfig.blockSizeHorizontal * 10,
-                bottom: SizeConfig.blockSizeVertical * 20),
+                bottom: SizeConfig.blockSizeVertical * 22),
             child: NazivTextField(),
           ),
           PageViewButton(),

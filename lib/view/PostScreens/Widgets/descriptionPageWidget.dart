@@ -5,6 +5,8 @@ import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 
+//import '../../../utils/sizeconfig.dart';
+
 class DescriptionPageWidget extends StatefulWidget {
   const DescriptionPageWidget({
     Key key,
@@ -32,6 +34,7 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Padding(
       padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(

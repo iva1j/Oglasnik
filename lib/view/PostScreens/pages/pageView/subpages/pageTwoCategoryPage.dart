@@ -43,7 +43,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 MainTitle(),
                 Container(
                   margin: EdgeInsets.only(
-                    top: SizeConfig.blockSizeVertical * 18,
+                    top: SizeConfig.blockSizeVertical * 10,
                     left: SizeConfig.blockSizeHorizontal * 10,
                     right: SizeConfig.blockSizeHorizontal * 10,
                     //bottom: SizeConfig.blockSizeVertical * 20
@@ -51,6 +51,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 ),
                 CategoryDropDown(),
                 BrandForm(),
+                PageViewButton(),
                 //   PageViewButton()
               ],
             ),
