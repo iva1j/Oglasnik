@@ -23,6 +23,13 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
   }
 
   @override
+  void dispose() {
+    productDescController.dispose();
+    productDescFormKey.currentState.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: widget.bottom),

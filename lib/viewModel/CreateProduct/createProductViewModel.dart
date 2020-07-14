@@ -35,7 +35,6 @@ class CreateProduct extends ProductInterface {
       'productImg2': productImg2,
       'productImg3': productImg3,
     });
-    return Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (_) => RegisteredHome()));
+    return null;
   }
 }

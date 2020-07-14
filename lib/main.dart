@@ -4,6 +4,7 @@ import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
+import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: buildThemeData(),
           // ignore: missing_required_param
-          home: RegisteredHome(),
+          home: Splash(),
           routes: {
             "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),
