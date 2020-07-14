@@ -25,6 +25,7 @@ class _PageFiveState extends State<PageFive> {
   @override
   void dispose() {
     productPriceController.dispose();
+    productPriceFormKey.currentState.dispose();
     super.dispose();
   }
 

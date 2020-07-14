@@ -24,12 +24,14 @@ TextEditingController productPriceController;
 String dropdownValueCategory = 'Kategorija1';
 String dropdownValueCity = 'Sarajevo';
 
-GlobalKey<FormState> productNameFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> productTagFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> productDescFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> productPriceFormKey = GlobalKey<FormState>();
-
 final GlobalKey<FormState> brandFormKey = GlobalKey<FormState>();
-TextEditingController brandTypeAheadController;
+final GlobalKey<FormState> productNameFormKey = GlobalKey<FormState>();
+final GlobalKey<FormState> productDescFormKey = GlobalKey<FormState>();
+final GlobalKey<FormState> productTagFormKey = GlobalKey<FormState>();
+final GlobalKey<FormState> productPriceFormKey = GlobalKey<FormState>();
 
-bool uploadSlike = false;
+TextEditingController brandTypeAheadController;
+int buttonIdentifier;
+bool buttonOne = false;
+bool buttonTwo = false;
+bool buttonThree = false;
