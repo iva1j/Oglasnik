@@ -1,6 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/PostScreens/widgets/imagePageWidget.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/imagePageWidget.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
