@@ -38,7 +38,6 @@ class _BrandFormState extends State<BrandForm> {
                 left: SizeConfig.blockSizeHorizontal * 10,
                 right: SizeConfig.blockSizeHorizontal * 10),
             child: TypeAheadFormField(
-              
               validator: productFieldsValidator,
               textFieldConfiguration: TextFieldConfiguration(
                 maxLength: 18,

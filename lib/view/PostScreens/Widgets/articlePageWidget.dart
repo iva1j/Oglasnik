@@ -21,7 +21,9 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   @override
   void initState() {
     productNameController = new TextEditingController();
-    // productNameFormKey = new GlobalKey();
+   // productNameFormKey = new GlobalKey();
+  
+
     super.initState();
   }
 
