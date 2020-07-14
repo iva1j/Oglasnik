@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
@@ -17,18 +18,27 @@ class TagsForm extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.only(
-            bottom: SizeConfig.blockSizeVertical * 13,
+            bottom: SizeConfig.blockSizeVertical * 17,
             left: SizeConfig.blockSizeHorizontal * 10,
             right: SizeConfig.blockSizeHorizontal * 10,
           ),
-          child: TextFormField(
-            controller: productTagController,
-            maxLines: null,
-            keyboardType: TextInputType.multiline,
-            decoration: const InputDecoration(
-              hintText: 'Oznake',
-              helperText: 'Oznake razdvojiti zarezom: Sarajevo, zamjena, Yoda',
-              contentPadding: EdgeInsets.only(left: 15.0),
+          child: Form(
+            key: productTagFormKey,
+            child: TextFormField(
+              textInputAction: TextInputAction.done,
+              onFieldSubmitted: (v) {
+                FocusScope.of(context).nextFocus();
+              },
+              controller: productTagController,
+              validator: productFieldsValidator,
+              maxLines: null,
+              keyboardType: TextInputType.multiline,
+              decoration: const InputDecoration(
+                hintText: 'Oznake',
+                helperText:
+                    'Oznake razdvojiti zarezom: Sarajevo, zamjena, Yoda',
+                contentPadding: EdgeInsets.only(left: 15.0),
+              ),
             ),
           ),
         ),

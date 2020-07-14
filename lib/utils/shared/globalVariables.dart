@@ -24,6 +24,11 @@ TextEditingController productPriceController;
 String dropdownValueCategory = 'Kategorija1';
 String dropdownValueCity = 'Sarajevo';
 
+GlobalKey<FormState> productNameFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> productTagFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> productDescFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> productPriceFormKey = GlobalKey<FormState>();
+
 final GlobalKey<FormState> brandFormKey = GlobalKey<FormState>();
 TextEditingController brandTypeAheadController;
 
