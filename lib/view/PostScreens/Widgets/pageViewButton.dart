@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
@@ -25,7 +26,7 @@ class _PageViewButtonState extends State<PageViewButton> {
           productImg2 = 'slika2';
           productImg3 = 'slika3';
           productprice = productPriceController.text;
-          if (productprice != null && productprice != '')
+          if (productPriceFormKey.currentState.validate())
             CreateProduct().createProduct(
                 context,
                 email,
@@ -44,7 +45,7 @@ class _PageViewButtonState extends State<PageViewButton> {
             return null;
         } else if (pageController.page == 3) {
           productDesc = productDescController.text;
-          if (productDesc != null && productDesc != '') {
+          if (productDescFormKey.currentState.validate()) {
             pageController.nextPage(
                 duration: Duration(milliseconds: 800), curve: Curves.ease);
             print(productBrand);
@@ -54,7 +55,7 @@ class _PageViewButtonState extends State<PageViewButton> {
         } else if (pageController.page == 2) {
           productTag = productTagController.text;
           productLocation = dropdownValueCity;
-          if (productTag != null && productTag != '') {
+          if (productTagFormKey.currentState.validate()) {
             pageController.nextPage(
                 duration: Duration(milliseconds: 800), curve: Curves.ease);
             print(productBrand);
@@ -64,7 +65,7 @@ class _PageViewButtonState extends State<PageViewButton> {
         } else if (pageController.page == 1) {
           productCategory = dropdownValueCategory;
           productBrand = brandTypeAheadController.text;
-          if (productBrand != null && productBrand != '') {
+          if (brandFormKey.currentState.validate()) {
             pageController.nextPage(
                 duration: Duration(milliseconds: 800), curve: Curves.ease);
             print(productBrand);
@@ -73,7 +74,7 @@ class _PageViewButtonState extends State<PageViewButton> {
           return null;
         } else if (pageController.page == 0) {
           productName = productNameController.text;
-          if (productName != null && productName != '') {
+          if (productNameFormKey.currentState.validate()) {
             pageController.nextPage(
                 duration: Duration(milliseconds: 800), curve: Curves.ease);
             print(productName);

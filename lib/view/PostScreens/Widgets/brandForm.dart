@@ -1,14 +1,26 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
+import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
-class BrandForm extends StatelessWidget {
+class BrandForm extends StatefulWidget {
   const BrandForm({
     Key key,
   }) : super(key: key);
+
+  @override
+  _BrandFormState createState() => _BrandFormState();
+}
+
+class _BrandFormState extends State<BrandForm> {
+  @override
+  void dispose() {
+    brandFormKey.currentState.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +35,7 @@ class BrandForm extends StatelessWidget {
                 left: SizeConfig.blockSizeHorizontal * 10,
                 right: SizeConfig.blockSizeHorizontal * 10),
             child: TypeAheadFormField(
+              validator: productFieldsValidator,
               textFieldConfiguration: TextFieldConfiguration(
                 maxLength: 18,
                 decoration: InputDecoration(
@@ -36,6 +49,8 @@ class BrandForm extends StatelessWidget {
               itemBuilder: (context, suggestion) {
                 return ListTile(title: Text(suggestion));
               },
+              //noItemsFoundBuilder: (BuildContext context, Object error)=>Text('$error'),
+              hideOnEmpty: true,
               onSuggestionSelected: (suggestion) {
                 brandTypeAheadController.text = suggestion;
               },
