@@ -29,6 +29,7 @@ class OpisTextField extends StatelessWidget {
       maxLines: null,
       keyboardType: TextInputType.multiline,
       controller: productDescController,
+      textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
           labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
     );
@@ -43,6 +44,7 @@ class NazivTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textCapitalization: TextCapitalization.sentences,
       controller: productNameController,
       maxLength: 28,
       decoration: const InputDecoration(

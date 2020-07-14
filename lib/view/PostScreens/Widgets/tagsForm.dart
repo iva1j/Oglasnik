@@ -19,6 +19,7 @@ class TagsForm extends StatelessWidget {
             controller: productTagController,
             maxLines: null,
             keyboardType: TextInputType.multiline,
+            textCapitalization: TextCapitalization.sentences,
             decoration: const InputDecoration(
                 hintText: 'Oznake',
                 helperText:
