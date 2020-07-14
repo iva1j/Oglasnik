@@ -31,14 +31,11 @@ class OpisTextField extends StatelessWidget {
     return Form(
       key: productDescFormKey,
       child: TextFormField(
-        textInputAction: TextInputAction.done,
-        onFieldSubmitted: (v) {
-          FocusScope.of(context).nextFocus();
-        },
+        validator: productDescValidation,
         maxLines: null,
         keyboardType: TextInputType.multiline,
         controller: productDescController,
-        validator: productFieldsValidator,
+        textCapitalization: TextCapitalization.sentences,
         decoration: const InputDecoration(
             labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
       ),
@@ -46,34 +43,24 @@ class OpisTextField extends StatelessWidget {
   }
 }
 
-class NazivTextField extends StatefulWidget {
+class NazivTextField extends StatelessWidget {
   const NazivTextField({
     Key key,
   }) : super(key: key);
 
   @override
-  _NazivTextFieldState createState() => _NazivTextFieldState();
-}
-
-class _NazivTextFieldState extends State<NazivTextField> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Form(
-      key: productNameFormKey,
-      child: TextFormField(
-        validator: productFieldsValidator,
-        controller: productNameController,
-        maxLength: 28,
-        decoration: const InputDecoration(
-            hintText: 'Naziv artikla',
-            contentPadding: EdgeInsets.only(left: 15.0)),
-      ),
-    );
+        key: productNameFormKey,
+        child: TextFormField(
+          validator: productFieldsValidator,
+          textCapitalization: TextCapitalization.sentences,
+          controller: productNameController,
+          maxLength: 28,
+          decoration: const InputDecoration(
+              hintText: 'Naziv artikla',
+              contentPadding: EdgeInsets.only(left: 15.0)),
+        ));
   }
 }
 
@@ -85,7 +72,7 @@ class AddImageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      ImageOneUpload().img1,
+      img1,
       style: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,
@@ -102,7 +89,7 @@ class AddImageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      ImageTwoUpload().img2,
+      img2,
       style: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,
@@ -119,7 +106,7 @@ class AddImageThree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      ImageThreeUpload().img3,
+      img3,
       style: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,

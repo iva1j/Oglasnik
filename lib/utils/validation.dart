@@ -12,7 +12,7 @@ String nameValidator(String value) {
 }
 
 String productFieldsValidator(String value) {
-  Pattern pattern = r'(?!\s*$)';  
+  Pattern pattern = r'(?!\s*$)';
   RegExp regex = new RegExp(pattern);
   if (value.length == null || value == '' || !regex.hasMatch(value))
     return 'Polje ne smije biti prazno';
@@ -22,7 +22,7 @@ String productFieldsValidator(String value) {
 }
 
 String phoneValidator(String value) {
-  Pattern pattern = r'^[0-9]+$'; 
+  Pattern pattern = r'^[0-9]+$';
   RegExp regex = new RegExp(pattern);
   if (value.length == null || value == '') {
     return "Polje ne smije biti prazno";
@@ -138,13 +138,12 @@ String tokenValidator(String value) {
 }
 
 String productPriceValidator(String value) {
-  Pattern pattern = r'^(\d{1,5}|\d{0,5}\.\d{1,2})$';
+  Pattern pattern = r'^(\d{1,6}|\d{0,5}\.\d{1,2})$';
   RegExp regex = new RegExp(pattern);
   if (value.length == null || value == '') {
     return "Polje ne smije biti prazno";
-  }
-  else if (!regex.hasMatch(value) || value.length > 6) {
-    return 'Cijena mora biti validna';
+  } else if (!regex.hasMatch(value)) {
+    return 'Molimo unesite ispravan iznos';
   }
   return null;
 }

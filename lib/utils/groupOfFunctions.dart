@@ -11,6 +11,11 @@ class PswChangeFields {
   // TextEditingController _password = new TextEditingController();
 }
 
+// class PswCopyFields {
+//   TextEditingController _email = new TextEditingController();
+//   TextEditingController _name = new TextEditingController();
+// }
+
 class RegisterControllers {
   TextEditingController fullNameInputController = new TextEditingController();
   TextEditingController phoneNumberInputController =
