@@ -1,29 +1,20 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/tagsForm.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/brandForm.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
 import 'package:flutter/material.dart';
 
-class CityPage extends StatefulWidget {
+class CategoryPage extends StatefulWidget {
   @override
-  _CityPageState createState() => _CityPageState();
+  _CategoryPageState createState() => _CategoryPageState();
 }
 
-class _CityPageState extends State<CityPage> {
+class _CategoryPageState extends State<CategoryPage> {
   @override
   void initState() {
-    productTagController = new TextEditingController();
+    brandTypeAheadController = new TextEditingController();
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    productTagController.dispose();
-    productTagFormKey.currentState.dispose();
-    super.dispose();
   }
 
   @override
@@ -40,14 +31,6 @@ class _CityPageState extends State<CityPage> {
             padding: EdgeInsets.only(bottom: bottom),
             child: Column(
               children: <Widget>[
-                MainTitle(),
-                // Container(
-                //   margin: EdgeInsets.only(
-                //     //bottom: 80.0,
-                //     top: SizeConfig.blockSizeVertical * 6,
-                //   ),
-                //   color: Colors.red,
-                // ),
                 Container(
                   margin: EdgeInsets.only(
                     top: SizeConfig.blockSizeVertical * 10,
@@ -56,9 +39,8 @@ class _CityPageState extends State<CityPage> {
                     //bottom: SizeConfig.blockSizeVertical * 20
                   ),
                 ),
-                CityDropDown(),
-                TagsForm(),
-                PageViewButton(),
+                CategoryDropDown(),
+                BrandForm(),
               ],
             ),
           ),

@@ -6,17 +6,14 @@ import 'package:flutter/material.dart';
 Container priceTextField() {
   return Container(
     width: 150,
-    child: Form(
-      key: productPriceFormKey,
-      child: TextFormField(
-        decoration: InputDecoration(
-          hintText: 'Cijena',
-          contentPadding: EdgeInsets.only(left: 15),
-        ),
-        keyboardType: TextInputType.phone,
-        validator: productPriceValidator,
-        controller: productPriceController,
+    child: TextFormField(
+      decoration: InputDecoration(
+        hintText: 'Cijena',
+        contentPadding: EdgeInsets.only(left: 15),
       ),
+      keyboardType: TextInputType.phone,
+      validator: priceValidator,
+      controller: productPriceController,
     ),
   );
 }
@@ -28,47 +25,26 @@ class OpisTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: productDescFormKey,
-      child: TextFormField(
-        textInputAction: TextInputAction.done,
-        onFieldSubmitted: (v) {
-          FocusScope.of(context).nextFocus();
-        },
-        maxLines: null,
-        keyboardType: TextInputType.multiline,
-        controller: productDescController,
-        validator: productFieldsValidator,
-        decoration: const InputDecoration(
-            labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
-      ),
+    return TextField(
+      maxLines: null,
+      keyboardType: TextInputType.multiline,
+      controller: productDescController,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: const InputDecoration(
+          labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
     );
   }
 }
 
-class NazivTextField extends StatefulWidget {
+class NazivTextField extends StatelessWidget {
   const NazivTextField({
     Key key,
   }) : super(key: key);
 
   @override
-  _NazivTextFieldState createState() => _NazivTextFieldState();
-}
-
-class _NazivTextFieldState extends State<NazivTextField> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      textInputAction: TextInputAction.done,
-      onFieldSubmitted: (v) {
-        FocusScope.of(context).nextFocus();
-      },
-      //validator: nameValidator,
+      textCapitalization: TextCapitalization.sentences,
       controller: productNameController,
       maxLength: 28,
       decoration: const InputDecoration(
@@ -86,7 +62,7 @@ class AddImageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      ImageOneUpload().img1,
+      img1,
       style: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,
@@ -103,7 +79,7 @@ class AddImageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      ImageTwoUpload().img2,
+      img2,
       style: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,
@@ -120,7 +96,7 @@ class AddImageThree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      ImageThreeUpload().img3,
+      img3,
       style: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,

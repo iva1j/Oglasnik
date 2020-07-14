@@ -1,11 +1,8 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
-
-//import '../../../utils/sizeconfig.dart';
 
 class DescriptionPageWidget extends StatefulWidget {
   const DescriptionPageWidget({
@@ -27,12 +24,6 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
   }
 
   @override
-  void dispose() {
-    productDescController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Padding(
@@ -41,7 +32,6 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
         margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
-            MainTitle(),
             Container(
               margin: EdgeInsets.only(
                   top: SizeConfig.blockSizeVertical * 20,
@@ -50,7 +40,7 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
                   bottom: SizeConfig.blockSizeVertical * 22),
               child: OpisTextField(),
             ),
-            PageViewButton()
+            PageViewButton(),
           ],
         ),
       ),

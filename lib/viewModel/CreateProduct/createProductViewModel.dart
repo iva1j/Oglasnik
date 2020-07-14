@@ -19,7 +19,8 @@ class CreateProduct extends ProductInterface {
       productImg1,
       productImg2,
       productImg3,
-      productCijena) async {
+      productCijena) {
+    //if(validacija = true, formkey...)
     db.collection("products").document(productID).setData({
       'productID': productID,
       'email': email,
@@ -34,7 +35,6 @@ class CreateProduct extends ProductInterface {
       'productImg2': productImg2,
       'productImg3': productImg3,
     });
-    return Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (_) => RegisteredHome()));
+    return null;
   }
 }
