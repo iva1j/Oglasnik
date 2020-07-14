@@ -42,16 +42,16 @@ class _CategoryPageState extends State<CategoryPage> {
               children: <Widget>[
                 MainTitle(),
                 Container(
-                  //#TODO za Farisa i Elvira
                   margin: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 10,
-                      left: SizeConfig.blockSizeHorizontal * 10,
-                      right: SizeConfig.blockSizeHorizontal * 10,
-                      //bottom: SizeConfig.blockSizeVertical * 20
-                      ),
+                    top: SizeConfig.blockSizeVertical * 10,
+                    left: SizeConfig.blockSizeHorizontal * 10,
+                    right: SizeConfig.blockSizeHorizontal * 10,
+                    //bottom: SizeConfig.blockSizeVertical * 20
+                  ),
                 ),
                 CategoryDropDown(),
                 BrandForm(),
+                PageViewButton(),
                 //   PageViewButton()
               ],
             ),

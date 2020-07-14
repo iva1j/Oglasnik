@@ -30,6 +30,9 @@ class _BrandFormState extends State<BrandForm> {
       child: Column(
         children: <Widget>[
           Container(
+            margin: EdgeInsets.only(bottom: 40.0),
+          ),
+          Container(
             margin: EdgeInsets.only(
                 bottom: SizeConfig.blockSizeVertical * 13,
                 left: SizeConfig.blockSizeHorizontal * 10,
@@ -56,7 +59,7 @@ class _BrandFormState extends State<BrandForm> {
               },
             ),
           ),
-          PageViewButton(),
+          
         ],
       ),
     );

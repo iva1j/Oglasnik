@@ -31,6 +31,10 @@ class OpisTextField extends StatelessWidget {
     return Form(
       key: productDescFormKey,
       child: TextFormField(
+        textInputAction: TextInputAction.done,
+        onFieldSubmitted: (v) {
+          FocusScope.of(context).nextFocus();
+        },
         maxLines: null,
         keyboardType: TextInputType.multiline,
         controller: productDescController,

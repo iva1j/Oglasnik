@@ -9,6 +9,9 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
 
+import '../../../utils/sizeconfig.dart';
+import '../../../utils/sizeconfig.dart';
+
 class ImagePageWidget extends StatefulWidget {
   const ImagePageWidget({
     Key key,
@@ -59,6 +62,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     final List<Widget> children = <Widget>[];
     _tasks.forEach((StorageUploadTask task) {
       final Widget tile = UploadTaskListTile(
@@ -74,7 +78,11 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(bottom: 80.0),
+              child: MainTitle(),
+
+              //Uraditi SizeConfig below
+              margin:
+                  EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 22),
             ),
             imageOneUploadButton(openFileExplorer), //dodati funkcije
             imageTwoUploadButton(openFileExplorer),
@@ -83,11 +91,12 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                    margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
+                    // SizeConfig odraditi
+                    margin: EdgeInsets.only(left: 35.0, bottom: 32.0),
                     child: priceTextField()),
                 Container(
                     //padding: EdgeInsets.only(left: 7),
-                    margin: EdgeInsets.only(left: 10),
+                    margin: EdgeInsets.only(left: 10, bottom: 20.0),
                     child: Text(MoneyText().kmText)),
               ],
             ),

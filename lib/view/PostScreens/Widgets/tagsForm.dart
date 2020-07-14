@@ -18,13 +18,17 @@ class TagsForm extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.only(
-            bottom: SizeConfig.blockSizeVertical * 13,
+            bottom: SizeConfig.blockSizeVertical * 17,
             left: SizeConfig.blockSizeHorizontal * 10,
             right: SizeConfig.blockSizeHorizontal * 10,
           ),
           child: Form(
             key: productTagFormKey,
             child: TextFormField(
+              textInputAction: TextInputAction.done,
+              onFieldSubmitted: (v) {
+                FocusScope.of(context).nextFocus();
+              },
               controller: productTagController,
               validator: productFieldsValidator,
               maxLines: null,
