@@ -20,6 +20,7 @@ class BrandForm extends StatelessWidget {
             child: TypeAheadFormField(
               textFieldConfiguration: TextFieldConfiguration(
                 maxLength: 18,
+                textCapitalization: TextCapitalization.sentences,
                 decoration: InputDecoration(
                     hintText: 'Proizvođač',
                     contentPadding: EdgeInsets.only(left: 15.0)),
@@ -36,8 +37,7 @@ class BrandForm extends StatelessWidget {
               },
             ),
           ),
-                    PageViewButton(),
-
+          PageViewButton(),
         ],
       ),
     );

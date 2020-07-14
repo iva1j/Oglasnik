@@ -29,6 +29,7 @@ class OpisTextField extends StatelessWidget {
       maxLines: null,
       keyboardType: TextInputType.multiline,
       controller: productDescController,
+      textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
           labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
     );
@@ -43,6 +44,7 @@ class NazivTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textCapitalization: TextCapitalization.sentences,
       controller: productNameController,
       maxLength: 28,
       decoration: const InputDecoration(
@@ -60,7 +62,7 @@ class AddImageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      ImageOneUpload().img1,
+      img1,
       style: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,
@@ -77,7 +79,7 @@ class AddImageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      ImageTwoUpload().img2,
+      img2,
       style: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,
@@ -94,7 +96,7 @@ class AddImageThree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      ImageThreeUpload().img3,
+      img3,
       style: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,

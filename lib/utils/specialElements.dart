@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:Oglasnik/utils/text_form_fields.dart';
-
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
@@ -80,6 +80,7 @@ IconButton newInputBackButtonIphone(BuildContext context) {
 
 //buttons for image upload located in imagePageWidget
 Container imageOneUploadButton(dynamic function) {
+  buttonOne = true;
   return Container(
     alignment: Alignment.centerLeft,
     margin: EdgeInsets.only(left: 35.0),
@@ -96,7 +97,6 @@ Container imageOneUploadButton(dynamic function) {
         color: Colors.black,
         size: 25,
       ),
-
       label: AddImageOne(),
       onPressed: function,
     ),
@@ -105,6 +105,7 @@ Container imageOneUploadButton(dynamic function) {
 
 //buttons for image upload located in imagePageWidget
 Container imageTwoUploadButton(dynamic function) {
+  buttonTwo = true;
   return Container(
     alignment: Alignment.centerLeft,
     margin: EdgeInsets.only(left: 35.0),
@@ -129,6 +130,7 @@ Container imageTwoUploadButton(dynamic function) {
 
 //buttons for image upload located in imagePageWidget
 Container imageThreeUploadButton(dynamic function) {
+  buttonThree = true;
   return Container(
     alignment: Alignment.centerLeft,
     margin: EdgeInsets.only(left: 35.0),

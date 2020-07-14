@@ -26,3 +26,7 @@ String dropdownValueCity = 'Sarajevo';
 
 final GlobalKey<FormState> brandFormKey = GlobalKey<FormState>();
 TextEditingController brandTypeAheadController;
+int buttonIdentifier;
+bool buttonOne = false;
+bool buttonTwo = false;
+bool buttonThree = false;
