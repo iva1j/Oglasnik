@@ -26,7 +26,11 @@ class OpisTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      textInputAction: TextInputAction.done,
+      onFieldSubmitted: (v) {
+        FocusScope.of(context).nextFocus();
+      },
       maxLines: null,
       keyboardType: TextInputType.multiline,
       controller: productDescController,
@@ -43,7 +47,11 @@ class NazivTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      textInputAction: TextInputAction.done,
+      onFieldSubmitted: (v) {
+        FocusScope.of(context).nextFocus();
+      },
       //validator: nameValidator,
       controller: productNameController,
       maxLength: 28,

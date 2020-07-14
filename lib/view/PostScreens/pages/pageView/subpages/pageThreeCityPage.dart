@@ -40,10 +40,17 @@ class _CityPageState extends State<CityPage> {
             child: Column(
               children: <Widget>[
                 MainTitle(),
+                // Container(
+                //   margin: EdgeInsets.only(
+                //     //bottom: 80.0,
+                //     top: SizeConfig.blockSizeVertical * 6,
+                //   ),
                 Container(
                   margin: EdgeInsets.only(
-                    //bottom: 80.0,
-                    top: SizeConfig.blockSizeVertical * 6,
+                    top: SizeConfig.blockSizeVertical * 12,
+                    left: SizeConfig.blockSizeHorizontal * 10,
+                    right: SizeConfig.blockSizeHorizontal * 10,
+                    //bottom: SizeConfig.blockSizeVertical * 20
                   ),
                   color: Colors.red,
                 ),

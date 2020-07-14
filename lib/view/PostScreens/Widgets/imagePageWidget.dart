@@ -72,6 +72,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
+            MainTitle(),
             Container(
               margin: EdgeInsets.only(bottom: 80.0),
             ),
@@ -82,7 +83,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                    margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
+                    margin: EdgeInsets.only(left: 35.0, bottom: 32.0),
                     child: priceTextField()),
                 Padding(
                     padding: EdgeInsets.only(left: 7),
