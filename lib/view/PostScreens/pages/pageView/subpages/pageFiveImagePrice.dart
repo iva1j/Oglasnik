@@ -23,6 +23,12 @@ class _PageFiveState extends State<PageFive> {
   }
 
   @override
+  void dispose() {
+    productPriceController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () => Future.sync(onWillPop),

@@ -4,8 +4,8 @@ import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageFourDescri
 import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageOne.dart';
 import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageThreeCityPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageTwoCategoryPage.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
+import 'package:Oglasnik/view/PostScreens/widgets/mainTitle.dart';
+import 'package:Oglasnik/view/PostScreens/widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 
 class PageViewPages extends StatelessWidget {
@@ -23,6 +23,7 @@ class PageViewPages extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          MainTitle(),
           Expanded(
             child: PageView(
               physics: new NeverScrollableScrollPhysics(),
@@ -36,6 +37,7 @@ class PageViewPages extends StatelessWidget {
               ],
             ),
           ),
+          PageViewButton(),
         ],
       ),
     );

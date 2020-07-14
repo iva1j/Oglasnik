@@ -19,8 +19,7 @@ class CreateProduct extends ProductInterface {
       productImg1,
       productImg2,
       productImg3,
-      productCijena) {
-    //if(validacija = true, formkey...)
+      productCijena) async {
     db.collection("products").document(productID).setData({
       'productID': productID,
       'email': email,
