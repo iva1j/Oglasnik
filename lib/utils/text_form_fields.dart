@@ -1,5 +1,4 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:flutter/material.dart';
@@ -7,14 +6,17 @@ import 'package:flutter/material.dart';
 Container priceTextField() {
   return Container(
     width: 150,
-    child: TextFormField(
-      decoration: InputDecoration(
-        hintText: 'Cijena',
-        contentPadding: EdgeInsets.only(left: 15),
+    child: Form(
+      key: productPriceFormKey,
+      child: TextFormField(
+        decoration: InputDecoration(
+          hintText: 'Cijena',
+          contentPadding: EdgeInsets.only(left: 15),
+        ),
+        keyboardType: TextInputType.phone,
+        validator: productPriceValidator,
+        controller: productPriceController,
       ),
-      keyboardType: TextInputType.phone,
-      validator: priceValidator,
-      controller: productPriceController,
     ),
   );
 }
@@ -40,10 +42,20 @@ class OpisTextField extends StatelessWidget {
   }
 }
 
-class NazivTextField extends StatelessWidget {
+class NazivTextField extends StatefulWidget {
   const NazivTextField({
     Key key,
   }) : super(key: key);
+
+  @override
+  _NazivTextFieldState createState() => _NazivTextFieldState();
+}
+
+class _NazivTextFieldState extends State<NazivTextField> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

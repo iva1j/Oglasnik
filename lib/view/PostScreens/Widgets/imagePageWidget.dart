@@ -3,6 +3,7 @@ import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButtonSubmit.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -85,13 +86,14 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                 Container(
                     margin: EdgeInsets.only(left: 35.0, bottom: 32.0),
                     child: priceTextField()),
-                Padding(
-                    padding: EdgeInsets.only(left: 7),
+                Container(
+                    //padding: EdgeInsets.only(left: 7),
+                    margin: EdgeInsets.only(left: 10),
                     child: Text(MoneyText().kmText)),
               ],
             ),
             Container(
-              child: PageViewButton(),
+              child: PageViewButtonSubmit(),
             )
           ],
         ),

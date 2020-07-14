@@ -21,12 +21,14 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   @override
   void initState() {
     productNameController = new TextEditingController();
+   // productNameFormKey = new GlobalKey();
     super.initState();
   }
 
   @override
   void dispose() {
     productNameController.dispose();
+    productNameFormKey.currentState.dispose();
     super.dispose();
   }
 
