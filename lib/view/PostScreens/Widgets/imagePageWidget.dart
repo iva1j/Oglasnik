@@ -3,6 +3,7 @@ import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 
 class ImagePageWidget extends StatefulWidget {
@@ -78,6 +79,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                     child: Text(MoneyText().kmText)),
               ],
             ),
+            Container(
+              child: PageViewButton(),
+            )
           ],
         ),
       ),
