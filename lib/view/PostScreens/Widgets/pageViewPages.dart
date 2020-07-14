@@ -23,6 +23,7 @@ class PageViewPages extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          MainTitle(),
           Expanded(
             child: PageView(
               physics: new NeverScrollableScrollPhysics(),
@@ -36,6 +37,7 @@ class PageViewPages extends StatelessWidget {
               ],
             ),
           ),
+          PageViewButton(),
         ],
       ),
     );

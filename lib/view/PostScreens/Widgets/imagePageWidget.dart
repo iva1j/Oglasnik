@@ -21,7 +21,6 @@ class ImagePageWidget extends StatefulWidget {
 }
 
 class _ImagePageWidgetState extends State<ImagePageWidget> {
-
   String _path;
   String _extension;
   FileType _imageType = FileType.image;
@@ -56,6 +55,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       _tasks.add(uploadTask);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> children = <Widget>[];
@@ -98,6 +98,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     );
   }
 }
+
 class UploadTaskListTile extends StatelessWidget {
   const UploadTaskListTile({Key key, this.task, this.onDismissed})
       : super(key: key);
@@ -120,7 +121,6 @@ class UploadTaskListTile extends StatelessWidget {
           onDismissed: (_) => onDismissed(),
           child: ListTile(
             title: Text('Imagehashcode #${task.hashCode}'),
-
           ),
         );
       },
