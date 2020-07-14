@@ -84,8 +84,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                 Container(
                     margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
                     child: priceTextField()),
-                Padding(
-                    padding: EdgeInsets.only(left: 7),
+                Container(
+                    //padding: EdgeInsets.only(left: 7),
+                    margin: EdgeInsets.only(left: 10),
                     child: Text(MoneyText().kmText)),
               ],
             ),
