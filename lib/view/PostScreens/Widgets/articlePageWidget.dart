@@ -40,20 +40,7 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
     return Container(
       child: Column(
         children: <Widget>[
-
-          /*
-            MainTitle(),
-            Container(
-              margin: EdgeInsets.only(
-                top: SizeConfig.blockSizeVertical * 20,
-                left: SizeConfig.blockSizeHorizontal * 10,
-                right: SizeConfig.blockSizeHorizontal * 10,
-                bottom: SizeConfig.blockSizeVertical * 22,
-              ),
-              child: NazivTextField(),
-            ),
-            PageViewButton(),*/
-          MainTitle(),
+//          MainTitle(),
           SizedBox(
             height: SizeConfig.blockSizeVertical * 20,
           ),
