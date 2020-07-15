@@ -1,4 +1,4 @@
-import 'package:Oglasnik/view/PostScreens/Pages/pageView/subpages/pageFourDescription.dart';
+import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageFourDescription.dart';
 import 'package:flutter/material.dart';
 
 class DescribePage extends StatefulWidget {

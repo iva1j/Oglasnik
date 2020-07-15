@@ -1,5 +1,5 @@
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/pageView/mainPageView.dart';
+import 'package:Oglasnik/view/PostScreens/pages/pageView/mainPageView.dart';
 import 'package:flutter/material.dart';
 
 class ArticlePage extends StatefulWidget {

@@ -2,7 +2,6 @@ import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successDialogButtons.dart';
 import 'package:flutter/material.dart';
-
 AlertDialog successAlertDialog(BuildContext context) {
   return new AlertDialog(
     title: Text(
@@ -19,6 +18,7 @@ AlertDialog successAlertDialog(BuildContext context) {
           ),
           Container(
             margin: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.only(bottom: 5.0),
             child: Text(
               SuccessAlertDialog().opis2,
               style: TextStyle(color: alertDialogTextColor),

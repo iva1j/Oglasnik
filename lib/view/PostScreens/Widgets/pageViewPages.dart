@@ -1,9 +1,9 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/pageView/subpages/pageFiveImagePrice.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/pageView/subpages/pageFourDescription.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/pageView/subpages/pageOne.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/pageView/subpages/pageThreeCityPage.dart';
-import 'package:Oglasnik/view/PostScreens/Pages/pageView/subpages/pageTwoCategoryPage.dart';
+import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageFiveImagePrice.dart';
+import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageFourDescription.dart';
+import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageOne.dart';
+import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageThreeCityPage.dart';
+import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageTwoCategoryPage.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
