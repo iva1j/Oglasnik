@@ -37,8 +37,14 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
                           height: 1.5,
                         ),
                         underline: Container(),
-                        onChanged: (String productCategoryList) => setState(
-                            () => dropdownValueCategory = productCategoryList),
+                        onChanged: (String productCategoryList) {
+                          setState(() {
+                            FocusScope.of(context)
+                                .requestFocus(new FocusNode());
+
+                            dropdownValueCategory = productCategoryList;
+                          });
+                        },
                         items: <String>[
                           'Kategorija1',
                           'Kategorija2',

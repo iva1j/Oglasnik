@@ -627,6 +627,7 @@ class DropdownButton<T> extends StatefulWidget {
     this.isExpanded = false,
     this.height,
     Function(BuildContext context) selectedItemBuilder,
+    Null Function(String productCategoryList) onTap,
   })  : assert(items == null ||
             items.isEmpty ||
             value == null ||
@@ -796,6 +797,7 @@ class _DropdownButtonState<T> extends State<DropdownButton<T>>
       widget.style ?? Theme.of(context).textTheme.subhead;
 
   void _handleTap() {
+    FocusScope.of(context).requestFocus(FocusNode());
     final RenderBox itemBox = context.findRenderObject();
     final Rect itemRect = itemBox.localToGlobal(Offset.zero) & itemBox.size;
     final TextDirection textDirection = Directionality.of(context);

@@ -19,6 +19,7 @@ class PageViewButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 140.0),
       child: button("Dalje", () async {
+        FocusScope.of(context).requestFocus(new FocusNode());
         if (pageController.page == 4) {
           productName = productNameController.text;
           productCategory = dropdownValueCategory;

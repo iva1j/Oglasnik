@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
@@ -89,6 +90,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Padding(
       padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(
@@ -96,7 +98,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(bottom: 80.0),
+              margin:
+                  EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 22),
             ),
             imageOneUploadButton(openFileExplorer1),
             imageTwoUploadButton(openFileExplorer2),
@@ -116,20 +119,20 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               margin: EdgeInsets.only(bottom: 140.0),
               child: button("Dalje", () async {
                 if (pageController.page == 4) {
-                  if (img1 == _fileName1) upload(_fileName1, _path1, 1);
-                  if (img2 == _fileName2) upload(_fileName2, _path2, 2);
-                  if (img3 == _fileName3) upload(_fileName3, _path3, 3);
-                  productName = productNameController.text;
-                  productCategory = dropdownValueCategory;
-                  productBrand = brandTypeAheadController.text;
-                  productLocation = dropdownValueCity;
-                  productTag = productTagController.text;
-                  productDesc = productDescController.text;
+                  if (productPriceFormKey.currentState.validate()) {
+                    if (img1 == _fileName1) upload(_fileName1, _path1, 1);
+                    if (img2 == _fileName2) upload(_fileName2, _path2, 2);
+                    if (img3 == _fileName3) upload(_fileName3, _path3, 3);
+                    productName = productNameController.text;
+                    productCategory = dropdownValueCategory;
+                    productBrand = brandTypeAheadController.text;
+                    productLocation = dropdownValueCity;
+                    productTag = productTagController.text;
+                    productDesc = productDescController.text;
 
-                  productprice = productPriceController.text;
-                  print(email + productName + productTag);
-                  Timer(Duration(seconds: 7), () {
-                    if (productPriceFormKey.currentState.validate())
+                    productprice = productPriceController.text;
+
+                    Timer(Duration(seconds: 7), () {
                       CreateProduct().createProduct(
                           context,
                           email,
@@ -144,17 +147,22 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                           productImg2,
                           productImg3,
                           productprice);
-                  });
-                } else {
-                  pageController.nextPage(
-                      duration: Duration(milliseconds: 800),
-                      curve: Curves.ease);
-                  productName = productNameController.text;
-                  print(productName);
-
-                  print(pageController.toString());
-                  print(pageController.page);
+                    });
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (_) => RegisteredHome()));
+                  } else
+                    return null;
                 }
+                // else {
+                //   pageController.nextPage(
+                //       duration: Duration(milliseconds: 800),
+                //       curve: Curves.ease);
+                //   productName = productNameController.text;
+                //   print(productName);
+
+                //   print(pageController.toString());
+                //   print(pageController.page);
+                // }
               }),
             ),
           ],
