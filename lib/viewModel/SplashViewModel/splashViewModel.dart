@@ -17,6 +17,7 @@ Future<void> splashScreenRouter() async {
 
   print(email);
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
       theme: buildThemeData(),
       home: email == null ? AnonymousHome() : RegisteredHome()));
 }
