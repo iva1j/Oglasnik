@@ -151,3 +151,6 @@ class InputFields {
 String img1 = "Dodaj sliku 1"; // pitati faruka smije li ovako
 String img2 = "Dodaj sliku 2";
 String img3 = "Dodaj sliku 3";
+final String immutableImg1 = "Dodaj sliku 1"; // pitati faruka smije li ovako
+final String immutableImg2 = "Dodaj sliku 2";
+final String immutableImg3 = "Dodaj sliku 3";

@@ -30,3 +30,5 @@ int buttonIdentifier;
 bool buttonOne = false;
 bool buttonTwo = false;
 bool buttonThree = false;
+
+bool registeredGlob = false;

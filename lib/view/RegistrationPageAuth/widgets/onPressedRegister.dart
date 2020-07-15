@@ -57,6 +57,7 @@ void onPressedRegister(BuildContext context, String fullName, String email,
 
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
+          registeredGlob = true;
           return RegisteredHome();
         }),
       );

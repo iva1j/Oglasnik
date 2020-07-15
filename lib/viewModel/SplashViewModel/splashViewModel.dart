@@ -12,6 +12,7 @@ Future<void> splashScreenRouter() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString('email');
   globals.email = email;
+  globals.registeredGlob = false;
   print(email);
   runApp(MaterialApp(
       theme: buildThemeData(),

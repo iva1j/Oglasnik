@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:flutter/material.dart';
 
 class TagsForm extends StatelessWidget {
@@ -8,13 +9,18 @@ class TagsForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Column(
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(bottom: 40.0),
         ),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 35.0),
+          margin: EdgeInsets.only(
+            bottom: SizeConfig.blockSizeVertical * 17,
+            left: SizeConfig.blockSizeHorizontal * 10,
+            right: SizeConfig.blockSizeHorizontal * 10,
+          ),
           child: TextFormField(
             controller: productTagController,
             maxLines: null,

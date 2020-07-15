@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +12,16 @@ class BrandForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Form(
       key: brandFormKey,
       child: Column(
         children: <Widget>[
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 50.0),
+            margin: EdgeInsets.only(
+                bottom: SizeConfig.blockSizeVertical * 13,
+                left: SizeConfig.blockSizeHorizontal * 10,
+                right: SizeConfig.blockSizeHorizontal * 10),
             child: TypeAheadFormField(
               textFieldConfiguration: TextFieldConfiguration(
                 maxLength: 18,

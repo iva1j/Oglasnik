@@ -18,17 +18,18 @@ class PageViewButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 140.0),
       child: button("Dalje", () async {
+        FocusScope.of(context).requestFocus(new FocusNode());
         if (pageController.page == 4) {
-          email = 'nekimail';
+          //email = 'nekimail';
           productName = productNameController.text;
           productCategory = dropdownValueCategory;
           productBrand = brandTypeAheadController.text;
           productLocation = dropdownValueCity;
           productTag = productTagController.text;
           productDesc = productDescController.text;
-          productImg1;
-          productImg2 = 'adjasdjasp';
-          productImg3 = 'adjasdjasp';
+          //productImg1;
+          //productImg2 = 'adjasdjasp';
+          //productImg3 = 'adjasdjasp';
 
           productprice = productPriceController.text;
           print(email + productName + productTag);

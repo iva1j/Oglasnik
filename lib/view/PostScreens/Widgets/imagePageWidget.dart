@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
@@ -111,6 +112,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     /*
     final List<Widget> children = <Widget>[];
     _tasks.forEach((StorageUploadTask task) {
@@ -127,7 +129,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(bottom: 80.0),
+              margin:
+                  EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 22),
             ),
 
             imageOneUploadButton(openFileExplorer1),
