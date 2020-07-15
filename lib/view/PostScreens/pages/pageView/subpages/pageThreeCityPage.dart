@@ -27,23 +27,32 @@ class _CityPageState extends State<CityPage> {
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-    return WillPopScope(
-      onWillPop: () => Future.sync(onWillPop),
-      child: Scaffold(
-        resizeToAvoidBottomPadding: false,
-        body: SingleChildScrollView(
-          reverse: true,
-          child: Padding(
-            padding: EdgeInsets.only(bottom: bottom),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(bottom: 80.0, top: 15),
-                ),
-                CityDropDown(),
-                TagsForm(),
-                PageViewButton(),
-              ],
+    return GestureDetector(
+       onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          currentFocus.focusedChild.unfocus();
+        }
+      },
+          child: WillPopScope(
+        onWillPop: () => Future.sync(onWillPop),
+        child: Scaffold(
+          resizeToAvoidBottomPadding: false,
+          body: SingleChildScrollView(
+            reverse: true,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: bottom),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(bottom: 80.0, top: 15),
+                  ),
+                  CityDropDown(),
+                  TagsForm(),
+                  PageViewButton(),
+                ],
+              ),
             ),
           ),
         ),
