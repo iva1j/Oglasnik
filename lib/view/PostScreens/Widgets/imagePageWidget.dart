@@ -21,7 +21,6 @@ import 'package:random_string/random_string.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class ImagePageWidget extends StatefulWidget {
   const ImagePageWidget({
     Key key,
@@ -72,13 +71,11 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     });
   }
 
-
   upload(fileName, filePath, id) async {
     StorageReference storageRef =
         await FirebaseStorage.instance.ref().child('images').child(fileName);
     await storageRef.putFile(
       File(filePath),
-
     );
     Timer(Duration(seconds: 5), () async {
       final String url = await storageRef.getDownloadURL();
@@ -93,17 +90,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     SizeConfig().init(context);
-    /*
-    final List<Widget> children = <Widget>[];
-    _tasks.forEach((StorageUploadTask task) {
-      final Widget tile = UploadTaskListTile(
-        task: task,
-        onDismissed: () => setState(() => _tasks.remove(task)),
-      );
-      children.add(tile);
-    });*/
 
     return Padding(
       padding: EdgeInsets.only(bottom: widget.bottom),
@@ -115,7 +102,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               margin:
                   EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 22),
             ),
-
             imageOneUploadButton(openFileExplorer1),
             imageTwoUploadButton(openFileExplorer2),
             imageThreeUploadButton(openFileExplorer3),
@@ -126,65 +112,71 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                     margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
                     child: priceTextField()),
                 Padding(
-                    padding: EdgeInsets.only(left: 7),
-                    child: Text(MoneyText().kmText)),
+                  padding: EdgeInsets.only(left: 7, bottom: 5),
+                  child: Text(
+                    MoneyText().kmText,
+                  ),
+                ),
               ],
             ),
-            
             Container(
               margin: EdgeInsets.only(bottom: 140.0),
-              child: button("Završi", () async {
-                FocusScope.of(context).requestFocus(new FocusNode());
-                if (pageController.page == 4) {
-                  if (productPriceFormKey.currentState.validate()) {
-                    if (img1 == _fileName1) upload(_fileName1, _path1, 1);
-                    if (img2 == _fileName2) upload(_fileName2, _path2, 2);
-                    if (img3 == _fileName3) upload(_fileName3, _path3, 3);
-                    productName = productNameController.text;
-                    productCategory = dropdownValueCategory;
-                    productBrand = brandTypeAheadController.text;
-                    productLocation = dropdownValueCity;
-                    productTag = productTagController.text;
-                    productDesc = productDescController.text;
-                    productprice = productPriceController.text;
-                    print(email + productName + productTag);
-                    Timer(Duration(seconds: 7), () {
-                      CreateProduct().createProduct(
-                          context,
-                          email,
-                          productName,
-                          productID = randomAlphaNumeric(20),
-                          productCategory,
-                          productBrand,
-                          productLocation,
-                          productTag,
-                          productDesc,
-                          productImg1,
-                          productImg2,
-                          productImg3,
-                          productprice);
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (_) => RegisteredHome()));
-                    });
-                  } else
-                    return null;
-                } //validation if statement
-
-                // else {
-                //   pageController.nextPage(
-                //       duration: Duration(milliseconds: 800),
-                //       curve: Curves.ease);
-                //   productName = productNameController.text;
-                //   print(productName);
-                //   print(pageController.toString());
-                //   print(pageController.page);
-                // }
-
-              }),
+              child: pageViewSubmitButton(context),
             ),
           ],
         ),
       ),
     );
+  }
+
+//nije moguće refaktorisati zbog privatnih varijabli. Check it out
+  SizedBox pageViewSubmitButton(BuildContext context) {
+    return button("Završi", () async {
+      FocusScope.of(context).requestFocus(new FocusNode());
+      if (pageController.page == 4) {
+        if (productPriceFormKey.currentState.validate()) {
+          if (img1 == _fileName1) upload(_fileName1, _path1, 1);
+          if (img2 == _fileName2) upload(_fileName2, _path2, 2);
+          if (img3 == _fileName3) upload(_fileName3, _path3, 3);
+          productName = productNameController.text;
+          productCategory = dropdownValueCategory;
+          productBrand = brandTypeAheadController.text;
+          productLocation = dropdownValueCity;
+          productTag = productTagController.text;
+          productDesc = productDescController.text;
+          productprice = productPriceController.text;
+          print(email + productName + productTag);
+          Timer(Duration(seconds: 7), () {
+            CreateProduct().createProduct(
+                context,
+                email,
+                productName,
+                productID = randomAlphaNumeric(20),
+                productCategory,
+                productBrand,
+                productLocation,
+                productTag,
+                productDesc,
+                productImg1,
+                productImg2,
+                productImg3,
+                productprice);
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => RegisteredHome()));
+          });
+        } else
+          return null;
+      } //validation if statement
+
+      // else {
+      //   pageController.nextPage(
+      //       duration: Duration(milliseconds: 800),
+      //       curve: Curves.ease);
+      //   productName = productNameController.text;
+      //   print(productName);
+      //   print(pageController.toString());
+      //   print(pageController.page);
+      // }
+    });
   }
 }

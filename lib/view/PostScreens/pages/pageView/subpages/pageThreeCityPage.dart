@@ -18,7 +18,6 @@ class _CityPageState extends State<CityPage> {
   }
 
   @override
-
   void dispose() {
     productTagController.dispose();
     productTagFormKey.currentState.dispose();
@@ -26,19 +25,18 @@ class _CityPageState extends State<CityPage> {
   }
 
   @override
-
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
 
     return GestureDetector(
-       onTap: () {
+      onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus &&
             currentFocus.focusedChild != null) {
           currentFocus.focusedChild.unfocus();
         }
       },
-          child: WillPopScope(
+      child: WillPopScope(
         onWillPop: () => Future.sync(onWillPop),
         child: Scaffold(
           resizeToAvoidBottomPadding: false,
@@ -56,7 +54,6 @@ class _CityPageState extends State<CityPage> {
                   PageViewButton(),
                 ],
               ),
-
             ),
           ),
         ),
