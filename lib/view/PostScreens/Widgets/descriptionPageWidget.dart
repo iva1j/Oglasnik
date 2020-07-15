@@ -23,6 +23,7 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
   }
 
   @override
+
   void dispose() {
     productDescController.dispose();
     productDescFormKey.currentState.dispose();
@@ -30,7 +31,9 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
   }
 
   @override
+
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Padding(
       padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(
@@ -38,7 +41,13 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 90),
+
+              margin: EdgeInsets.only(
+                  top: SizeConfig.blockSizeVertical * 20,
+                  left: SizeConfig.blockSizeHorizontal * 10,
+                  right: SizeConfig.blockSizeHorizontal * 10,
+                  bottom: SizeConfig.blockSizeVertical * 22),
+
               child: OpisTextField(),
             ),
             PageViewButton(),

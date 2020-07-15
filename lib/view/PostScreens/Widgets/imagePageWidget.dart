@@ -1,15 +1,26 @@
 import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+
+import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/text_form_fields.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
+
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:random_string/random_string.dart';
+
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class ImagePageWidget extends StatefulWidget {
   const ImagePageWidget({
@@ -37,6 +48,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     _path1 = await FilePicker.getFilePath(type: _imageType);
     _fileName1 = _path1.split('/').last;
     _extension1 = _fileName1.toString().split('.').last;
+
     setState(() {
       img1 = _fileName1;
     });
@@ -60,14 +72,17 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     });
   }
 
+
   upload(fileName, filePath, id) async {
     StorageReference storageRef =
         await FirebaseStorage.instance.ref().child('images').child(fileName);
     await storageRef.putFile(
       File(filePath),
+
     );
     Timer(Duration(seconds: 5), () async {
       final String url = await storageRef.getDownloadURL();
+
       setState(() {
         if (id == 1) productImg1 = url;
         if (id == 2) productImg2 = url;
@@ -78,6 +93,18 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+    SizeConfig().init(context);
+    /*
+    final List<Widget> children = <Widget>[];
+    _tasks.forEach((StorageUploadTask task) {
+      final Widget tile = UploadTaskListTile(
+        task: task,
+        onDismissed: () => setState(() => _tasks.remove(task)),
+      );
+      children.add(tile);
+    });*/
+
     return Padding(
       padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(
@@ -85,8 +112,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(bottom: 80.0),
+              margin:
+                  EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 22),
             ),
+
             imageOneUploadButton(openFileExplorer1),
             imageTwoUploadButton(openFileExplorer2),
             imageThreeUploadButton(openFileExplorer3),
@@ -101,6 +130,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                     child: Text(MoneyText().kmText)),
               ],
             ),
+            
             Container(
               margin: EdgeInsets.only(bottom: 140.0),
               child: button("Završi", () async {
@@ -149,6 +179,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                 //   print(pageController.toString());
                 //   print(pageController.page);
                 // }
+
               }),
             ),
           ],

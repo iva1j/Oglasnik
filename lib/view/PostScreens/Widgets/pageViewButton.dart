@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/widgets/imagePageWidget.dart';
+
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
@@ -19,7 +21,6 @@ class PageViewButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 140.0),
       child: button("Dalje", () async {
-        //FocusScope.of(context).requestFocus(new FocusNode());
         if (pageController.page == 4) {
           productName = productNameController.text;
           productCategory = dropdownValueCategory;

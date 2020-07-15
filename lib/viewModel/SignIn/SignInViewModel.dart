@@ -9,6 +9,7 @@ import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 
 TextEditingController signInEmailInputController;
 TextEditingController signInPasswordInputController;
@@ -55,11 +56,13 @@ void onPressedSignInModel(
         signInPasswordInputController.clear();
       });
       print('Logged in');
+      globals.email = email;
 
       loginPrefs(context, email);
 
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
+          registeredGlob = false;
           return RegisteredHome();
         }),
       );

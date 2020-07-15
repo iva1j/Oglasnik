@@ -18,15 +18,10 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 
   @override
-  void dispose() {
-    brandTypeAheadController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
+
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -57,6 +52,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   BrandForm(),
                 ],
               ),
+
             ),
           ),
         ),

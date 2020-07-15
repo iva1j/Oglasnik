@@ -39,6 +39,7 @@ class OpisTextField extends StatelessWidget {
         decoration: const InputDecoration(
             labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
       ),
+
     );
   }
 }
@@ -50,6 +51,7 @@ class NazivTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Form(
         key: productNameFormKey,
         child: TextFormField(
@@ -61,6 +63,7 @@ class NazivTextField extends StatelessWidget {
               hintText: 'Naziv artikla',
               contentPadding: EdgeInsets.only(left: 15.0)),
         ));
+
   }
 }
 

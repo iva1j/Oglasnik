@@ -18,6 +18,7 @@ class _CityPageState extends State<CityPage> {
   }
 
   @override
+
   void dispose() {
     productTagController.dispose();
     productTagFormKey.currentState.dispose();
@@ -25,8 +26,10 @@ class _CityPageState extends State<CityPage> {
   }
 
   @override
+
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
+
     return GestureDetector(
        onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -53,6 +56,7 @@ class _CityPageState extends State<CityPage> {
                   PageViewButton(),
                 ],
               ),
+
             ),
           ),
         ),
