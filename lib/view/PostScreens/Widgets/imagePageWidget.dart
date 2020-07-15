@@ -91,7 +91,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
     return Padding(
       padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(

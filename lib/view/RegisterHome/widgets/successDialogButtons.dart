@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
@@ -26,8 +27,8 @@ class _CityPageState extends State<CityPage> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
