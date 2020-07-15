@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
@@ -39,10 +41,11 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
                         underline: Container(),
                         onChanged: (String productCategoryList) {
                           setState(() {
-                            FocusScope.of(context)
-                                .requestFocus(new FocusNode());
-
-                            dropdownValueCategory = productCategoryList;
+                            Timer(Duration(seconds: 2), () {
+                              FocusScope.of(context)
+                                  .requestFocus(new FocusNode());
+                              dropdownValueCategory = productCategoryList;
+                            });
                           });
                         },
                         items: <String>[

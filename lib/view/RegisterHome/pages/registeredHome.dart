@@ -23,11 +23,13 @@ class _RegisteredHomeState extends State<RegisteredHome> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await showDialog<String>(
-          context: context,
-          builder: (BuildContext context) => successAlertDialog(context));
-    });
+    if (registeredGlob) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => successAlertDialog(context));
+      });
+    }
   }
 
   List<dynamic> users = [];
