@@ -143,7 +143,7 @@ String productPriceValidator(String value) {
   if (value.length == null || value == '') {
     return "Polje ne smije biti prazno";
   } else if (!regex.hasMatch(value)) {
-    return 'Molimo unesite ispravan iznos';
+    return 'Neispravan unos';
   }
   return null;
 }

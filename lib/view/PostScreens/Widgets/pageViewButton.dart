@@ -19,6 +19,7 @@ class PageViewButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 140.0),
       child: button("Dalje", () async {
+        //FocusScope.of(context).requestFocus(new FocusNode());
         if (pageController.page == 4) {
           productName = productNameController.text;
           productCategory = dropdownValueCategory;
@@ -28,6 +29,10 @@ class PageViewButton extends StatelessWidget {
           productDesc = productDescController.text;
 
           if (productPriceFormKey.currentState.validate()) {
+            FocusScope.of(context).requestFocus(new FocusNode());
+            pageController.nextPage(
+                duration: Duration(milliseconds: 800), curve: Curves.ease);
+
             productprice = productPriceController.text;
             Timer(Duration(seconds: 7), () {
               CreateProduct().createProduct(
@@ -52,8 +57,11 @@ class PageViewButton extends StatelessWidget {
         if (pageController.page == 3) {
           productDesc = productDescController.text;
           if (productDescFormKey.currentState.validate()) {
-            pageController.nextPage(
-                duration: Duration(milliseconds: 800), curve: Curves.ease);
+            FocusScope.of(context).requestFocus(new FocusNode());
+            Timer(Duration(milliseconds: 500), () {
+              pageController.nextPage(
+                  duration: Duration(milliseconds: 800), curve: Curves.ease);
+            });
             print(productBrand);
           } else
             print('molimo popunite polje opis!');
@@ -62,9 +70,11 @@ class PageViewButton extends StatelessWidget {
           productTag = productTagController.text;
           productLocation = dropdownValueCity;
           if (productTagFormKey.currentState.validate()) {
-            pageController.nextPage(
-                duration: Duration(milliseconds: 800), curve: Curves.ease);
-            print(productBrand);
+            FocusScope.of(context).requestFocus(new FocusNode());
+            Timer(Duration(milliseconds: 500), () {
+              pageController.nextPage(
+                  duration: Duration(milliseconds: 800), curve: Curves.ease);
+            });
           } else
             print('molimo popunite polje oznake!');
           return null;
@@ -72,8 +82,11 @@ class PageViewButton extends StatelessWidget {
           productCategory = dropdownValueCategory;
           productBrand = brandTypeAheadController.text;
           if (brandFormKey.currentState.validate()) {
-            pageController.nextPage(
-                duration: Duration(milliseconds: 800), curve: Curves.ease);
+            FocusScope.of(context).requestFocus(new FocusNode());
+            Timer(Duration(milliseconds: 500), () {
+              pageController.nextPage(
+                  duration: Duration(milliseconds: 800), curve: Curves.ease);
+            });
             print(productBrand);
           } else
             print('molimo popunite polje proizvodjac!');
@@ -81,8 +94,12 @@ class PageViewButton extends StatelessWidget {
         } else if (pageController.page == 0) {
           productName = productNameController.text;
           if (productNameFormKey.currentState.validate()) {
-            pageController.nextPage(
-                duration: Duration(milliseconds: 800), curve: Curves.ease);
+            FocusScope.of(context).requestFocus(new FocusNode());
+            Timer(Duration(milliseconds: 500), () {
+              pageController.nextPage(
+                  duration: Duration(milliseconds: 800), curve: Curves.ease);
+            });
+
             print(productName);
           } else
             print('molimo popunite polje naziv proizvoda!');
