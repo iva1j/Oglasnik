@@ -6,14 +6,17 @@ import 'package:flutter/material.dart';
 Container priceTextField() {
   return Container(
     width: 150,
-    child: TextFormField(
-      decoration: InputDecoration(
-        hintText: 'Cijena',
-        contentPadding: EdgeInsets.only(left: 15),
+    child: Form(
+      key: productPriceFormKey,
+      child: TextFormField(
+        decoration: InputDecoration(
+          hintText: 'Cijena',
+          contentPadding: EdgeInsets.only(left: 15),
+        ),
+        keyboardType: TextInputType.phone,
+        validator: productPriceValidator,
+        controller: productPriceController,
       ),
-      keyboardType: TextInputType.phone,
-      validator: priceValidator,
-      controller: productPriceController,
     ),
   );
 }
@@ -25,13 +28,18 @@ class OpisTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      maxLines: null,
-      keyboardType: TextInputType.multiline,
-      controller: productDescController,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: const InputDecoration(
-          labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
+    return Form(
+      key: productDescFormKey,
+      child: TextFormField(
+        validator: productDescValidation,
+        maxLines: null,
+        keyboardType: TextInputType.multiline,
+        controller: productDescController,
+        textCapitalization: TextCapitalization.sentences,
+        decoration: const InputDecoration(
+            labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
+      ),
+
     );
   }
 }
@@ -43,14 +51,19 @@ class NazivTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      textCapitalization: TextCapitalization.sentences,
-      controller: productNameController,
-      maxLength: 28,
-      decoration: const InputDecoration(
-          hintText: 'Naziv artikla',
-          contentPadding: EdgeInsets.only(left: 15.0)),
-    );
+
+    return Form(
+        key: productNameFormKey,
+        child: TextFormField(
+          validator: productFieldsValidator,
+          textCapitalization: TextCapitalization.sentences,
+          controller: productNameController,
+          maxLength: 28,
+          decoration: const InputDecoration(
+              hintText: 'Naziv artikla',
+              contentPadding: EdgeInsets.only(left: 15.0)),
+        ));
+
   }
 }
 

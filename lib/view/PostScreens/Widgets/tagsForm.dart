@@ -1,5 +1,9 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+
 import 'package:Oglasnik/utils/sizeconfig.dart';
+
+import 'package:Oglasnik/utils/validation.dart';
+
 import 'package:flutter/material.dart';
 
 class TagsForm extends StatelessWidget {
@@ -9,13 +13,13 @@ class TagsForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Column(
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(bottom: 40.0),
         ),
         Container(
+
           margin: EdgeInsets.only(
             bottom: SizeConfig.blockSizeVertical * 17,
             left: SizeConfig.blockSizeHorizontal * 10,
@@ -29,8 +33,9 @@ class TagsForm extends StatelessWidget {
             decoration: const InputDecoration(
                 hintText: 'Oznake',
                 helperText:
-                    'Oznake razdvojiti zarezom: Sarajevo, zamjena, Yoda',
+                    'Oznake razdvojiti zarezom: Sarajevo, zamjena, fulloprema',
                 contentPadding: EdgeInsets.only(left: 15.0)),
+
           ),
         ),
       ],

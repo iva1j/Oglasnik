@@ -3,7 +3,9 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
+
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+
 
 class ArticlePageWidget extends StatefulWidget {
   const ArticlePageWidget({
@@ -25,11 +27,20 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   }
 
   @override
+
+  void dispose() {
+    productNameController.dispose();
+    productNameFormKey.currentState.dispose();
+    super.dispose();
+  }
+
+  @override
+
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Container(
       child: Column(
         children: <Widget>[
+
           /*
             MainTitle(),
             Container(
@@ -51,6 +62,7 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
               left: SizeConfig.blockSizeHorizontal * 10,
               right: SizeConfig.blockSizeHorizontal * 10,
             ),
+
             child: NazivTextField(),
           ),
           SizedBox(
