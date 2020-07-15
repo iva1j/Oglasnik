@@ -13,7 +13,7 @@ class TagsForm extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.only(bottom: 40.0),
+          margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 3),
         ),
         Container(
           margin: EdgeInsets.only(
@@ -29,7 +29,7 @@ class TagsForm extends StatelessWidget {
             decoration: const InputDecoration(
                 hintText: 'Oznake',
                 helperText:
-                    'Oznake razdvojiti zarezom: Sarajevo, zamjena, Yoda',
+                    'Oznake razdvojiti zarezom: Sarajevo, zamjena, fulloprema...',
                 contentPadding: EdgeInsets.only(left: 15.0)),
           ),
         ),

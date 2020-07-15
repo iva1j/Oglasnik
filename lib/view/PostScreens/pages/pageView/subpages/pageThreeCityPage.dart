@@ -5,6 +5,7 @@ import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/tagsForm.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 
 class CityPage extends StatefulWidget {
   @override
@@ -32,9 +33,10 @@ class _CityPageState extends State<CityPage> {
             padding: EdgeInsets.only(bottom: bottom),
             child: Column(
               children: <Widget>[
+                MainTitle(),
                 Container(
                   margin: EdgeInsets.only(
-                    top: SizeConfig.blockSizeVertical * 10,
+                    top: SizeConfig.blockSizeVertical * 20,
                     left: SizeConfig.blockSizeHorizontal * 10,
                     right: SizeConfig.blockSizeHorizontal * 10,
                     //bottom: SizeConfig.blockSizeVertical * 20
