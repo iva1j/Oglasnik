@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/descriptionPageWidget.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +17,20 @@ class PageFour extends StatefulWidget {
 
 class _PageFourState extends State<PageFour> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    productDescController = new TextEditingController();
+    super.initState();
+  }
 
+  @override
+  void dispose() {
+    productDescController.dispose();
+    productDescFormKey.currentState.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);

@@ -3,7 +3,7 @@ import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/material.dart';
 
-class PageOne extends StatelessWidget {
+class PageOne extends StatefulWidget {
   const PageOne({
     Key key,
     @required this.bottom,
@@ -11,6 +11,25 @@ class PageOne extends StatelessWidget {
   }) : super(key: key);
 
   final double bottom;
+
+  @override
+  _PageOneState createState() => _PageOneState();
+}
+
+class _PageOneState extends State<PageOne> {
+  @override
+  void initState() {
+    productNameController = new TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    productNameController.dispose();
+    productNameFormKey.currentState.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -31,7 +50,7 @@ class PageOne extends StatelessWidget {
         child: Scaffold(
           body: SingleChildScrollView(
             reverse: true,
-            child: ArticlePageWidget(bottom: bottom),
+            child: ArticlePageWidget(bottom: widget.bottom),
           ),
         ),
       ),

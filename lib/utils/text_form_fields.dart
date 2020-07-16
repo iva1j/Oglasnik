@@ -63,11 +63,16 @@ class OpisTextField extends StatelessWidget {
   }
 }
 
-class NazivTextField extends StatelessWidget {
+class NazivTextField extends StatefulWidget {
   const NazivTextField({
     Key key,
   }) : super(key: key);
 
+  @override
+  _NazivTextFieldState createState() => _NazivTextFieldState();
+}
+
+class _NazivTextFieldState extends State<NazivTextField> {
   @override
   Widget build(BuildContext context) {
     return Form(

@@ -8,7 +8,7 @@ import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 
 import 'package:flutter/material.dart';
 
-class PageViewPages extends StatelessWidget {
+class PageViewPages extends StatefulWidget {
   const PageViewPages({
     Key key,
     @required this.bottom,
@@ -16,6 +16,11 @@ class PageViewPages extends StatelessWidget {
 
   final double bottom;
 
+  @override
+  _PageViewPagesState createState() => _PageViewPagesState();
+}
+
+class _PageViewPagesState extends State<PageViewPages> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,11 +33,11 @@ class PageViewPages extends StatelessWidget {
               physics: new NeverScrollableScrollPhysics(),
               controller: pageController,
               children: [
-                Container(child: PageOne(bottom: bottom)),
+                Container(child: PageOne(bottom: widget.bottom)),
                 Container(child: CategoryPage()),
                 Container(child: CityPage()),
-                Container(child: PageFour(bottom: bottom)),
-                Container(child: PageFive(bottom: bottom)),
+                Container(child: PageFour(bottom: widget.bottom)),
+                Container(child: PageFive(bottom: widget.bottom)),
               ],
             ),
           ),

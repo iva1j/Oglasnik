@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/pages/pageView/mainPageView.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,18 @@ class ArticlePage extends StatefulWidget {
 }
 
 class _ArticlePageState extends State<ArticlePage> {
+  @override
+  void initState() {
+    pageController = new PageController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
