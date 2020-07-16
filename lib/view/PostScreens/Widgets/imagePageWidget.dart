@@ -7,9 +7,7 @@ import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 
-
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-
 
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
@@ -245,3 +243,4 @@ class UploadTaskListTile extends StatelessWidget {
   }
 }
 
+*/
