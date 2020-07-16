@@ -46,7 +46,7 @@ class BrandForm extends StatelessWidget {
                   itemBuilder: (context, suggestion) {
                     return ListTile(title: Text(suggestion));
                   },
-                  hideOnEmpty: true,
+                  //hideOnEmpty: true,
                   onSuggestionSelected: (suggestion) {
                     brandTypeAheadController.text = suggestion;
                   },
