@@ -42,6 +42,7 @@ class _SigninPageState extends State<SigninPage> {
   String error = '';
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     email = signInEmailInputController.text;
     password = signInPasswordInputController.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -94,8 +95,7 @@ class _SigninPageState extends State<SigninPage> {
             child: Padding(
               padding: EdgeInsets.only(bottom: bottom),
               child: Container(
-                  height: SizeConfig.screenHeight,
-                  margin: EdgeInsets.all(50),
+                  margin: EdgeInsets.all(45),
                   child: Column(
                     children: <Widget>[
                       Container(

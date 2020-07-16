@@ -23,7 +23,6 @@ class _PageFiveState extends State<PageFive> {
   }
 
   @override
-
   void dispose() {
     productPriceController.dispose();
     productPriceFormKey.currentState.dispose();
@@ -31,17 +30,16 @@ class _PageFiveState extends State<PageFive> {
   }
 
   @override
-
   Widget build(BuildContext context) {
     return GestureDetector(
-       onTap: () {
+      onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus &&
             currentFocus.focusedChild != null) {
           currentFocus.focusedChild.unfocus();
         }
       },
-          child: WillPopScope(
+      child: WillPopScope(
         onWillPop: () => Future.sync(onWillPop),
         child: Scaffold(
           resizeToAvoidBottomPadding: false,

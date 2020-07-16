@@ -3,9 +3,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
-
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
-
 
 class ArticlePageWidget extends StatefulWidget {
   const ArticlePageWidget({
@@ -27,7 +25,6 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   }
 
   @override
-
   void dispose() {
     productNameController.dispose();
     productNameFormKey.currentState.dispose();
@@ -37,10 +34,24 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   @override
 
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
       child: Column(
         children: <Widget>[
-//          MainTitle(),
+          MainTitle(),
+          /*
+            MainTitle(),
+            Container(
+              margin: EdgeInsets.only(
+                top: SizeConfig.blockSizeVertical * 20,
+                left: SizeConfig.blockSizeHorizontal * 10,
+                right: SizeConfig.blockSizeHorizontal * 10,
+                bottom: SizeConfig.blockSizeVertical * 22,
+              ),
+              child: NazivTextField(),
+            ),
+            PageViewButton(),*/
+
           SizedBox(
             height: SizeConfig.blockSizeVertical * 20,
           ),
@@ -49,11 +60,10 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
               left: SizeConfig.blockSizeHorizontal * 10,
               right: SizeConfig.blockSizeHorizontal * 10,
             ),
-
             child: NazivTextField(),
           ),
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 22,
+            height: SizeConfig.blockSizeVertical * 20,
           ),
           PageViewButton(),
         ],

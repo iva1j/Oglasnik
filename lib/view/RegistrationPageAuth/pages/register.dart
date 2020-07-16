@@ -107,28 +107,31 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Padding(
               padding: EdgeInsets.only(bottom: bottom),
               child: Container(
-                height: SizeConfig.screenHeight,
-                margin: EdgeInsets.all(50),
-                child: Column(
-                  children: <Widget>[
-                    LogoContainer(),
-                    WelcomeScreen(),
-                    Container(
-                      child: AuthService().checkStatus(context, emailRegister),
-                    ),
-                    SignUpFormName(),
-                    FormSignUp(
-                        registerFormKey: signUpRegisterFormKey,
-                        signUpFullNameInputController:
-                            signUpFullNameInputController,
-                        signUpEmailInputController: signUpEmailInputController,
-                        signUpPasswordInputController:
-                            signUpPasswordInputController,
-                        signUpPhoneNumberInputController:
-                            signUpPhoneNumberInputController),
-                  ],
-                ),
-              ),
+
+                  // height: SizeConfig.blockSizeVertical * 75,
+                  margin: EdgeInsets.all(50),
+                  child: Column(
+                    children: <Widget>[
+                      LogoContainer(),
+                      WelcomeScreen(),
+                      Container(
+                        child:
+                            AuthService().checkStatus(context, emailRegister),
+                      ),
+                      SignUpFormName(),
+                      FormSignUp(
+                          registerFormKey: signUpRegisterFormKey,
+                          signUpFullNameInputController:
+                              signUpFullNameInputController,
+                          signUpEmailInputController:
+                              signUpEmailInputController,
+                          signUpPasswordInputController:
+                              signUpPasswordInputController,
+                          signUpPhoneNumberInputController:
+                              signUpPhoneNumberInputController),
+                    ],
+                  )),
+
             ),
           ),
         ),

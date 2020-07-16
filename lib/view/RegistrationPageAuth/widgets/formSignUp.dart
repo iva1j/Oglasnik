@@ -26,14 +26,20 @@ class _FormSignUpState extends State<FormSignUp> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: widget.signUpRegisterFormKey,
-      child: Column(children: <Widget>[
-        fullNameInputField(context),
-        emailInputField(context),
-        passwordInputField(context),
-        phoneNumberInputField(context),
-        registerButton(context),
-      ]),
-    );
+        key: widget.signUpRegisterFormKey,
+        autovalidate: true,
+        child: Theme(
+          data: ThemeData(
+            primaryColor: Colors.black54,
+            errorColor: Colors.red,
+          ),
+          child: Column(children: <Widget>[
+            fullNameInputField(context),
+            emailInputField(context),
+            passwordInputField(context),
+            phoneNumberInputField(context),
+            registerButton(context),
+          ]),
+        ));
   }
 }
