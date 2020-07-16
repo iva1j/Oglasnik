@@ -2,6 +2,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/validation.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -16,7 +17,7 @@ class BrandForm extends StatelessWidget {
     SizeConfig().init(context);
     return Form(
         key: brandFormKey,
-        autovalidate: allowAutoValidate,
+        //autovalidate: true,
         child: Theme(
           data: ThemeData(
             primaryColor: Colors.black54,

@@ -46,7 +46,6 @@ class _FormSignInState extends State<FormSignIn> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        autovalidate: allowAutoValidate,
         key: signInRegisterFormKey,
         child: Theme(
           data: ThemeData(

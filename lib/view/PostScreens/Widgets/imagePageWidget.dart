@@ -7,7 +7,6 @@ import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -95,7 +94,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             MainTitle(),
             Container(
               margin:
-                  EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 22),
+                  EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 18),
             ),
             imageOneUploadButton(openFileExplorer1),
             imageTwoUploadButton(openFileExplorer2),
@@ -107,7 +106,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                     margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
                     child: priceTextField()),
                 Padding(
-                  padding: EdgeInsets.only(left: 7),
+                  padding: EdgeInsets.only(left: 7, bottom: 5),
                   child: Text(
                     MoneyText().kmText,
                   ),

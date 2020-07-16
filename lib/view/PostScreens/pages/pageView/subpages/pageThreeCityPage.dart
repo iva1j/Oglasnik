@@ -53,6 +53,7 @@ class _CityPageState extends State<CityPage> {
                       //bottom: SizeConfig.blockSizeVertical * 20
                     ),
                   ),
+                  // ),
                   CityDropDown(),
                   TagsForm(),
                   PageViewButton(),

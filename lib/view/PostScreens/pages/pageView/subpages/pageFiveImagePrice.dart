@@ -42,7 +42,7 @@ class _PageFiveState extends State<PageFive> {
       child: WillPopScope(
         onWillPop: () => Future.sync(onWillPop),
         child: Scaffold(
-          resizeToAvoidBottomPadding: false,
+          resizeToAvoidBottomInset: false,
           body: SingleChildScrollView(
             reverse: true,
             child: ImagePageWidget(bottom: widget.bottom),

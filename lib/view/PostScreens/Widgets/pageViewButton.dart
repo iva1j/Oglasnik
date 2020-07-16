@@ -4,9 +4,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/imagePageWidget.dart';
-
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
@@ -19,6 +17,7 @@ class PageViewButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
       margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 5),
       child: button("Dalje", () async {
