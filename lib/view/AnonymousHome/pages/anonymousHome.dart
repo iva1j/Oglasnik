@@ -36,6 +36,7 @@ class _AnonymousHomeState extends State<AnonymousHome> {
         }
       },
       child: Scaffold(
+        resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           backgroundColor: AppBarTheme.of(context).color,
           //backgroundColor: mainAppColor,
