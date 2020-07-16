@@ -31,6 +31,10 @@ class TagsForm extends StatelessWidget {
                   errorColor: Colors.red,
                 ),
                 child: TextFormField(
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (v) {
+                    FocusScope.of(context).nextFocus();
+                  },
                   controller: productTagController,
                   validator: productTagValidation,
                   maxLines: null,
@@ -40,7 +44,7 @@ class TagsForm extends StatelessWidget {
                       hintText: 'Oznake',
                       helperText:
                           'Oznake razdvojiti zarezom: Sarajevo, zamjena, fulloprema',
-                      contentPadding: EdgeInsets.only(left: 15.0)),
+                      contentPadding: EdgeInsets.only(left: 10.0)),
                 ),
               )),
         ),

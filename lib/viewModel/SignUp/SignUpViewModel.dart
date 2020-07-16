@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/validation.dart';
@@ -51,6 +52,7 @@ SizedBox registerButton(BuildContext context) {
   return button(
     AppLabelsAuth().registracija,
     () {
+      allowAutoValidate = true;
       fullNameRegister = signUpFullNameInputController.text;
       emailRegister = signUpEmailInputController.text;
       passwordRegister = signUpPasswordInputController.text;

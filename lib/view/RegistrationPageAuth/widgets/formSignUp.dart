@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:flutter/material.dart';
 

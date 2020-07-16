@@ -1,24 +1,18 @@
 import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
-
-import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:random_string/random_string.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ImagePageWidget extends StatefulWidget {
@@ -91,15 +85,16 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Padding(
-      padding: EdgeInsets.only(bottom: widget.bottom),
+    return Container(
+      //padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(
         margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
+            MainTitle(),
             Container(
               margin:
-                  EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 22),
+                  EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 18),
             ),
             imageOneUploadButton(openFileExplorer1),
             imageTwoUploadButton(openFileExplorer2),
@@ -118,8 +113,12 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                 ),
               ],
             ),
+            /*
             Container(
-              margin: EdgeInsets.only(bottom: 140.0),
+              child: PageViewButton(),
+            )*/
+            Container(
+              margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 5),
               child: pageViewSubmitButton(context),
             ),
           ],

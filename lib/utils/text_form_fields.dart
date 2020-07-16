@@ -44,6 +44,10 @@ class OpisTextField extends StatelessWidget {
           errorColor: Colors.red,
         ),
         child: TextFormField(
+          textInputAction: TextInputAction.done,
+          onFieldSubmitted: (v) {
+            FocusScope.of(context).nextFocus();
+          },
           validator: productDescValidation,
           maxLines: null,
           keyboardType: TextInputType.multiline,
