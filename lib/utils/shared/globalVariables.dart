@@ -31,11 +31,10 @@ int buttonIdentifier;
 bool buttonOne = false;
 bool buttonTwo = false;
 bool buttonThree = false;
-
+bool allowAutoValidate = false;
 bool registeredGlob = false;
 
 final GlobalKey<FormState> productNameFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productDescFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productTagFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productPriceFormKey = GlobalKey<FormState>();
-

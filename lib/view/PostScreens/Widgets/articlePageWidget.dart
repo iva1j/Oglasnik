@@ -37,7 +37,7 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
     return Container(
       child: Column(
         children: <Widget>[
-//          MainTitle(),
+          MainTitle(),
           SizedBox(
             height: SizeConfig.blockSizeVertical * 20,
           ),
@@ -49,7 +49,7 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
             child: NazivTextField(),
           ),
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 22,
+            height: SizeConfig.blockSizeVertical * 20,
           ),
           PageViewButton(),
         ],

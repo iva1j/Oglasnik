@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 
@@ -33,23 +34,27 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Padding(
-      padding: EdgeInsets.only(bottom: widget.bottom),
-      child: Container(
-        margin: EdgeInsets.all(15),
-        child: Column(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(
-                  top: SizeConfig.blockSizeVertical * 20,
-                  left: SizeConfig.blockSizeHorizontal * 10,
-                  right: SizeConfig.blockSizeHorizontal * 10,
-                  bottom: SizeConfig.blockSizeVertical * 22),
-              child: OpisTextField(),
+    return Container(
+      //padding: EdgeInsets.only(bottom: widget.bottom),
+      //margin: EdgeInsets.all(15),
+      child: Column(
+        children: <Widget>[
+          MainTitle(),
+          SizedBox(
+            height: SizeConfig.blockSizeVertical * 20,
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              left: SizeConfig.blockSizeHorizontal * 10,
+              right: SizeConfig.blockSizeHorizontal * 10,
             ),
-            PageViewButton(),
-          ],
-        ),
+            child: OpisTextField(),
+          ),
+          SizedBox(
+            height: SizeConfig.blockSizeVertical * 20,
+          ),
+          PageViewButton(),
+        ],
       ),
     );
   }

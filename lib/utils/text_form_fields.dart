@@ -36,7 +36,7 @@ class OpisTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-        autovalidate: true,
+        autovalidate: allowAutoValidate,
         key: productDescFormKey,
         child: Theme(
           data: ThemeData(
@@ -67,7 +67,7 @@ class NazivTextField extends StatelessWidget {
 
     return Form(
         key: productNameFormKey,
-        autovalidate: true,
+        autovalidate: allowAutoValidate,
         child: Theme(
             data: ThemeData(
               primaryColor: Colors.black54,

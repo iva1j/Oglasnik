@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
@@ -45,7 +46,7 @@ class _FormSignInState extends State<FormSignIn> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        autovalidate: true,
+        autovalidate: allowAutoValidate,
         key: signInRegisterFormKey,
         child: Theme(
           data: ThemeData(
@@ -120,6 +121,7 @@ class _FormSignInState extends State<FormSignIn> {
                 child: button(
                   'Prijavi se',
                   () async {
+                    allowAutoValidate = true;
                     email = widget.signInEmailInputController.text;
                     password = widget.signInPasswordInputController.text;
                     formKey = signInRegisterFormKey;

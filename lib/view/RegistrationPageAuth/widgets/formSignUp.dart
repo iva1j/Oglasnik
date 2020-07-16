@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class _FormSignUpState extends State<FormSignUp> {
   Widget build(BuildContext context) {
     return Form(
         key: widget.signUpRegisterFormKey,
-        autovalidate: true,
+        autovalidate: allowAutoValidate,
         child: Theme(
           data: ThemeData(
             primaryColor: Colors.black54,

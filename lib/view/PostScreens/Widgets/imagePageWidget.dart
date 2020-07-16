@@ -4,6 +4,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 
@@ -85,12 +86,13 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Padding(
-      padding: EdgeInsets.only(bottom: widget.bottom),
+    return Container(
+      //padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(
         margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
+            MainTitle(),
             Container(
               margin:
                   EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 22),
@@ -105,7 +107,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                     margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
                     child: priceTextField()),
                 Padding(
-                  padding: EdgeInsets.only(left: 7, bottom: 5),
+                  padding: EdgeInsets.only(left: 7),
                   child: Text(
                     MoneyText().kmText,
                   ),
@@ -117,7 +119,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               child: PageViewButton(),
             )*/
             Container(
-              margin: EdgeInsets.only(bottom: 140.0),
+              margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 5),
               child: pageViewSubmitButton(context),
             ),
           ],
@@ -177,4 +179,3 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     });
   }
 }
-
