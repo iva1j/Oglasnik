@@ -19,19 +19,6 @@ class ArticlePageWidget extends StatefulWidget {
 
 class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   @override
-  void initState() {
-    productNameController = new TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    productNameController.dispose();
-    productNameFormKey.currentState.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(

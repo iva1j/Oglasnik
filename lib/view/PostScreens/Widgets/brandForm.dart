@@ -16,7 +16,7 @@ class BrandForm extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Form(
-        key: brandFormKey,
+        key: productBrandFormKey,
         //autovalidate: true,
         child: Theme(
           data: ThemeData(

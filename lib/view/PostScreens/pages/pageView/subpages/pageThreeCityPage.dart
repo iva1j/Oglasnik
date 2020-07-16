@@ -20,6 +20,13 @@ class _CityPageState extends State<CityPage> {
   }
 
   @override
+  void dispose() {
+    productTagController.dispose();
+    productTagFormKey.currentState.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;

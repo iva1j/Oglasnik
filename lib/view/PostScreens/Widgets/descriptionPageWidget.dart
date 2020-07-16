@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
@@ -18,12 +17,6 @@ class DescriptionPageWidget extends StatefulWidget {
 }
 
 class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
-  @override
-  void initState() {
-    productDescController = new TextEditingController();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
