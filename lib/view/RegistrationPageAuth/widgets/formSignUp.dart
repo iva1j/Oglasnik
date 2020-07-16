@@ -27,7 +27,6 @@ class _FormSignUpState extends State<FormSignUp> {
   Widget build(BuildContext context) {
     return Form(
         key: widget.signUpRegisterFormKey,
-        autovalidate: true,
         child: Theme(
           data: ThemeData(
             primaryColor: Colors.black54,

@@ -23,7 +23,7 @@ class TagsForm extends StatelessWidget {
             right: SizeConfig.blockSizeHorizontal * 10,
           ),
           child: Form(
-              autovalidate: true,
+              //autovalidate: true,
               key: productTagFormKey,
               child: Theme(
                 data: ThemeData(

@@ -4,7 +4,6 @@ import 'package:Oglasnik/utils/suggestionFunction.dart';
 
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 
-
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -19,7 +18,7 @@ class BrandForm extends StatelessWidget {
     SizeConfig().init(context);
     return Form(
         key: brandFormKey,
-        autovalidate: true,
+        //autovalidate: true,
         child: Theme(
           data: ThemeData(
             primaryColor: Colors.black54,
@@ -55,7 +54,6 @@ class BrandForm extends StatelessWidget {
               ),
               //PageViewButton(),
             ],
-
           ),
         ));
   }
