@@ -108,7 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Padding(
               padding: EdgeInsets.only(bottom: bottom),
               child: Container(
-                  height: SizeConfig.screenHeight,
+                  // height: SizeConfig.blockSizeVertical * 75,
                   margin: EdgeInsets.all(50),
                   child: Column(
                     children: <Widget>[
