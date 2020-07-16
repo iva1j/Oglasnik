@@ -11,10 +11,8 @@ class PageOne extends StatelessWidget {
   }) : super(key: key);
 
   final double bottom;
-
   @override
   Widget build(BuildContext context) {
-
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);

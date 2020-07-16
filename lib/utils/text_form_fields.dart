@@ -36,23 +36,26 @@ class OpisTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-        autovalidate: true,
-        key: productDescFormKey,
-        child: Theme(
-          data: ThemeData(
-            primaryColor: Colors.black54,
-            errorColor: Colors.red,
+      key: productDescFormKey,
+      autovalidate: true,
+      child: Theme(
+        data: ThemeData(
+          primaryColor: Colors.black54,
+          errorColor: Colors.red,
+        ),
+        child: TextFormField(
+          validator: productDescValidation,
+          maxLines: null,
+          keyboardType: TextInputType.multiline,
+          controller: productDescController,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: const InputDecoration(
+            labelText: 'Opis',
+            contentPadding: EdgeInsets.only(left: 15.0),
           ),
-          child: TextFormField(
-            validator: productDescValidation,
-            maxLines: null,
-            keyboardType: TextInputType.multiline,
-            controller: productDescController,
-            textCapitalization: TextCapitalization.sentences,
-            decoration: const InputDecoration(
-                labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
-          ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -63,25 +66,26 @@ class NazivTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // One solution down below with Theme
 
     return Form(
-        key: productNameFormKey,
-        autovalidate: true,
-        child: Theme(
-            data: ThemeData(
-              primaryColor: Colors.black54,
-              errorColor: Colors.red,
-            ),
-            child: TextFormField(
-              validator: productFieldsValidator,
-              textCapitalization: TextCapitalization.sentences,
-              controller: productNameController,
-              maxLength: 28,
-              decoration: const InputDecoration(
-                  hintText: 'Naziv artikla',
-                  contentPadding: EdgeInsets.only(left: 15.0)),
-            )));
+      key: productNameFormKey,
+      autovalidate: true,
+      child: Theme(
+        data: ThemeData(
+          primaryColor: Colors.black54,
+          errorColor: Colors.red,
+        ),
+        child: TextFormField(
+          validator: productFieldsValidator,
+          textCapitalization: TextCapitalization.sentences,
+          controller: productNameController,
+          maxLength: 28,
+          decoration: const InputDecoration(
+              hintText: 'Naziv artikla',
+              contentPadding: EdgeInsets.only(left: 15.0)),
+        ),
+      ),
+    );
   }
 }
 

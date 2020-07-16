@@ -50,7 +50,6 @@ class _CategoryPageState extends State<CategoryPage> {
                       top: SizeConfig.blockSizeVertical * 10,
                       left: SizeConfig.blockSizeHorizontal * 10,
                       right: SizeConfig.blockSizeHorizontal * 10,
-                      //bottom: SizeConfig.blockSizeVertical * 20
                     ),
                   ),
                   CategoryDropDown(),
