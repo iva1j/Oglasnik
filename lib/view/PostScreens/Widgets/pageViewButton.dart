@@ -83,7 +83,7 @@ class PageViewButton extends StatelessWidget {
         } else if (pageController.page == 1) {
           productCategory = dropdownValueCategory;
           productBrand = brandTypeAheadController.text;
-          if (brandFormKey.currentState.validate()) {
+          if (productBrandFormKey.currentState.validate()) {
             FocusScope.of(context).requestFocus(new FocusNode());
             Timer(Duration(milliseconds: 500), () {
               pageController.nextPage(
