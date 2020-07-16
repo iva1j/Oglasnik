@@ -39,7 +39,6 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void dispose() {
     signUpRegisterFormKey.currentState.dispose();
-    //signInRegisterFormKey.currentState.dispose();
     super.dispose();
   }
 
@@ -108,6 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Padding(
               padding: EdgeInsets.only(bottom: bottom),
               child: Container(
+
                   // height: SizeConfig.blockSizeVertical * 75,
                   margin: EdgeInsets.all(50),
                   child: Column(
@@ -131,6 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               signUpPhoneNumberInputController),
                     ],
                   )),
+
             ),
           ),
         ),

@@ -17,7 +17,6 @@ class Proizvodjac {
   static List<String> getSuggestions(String query) {
     List<String> matches = List();
     matches.addAll(proizvodjac);
-
     matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
     if (query.length >= 3)
       return matches;
