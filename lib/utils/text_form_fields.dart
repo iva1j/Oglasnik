@@ -8,7 +8,7 @@ Container priceTextField() {
   return Container(
       width: 150,
       child: Form(
-        autovalidate: true,
+        // autovalidate: true,
         key: productPriceFormKey,
         child: Theme(
           data: ThemeData(
@@ -37,7 +37,7 @@ class OpisTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       key: productDescFormKey,
-      autovalidate: true,
+      //autovalidate: true,
       child: Theme(
         data: ThemeData(
           primaryColor: Colors.black54,
@@ -66,10 +66,9 @@ class NazivTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Form(
       key: productNameFormKey,
-      autovalidate: true,
+      //autovalidate: true,
       child: Theme(
         data: ThemeData(
           primaryColor: Colors.black54,
