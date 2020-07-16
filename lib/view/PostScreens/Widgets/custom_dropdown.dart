@@ -627,6 +627,7 @@ class DropdownButton<T> extends StatefulWidget {
     this.isExpanded = false,
     this.height,
     Function(BuildContext context) selectedItemBuilder,
+    Null Function(String productCategoryList) onTap,
   })  : assert(items == null ||
             items.isEmpty ||
             value == null ||

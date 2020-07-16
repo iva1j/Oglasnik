@@ -6,6 +6,11 @@ import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
+
+
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+
+
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -114,6 +119,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
     /*
     final List<Widget> children = <Widget>[];
     _tasks.forEach((StorageUploadTask task) {
@@ -125,6 +131,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     });*/
     return Container(
       //padding: EdgeInsets.only(bottom: widget.bottom),
+
       child: Container(
         margin: EdgeInsets.all(15),
         child: Column(
@@ -237,4 +244,4 @@ class UploadTaskListTile extends StatelessWidget {
     );
   }
 }
-*/
+
