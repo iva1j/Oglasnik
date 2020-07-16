@@ -6,6 +6,7 @@ import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/tagsForm.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 
 class CityPage extends StatefulWidget {
   @override
@@ -23,6 +24,7 @@ class _CityPageState extends State<CityPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
+
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -52,11 +54,11 @@ class _CityPageState extends State<CityPage> {
                       //bottom: SizeConfig.blockSizeVertical * 20
                     ),
                   ),
-                  CityDropDown(),
-                  TagsForm(),
-                  PageViewButton(),
-                ],
-              ),
+                ),
+                CityDropDown(),
+                TagsForm(),
+                PageViewButton(),
+              ],
             ),
           ),
         ),
