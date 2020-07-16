@@ -1,9 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-
 import 'package:Oglasnik/utils/sizeconfig.dart';
-
-import 'package:Oglasnik/utils/validation.dart';
-
 import 'package:flutter/material.dart';
 
 class TagsForm extends StatelessWidget {
@@ -13,10 +9,11 @@ class TagsForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Column(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.only(bottom: 40.0),
+          margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 3),
         ),
         Container(
           margin: EdgeInsets.only(
@@ -24,20 +21,16 @@ class TagsForm extends StatelessWidget {
             left: SizeConfig.blockSizeHorizontal * 10,
             right: SizeConfig.blockSizeHorizontal * 10,
           ),
-          child: Form(
-            key: productTagFormKey,
-            child: TextFormField(
-              controller: productTagController,
-              validator: productTagValidation,
-              maxLines: null,
-              keyboardType: TextInputType.multiline,
-              textCapitalization: TextCapitalization.sentences,
-              decoration: const InputDecoration(
-                  hintText: 'Oznake',
-                  helperText:
-                      'Oznake razdvojiti zarezom: Sarajevo, zamjena, fulloprema',
-                  contentPadding: EdgeInsets.only(left: 15.0)),
-            ),
+          child: TextFormField(
+            controller: productTagController,
+            maxLines: null,
+            keyboardType: TextInputType.multiline,
+            textCapitalization: TextCapitalization.sentences,
+            decoration: const InputDecoration(
+                hintText: 'Oznake',
+                helperText:
+                    'Oznake razdvojiti zarezom: Sarajevo, zamjena, fulloprema...',
+                contentPadding: EdgeInsets.only(left: 10.0)),
           ),
         ),
       ],

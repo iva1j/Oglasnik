@@ -14,28 +14,24 @@ class PageOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () => Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) {
+          registeredGlob = false;
+          return RegisteredHome();
+        }),
+      ),
+      child: Scaffold(
+        /*
+        resizeToAvoidBottomInset: true,
+        body: ArticlePageWidget(
+          bottom: bottom,
+        ),*/
 
-    return GestureDetector(
-       onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus &&
-            currentFocus.focusedChild != null) {
-          currentFocus.focusedChild.unfocus();
-        }
-      },
-          child: WillPopScope(
-        onWillPop: () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) {
-            registeredGlob = false;
-            return RegisteredHome();
-          }),
-        ),
-        child: Scaffold(
-          body: SingleChildScrollView(
-            reverse: true,
-            child: ArticlePageWidget(bottom: bottom),
-          ),
-
+        //resizeToAvoidBottomInset: true,
+        body: SingleChildScrollView(
+          reverse: true,
+          child: ArticlePageWidget(bottom: bottom),
         ),
       ),
     );

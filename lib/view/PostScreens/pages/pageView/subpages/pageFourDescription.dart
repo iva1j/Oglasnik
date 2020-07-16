@@ -17,23 +17,14 @@ class PageFour extends StatefulWidget {
 class _PageFourState extends State<PageFour> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-       onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus &&
-            currentFocus.focusedChild != null) {
-          currentFocus.focusedChild.unfocus();
-        }
-      },
-          child: WillPopScope(
-          onWillPop: () => Future.sync(onWillPop),
-          child: Scaffold(
-            resizeToAvoidBottomPadding: false,
-            body: SingleChildScrollView(
-              reverse: true,
-              child: DescriptionPageWidget(bottom: widget.bottom),
-            ),
-          )),
-    );
+    return WillPopScope(
+        onWillPop: () => Future.sync(onWillPop),
+        child: Scaffold(
+          resizeToAvoidBottomPadding: false,
+          body: SingleChildScrollView(
+            reverse: true,
+            child: DescriptionPageWidget(bottom: widget.bottom),
+          ),
+        ));
   }
 }

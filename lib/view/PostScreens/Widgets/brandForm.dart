@@ -1,7 +1,7 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/utils/validation.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -13,14 +13,17 @@ class BrandForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Form(
       key: brandFormKey,
       child: Column(
         children: <Widget>[
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 50.0),
+            margin: EdgeInsets.only(
+                bottom: SizeConfig.blockSizeVertical * 13,
+                left: SizeConfig.blockSizeHorizontal * 10,
+                right: SizeConfig.blockSizeHorizontal * 10),
             child: TypeAheadFormField(
-              validator: productBrandValidation,
               textFieldConfiguration: TextFieldConfiguration(
                 maxLength: 18,
                 textCapitalization: TextCapitalization.sentences,
@@ -35,7 +38,6 @@ class BrandForm extends StatelessWidget {
               itemBuilder: (context, suggestion) {
                 return ListTile(title: Text(suggestion));
               },
-              hideOnEmpty: true,
               onSuggestionSelected: (suggestion) {
                 brandTypeAheadController.text = suggestion;
               },
