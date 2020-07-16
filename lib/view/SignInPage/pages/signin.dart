@@ -95,7 +95,6 @@ class _SigninPageState extends State<SigninPage> {
             child: Padding(
               padding: EdgeInsets.only(bottom: bottom),
               child: Container(
-                  height: SizeConfig.blockSizeVertical * 65,
                   margin: EdgeInsets.all(45),
                   child: Column(
                     children: <Widget>[

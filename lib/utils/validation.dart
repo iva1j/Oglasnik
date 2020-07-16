@@ -49,7 +49,7 @@ String emailRegisterCheck(String value) {
   bool smislen = false;
   bool dodatni = false;
   Pattern newpattern =
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(?!hotmail)(?!gmail)(?!yahoo)(?!msn)(?!live)(?!outlook)(?!aol)((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9])+(\.com|\.ba|\.edu.ba|\.edu|\.hr|\.rs|\.org|\.fr|\.net|\.co.uk|\.co)))$';
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(?!hotmail)(?!hotmil)(?!hotail)(?!htmail)(?!hotmails)(?!hotmailz)(?!hotmai)(?!otmail)(?!hotmsil)(?!hotmakl)(?!hotmails)(?!hotamil)(?!gmail)(?!gmsil)(?!gail)(?!gmal)(?!gmai)(?!yahoo)(?!yaho)(?!yah)(?!msn)(?!msm)(?!man)(?!live)(?!liv)(?!live)(?!livr)(?!luve)(?!live)(?!outlook)(?!outlok)(?!ouutlook)(?!outloo)(?!aol)(?!ail)((\[[0-9]{1,3}\.[-9]{1,3}.[-9]{1u,3}\.[-9]{1,3}\[0-9]{1,0-9]i1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9])+(\.com|\.ba|\.edu.ba|\.edu|\.hr|\.rs|\.org|\.fr|\.net|\.co.uk|\.co)))$';
   Pattern pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|live|outlook)+(\.com)$|@(hotmail|yahoo)+(\.fr|\.co.uk)$|@(orange)+(\.fr)$';
   RegExp regex = new RegExp(pattern);
@@ -97,13 +97,8 @@ String emailRegisterCheck(String value) {
 }
 
 String emailCheckSignIn(String value) {
-  Pattern pattern =
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|live|outlook)+(\.com)$|@(hotmail|yahoo)+(\.fr|\.co.uk)$|@(orange)+(\.fr)$';
-  RegExp regex = new RegExp(pattern);
   if (value.length == null || value == '') return 'Polje ne smije biti prazno';
-  if (!regex.hasMatch(value)) {
-    return 'Email mora biti validan';
-  }
+
   if (status == false) {
     return 'Email ili password nisu ispravni';
   } else {
@@ -112,13 +107,6 @@ String emailCheckSignIn(String value) {
 }
 
 String emailAlertDialogValidation(String value) {
-  Pattern pattern =
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(gmail|hotmail|yahoo|aol|msn|live|outlook)+(\.com)$|@(hotmail|yahoo)+(\.fr|\.co.uk)$|@(orange)+(\.fr)$';
-  RegExp regex = new RegExp(pattern);
-  if (value.length == null || value == '') return 'Polje ne smije biti prazno';
-  if (!regex.hasMatch(value)) {
-    return 'Email mora biti validan';
-  }
   if (allowUserToChangePassword == false) {
     return 'Email ne postoji u bazi';
   } else {
