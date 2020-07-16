@@ -3,6 +3,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/brandForm.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -49,6 +50,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   ),
                   CategoryDropDown(),
                   BrandForm(),
+                  PageViewButton(),
                 ],
               ),
             ),

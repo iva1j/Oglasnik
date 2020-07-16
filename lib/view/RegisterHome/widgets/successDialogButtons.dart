@@ -6,7 +6,6 @@ class UreduButtonDialog extends StatelessWidget {
   const UreduButtonDialog({
     Key key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return FlatButton(
@@ -29,7 +28,6 @@ class KreirajButtonDialog extends StatelessWidget {
   const KreirajButtonDialog({
     Key key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return FlatButton(

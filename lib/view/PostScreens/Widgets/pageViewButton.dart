@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/PostScreens/widgets/imagePageWidget.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/imagePageWidget.dart';
 
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 

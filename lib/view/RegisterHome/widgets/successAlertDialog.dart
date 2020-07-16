@@ -3,7 +3,6 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successDialogButtons.dart';
 import 'package:flutter/material.dart';
-
 AlertDialog successAlertDialog(BuildContext context) {
   return new AlertDialog(
     title: Text(
