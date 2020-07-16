@@ -39,7 +39,6 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void dispose() {
     signUpRegisterFormKey.currentState.dispose();
-    //signInRegisterFormKey.currentState.dispose();
     super.dispose();
   }
 
@@ -108,29 +107,28 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Padding(
               padding: EdgeInsets.only(bottom: bottom),
               child: Container(
-                  height: SizeConfig.screenHeight,
-                  margin: EdgeInsets.all(50),
-                  child: Column(
-                    children: <Widget>[
-                      LogoContainer(),
-                      WelcomeScreen(),
-                      Container(
-                        child:
-                            AuthService().checkStatus(context, emailRegister),
-                      ),
-                      SignUpFormName(),
-                      FormSignUp(
-                          registerFormKey: signUpRegisterFormKey,
-                          signUpFullNameInputController:
-                              signUpFullNameInputController,
-                          signUpEmailInputController:
-                              signUpEmailInputController,
-                          signUpPasswordInputController:
-                              signUpPasswordInputController,
-                          signUpPhoneNumberInputController:
-                              signUpPhoneNumberInputController),
-                    ],
-                  )),
+                height: SizeConfig.screenHeight,
+                margin: EdgeInsets.all(50),
+                child: Column(
+                  children: <Widget>[
+                    LogoContainer(),
+                    WelcomeScreen(),
+                    Container(
+                      child: AuthService().checkStatus(context, emailRegister),
+                    ),
+                    SignUpFormName(),
+                    FormSignUp(
+                        registerFormKey: signUpRegisterFormKey,
+                        signUpFullNameInputController:
+                            signUpFullNameInputController,
+                        signUpEmailInputController: signUpEmailInputController,
+                        signUpPasswordInputController:
+                            signUpPasswordInputController,
+                        signUpPhoneNumberInputController:
+                            signUpPhoneNumberInputController),
+                  ],
+                ),
+              ),
             ),
           ),
         ),

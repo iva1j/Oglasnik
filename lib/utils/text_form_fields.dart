@@ -30,16 +30,24 @@ class OpisTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       key: productDescFormKey,
-      child: TextFormField(
-        validator: productDescValidation,
-        maxLines: null,
-        keyboardType: TextInputType.multiline,
-        controller: productDescController,
-        textCapitalization: TextCapitalization.sentences,
-        decoration: const InputDecoration(
-            labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
+      autovalidate: true,
+      child: Theme(
+        data: ThemeData(
+          primaryColor: Colors.black54,
+          errorColor: Colors.red,
+        ),
+        child: TextFormField(
+          validator: productDescValidation,
+          maxLines: null,
+          keyboardType: TextInputType.multiline,
+          controller: productDescController,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: const InputDecoration(
+            labelText: 'Opis',
+            contentPadding: EdgeInsets.only(left: 15.0),
+          ),
+        ),
       ),
-
     );
   }
 }
@@ -51,9 +59,14 @@ class NazivTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Form(
-        key: productNameFormKey,
+      key: productNameFormKey,
+      autovalidate: true,
+      child: Theme(
+        data: ThemeData(
+          primaryColor: Colors.black54,
+          errorColor: Colors.red,
+        ),
         child: TextFormField(
           validator: productFieldsValidator,
           textCapitalization: TextCapitalization.sentences,
@@ -62,8 +75,9 @@ class NazivTextField extends StatelessWidget {
           decoration: const InputDecoration(
               hintText: 'Naziv artikla',
               contentPadding: EdgeInsets.only(left: 15.0)),
-        ));
-
+        ),
+      ),
+    );
   }
 }
 

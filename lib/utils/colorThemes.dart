@@ -4,6 +4,7 @@ ThemeData buildThemeData() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Color.fromARGB(255, 226, 11, 48),
+    inputDecorationTheme: InputDecorationTheme(),
     buttonTheme: ButtonThemeData(
       height: 48,
       shape: RoundedRectangleBorder(
