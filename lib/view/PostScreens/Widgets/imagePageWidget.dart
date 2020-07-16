@@ -7,9 +7,7 @@ import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 
-
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-
 
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
@@ -215,33 +213,3 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     );
   }
 }
-/*
-class UploadTaskListTile extends StatelessWidget {
-  const UploadTaskListTile({Key key, this.task, this.onDismissed})
-      : super(key: key);
-
-  final StorageUploadTask task;
-  final VoidCallback onDismissed;
-
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<StorageTaskEvent>(
-      stream: task.events,
-      builder: (BuildContext context,
-          AsyncSnapshot<StorageTaskEvent> asyncSnapshot) {
-        if (asyncSnapshot.hasData) {
-          final StorageTaskEvent event = asyncSnapshot.data;
-          final StorageTaskSnapshot snapshot = event.snapshot;
-        }
-        return Dismissible(
-          key: Key(task.hashCode.toString()),
-          onDismissed: (_) => onDismissed(),
-          child: ListTile(
-            title: Text('Imagehashcode #${task.hashCode}'),
-          ),
-        );
-      },
-    );
-  }
-}
-

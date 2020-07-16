@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/validation.dart';
 import 'package:flutter/material.dart';
 
 class TagsForm extends StatelessWidget {
@@ -21,7 +22,6 @@ class TagsForm extends StatelessWidget {
             left: SizeConfig.blockSizeHorizontal * 10,
             right: SizeConfig.blockSizeHorizontal * 10,
           ),
-
           child: Form(
               autovalidate: true,
               key: productTagFormKey,
