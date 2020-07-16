@@ -14,16 +14,15 @@ class PageOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return GestureDetector(
-       onTap: () {
+      onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus &&
             currentFocus.focusedChild != null) {
           currentFocus.focusedChild.unfocus();
         }
       },
-          child: WillPopScope(
+      child: WillPopScope(
         onWillPop: () => Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (_) {
             registeredGlob = false;
@@ -35,7 +34,6 @@ class PageOne extends StatelessWidget {
             reverse: true,
             child: ArticlePageWidget(bottom: bottom),
           ),
-
         ),
       ),
     );

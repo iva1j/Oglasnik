@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 
-
 class ArticlePageWidget extends StatefulWidget {
   const ArticlePageWidget({
     Key key,
@@ -27,7 +26,6 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   }
 
   @override
-
   void dispose() {
     productNameController.dispose();
     productNameFormKey.currentState.dispose();
@@ -35,7 +33,6 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   }
 
   @override
-
   Widget build(BuildContext context) {
     return Container(
       child: Column(
@@ -49,7 +46,6 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
               left: SizeConfig.blockSizeHorizontal * 10,
               right: SizeConfig.blockSizeHorizontal * 10,
             ),
-
             child: NazivTextField(),
           ),
           SizedBox(

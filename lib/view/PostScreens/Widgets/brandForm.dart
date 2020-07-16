@@ -12,6 +12,7 @@ class BrandForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Form(
         key: brandFormKey,
         autovalidate: true,

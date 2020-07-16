@@ -22,7 +22,6 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
