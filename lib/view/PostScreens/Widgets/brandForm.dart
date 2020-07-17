@@ -31,6 +31,7 @@ class BrandForm extends StatelessWidget {
                     left: SizeConfig.blockSizeHorizontal * 10,
                     right: SizeConfig.blockSizeHorizontal * 10),
                 child: TypeAheadFormField(
+                  hideOnLoading: true,
                   validator: productBrandValidation,
                   textFieldConfiguration: TextFieldConfiguration(
                     autofocus: true,
@@ -41,7 +42,7 @@ class BrandForm extends StatelessWidget {
                         contentPadding: EdgeInsets.only(left: 15.0)),
                     controller: brandTypeAheadController,
                   ),
-                  suggestionsCallback: (pattern)  {
+                  suggestionsCallback: (pattern) {
                     return Proizvodjac.getSuggestions(pattern);
                   },
                   itemBuilder: (context, suggestion) {
