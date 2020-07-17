@@ -11,13 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 
-TextEditingController signInEmailInputController;
-TextEditingController signInPasswordInputController;
 //When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
-  // Container(
-  //     child: AuthService()
-  //         .allowPasswordChange(context, emailInputControllerAlertDialog.text));
   AuthService().onPressedAlertDialog(
       context, emailInputControllerAlertDialog.text, tokenCode);
 }
@@ -30,13 +25,15 @@ void alerDialogOnPressedOdustani(BuildContext context) {
 
 //onPressed toggle that switch SignIn screen to SignUp
 void toggleRegister(BuildContext context) {
-  Navigator.pushReplacement(
-    context,
-    PageRouteBuilder(
-      pageBuilder: (context, animation1, animation2) => RegisterPage(),
-    ),
-  );
-  cleanLoginInputFields();
+  Timer(Duration(milliseconds: 100), () {
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation1, animation2) => RegisterPage(),
+      ),
+    );
+    cleanLoginInputFields();
+  });
 }
 
 void cleanLoginInputFields() {
@@ -44,13 +41,12 @@ void cleanLoginInputFields() {
   passwordInputController.clear();
 }
 
-void onPressedSignInModel(
-    BuildContext context, String email, String password, dynamic formKey) {
+void onPressedSignInModel(BuildContext context, String email, String password) {
   //ovdje pozvati
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   Timer(Duration(seconds: 1), () {
-    if (formKey.currentState.validate() && status == true) {
+    if (signInLoginFormKey.currentState.validate() && status == true) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         signInEmailInputController.clear();
         signInPasswordInputController.clear();
