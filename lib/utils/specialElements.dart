@@ -13,6 +13,9 @@ SizedBox button(dynamic nameFunction, dynamic function) {
     height: 50,
     width: 250,
     child: RaisedButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
       elevation: 3,
       onPressed: function,
       color: Color.fromARGB(255, 226, 11, 48),

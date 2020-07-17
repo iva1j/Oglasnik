@@ -135,24 +135,13 @@ bool allowUserToRegister = true;
 //final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 //final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
 
-//final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
-//GlobalKey<FormState> globalKey() => registerFormKey;
-GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
-
-class InputFields {
-  TextEditingController emailInputController = new TextEditingController();
-  TextEditingController passwordInputController = new TextEditingController();
-}
-
 //#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc
-String img1 = "Dodaj sliku 1"; 
+String img1 = "Dodaj sliku 1";
 String img2 = "Dodaj sliku 2";
 String img3 = "Dodaj sliku 3";
 
-final String immutableImg1 = "Dodaj sliku 1"; 
+final String immutableImg1 = "Dodaj sliku 1";
 final String immutableImg2 = "Dodaj sliku 2";
 final String immutableImg3 = "Dodaj sliku 3";
-
