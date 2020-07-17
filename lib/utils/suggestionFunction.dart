@@ -15,13 +15,12 @@ class Proizvodjac {
   ];
 
   static List<String> getSuggestions(String query) {
-    List<String> matches = List();
-    matches.addAll(proizvodjac);
-
-    matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
-    if (query.length >= 3)
+    if (query.length >= 3) {
+      List<String> matches = List();
+      matches.addAll(proizvodjac);
+      matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
       return matches;
-    else
+    } else
       return null;
   }
 }

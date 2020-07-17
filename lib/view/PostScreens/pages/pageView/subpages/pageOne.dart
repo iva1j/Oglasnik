@@ -3,7 +3,7 @@ import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/material.dart';
 
-class PageOne extends StatelessWidget {
+class PageOne extends StatefulWidget {
   const PageOne({
     Key key,
     @required this.bottom,
@@ -13,25 +13,45 @@ class PageOne extends StatelessWidget {
   final double bottom;
 
   @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) {
-          registeredGlob = false;
-          return RegisteredHome();
-        }),
-      ),
-      child: Scaffold(
-        /*
-        resizeToAvoidBottomInset: true,
-        body: ArticlePageWidget(
-          bottom: bottom,
-        ),*/
+  _PageOneState createState() => _PageOneState();
+}
 
-        resizeToAvoidBottomInset: true,
-        body: SingleChildScrollView(
-          reverse: true,
-          child: ArticlePageWidget(bottom: bottom),
+class _PageOneState extends State<PageOne> {
+  @override
+  void initState() {
+    productNameController = new TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    productNameController.dispose();
+    productNameFormKey.currentState.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          currentFocus.focusedChild.unfocus();
+        }
+      },
+      child: WillPopScope(
+        onWillPop: () => Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) {
+            registeredGlob = false;
+            return RegisteredHome();
+          }),
+        ),
+        child: Scaffold(
+          body: SingleChildScrollView(
+            reverse: true,
+            child: ArticlePageWidget(bottom: widget.bottom),
+          ),
         ),
       ),
     );

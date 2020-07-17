@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/validation.dart';
 import 'package:flutter/material.dart';
 
 class TagsForm extends StatelessWidget {
@@ -21,17 +22,31 @@ class TagsForm extends StatelessWidget {
             left: SizeConfig.blockSizeHorizontal * 10,
             right: SizeConfig.blockSizeHorizontal * 10,
           ),
-          child: TextFormField(
-            controller: productTagController,
-            maxLines: null,
-            keyboardType: TextInputType.multiline,
-            textCapitalization: TextCapitalization.sentences,
-            decoration: const InputDecoration(
-                hintText: 'Oznake',
-                helperText:
-                    'Oznake razdvojiti zarezom: Sarajevo, zamjena, fulloprema...',
-                contentPadding: EdgeInsets.only(left: 15.0)),
-          ),
+          child: Form(
+              //autovalidate: true,
+              key: productTagFormKey,
+              child: Theme(
+                data: ThemeData(
+                  primaryColor: Colors.black54,
+                  errorColor: Colors.red,
+                ),
+                child: TextFormField(
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (v) {
+                    FocusScope.of(context).nextFocus();
+                  },
+                  controller: productTagController,
+                  validator: productTagValidation,
+                  maxLines: null,
+                  keyboardType: TextInputType.multiline,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: const InputDecoration(
+                      hintText: 'Oznake',
+                      helperText:
+                          'Oznake razdvojiti zarezom: Sarajevo, zamjena, fulloprema',
+                      contentPadding: EdgeInsets.only(left: 10.0)),
+                ),
+              )),
         ),
       ],
     );

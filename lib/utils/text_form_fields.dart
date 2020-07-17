@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
@@ -5,17 +6,26 @@ import 'package:flutter/material.dart';
 
 Container priceTextField() {
   return Container(
-    width: 150,
-    child: TextFormField(
-      decoration: InputDecoration(
-        hintText: 'Cijena',
-        contentPadding: EdgeInsets.only(left: 15),
-      ),
-      keyboardType: TextInputType.phone,
-      validator: priceValidator,
-      controller: productPriceController,
-    ),
-  );
+      width: 150,
+      child: Form(
+        // autovalidate: true,
+        key: productPriceFormKey,
+        child: Theme(
+          data: ThemeData(
+            primaryColor: Colors.black54,
+            errorColor: Colors.red,
+          ),
+          child: TextFormField(
+            decoration: InputDecoration(
+              hintText: 'Cijena',
+              contentPadding: EdgeInsets.only(left: 15),
+            ),
+            keyboardType: TextInputType.phone,
+            validator: productPriceValidator,
+            controller: productPriceController,
+          ),
+        ),
+      ));
 }
 
 class OpisTextField extends StatelessWidget {
@@ -25,31 +35,64 @@ class OpisTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      maxLines: null,
-      keyboardType: TextInputType.multiline,
-      controller: productDescController,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: const InputDecoration(
-          labelText: 'Opis', contentPadding: EdgeInsets.only(left: 15.0)),
+    return Form(
+      key: productDescFormKey,
+      //autovalidate: true,
+      child: Theme(
+        data: ThemeData(
+          primaryColor: Colors.black54,
+          errorColor: Colors.red,
+        ),
+        child: TextFormField(
+          textInputAction: TextInputAction.done,
+          onFieldSubmitted: (v) {
+            FocusScope.of(context).nextFocus();
+          },
+          validator: productDescValidation,
+          maxLines: null,
+          keyboardType: TextInputType.multiline,
+          controller: productDescController,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: const InputDecoration(
+            labelText: 'Opis',
+            contentPadding: EdgeInsets.only(left: 15.0),
+          ),
+        ),
+      ),
     );
   }
 }
 
-class NazivTextField extends StatelessWidget {
+class NazivTextField extends StatefulWidget {
   const NazivTextField({
     Key key,
   }) : super(key: key);
 
   @override
+  _NazivTextFieldState createState() => _NazivTextFieldState();
+}
+
+class _NazivTextFieldState extends State<NazivTextField> {
+  @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      textCapitalization: TextCapitalization.sentences,
-      controller: productNameController,
-      maxLength: 28,
-      decoration: const InputDecoration(
-          hintText: 'Naziv artikla',
-          contentPadding: EdgeInsets.only(left: 15.0)),
+    return Form(
+      key: productNameFormKey,
+      //autovalidate: true,
+      child: Theme(
+        data: ThemeData(
+          primaryColor: Colors.black54,
+          errorColor: Colors.red,
+        ),
+        child: TextFormField(
+          validator: productFieldsValidator,
+          textCapitalization: TextCapitalization.sentences,
+          controller: productNameController,
+          maxLength: 28,
+          decoration: const InputDecoration(
+              hintText: 'Naziv artikla',
+              contentPadding: EdgeInsets.only(left: 15.0)),
+        ),
+      ),
     );
   }
 }

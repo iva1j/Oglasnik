@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
@@ -45,99 +46,104 @@ class _FormSignInState extends State<FormSignIn> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: signInRegisterFormKey,
-      child: Column(
-        children: <Widget>[
-          new Container(
-            margin: EdgeInsets.only(bottom: 10),
-            child: new SizedBox(
-              width: double.infinity,
-              child: Container(
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Email',
-                    contentPadding: EdgeInsets.only(left: 20),
-                  ),
-                  controller: widget.signInEmailInputController,
-                  keyboardType: TextInputType.visiblePassword,
-                  validator: emailCheckSignIn,
-                  textInputAction: TextInputAction.next,
-                  onFieldSubmitted: (v) {
-                    FocusScope.of(context).nextFocus();
-                  },
-                ),
-              ),
-            ),
+        key: signInRegisterFormKey,
+        child: Theme(
+          data: ThemeData(
+            primaryColor: Colors.black54,
+            errorColor: Colors.red,
           ),
-          new Container(
-            margin: EdgeInsets.only(bottom: 10),
-            child: new SizedBox(
-              width: double.infinity,
-              child: Container(
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Lozinka',
-                    contentPadding: EdgeInsets.only(left: 20),
-                  ),
-                  controller: widget.signInPasswordInputController,
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
-                  validator: passwordCheckSignIn,
-                  textInputAction: TextInputAction.done,
-                  onFieldSubmitted: (v) {
-                    FocusScope.of(context).nextFocus();
-                  },
-                ),
-              ),
-            ),
-          ),
-          Container(
-              child: Column(
+          child: Column(
             children: <Widget>[
-              Container(
-                  //  child: AuthService().tokenExistOrNot(context, email, token),
+              new Container(
+                margin: EdgeInsets.only(bottom: 10),
+                child: new SizedBox(
+                  width: double.infinity,
+                  child: Container(
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                        contentPadding: EdgeInsets.only(left: 20),
+                      ),
+                      controller: widget.signInEmailInputController,
+                      keyboardType: TextInputType.visiblePassword,
+                      validator: emailCheckSignIn,
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (v) {
+                        FocusScope.of(context).nextFocus();
+                      },
+                    ),
                   ),
-              Container(
-                child: AuthService().signInOrNot(
-                    context,
-                    signInEmailInputController.text,
-                    signInPasswordInputController.text),
+                ),
               ),
-              // Container(child: AuthService().checkStatus(context, email)),
+              new Container(
+                margin: EdgeInsets.only(bottom: 10),
+                child: new SizedBox(
+                  width: double.infinity,
+                  child: Container(
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: 'Lozinka',
+                        contentPadding: EdgeInsets.only(left: 20),
+                      ),
+                      controller: widget.signInPasswordInputController,
+                      keyboardType: TextInputType.visiblePassword,
+                      obscureText: true,
+                      validator: passwordCheckSignIn,
+                      textInputAction: TextInputAction.done,
+                      onFieldSubmitted: (v) {
+                        FocusScope.of(context).nextFocus();
+                      },
+                    ),
+                  ),
+                ),
+              ),
               Container(
-                  child: AuthService().allowPasswordChange(
-                      context, emailInputControllerAlertDialog.text))
-            ],
-          )),
-          Container(
-            margin: EdgeInsets.only(top: 20.0),
-            child: button(
-              'Prijavi se',
-              () async {
-                email = widget.signInEmailInputController.text;
-                password = widget.signInPasswordInputController.text;
-                formKey = signInRegisterFormKey;
-                onPressedSignInModel(context, email, password, formKey);
-              },
-            ),
-          ),
+                  child: Column(
+                children: <Widget>[
+                  Container(
+                      //  child: AuthService().tokenExistOrNot(context, email, token),
+                      ),
+                  Container(
+                    child: AuthService().signInOrNot(
+                        context,
+                        signInEmailInputController.text,
+                        signInPasswordInputController.text),
+                  ),
+                  // Container(child: AuthService().checkStatus(context, email)),
+                  Container(
+                      child: AuthService().allowPasswordChange(
+                          context, emailInputControllerAlertDialog.text))
+                ],
+              )),
+              Container(
+                margin: EdgeInsets.only(top: 20.0),
+                child: button(
+                  'Prijavi se',
+                  () async {
+                    allowAutoValidate = true;
+                    email = widget.signInEmailInputController.text;
+                    password = widget.signInPasswordInputController.text;
+                    formKey = signInRegisterFormKey;
+                    onPressedSignInModel(context, email, password, formKey);
+                  },
+                ),
+              ),
 
-          // Container(
-          //   margin: EdgeInsets.only(top: 15.0),
-          //   child: new GestureDetector(
-          //     onTap: () => displayDialog(context),
-          //     child: new Text(
-          //       "Zaboravili ste lozinku?",
-          //       style: TextStyle(
-          //           fontFamily: 'Roboto',
-          //           fontSize: 16,
-          //           color: Color.fromRGBO(0, 0, 0, 100)),
-          //     ),
-          //   ),
-          // )
-       
-        ],
-      ),
-    );
+              // Container(
+              //   margin: EdgeInsets.only(top: 15.0),
+              //   child: new GestureDetector(
+              //     onTap: () => displayDialog(context),
+              //     child: new Text(
+              //       "Zaboravili ste lozinku?",
+              //       style: TextStyle(
+              //           fontFamily: 'Roboto',
+              //           fontSize: 16,
+              //           color: Color.fromRGBO(0, 0, 0, 100)),
+              //     ),
+              //   ),
+              // )
+            ],
+          ),
+        ));
   }
 }
