@@ -35,8 +35,8 @@ List<String> suggestions = [
 
 bool onWillPop() {
   pageController.previousPage(
-    duration: Duration(milliseconds: 200),
-    curve: Curves.linear,
+    duration: Duration(milliseconds: 800),
+    curve: Curves.ease,
   );
   return false;
 }
