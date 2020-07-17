@@ -39,6 +39,10 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void dispose() {
     signUpRegisterFormKey.currentState.dispose();
+    signUpFullNameInputController.dispose();
+    signUpPhoneNumberInputController.dispose();
+    signUpEmailInputController.dispose();
+    signUpPasswordInputController.dispose();
     super.dispose();
   }
 
@@ -131,7 +135,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               signUpPhoneNumberInputController),
                     ],
                   )),
-
             ),
           ),
         ),

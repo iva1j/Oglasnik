@@ -28,22 +28,6 @@ class FormSignIn extends StatefulWidget {
 
 class _FormSignInState extends State<FormSignIn> {
   @override
-  void initState() {
-    signInRegisterFormKey = GlobalKey<FormState>();
-    signInEmailInputController = new TextEditingController();
-    signInPasswordInputController = new TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    signInRegisterFormKey.currentState.dispose();
-    signInEmailInputController.dispose();
-    signInPasswordInputController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Form(
         key: signInRegisterFormKey,

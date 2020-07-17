@@ -36,6 +36,7 @@ class _SigninPageState extends State<SigninPage> {
   void dispose() {
     signInEmailInputController.dispose();
     signInPasswordInputController.dispose();
+    signInRegisterFormKey.currentState.dispose();
     super.dispose();
   }
 
