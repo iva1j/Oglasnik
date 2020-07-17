@@ -1,3 +1,4 @@
+
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -147,3 +148,4 @@ class CategoryCardRow extends StatelessWidget {
     );
   }
 }
+
