@@ -1,5 +1,4 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
@@ -8,19 +7,8 @@ import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/cupertino.dart';
 
-String email, password;
-dynamic formKey;
-
-// ignore: must_be_immutable
 class FormSignIn extends StatefulWidget {
-  FormSignIn({
-    Key key,
-    @required this.signInEmailInputController,
-    @required this.signInPasswordInputController,
-  }) : super(key: key);
-
-  TextEditingController signInEmailInputController;
-  TextEditingController signInPasswordInputController;
+  FormSignIn();
 
   @override
   _FormSignInState createState() => _FormSignInState();
@@ -30,7 +18,7 @@ class _FormSignInState extends State<FormSignIn> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: signInRegisterFormKey,
+        key: signInLoginFormKey,
         child: Theme(
           data: ThemeData(
             primaryColor: Colors.black54,
@@ -48,7 +36,7 @@ class _FormSignInState extends State<FormSignIn> {
                         hintText: 'Email',
                         contentPadding: EdgeInsets.only(left: 20),
                       ),
-                      controller: widget.signInEmailInputController,
+                      controller: signInEmailInputController,
                       keyboardType: TextInputType.visiblePassword,
                       validator: emailCheckSignIn,
                       textInputAction: TextInputAction.next,
@@ -69,7 +57,7 @@ class _FormSignInState extends State<FormSignIn> {
                         hintText: 'Lozinka',
                         contentPadding: EdgeInsets.only(left: 20),
                       ),
-                      controller: widget.signInPasswordInputController,
+                      controller: signInPasswordInputController,
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: true,
                       validator: passwordCheckSignIn,
@@ -105,10 +93,13 @@ class _FormSignInState extends State<FormSignIn> {
                   'Prijavi se',
                   () async {
                     allowAutoValidate = true;
-                    email = widget.signInEmailInputController.text;
-                    password = widget.signInPasswordInputController.text;
-                    formKey = signInRegisterFormKey;
-                    onPressedSignInModel(context, email, password, formKey);
+                    emailSignIn = signInEmailInputController.text;
+                    passwordSignIn = signInPasswordInputController.text;
+                    onPressedSignInModel(
+                      context,
+                      emailSignIn,
+                      passwordSignIn,
+                    );
                   },
                 ),
               ),
