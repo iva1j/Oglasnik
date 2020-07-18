@@ -6,6 +6,7 @@ import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/tagsForm.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 
 class CityPage extends StatefulWidget {
   @override

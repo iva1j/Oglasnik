@@ -69,14 +69,12 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     await storageRef.putFile(
       File(filePath),
     );
-    Timer(Duration(seconds: 5), () async {
-      final String url = await storageRef.getDownloadURL();
+    final String url = await storageRef.getDownloadURL();
 
-      setState(() {
-        if (id == 1) productImg1 = url;
-        if (id == 2) productImg2 = url;
-        if (id == 3) productImg3 = url;
-      });
+    await setState(() {
+      if (id == 1) productImg1 = url;
+      if (id == 2) productImg2 = url;
+      if (id == 3) productImg3 = url;
     });
   }
 
@@ -131,9 +129,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       FocusScope.of(context).requestFocus(new FocusNode());
       if (pageController.page == 4) {
         if (productPriceFormKey.currentState.validate()) {
-          if (img1 == _fileName1) upload(_fileName1, _path1, 1);
-          if (img2 == _fileName2) upload(_fileName2, _path2, 2);
-          if (img3 == _fileName3) upload(_fileName3, _path3, 3);
+          if (img1 == _fileName1) await upload(_fileName1, _path1, 1);
+          if (img2 == _fileName2) await upload(_fileName2, _path2, 2);
+          if (img3 == _fileName3) await upload(_fileName3, _path3, 3);
           productName = productNameController.text;
           productCategory = dropdownValueCategory;
           productBrand = brandTypeAheadController.text;
@@ -142,24 +140,23 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           productDesc = productDescController.text;
           productprice = productPriceController.text;
           print(email + productName + productTag);
-          Timer(Duration(seconds: 7), () {
-            CreateProduct().createProduct(
-                context,
-                email,
-                productName,
-                productID = randomAlphaNumeric(20),
-                productCategory,
-                productBrand,
-                productLocation,
-                productTag,
-                productDesc,
-                productImg1,
-                productImg2,
-                productImg3,
-                productprice);
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (_) => RegisteredHome()));
-          });
+          await CreateProduct().createProduct(
+            context,
+            email,
+            productName,
+            productID = randomAlphaNumeric(20),
+            productCategory,
+            productBrand,
+            productLocation,
+            productTag,
+            productDesc,
+            productImg1,
+            productImg2,
+            productImg3,
+            productprice,
+          );
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (_) => RegisteredHome()));
         } else
           return null;
       } //validation if statement
