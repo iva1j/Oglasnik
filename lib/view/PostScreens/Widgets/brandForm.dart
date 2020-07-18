@@ -7,6 +7,8 @@ import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
+import '../../../utils/suggestionFunction.dart';
+
 class BrandForm extends StatelessWidget {
   const BrandForm({
     Key key,
@@ -47,6 +49,7 @@ class BrandForm extends StatelessWidget {
                     return ListTile(title: Text(suggestion));
                   },
                   hideOnEmpty: true,
+                  hideOnLoading: true,
                   onSuggestionSelected: (suggestion) {
                     brandTypeAheadController.text = suggestion;
                   },

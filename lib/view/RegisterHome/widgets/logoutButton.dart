@@ -18,7 +18,7 @@ class LogoutButton extends StatelessWidget {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.remove('email');
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (BuildContext ctx) => RegisterPage()));
+            MaterialPageRoute(builder: (BuildContext ctx) => AnonymousHome()));
       },
       icon: Icon(
         Icons.power_settings_new,
