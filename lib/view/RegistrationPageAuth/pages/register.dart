@@ -1,6 +1,3 @@
-import 'dart:async';
-
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -14,6 +11,12 @@ import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
 
+GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
+TextEditingController signUpFullNameInputController;
+TextEditingController signUpPhoneNumberInputController;
+TextEditingController signUpEmailInputController;
+TextEditingController signUpPasswordInputController;
+
 class RegisterPage extends StatefulWidget {
   final Function toggleView;
   RegisterPage({Key key, this.toggleView}) : super(key: key);
@@ -25,20 +28,17 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   @override
   initState() {
-    signUpFullNameInputController = TextEditingController();
-    signUpPhoneNumberInputController = TextEditingController();
-    signUpEmailInputController = TextEditingController();
-    signUpPasswordInputController = TextEditingController();
+    signUpFullNameInputController = new TextEditingController();
+    signUpPhoneNumberInputController = new TextEditingController();
+    signUpEmailInputController = new TextEditingController();
+    signUpPasswordInputController = new TextEditingController();
+    signUpRegisterFormKey = GlobalKey<FormState>();
     super.initState();
   }
 
   @override
   void dispose() {
     signUpRegisterFormKey.currentState.dispose();
-    signUpFullNameInputController.dispose();
-    signUpPhoneNumberInputController.dispose();
-    signUpEmailInputController.dispose();
-    signUpPasswordInputController.dispose();
     super.dispose();
   }
 
@@ -73,21 +73,19 @@ class _RegisterPageState extends State<RegisterPage> {
             color: Colors.white,
             onPressed: () {
               FocusScope.of(context).requestFocus(new FocusNode());
-              Timer(Duration(milliseconds: 100), () {
-                Navigator.pushReplacement(
-                  context,
-                  PageRouteBuilder(
-                    pageBuilder: (context, animation1, animation2) =>
-                        SigninPage(),
-                  ),
-                );
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      SigninPage(),
+                ),
+              );
 
-                cleanInputFields(
-                    signUpFullNameInputController,
-                    signUpPhoneNumberInputController,
-                    signUpEmailInputController,
-                    signUpPasswordInputController);
-              });
+              cleanInputFields(
+                  signUpFullNameInputController,
+                  signUpPhoneNumberInputController,
+                  signUpEmailInputController,
+                  signUpPasswordInputController);
             },
             child: Text(
               RegistrationPageAuthPages().prijava,
@@ -121,9 +119,19 @@ class _RegisterPageState extends State<RegisterPage> {
                             AuthService().checkStatus(context, emailRegister),
                       ),
                       SignUpFormName(),
-                      FormSignUp(),
+                      FormSignUp(
+                          registerFormKey: signUpRegisterFormKey,
+                          signUpFullNameInputController:
+                              signUpFullNameInputController,
+                          signUpEmailInputController:
+                              signUpEmailInputController,
+                          signUpPasswordInputController:
+                              signUpPasswordInputController,
+                          signUpPhoneNumberInputController:
+                              signUpPhoneNumberInputController),
                     ],
                   )),
+
             ),
           ),
         ),

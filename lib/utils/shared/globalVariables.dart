@@ -24,14 +24,6 @@ TextEditingController productPriceController;
 String dropdownValueCategory = 'Kategorija1';
 String dropdownValueCity = 'Sarajevo';
 
-TextEditingController signUpFullNameInputController;
-TextEditingController signUpPhoneNumberInputController;
-TextEditingController signUpEmailInputController;
-TextEditingController signUpPasswordInputController;
-
-TextEditingController signInEmailInputController;
-TextEditingController signInPasswordInputController;
-
 final GlobalKey<FormState> productBrandFormKey = GlobalKey<FormState>();
 
 TextEditingController brandTypeAheadController;
@@ -42,12 +34,12 @@ bool buttonThree = false;
 bool allowAutoValidate = false;
 bool registeredGlob = false;
 
-String emailSignIn, passwordSignIn;
-
-GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> signInLoginFormKey = GlobalKey<FormState>();
-
 final GlobalKey<FormState> productNameFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productDescFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productTagFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productPriceFormKey = GlobalKey<FormState>();
+
+class Data {
+  List imagesPass;
+  Data({this.imagesPass});
+}

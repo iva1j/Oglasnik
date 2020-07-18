@@ -2,7 +2,7 @@ import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/gallery_main.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/imageslider.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: buildThemeData(),
           // ignore: missing_required_param
-          home: GalleryExample(),
+          home: ImageSlider(),
           routes: {
             "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),
