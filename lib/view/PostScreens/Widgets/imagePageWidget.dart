@@ -52,6 +52,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img2 = _fileName2;
     });
+    //upload(_fileName2, _path2, 2).then((value) => productImg2 = value);
   }
 
   void openFileExplorer3() async {
@@ -61,21 +62,16 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img3 = _fileName3;
     });
+    //upload(_fileName3, _path3, 3).then((value) => productImg3 = value);
   }
 
-  upload(fileName, filePath, id) async {
+  Future<String> upload(fileName, filePath, id) async {
     StorageReference storageRef =
-        await FirebaseStorage.instance.ref().child('images').child(fileName);
-    await storageRef.putFile(
+        FirebaseStorage.instance.ref().child('images').child(fileName);
+    final StorageUploadTask task = storageRef.putFile(
       File(filePath),
     );
-    final String url = await storageRef.getDownloadURL();
-
-    await setState(() {
-      if (id == 1) productImg1 = url;
-      if (id == 2) productImg2 = url;
-      if (id == 3) productImg3 = url;
-    });
+    return await (await task.onComplete).ref.getDownloadURL();
   }
 
   @override
@@ -129,9 +125,17 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       FocusScope.of(context).requestFocus(new FocusNode());
       if (pageController.page == 4) {
         if (productPriceFormKey.currentState.validate()) {
-          if (img1 == _fileName1) await upload(_fileName1, _path1, 1);
-          if (img2 == _fileName2) await upload(_fileName2, _path2, 2);
-          if (img3 == _fileName3) await upload(_fileName3, _path3, 3);
+          createdGlob = true;
+          if (img1 == _fileName1)
+            await upload(_fileName1, _path1, 1)
+                .then((value) => productImg1 = value);
+          if (img2 == _fileName2)
+            await upload(_fileName2, _path2, 2)
+                .then((value) => productImg2 = value);
+          if (img3 == _fileName3)
+            await upload(_fileName3, _path3, 3)
+                .then((value) => productImg3 = value);
+          ;
           productName = productNameController.text;
           productCategory = dropdownValueCategory;
           productBrand = brandTypeAheadController.text;
@@ -155,21 +159,14 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             productImg3,
             productprice,
           );
+          img1 = immutableImg1;
+          img2 = immutableImg2;
+          img3 = immutableImg3;
           Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (_) => RegisteredHome()));
         } else
           return null;
-      } //validation if statement
-
-      // else {
-      //   pageController.nextPage(
-      //       duration: Duration(milliseconds: 800),
-      //       curve: Curves.ease);
-      //   productName = productNameController.text;
-      //   print(productName);
-      //   print(pageController.toString());
-      //   print(pageController.page);
-      // }
+      }
     });
   }
 }
