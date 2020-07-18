@@ -33,6 +33,7 @@ bool buttonTwo = false;
 bool buttonThree = false;
 bool allowAutoValidate = false;
 bool registeredGlob = false;
+bool createdGlob = false;
 
 final GlobalKey<FormState> productNameFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productDescFormKey = GlobalKey<FormState>();

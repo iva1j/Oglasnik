@@ -105,9 +105,13 @@ class SignInPageWidgetFout {
 
 class SuccessAlertDialog {
   String odlicno = "Odlično!";
+  String cestitamo = "Čestitamo!";
   String opis1 =
       "Uspješno ste se registrovali na našu platformu Oglasnik.Sada možete napraviti svoj prvi artikal i ponuditi ga našim korisnicima.";
   String opis2 = "Želimo Vam uspješno trgovanje.";
+  String opis3 =
+      "Uspješno ste kreirali novi artikal na našoj platformi Oglasnik.";
+
   String uredu = "UREDU";
   String kreiraj = "KREIRAJ";
 }

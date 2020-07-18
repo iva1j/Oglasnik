@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/successOnCreateAlertDialog.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,16 @@ class _RegisteredHomeState extends State<RegisteredHome> {
         await showDialog<String>(
             context: context,
             builder: (BuildContext context) => successAlertDialog(context));
+      });
+    }
+
+    if (createdGlob) {
+      createdGlob = false;
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await showDialog<String>(
+            context: context,
+            builder: (BuildContext context) =>
+                successOnCreateAlertDialog(context));
       });
     }
   }
