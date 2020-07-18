@@ -5,7 +5,6 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
-import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

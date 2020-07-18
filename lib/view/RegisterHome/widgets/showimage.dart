@@ -17,6 +17,7 @@ class PrikazSlika extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               CarouselSlider(
+                viewportFraction: 1,
                 initialPage: 0,
                 items: data.imagesPass.map((imgUrl) {
                   return Builder(

@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';

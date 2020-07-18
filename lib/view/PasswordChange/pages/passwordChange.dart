@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';

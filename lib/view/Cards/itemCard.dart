@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:flutter/services.dart';
 
 class ItemCard extends StatelessWidget {
   String img = "assets/images/audi.jpeg";

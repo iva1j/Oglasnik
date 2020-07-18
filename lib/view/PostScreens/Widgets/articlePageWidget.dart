@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';

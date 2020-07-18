@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
@@ -131,7 +130,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               signUpPhoneNumberInputController),
                     ],
                   )),
-
             ),
           ),
         ),
