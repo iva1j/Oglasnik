@@ -6,6 +6,7 @@ import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -30,6 +31,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   String _extension1, _extension2, _extension3;
   String _fileName1, _fileName2, _fileName3;
 
+  bool loading = false;
   FileType _imageType = FileType.image;
 
   List<StorageUploadTask> _tasks = <StorageUploadTask>[];
@@ -77,46 +79,46 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Container(
-      //padding: EdgeInsets.only(bottom: widget.bottom),
-      child: Container(
-        margin: EdgeInsets.all(15),
-        child: Column(
-          children: <Widget>[
-            MainTitle(),
-            Container(
-              margin:
-                  EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 18),
-            ),
-            imageOneUploadButton(openFileExplorer1),
-            imageTwoUploadButton(openFileExplorer2),
-            imageThreeUploadButton(openFileExplorer3),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+    return loading
+        ? Loading()
+        : Container(
+            margin: EdgeInsets.all(15),
+            child: Column(
               children: <Widget>[
+                MainTitle(),
                 Container(
-                    margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
-                    child: priceTextField()),
-                Padding(
-                  padding: EdgeInsets.only(left: 7, bottom: 5),
-                  child: Text(
-                    MoneyText().kmText,
-                  ),
+                  margin: EdgeInsets.only(
+                      bottom: SizeConfig.blockSizeVertical * 18),
                 ),
-              ],
-            ),
-            /*
+                imageOneUploadButton(openFileExplorer1),
+                imageTwoUploadButton(openFileExplorer2),
+                imageThreeUploadButton(openFileExplorer3),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                        margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
+                        child: priceTextField()),
+                    Padding(
+                      padding: EdgeInsets.only(left: 7, bottom: 5),
+                      child: Text(
+                        MoneyText().kmText,
+                      ),
+                    ),
+                  ],
+                ),
+                /*
             Container(
               child: PageViewButton(),
             )*/
-            Container(
-              margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 5),
-              child: pageViewSubmitButton(context),
+                Container(
+                  margin:
+                      EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 5),
+                  child: pageViewSubmitButton(context),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-    );
+          );
   }
 
 //nije moguće refaktorisati zbog privatnih varijabli. Check it out
@@ -125,6 +127,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       FocusScope.of(context).requestFocus(new FocusNode());
       if (pageController.page == 4) {
         if (productPriceFormKey.currentState.validate()) {
+          setState(() => loading = true);
           createdGlob = true;
           if (img1 == _fileName1)
             await upload(_fileName1, _path1, 1)
