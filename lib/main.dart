@@ -2,13 +2,16 @@ import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
-import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/CategoryCard.dart';
+import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
 Future<void> main() async {
   await DotEnv().load('.env');
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +38,6 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: buildThemeData(),
-          // ignore: missing_required_param
           home: Splash(),
           routes: {
             "/back": (_) => AnonymousHome(),

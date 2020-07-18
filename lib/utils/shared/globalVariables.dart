@@ -51,3 +51,8 @@ final GlobalKey<FormState> productNameFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productDescFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productTagFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productPriceFormKey = GlobalKey<FormState>();
+
+class Data {
+  List imagesPass;
+  Data({this.imagesPass});
+}

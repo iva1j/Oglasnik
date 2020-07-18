@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
@@ -50,7 +51,12 @@ class _RegisteredHomeState extends State<RegisteredHome> {
         width: double.infinity,
         color: Color.fromARGB(255, 226, 11, 48),
       ),
-      body: CategoryCard(),
+      body: Column(
+        children: <Widget>[
+          CategoryCard(),
+          ProductBrandCard(),
+        ],
+      ),
     );
   }
 }
