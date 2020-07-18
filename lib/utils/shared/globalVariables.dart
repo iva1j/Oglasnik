@@ -41,6 +41,7 @@ bool buttonTwo = false;
 bool buttonThree = false;
 bool allowAutoValidate = false;
 bool registeredGlob = false;
+bool createdGlob = false;
 
 String emailSignIn, passwordSignIn;
 

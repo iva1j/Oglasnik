@@ -3,14 +3,10 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.da
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/successOnCreateAlertDialog.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:Oglasnik/utils/colorThemes.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 
 class RegisteredHome extends StatefulWidget {
   @override
@@ -32,6 +28,16 @@ class _RegisteredHomeState extends State<RegisteredHome> {
             builder: (BuildContext context) => successAlertDialog(context));
       });
     }
+
+    if (createdGlob) {
+      createdGlob = false;
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await showDialog<String>(
+            context: context,
+            builder: (BuildContext context) =>
+                successOnCreateAlertDialog(context));
+      });
+    }
   }
 
   List<dynamic> users = [];
@@ -43,7 +49,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
         backgroundColor: AppBarTheme.of(context).color,
         centerTitle: true,
         title: Text('Oglasnik'),
-        leading: LogoutButton(),
       ),
       floatingActionButton: mainFloatingButton(email),
       bottomSheet: Container(
