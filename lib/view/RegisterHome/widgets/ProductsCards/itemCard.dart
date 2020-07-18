@@ -46,7 +46,7 @@ class ItemCard extends StatelessWidget {
                       ),
                       ItemDescription(
                         description:
-                            "Prodajem Audi A3 sjedi vozi stanje top sve full samo treba nasuti kad vam kazem a sta ako nije onda jbg hajmo dalje uzmi novo ovo ono kao tako jako lako a sta znam sta ima moj je zivot svicarska skoro pa savrsen",
+                            "Prodajem Audi A3 sjedi vozi stanje top sve full samo treba nasuti kad vam kazem a sta ako nije onda jbg hajmo dalje uzmi novo ovo ono kao tako jako lako a sta znam sta ima moj je zivot svicarska skoro pa savrsen-----------Prodajem Audi A3 sjedi vozi stanje top sve full samo treba nasuti kad vam kazem a sta ako nije onda jbg hajmo dalje uzmi novo ovo ono kao tako jako lako a sta znam sta ima moj je zivot svicarska skoro pa savrsen",
                       ),
                     ],
                   ),
