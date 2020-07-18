@@ -36,6 +36,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   void openFileExplorer1() async {
     //_path1 = null;
+    
     _path1 = await FilePicker.getFilePath(type: _imageType);
     _fileName1 = _path1.split('/').last;
     _extension1 = _fileName1.toString().split('.').last;
@@ -135,7 +136,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           if (img3 == _fileName3)
             await upload(_fileName3, _path3, 3)
                 .then((value) => productImg3 = value);
-          ;
           productName = productNameController.text;
           productCategory = dropdownValueCategory;
           productBrand = brandTypeAheadController.text;
