@@ -5,7 +5,6 @@ import 'package:Oglasnik/view/RegisterHome/widgets/successOnCreateAlertDialog.da
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-
 import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 
 class RegisteredHome extends StatefulWidget {
@@ -56,6 +55,12 @@ class _RegisteredHomeState extends State<RegisteredHome> {
         height: 55,
         width: double.infinity,
         color: Color.fromARGB(255, 226, 11, 48),
+      ),
+      body: Column(
+        children: <Widget>[
+          //CategoryCard(),
+          //ProductBrandCard(),
+        ],
       ),
     );
   }

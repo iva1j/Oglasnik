@@ -11,19 +11,13 @@ class ImageSlider extends StatefulWidget {
 }
 
 class _ImageSliderState extends State<ImageSlider> {
-  List<String> imagesList = [
+  static List<String> imagesList = [
     "assets/img1.jpg",
     "assets/img2.jpg",
     "assets/img3.jpg",
     "assets/img4.jpg",
   ];
-  final data = Data(imagesPass: [
-    // dinamicno pozivati, napraviti da je imagesPass = imagesList
-    "assets/img1.jpg",
-    "assets/img2.jpg",
-    "assets/img3.jpg",
-    "assets/img4.jpg"
-  ]);
+  final data = Data(imagesPass: imagesList);
   int _current = 0;
 
   @override
@@ -52,7 +46,7 @@ class _ImageSliderState extends State<ImageSlider> {
                       child: GestureDetector(
                         child: Image.asset(
                           imgUrl,
-                          fit: BoxFit.contain,
+                          fit: BoxFit.cover,
                         ),
                         onTap: () {
                           Navigator.push(
