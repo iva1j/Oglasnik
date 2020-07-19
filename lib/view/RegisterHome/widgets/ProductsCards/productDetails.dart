@@ -8,6 +8,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 class ProductDetails extends StatefulWidget {
+  final String document, document2;
+ const ProductDetails(this.document, this.document2);
+
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
@@ -22,9 +25,12 @@ class _ProductDetailsState extends State<ProductDetails> {
   final data = Data(imagesPass: imagesList);
   @override
   Widget build(BuildContext context) {
+    String document;
     SizeConfig().init(context);
-    return Scaffold(
-      body: Column(
+    return 
+    Scaffold(
+      body: 
+      Column(
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
@@ -121,13 +127,17 @@ class _ProductDetailsState extends State<ProductDetails> {
                     child: Row(children: <Widget>[
                       Container(
                         child: Text(
-                          ProductDetailsStrings().productName,
+                          widget.document,
+                          //ProductDetailsStrings().productName,
                           style: Theme.of(context).textTheme.headline6,
                         ),
                       ),
                       Spacer(),
                       Container(
-                        child: Text(ProductDetailsStrings().categoryName),
+                        child: Text(
+                          //ProductDetailsStrings().categoryName
+                          widget.document2
+                          ),
                       )
                     ]),
                   ),
@@ -196,7 +206,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        ProductDetailsStrings().callNumberText,
+                        //ProductDetailsStrings().callNumberText
+                        document,
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.w400),
                       ),
