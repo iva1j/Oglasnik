@@ -1,92 +1,122 @@
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ItemCard extends StatelessWidget {
-  String img = "assets/images/audi.jpeg";
+  String img = "assets/images/audi.jpg";
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 1,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
-            ),
-          ],
-          border: Border.all(
-            color: Colors.black,
-          ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(10),
-          ),
-        ),
-        margin: EdgeInsets.symmetric(
-          horizontal: SizeConfig.blockSizeHorizontal * 5,
-          vertical: SizeConfig.blockSizeVertical * 10,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      ItemName(
-                        name: "Audi A3",
-                      ),
-                      ItemDescription(
-                        description:
-                            "Prodajem Audi A3 sjedi vozi stanje top sve full samo treba nasuti kad vam kazem a sta ako nije onda jbg hajmo dalje uzmi novo ovo ono kao tako jako lako a sta znam sta ima moj je zivot svicarska skoro pa savrsen-----------Prodajem Audi A3 sjedi vozi stanje top sve full samo treba nasuti kad vam kazem a sta ako nije onda jbg hajmo dalje uzmi novo ovo ono kao tako jako lako a sta znam sta ima moj je zivot svicarska skoro pa savrsen",
-                      ),
-                    ],
+        body: StreamBuilder(
+            stream: Firestore.instance.collection('products').snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Container(
+                  child: Card(
+                    elevation: 8,
+                    color: Colors.white,
+                    child: Text('No Items'),
                   ),
-                ),
-                Expanded(
-                  child: Column(
-                    children: <Widget>[
-                      ItemImage(img: img),
-                      ItemPrice(price: "90.000KM"),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Divider(
-              thickness: SizeConfig.blockSizeVertical * 0.2,
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: <Widget>[
-                  OglasTag(naziv: "Sarajevo"),
-                  OglasTag(naziv: "Audi"),
-                  OglasTag(naziv: "Top"),
-                  OglasTag(naziv: "Sarajevo"),
-                  OglasTag(naziv: "Audi"),
-                  OglasTag(naziv: "Top"),
-                  OglasTag(naziv: "Sarajevo"),
-                  OglasTag(naziv: "Audi"),
-                  OglasTag(naziv: "Top"),
-                  OglasTag(naziv: "Sarajevo"),
-                  OglasTag(naziv: "Audi"),
-                  OglasTag(naziv: "Top"),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+                );
+              }
+              return ListView.builder(
+                itemCount: snapshot.data.documents.length,
+                itemBuilder: (_, int index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                      border: Border.all(
+                        color: Colors.black,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                    margin: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.blockSizeHorizontal * 5,
+                      vertical: SizeConfig.blockSizeVertical * 10,
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  ItemName(
+                                    name: snapshot.data.documents[index]
+                                        ['productName'],
+                                  ),
+                                  ItemDescription(
+                                    description: snapshot.data.documents[index]
+                                        ['productDesc'],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: <Widget>[
+                                  ItemImage(
+                                      img: snapshot.data.documents[index]
+                                                  ['productImg1'] !=
+                                              null
+                                          ? snapshot.data.documents[index]
+                                              ['productImg1']
+                                          : img),
+                                  ItemPrice(
+                                      price: "Cijena: " +
+                                          snapshot.data.documents[index]
+                                              ['cijena'] +
+                                          " KM"),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          thickness: SizeConfig.blockSizeVertical * 0.2,
+                        ),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: <Widget>[
+                              OglasTag(naziv: "Sarajevo"),
+                              OglasTag(naziv: "Audi"),
+                              OglasTag(naziv: "Top"),
+                              OglasTag(naziv: "Sarajevo"),
+                              OglasTag(naziv: "Audi"),
+                              OglasTag(naziv: "Top"),
+                              OglasTag(naziv: "Sarajevo"),
+                              OglasTag(naziv: "Audi"),
+                              OglasTag(naziv: "Top"),
+                              OglasTag(naziv: "Sarajevo"),
+                              OglasTag(naziv: "Audi"),
+                              OglasTag(naziv: "Top"),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              );
+            }));
   }
 }
 
@@ -159,11 +189,8 @@ class ItemImage extends StatelessWidget {
       width: SizeConfig.blockSizeVertical * 20,
       decoration: BoxDecoration(
         image: DecorationImage(
-          fit: BoxFit.fill,
-          image: AssetImage(
-            img,
-          ),
-        ),
+            fit: BoxFit.fill,
+            image: img == null ? AssetImage(img) : NetworkImage(img)),
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
         color: Colors.redAccent,
       ),

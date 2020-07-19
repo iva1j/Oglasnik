@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:Oglasnik/interface/productInterface.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,46 +13,46 @@ class Citanje extends StatefulWidget {
 }
 
 class _CitanjeState extends State<Citanje> {
-  StreamSubscription<QuerySnapshot> subscription;
-  List<DocumentSnapshot> snapshot;
-
-  CollectionReference collectionReference =
-      Firestore.instance.collection("products");
-
-  @override
-  void initState() {
-    subscription = collectionReference.snapshots().listen((datasnapshot) {
-      setState(() {
-        snapshot = datasnapshot.documents;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      margin: EdgeInsets.only(top: 50.0),
-      child: ListView(
-        children: <Widget>[
-          Container(
-            height: 300,
-            child: ListView.builder(
-                itemCount: snapshot.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: Column(
-                      children: <Widget>[
-                        Text(snapshot[index].data["productCategory"]),
-                        Text(snapshot[index].data["cijena"]),
-                        Text(snapshot[index].data["productBrand"]),
-                      ],
-                    ),
-                  );
-                }),
-          )
-        ],
+      body: Container(
+        margin: EdgeInsets.all(50),
+        child: StreamBuilder(
+          stream: Firestore.instance.collection('products').snapshots(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return Container(
+                child: Card(
+                  elevation: 8,
+                  color: Colors.white,
+                  child: Text('No Items'),
+                ),
+              );
+            }
+            return Container(
+              child: ListView.builder(
+                  itemCount: snapshot.data.documents.length,
+                  itemBuilder: (_, int index) {
+                    return Container(
+                      child: Card(
+                        color: Colors.white,
+                        child: Column(
+                          children: <Widget>[
+                            Text('Name: ' +
+                                snapshot.data.documents[index]['email']),
+                            Text('Faction: ' +
+                                snapshot.data.documents[index]
+                                    ['productCategory']),
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
+            );
+          },
+        ),
       ),
-    ));
+    );
   }
 }
