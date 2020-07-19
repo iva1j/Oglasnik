@@ -36,10 +36,10 @@ class Product {
       productCategory: doc['productCategory'],
       productCijena: doc['cijena'],
       productID: doc['productID'],
-      productLocation: doc['productLocation'],
+      productLocation: doc['productLocation'],  
       productDesc: doc['productDesc'],
       productTag: doc['productTag'],
-      productImg1: doc['productImg1'],
+      productImg1: doc['productImg1'],    
       productImg2: doc['productImg2'],
       productImg3: doc['productImg3'],
     );
