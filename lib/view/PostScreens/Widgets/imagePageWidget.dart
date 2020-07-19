@@ -81,7 +81,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return loading
-        ? Loading()
+        ? Loading() 
         : Container(
             margin: EdgeInsets.all(15),
             child: Column(
