@@ -58,8 +58,8 @@ class _RegisteredHomeState extends State<RegisteredHome> {
       ),
       body: Column(
         children: <Widget>[
-          CategoryCard(),
-          ProductBrandCard(),
+          //CategoryCard(),
+          //ProductBrandCard(),
         ],
       ),
     );
