@@ -1,9 +1,8 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/logoContainer.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonIphone.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/FormSignIn.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/PrijavaWelcomeScreen.dart';
@@ -29,15 +28,15 @@ class _SigninPageState extends State<SigninPage> {
 
   @override
   initState() {
-    signInEmailInputController = TextEditingController();
-    signInPasswordInputController = TextEditingController();
+    signInEmailInputController = new TextEditingController();
+    signInPasswordInputController = new TextEditingController();
     super.initState();
   }
 
   void dispose() {
     signInEmailInputController.dispose();
     signInPasswordInputController.dispose();
-    signInLoginFormKey.currentState.dispose();
+    signInRegisterFormKey.currentState.dispose();
     super.dispose();
   }
 
@@ -45,7 +44,8 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
+    email = signInEmailInputController.text;
+    password = signInPasswordInputController.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return GestureDetector(
       onTap: () {
@@ -96,7 +96,7 @@ class _SigninPageState extends State<SigninPage> {
             child: Padding(
               padding: EdgeInsets.only(bottom: bottom),
               child: Container(
-                  margin: EdgeInsets.all(50),
+                  margin: EdgeInsets.all(45),
                   child: Column(
                     children: <Widget>[
                       Container(
@@ -105,7 +105,11 @@ class _SigninPageState extends State<SigninPage> {
                       LogoContainer(),
                       WelcomeScreen(),
                       PrijavaWelcomeScreen(),
-                      FormSignIn(),
+                      FormSignIn(
+                          signInEmailInputController:
+                              signInEmailInputController,
+                          signInPasswordInputController:
+                              signInPasswordInputController),
                     ],
                   )),
             ),

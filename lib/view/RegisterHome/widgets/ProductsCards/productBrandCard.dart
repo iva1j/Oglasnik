@@ -71,10 +71,10 @@ class ProductBrandCard extends StatelessWidget {
                     mainAxisSpacing: 5,
                   ),
                   children: <Widget>[
-                    buildImageWidget('assets/images/audi.jpg'),
-                    buildImageWidget('assets/images/audi2.jpg'),
-                    buildImageWidget('assets/images/audi3.jpg'),
-                    buildImageWidget('assets/images/audi4.jpg'),
+                    buildImageWidget('assets/img1.jpg'),
+                    buildImageWidget('assets/img2.jpg'),
+                    buildImageWidget('assets/img3.jpg'),
+                    buildImageWidget('assets/img4.jpg'),
                   ],
                 ),
               )

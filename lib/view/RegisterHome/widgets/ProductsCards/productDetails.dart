@@ -17,10 +17,10 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   static List<String> imagesList = [
-    "assets/images/audi5.jpg",
-    "assets/images/audi2.jpg",
-    "assets/images/audi3.jpg",
-    "assets/images/audi4.jpg",
+    "assets/img1.jpg",
+    "assets/img2.jpg",
+    "assets/img3.jpg",
+    "assets/img4.jpg",
   ];
   final data = Data(imagesPass: imagesList);
   @override
