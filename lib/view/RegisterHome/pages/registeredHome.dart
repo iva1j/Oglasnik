@@ -226,7 +226,14 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                     scrollDirection: Axis.horizontal,
                                     child: Container(
                                       child: Row(
-                                        children: <Widget>[
+                                        children: products[index]
+                                            .productTag
+                                            .split(',')
+                                            .map<Widget>((element) =>
+                                                new OglasTag(naziv: element))
+                                            .toList(),
+                                        /*
+                                         <Widget>[
                                           OglasTag(naziv: "Sarajevo"),
                                           OglasTag(naziv: "Audi"),
                                           OglasTag(naziv: "Top"),
@@ -239,7 +246,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                           OglasTag(naziv: "Sarajevo"),
                                           OglasTag(naziv: "Audi"),
                                           OglasTag(naziv: "Top"),
-                                        ],
+                                        ],*/
                                       ),
                                     ),
                                   ),
