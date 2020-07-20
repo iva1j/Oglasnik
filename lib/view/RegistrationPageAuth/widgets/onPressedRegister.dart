@@ -4,8 +4,13 @@ import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
+import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
+import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 
 class RegisterButton extends StatefulWidget {
   @override
@@ -52,6 +57,9 @@ void onPressedRegister(BuildContext context, String fullName, String email,
         'phoneNumber': phoneNumber,
       });
       print('korisnik uspješno ubačen u bazi');
+
+      loginPrefs(context, email);
+      globals.email = email;
 
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {

@@ -161,3 +161,5 @@ String img3 = "Dodaj sliku 3";
 final String immutableImg1 = "Dodaj sliku 1";
 final String immutableImg2 = "Dodaj sliku 2";
 final String immutableImg3 = "Dodaj sliku 3";
+
+final String noPhoto = "assets/images/nophoto.jpg";
