@@ -2,6 +2,7 @@ import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
@@ -39,7 +40,9 @@ class _RegisteredHomeState extends State<RegisteredHome> {
     super.initState();
 
     if (registeredGlob) {
-      createdGlob = false;
+
+      registeredGlob = false;
+
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         await showDialog<String>(
             context: context,
