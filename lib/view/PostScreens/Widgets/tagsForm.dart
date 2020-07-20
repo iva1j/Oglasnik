@@ -1,6 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/validation.dart';
 import 'package:flutter/material.dart';
 
 class TagsForm extends StatelessWidget {

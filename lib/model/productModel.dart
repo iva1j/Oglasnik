@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Product {
   String productName,
@@ -22,9 +23,9 @@ class Product {
       @required this.productID,
       @required this.productLocation,
       @required this.productName,
-      this.email,
       this.phoneNumber,
       this.productDesc,
+      this.email,
       this.productImg1,
       this.productImg2,
       this.productImg3,
