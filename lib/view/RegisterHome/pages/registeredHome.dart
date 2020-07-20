@@ -16,6 +16,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:intl/intl.dart';
 
 class RegisteredHome extends StatefulWidget {
   @override
@@ -38,6 +39,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
     super.initState();
 
     if (registeredGlob) {
+      createdGlob = false;
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         await showDialog<String>(
             context: context,
@@ -112,6 +114,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                             child: Container(
                               // margin: EdgeInsets.only(top: 50),
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   //Ivin slider
                                   Container(
@@ -169,6 +172,10 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                         ),
                                         Spacer(),
                                         Container(
+                                          margin: EdgeInsets.only(
+                                              top:
+                                                  SizeConfig.blockSizeVertical *
+                                                      1),
                                           padding: EdgeInsets.all(10),
                                           decoration: BoxDecoration(
                                             borderRadius:
@@ -177,8 +184,11 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                             border:
                                                 Border.all(color: mainAppColor),
                                           ),
-                                          child: Text(
-                                              products[index].productCijena),
+                                          child: Text(NumberFormat.currency(
+                                                  locale: 'eu', symbol: 'KM')
+                                              .format((double.parse(
+                                                  products[index]
+                                                      .productCijena)))),
                                         ),
                                       ],
                                     ),
@@ -210,10 +220,12 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.symmetric(
-                                        horizontal:
-                                            SizeConfig.blockSizeHorizontal * 2),
+                                      horizontal:
+                                          SizeConfig.blockSizeHorizontal * 4,
+                                    ),
                                     child: Text(
                                       products[index].productDesc,
+                                      //   textAlign: TextAlign.start,
                                     ),
                                   ),
                                   Divider(
@@ -311,8 +323,8 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(0))),
                                   child: FlatButton(
-                                    onPressed: () =>
-                                        CallsAndMessagesService().call(number),
+                                    onPressed: () => CallsAndMessagesService()
+                                        .call(products[index].phoneNumber),
                                     shape: new RoundedRectangleBorder(
                                         borderRadius:
                                             new BorderRadius.circular(30.0)),
