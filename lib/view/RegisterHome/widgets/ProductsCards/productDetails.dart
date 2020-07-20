@@ -278,7 +278,7 @@ class OglasTag extends StatelessWidget {
   }
 }
 
-String number = '061857858';
+String number = '0000000';
 
 class CallsAndMessagesService {
   void call(String number) => launch("tel:$number");
