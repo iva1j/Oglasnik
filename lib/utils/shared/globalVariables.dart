@@ -6,6 +6,7 @@ final db = Firestore.instance;
 
 String productName,
     email,
+    phoneNumber,
     productID,
     productCategory,
     productBrand,
