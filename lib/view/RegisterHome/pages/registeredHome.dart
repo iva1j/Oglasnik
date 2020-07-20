@@ -36,6 +36,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
     super.initState();
 
     if (registeredGlob) {
+      registeredGlob = false;
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         await showDialog<String>(
             context: context,
