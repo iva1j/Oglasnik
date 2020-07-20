@@ -22,8 +22,9 @@ TextEditingController productNameController;
 TextEditingController productTagController;
 TextEditingController productDescController;
 TextEditingController productPriceController;
-String dropdownValueCategory = 'Kategorija1';
+//String dropdownValueCategory = 'Kategorija1';
 String dropdownValueBrand = 'Brand1';
+String dropdownValueCategory = 'Sportska Oprema';
 String dropdownValueCity = 'Sarajevo';
 
 final GlobalKey<FormState> productBrandFormKey = GlobalKey<FormState>();
@@ -42,6 +43,8 @@ final GlobalKey<FormState> productDescFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productTagFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productPriceFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productCategoryDropDownKey = GlobalKey<FormState>();
+
+List<String> categoryNames = List<String>();
 
 class Data {
   List imagesPass;
