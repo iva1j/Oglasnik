@@ -1,62 +1,74 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/suggestionFunction.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/custom2_dropdown.dart'
+    as custom2;
 
-import '../../../utils/suggestionFunction.dart';
-
-class BrandForm extends StatelessWidget {
+class BrandForm extends StatefulWidget {
   const BrandForm({
     Key key,
   }) : super(key: key);
 
   @override
+  _BrandFormState createState() => _BrandFormState();
+}
+
+class _BrandFormState extends State<BrandForm> {
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Form(
-        key: productBrandFormKey,
-        //autovalidate: true,
-        child: Theme(
-          data: ThemeData(
-            primaryColor: Colors.black54,
-            errorColor: Colors.red,
-          ),
-          child: Column(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(
-                    bottom: SizeConfig.blockSizeVertical * 13,
-                    left: SizeConfig.blockSizeHorizontal * 10,
-                    right: SizeConfig.blockSizeHorizontal * 10),
-                child: TypeAheadFormField(
-                  validator: productBrandValidation,
-                  textFieldConfiguration: TextFieldConfiguration(
-                    maxLength: 18,
-                    textCapitalization: TextCapitalization.sentences,
-                    decoration: InputDecoration(
-                        hintText: 'Proizvođač',
-                        contentPadding: EdgeInsets.only(left: 15.0)),
-                    controller: brandTypeAheadController,
-                  ),
-                  suggestionsCallback: (pattern) {
-                    return Proizvodjac.getSuggestions(pattern);
-                  },
-                  itemBuilder: (context, suggestion) {
-                    return ListTile(title: Text(suggestion));
-                  },
-                  hideOnEmpty: true,
-                  hideOnLoading: true,
-                  onSuggestionSelected: (suggestion) {
-                    brandTypeAheadController.text = suggestion;
-                  },
-                ),
-              ),
-              //PageViewButton(),
-            ],
-          ),
-        ));
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 20.0),
+      child: Card(
+          elevation: 16,
+          child: Container(
+              margin: EdgeInsets.only(left: 5.0, right: 5.0),
+              child: Center(
+                  child: Align(
+                      alignment: Alignment.topRight,
+                      child: custom2.DropdownButton<String>(
+                        value: dropdownValueBrand,
+                        disabledHint: Text('Molimo odaberite kategoriju'),
+                        height: MediaQuery.of(context).size.height / 2.229,
+                        icon: Icon(Icons.arrow_drop_down),
+                        iconSize: 24,
+                        elevation: 16,
+                        isExpanded: true,
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 14,
+                          height: 1.5,
+                        ),
+                        underline: Container(),
+                        onChanged:
+                            // (dropdownValueCategory == 'Kategorija1')
+                            //     ? null
+                            //     :
+                            (String productBrandList) => setState(() {
+                          dropdownValueBrand =
+                              productBrandList; // u productBrandList treba povući vrijednosti iz Firestora ali imajući u vidu kategoriju koja se odabere (prvi brand iz kategorije)
+                        }),
+                        items: <String>[
+                          'Brand1',
+                          'Brand2',
+                          'Brand3',
+                          'Brand4',
+                          'Brand5',
+                          'Brand6',
+                          'Brand7',
+                          'Brand8',
+                          'Brand9',
+                          'Brand11',
+                          'Brand12',
+                          'Brand13',
+                          'Brand14'
+                        ].map<custom2.DropdownMenuItem<String>>((String value) {
+                          return custom2.DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ))))),
+    );
   }
 }
