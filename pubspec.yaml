@@ -66,10 +66,12 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - .env
-    - img1.jpg
-    - img2.jpg
-    - img3.jpg
-    - img4.jpg
+    - assets/images/audi.jpg
+    - assets/images/audi2.jpg
+    - assets/images/audi3.jpg
+    - assets/images/audi4.jpg
+    - assets/images/audi5.jpg
+    - assets/images/nophoto.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

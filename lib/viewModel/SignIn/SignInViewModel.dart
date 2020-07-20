@@ -9,6 +9,7 @@ import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 TextEditingController signInEmailInputController;
 TextEditingController signInPasswordInputController;
@@ -73,5 +74,16 @@ void onPressedSignInModel(
 
 void loginPrefs(BuildContext context, String email) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  var userQuery = Firestore.instance
+      .collection('firestoreUsers')
+      .where('email', isEqualTo: email)
+      .limit(1);
+  //print(userQuery.getDocuments());
+  userQuery.getDocuments().then((data) {
+    if (data.documents.length > 0) {
+      phoneNumber = data.documents[0].data['phoneNumber'];
+    }
+  });
   prefs.setString('email', email);
 }

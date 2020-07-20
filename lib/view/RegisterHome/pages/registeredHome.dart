@@ -6,6 +6,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.da
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/showimage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
@@ -64,6 +65,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,
           title: Text('Oglasnik'),
+          leading: LogoutButton(),
         ),
         floatingActionButton: mainFloatingButton(email),
         bottomSheet: Container(
@@ -277,7 +279,11 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                     children: <Widget>[
                                       Text(
                                         //ProductDetailsStrings().callNumberText
-                                        'products[index].product',
+                                        products[index].phoneNumber == null
+                                            ? 'Ne radi'
+                                            : products[index].phoneNumber,
+                                        //'060 029 392 9',
+
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.w400),

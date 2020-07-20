@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ItemCard extends StatelessWidget {
-  String img = "assets/images/audi.jpg";
+  //String audi = "assets/images/audi.jpg";
 
   @override
   Widget build(BuildContext context) {
@@ -73,12 +73,30 @@ class ItemCard extends StatelessWidget {
                               child: Column(
                                 children: <Widget>[
                                   ItemImage(
+                                      /*
                                       img: snapshot.data.documents[index]
                                                   ['productImg1'] !=
                                               null
                                           ? snapshot.data.documents[index]
                                               ['productImg1']
-                                          : img),
+                                          : ""*/
+                                      img: (snapshot.data.documents[index]
+                                                  ['productImg1'] !=
+                                              null)
+                                          ? snapshot.data.documents[index]
+                                              ['productImg1']
+                                          : (snapshot.data.documents[index]
+                                                      ['productImg2'] !=
+                                                  null)
+                                              ? snapshot.data.documents[index]
+                                                  ['productImg2']
+                                              : (snapshot.data.documents[index]
+                                                          ['productImg3'] !=
+                                                      null)
+                                                  ? snapshot
+                                                          .data.documents[index]
+                                                      ['productImg3']
+                                                  : ""),
                                   ItemPrice(
                                       price: "Cijena: " +
                                           snapshot.data.documents[index]
@@ -190,7 +208,7 @@ class ItemImage extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
             fit: BoxFit.fill,
-            image: img == null ? AssetImage(img) : NetworkImage(img)),
+            image: img == "" ? AssetImage(noPhoto) : NetworkImage(img)),
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
         color: Colors.redAccent,
       ),
