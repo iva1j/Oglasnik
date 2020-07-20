@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
@@ -12,6 +13,8 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.da
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<void> main() async {
   await DotEnv().load('.env');
@@ -23,9 +26,21 @@ Future<void> main() async {
   });
 }
 
+void initCategoryNames() async {
+  final QuerySnapshot categoryQuery =
+      await Firestore.instance.collection('category').getDocuments();
+
+  final List<DocumentSnapshot> documents = categoryQuery.documents;
+
+  documents.forEach((element) {
+    categoryNames.add(element["categoryName"]);
+  });
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    initCategoryNames();
     return LifeCycleManager(
       child: GestureDetector(
         onTap: () {
