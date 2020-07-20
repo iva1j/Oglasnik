@@ -4,8 +4,6 @@ import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
-
-
 class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

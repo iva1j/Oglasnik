@@ -8,23 +8,29 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 class ProductDetails extends StatefulWidget {
+  final String document, document2;
+ const ProductDetails(this.document, this.document2);
+
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
   static List<String> imagesList = [
-    "assets/images/audi5.jpg",
-    "assets/images/audi2.jpg",
-    "assets/images/audi3.jpg",
-    "assets/images/audi4.jpg",
+    "assets/img1.jpg",
+    "assets/img2.jpg",
+    "assets/img3.jpg",
+    "assets/img4.jpg",
   ];
   final data = Data(imagesPass: imagesList);
   @override
   Widget build(BuildContext context) {
+    String document;
     SizeConfig().init(context);
-    return Scaffold(
-      body: Column(
+    return 
+    Scaffold(
+      body: 
+      Column(
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
@@ -121,13 +127,17 @@ class _ProductDetailsState extends State<ProductDetails> {
                     child: Row(children: <Widget>[
                       Container(
                         child: Text(
-                          ProductDetailsStrings().productName,
+                          widget.document,
+                          //ProductDetailsStrings().productName,
                           style: Theme.of(context).textTheme.headline6,
                         ),
                       ),
                       Spacer(),
                       Container(
-                        child: Text(ProductDetailsStrings().categoryName),
+                        child: Text(
+                          //ProductDetailsStrings().categoryName
+                          widget.document2
+                          ),
                       )
                     ]),
                   ),
@@ -196,7 +206,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        ProductDetailsStrings().callNumberText,
+                        //ProductDetailsStrings().callNumberText
+                        document,
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.w400),
                       ),

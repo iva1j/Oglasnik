@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/shared/sharedTextFields.dart/pageViewTextFields.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/text_form_fields.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
@@ -150,6 +151,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           await CreateProduct().createProduct(
             context,
             email,
+            phoneNumber,
             productName,
             productID = randomAlphaNumeric(20),
             productCategory,

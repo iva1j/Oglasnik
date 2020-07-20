@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^0.5.8
   url_launcher: ^5.5.0
   carousel_slider: ^1.3.0
+  # cloud_firestore: ^0.13.7
 
   provider: ^4.3.0
   # The following adds the Cupertino Icons font to your application.
@@ -70,6 +71,7 @@ flutter:
     - assets/images/audi3.jpg
     - assets/images/audi4.jpg
     - assets/images/audi5.jpg
+    - assets/images/nophoto.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

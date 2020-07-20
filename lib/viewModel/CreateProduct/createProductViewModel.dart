@@ -1,6 +1,5 @@
 import 'package:Oglasnik/interface/productInterface.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +8,7 @@ class CreateProduct extends ProductInterface {
   Future createProduct(
       BuildContext context,
       String email,
+      phoneNumber,
       productName,
       productID,
       productCategory,
@@ -24,6 +24,7 @@ class CreateProduct extends ProductInterface {
     db.collection("products").document(productID).setData({
       'productID': productID,
       'email': email,
+      'phoneNumber': phoneNumber,
       'productName': productName,
       'productCategory': productCategory,
       'productBrand': productBrand,

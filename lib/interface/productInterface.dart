@@ -4,6 +4,7 @@ abstract class ProductInterface {
   Future createProduct(
       BuildContext context,
       String email,
+      phoneNumber,
       productName,
       productID,
       productCategory,
@@ -15,4 +16,8 @@ abstract class ProductInterface {
       productImg2,
       productImg3,
       productCijena);
+}
+
+abstract class ReadProductInterface {
+  Future getProduct();
 }

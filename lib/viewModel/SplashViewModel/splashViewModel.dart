@@ -1,4 +1,3 @@
-import 'package:Oglasnik/view/SignInPage/widgets/FormSignIn.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
@@ -15,9 +14,11 @@ Future<void> splashScreenRouter() async {
 
   globals.registeredGlob = false;
 
-  print(email);
+  print(globals.email);
+  print(globals.phoneNumber);
+
   runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       theme: buildThemeData(),
       home: email == null ? AnonymousHome() : RegisteredHome()));
 }

@@ -1,14 +1,12 @@
 import 'dart:async';
 
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/imagePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/imagePageWidget.dart';
 
 class PageViewButton extends StatelessWidget {
   const PageViewButton({
@@ -40,6 +38,7 @@ class PageViewButton extends StatelessWidget {
               CreateProduct().createProduct(
                   context,
                   email,
+                  phoneNumber,
                   productName,
                   productID = randomAlphaNumeric(20),
                   productCategory,

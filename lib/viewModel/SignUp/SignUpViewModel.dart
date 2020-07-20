@@ -1,8 +1,11 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/shared/sharedTextFields.dart/registerTextFields.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/redButton.dart';
+import 'package:Oglasnik/utils/shared/sharedvalidation/passwordChangeValidation.dart';
+import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/utils/validation.dart';
-import 'package:Oglasnik/utils/specialElements.dart';
+
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
 
@@ -28,21 +31,7 @@ Container fullNameInputField(BuildContext context) {
     child: new SizedBox(
       width: double.infinity,
       child: Container(
-        child: TextFormField(
-          textCapitalization: TextCapitalization.words,
-          decoration: InputDecoration(
-            hintText: 'Ime i prezime',
-            contentPadding: EdgeInsets.only(left: 20),
-          ),
-          controller: signUpFullNameInputController,
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
-          //  autofocus: true,
-          onFieldSubmitted: (v) {
-            FocusScope.of(context).nextFocus();
-          },
-          validator: nameValidator,
-        ),
+        child: NameTextField(),
       ),
     ),
   );
@@ -70,21 +59,7 @@ Container phoneNumberInputField(BuildContext context) {
     child: new SizedBox(
       width: double.infinity,
       child: Container(
-        child: TextFormField(
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.only(left: 20),
-            hintText: 'Broj telefona',
-          ),
-          controller: signUpPhoneNumberInputController,
-          keyboardType: TextInputType.phone,
-          validator: phoneValidator,
-          textInputAction: TextInputAction.done,
-          // focusNode: phonenode,
-          onFieldSubmitted: (v) {
-            FocusScope.of(context).unfocus();
-            //  _calculator();
-          },
-        ),
+        child: PhoneTextField(),
       ),
     ),
   );
@@ -96,23 +71,7 @@ Container passwordInputField(BuildContext context) {
     child: new SizedBox(
       width: double.infinity,
       child: Container(
-        child: TextFormField(
-          decoration: InputDecoration(
-            labelStyle: TextStyle(),
-            hintText: 'Lozinka',
-            contentPadding: EdgeInsets.only(left: 20),
-          ),
-          controller: signUpPasswordInputController,
-          keyboardType: TextInputType.visiblePassword,
-          obscureText: true,
-          textInputAction: TextInputAction.next,
-          //  focusNode: lozinkanode,
-          onFieldSubmitted: (v) {
-            FocusScope.of(context).nextFocus();
-          },
-
-          validator: passwordValidator,
-        ),
+        child: PasswordTextField(),
       ),
     ),
   );
@@ -124,21 +83,7 @@ Container emailInputField(BuildContext context) {
     child: new SizedBox(
       width: double.infinity,
       child: Container(
-        child: TextFormField(
-          decoration: InputDecoration(
-            hintText: 'Email',
-            contentPadding: EdgeInsets.only(left: 20),
-          ),
-          controller: signUpEmailInputController,
-          //keyboardType: TextInputType.emailAddress,
-          keyboardType: TextInputType.visiblePassword,
-          validator: emailRegisterCheck,
-          textInputAction: TextInputAction.next,
-          //  focusNode: emailnode,
-          onFieldSubmitted: (v) {
-            FocusScope.of(context).nextFocus();
-          },
-        ),
+        child: EmailTextField(),
       ),
     ),
   );

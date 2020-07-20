@@ -1,4 +1,4 @@
-import 'package:Oglasnik/utils/specialElements.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';

@@ -1,7 +1,6 @@
-import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/validation.dart';
 import 'package:flutter/material.dart';
 
 Container priceTextField() {
