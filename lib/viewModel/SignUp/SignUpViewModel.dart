@@ -1,8 +1,7 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/registerTextFields.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/redButton.dart';
-import 'package:Oglasnik/utils/shared/sharedvalidation/passwordChangeValidation.dart';
-import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation.dart';
+
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:flutter/material.dart';
 

@@ -1,6 +1,5 @@
 import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
 
-import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 

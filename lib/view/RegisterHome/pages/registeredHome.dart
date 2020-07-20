@@ -2,10 +2,8 @@ import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
+
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/showimage.dart';
