@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
 class Product {
   String productName,
+      email,
+      phoneNumber,
       productID,
       productCategory,
       productBrand,
@@ -19,9 +22,29 @@ class Product {
       @required this.productID,
       @required this.productLocation,
       @required this.productName,
+      this.email,
+      this.phoneNumber,
       this.productDesc,
       this.productImg1,
       this.productImg2,
       this.productImg3,
       this.productTag});
+
+  factory Product.fromDocument(DocumentSnapshot doc) {
+    return Product(
+      productName: doc['productName'],
+      email: doc['email'],
+      phoneNumber: doc['phoneNumber'],
+      productBrand: doc['productBrand'],
+      productCategory: doc['productCategory'],
+      productCijena: doc['cijena'],
+      productID: doc['productID'],
+      productLocation: doc['productLocation'],
+      productDesc: doc['productDesc'],
+      productTag: doc['productTag'],
+      productImg1: doc['productImg1'],
+      productImg2: doc['productImg2'],
+      productImg3: doc['productImg3'],
+    );
+  }
 }

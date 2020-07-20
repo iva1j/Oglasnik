@@ -9,6 +9,7 @@ class CreateProduct extends ProductInterface {
   Future createProduct(
       BuildContext context,
       String email,
+      phoneNumber,
       productName,
       productID,
       productCategory,
@@ -24,6 +25,7 @@ class CreateProduct extends ProductInterface {
     db.collection("products").document(productID).setData({
       'productID': productID,
       'email': email,
+      'phoneNumber': phoneNumber,
       'productName': productName,
       'productCategory': productCategory,
       'productBrand': productBrand,

@@ -15,9 +15,11 @@ Future<void> splashScreenRouter() async {
 
   globals.registeredGlob = false;
 
-  print(email);
+  print(globals.email);
+  print(globals.phoneNumber);
+
   runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       theme: buildThemeData(),
       home: email == null ? AnonymousHome() : RegisteredHome()));
 }
