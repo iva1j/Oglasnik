@@ -15,14 +15,15 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   @override
   void initState() {
-    brandTypeAheadController = new TextEditingController();
+    //brandTypeAheadController = new TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    brandTypeAheadController.dispose();
-    productBrandFormKey.currentState.dispose();
+    // brandTypeAheadController.dispose();
+    //productBrandFormKey.currentState.dispose();
+    productCategoryDropDownKey.currentState.dispose();
     super.dispose();
   }
 

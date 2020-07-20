@@ -1,3 +1,5 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
+
 String productFieldsValidator(String value) {
   Pattern pattern = r'(?!\s*$)';
   RegExp regex = new RegExp(pattern);
@@ -43,6 +45,13 @@ String productTagValidation(String value) {
 String productDescValidation(String value) {
   if (value.length == null || value == '') {
     return 'Polje ne smije biti prazno';
+  }
+  return null;
+}
+
+String dropdownButtonValidation(String value) {
+  if (value == 'Kategorija1') {
+    return 'Molimo izaberite kategoriju';
   }
   return null;
 }
