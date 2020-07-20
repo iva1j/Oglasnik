@@ -15,6 +15,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.da
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
 
 Future<void> main() async {
   await DotEnv().load('.env');
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: buildThemeData(),
-          home: ItemCard(),
+          home: RegisterPage(),
           routes: {
             "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),
