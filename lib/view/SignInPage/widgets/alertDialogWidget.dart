@@ -1,6 +1,6 @@
 import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/shared/sharedvalidation/signInValidation.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/validation.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
