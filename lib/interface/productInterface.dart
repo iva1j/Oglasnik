@@ -16,3 +16,9 @@ abstract class ProductInterface {
       productImg3,
       productCijena);
 }
+
+
+
+abstract class ReadProductInterface {
+   Future getProduct();
+  }
