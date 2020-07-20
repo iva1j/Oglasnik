@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: buildThemeData(),
-          home: Splash(),
+          home: ProductBrandCard(),
           routes: {
             "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),
