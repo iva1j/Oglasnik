@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
@@ -7,7 +8,6 @@ class PageOne extends StatefulWidget {
   const PageOne({
     Key key,
     @required this.bottom,
-    TextEditingController productNameController,
   }) : super(key: key);
 
   final double bottom;
@@ -19,14 +19,13 @@ class PageOne extends StatefulWidget {
 class _PageOneState extends State<PageOne> {
   @override
   void initState() {
-    productNameController = new TextEditingController();
+    pageOneInitControllers();
     super.initState();
   }
 
   @override
   void dispose() {
-    productNameController.dispose();
-    productNameFormKey.currentState.dispose();
+    pageOneDisposeControllers();
     super.dispose();
   }
 

@@ -1,3 +1,4 @@
+import 'package:Oglasnik/model/productModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -22,6 +23,14 @@ TextEditingController productNameController;
 TextEditingController productTagController;
 TextEditingController productDescController;
 TextEditingController productPriceController;
+
+
+// GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
+// TextEditingController signUpFullNameInputController;
+// TextEditingController signUpPhoneNumberInputController;
+// TextEditingController signUpEmailInputController;
+// TextEditingController signUpPasswordInputController;
+
 //String dropdownValueCategory = 'Kategorija1';
 String dropdownValueBrand = 'Brand1';
 String dropdownValueCategory = 'Sportska Oprema';
@@ -38,6 +47,8 @@ bool allowAutoValidate = false;
 bool registeredGlob = false;
 bool createdGlob = false;
 
+String slika1;
+
 final GlobalKey<FormState> productNameFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productDescFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productTagFormKey = GlobalKey<FormState>();
@@ -46,7 +57,11 @@ final GlobalKey<FormState> productCategoryDropDownKey = GlobalKey<FormState>();
 
 List<String> categoryNames = List<String>();
 
+List products = [];
+
 class Data {
   List imagesPass;
   Data({this.imagesPass});
 }
+
+
