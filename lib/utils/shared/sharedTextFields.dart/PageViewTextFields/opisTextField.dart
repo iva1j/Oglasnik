@@ -19,19 +19,10 @@ class OpisTextField extends StatelessWidget {
           errorColor: Colors.red,
         ),
         child: TextFormField(
-<<<<<<< HEAD
           inputFormatters: [
             new BlacklistingTextInputFormatter(RegExp(
                 '(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])')),
           ],
-=======
-          // inputFormatters: [
-          //   new FilteringTextInputFormatter.deny(
-          //     RegExp(
-          //         r'(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])'),
-          //   ),
-          // ],
->>>>>>> master
           textInputAction: TextInputAction.done,
           onFieldSubmitted: (v) {
             FocusScope.of(context).nextFocus();
