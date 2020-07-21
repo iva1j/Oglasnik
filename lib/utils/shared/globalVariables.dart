@@ -32,11 +32,10 @@ TextEditingController productPriceController;
 
 //String dropdownValueCategory = 'Kategorija1';
 
-String dropdownValueBrand = 'Puma';
-
-String dropdownValueCategory = 'Sportska Oprema';
+String dropdownValueCategory = "Automobili";
+String dropdownValueBrand = "Audi";
 String dropdownValueCity = 'Sarajevo';
-String dropdownValueBrand = 'Brands';
+//String dropdownValueBrand = 'Brands';
 final GlobalKey<FormState> productBrandFormKey = GlobalKey<FormState>();
 
 TextEditingController brandTypeAheadController;
