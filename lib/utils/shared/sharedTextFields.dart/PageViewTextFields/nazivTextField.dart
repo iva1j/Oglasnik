@@ -1,14 +1,12 @@
+import 'package:flutter/services.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/productsFieldsValidator.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class NazivTextField extends StatefulWidget {
   const NazivTextField({
     Key key,
   }) : super(key: key);
-
   @override
   _NazivTextFieldState createState() => _NazivTextFieldState();
 }
