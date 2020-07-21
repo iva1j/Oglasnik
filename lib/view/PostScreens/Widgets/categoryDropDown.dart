@@ -38,8 +38,12 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
                           height: 1.5,
                         ),
                         underline: Container(),
-                        onChanged: (String productCategoryList) => setState(
-                            () => dropdownValueCategory = productCategoryList),
+                        onChanged: (String productCategoryList) =>
+                            setState(() => {
+                                  dropdownValueCategory = productCategoryList,
+                                  dropdownValueBrand =
+                                      categoryBrands[dropdownValueCategory][0],
+                                }),
                         items: categoryNames
                             .map<custom.DropdownMenuItem<String>>(
                                 (String value) {

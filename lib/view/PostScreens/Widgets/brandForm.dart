@@ -28,9 +28,7 @@ class _BrandFormState extends State<BrandForm> {
             child: Align(
               alignment: Alignment.topRight,
               child: custom2.DropdownButton<String>(
-
-                value: categoryBrands[dropdownValueCategory][0],
-
+                value: dropdownValueBrand,
                 disabledHint: Text('Molimo odaberite kategoriju'),
                 height: MediaQuery.of(context).size.height / 2.229,
                 icon: Icon(Icons.arrow_drop_down),
@@ -43,7 +41,6 @@ class _BrandFormState extends State<BrandForm> {
                   height: 1.5,
                 ),
                 underline: Container(),
-
                 onChanged:
                     // (dropdownValueCategory == 'Kategorija1')
                     //     ? null
