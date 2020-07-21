@@ -4,8 +4,8 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 class PrikazSlika extends StatelessWidget {
-  final Data data;
-  PrikazSlika({this.data});
+  final List<String> listaSlika;
+  PrikazSlika({this.listaSlika});
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -18,14 +18,16 @@ class PrikazSlika extends StatelessWidget {
             children: <Widget>[
               CarouselSlider(
                 initialPage: 0,
-                items: data.imagesPass.map((imgUrl) {
+                items: listaSlika.map((imgUrl) {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
-                        child: Image.asset(
-                          imgUrl,
-                          fit: BoxFit.fill,
-                        ),
+                        child: imgUrl == null
+                            ? Image.asset("assets/images/nophoto.jpg")
+                            : Image.network(
+                                imgUrl,
+                                fit: BoxFit.fill,
+                              ),
                       );
                     },
                   );

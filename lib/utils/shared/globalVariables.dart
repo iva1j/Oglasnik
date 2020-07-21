@@ -47,6 +47,8 @@ bool allowAutoValidate = false;
 bool registeredGlob = false;
 bool createdGlob = false;
 
+String slika1;
+
 final GlobalKey<FormState> productNameFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productDescFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productTagFormKey = GlobalKey<FormState>();
