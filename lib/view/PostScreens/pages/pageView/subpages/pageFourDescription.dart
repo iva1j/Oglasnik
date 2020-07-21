@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/descriptionPageWidget.dart';
@@ -18,14 +19,13 @@ class PageFour extends StatefulWidget {
 class _PageFourState extends State<PageFour> {
   @override
   void initState() {
-    productDescController = new TextEditingController();
+    pageFourInitControllers();
     super.initState();
   }
 
   @override
   void dispose() {
-    productDescController.dispose();
-    productDescFormKey.currentState.dispose();
+    pageFourDisposeControllers();
     super.dispose();
   }
 
