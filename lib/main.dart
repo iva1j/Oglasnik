@@ -1,27 +1,18 @@
 import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-
-import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
-
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
-
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
 
 Future<void> main() async {
   await DotEnv().load('.env');
@@ -67,11 +58,7 @@ void initCategoryBrands() async {
     categoryBrands[element["categoryName"]] = element["brands"];
   });
 
-  //categoryBrands = Map<String, List<String>>.from(categoryBrands);
-  /*
-  Map<String, List<String>> map =
-      categoryBrands.map((a, b) => MapEntry(a as String, b as List<String>));
-*/
+
 
   print(categoryBrands["Sportska Oprema"].runtimeType);
 

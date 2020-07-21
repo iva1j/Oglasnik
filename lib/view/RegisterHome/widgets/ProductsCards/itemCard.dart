@@ -255,7 +255,7 @@ class OglasTag extends StatelessWidget {
         bottom: SizeConfig.blockSizeVertical * 2,
       ),
       child: Text(
-        "#" + naziv,
+        "#" + naziv.replaceAll(new RegExp(r"\s+"), ""),
         style: TextStyle(
           fontSize: SizeConfig.safeBlockHorizontal * 3,
           fontWeight: FontWeight.w300,
