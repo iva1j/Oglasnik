@@ -24,7 +24,6 @@ TextEditingController productTagController;
 TextEditingController productDescController;
 TextEditingController productPriceController;
 
-
 // GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
 // TextEditingController signUpFullNameInputController;
 // TextEditingController signUpPhoneNumberInputController;
@@ -32,10 +31,10 @@ TextEditingController productPriceController;
 // TextEditingController signUpPasswordInputController;
 
 //String dropdownValueCategory = 'Kategorija1';
-String dropdownValueBrand = 'Brand1';
+
 String dropdownValueCategory = 'Sportska Oprema';
 String dropdownValueCity = 'Sarajevo';
-
+String dropdownValueBrand = 'Brands';
 final GlobalKey<FormState> productBrandFormKey = GlobalKey<FormState>();
 
 TextEditingController brandTypeAheadController;
@@ -57,17 +56,13 @@ final GlobalKey<FormState> productCategoryDropDownKey = GlobalKey<FormState>();
 
 List<String> categoryNames = List<String>();
 
-
 var categoryBrands = Map();
 
 //var catBrands = Map<String, List<String>>();
 
 List products = [];
 
-
 class Data {
   List imagesPass;
   Data({this.imagesPass});
 }
-
-

@@ -62,9 +62,7 @@ Future<String> returnCategoryName(String id) async {
 void initCategoryBrands() async {
   final QuerySnapshot brandsQuery =
       await Firestore.instance.collection('categoryBrand').getDocuments();
-
   final List<DocumentSnapshot> documents = brandsQuery.documents;
-
   documents.forEach((element) {
     categoryBrands[element["categoryName"]] = element["brands"];
   });
@@ -98,7 +96,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: buildThemeData(),
-          home: RegisterPage(),
+          home: Splash(),
           routes: {
             "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),
