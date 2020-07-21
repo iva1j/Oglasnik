@@ -1,7 +1,9 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/oznakeTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/productTagValidator.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class TagsForm extends StatelessWidget {
   const TagsForm({
@@ -30,22 +32,7 @@ class TagsForm extends StatelessWidget {
                   primaryColor: Colors.black54,
                   errorColor: Colors.red,
                 ),
-                child: TextFormField(
-                  textInputAction: TextInputAction.done,
-                  onFieldSubmitted: (v) {
-                    FocusScope.of(context).nextFocus();
-                  },
-                  controller: productTagController,
-                  validator: productTagValidation,
-                  maxLines: null,
-                  keyboardType: TextInputType.multiline,
-                  textCapitalization: TextCapitalization.sentences,
-                  decoration: const InputDecoration(
-                      hintText: 'Oznake',
-                      helperText:
-                          'Oznake razdvojiti zarezom: Sarajevo, zamjena, fulloprema',
-                      contentPadding: EdgeInsets.only(left: 10.0)),
-                ),
+                child: OznakeTextField(),
               )),
         ),
       ],

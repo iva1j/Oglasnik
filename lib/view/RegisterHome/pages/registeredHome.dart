@@ -2,9 +2,6 @@ import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
@@ -128,7 +125,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                             builder: (BuildContext context) {
                                               return Container(
                                                 child: GestureDetector(
-                                                  child: Image.asset(
+                                                  child: Image.network(
                                                     imgUrl,
                                                     //fit: BoxFit.fitWidth,
                                                     // height: SizeConfig.blockSizeVertical*20,
