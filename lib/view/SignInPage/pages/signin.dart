@@ -1,5 +1,6 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/logoContainer.dart';
-import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonIphone.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
@@ -28,15 +29,12 @@ class _SigninPageState extends State<SigninPage> {
 
   @override
   initState() {
-    signInEmailInputController = new TextEditingController();
-    signInPasswordInputController = new TextEditingController();
+    loginInitControllers();
     super.initState();
   }
 
   void dispose() {
-    signInEmailInputController.dispose();
-    signInPasswordInputController.dispose();
-    signInRegisterFormKey.currentState.dispose();
+    loginDisposeControllers();
     super.dispose();
   }
 

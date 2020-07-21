@@ -1,4 +1,4 @@
-import 'package:Oglasnik/utils/shared/sharedTextFields.dart/pageViewTextFields.dart';
+import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/nazivTextField.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
