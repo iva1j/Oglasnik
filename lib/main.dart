@@ -5,11 +5,11 @@ import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
 
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/imageslider.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -62,9 +62,7 @@ Future<String> returnCategoryName(String id) async {
 void initCategoryBrands() async {
   final QuerySnapshot brandsQuery =
       await Firestore.instance.collection('categoryBrand').getDocuments();
-
   final List<DocumentSnapshot> documents = brandsQuery.documents;
-
   documents.forEach((element) {
     categoryBrands[element["categoryName"]] = element["brands"];
   });

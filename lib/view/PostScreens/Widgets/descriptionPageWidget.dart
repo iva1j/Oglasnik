@@ -1,4 +1,4 @@
-import 'package:Oglasnik/utils/shared/sharedTextFields.dart/pageViewTextFields.dart';
+import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/opisTextField.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
