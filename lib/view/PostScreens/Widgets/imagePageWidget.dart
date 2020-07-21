@@ -140,9 +140,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           if (img3 == _fileName3)
             await upload(_fileName3, _path3, 3)
                 .then((value) => productImg3 = value);
+          
           productName = productNameController.text;
           productCategory = dropdownValueCategory;
-          productBrand = brandTypeAheadController.text;
+          productBrand = dropdownValueBrand;
           productLocation = dropdownValueCity;
           productTag = productTagController.text;
           productDesc = productDescController.text;

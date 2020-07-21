@@ -2,10 +2,11 @@ import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/showimage.dart';
@@ -27,26 +28,24 @@ final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
 
 class _RegisteredHomeState extends State<RegisteredHome> {
   static List<String> imagesList = [
-    "assets/images/audi5.jpg",
-    "assets/images/audi2.jpg",
-    "assets/images/audi3.jpg",
-    "assets/images/audi4.jpg",
+    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2FScreenshot_20200714-215750.png?alt=media&token=2990bbb8-3924-4ffd-95a2-536283fd96ac",
+    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2FScreenshot_20200714-215750.png?alt=media&token=2990bbb8-3924-4ffd-95a2-536283fd96ac",
+    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2FScreenshot_20200714-215750.png?alt=media&token=2990bbb8-3924-4ffd-95a2-536283fd96ac"
   ];
+
   final data = Data(imagesPass: imagesList);
   final keyIsFirstLoaded = 'is_first_loaded';
   @override
   void initState() {
     super.initState();
-
     if (registeredGlob) {
-      createdGlob = false;
+      registeredGlob = false;
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         await showDialog<String>(
             context: context,
             builder: (BuildContext context) => successAlertDialog(context));
       });
     }
-
     if (createdGlob) {
       createdGlob = false;
       WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -112,13 +111,10 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                               vertical: SizeConfig.blockSizeVertical * 10,
                             ),
                             child: Container(
-                              // margin: EdgeInsets.only(top: 50),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  //Ivin slider
                                   Container(
-                                    // height: SizeConfig.blockSizeVertical * 30,
                                     width: SizeConfig.screenWidth,
                                     // decoration: BoxDecoration(
                                     //     border: Border.all(color: alertDialogBorderColor),
@@ -128,25 +124,45 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                         initialPage: 0,
                                         viewportFraction: 1.0,
                                         aspectRatio: 1.5,
-                                        items: imagesList.map((imgUrl) {
+                                        items: <String>[
+                                          products[index].productImg1,
+                                          products[index].productImg2,
+                                          products[index].productImg3
+                                        ].map((imgUrl) {
                                           return Builder(
                                             builder: (BuildContext context) {
                                               return Container(
                                                 child: GestureDetector(
-                                                  child: Image.asset(
-                                                    imgUrl,
-                                                    //fit: BoxFit.fitWidth,
-                                                    // height: SizeConfig.blockSizeVertical*20,
-                                                    // width: SizeConfig.blockSizeHorizontal*100,
-                                                  ),
+                                                  child: imgUrl == null
+                                                      ? Image.asset(
+                                                          "assets/images/nophoto.jpg")
+                                                      : Image.network(
+                                                          imgUrl,
+                                                          //fit: BoxFit.fitWidth,
+                                                          // height: SizeConfig.blockSizeVertical*20,
+                                                          // width: SizeConfig.blockSizeHorizontal*100,
+                                                        ),
                                                   onTap: () {
+                                                    print(products[index]
+                                                        .productName);
+                                                    print(products[index]
+                                                        .productImg1);
                                                     Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 PrikazSlika(
-                                                                    data:
-                                                                        data)));
+                                                                    listaSlika: [
+                                                                      products[
+                                                                              index]
+                                                                          .productImg1,
+                                                                      products[
+                                                                              index]
+                                                                          .productImg2,
+                                                                      products[
+                                                                              index]
+                                                                          .productImg3
+                                                                    ])));
                                                   },
                                                 ),
                                               );
@@ -156,7 +172,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                       ),
                                     ),
                                   ),
-                                  //prvi elementi Faruk
                                   Container(
                                     margin: EdgeInsets.symmetric(
                                         horizontal:
@@ -225,7 +240,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                     ),
                                     child: Text(
                                       products[index].productDesc,
-                                      //   textAlign: TextAlign.start,
                                     ),
                                   ),
                                   Divider(
@@ -236,7 +250,14 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                     scrollDirection: Axis.horizontal,
                                     child: Container(
                                       child: Row(
-                                        children: <Widget>[
+                                        children: products[index]
+                                            .productTag
+                                            .split(',')
+                                            .map<Widget>((element) =>
+                                                new OglasTag(naziv: element))
+                                            .toList(),
+                                        /*
+                                         <Widget>[
                                           OglasTag(naziv: "Sarajevo"),
                                           OglasTag(naziv: "Audi"),
                                           OglasTag(naziv: "Top"),
@@ -249,7 +270,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                           OglasTag(naziv: "Sarajevo"),
                                           OglasTag(naziv: "Audi"),
                                           OglasTag(naziv: "Top"),
-                                        ],
+                                        ],*/
                                       ),
                                     ),
                                   ),
@@ -287,15 +308,11 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                     bottom: SizeConfig.blockSizeVertical * 1,
                                   ),
                                   child: Column(
-                                    // mainAxisAlignment: MainAxisAlignment.start,
                                     children: <Widget>[
                                       Text(
-                                        //ProductDetailsStrings().callNumberText
                                         products[index].phoneNumber == null
                                             ? 'Ne radi'
                                             : products[index].phoneNumber,
-                                        //'060 029 392 9',
-
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.w400),
@@ -341,7 +358,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                             ),
                           )
                         ],
-                        //    ),
                       );
                     });
               } else {

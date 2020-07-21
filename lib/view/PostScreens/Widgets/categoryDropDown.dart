@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
     as custom;
@@ -39,21 +40,9 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
                         underline: Container(),
                         onChanged: (String productCategoryList) => setState(
                             () => dropdownValueCategory = productCategoryList),
-                        items: <String>[
-                          'Kategorija1',
-                          'Kategorija2',
-                          'Kategorija3',
-                          'Kategorija4',
-                          'Kategorija5',
-                          'Kategorija6',
-                          'Kategorija7',
-                          'Kategorija8',
-                          'Kategorija9',
-                          'Kategorija10',
-                          'Kategorija11',
-                          'Kategorija12',
-                          'Kategorija13'
-                        ].map<custom.DropdownMenuItem<String>>((String value) {
+                        items: categoryNames
+                            .map<custom.DropdownMenuItem<String>>(
+                                (String value) {
                           return custom.DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),

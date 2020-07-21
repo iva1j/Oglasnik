@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -14,15 +15,8 @@ class CategoryPage extends StatefulWidget {
 
 class _CategoryPageState extends State<CategoryPage> {
   @override
-  void initState() {
-    brandTypeAheadController = new TextEditingController();
-    super.initState();
-  }
-
-  @override
   void dispose() {
-    brandTypeAheadController.dispose();
-    productBrandFormKey.currentState.dispose();
+    pageTwoDisposeControllers();
     super.dispose();
   }
 
