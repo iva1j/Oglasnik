@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/shared/sharedTextFields.dart/pageViewTextFields.dart';
-import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons.dart';
-import 'package:Oglasnik/utils/shared/sharedbuttons/redButton.dart';
+import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/priceTextField.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageOneUploadButton.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageThreeUploadButton.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageTwoUploadButton.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
@@ -140,7 +142,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           if (img3 == _fileName3)
             await upload(_fileName3, _path3, 3)
                 .then((value) => productImg3 = value);
-          
+
           productName = productNameController.text;
           productCategory = dropdownValueCategory;
           productBrand = dropdownValueBrand;

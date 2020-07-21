@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/shared/sharedbuttons/redButton.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
@@ -83,7 +83,7 @@ class PageViewButton extends StatelessWidget {
           productCategory = dropdownValueCategory;
           productBrand = dropdownValueBrand;
           print(dropdownValueCategory);
-        print('key: '+productCategoryDropDownKey.currentState.toString());
+          print('key: ' + productCategoryDropDownKey.currentState.toString());
           if (dropdownValueCategory != 'Kategorija1' &&
               productCategoryDropDownKey.currentState.toString() !=
                   'Kategorija1') {

@@ -5,12 +5,11 @@ import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
 
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/imageslider.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -23,7 +22,6 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
-
 
 Future<void> main() async {
   await DotEnv().load('.env');
@@ -46,10 +44,47 @@ void initCategoryNames() async {
   });
 }
 
+Future<String> returnCategoryName(String id) async {
+  final QuerySnapshot categoryNameQuery = await Firestore.instance
+      .collection('category')
+      .where('categoryID', isEqualTo: id)
+      .limit(1)
+      .getDocuments();
+
+  final List<DocumentSnapshot> documents = categoryNameQuery.documents;
+  String s;
+  documents.forEach((element) => s = element["categoryName"]);
+  //print("ASDASGSAGASGASGSA");
+  //print(s);
+  return s;
+}
+
+void initCategoryBrands() async {
+  final QuerySnapshot brandsQuery =
+      await Firestore.instance.collection('categoryBrand').getDocuments();
+
+  final List<DocumentSnapshot> documents = brandsQuery.documents;
+
+  documents.forEach((element) {
+    categoryBrands[element["categoryName"]] = element["brands"];
+  });
+
+  //categoryBrands = Map<String, List<String>>.from(categoryBrands);
+
+  print(categoryBrands.runtimeType);
+
+  print(categoryBrands);
+
+  documents.forEach((element) {
+    print(element.runtimeType);
+  });
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     initCategoryNames();
+    initCategoryBrands();
     return LifeCycleManager(
       child: GestureDetector(
         onTap: () {
@@ -63,7 +98,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: buildThemeData(),
-          home: Splash(),
+          home: RegisterPage(),
           routes: {
             "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),

@@ -1,5 +1,5 @@
 import 'package:Oglasnik/utils/colorThemes.dart';
-import 'package:Oglasnik/utils/shared/sharedvalidation/signInValidation.dart';
+import 'package:Oglasnik/utils/shared/sharedvalidation/signinValidation/emailAlertDialogValidator.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
