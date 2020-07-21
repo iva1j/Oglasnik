@@ -4,6 +4,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
@@ -27,11 +28,11 @@ final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
 
 class _RegisteredHomeState extends State<RegisteredHome> {
   static List<String> imagesList = [
-    "assets/images/audi5.jpg",
-    "assets/images/audi2.jpg",
-    "assets/images/audi3.jpg",
-    "assets/images/audi4.jpg",
+    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2FScreenshot_20200714-215750.png?alt=media&token=2990bbb8-3924-4ffd-95a2-536283fd96ac",
+    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2FScreenshot_20200714-215750.png?alt=media&token=2990bbb8-3924-4ffd-95a2-536283fd96ac",
+    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2FScreenshot_20200714-215750.png?alt=media&token=2990bbb8-3924-4ffd-95a2-536283fd96ac"
   ];
+
   final data = Data(imagesPass: imagesList);
   final keyIsFirstLoaded = 'is_first_loaded';
   @override
@@ -123,25 +124,45 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                         initialPage: 0,
                                         viewportFraction: 1.0,
                                         aspectRatio: 1.5,
-                                        items: imagesList.map((imgUrl) {
+                                        items: <String>[
+                                          products[index].productImg1,
+                                          products[index].productImg2,
+                                          products[index].productImg3
+                                        ].map((imgUrl) {
                                           return Builder(
                                             builder: (BuildContext context) {
                                               return Container(
                                                 child: GestureDetector(
-                                                  child: Image.asset(
-                                                    imgUrl,
-                                                    //fit: BoxFit.fitWidth,
-                                                    // height: SizeConfig.blockSizeVertical*20,
-                                                    // width: SizeConfig.blockSizeHorizontal*100,
-                                                  ),
+                                                  child: imgUrl == null
+                                                      ? Image.asset(
+                                                          "assets/images/nophoto.jpg")
+                                                      : Image.network(
+                                                          imgUrl,
+                                                          //fit: BoxFit.fitWidth,
+                                                          // height: SizeConfig.blockSizeVertical*20,
+                                                          // width: SizeConfig.blockSizeHorizontal*100,
+                                                        ),
                                                   onTap: () {
+                                                    print(products[index]
+                                                        .productName);
+                                                    print(products[index]
+                                                        .productImg1);
                                                     Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 PrikazSlika(
-                                                                    data:
-                                                                        data)));
+                                                                    listaSlika: [
+                                                                      products[
+                                                                              index]
+                                                                          .productImg1,
+                                                                      products[
+                                                                              index]
+                                                                          .productImg2,
+                                                                      products[
+                                                                              index]
+                                                                          .productImg3
+                                                                    ])));
                                                   },
                                                 ),
                                               );

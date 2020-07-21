@@ -1,4 +1,4 @@
-import 'package:Oglasnik/utils/colorThemes.dart';
+/*import 'package:Oglasnik/utils/colorThemes.dart';
 import 'showimage.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -67,3 +67,4 @@ class _ImageSliderState extends State<ImageSlider> {
     );
   }
 }
+*/
