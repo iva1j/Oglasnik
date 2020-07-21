@@ -63,7 +63,14 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.14.12"
+=======
+<<<<<<< HEAD
+    version: "1.14.12"
+<<<<<<< HEAD
+=======
+>>>>>>> 09c9839fe64a52c30ef1432bcf98f6f33d704dd6
   convert:
     dependency: transitive
     description:
@@ -78,6 +85,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.4"
+<<<<<<< HEAD
+=======
+>>>>>>> master
+=======
+    version: "1.14.13"
+>>>>>>> master
+>>>>>>> 09c9839fe64a52c30ef1432bcf98f6f33d704dd6
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -213,7 +227,7 @@ packages:
       name: flutter_typeahead
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.5"
+    version: "1.8.6"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -475,7 +489,19 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.2.15"
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    version: "0.2.16"
+=======
+    version: "0.2.15"
+>>>>>>> master
+=======
+    version: "0.2.17"
+>>>>>>> master
+>>>>>>> 09c9839fe64a52c30ef1432bcf98f6f33d704dd6
   typed_data:
     dependency: transitive
     description:

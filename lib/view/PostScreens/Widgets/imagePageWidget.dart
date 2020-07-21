@@ -41,6 +41,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   void openFileExplorer1() async {
     //_path1 = null;
+    
     _path1 = await FilePicker.getFilePath(type: _imageType);
     _fileName1 = _path1.split('/').last;
     _extension1 = _fileName1.toString().split('.').last;
@@ -83,7 +84,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return loading
-        ? Loading()
+        ? Loading() 
         : Container(
             margin: EdgeInsets.all(15),
             child: Column(
