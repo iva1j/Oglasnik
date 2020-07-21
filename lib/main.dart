@@ -70,8 +70,12 @@ void initCategoryBrands() async {
   });
 
   //categoryBrands = Map<String, List<String>>.from(categoryBrands);
+  /*
+  Map<String, List<String>> map =
+      categoryBrands.map((a, b) => MapEntry(a as String, b as List<String>));
+*/
 
-  print(categoryBrands.runtimeType);
+  print(categoryBrands["Sportska Oprema"].runtimeType);
 
   print(categoryBrands);
 
