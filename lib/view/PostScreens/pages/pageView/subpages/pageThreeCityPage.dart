@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -15,14 +16,13 @@ class CityPage extends StatefulWidget {
 class _CityPageState extends State<CityPage> {
   @override
   void initState() {
-    productTagController = new TextEditingController();
+    pageThreeInitControllers();
     super.initState();
   }
 
   @override
   void dispose() {
-    productTagController.dispose();
-    productTagFormKey.currentState.dispose();
+    pageThreeDisposeControllers();
     super.dispose();
   }
 
