@@ -62,6 +62,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,
