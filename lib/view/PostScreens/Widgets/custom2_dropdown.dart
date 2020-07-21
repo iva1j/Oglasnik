@@ -482,6 +482,7 @@ class DropdownMenuItem<T> extends StatelessWidget {
   /// Creates an item for a dropdown menu.
   ///
   /// The [child] argument is required.
+  ///
   const DropdownMenuItem({
     Key key,
     this.value,
@@ -627,9 +628,7 @@ class DropdownButton<T> extends StatefulWidget {
     this.isExpanded = false,
     this.height,
     Function(BuildContext context) selectedItemBuilder,
-    
     Null Function(String productBrandList) onTap,
-
   })  : assert(items == null ||
             items.isEmpty ||
             value == null ||

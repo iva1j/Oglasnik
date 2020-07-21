@@ -32,6 +32,8 @@ TextEditingController productPriceController;
 
 //String dropdownValueCategory = 'Kategorija1';
 
+String dropdownValueBrand = 'Puma';
+
 String dropdownValueCategory = 'Sportska Oprema';
 String dropdownValueCity = 'Sarajevo';
 String dropdownValueBrand = 'Brands';
