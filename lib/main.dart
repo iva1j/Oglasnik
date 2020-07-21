@@ -58,11 +58,7 @@ void initCategoryBrands() async {
     categoryBrands[element["categoryName"]] = element["brands"];
   });
 
-  //categoryBrands = Map<String, List<String>>.from(categoryBrands);
-  /*
-  Map<String, List<String>> map =
-      categoryBrands.map((a, b) => MapEntry(a as String, b as List<String>));
-*/
+
 
   print(categoryBrands["Sportska Oprema"].runtimeType);
 
