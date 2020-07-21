@@ -2,7 +2,9 @@ import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
-
+import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
@@ -35,7 +37,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
   @override
   void initState() {
     super.initState();
-
     if (registeredGlob) {
       registeredGlob = false;
       WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -44,7 +45,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
             builder: (BuildContext context) => successAlertDialog(context));
       });
     }
-
     if (createdGlob) {
       createdGlob = false;
       WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -110,13 +110,10 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                               vertical: SizeConfig.blockSizeVertical * 10,
                             ),
                             child: Container(
-                              // margin: EdgeInsets.only(top: 50),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  //Ivin slider
                                   Container(
-                                    // height: SizeConfig.blockSizeVertical * 30,
                                     width: SizeConfig.screenWidth,
                                     // decoration: BoxDecoration(
                                     //     border: Border.all(color: alertDialogBorderColor),
@@ -154,7 +151,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                       ),
                                     ),
                                   ),
-                                  //prvi elementi Faruk
                                   Container(
                                     margin: EdgeInsets.symmetric(
                                         horizontal:
@@ -223,7 +219,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                     ),
                                     child: Text(
                                       products[index].productDesc,
-                                      //   textAlign: TextAlign.start,
                                     ),
                                   ),
                                   Divider(
@@ -234,7 +229,14 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                     scrollDirection: Axis.horizontal,
                                     child: Container(
                                       child: Row(
-                                        children: <Widget>[
+                                        children: products[index]
+                                            .productTag
+                                            .split(',')
+                                            .map<Widget>((element) =>
+                                                new OglasTag(naziv: element))
+                                            .toList(),
+                                        /*
+                                         <Widget>[
                                           OglasTag(naziv: "Sarajevo"),
                                           OglasTag(naziv: "Audi"),
                                           OglasTag(naziv: "Top"),
@@ -247,7 +249,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                           OglasTag(naziv: "Sarajevo"),
                                           OglasTag(naziv: "Audi"),
                                           OglasTag(naziv: "Top"),
-                                        ],
+                                        ],*/
                                       ),
                                     ),
                                   ),
@@ -285,15 +287,11 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                     bottom: SizeConfig.blockSizeVertical * 1,
                                   ),
                                   child: Column(
-                                    // mainAxisAlignment: MainAxisAlignment.start,
                                     children: <Widget>[
                                       Text(
-                                        //ProductDetailsStrings().callNumberText
                                         products[index].phoneNumber == null
                                             ? 'Ne radi'
                                             : products[index].phoneNumber,
-                                        //'060 029 392 9',
-
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.w400),
@@ -339,7 +337,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                             ),
                           )
                         ],
-                        //    ),
                       );
                     });
               } else {

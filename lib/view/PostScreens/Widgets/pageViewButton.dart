@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/shared/sharedbuttons/redButton.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
@@ -81,8 +81,12 @@ class PageViewButton extends StatelessWidget {
           return null;
         } else if (pageController.page == 1) {
           productCategory = dropdownValueCategory;
-          productBrand = brandTypeAheadController.text;
-          if (productBrandFormKey.currentState.validate()) {
+          productBrand = dropdownValueBrand;
+          print(dropdownValueCategory);
+          print('key: ' + productCategoryDropDownKey.currentState.toString());
+          if (dropdownValueCategory != 'Kategorija1' &&
+              productCategoryDropDownKey.currentState.toString() !=
+                  'Kategorija1') {
             FocusScope.of(context).requestFocus(new FocusNode());
             Timer(Duration(milliseconds: 500), () {
               pageController.nextPage(
@@ -90,7 +94,7 @@ class PageViewButton extends StatelessWidget {
             });
             print(productBrand);
           } else
-            print('molimo popunite polje proizvodjac!');
+            print('Molimo ispravno unesite kategoriju!');
           return null;
         } else if (pageController.page == 0) {
           productName = productNameController.text;
