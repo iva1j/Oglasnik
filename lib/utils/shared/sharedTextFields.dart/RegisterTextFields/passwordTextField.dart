@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/passValidator.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PasswordTextField extends StatelessWidget {
   const PasswordTextField({
@@ -10,6 +11,12 @@ class PasswordTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: [
+        new BlacklistingTextInputFormatter(
+          RegExp(
+              '(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])'),
+        ),
+      ],
       decoration: InputDecoration(
         labelStyle: TextStyle(),
         hintText: 'Lozinka',
