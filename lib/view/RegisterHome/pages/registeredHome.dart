@@ -141,6 +141,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
                                                           //fit: BoxFit.fitWidth,
                                                           // height: SizeConfig.blockSizeVertical*20,
                                                           // width: SizeConfig.blockSizeHorizontal*100,
+                                                          fit: BoxFit.fitHeight,
                                                         ),
                                                   onTap: () {
                                                     print(products[index]
