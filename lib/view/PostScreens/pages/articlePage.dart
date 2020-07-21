@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonIphone.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/newbackButtonIphone.dart';
 import 'package:Oglasnik/view/PostScreens/pages/pageView/mainPageView.dart';
 import 'package:flutter/material.dart';
 

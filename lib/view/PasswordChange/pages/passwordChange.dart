@@ -1,5 +1,7 @@
-import 'package:Oglasnik/utils/shared/sharedbuttons/redButton.dart';
-import 'package:Oglasnik/utils/shared/sharedvalidation/passwordChangeValidation.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
+import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/confirmPassValidator.dart';
+import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/passValidator.dart';
+import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/tokenValidator.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';

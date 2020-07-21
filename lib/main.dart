@@ -5,11 +5,11 @@ import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
 
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/imageslider.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -22,7 +22,6 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
-
 
 Future<void> main() async {
   await DotEnv().load('.env');
@@ -62,7 +61,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: buildThemeData(),
-          home: Splash(),
+          home: RegisterPage(),
           routes: {
             "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),

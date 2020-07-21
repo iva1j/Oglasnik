@@ -11,12 +11,13 @@ class PrikazSlika extends StatelessWidget {
     SizeConfig().init(context);
     return Scaffold(
       body: Container(
-        color: Colors.transparent,
+        color: Colors.black,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               CarouselSlider(
+                viewportFraction: 0.95,
                 initialPage: 0,
                 items: listaSlika.map((imgUrl) {
                   return Builder(

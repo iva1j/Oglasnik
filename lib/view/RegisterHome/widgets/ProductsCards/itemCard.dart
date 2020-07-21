@@ -1,7 +1,6 @@
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ItemCard extends StatelessWidget {
