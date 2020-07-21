@@ -48,20 +48,13 @@ class _BrandFormState extends State<BrandForm> {
                           dropdownValueBrand =
                               productBrandList; // u productBrandList treba povući vrijednosti iz Firestora ali imajući u vidu kategoriju koja se odabere (prvi brand iz kategorije)
                         }),
-                        items: <String>[
-                          'Brand1',
-                          'Brand2',
-                          'Brand3',
-                          'Brand4',
-                          'Brand5',
-                          'Brand6',
-                          'Brand7',
-                          'Brand8',
-                          'Brand9',
-                          'Brand11',
-                          'Brand12',
-                          'Brand13',
-                          'Brand14'
+                        items:
+                            /* Map<String, List<String>>.from(
+                                categoryBrands)[dropdownValueCategory]*/
+                            <String>[
+                          "Brand1",
+                          "Brand2",
+                          "Brand3",
                         ].map<custom2.DropdownMenuItem<String>>((String value) {
                           return custom2.DropdownMenuItem<String>(
                             value: value,
