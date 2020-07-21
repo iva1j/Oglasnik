@@ -44,10 +44,47 @@ void initCategoryNames() async {
   });
 }
 
+Future<String> returnCategoryName(String id) async {
+  final QuerySnapshot categoryNameQuery = await Firestore.instance
+      .collection('category')
+      .where('categoryID', isEqualTo: id)
+      .limit(1)
+      .getDocuments();
+
+  final List<DocumentSnapshot> documents = categoryNameQuery.documents;
+  String s;
+  documents.forEach((element) => s = element["categoryName"]);
+  //print("ASDASGSAGASGASGSA");
+  //print(s);
+  return s;
+}
+
+void initCategoryBrands() async {
+  final QuerySnapshot brandsQuery =
+      await Firestore.instance.collection('categoryBrand').getDocuments();
+
+  final List<DocumentSnapshot> documents = brandsQuery.documents;
+
+  documents.forEach((element) {
+    categoryBrands[element["categoryName"]] = element["brands"];
+  });
+
+  //categoryBrands = Map<String, List<String>>.from(categoryBrands);
+
+  print(categoryBrands.runtimeType);
+
+  print(categoryBrands);
+
+  documents.forEach((element) {
+    print(element.runtimeType);
+  });
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     initCategoryNames();
+    initCategoryBrands();
     return LifeCycleManager(
       child: GestureDetector(
         onTap: () {
