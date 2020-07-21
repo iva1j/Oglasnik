@@ -46,6 +46,10 @@ final GlobalKey<FormState> productCategoryDropDownKey = GlobalKey<FormState>();
 
 List<String> categoryNames = List<String>();
 
+var categoryBrands = Map();
+
+//var catBrands = Map<String, List<String>>();
+
 class Data {
   List imagesPass;
   Data({this.imagesPass});
