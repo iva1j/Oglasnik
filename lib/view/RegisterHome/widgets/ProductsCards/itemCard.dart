@@ -18,20 +18,17 @@ class ItemCard extends StatefulWidget {
 
 class _ItemCardState extends State<ItemCard> {
   @override
-  void dispose() {
-    fabKey.currentState.dispose();
-    super.dispose();
-  }
-  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.close, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,
-
           title: Text(widget.brandNameScreen),
-
         ),
         floatingActionButton: mainFloatingButton(email),
         bottomSheet: Container(

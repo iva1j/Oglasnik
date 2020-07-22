@@ -26,12 +26,6 @@ class ProductBrandCard extends StatefulWidget {
 }
 
 class _ProductBrandCardState extends State<ProductBrandCard> {
-  @override
-  void dispose() {
-    fabKey.currentState.dispose();
-    super.dispose();
-  }
-
   List<Widget> images = new List<Widget>();
 
   @override
@@ -64,7 +58,10 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
     ));
     return Scaffold(
       appBar: AppBar(
-
+        leading: IconButton(
+          icon: Icon(Icons.close, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: Text(widget.categoryName),
       ),
       floatingActionButton: mainFloatingButton(email),

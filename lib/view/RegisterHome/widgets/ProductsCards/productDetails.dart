@@ -24,11 +24,6 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   @override
-  void dispose() {
-    fabKey.currentState.dispose();
-    super.dispose();
-  }
-  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
@@ -47,7 +42,6 @@ class _ProductDetailsState extends State<ProductDetails> {
           width: double.infinity,
           color: Color.fromARGB(255, 226, 11, 48),
         ),
-        
         body: FutureBuilder(
             future: Firestore.instance
                 .collection('products')
@@ -211,9 +205,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     ),
                                     child: Text(
                                       products[index].productDesc,
-                                      style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText2,
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
                                     ),
                                   ),
                                   Divider(
