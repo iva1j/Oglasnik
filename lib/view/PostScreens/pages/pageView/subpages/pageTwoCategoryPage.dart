@@ -192,7 +192,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               isExpanded: true,
                               style: TextStyle(
                                 color: Colors.black87,
-                                fontSize: 14,
+                                fontSize: SizeConfig.safeBlockHorizontal * 4,
                                 height: 1.5,
                               ),
                               underline: Container(),
