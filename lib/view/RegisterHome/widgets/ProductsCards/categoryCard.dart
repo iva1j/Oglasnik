@@ -1,4 +1,6 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
@@ -56,7 +58,10 @@ class CategoryCard extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (_) => ProductDetails()));//#TODO: Ubaciti ispravnu putanju
+                                    builder: (_) => ProductBrandCard(
+                                          categoryName:
+                                              categories[index].categoryName,
+                                        ))); //#TODO: Ubaciti ispravnu putanju
                               },
                               child: Text(
                                 categories[index].categoryName,
