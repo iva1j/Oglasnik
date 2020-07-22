@@ -3,8 +3,19 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+Future<int> numberOfProductsPerBrand(String brandName) async {
+  final QuerySnapshot productsQuery = await Firestore.instance
+      .collection('products')
+      .where('brandName', isEqualTo: brandName)
+      .getDocuments();
+  final List<DocumentSnapshot> documents = productsQuery.documents;
+  return documents.length;
+}
+
+// ignore: must_be_immutable
 class ProductBrandCard extends StatelessWidget {
   List<Widget> images = new List<Widget>();
   final String categoryName;
@@ -47,8 +58,8 @@ class ProductBrandCard extends StatelessWidget {
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               categoryBrand = snapshot.data.documents
-                  .map((doc) => ProductBrand.fromDocument(doc))
-                  .toList(); 
+                  .map((doc) => Product.fromDocument(doc))
+                  .toList();
               return ListView.builder(
                   itemCount: categoryBrand.length,
                   shrinkWrap: true,
@@ -92,7 +103,7 @@ class ProductBrandCard extends StatelessWidget {
                                       top: SizeConfig.blockSizeVertical * 2,
                                     ),
                                     child: Text(
-                                      categoryBrand[index].brands[0],
+                                      categoryBrand[index].productBrand,
                                       style: TextStyle(
                                         fontSize:
                                             SizeConfig.safeBlockHorizontal * 5,
@@ -105,10 +116,24 @@ class ProductBrandCard extends StatelessWidget {
                                       left: SizeConfig.blockSizeHorizontal * 3,
                                       top: SizeConfig.blockSizeVertical * 1,
                                     ),
-                                    child: Text(
-                                      'U ovoj kategoriji se nalazi 134 Audi.',
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
+                                    child: 
+                                    // FutureBuilder(
+                                    //   future: numberOfProductsPerBrand(
+                                    //       categoryBrand[index].productBrand),
+                                    //   builder: (BuildContext context,
+                                    //       AsyncSnapshot snapshot) {
+                                    //     numberofBrands = snapshot.data.documents
+                                    //         .map((doc) =>
+                                    //             Product.fromDocument(doc))
+                                    //         .toList();
+                                    //     if (snapshot.hasData)
+                                    //       return Text(
+                                    //           'U ovoj kategoriji nalazi se: ');
+                                    //     else
+                                    //       return null;
+                                    //   },
+                                    // ),
+                                    Text('U ovoj kategoriji nalazi se 123 Audi')
                                   ),
                                 ],
                               ),
