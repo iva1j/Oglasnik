@@ -58,8 +58,6 @@ void initCategoryBrands() async {
     categoryBrands[element["categoryName"]] = element["brands"];
   });
 
-
-
   print(categoryBrands["Sportska Oprema"].runtimeType);
 
   print(categoryBrands);
@@ -67,6 +65,40 @@ void initCategoryBrands() async {
   documents.forEach((element) {
     print(element.runtimeType);
   });
+}
+/*
+Future<bool> checkIfProductBrandExists(String brandName) async {
+  final QuerySnapshot productsQuery =
+      await Firestore.instance.collection('products').getDocuments();
+
+  final List<DocumentSnapshot> documents = productsQuery.documents;
+
+  documents.forEach((element) {
+    if (element["brandName"] == brandName) return true;
+  });
+
+  return false;
+}
+*/
+
+Future<bool> checkIfProductBrandExists(String brandName) async {
+  final QuerySnapshot productsQuery = await Firestore.instance
+      .collection('products')
+      .where('brandName', isEqualTo: brandName)
+      .getDocuments();
+
+  final List<DocumentSnapshot> documents = productsQuery.documents;
+  return documents.length > 0;
+}
+
+Future<int> numberOfProductsPerBrand(String brandName) async {
+  final QuerySnapshot productsQuery = await Firestore.instance
+      .collection('products')
+      .where('brandName', isEqualTo: brandName)
+      .getDocuments();
+
+  final List<DocumentSnapshot> documents = productsQuery.documents;
+  return documents.length;
 }
 
 class MyApp extends StatelessWidget {
@@ -87,7 +119,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: buildThemeData(),
-          home: Splash(),
+          home: ProductBrandCard(),
           routes: {
             "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),
