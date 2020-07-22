@@ -35,7 +35,7 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
             child: NazivTextField(),
           ),
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 20,
+            height: SizeConfig.blockSizeVertical * 25,
           ),
           PageViewButton(),
         ],

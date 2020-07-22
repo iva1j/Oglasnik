@@ -14,13 +14,11 @@ class TagsForm extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 3),
-        ),
-        Container(
           margin: EdgeInsets.only(
-            bottom: SizeConfig.blockSizeVertical * 17,
+            bottom: SizeConfig.blockSizeVertical * 14.5,
             left: SizeConfig.blockSizeHorizontal * 10,
             right: SizeConfig.blockSizeHorizontal * 10,
+            top: SizeConfig.blockSizeVertical * 3,
           ),
           child: Form(
               //autovalidate: true,

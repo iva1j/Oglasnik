@@ -108,7 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Container(
 
                   // height: SizeConfig.blockSizeVertical * 75,
-                  margin: EdgeInsets.all(50),
+                  margin: EdgeInsets.all(45),
                   child: Column(
                     children: <Widget>[
                       LogoContainer(),

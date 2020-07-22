@@ -114,9 +114,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             Container(
               child: PageViewButton(),
             )*/
+                SizedBox(
+                  height: SizeConfig.blockSizeVertical * 6,
+                ),
                 Container(
-                  margin:
-                      EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 5),
                   child: pageViewSubmitButton(context),
                 ),
               ],
