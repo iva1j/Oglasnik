@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
@@ -76,30 +77,76 @@ class CategoryCard extends StatelessWidget {
                         Divider(
                           thickness: SizeConfig.blockSizeVertical * 0.2,
                         ),
-                        CategoryCardRow(
-                          icon: Icon(
-                            Icons.directions_car,
-                            color: Colors.white,
-                          ),
-                          name: "Audi",
-                          count: "134",
-                        ),
-                        CategoryCardRow(
-                          icon: Icon(
-                            Icons.directions_car,
-                            color: Colors.white,
-                          ),
-                          name: "Mercedes",
-                          count: "15",
-                        ),
-                        CategoryCardRow(
-                          icon: Icon(
-                            Icons.directions_car,
-                            color: Colors.white,
-                          ),
-                          name: "BMW",
-                          count: "1",
-                        ),
+                        FutureBuilder(
+                            future: numberOfProductsPerBrand(
+                                categoryBrands[categories[index].categoryName]
+                                        [0]
+                                    .toString()),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return CategoryCardRow(
+                                  icon: Icon(
+                                    Icons.directions_car,
+                                    color: Colors.white,
+                                  ),
+                                  name: categoryBrands[
+                                          categories[index].categoryName][0]
+                                      .toString(),
+                                  count: snapshot.data.toString(),
+                                );
+                              } else {
+                                return Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                            }),
+                        FutureBuilder(
+                            future: numberOfProductsPerBrand(
+                                categoryBrands[categories[index].categoryName]
+                                        [1]
+                                    .toString()),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return CategoryCardRow(
+                                  icon: Icon(
+                                    Icons.directions_car,
+                                    color: Colors.white,
+                                  ),
+                                  name: categoryBrands[
+                                          categories[index].categoryName][1]
+                                      .toString(),
+                                  count: snapshot.data.toString(),
+                                );
+                              } else {
+                                return Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                            }),
+                        FutureBuilder(
+                            future: numberOfProductsPerBrand(
+                                categoryBrands[categories[index].categoryName]
+                                        [2]
+                                    .toString()),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                //print(snapshot.data);
+                                return CategoryCardRow(
+                                  icon: Icon(
+                                    Icons.directions_car,
+                                    color: Colors.white,
+                                  ),
+                                  name: categoryBrands[
+                                          categories[index].categoryName][2]
+                                      .toString(),
+                                  count: snapshot.data.toString(),
+                                );
+                              } else {
+                                return Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                            }),
                         SizedBox(
                           height: SizeConfig.blockSizeVertical * 3,
                         )

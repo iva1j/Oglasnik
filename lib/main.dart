@@ -90,13 +90,23 @@ Future<bool> checkIfProductBrandExists(String brandName) async {
 Future<int> numberOfProductsPerBrand(String brandName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
       .collection('products')
-      .where('brandName', isEqualTo: brandName)
+      .where('productBrand', isEqualTo: brandName)
       .getDocuments();
 
+  print(productsQuery);
+
   final List<DocumentSnapshot> documents = productsQuery.documents;
+  print(documents);
+  print(brandName + " ima ");
+  print(documents.length);
   return documents.length;
 }
 
+/*
+Future<List<String>> top3PerCategory(String categoryName) {
+  
+}
+*/
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -115,7 +125,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: buildThemeData(),
-          home: ProductBrandCard(),
+          home: Splash(),
           routes: {
             "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),
