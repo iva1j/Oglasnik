@@ -127,7 +127,10 @@ class _CategoryPageState extends State<CategoryPage> {
                     child: Card(
                         elevation: 16,
                         child: Container(
-                            margin: EdgeInsets.only(left: 5.0, right: 5.0),
+                            margin: EdgeInsets.only(
+                              left: SizeConfig.blockSizeHorizontal * 5,
+                              right: SizeConfig.blockSizeHorizontal * 2,
+                            ),
                             child: Center(
                                 child: Align(
                                     alignment: Alignment.topRight,
@@ -142,7 +145,8 @@ class _CategoryPageState extends State<CategoryPage> {
                                       isExpanded: true,
                                       style: TextStyle(
                                         color: Colors.black87,
-                                        fontSize: 14,
+                                        fontSize:
+                                            SizeConfig.safeBlockHorizontal * 4,
                                         height: 1.5,
                                       ),
                                       underline: Container(),
@@ -170,7 +174,10 @@ class _CategoryPageState extends State<CategoryPage> {
                     child: Card(
                       elevation: 16,
                       child: Container(
-                        margin: EdgeInsets.only(left: 5.0, right: 5.0),
+                        margin: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          right: SizeConfig.blockSizeHorizontal * 2,
+                        ),
                         child: Center(
                           child: Align(
                             alignment: Alignment.topRight,
