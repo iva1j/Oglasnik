@@ -58,7 +58,8 @@ final GlobalKey<FormState> productCategoryDropDownKey = GlobalKey<FormState>();
 List<String> categoryNames = List<String>();
 
 var categoryBrands = Map();
-
+List categoryBrand = [];
+List numberofBrands = [];
 //var catBrands = Map<String, List<String>>();
 
 List products = [];
