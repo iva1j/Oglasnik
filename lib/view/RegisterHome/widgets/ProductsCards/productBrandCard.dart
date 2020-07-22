@@ -17,10 +17,22 @@ Future<int> numberOfProductsPerBrand(String brandName) async {
 }
 
 // ignore: must_be_immutable
-class ProductBrandCard extends StatelessWidget {
-  List<Widget> images = new List<Widget>();
+class ProductBrandCard extends StatefulWidget {
   final String categoryName;
   ProductBrandCard({Key key, @required this.categoryName}) : super(key: key);
+
+  @override
+  _ProductBrandCardState createState() => _ProductBrandCardState();
+}
+
+class _ProductBrandCardState extends State<ProductBrandCard> {
+  @override
+  void dispose() {
+    fabKey.currentState.dispose();
+    super.dispose();
+  }
+
+  List<Widget> images = new List<Widget>();
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +64,8 @@ class ProductBrandCard extends StatelessWidget {
     ));
     return Scaffold(
       appBar: AppBar(
-        title: Text(categoryName),
-        leading: IconButton(
-          icon: Icon(Icons.close, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+
+        title: Text(widget.categoryName),
       ),
       floatingActionButton: mainFloatingButton(email),
       bottomSheet: Container(
@@ -71,7 +80,8 @@ class ProductBrandCard extends StatelessWidget {
           ),
           Expanded(
             child: FutureBuilder(
-                future: BrandViewModel().getBrandsByCategories(categoryName),
+                future:
+                    BrandViewModel().getBrandsByCategories(widget.categoryName),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     categoryBrand = snapshot.data.documents

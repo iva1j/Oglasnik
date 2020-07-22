@@ -24,6 +24,11 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   @override
+  void dispose() {
+    fabKey.currentState.dispose();
+    super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(

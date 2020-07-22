@@ -7,10 +7,21 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 
-class ItemCard extends StatelessWidget {
+class ItemCard extends StatefulWidget {
   //String audi = "assets/images/audi.jpg";
   final String brandNameScreen;
   ItemCard({Key key, @required this.brandNameScreen}) : super(key: key);
+
+  @override
+  _ItemCardState createState() => _ItemCardState();
+}
+
+class _ItemCardState extends State<ItemCard> {
+  @override
+  void dispose() {
+    fabKey.currentState.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -18,11 +29,9 @@ class ItemCard extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,
-          title: Text(brandNameScreen),
-          leading: IconButton(
-            icon: Icon(Icons.close, color: Colors.white),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
+
+          title: Text(widget.brandNameScreen),
+
         ),
         floatingActionButton: mainFloatingButton(email),
         bottomSheet: Container(
@@ -39,7 +48,7 @@ class ItemCard extends StatelessWidget {
               child: StreamBuilder(
                   stream: Firestore.instance
                       .collection('products')
-                      .where('productBrand', isEqualTo: brandNameScreen)
+                      .where('productBrand', isEqualTo: widget.brandNameScreen)
                       .snapshots(),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
@@ -224,7 +233,7 @@ class ItemDescription extends StatelessWidget {
       margin: EdgeInsets.only(
         top: SizeConfig.blockSizeVertical * 2,
         bottom: SizeConfig.blockSizeVertical,
-        left: SizeConfig.blockSizeHorizontal * 3,
+        left: SizeConfig.blockSizeHorizontal * 1,
       ),
       child: Text(
         description,
