@@ -1,17 +1,29 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
 class ItemCard extends StatelessWidget {
   //String audi = "assets/images/audi.jpg";
-
+  final String brandNameScreen;
+  ItemCard({Key key, @required this.brandNameScreen}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppBarTheme.of(context).color,
+          centerTitle: true,
+          title: Text(brandNameScreen),
+        ),
         body: StreamBuilder(
-            stream: Firestore.instance.collection('products').snapshots(),
+            stream: Firestore.instance
+                .collection('products')
+                .where('productBrand', isEqualTo: brandNameScreen)
+                .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return Container(
@@ -30,17 +42,18 @@ class ItemCard extends StatelessWidget {
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
+                          color: Colors.grey.withOpacity(0.2),
                           spreadRadius: 1,
                           blurRadius: 7,
+
                           offset: Offset(0, 3), // changes position of shadow
                         ),
                       ],
                       border: Border.all(
-                        color: Colors.black,
+                        color: Colors.black26,
                       ),
                       borderRadius: BorderRadius.all(
-                        Radius.circular(10),
+                        Radius.circular(4),
                       ),
                     ),
                     margin: EdgeInsets.symmetric(
@@ -49,17 +62,31 @@ class ItemCard extends StatelessWidget {
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Expanded(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                  ItemName(
-                                    name: snapshot.data.documents[index]
-                                        ['productName'],
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                              builder: (_) => ProductDetails(
+                                                    productNameScreen: snapshot
+                                                            .data
+                                                            .documents[index]
+                                                        ['productName'],
+                                                  )));
+                                    },
+                                    child: ItemName(
+                                      name: snapshot.data.documents[index]
+                                          ['productName'],
+                                    ),
                                   ),
                                   ItemDescription(
                                     description: snapshot.data.documents[index]
@@ -70,6 +97,7 @@ class ItemCard extends StatelessWidget {
                             ),
                             Expanded(
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: <Widget>[
                                   ItemImage(
                                       /*
@@ -97,10 +125,8 @@ class ItemCard extends StatelessWidget {
                                                       ['productImg3']
                                                   : ""),
                                   ItemPrice(
-                                      price: "Cijena: " +
-                                          snapshot.data.documents[index]
-                                              ['cijena'] +
-                                          " KM"),
+                                      price: snapshot.data.documents[index]
+                                          ['cijena']),
                                 ],
                               ),
                             ),
@@ -112,20 +138,13 @@ class ItemCard extends StatelessWidget {
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            children: <Widget>[
-                              OglasTag(naziv: "Sarajevo"),
-                              OglasTag(naziv: "Audi"),
-                              OglasTag(naziv: "Top"),
-                              OglasTag(naziv: "Sarajevo"),
-                              OglasTag(naziv: "Audi"),
-                              OglasTag(naziv: "Top"),
-                              OglasTag(naziv: "Sarajevo"),
-                              OglasTag(naziv: "Audi"),
-                              OglasTag(naziv: "Top"),
-                              OglasTag(naziv: "Sarajevo"),
-                              OglasTag(naziv: "Audi"),
-                              OglasTag(naziv: "Top"),
-                            ],
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: snapshot
+                                .data.documents[index]['productTag']
+                                .split(',')
+                                .map<Widget>(
+                                    (element) => new OglasTag(naziv: element))
+                                .toList(),
                           ),
                         ),
                       ],
@@ -179,7 +198,7 @@ class ItemDescription extends StatelessWidget {
       margin: EdgeInsets.only(
         top: SizeConfig.blockSizeVertical * 2,
         bottom: SizeConfig.blockSizeVertical,
-        left: SizeConfig.blockSizeHorizontal * 3,
+        // left: SizeConfig.blockSizeHorizontal * 3,
       ),
       child: Text(
         description,
@@ -200,7 +219,8 @@ class ItemImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        top: SizeConfig.blockSizeVertical,
+        top: SizeConfig.blockSizeVertical * 1,
+        right: SizeConfig.blockSizeHorizontal * 1,
       ),
       height: SizeConfig.blockSizeVertical * 20,
       width: SizeConfig.blockSizeVertical * 20,
@@ -226,10 +246,11 @@ class ItemPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        top: SizeConfig.blockSizeVertical,
-      ),
+          top: SizeConfig.blockSizeVertical,
+          right: SizeConfig.blockSizeHorizontal * 3),
       child: Text(
-        price,
+        NumberFormat.currency(locale: 'eu', symbol: 'KM')
+            .format((double.parse(price))),
         style: TextStyle(
           fontSize: SizeConfig.safeBlockHorizontal * 5,
           fontWeight: FontWeight.w700,

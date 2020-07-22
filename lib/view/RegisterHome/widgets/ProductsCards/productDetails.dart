@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -15,6 +16,8 @@ import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
 import 'package:intl/intl.dart';
 
 class ProductDetails extends StatefulWidget {
+  final String productNameScreen;
+  ProductDetails({Key key, @required this.productNameScreen}) : super(key: key);
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
@@ -37,7 +40,10 @@ class _ProductDetailsState extends State<ProductDetails> {
           color: Color.fromARGB(255, 226, 11, 48),
         ),
         body: FutureBuilder(
-            future: ProductViewModel().getProduct(),
+            future: Firestore.instance
+                .collection('products')
+                .where('productName', isEqualTo: widget.productNameScreen)
+                .getDocuments(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
                 products = snapshot.data.documents
@@ -174,7 +180,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     child: Row(children: <Widget>[
                                       Container(
                                         child: Text(
-                                          products[index].productName,
+                                          widget.productNameScreen,
+                                          //products[index].productName,
                                           //ProductDetailsStrings().productName,
                                           style: Theme.of(context)
                                               .textTheme

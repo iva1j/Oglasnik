@@ -1,6 +1,7 @@
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -101,12 +102,25 @@ class ProductBrandCard extends StatelessWidget {
                                       left: SizeConfig.blockSizeHorizontal * 3,
                                       top: SizeConfig.blockSizeVertical * 2,
                                     ),
-                                    child: Text(
-                                      categoryBrand[index].productBrand,
-                                      style: TextStyle(
-                                        fontSize:
-                                            SizeConfig.safeBlockHorizontal * 5,
-                                        fontWeight: FontWeight.w500,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (_) =>
+                                                    ItemCard(
+                                                      brandNameScreen:
+                                                          categoryBrand[index]
+                                                              .productBrand,
+                                                    ))); //#TODO: Ubaciti ispravnu putanju
+                                      },
+                                      child: Text(
+                                        categoryBrand[index].productBrand,
+                                        style: TextStyle(
+                                          fontSize:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  5,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
                                   ),
