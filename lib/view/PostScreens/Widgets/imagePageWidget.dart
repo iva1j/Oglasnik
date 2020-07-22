@@ -47,6 +47,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
     setState(() {
       img1 = _fileName1;
+      pathGlobal1 = _path1;
     });
   }
 
@@ -56,6 +57,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     _extension2 = _fileName2.toString().split('.').last;
     setState(() {
       img2 = _fileName2;
+      pathGlobal2 = _path2;
     });
     //upload(_fileName2, _path2, 2).then((value) => productImg2 = value);
   }
@@ -66,6 +68,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     _extension3 = _fileName3.toString().split('.').last;
     setState(() {
       img3 = _fileName3;
+      pathGlobal3 = _path3;
     });
     //upload(_fileName3, _path3, 3).then((value) => productImg3 = value);
   }
@@ -133,14 +136,14 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         if (productPriceFormKey.currentState.validate()) {
           setState(() => loading = true);
           createdGlob = true;
-          if (img1 == _fileName1)
-            await upload(_fileName1, _path1, 1)
+          if (img1 != immutableImg1)
+            await upload(img1, pathGlobal1, 1)
                 .then((value) => productImg1 = value);
-          if (img2 == _fileName2)
-            await upload(_fileName2, _path2, 2)
+          if (img2 != immutableImg2)
+            await upload(img2, pathGlobal2, 2)
                 .then((value) => productImg2 = value);
-          if (img3 == _fileName3)
-            await upload(_fileName3, _path3, 3)
+          if (img3 != immutableImg3)
+            await upload(img3, pathGlobal3, 3)
                 .then((value) => productImg3 = value);
 
           productName = productNameController.text;
@@ -170,6 +173,12 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           img1 = immutableImg1;
           img2 = immutableImg2;
           img3 = immutableImg3;
+          productImg1 = null;
+          productImg2 = null;
+          productImg3 = null;
+          pathGlobal1 = null;
+          pathGlobal2 = null;
+          pathGlobal3 = null;
           Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (_) => RegisteredHome()));
         } else
