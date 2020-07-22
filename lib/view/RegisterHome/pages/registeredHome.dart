@@ -15,7 +15,7 @@ class RegisteredHome extends StatefulWidget {
   _RegisteredHomeState createState() => _RegisteredHomeState();
 }
 
-final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
+//final GlobalKey<FabCircularMenuState> registerhomeKey = GlobalKey();
 
 class _RegisteredHomeState extends State<RegisteredHome> {
   final keyIsFirstLoaded = 'is_first_loaded';

@@ -1,7 +1,6 @@
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
+
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
@@ -17,11 +16,6 @@ class CategoryCard extends StatefulWidget {
 }
 
 class _CategoryCardState extends State<CategoryCard> {
-  @override
-  void dispose() {
-    fabKey.currentState.dispose();
-    super.dispose();
-  }
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
