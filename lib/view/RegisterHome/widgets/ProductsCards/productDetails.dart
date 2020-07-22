@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -15,6 +16,8 @@ import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
 import 'package:intl/intl.dart';
 
 class ProductDetails extends StatefulWidget {
+  final String productNameScreen;
+  ProductDetails({Key key, @required this.productNameScreen}) : super(key: key);
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
@@ -36,8 +39,12 @@ class _ProductDetailsState extends State<ProductDetails> {
           width: double.infinity,
           color: Color.fromARGB(255, 226, 11, 48),
         ),
+        
         body: FutureBuilder(
-            future: ProductViewModel().getProduct(),
+            future: Firestore.instance
+                .collection('products')
+                .where('productName', isEqualTo: widget.productNameScreen)
+                .getDocuments(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
                 products = snapshot.data.documents
@@ -148,7 +155,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                               top:
                                                   SizeConfig.blockSizeVertical *
                                                       1),
-                                          padding: EdgeInsets.all(10),
+                                          padding: EdgeInsets.all(5),
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20.0),
@@ -174,8 +181,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     child: Row(children: <Widget>[
                                       Container(
                                         child: Text(
-                                          products[index].productName,
-                                          //ProductDetailsStrings().productName,
+                                          widget.productNameScreen,
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline6,
@@ -193,10 +199,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   Container(
                                     margin: EdgeInsets.symmetric(
                                       horizontal:
-                                          SizeConfig.blockSizeHorizontal * 4,
+                                          SizeConfig.blockSizeHorizontal * 2,
                                     ),
                                     child: Text(
                                       products[index].productDesc,
+                                      style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
                                     ),
                                   ),
                                   Divider(
