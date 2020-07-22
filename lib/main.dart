@@ -88,7 +88,7 @@ Future<bool> checkIfProductBrandExists(String brandName) async {
 Future<int> numberOfProductsPerBrand(String brandName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
       .collection('products')
-      .where('productBrand', isEqualTo: brandName)
+      //.where('productBrand', isEqualTo: brandName)
       .getDocuments();
 
   print(productsQuery);
