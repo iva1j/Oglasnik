@@ -8,8 +8,8 @@ class BrandViewModel implements ReadBrandInterface {
   Future getBrandsByCategories(String categoryName) async {
     var firestore = Firestore.instance;
     QuerySnapshot qn = await firestore
-        .collection('categoryBrand')
-        .where('categoryName', isEqualTo: categoryName)
+        .collection('products')
+        .where('productCategory', isEqualTo: categoryName)
         .getDocuments();
     return qn;
   }
