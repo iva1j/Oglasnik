@@ -2,6 +2,7 @@ import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,16 @@ class ProductBrandCard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(categoryName),
+        leading: IconButton(
+          icon: Icon(Icons.close, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
+      floatingActionButton: mainFloatingButton(email),
+      bottomSheet: Container(
+        height: 55,
+        width: double.infinity,
+        color: Color.fromARGB(255, 226, 11, 48),
       ),
       body: FutureBuilder(
           future: BrandViewModel().getBrandsByCategories(categoryName),
@@ -104,10 +115,9 @@ class ProductBrandCard extends StatelessWidget {
                                     ),
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (_) =>
-                                                    ItemCard(
+                                        Navigator.of(context)
+                                            .push(MaterialPageRoute(
+                                                builder: (_) => ItemCard(
                                                       brandNameScreen:
                                                           categoryBrand[index]
                                                               .productBrand,

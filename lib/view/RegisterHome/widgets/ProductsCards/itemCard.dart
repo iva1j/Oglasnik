@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,6 +19,16 @@ class ItemCard extends StatelessWidget {
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,
           title: Text(brandNameScreen),
+          leading: IconButton(
+            icon: Icon(Icons.close, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ),
+        floatingActionButton: mainFloatingButton(email),
+        bottomSheet: Container(
+          height: 55,
+          width: double.infinity,
+          color: Color.fromARGB(255, 226, 11, 48),
         ),
         body: StreamBuilder(
             stream: Firestore.instance
