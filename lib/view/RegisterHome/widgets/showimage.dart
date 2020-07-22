@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 class PrikazSlika extends StatelessWidget {
   final List<String> listaSlika;

@@ -19,6 +19,10 @@ class ItemCard extends StatelessWidget {
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,
           title: Text(brandNameScreen),
+          leading: IconButton(
+            icon: Icon(Icons.close, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
         ),
         floatingActionButton: mainFloatingButton(email),
         bottomSheet: Container(

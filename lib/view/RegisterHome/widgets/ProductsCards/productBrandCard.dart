@@ -53,6 +53,10 @@ class ProductBrandCard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(categoryName),
+        leading: IconButton(
+          icon: Icon(Icons.close, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       floatingActionButton: mainFloatingButton(email),
       bottomSheet: Container(
@@ -214,7 +218,7 @@ class ProductBrandCard extends StatelessWidget {
                   }
                 }),
           ),
-                    SizedBox(
+          SizedBox(
             height: SizeConfig.blockSizeVertical * 4,
           ),
         ],
