@@ -25,3 +25,8 @@ abstract class ReadProductInterface {
 abstract class ReadCategoriesInterface{
   Future getCategories();
 }
+
+
+abstract class ReadBrandInterface{
+  Future getBrandsByCategories(String categoryName);
+}
