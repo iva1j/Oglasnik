@@ -78,9 +78,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 children: <Widget>[
                                   Container(
                                     width: SizeConfig.screenWidth,
-                                    // decoration: BoxDecoration(
-                                    //     border: Border.all(color: alertDialogBorderColor),
-                                    //     borderRadius: BorderRadius.all(Radius.circular(7))),
                                     child: Container(
                                       child: CarouselSlider(
                                         initialPage: 0,
@@ -100,9 +97,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                                           "assets/images/nophoto.jpg")
                                                       : Image.network(
                                                           imgUrl,
-                                                          //fit: BoxFit.fitWidth,
-                                                          // height: SizeConfig.blockSizeVertical*20,
-                                                          // width: SizeConfig.blockSizeHorizontal*100,
                                                           fit: BoxFit.fitHeight,
                                                         ),
                                                   onTap: () {

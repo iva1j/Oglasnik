@@ -27,9 +27,7 @@ Future<void> main() async {
 void initCategoryNames() async {
   final QuerySnapshot categoryQuery =
       await Firestore.instance.collection('category').getDocuments();
-
   final List<DocumentSnapshot> documents = categoryQuery.documents;
-
   documents.forEach((element) {
     categoryNames.add(element["categoryName"]);
   });
@@ -45,8 +43,6 @@ Future<String> returnCategoryName(String id) async {
   final List<DocumentSnapshot> documents = categoryNameQuery.documents;
   String s;
   documents.forEach((element) => s = element["categoryName"]);
-  //print("ASDASGSAGASGASGSA");
-  //print(s);
   return s;
 }
 
@@ -57,8 +53,6 @@ void initCategoryBrands() async {
   documents.forEach((element) {
     categoryBrands[element["categoryName"]] = element["brands"];
   });
-
-
 
   print(categoryBrands["Sportska Oprema"].runtimeType);
 
