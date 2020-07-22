@@ -42,6 +42,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           width: double.infinity,
           color: Color.fromARGB(255, 226, 11, 48),
         ),
+        
         body: FutureBuilder(
             future: Firestore.instance
                 .collection('products')
@@ -157,7 +158,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                               top:
                                                   SizeConfig.blockSizeVertical *
                                                       1),
-                                          padding: EdgeInsets.all(10),
+                                          padding: EdgeInsets.all(5),
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20.0),
@@ -184,8 +185,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                       Container(
                                         child: Text(
                                           widget.productNameScreen,
-                                          //products[index].productName,
-                                          //ProductDetailsStrings().productName,
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline6,
@@ -203,10 +202,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   Container(
                                     margin: EdgeInsets.symmetric(
                                       horizontal:
-                                          SizeConfig.blockSizeHorizontal * 4,
+                                          SizeConfig.blockSizeHorizontal * 2,
                                     ),
                                     child: Text(
                                       products[index].productDesc,
+                                      style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
                                     ),
                                   ),
                                   Divider(
