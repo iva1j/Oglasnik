@@ -2,7 +2,6 @@ import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -112,29 +111,30 @@ class ProductBrandCard extends StatelessWidget {
                                     ),
                                   ),
                                   Container(
-                                    margin: EdgeInsets.only(
-                                      left: SizeConfig.blockSizeHorizontal * 3,
-                                      top: SizeConfig.blockSizeVertical * 1,
-                                    ),
-                                    child: 
-                                    // FutureBuilder(
-                                    //   future: numberOfProductsPerBrand(
-                                    //       categoryBrand[index].productBrand),
-                                    //   builder: (BuildContext context,
-                                    //       AsyncSnapshot snapshot) {
-                                    //     numberofBrands = snapshot.data.documents
-                                    //         .map((doc) =>
-                                    //             Product.fromDocument(doc))
-                                    //         .toList();
-                                    //     if (snapshot.hasData)
-                                    //       return Text(
-                                    //           'U ovoj kategoriji nalazi se: ');
-                                    //     else
-                                    //       return null;
-                                    //   },
-                                    // ),
-                                    Text('U ovoj kategoriji nalazi se 123 Audi')
-                                  ),
+                                      margin: EdgeInsets.only(
+                                        left:
+                                            SizeConfig.blockSizeHorizontal * 3,
+                                        top: SizeConfig.blockSizeVertical * 1,
+                                      ),
+                                      child:
+                                          // FutureBuilder(
+                                          //   future: numberOfProductsPerBrand(
+                                          //       categoryBrand[index].productBrand),
+                                          //   builder: (BuildContext context,
+                                          //       AsyncSnapshot snapshot) {
+                                          //     numberofBrands = snapshot.data.documents
+                                          //         .map((doc) =>
+                                          //             Product.fromDocument(doc))
+                                          //         .toList();
+                                          //     if (snapshot.hasData)
+                                          //       return Text(
+                                          //           'U ovoj kategoriji nalazi se: ');
+                                          //     else
+                                          //       return null;
+                                          //   },
+                                          // ),
+                                          Text(
+                                              'U ovoj kategoriji nalazi se 123 Audi')),
                                 ],
                               ),
                             ),
