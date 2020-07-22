@@ -29,7 +29,9 @@ class _ItemCardState extends State<ItemCard> {
         appBar: AppBar(
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,
+
           title: Text(widget.brandNameScreen),
+
         ),
         floatingActionButton: mainFloatingButton(email),
         bottomSheet: Container(

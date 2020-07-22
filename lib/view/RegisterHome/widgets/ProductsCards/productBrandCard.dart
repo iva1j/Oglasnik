@@ -64,6 +64,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
     ));
     return Scaffold(
       appBar: AppBar(
+
         title: Text(widget.categoryName),
       ),
       floatingActionButton: mainFloatingButton(email),

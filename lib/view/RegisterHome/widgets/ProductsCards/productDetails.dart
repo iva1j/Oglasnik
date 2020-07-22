@@ -36,7 +36,10 @@ class _ProductDetailsState extends State<ProductDetails> {
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,
           title: Text('Oglasnik'),
-          leading: LogoutButton(),
+          leading: IconButton(
+            icon: Icon(Icons.close, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
         ),
         floatingActionButton: mainFloatingButton(email),
         bottomSheet: Container(
