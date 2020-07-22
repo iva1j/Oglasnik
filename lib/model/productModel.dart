@@ -72,6 +72,7 @@ class ProductBrand {
       @required this.categoryID,
       @required this.brands,
       this.categoryBrandID});
+      
   factory ProductBrand.fromDocument(DocumentSnapshot doc) {
     return ProductBrand(
       categoryName: doc['categoryName'],
