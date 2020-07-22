@@ -3,12 +3,12 @@ import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 
-final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
+//final GlobalKey<FabCircularMenuState> registeredButtonKey = GlobalKey();
 Stack mainFloatingButton(String email) {
   return Stack(overflow: Overflow.visible, children: <Widget>[
     Builder(
       builder: (context) => FabCircularMenu(
-        key: fabKey,
+        //key: registeredButtonKey,
         alignment: Alignment.bottomRight,
         ringColor: Colors.black.withAlpha(10),
         ringDiameter: 350.0,

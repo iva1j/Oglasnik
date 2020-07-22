@@ -31,7 +31,10 @@ class _ProductDetailsState extends State<ProductDetails> {
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,
           title: Text('Oglasnik'),
-          leading: LogoutButton(),
+          leading: IconButton(
+            icon: Icon(Icons.close, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
         ),
         floatingActionButton: mainFloatingButton(email),
         bottomSheet: Container(
@@ -39,7 +42,6 @@ class _ProductDetailsState extends State<ProductDetails> {
           width: double.infinity,
           color: Color.fromARGB(255, 226, 11, 48),
         ),
-        
         body: FutureBuilder(
             future: Firestore.instance
                 .collection('products')
@@ -203,9 +205,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     ),
                                     child: Text(
                                       products[index].productDesc,
-                                      style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText2,
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
                                     ),
                                   ),
                                   Divider(
