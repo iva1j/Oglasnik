@@ -219,11 +219,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                                       child: Row(
                                         children: products[index]
                                             .productTag
-                                            .removeWhere(
-                                                (element) => element <= 0)
                                             .split(',')
-                                            .map<Widget>((element) =>
-                                                new OglasTag(naziv: element))
+                                            .map<Widget>(
+                                              (element) => element
+                                                          .trim()
+                                                          .length >
+                                                      0
+                                                  ? new OglasTag(naziv: element)
+                                                  : Container(),
+                                            )
                                             .toList(),
                                         /*
                                          <Widget>[

@@ -171,8 +171,13 @@ class _ItemCardState extends State<ItemCard> {
                                   children: snapshot
                                       .data.documents[index]['productTag']
                                       .split(',')
-                                      .map<Widget>((element) =>
-                                          new OglasTag(naziv: element))
+                                      //.removeWhere((item) => item.length == 0)
+                                      //.remove("")
+                                      .map<Widget>(
+                                        (element) => element.trim().length > 0
+                                            ? new OglasTag(naziv: element)
+                                            : Container(),
+                                      )
                                       .toList(),
                                 ),
                               ),
@@ -311,7 +316,6 @@ class OglasTag extends StatelessWidget {
       ),
       child: Text(
         "#" + naziv.replaceAll(new RegExp(r"\s+"), ""),
-        //"#" + naziv,
         style: TextStyle(
           fontSize: SizeConfig.safeBlockHorizontal * 3,
           fontWeight: FontWeight.w300,
