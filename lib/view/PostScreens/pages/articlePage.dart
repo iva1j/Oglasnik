@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/newbackButtonIphone.dart';
 import 'package:Oglasnik/view/PostScreens/pages/pageView/mainPageView.dart';
@@ -11,11 +12,8 @@ class ArticlePage extends StatefulWidget {
 class _ArticlePageState extends State<ArticlePage> {
   @override
   void initState() {
-    productNameController = new TextEditingController();
-    productTagController = new TextEditingController();
-    productDescController = new TextEditingController();
-    productPriceController = new TextEditingController();
-    brandTypeAheadController = new TextEditingController();
+    pageViewInitControllers();
+    dropDownInitialValueState();
     super.initState();
   }
 

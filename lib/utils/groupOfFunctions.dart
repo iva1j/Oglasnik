@@ -27,6 +27,19 @@ class RegisterControllers {
   TextEditingController passwordInputController = new TextEditingController();
 }
 
+pageViewInitControllers() {
+  productNameController = new TextEditingController();
+  productTagController = new TextEditingController();
+  productDescController = new TextEditingController();
+  productPriceController = new TextEditingController();
+}
+
+dropDownInitialValueState() {
+  dropdownValueCategory = "Automobili";
+  dropdownValueBrand = "Audi";
+  dropdownValueCity = 'Sarajevo';
+}
+
 loginInitControllers() {
   signInEmailInputController = new TextEditingController();
   signInPasswordInputController = new TextEditingController();
