@@ -220,8 +220,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         children: products[index]
                                             .productTag
                                             .split(',')
-                                            .map<Widget>((element) =>
-                                                new OglasTag(naziv: element))
+                                            .map<Widget>(
+                                              (element) => element
+                                                          .trim()
+                                                          .length >
+                                                      0
+                                                  ? new OglasTag(naziv: element)
+                                                  : Container(),
+                                            )
                                             .toList(),
                                         /*
                                          <Widget>[
