@@ -1,4 +1,4 @@
-import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

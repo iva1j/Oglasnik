@@ -1,7 +1,7 @@
+import 'package:Oglasnik/utils/shared/PageLogos/mainLogo.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/utils/shared/logoContainer.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/formSignUp.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/signUpFormName.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';

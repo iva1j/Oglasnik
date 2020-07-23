@@ -1,4 +1,4 @@
-import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 

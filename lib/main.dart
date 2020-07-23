@@ -1,5 +1,5 @@
+import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
 import 'package:Oglasnik/utils/lifecycle_manager.dart';
-import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 
