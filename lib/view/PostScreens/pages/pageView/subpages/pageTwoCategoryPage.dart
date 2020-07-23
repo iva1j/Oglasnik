@@ -125,48 +125,49 @@ class _CategoryPageState extends State<CategoryPage> {
                     margin:
                         EdgeInsets.symmetric(horizontal: 35.0, vertical: 20.0),
                     child: Card(
-                        elevation: 16,
-                        child: Container(
-                            margin: EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 5,
-                              right: SizeConfig.blockSizeHorizontal * 2,
+                      elevation: 16,
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          right: SizeConfig.blockSizeHorizontal * 2,
+                        ),
+                        child: Center(
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: custom.DropdownButton<String>(
+                              value: dropdownValueCategory,
+                              height:
+                                  MediaQuery.of(context).size.height / 2.229,
+                              icon: Icon(Icons.arrow_drop_down),
+                              iconSize: 24,
+                              elevation: 16,
+                              isExpanded: true,
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: SizeConfig.safeBlockHorizontal * 4,
+                                height: 1.5,
+                              ),
+                              underline: Container(),
+                              onChanged: (String productCategoryList) =>
+                                  setState(() => {
+                                        dropdownValueCategory =
+                                            productCategoryList,
+                                        dropdownValueBrand = categoryBrands[
+                                            dropdownValueCategory][0],
+                                      }),
+                              items: categoryNames
+                                  .map<custom.DropdownMenuItem<String>>(
+                                      (String value) {
+                                return custom.DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
                             ),
-                            child: Center(
-                                child: Align(
-                                    alignment: Alignment.topRight,
-                                    child: custom.DropdownButton<String>(
-                                      value: dropdownValueCategory,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              2.229,
-                                      icon: Icon(Icons.arrow_drop_down),
-                                      iconSize: 24,
-                                      elevation: 16,
-                                      isExpanded: true,
-                                      style: TextStyle(
-                                        color: Colors.black87,
-                                        fontSize:
-                                            SizeConfig.safeBlockHorizontal * 4,
-                                        height: 1.5,
-                                      ),
-                                      underline: Container(),
-                                      onChanged: (String productCategoryList) =>
-                                          setState(() => {
-                                                dropdownValueCategory =
-                                                    productCategoryList,
-                                                dropdownValueBrand =
-                                                    categoryBrands[
-                                                        dropdownValueCategory][0],
-                                              }),
-                                      items: categoryNames
-                                          .map<custom.DropdownMenuItem<String>>(
-                                              (String value) {
-                                        return custom.DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(value),
-                                        );
-                                      }).toList(),
-                                    ))))),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                   Container(
                     margin:

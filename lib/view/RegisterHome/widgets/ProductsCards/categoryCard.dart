@@ -58,19 +58,22 @@ class _CategoryCardState extends State<CategoryCard> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                    top: SizeConfig.blockSizeVertical),
-                                child: InkWell(
-                                  onTap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (_) => ProductBrandCard(
-                                              categoryName: categories[index]
-                                                  .categoryName,
-                                            ))); //#TODO: Ubaciti ispravnu putanju
-                                  },
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (_) => ProductBrandCard(
+                                      categoryName:
+                                          categories[index].categoryName,
+                                    ),
+                                  ),
+                                ); //#TODO: Ubaciti ispravnu putanju
+                              },
+                              child: Align(
+                                alignment: Alignment.topCenter,
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      top: SizeConfig.blockSizeVertical),
                                   child: Text(
                                     categories[index].categoryName,
                                     style: TextStyle(

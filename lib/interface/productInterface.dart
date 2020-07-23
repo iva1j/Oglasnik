@@ -22,11 +22,14 @@ abstract class ReadProductInterface {
   Future getProduct();
 }
 
-abstract class ReadCategoriesInterface{
+abstract class ReadCategoriesInterface {
   Future getCategories();
 }
 
-
-abstract class ReadBrandInterface{
+abstract class ReadBrandInterface {
   Future getBrandsByCategories(String categoryName);
+}
+
+abstract class RandomPhotoInterface {
+  Future getRandomImages();
 }
