@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 
@@ -101,4 +100,3 @@ loginDisposeControllers() {
   signInPasswordInputController.dispose();
   signInRegisterFormKey.currentState.dispose();
 }
-

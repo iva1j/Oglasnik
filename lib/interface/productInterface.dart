@@ -21,3 +21,12 @@ abstract class ProductInterface {
 abstract class ReadProductInterface {
   Future getProduct();
 }
+
+abstract class ReadCategoriesInterface{
+  Future getCategories();
+}
+
+
+abstract class ReadBrandInterface{
+  Future getBrandsByCategories(String categoryName);
+}
