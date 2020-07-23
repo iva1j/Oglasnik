@@ -14,6 +14,7 @@ class BrandForm extends StatefulWidget {
 }
 
 class _BrandFormState extends State<BrandForm> {
+  List<String> hambe = ["AHAHAHA", "JAHAHAA"];
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -40,14 +41,16 @@ class _BrandFormState extends State<BrandForm> {
                   height: 1.5,
                 ),
                 underline: Container(),
-                onChanged: (String productBrandList) => setState(() {
+                onChanged:
+                    // (dropdownValueCategory == 'Kategorija1')
+                    //     ? null
+                    //     :
+                    (String productBrandList) => setState(() {
                   dropdownValueBrand =
-                      productBrandList; // u productBrandList treba povući vrijednosti iz Firestora imajući u vidu kategoriju koja se odabere (prvi brand iz kategorije)
+                      productBrandList; // u productBrandList treba povući vrijednosti iz Firestora ali imajući u vidu kategoriju koja se odabere (prvi brand iz kategorije)
                 }),
-                items:
-                    List<String>.from((categoryBrands)[dropdownValueCategory])
-                        .toList()
-                        .map<custom2.DropdownMenuItem<String>>((String value) {
+                items: List<String>.from(categoryBrands[dropdownValueCategory])
+                    .map<custom2.DropdownMenuItem<String>>((String value) {
                   return custom2.DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),

@@ -1,4 +1,3 @@
-import 'package:Oglasnik/model/productModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -32,9 +31,10 @@ TextEditingController productPriceController;
 
 //String dropdownValueCategory = 'Kategorija1';
 
-String dropdownValueCategory = 'Sportska Oprema';
+String dropdownValueCategory = "Automobili";
+String dropdownValueBrand = "Audi";
 String dropdownValueCity = 'Sarajevo';
-String dropdownValueBrand = 'Brands';
+//String dropdownValueBrand = 'Brands';
 final GlobalKey<FormState> productBrandFormKey = GlobalKey<FormState>();
 
 TextEditingController brandTypeAheadController;
@@ -57,7 +57,8 @@ final GlobalKey<FormState> productCategoryDropDownKey = GlobalKey<FormState>();
 List<String> categoryNames = List<String>();
 
 var categoryBrands = Map();
-
+List categoryBrand = [];
+List numberofBrands = [];
 //var catBrands = Map<String, List<String>>();
 
 List products = [];

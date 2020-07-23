@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
+import 'package:quiver/strings.dart';
 
 class AddImageOne extends StatelessWidget {
   const AddImageOne({
