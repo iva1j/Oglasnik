@@ -85,12 +85,6 @@ class CategoryPage extends StatefulWidget {
 
 class _CategoryPageState extends State<CategoryPage> {
   @override
-  void dispose() {
-    pageTwoDisposeControllers();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;

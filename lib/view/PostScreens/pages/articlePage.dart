@@ -11,14 +11,12 @@ class ArticlePage extends StatefulWidget {
 class _ArticlePageState extends State<ArticlePage> {
   @override
   void initState() {
-    pageController = new PageController();
+    productNameController = new TextEditingController();
+    productTagController = new TextEditingController();
+    productDescController = new TextEditingController();
+    productPriceController = new TextEditingController();
+    brandTypeAheadController = new TextEditingController();
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    pageController.dispose();
-    super.dispose();
   }
 
   @override
