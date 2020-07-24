@@ -203,7 +203,6 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                           crossAxisSpacing: 3,
                                           mainAxisSpacing: 3,
                                           children: images,
-                                          shrinkWrap: true,
                                         ),
                                       ),
                                     ),

@@ -263,7 +263,7 @@ class ItemImage extends StatelessWidget {
       width: SizeConfig.blockSizeVertical * 20,
       decoration: BoxDecoration(
         image: DecorationImage(
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
             image: img == "" ? AssetImage(noPhoto) : NetworkImage(img)),
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
         color: Colors.redAccent,

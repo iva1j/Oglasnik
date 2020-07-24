@@ -10,7 +10,8 @@ class CategoryViewModel implements ReadCategoriesInterface {
   @override
   Future getCategories() async {
     var firestore = Firestore.instance;
-    QuerySnapshot qn = await firestore.collection('category').getDocuments();
+    QuerySnapshot qn =
+        await firestore.collection('category').limit(10).getDocuments();
     return qn;
   }
 }
