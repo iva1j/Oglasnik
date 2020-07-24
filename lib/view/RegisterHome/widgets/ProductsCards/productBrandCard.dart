@@ -33,28 +33,20 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
     SizeConfig().init(context);
 
     images.add(Image.asset(
-      'assets/images/audi.jpg',
-      height: SizeConfig.blockSizeHorizontal * 4,
-      width: SizeConfig.blockSizeHorizontal * 4,
-      fit: BoxFit.fill,
+      'assets/img4.jpg',
+      fit: BoxFit.cover,
     ));
     images.add(Image.asset(
-      'assets/images/audi2.jpg',
-      height: SizeConfig.blockSizeHorizontal * 4,
-      width: SizeConfig.blockSizeHorizontal * 4,
-      fit: BoxFit.fill,
-    ));
-    images.add(Image.asset(
-      'assets/images/audi3.jpg',
-      height: SizeConfig.blockSizeHorizontal * 4,
-      width: SizeConfig.blockSizeHorizontal * 4,
-      fit: BoxFit.fill,
+      'assets/images/yoda.jpg',
+      fit: BoxFit.cover,
     ));
     images.add(Image.asset(
       'assets/images/audi4.jpg',
-      height: SizeConfig.blockSizeHorizontal * 4,
-      width: SizeConfig.blockSizeHorizontal * 4,
-      fit: BoxFit.fill,
+      fit: BoxFit.cover,
+    ));
+    images.add(Image.asset(
+      'assets/images/shoes.jpg',
+      fit: BoxFit.cover,
     ));
     return Scaffold(
       appBar: AppBar(
@@ -204,11 +196,14 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                         ),
                                         child: new GridView.count(
                                           padding: EdgeInsets.all(0),
+                                          physics:
+                                              new NeverScrollableScrollPhysics(),
                                           crossAxisCount: 2,
                                           childAspectRatio: 1,
                                           crossAxisSpacing: 3,
                                           mainAxisSpacing: 3,
                                           children: images,
+                                          shrinkWrap: true,
                                         ),
                                       ),
                                     ),
