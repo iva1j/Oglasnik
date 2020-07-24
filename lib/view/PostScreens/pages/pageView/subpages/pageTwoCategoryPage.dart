@@ -58,6 +58,13 @@ class _CategoryPageState extends State<CategoryPage> {
                                 child: Align(
                                     alignment: Alignment.topRight,
                                     child: custom.DropdownButton<String>(
+                                      selectedItemBuilder:
+                                          (BuildContext context) {
+                                        return categoryNames
+                                            .map<Widget>((String item) {
+                                          return Text(item);
+                                        }).toList();
+                                      },
                                       value: dropdownValueCategory,
                                       height:
                                           MediaQuery.of(context).size.height /

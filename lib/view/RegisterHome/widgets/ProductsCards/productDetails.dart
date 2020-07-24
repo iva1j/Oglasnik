@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -341,7 +342,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     });
               } else {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: SpinnerCircular(),
                 );
               }
             }));
