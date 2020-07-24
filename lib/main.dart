@@ -60,6 +60,7 @@ void initCategoryBrands() async {
     print(element.runtimeType);
   });
 }
+
 /*
 Future<bool> checkIfProductBrandExists(String brandName) async {
   final QuerySnapshot productsQuery =
@@ -74,7 +75,7 @@ Future<bool> checkIfProductBrandExists(String brandName) async {
   return false;
 }
 */
-
+/*
 Future<bool> checkIfProductBrandExists(String brandName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
       .collection('products')
@@ -84,25 +85,58 @@ Future<bool> checkIfProductBrandExists(String brandName) async {
   final List<DocumentSnapshot> documents = productsQuery.documents;
   return documents.length > 0;
 }
-
-Future<int> numberOfProductsPerBrand(String brandName) async {
+*/
+numberOfProductsPerBrandTest(String brandName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
       .collection('products')
-      //.where('productBrand', isEqualTo: brandName)
+      .where('productBrand', isEqualTo: brandName)
       .getDocuments();
 
-  print(productsQuery);
-
   final List<DocumentSnapshot> documents = productsQuery.documents;
-  print(documents);
-  print(brandName + " ima ");
-  print(documents.length);
+
   return documents.length;
 }
 
+// implementacija ove funkcije blizu kraju
 /*
-Future<List<String>> top3PerCategory(String categoryName) {
-  
+top3BrandsPerCategory(String categoryName) async {
+  final QuerySnapshot productsQuery = await Firestore.instance
+      .collection('products')
+      .where('productCategory', isEqualTo: categoryName)
+      .getDocuments();
+
+  final List<DocumentSnapshot> documents = productsQuery.documents;
+
+  final top3 = <DocumentSnapshot, dynamic>{};
+
+  for (final item in documents) {
+    var numb = await numberOfProductsPerBrandTest(item["productBrand"]);
+    top3[item] = numb;
+  }
+
+  documents.sort((a, b) => top3[b].compareTo(top3[a]));
+
+  if (documents.length == 0 || documents.length == 1) return documents;
+  int i = 0;
+  while (i < documents.length - 1) {
+    //if (i + 1 == documents.length) break;
+    if (documents[i]["productBrand"] != documents[i + 1]["productBrand"])
+      i++;
+    else
+      documents.removeAt(i + 1);
+  }
+
+  if (documents.length < 3) {
+    final QuerySnapshot productBrands = await Firestore.instance
+        .collection('categoryBrand')
+        .where('categoryName', isEqualTo: categoryName)
+        .getDocuments();
+    final List<DocumentSnapshot> docs = productBrands.documents;
+    //...
+    while (documents.length < 3) {}
+  }
+
+  //return documents.sublist(0, 3);
 }
 */
 class MyApp extends StatelessWidget {

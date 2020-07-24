@@ -23,6 +23,7 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
+  List<String> l;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -113,6 +114,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                                         .productName);
                                                     print(products[index]
                                                         .productImg1);
+                                                    print(index);
                                                     Navigator.push(
                                                         context,
                                                         MaterialPageRoute(

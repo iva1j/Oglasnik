@@ -1,3 +1,4 @@
+import 'package:Oglasnik/main.dart';
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
@@ -86,9 +87,10 @@ class _CategoryCardState extends State<CategoryCard> {
                               thickness: SizeConfig.blockSizeVertical * 0.2,
                             ),
                             FutureBuilder(
-                                future: numberOfProductsPerBrand(categoryBrands[
-                                        categories[index].categoryName][0]
-                                    .toString()),
+                                future: numberOfProductsPerBrandTest(
+                                    categoryBrands[
+                                            categories[index].categoryName][0]
+                                        .toString()),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return CategoryCardRow(
@@ -108,9 +110,10 @@ class _CategoryCardState extends State<CategoryCard> {
                                   }
                                 }),
                             FutureBuilder(
-                                future: numberOfProductsPerBrand(categoryBrands[
-                                        categories[index].categoryName][1]
-                                    .toString()),
+                                future: numberOfProductsPerBrandTest(
+                                    categoryBrands[
+                                            categories[index].categoryName][1]
+                                        .toString()),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return CategoryCardRow(
@@ -130,9 +133,10 @@ class _CategoryCardState extends State<CategoryCard> {
                                   }
                                 }),
                             FutureBuilder(
-                                future: numberOfProductsPerBrand(categoryBrands[
-                                        categories[index].categoryName][2]
-                                    .toString()),
+                                future: numberOfProductsPerBrandTest(
+                                    categoryBrands[
+                                            categories[index].categoryName][2]
+                                        .toString()),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     //print(snapshot.data);
