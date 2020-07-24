@@ -69,10 +69,14 @@ flutter:
     - .env
     - assets/images/audi.jpg
     - assets/images/audi2.jpg
-    - assets/images/audi3.jpg
     - assets/images/audi4.jpg
-    - assets/images/audi5.jpg
+    - assets/images/shoes.jpg
+    - assets/images/yoda.jpg
     - assets/images/nophoto.jpg
+    - assets/img4.jpg
+    - assets/img3.jpg
+    - assets/img2.jpg
+    - assets/img1.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
