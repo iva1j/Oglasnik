@@ -1,4 +1,3 @@
-import 'package:Oglasnik/main.dart';
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
@@ -7,7 +6,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
@@ -96,9 +95,10 @@ class _CategoryCardState extends State<CategoryCard> {
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return CategoryCardRow(
-                                      icon: Icon(
-                                        Icons.directions_car,
-                                        color: Colors.white,
+                                      icon: Transform.scale(
+                                        scale: 0.8,
+                                        child: SvgPicture.network(
+                                            categories[index].icon),
                                       ),
                                       name: categoryBrands[
                                               categories[index].categoryName][0]
@@ -119,9 +119,10 @@ class _CategoryCardState extends State<CategoryCard> {
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return CategoryCardRow(
-                                      icon: Icon(
-                                        Icons.directions_car,
-                                        color: Colors.white,
+                                      icon: Transform.scale(
+                                        scale: 0.8,
+                                        child: SvgPicture.network(
+                                            categories[index].icon),
                                       ),
                                       name: categoryBrands[
                                               categories[index].categoryName][1]
@@ -143,9 +144,10 @@ class _CategoryCardState extends State<CategoryCard> {
                                   if (snapshot.hasData) {
                                     //print(snapshot.data);
                                     return CategoryCardRow(
-                                      icon: Icon(
-                                        Icons.directions_car,
-                                        color: Colors.white,
+                                      icon: Transform.scale(
+                                        scale: 0.8,
+                                        child: SvgPicture.network(
+                                            categories[index].icon),
                                       ),
                                       name: categoryBrands[
                                               categories[index].categoryName][2]

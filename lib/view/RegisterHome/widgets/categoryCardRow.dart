@@ -4,7 +4,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 
 class CategoryCardRow extends StatelessWidget {
   final String name, count;
-  final Icon icon;
+  final Widget icon;
 
   const CategoryCardRow({
     this.icon,
@@ -29,7 +29,7 @@ class CategoryCardRow extends StatelessWidget {
                     top: SizeConfig.blockSizeVertical * 2,
                   ),
                   child: CircleAvatar(
-                    radius: 30,
+                    radius: 20,
                     backgroundColor: mainAppColor,
                     child: icon,
                   ),
