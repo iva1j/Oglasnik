@@ -124,6 +124,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                                         .productName);
                                                     print(products[index]
                                                         .productImg1);
+                                                    print(index);
                                                     Navigator.push(
                                                       context,
                                                       MaterialPageRoute(

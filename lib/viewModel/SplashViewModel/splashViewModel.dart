@@ -1,3 +1,5 @@
+import 'package:Oglasnik/main.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -16,6 +18,14 @@ Future<void> splashScreenRouter() async {
 
   print(globals.email);
   print(globals.phoneNumber);
+
+  print("LSASDSAGASHAHADH");
+  //numberOfProductsPerBrandTest("Ford").then((value) => print(value));
+
+  //print(top3BrandsPerCategory("Automobili"));
+
+  //top3BrandsPerCategory("Automobili");
+  print("AHDAHADHADHDHAHDADHADJ");
 
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,

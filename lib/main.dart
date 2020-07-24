@@ -7,6 +7,7 @@ import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
