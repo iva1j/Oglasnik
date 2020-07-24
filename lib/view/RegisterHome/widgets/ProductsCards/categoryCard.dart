@@ -5,6 +5,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
 
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
