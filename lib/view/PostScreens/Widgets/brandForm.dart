@@ -29,6 +29,7 @@ class _BrandFormState extends State<BrandForm> {
               alignment: Alignment.topRight,
               child: custom2.DropdownButton<String>(
                 value: dropdownValueBrand,
+                key: productBrandFormKey,
                 disabledHint: Text('Molimo odaberite kategoriju'),
                 height: MediaQuery.of(context).size.height / 2.229,
                 icon: Icon(Icons.arrow_drop_down),

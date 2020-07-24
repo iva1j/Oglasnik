@@ -154,6 +154,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           productTag = productTagController.text;
           productDesc = productDescController.text;
           productprice = productPriceController.text;
+
           print(email + productName + productTag);
           await CreateProduct().createProduct(
             context,
@@ -180,6 +181,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           pathGlobal1 = null;
           pathGlobal2 = null;
           pathGlobal3 = null;
+
           Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (_) => RegisteredHome()));
         } else

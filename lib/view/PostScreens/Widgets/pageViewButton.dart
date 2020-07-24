@@ -23,7 +23,6 @@ class PageViewButton extends StatelessWidget {
         if (pageController.page == 4) {
           productName = productNameController.text;
           productCategory = dropdownValueCategory;
-          productBrand = brandTypeAheadController.text;
           productLocation = dropdownValueCity;
           productTag = productTagController.text;
           productDesc = productDescController.text;

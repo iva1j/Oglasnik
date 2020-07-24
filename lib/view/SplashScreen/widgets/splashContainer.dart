@@ -1,4 +1,4 @@
-import 'package:Oglasnik/utils/shared/logoContainer.dart';
+import 'package:Oglasnik/utils/shared/PageLogos/splashLogo.dart';
 import 'package:flutter/material.dart';
 
 class SplashContainer extends StatelessWidget {
