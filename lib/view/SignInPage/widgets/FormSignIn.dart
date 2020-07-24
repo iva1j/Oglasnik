@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/SigninTextFields/emailSigninTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/SigninTextFields/passwordSigninTextField.dart';
@@ -30,17 +31,13 @@ class FormSignIn extends StatefulWidget {
 class _FormSignInState extends State<FormSignIn> {
   @override
   void initState() {
-    signInRegisterFormKey = GlobalKey<FormState>();
-    signInEmailInputController = new TextEditingController();
-    signInPasswordInputController = new TextEditingController();
+    loginInitControllers();
     super.initState();
   }
 
   @override
   void dispose() {
-    signInRegisterFormKey.currentState.dispose();
-    signInEmailInputController.dispose();
-    signInPasswordInputController.dispose();
+    loginDisposeControllers();
     super.dispose();
   }
 
