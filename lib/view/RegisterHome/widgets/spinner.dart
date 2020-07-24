@@ -11,9 +11,9 @@ class Loading extends StatelessWidget {
       height: SizeConfig.blockSizeVertical * 100,
       color: Colors.white,
       child: Center(
-        child: SpinKitWave(
+        child: SpinKitCircle(
           color: mainAppColor,
-          size: 40.0,
+          size: 80.0,
         ),
       ),
     );

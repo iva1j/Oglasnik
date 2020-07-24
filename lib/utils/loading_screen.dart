@@ -1,3 +1,4 @@
+import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:flutter/material.dart';
 
 //modification of library modal_progress_hud;
@@ -63,7 +64,7 @@ class LoadingScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.center,
                   child: SizedBox(
-                    child: CircularProgressIndicator(
+                    child: SpinnerCircular(
                         // backgroundColor: Palette.textColorInvert,
                         ),
                     height: 30.0,

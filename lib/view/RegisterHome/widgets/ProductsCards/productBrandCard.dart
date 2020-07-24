@@ -3,6 +3,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -214,7 +215,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                         });
                   } else {
                     return Center(
-                      child: CircularProgressIndicator(),
+                      child: SpinnerCircular(),
                     );
                   }
                 }),
