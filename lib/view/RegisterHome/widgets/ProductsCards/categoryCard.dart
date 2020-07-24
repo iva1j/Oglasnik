@@ -4,6 +4,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
 
@@ -106,7 +107,7 @@ class _CategoryCardState extends State<CategoryCard> {
                                     );
                                   } else {
                                     return Center(
-                                      child: CircularProgressIndicator(),
+                                      child: SpinnerCircular(),
                                     );
                                   }
                                 }),
@@ -129,7 +130,7 @@ class _CategoryCardState extends State<CategoryCard> {
                                     );
                                   } else {
                                     return Center(
-                                      child: CircularProgressIndicator(),
+                                      child: SpinnerCircular(),
                                     );
                                   }
                                 }),
@@ -153,7 +154,7 @@ class _CategoryCardState extends State<CategoryCard> {
                                     );
                                   } else {
                                     return Center(
-                                      child: CircularProgressIndicator(),
+                                      child: SpinnerCircular(),
                                     );
                                   }
                                 }),
@@ -166,7 +167,7 @@ class _CategoryCardState extends State<CategoryCard> {
                     });
               } else {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: SpinnerCircular(),
                 );
               }
             }),
