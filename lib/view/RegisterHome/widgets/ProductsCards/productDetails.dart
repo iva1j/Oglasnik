@@ -1,4 +1,4 @@
-import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -23,7 +23,7 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  List<String> l;
+  final List imageSlider = [];
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -53,6 +53,18 @@ class _ProductDetailsState extends State<ProductDetails> {
                 products = snapshot.data.documents
                     .map((doc) => Product.fromDocument(doc))
                     .toList();
+                if (products[0].productImg1 != null) {
+                  imageSlider.add(products[0].productImg1);
+                }
+                if (products[0].productImg2 != null) {
+                  imageSlider.add(products[0].productImg2);
+                }
+                if (products[0].productImg3 != null) {
+                  imageSlider.add(products[0].productImg3);
+                }
+                if (imageSlider.length == 0) {
+                  imageSlider.add("assets/images/nophoto.jpg");
+                }
                 return ListView.builder(
                     shrinkWrap: true,
                     itemCount: products.length,
@@ -90,19 +102,17 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     width: SizeConfig.screenWidth,
                                     child: Container(
                                       child: CarouselSlider(
+                                        enableInfiniteScroll: false,
                                         initialPage: 0,
                                         viewportFraction: 1.0,
                                         aspectRatio: 1.5,
-                                        items: <String>[
-                                          products[index].productImg1,
-                                          products[index].productImg2,
-                                          products[index].productImg3
-                                        ].map((imgUrl) {
+                                        items: imageSlider.map((imgUrl) {
                                           return Builder(
                                             builder: (BuildContext context) {
                                               return Container(
                                                 child: GestureDetector(
-                                                  child: imgUrl == null
+                                                  child: imgUrl ==
+                                                          "assets/images/nophoto.jpg"
                                                       ? Image.asset(
                                                           "assets/images/nophoto.jpg")
                                                       : Image.network(
@@ -116,21 +126,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                                                         .productImg1);
                                                     print(index);
                                                     Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                PrikazSlika(
-                                                                    listaSlika: [
-                                                                      products[
-                                                                              index]
-                                                                          .productImg1,
-                                                                      products[
-                                                                              index]
-                                                                          .productImg2,
-                                                                      products[
-                                                                              index]
-                                                                          .productImg3
-                                                                    ])));
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            PrikazSlika(
+                                                          listaSlika:
+                                                              imageSlider,
+                                                        ),
+                                                      ),
+                                                    );
                                                   },
                                                 ),
                                               );
@@ -222,8 +226,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         children: products[index]
                                             .productTag
                                             .split(',')
-                                            .map<Widget>((element) =>
-                                                new OglasTag(naziv: element))
+                                            .map<Widget>(
+                                              (element) => element
+                                                          .trim()
+                                                          .length >
+                                                      0
+                                                  ? new OglasTag(naziv: element)
+                                                  : Container(),
+                                            )
                                             .toList(),
                                         /*
                                          <Widget>[

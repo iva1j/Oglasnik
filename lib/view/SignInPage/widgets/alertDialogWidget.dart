@@ -1,4 +1,5 @@
-import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/signinValidation/emailAlertDialogValidator.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
@@ -19,14 +20,12 @@ class AlertDialogWidget extends StatefulWidget {
 class _AlertDialogWidgetState extends State<AlertDialogWidget> {
   @override
   void initState() {
-    alertFormKey = GlobalKey<FormState>();
-    emailInputControllerAlertDialog = new TextEditingController();
+    alertDialogInitControllers();
     super.initState();
   }
 
   void dispose() {
-    alertFormKey = GlobalKey<FormState>();
-    emailInputControllerAlertDialog.dispose();
+    alertDialogDispose();
     super.dispose();
   }
 

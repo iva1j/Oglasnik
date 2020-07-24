@@ -25,7 +25,6 @@ class _RegisterButtonState extends State<RegisterButton> {
 
   @override
   initState() {
-    RegisterControllers();
     super.initState();
   }
 

@@ -26,6 +26,7 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
                       alignment: Alignment.topRight,
                       child: custom.DropdownButton<String>(
                         value: dropdownValueCategory,
+                        key: productCategoryDropDownKey,
                         height: MediaQuery.of(context).size.height / 2.229,
                         icon: Icon(Icons.arrow_drop_down),
                         iconSize: 24,

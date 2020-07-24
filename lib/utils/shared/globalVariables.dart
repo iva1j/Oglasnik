@@ -34,10 +34,9 @@ TextEditingController productPriceController;
 String dropdownValueCategory = "Automobili";
 String dropdownValueBrand = "Audi";
 String dropdownValueCity = 'Sarajevo';
-//String dropdownValueBrand = 'Brands';
-final GlobalKey<FormState> productBrandFormKey = GlobalKey<FormState>();
 
-TextEditingController brandTypeAheadController;
+//String dropdownValueBrand = 'Brands';
+
 int buttonIdentifier;
 bool buttonOne = false;
 bool buttonTwo = false;
@@ -53,6 +52,7 @@ final GlobalKey<FormState> productDescFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productTagFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productPriceFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productCategoryDropDownKey = GlobalKey<FormState>();
+final GlobalKey<FormState> productBrandFormKey = GlobalKey<FormState>();
 
 List<String> categoryNames = List<String>();
 

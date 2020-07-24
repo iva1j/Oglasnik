@@ -1,7 +1,8 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
+import 'package:Oglasnik/utils/shared/PageLogos/mainLogo.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/utils/shared/logoContainer.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/formSignUp.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/signUpFormName.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
@@ -27,17 +28,13 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   @override
   initState() {
-    signUpFullNameInputController = new TextEditingController();
-    signUpPhoneNumberInputController = new TextEditingController();
-    signUpEmailInputController = new TextEditingController();
-    signUpPasswordInputController = new TextEditingController();
-    signUpRegisterFormKey = GlobalKey<FormState>();
+    registerPageInitControllers();
     super.initState();
   }
 
   @override
   void dispose() {
-    signUpRegisterFormKey.currentState.dispose();
+    registerPageDispose();
     super.dispose();
   }
 
