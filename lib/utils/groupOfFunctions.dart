@@ -77,6 +77,9 @@ dropDownInitialValueState() {
   dropdownValueCategory = "Automobili";
   dropdownValueBrand = "Audi";
   dropdownValueCity = 'Sarajevo';
+  buttonOne = false;
+  buttonTwo = false;
+  buttonThree = false;
 }
 
 loginInitControllers() {
