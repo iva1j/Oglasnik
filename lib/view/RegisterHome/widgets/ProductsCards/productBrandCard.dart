@@ -4,6 +4,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/getBrandData.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/uniqueBrands.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -28,28 +29,28 @@ class ProductBrandCard extends StatefulWidget {
 }
 
 class _ProductBrandCardState extends State<ProductBrandCard> {
-  List<Widget> images = new List<Widget>();
-
+  List images = new List();
+  List listaSlika = [];
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
-    images.add(Image.asset(
-      'assets/img4.jpg',
-      fit: BoxFit.cover,
-    ));
-    images.add(Image.asset(
-      'assets/images/yoda.jpg',
-      fit: BoxFit.cover,
-    ));
-    images.add(Image.asset(
-      'assets/images/audi4.jpg',
-      fit: BoxFit.cover,
-    ));
-    images.add(Image.asset(
-      'assets/images/shoes.jpg',
-      fit: BoxFit.cover,
-    ));
+    // images.add(Image.asset(
+    //   'assets/img4.jpg',
+    //   fit: BoxFit.cover,
+    // ));
+    // images.add(Image.asset(
+    //   'assets/images/yoda.jpg',
+    //   fit: BoxFit.cover,
+    // ));
+    // images.add(Image.asset(
+    //   'assets/images/audi4.jpg',
+    //   fit: BoxFit.cover,
+    // ));
+    // images.add(Image.asset(
+    //   'assets/images/shoes.jpg',
+    //   fit: BoxFit.cover,
+    // ));
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -80,6 +81,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                         .toList();
 
                     return ListView.builder(
+                        //lista svih automobila
                         itemCount: categoryBrand.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
@@ -197,15 +199,69 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                           bottom:
                                               SizeConfig.blockSizeVertical * 2,
                                         ),
-                                        child: new GridView.count(
-                                          padding: EdgeInsets.all(0),
-                                          physics:
-                                              new NeverScrollableScrollPhysics(),
-                                          crossAxisCount: 2,
-                                          childAspectRatio: 1,
-                                          crossAxisSpacing: 3,
-                                          mainAxisSpacing: 3,
-                                          children: images,
+                                        // child: GridView.builder(
+                                        //     gridDelegate:
+                                        //         SliverGridDelegateWithFixedCrossAxisCount(
+                                        //             crossAxisCount: (MediaQuery
+                                        //                             .of(context)
+                                        //                         .orientation ==
+                                        //                     Orientation
+                                        //                         .portrait)
+                                        //                 ? 2
+                                        //                 : 3),
+                                        //     itemBuilder: null),
+                                        child: FutureBuilder(
+                                          future: getBrandData(
+                                              categoryBrand[index]
+                                                  .productBrand),
+                                          builder: (BuildContext context,
+                                              AsyncSnapshot snapshot) {
+                                            if (snapshot.hasData) {
+                                              images.add(Image.network(
+                                                snapshot.data.documents[0].map(
+                                                    (doc) =>
+                                                        Product.fromDocument(
+                                                            doc)),
+                                                fit: BoxFit.cover,
+                                              ));
+                                              images.add(Image.network(
+                                                snapshot.data.documents[1].map(
+                                                    (doc) =>
+                                                        Product.fromDocument(
+                                                            doc)),
+                                                fit: BoxFit.cover,
+                                              ));
+                                              images.add(Image.network(
+                                                snapshot.data.documents[2].map(
+                                                    (doc) =>
+                                                        Product.fromDocument(
+                                                            doc)),
+                                                fit: BoxFit.cover,
+                                              ));
+                                              images.add(Image.network(
+                                                snapshot.data.documents[3].map(
+                                                    (doc) =>
+                                                        Product.fromDocument(
+                                                            doc)),
+                                                fit: BoxFit.cover,
+                                              ));
+                                              return new GridView.count(
+                                                padding: EdgeInsets.all(0),
+                                                physics:
+                                                    new NeverScrollableScrollPhysics(),
+                                                crossAxisCount: 2,
+                                                childAspectRatio: 1,
+                                                crossAxisSpacing: 3,
+                                                mainAxisSpacing: 3,
+                                                children: images,
+                                                shrinkWrap: true,
+                                              );
+                                            } else {
+                                              return Center(
+                                                child: SpinnerCircular(),
+                                              );
+                                            }
+                                          },
                                         ),
                                       ),
                                     ),
