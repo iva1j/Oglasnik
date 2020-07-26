@@ -53,9 +53,15 @@ class _CategoryCardState extends State<CategoryCard> {
                             Radius.circular(10),
                           ),
                         ),
-                        margin: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 5,
-                          vertical: SizeConfig.blockSizeVertical * 10,
+                        // margin: EdgeInsets.symmetric(
+                        //   horizontal: SizeConfig.blockSizeHorizontal * 5,
+                        //   vertical: SizeConfig.blockSizeVertical * 5,
+                        // ),
+                        margin: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          right: SizeConfig.blockSizeHorizontal * 5,
+                          top: SizeConfig.blockSizeVertical * 2,
+                          bottom: SizeConfig.blockSizeVertical * 3,
                         ),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -174,6 +180,9 @@ class _CategoryCardState extends State<CategoryCard> {
               }
             }),
       ),
+      SizedBox(
+        height: SizeConfig.blockSizeVertical * 8,
+      )
     ]);
   }
 }
