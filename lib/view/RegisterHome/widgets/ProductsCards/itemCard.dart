@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
@@ -21,6 +22,7 @@ class _ItemCardState extends State<ItemCard> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.close, color: Colors.white),
@@ -38,9 +40,9 @@ class _ItemCardState extends State<ItemCard> {
         ),
         body: Column(
           children: <Widget>[
-            SizedBox(
-              height: SizeConfig.blockSizeVertical * 10,
-            ),
+            // SizedBox(
+            //   height: SizeConfig.blockSizeVertical * 10,
+            // ),
             Expanded(
               child: StreamBuilder(
                   stream: Firestore.instance
@@ -83,8 +85,8 @@ class _ItemCardState extends State<ItemCard> {
                           margin: EdgeInsets.only(
                             left: SizeConfig.blockSizeHorizontal * 5,
                             right: SizeConfig.blockSizeHorizontal * 5,
-                            //top: SizeConfig.blockSizeVertical * 5,
-                            bottom: SizeConfig.blockSizeVertical * 5,
+                            top: SizeConfig.blockSizeVertical * 2,
+                            bottom: SizeConfig.blockSizeVertical * 4,
                           ),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -188,6 +190,9 @@ class _ItemCardState extends State<ItemCard> {
                     );
                   }),
             ),
+            SizedBox(
+              height: SizeConfig.blockSizeVertical * 6,
+            )
           ],
         ));
   }
@@ -213,8 +218,8 @@ class ItemName extends StatelessWidget {
         child: Text(
           name,
           style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 5,
-            fontWeight: FontWeight.w700,
+            fontSize: SizeConfig.safeBlockHorizontal * 6,
+            fontWeight: FontWeight.w400,
           ),
         ),
       ),
@@ -233,12 +238,16 @@ class ItemDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        top: SizeConfig.blockSizeVertical * 2,
-        bottom: SizeConfig.blockSizeVertical,
-        left: SizeConfig.blockSizeHorizontal * 1,
+        // top: SizeConfig.blockSizeVertical * 1,
+        // bottom: SizeConfig.blockSizeVertical,
+        left: SizeConfig.blockSizeHorizontal * 3,
       ),
-      child: Text(
-        description,
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: Text(
+          description,
+          style: TextStyle(color: descOfItem, fontWeight: FontWeight.w400),
+        ),
       ),
     );
   }
@@ -319,7 +328,7 @@ class OglasTag extends StatelessWidget {
         style: TextStyle(
           fontSize: SizeConfig.safeBlockHorizontal * 3,
           fontWeight: FontWeight.w300,
-          color: Colors.blueAccent,
+          color: tagsColor,
         ),
       ),
     );

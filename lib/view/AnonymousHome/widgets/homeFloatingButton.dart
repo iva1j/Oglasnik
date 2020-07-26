@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
 
 Stack homeFloatingAnimatedButton() {
+  borderSide:
   return Stack(overflow: Overflow.visible, children: <Widget>[
     Builder(
       builder: (context) => FabCircularMenu(
