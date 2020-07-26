@@ -43,7 +43,7 @@ class CategoryCardRow extends StatelessWidget {
                     name,
                     style: TextStyle(
                       fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),

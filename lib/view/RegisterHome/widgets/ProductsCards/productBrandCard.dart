@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
@@ -8,6 +9,7 @@ import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/uniqueBrands.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 Future<int> numberOfProductsPerBrand(String brandName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
@@ -56,6 +58,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
           icon: Icon(Icons.close, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
+        centerTitle: true,
         title: Text(widget.categoryName),
       ),
       floatingActionButton: mainFloatingButton(email),
@@ -66,9 +69,9 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
       ),
       body: Column(
         children: <Widget>[
-          SizedBox(
-            height: SizeConfig.blockSizeVertical * 10,
-          ),
+          // SizedBox(
+          //   height: SizeConfig.blockSizeVertical * 5,
+          // ),
           Expanded(
             child: FutureBuilder(
                 future:
@@ -105,8 +108,8 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                             margin: EdgeInsets.only(
                               left: SizeConfig.blockSizeHorizontal * 5,
                               right: SizeConfig.blockSizeHorizontal * 5,
-                              //top: SizeConfig.blockSizeVertical * 5,
-                              bottom: SizeConfig.blockSizeVertical * 5,
+                              top: SizeConfig.blockSizeVertical * 2,
+                              bottom: SizeConfig.blockSizeVertical * 4,
                             ),
                             // margin: EdgeInsets.symmetric(
                             //   horizontal: SizeConfig.blockSizeHorizontal * 5,
@@ -149,8 +152,8 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                               style: TextStyle(
                                                 fontSize: SizeConfig
                                                         .safeBlockHorizontal *
-                                                    5,
-                                                fontWeight: FontWeight.w500,
+                                                    6,
+                                                fontWeight: FontWeight.w400,
                                               ),
                                             ),
                                           ),
@@ -182,7 +185,11 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                                 //   },
                                                 // ),
                                                 Text(
-                                                    'U ovoj kategoriji nalazi se 123 Audi')),
+                                              'U ovoj kategoriji nalazi se 123 Audi',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  color: descOfItem),
+                                            )),
                                       ],
                                     ),
                                   ),
@@ -223,7 +230,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                 }),
           ),
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 4,
+            height: SizeConfig.blockSizeVertical * 6,
           ),
         ],
       ),
