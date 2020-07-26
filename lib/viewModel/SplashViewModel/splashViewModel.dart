@@ -1,6 +1,8 @@
 import 'package:Oglasnik/main.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
@@ -21,8 +23,12 @@ Future<void> splashScreenRouter() async {
 
   print("LSASDSAGASHAHADH");
   //numberOfProductsPerBrandTest("Ford").then((value) => print(value));
-
-  //print(top3BrandsPerCategory("Automobili"));
+/*
+  top3BrandsPerCategory("Nakit")
+      .then((value) => value.forEach((x) => print(x)));
+*/
+  CategoryViewModel().getCategories().then(
+      (value) => value.forEach((element) => print(element['productCategory'])));
 
   //top3BrandsPerCategory("Automobili");
   print("AHDAHADHADHDHAHDADHADJ");

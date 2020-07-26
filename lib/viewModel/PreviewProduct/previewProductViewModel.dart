@@ -92,7 +92,7 @@ numberOfProductsPerBrandTest(String brandName) async {
 }
 
 // implementacija ove funkcije blizu kraju
-/*
+
 top3BrandsPerCategory(String categoryName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
       .collection('products')
@@ -100,36 +100,91 @@ top3BrandsPerCategory(String categoryName) async {
       .getDocuments();
 
   final List<DocumentSnapshot> documents = productsQuery.documents;
+  final List<String> stringsForReturn = List<String>();
+  for (final x in documents) {
+    stringsForReturn.add(x["productBrand"]);
+  }
 
-  final top3 = <DocumentSnapshot, dynamic>{};
+  final top3 = <String, dynamic>{};
 
-  for (final item in documents) {
-    var numb = await numberOfProductsPerBrandTest(item["productBrand"]);
+  for (final item in stringsForReturn) {
+    var numb = await numberOfProductsPerBrandTest(item);
     top3[item] = numb;
   }
 
-  documents.sort((a, b) => top3[b].compareTo(top3[a]));
+  stringsForReturn.sort((a, b) => top3[b].compareTo(top3[a]));
 
-  if (documents.length == 0 || documents.length == 1) return documents;
   int i = 0;
-  while (i < documents.length - 1) {
-    //if (i + 1 == documents.length) break;
-    if (documents[i]["productBrand"] != documents[i + 1]["productBrand"])
+  while (i < stringsForReturn.length - 1) {
+    if (stringsForReturn[i] != stringsForReturn[i + 1])
       i++;
     else
-      documents.removeAt(i + 1);
+      stringsForReturn.removeAt(i + 1);
   }
 
-  if (documents.length < 3) {
+  if (stringsForReturn.length < 3) {
     final QuerySnapshot productBrands = await Firestore.instance
         .collection('categoryBrand')
         .where('categoryName', isEqualTo: categoryName)
         .getDocuments();
-    final List<DocumentSnapshot> docs = productBrands.documents;
-    //...
-    while (documents.length < 3) {}
+    final List<DocumentSnapshot> catBrandDoc = productBrands.documents;
+
+    for (final x in catBrandDoc[0]["brands"]) {
+      var numX = await numberOfProductsPerBrandTest(x);
+      if (numX == 0) stringsForReturn.add(x);
+      if (stringsForReturn.length >= 3) break;
+    }
   }
 
-  //return documents.sublist(0, 3);
+  final mapForReturn = <String, dynamic>{};
+  for (final x in stringsForReturn) {
+    var numX = await numberOfProductsPerBrandTest(x);
+    mapForReturn[x] = numX;
+    if (mapForReturn.length == 3) break;
+  }
+
+  //return stringsForReturn.sublist(0, 3);
+
+  return mapForReturn;
 }
-*/
+
+top3BrandsPerCategoryV2(String categoryName) async {
+  final QuerySnapshot productsQuery = await Firestore.instance
+      .collection('products')
+      .where('productCategory', isEqualTo: categoryName)
+      .getDocuments();
+
+  final List<DocumentSnapshot> documents = productsQuery.documents;
+  final List<String> stringsForReturn = List<String>();
+  for (final x in documents) {
+    stringsForReturn.add(x["productBrand"]);
+  }
+
+  final top3 = <String, dynamic>{};
+
+  for (final item in stringsForReturn) {
+    var numb = await numberOfProductsPerBrandTest(item);
+    top3[item] = numb;
+  }
+
+  stringsForReturn.sort((a, b) => top3[b].compareTo(top3[a]));
+
+  int i = 0;
+  while (i < stringsForReturn.length - 1) {
+    if (stringsForReturn[i] != stringsForReturn[i + 1])
+      i++;
+    else
+      stringsForReturn.removeAt(i + 1);
+  }
+
+  final mapForReturn = <String, dynamic>{};
+  for (final x in stringsForReturn) {
+    var numX = await numberOfProductsPerBrandTest(x);
+    mapForReturn[x] = numX;
+    if (mapForReturn.length == 3) break;
+  }
+
+  //return stringsForReturn.sublist(0, 3);
+
+  return mapForReturn;
+}
