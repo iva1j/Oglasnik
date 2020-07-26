@@ -1,5 +1,4 @@
 import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
@@ -10,7 +9,6 @@ import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/uniqueBrands.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 Future<int> numberOfProductsPerBrand(String brandName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
@@ -31,8 +29,8 @@ class ProductBrandCard extends StatefulWidget {
 }
 
 class _ProductBrandCardState extends State<ProductBrandCard> {
-  List images = new List();
-  List listaSlika = [];
+  List<Widget> images = new List<Widget>();
+  List<String> listaSlika = [];
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -59,7 +57,6 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
           icon: Icon(Icons.close, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        centerTitle: true,
         title: Text(widget.categoryName),
       ),
       floatingActionButton: mainFloatingButton(email),
@@ -70,9 +67,9 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
       ),
       body: Column(
         children: <Widget>[
-          // SizedBox(
-          //   height: SizeConfig.blockSizeVertical * 5,
-          // ),
+          SizedBox(
+            height: SizeConfig.blockSizeVertical * 10,
+          ),
           Expanded(
             child: FutureBuilder(
                 future:
@@ -110,8 +107,8 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                             margin: EdgeInsets.only(
                               left: SizeConfig.blockSizeHorizontal * 5,
                               right: SizeConfig.blockSizeHorizontal * 5,
-                              top: SizeConfig.blockSizeVertical * 2,
-                              bottom: SizeConfig.blockSizeVertical * 4,
+                              //top: SizeConfig.blockSizeVertical * 5,
+                              bottom: SizeConfig.blockSizeVertical * 5,
                             ),
                             // margin: EdgeInsets.symmetric(
                             //   horizontal: SizeConfig.blockSizeHorizontal * 5,
@@ -154,8 +151,8 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                               style: TextStyle(
                                                 fontSize: SizeConfig
                                                         .safeBlockHorizontal *
-                                                    6,
-                                                fontWeight: FontWeight.w400,
+                                                    5,
+                                                fontWeight: FontWeight.w500,
                                               ),
                                             ),
                                           ),
@@ -187,11 +184,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                                 //   },
                                                 // ),
                                                 Text(
-                                              'U ovoj kategoriji nalazi se 123 Audi',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  color: descOfItem),
-                                            )),
+                                                    'U ovoj kategoriji nalazi se 123 Audi')),
                                       ],
                                     ),
                                   ),
@@ -224,32 +217,21 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                           builder: (BuildContext context,
                                               AsyncSnapshot snapshot) {
                                             if (snapshot.hasData) {
+                                              listaSlika = snapshot.data;
                                               images.add(Image.network(
-                                                snapshot.data.documents[0].map(
-                                                    (doc) =>
-                                                        Product.fromDocument(
-                                                            doc)),
+                                                snapshot.data[0],
                                                 fit: BoxFit.cover,
                                               ));
                                               images.add(Image.network(
-                                                snapshot.data.documents[1].map(
-                                                    (doc) =>
-                                                        Product.fromDocument(
-                                                            doc)),
+                                                snapshot.data[1],
                                                 fit: BoxFit.cover,
                                               ));
                                               images.add(Image.network(
-                                                snapshot.data.documents[2].map(
-                                                    (doc) =>
-                                                        Product.fromDocument(
-                                                            doc)),
+                                                snapshot.data[2],
                                                 fit: BoxFit.cover,
                                               ));
                                               images.add(Image.network(
-                                                snapshot.data.documents[3].map(
-                                                    (doc) =>
-                                                        Product.fromDocument(
-                                                            doc)),
+                                                snapshot.data[3],
                                                 fit: BoxFit.cover,
                                               ));
                                               return new GridView.count(
@@ -286,7 +268,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                 }),
           ),
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 6,
+            height: SizeConfig.blockSizeVertical * 4,
           ),
         ],
       ),
