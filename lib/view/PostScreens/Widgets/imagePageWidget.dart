@@ -35,13 +35,14 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   String _fileName1, _fileName2, _fileName3;
 
   bool loading = false;
+
   FileType _imageType = FileType.image;
 
   List<StorageUploadTask> _tasks = <StorageUploadTask>[];
 
   void openFileExplorer1() async {
     //_path1 = null;
-    
+
     _path1 = await FilePicker.getFilePath(type: _imageType);
     _fileName1 = _path1.split('/').last;
     _extension1 = _fileName1.toString().split('.').last;
@@ -49,6 +50,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img1 = _fileName1;
       pathGlobal1 = _path1;
+      buttonOne = true;
     });
   }
 
@@ -59,6 +61,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img2 = _fileName2;
       pathGlobal2 = _path2;
+      buttonTwo = true;
     });
     //upload(_fileName2, _path2, 2).then((value) => productImg2 = value);
   }
@@ -87,7 +90,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return loading
-        ? Loading() 
+        ? Loading()
         : Container(
             margin: EdgeInsets.all(15),
             child: Column(

@@ -6,6 +6,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/uniqueBrands.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -77,9 +78,10 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                     BrandViewModel().getBrandsByCategories(widget.categoryName),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
-                    categoryBrand = snapshot.data.documents
+                    categoryBrand = snapshot.data
                         .map((doc) => Product.fromDocument(doc))
                         .toList();
+
                     return ListView.builder(
                         itemCount: categoryBrand.length,
                         shrinkWrap: true,
