@@ -1,15 +1,14 @@
 import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/getBrandData.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/uniqueBrands.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 Future<int> numberOfProductsPerBrand(String brandName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
@@ -31,34 +30,33 @@ class ProductBrandCard extends StatefulWidget {
 
 class _ProductBrandCardState extends State<ProductBrandCard> {
   List<Widget> images = new List<Widget>();
-
+  List<String> listaSlika = [];
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
-    images.add(Image.asset(
-      'assets/img4.jpg',
-      fit: BoxFit.cover,
-    ));
-    images.add(Image.asset(
-      'assets/images/yoda.jpg',
-      fit: BoxFit.cover,
-    ));
-    images.add(Image.asset(
-      'assets/images/audi4.jpg',
-      fit: BoxFit.cover,
-    ));
-    images.add(Image.asset(
-      'assets/images/shoes.jpg',
-      fit: BoxFit.cover,
-    ));
+    // images.add(Image.asset(
+    //   'assets/img4.jpg',
+    //   fit: BoxFit.cover,
+    // ));
+    // images.add(Image.asset(
+    //   'assets/images/yoda.jpg',
+    //   fit: BoxFit.cover,
+    // ));
+    // images.add(Image.asset(
+    //   'assets/images/audi4.jpg',
+    //   fit: BoxFit.cover,
+    // ));
+    // images.add(Image.asset(
+    //   'assets/images/shoes.jpg',
+    //   fit: BoxFit.cover,
+    // ));
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.close, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        centerTitle: true,
         title: Text(widget.categoryName),
       ),
       floatingActionButton: mainFloatingButton(email),
@@ -69,9 +67,9 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
       ),
       body: Column(
         children: <Widget>[
-          // SizedBox(
-          //   height: SizeConfig.blockSizeVertical * 5,
-          // ),
+          SizedBox(
+            height: SizeConfig.blockSizeVertical * 10,
+          ),
           Expanded(
             child: FutureBuilder(
                 future:
@@ -83,6 +81,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                         .toList();
 
                     return ListView.builder(
+                        //lista svih automobila
                         itemCount: categoryBrand.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
@@ -108,8 +107,8 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                             margin: EdgeInsets.only(
                               left: SizeConfig.blockSizeHorizontal * 5,
                               right: SizeConfig.blockSizeHorizontal * 5,
-                              top: SizeConfig.blockSizeVertical * 2,
-                              bottom: SizeConfig.blockSizeVertical * 4,
+                              //top: SizeConfig.blockSizeVertical * 5,
+                              bottom: SizeConfig.blockSizeVertical * 5,
                             ),
                             // margin: EdgeInsets.symmetric(
                             //   horizontal: SizeConfig.blockSizeHorizontal * 5,
@@ -152,8 +151,8 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                               style: TextStyle(
                                                 fontSize: SizeConfig
                                                         .safeBlockHorizontal *
-                                                    6,
-                                                fontWeight: FontWeight.w400,
+                                                    5,
+                                                fontWeight: FontWeight.w500,
                                               ),
                                             ),
                                           ),
@@ -185,11 +184,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                                 //   },
                                                 // ),
                                                 Text(
-                                              'U ovoj kategoriji nalazi se 123 Audi',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  color: descOfItem),
-                                            )),
+                                                    'U ovoj kategoriji nalazi se 123 Audi')),
                                       ],
                                     ),
                                   ),
@@ -204,15 +199,58 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                           bottom:
                                               SizeConfig.blockSizeVertical * 2,
                                         ),
-                                        child: new GridView.count(
-                                          padding: EdgeInsets.all(0),
-                                          physics:
-                                              new NeverScrollableScrollPhysics(),
-                                          crossAxisCount: 2,
-                                          childAspectRatio: 1,
-                                          crossAxisSpacing: 3,
-                                          mainAxisSpacing: 3,
-                                          children: images,
+                                        // child: GridView.builder(
+                                        //     gridDelegate:
+                                        //         SliverGridDelegateWithFixedCrossAxisCount(
+                                        //             crossAxisCount: (MediaQuery
+                                        //                             .of(context)
+                                        //                         .orientation ==
+                                        //                     Orientation
+                                        //                         .portrait)
+                                        //                 ? 2
+                                        //                 : 3),
+                                        //     itemBuilder: null),
+                                        child: FutureBuilder(
+                                          future: getBrandData(
+                                              categoryBrand[index]
+                                                  .productBrand),
+                                          builder: (BuildContext context,
+                                              AsyncSnapshot snapshot) {
+                                            if (snapshot.hasData) {
+                                              listaSlika = snapshot.data;
+                                              images.add(Image.network(
+                                                snapshot.data[0],
+                                                fit: BoxFit.cover,
+                                              ));
+                                              images.add(Image.network(
+                                                snapshot.data[1],
+                                                fit: BoxFit.cover,
+                                              ));
+                                              images.add(Image.network(
+                                                snapshot.data[2],
+                                                fit: BoxFit.cover,
+                                              ));
+                                              images.add(Image.network(
+                                                snapshot.data[3],
+                                                fit: BoxFit.cover,
+                                              ));
+                                              return new GridView.count(
+                                                padding: EdgeInsets.all(0),
+                                                physics:
+                                                    new NeverScrollableScrollPhysics(),
+                                                crossAxisCount: 2,
+                                                childAspectRatio: 1,
+                                                crossAxisSpacing: 3,
+                                                mainAxisSpacing: 3,
+                                                children: images,
+                                                shrinkWrap: true,
+                                              );
+                                            } else {
+                                              return Center(
+                                                child: SpinnerCircular(),
+                                              );
+                                            }
+                                          },
                                         ),
                                       ),
                                     ),
@@ -230,7 +268,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                 }),
           ),
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 6,
+            height: SizeConfig.blockSizeVertical * 4,
           ),
         ],
       ),
