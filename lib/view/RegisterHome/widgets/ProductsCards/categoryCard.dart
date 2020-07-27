@@ -1,8 +1,10 @@
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
@@ -27,9 +29,10 @@ class _CategoryCardState extends State<CategoryCard> {
             future: CategoryViewModel().getCategories(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                categories = snapshot.data.documents
+                categories = snapshot.data
                     .map((doc) => ProductCategory.fromDocument(doc))
                     .toList();
+                //print(snapshot.data.forEach((element) => print(element[])))
                 return ListView.builder(
                     itemCount: categories.length,
                     shrinkWrap: true,
@@ -94,72 +97,85 @@ class _CategoryCardState extends State<CategoryCard> {
                               thickness: SizeConfig.blockSizeVertical * 0.2,
                             ),
                             FutureBuilder(
-                                future: numberOfProductsPerBrandTest(
-                                    categoryBrands[
-                                            categories[index].categoryName][0]
-                                        .toString()),
+                                future: top3BrandsPerCategoryV2(
+                                    categories[index].categoryName),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
-                                    return CategoryCardRow(
-                                      icon: Transform.scale(
-                                        scale: 0.8,
-                                        child: SvgPicture.network(
-                                            categories[index].icon),
-                                      ),
-                                      name: categoryBrands[
-                                              categories[index].categoryName][0]
-                                          .toString(),
-                                      count: snapshot.data.toString(),
-                                    );
-                                  } else {
-                                    return Center(
-                                      child: SpinnerCircular(),
-                                    );
-                                  }
-                                }),
-                            FutureBuilder(
-                                future: numberOfProductsPerBrandTest(
-                                    categoryBrands[
-                                            categories[index].categoryName][1]
-                                        .toString()),
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData) {
-                                    return CategoryCardRow(
-                                      icon: Transform.scale(
-                                        scale: 0.8,
-                                        child: SvgPicture.network(
-                                            categories[index].icon),
-                                      ),
-                                      name: categoryBrands[
-                                              categories[index].categoryName][1]
-                                          .toString(),
-                                      count: snapshot.data.toString(),
-                                    );
-                                  } else {
-                                    return Center(
-                                      child: SpinnerCircular(),
-                                    );
-                                  }
-                                }),
-                            FutureBuilder(
-                                future: numberOfProductsPerBrandTest(
-                                    categoryBrands[
-                                            categories[index].categoryName][2]
-                                        .toString()),
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData) {
-                                    //print(snapshot.data);
-                                    return CategoryCardRow(
-                                      icon: Transform.scale(
-                                        scale: 0.8,
-                                        child: SvgPicture.network(
-                                            categories[index].icon),
-                                      ),
-                                      name: categoryBrands[
-                                              categories[index].categoryName][2]
-                                          .toString(),
-                                      count: snapshot.data.toString(),
-                                    );
+                                    List<String> names =
+                                        snapshot.data.keys.toList();
+                                    List<dynamic> counts =
+                                        snapshot.data.values.toList();
+                                    return names.length == 3
+                                        ? Column(children: <Widget>[
+                                            CategoryCardRow(
+                                              icon: Transform.scale(
+                                                scale: 0.8,
+                                                child: SvgPicture.network(
+                                                    categories[index].icon),
+                                              ),
+                                              name: names[0],
+                                              count: counts[0].toString(),
+                                            ),
+                                            CategoryCardRow(
+                                              icon: Transform.scale(
+                                                scale: 0.8,
+                                                child: SvgPicture.network(
+                                                    categories[index].icon),
+                                              ),
+                                              name: names[1],
+                                              count: counts[1].toString(),
+                                            ),
+                                            CategoryCardRow(
+                                              icon: Transform.scale(
+                                                scale: 0.8,
+                                                child: SvgPicture.network(
+                                                    categories[index].icon),
+                                              ),
+                                              name: names[2],
+                                              count: counts[2].toString(),
+                                            ),
+                                          ])
+                                        : names.length == 2
+                                            ? Column(children: <Widget>[
+                                                CategoryCardRow(
+                                                  icon: Transform.scale(
+                                                    scale: 0.8,
+                                                    child: SvgPicture.network(
+                                                        categories[index].icon),
+                                                  ),
+                                                  name: names[0],
+                                                  count: counts[0].toString(),
+                                                ),
+                                                CategoryCardRow(
+                                                  icon: Transform.scale(
+                                                    scale: 0.8,
+                                                    child: SvgPicture.network(
+                                                        categories[index].icon),
+                                                  ),
+                                                  name: names[1],
+                                                  count: counts[1].toString(),
+                                                ),
+                                              ])
+                                            : names.length == 1
+                                                ? Column(children: <Widget>[
+                                                    CategoryCardRow(
+                                                      icon: Transform.scale(
+                                                        scale: 0.8,
+                                                        child:
+                                                            SvgPicture.network(
+                                                                categories[
+                                                                        index]
+                                                                    .icon),
+                                                      ),
+                                                      name: names[0],
+                                                      count:
+                                                          counts[0].toString(),
+                                                    ),
+                                                  ])
+                                                : Container(
+                                                    width: 0,
+                                                    height: 0,
+                                                  );
                                   } else {
                                     return Center(
                                       child: SpinnerCircular(),
@@ -168,14 +184,14 @@ class _CategoryCardState extends State<CategoryCard> {
                                 }),
                             SizedBox(
                               height: SizeConfig.blockSizeVertical * 3,
-                            )
+                            ),
                           ],
                         ),
                       );
                     });
               } else {
                 return Center(
-                  child: SpinnerCircular(),
+                  child: Loading(),
                 );
               }
             }),
