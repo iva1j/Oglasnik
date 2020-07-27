@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
+import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
 class ItemCard extends StatefulWidget {
   //String audi = "assets/images/audi.jpg";
@@ -32,7 +33,9 @@ class _ItemCardState extends State<ItemCard> {
           centerTitle: true,
           title: Text(widget.brandNameScreen),
         ),
-        floatingActionButton: mainFloatingButton(email),
+        floatingActionButton: email != null
+            ? mainFloatingButton(email)
+            : homeFloatingAnimatedButton(),
         bottomSheet: Container(
           height: 55,
           width: double.infinity,

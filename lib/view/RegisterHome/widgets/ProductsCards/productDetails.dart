@@ -16,6 +16,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/showimage.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
 import 'package:intl/intl.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
 class ProductDetails extends StatefulWidget {
   final String productNameScreen;
@@ -44,7 +45,9 @@ class _ProductDetailsState extends State<ProductDetails> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      floatingActionButton: mainFloatingButton(email),
+      floatingActionButton: email != null
+          ? mainFloatingButton(email)
+          : homeFloatingAnimatedButton(),
       bottomSheet: Container(
         height: 55,
         width: double.infinity,

@@ -9,6 +9,7 @@ import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/uniqueBrands.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
 Future<int> numberOfProductsPerBrand(String brandName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
@@ -59,7 +60,9 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
         ),
         title: Text(widget.categoryName),
       ),
-      floatingActionButton: mainFloatingButton(email),
+      floatingActionButton: email != null
+          ? mainFloatingButton(email)
+          : homeFloatingAnimatedButton(),
       bottomSheet: Container(
         height: 55,
         width: double.infinity,
@@ -67,9 +70,6 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
       ),
       body: Column(
         children: <Widget>[
-          SizedBox(
-            height: SizeConfig.blockSizeVertical * 10,
-          ),
           Expanded(
             child: FutureBuilder(
                 future:
@@ -107,8 +107,8 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                             margin: EdgeInsets.only(
                               left: SizeConfig.blockSizeHorizontal * 5,
                               right: SizeConfig.blockSizeHorizontal * 5,
-                              //top: SizeConfig.blockSizeVertical * 5,
-                              bottom: SizeConfig.blockSizeVertical * 5,
+                              top: SizeConfig.blockSizeVertical * 2,
+                              bottom: SizeConfig.blockSizeVertical * 4,
                             ),
                             // margin: EdgeInsets.symmetric(
                             //   horizontal: SizeConfig.blockSizeHorizontal * 5,
