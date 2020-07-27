@@ -45,6 +45,7 @@ class _AnonymousHomeState extends State<AnonymousHome> {
           //backgroundColor: Color.fromARGB(255, 0, 11, 48),
           centerTitle: true,
           title: Text('Oglasnik'),
+          leading: Container(),
         ),
         body: MainBody(),
         floatingActionButton: email != null

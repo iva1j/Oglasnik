@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 
 class LogoutButton extends StatefulWidget {
   const LogoutButton({
@@ -19,13 +20,15 @@ class _LogoutButtonState extends State<LogoutButton> {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () async {
+        globals.email = null;
         print(phoneNumber);
         await FirebaseAuth.instance.signOut();
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.remove('email');
         //prefs.remove('phoneNumber');
-        Navigator.push(context,
-            MaterialPageRoute(builder: (BuildContext ctx) => AnonymousHome()));
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => AnonymousHome()),
+            (Route<dynamic> route) => false);
       },
       icon: Icon(
         Icons.power_settings_new,
