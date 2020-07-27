@@ -10,8 +10,7 @@ IconButton backButtonIphone(BuildContext context) {
         color: Colors.black,
         size: 30,
       ),
-      onPressed: () =>
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-            return AnonymousHome();
-          })));
+      onPressed: () => Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => AnonymousHome()),
+          (Route<dynamic> route) => false));
 }

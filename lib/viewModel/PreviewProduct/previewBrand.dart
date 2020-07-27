@@ -21,6 +21,10 @@ class BrandViewModel implements ReadBrandInterface {
       else
         i++;
     }
+    print("AAAAAAAAAA");
+    print(l);
+    print("BBBBBBBBB");
     return l;
+    //return qn;
   }
 }

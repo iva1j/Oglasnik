@@ -16,14 +16,14 @@ class CategoryCardRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (_) => ItemCard(
-                  brandNameScreen: name,
-                )))
-      },
-      child: Container(
+    return Container(
+      child: InkWell(
+        onTap: () => {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => ItemCard(
+                    brandNameScreen: name,
+                  )))
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

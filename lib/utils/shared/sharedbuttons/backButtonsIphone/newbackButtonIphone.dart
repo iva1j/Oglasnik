@@ -11,12 +11,6 @@ IconButton newInputBackButtonIphone(BuildContext context) {
         color: Colors.black,
         size: 30,
       ),
-      /*
-    onPressed: () => Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) {
-        return RegisteredHome();
-      }),
-    ),*/
       onPressed: () {
         img1 = immutableImg1;
         img2 = immutableImg2;

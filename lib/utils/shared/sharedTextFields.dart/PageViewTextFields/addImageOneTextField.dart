@@ -9,11 +9,14 @@ class AddImageOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      img1,
-      style: TextStyle(
-        fontSize: 12.0,
-        fontWeight: FontWeight.normal,
+    return Container(
+      width: 200,
+      child: Text(
+        img1,
+        style: TextStyle(
+          fontSize: 12.0,
+          fontWeight: FontWeight.normal,
+        ),
       ),
     );
   }
