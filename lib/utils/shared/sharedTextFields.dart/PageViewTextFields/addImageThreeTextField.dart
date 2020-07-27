@@ -8,11 +8,14 @@ class AddImageThree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      img3,
-      style: TextStyle(
-        fontSize: 12.0,
-        fontWeight: FontWeight.normal,
+    return Container(
+      width: 200,
+      child: Text(
+        img3,
+        style: TextStyle(
+          fontSize: 12.0,
+          fontWeight: FontWeight.normal,
+        ),
       ),
     );
   }

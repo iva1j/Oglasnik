@@ -4,14 +4,14 @@ import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 
-final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
+//final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
 
 Stack homeFloatingAnimatedButton() {
   borderSide:
   return Stack(overflow: Overflow.visible, children: <Widget>[
     Builder(
       builder: (context) => FabCircularMenu(
-        key: fabKey,
+        //key: fabKey,
         alignment: Alignment.bottomRight,
         ringColor: Colors.black.withAlpha(10),
         ringDiameter: 350.0,
