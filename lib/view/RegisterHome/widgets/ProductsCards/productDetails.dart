@@ -205,6 +205,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                           SizeConfig.blockSizeVertical * 2),
                                   child: Row(children: <Widget>[
                                     Container(
+                                      width: 170.0,
                                       child: Text(
                                         widget.productNameScreen,
                                         style: Theme.of(context)
