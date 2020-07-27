@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/confirmPassValidator.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/passValidator.dart';
@@ -31,18 +32,12 @@ class _PasswordChangeState extends State<PasswordChange> {
   FirebaseUser user;
   @override
   void dispose() {
-    // passwordChangeFormKey.currentState.dispose();
-    //emailInputController.dispose();
-    tokenInputController.dispose();
-    confirmPasswordInputController.dispose();
+    passwordChangeDispose();
     super.dispose();
   }
 
   initState() {
-    emailInputController = new TextEditingController();
-    tokenInputController = new TextEditingController();
-    confirmPasswordInputController = new TextEditingController();
-    passwordChangeFormKey = GlobalKey<FormState>();
+    passwordChangeInitControllers();
     super.initState();
   }
 
@@ -78,7 +73,7 @@ class _PasswordChangeState extends State<PasswordChange> {
               Container(
                 margin: EdgeInsets.only(bottom: 120.0),
                 child: Text(
-                  "Promijeni šifru",
+                  PasswordChangePage().columnFirstChild,
                   style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Roboto',

@@ -21,10 +21,9 @@ IconButton newInputBackButtonIphone(BuildContext context) {
         img1 = immutableImg1;
         img2 = immutableImg2;
         img3 = immutableImg3;
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) {
-            return RegisteredHome();
-          }),
-        );
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => RegisteredHome()),
+            (Route<dynamic> route) =>
+                false); // obrise sve routes prije ove na koju pusha
       });
 }

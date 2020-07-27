@@ -1,10 +1,11 @@
-import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
 class CategoryCardRow extends StatelessWidget {
   final String name, count;
-  final Icon icon;
+  final Widget icon;
 
   const CategoryCardRow({
     this.icon,
@@ -16,7 +17,12 @@ class CategoryCardRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => ItemCard(
+                  brandNameScreen: name,
+                )))
+      },
       child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,7 +35,7 @@ class CategoryCardRow extends StatelessWidget {
                     top: SizeConfig.blockSizeVertical * 2,
                   ),
                   child: CircleAvatar(
-                    radius: 30,
+                    radius: 20,
                     backgroundColor: mainAppColor,
                     child: icon,
                   ),
@@ -43,7 +49,7 @@ class CategoryCardRow extends StatelessWidget {
                     name,
                     style: TextStyle(
                       fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),

@@ -35,18 +35,22 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   String _fileName1, _fileName2, _fileName3;
 
   bool loading = false;
+
   FileType _imageType = FileType.image;
 
   List<StorageUploadTask> _tasks = <StorageUploadTask>[];
 
   void openFileExplorer1() async {
     //_path1 = null;
+
     _path1 = await FilePicker.getFilePath(type: _imageType);
     _fileName1 = _path1.split('/').last;
     _extension1 = _fileName1.toString().split('.').last;
 
     setState(() {
       img1 = _fileName1;
+      pathGlobal1 = _path1;
+      buttonOne = true;
     });
   }
 
@@ -56,6 +60,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     _extension2 = _fileName2.toString().split('.').last;
     setState(() {
       img2 = _fileName2;
+      pathGlobal2 = _path2;
+      buttonTwo = true;
     });
     //upload(_fileName2, _path2, 2).then((value) => productImg2 = value);
   }
@@ -66,6 +72,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     _extension3 = _fileName3.toString().split('.').last;
     setState(() {
       img3 = _fileName3;
+      pathGlobal3 = _path3;
     });
     //upload(_fileName3, _path3, 3).then((value) => productImg3 = value);
   }
@@ -114,9 +121,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             Container(
               child: PageViewButton(),
             )*/
+                SizedBox(
+                  height: SizeConfig.blockSizeVertical * 6,
+                ),
                 Container(
-                  margin:
-                      EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 5),
                   child: pageViewSubmitButton(context),
                 ),
               ],
@@ -132,14 +140,14 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         if (productPriceFormKey.currentState.validate()) {
           setState(() => loading = true);
           createdGlob = true;
-          if (img1 == _fileName1)
-            await upload(_fileName1, _path1, 1)
+          if (img1 != immutableImg1)
+            await upload(img1, pathGlobal1, 1)
                 .then((value) => productImg1 = value);
-          if (img2 == _fileName2)
-            await upload(_fileName2, _path2, 2)
+          if (img2 != immutableImg2)
+            await upload(img2, pathGlobal2, 2)
                 .then((value) => productImg2 = value);
-          if (img3 == _fileName3)
-            await upload(_fileName3, _path3, 3)
+          if (img3 != immutableImg3)
+            await upload(img3, pathGlobal3, 3)
                 .then((value) => productImg3 = value);
 
           productName = productNameController.text;
@@ -149,6 +157,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           productTag = productTagController.text;
           productDesc = productDescController.text;
           productprice = productPriceController.text;
+
           print(email + productName + productTag);
           await CreateProduct().createProduct(
             context,
@@ -169,6 +178,13 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           img1 = immutableImg1;
           img2 = immutableImg2;
           img3 = immutableImg3;
+          productImg1 = null;
+          productImg2 = null;
+          productImg3 = null;
+          pathGlobal1 = null;
+          pathGlobal2 = null;
+          pathGlobal3 = null;
+
           Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (_) => RegisteredHome()));
         } else

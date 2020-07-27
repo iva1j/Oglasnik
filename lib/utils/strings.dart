@@ -167,6 +167,7 @@ class InputFields {
 String img1 = "Dodaj sliku 1";
 String img2 = "Dodaj sliku 2";
 String img3 = "Dodaj sliku 3";
+String pathGlobal1, pathGlobal2, pathGlobal3;
 
 final String immutableImg1 = "Dodaj sliku 1";
 final String immutableImg2 = "Dodaj sliku 2";

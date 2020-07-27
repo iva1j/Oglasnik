@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/imagePageWidget.dart';
 import 'package:flutter/material.dart';
@@ -16,19 +17,6 @@ class PageFive extends StatefulWidget {
 }
 
 class _PageFiveState extends State<PageFive> {
-  @override
-  void initState() {
-    pageFiveInitControllers();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    pageFiveDisposeControllers();
-
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

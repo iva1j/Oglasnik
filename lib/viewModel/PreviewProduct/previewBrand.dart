@@ -10,6 +10,21 @@ class BrandViewModel implements ReadBrandInterface {
         .collection('products')
         .where('productCategory', isEqualTo: categoryName)
         .getDocuments();
-    return qn;
+
+    List<DocumentSnapshot> l = qn.documents;
+
+    l.sort((a, b) => a['productBrand'].compareTo(b['productBrand']));
+    int i = 0;
+    while (i < l.length - 1) {
+      if (l[i]['productBrand'] == l[i + 1]['productBrand'])
+        l.removeAt(i + 1);
+      else
+        i++;
+    }
+    print("AAAAAAAAAA");
+    print(l);
+    print("BBBBBBBBB");
+    return l;
+    //return qn;
   }
 }

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 //buttons for image upload located in imagePageWidget
 Container imageThreeUploadButton(dynamic function) {
-  buttonThree = true;
   return Container(
     alignment: Alignment.centerLeft,
     margin: EdgeInsets.only(left: 35.0),
@@ -22,7 +21,7 @@ Container imageThreeUploadButton(dynamic function) {
         size: 25,
       ),
       label: AddImageThree(),
-      onPressed: function,
+      onPressed: buttonTwo == true ? function : null,
     ),
   );
 }

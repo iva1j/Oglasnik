@@ -38,7 +38,7 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
               child: OpisTextField(),
             ),
             SizedBox(
-              height: SizeConfig.blockSizeVertical * 20,
+              height: SizeConfig.blockSizeVertical * 27.64,
             ),
             PageViewButton(),
           ],

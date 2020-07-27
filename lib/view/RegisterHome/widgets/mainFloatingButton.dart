@@ -9,6 +9,7 @@ Stack mainFloatingButton(String email) {
     Builder(
       builder: (context) => FabCircularMenu(
         //key: registeredButtonKey,
+
         alignment: Alignment.bottomRight,
         ringColor: Colors.black.withAlpha(10),
         ringDiameter: 350.0,
@@ -33,7 +34,6 @@ Stack mainFloatingButton(String email) {
                   color: Colors.transparent, // button color
                   child: InkWell(
                     splashColor: Colors.transparent, // splash color
-
                     onTap: () {
                       Navigator.of(context)
                           .pushReplacement(FadeRoute(page: ArticlePage()));
@@ -42,7 +42,8 @@ Stack mainFloatingButton(String email) {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(Icons.add_circle_outline), // icon
-                        Text("Novi oglas"), // text
+                        Text("Novi oglas"),
+                        // text
                       ],
                     ),
                   ),
