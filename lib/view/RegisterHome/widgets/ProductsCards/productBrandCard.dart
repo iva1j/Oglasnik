@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
@@ -7,6 +8,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/getBrandData.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 import 'dart:math';
 
@@ -53,7 +55,6 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                         .map((doc) => Product.fromDocument(doc))
                         .toList();
                     return ListView.builder(
-                        //lista svih automobila
                         itemCount: categoryBrand.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
@@ -232,7 +233,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
           ),
           //neki kom
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 4,
+            height: SizeConfig.blockSizeVertical * 6,
           ),
         ],
       ),
