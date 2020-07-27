@@ -25,7 +25,7 @@ class CategoryViewModel implements ReadCategoriesInterface {
 
     int i = 0;
     while (i < prods.length - 1) {
-      if (prods[i]['productCategory'] != prods[i]['productCategory'])
+      if (prods[i]['productCategory'] != prods[i + 1]['productCategory'])
         i++;
       else
         prods.removeAt(i + 1);
