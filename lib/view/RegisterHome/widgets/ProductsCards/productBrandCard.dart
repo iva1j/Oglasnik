@@ -6,6 +6,8 @@ import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/getBrandData.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/uniqueBrands.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
@@ -21,11 +23,29 @@ class ProductBrandCard extends StatefulWidget {
 }
 
 class _ProductBrandCardState extends State<ProductBrandCard> {
+  List<Widget> images = new List<Widget>();
   List<String> listaSlika = [];
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
+    // images.add(Image.asset(
+    //   'assets/img4.jpg',
+    //   fit: BoxFit.cover,
+    // ));
+    // images.add(Image.asset(
+    //   'assets/images/yoda.jpg',
+    //   fit: BoxFit.cover,
+    // ));
+    // images.add(Image.asset(
+    //   'assets/images/audi4.jpg',
+    //   fit: BoxFit.cover,
+    // ));
+    // images.add(Image.asset(
+    //   'assets/images/shoes.jpg',
+    //   fit: BoxFit.cover,
+    // ));
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -84,6 +104,10 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                               top: SizeConfig.blockSizeVertical * 2,
                               bottom: SizeConfig.blockSizeVertical * 4,
                             ),
+                            // margin: EdgeInsets.symmetric(
+                            //   horizontal: SizeConfig.blockSizeHorizontal * 5,
+                            //   vertical: SizeConfig.blockSizeVertical * 5,
+                            // ),
                             child: Container(
                               height: SizeConfig.blockSizeVertical * 25,
                               child: Row(
@@ -136,8 +160,25 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                                   SizeConfig.blockSizeVertical *
                                                       1,
                                             ),
-                                            child: Text(
-                                                'U ovoj kategoriji nalazi se 123 Audi')),
+                                            child:
+                                                // FutureBuilder(
+                                                //   future: numberOfProductsPerBrand(
+                                                //       categoryBrand[index].productBrand),
+                                                //   builder: (BuildContext context,
+                                                //       AsyncSnapshot snapshot) {
+                                                //     numberofBrands = snapshot.data.documents
+                                                //         .map((doc) =>
+                                                //             Product.fromDocument(doc))
+                                                //         .toList();
+                                                //     if (snapshot.hasData)
+                                                //       return Text(
+                                                //           'U ovoj kategoriji nalazi se: ');
+                                                //     else
+                                                //       return null;
+                                                //   },
+                                                // ),
+                                                Text(
+                                                    'U ovoj kategoriji nalazi se 123 Audi')),
                                       ],
                                     ),
                                   ),
@@ -152,6 +193,17 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                           bottom:
                                               SizeConfig.blockSizeVertical * 2,
                                         ),
+                                        // child: GridView.builder(
+                                        //     gridDelegate:
+                                        //         SliverGridDelegateWithFixedCrossAxisCount(
+                                        //             crossAxisCount: (MediaQuery
+                                        //                             .of(context)
+                                        //                         .orientation ==
+                                        //                     Orientation
+                                        //                         .portrait)
+                                        //                 ? 2
+                                        //                 : 3),
+                                        //     itemBuilder: null),
                                         child: FutureBuilder(
                                           future: getBrandData(
                                               categoryBrand[index]
@@ -161,6 +213,23 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                             if (snapshot.hasData) {
                                               var random = new Random();
 
+                                              listaSlika = snapshot.data;
+                                              images.add(Image.network(
+                                                snapshot.data[0],
+                                                fit: BoxFit.cover,
+                                              ));
+                                              images.add(Image.network(
+                                                snapshot.data[1],
+                                                fit: BoxFit.cover,
+                                              ));
+                                              images.add(Image.network(
+                                                snapshot.data[2],
+                                                fit: BoxFit.cover,
+                                              ));
+                                              images.add(Image.network(
+                                                snapshot.data[3],
+                                                fit: BoxFit.cover,
+                                              ));
                                               return new GridView.count(
                                                 padding: EdgeInsets.all(0),
                                                 physics:
@@ -169,32 +238,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                                 childAspectRatio: 1,
                                                 crossAxisSpacing: 3,
                                                 mainAxisSpacing: 3,
-                                                children: <Widget>[
-                                                  Image.network(
-                                                    snapshot.data[
-                                                        random.nextInt(snapshot
-                                                            .data.length)],
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  Image.network(
-                                                    snapshot.data[
-                                                        random.nextInt(snapshot
-                                                            .data.length)],
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  Image.network(
-                                                    snapshot.data[
-                                                        random.nextInt(snapshot
-                                                            .data.length)],
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  Image.network(
-                                                    snapshot.data[
-                                                        random.nextInt(snapshot
-                                                            .data.length)],
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ],
+                                                children: images,
                                                 shrinkWrap: true,
                                               );
                                             } else {
