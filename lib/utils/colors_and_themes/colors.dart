@@ -7,3 +7,5 @@ const Color successDialogBgColor = Colors.white;
 const Color alertDialogTextColor = Color.fromARGB(100, 0, 0, 0);
 //const Color underLineInputBorder = Color.fromARGB(100, 0, 0, 0);
 const Color underLineInputBorder = Colors.black;
+const Color tagsColor = const Color(0xff254B88);
+const Color descOfItem = const Color(0x99000000);

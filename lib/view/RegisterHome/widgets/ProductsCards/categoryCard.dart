@@ -56,9 +56,15 @@ class _CategoryCardState extends State<CategoryCard> {
                             Radius.circular(10),
                           ),
                         ),
-                        margin: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 5,
-                          vertical: SizeConfig.blockSizeVertical * 10,
+                        // margin: EdgeInsets.symmetric(
+                        //   horizontal: SizeConfig.blockSizeHorizontal * 5,
+                        //   vertical: SizeConfig.blockSizeVertical * 5,
+                        // ),
+                        margin: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          right: SizeConfig.blockSizeHorizontal * 5,
+                          top: SizeConfig.blockSizeVertical * 2,
+                          bottom: SizeConfig.blockSizeVertical * 3,
                         ),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -101,138 +107,69 @@ class _CategoryCardState extends State<CategoryCard> {
                                         snapshot.data.values.toList();
                                     return names.length == 3
                                         ? Column(children: <Widget>[
-                                            InkWell(
-                                              onTap: () {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (_) =>
-                                                            ItemCard(
-                                                              brandNameScreen:
-                                                                  names[0],
-                                                            ))); //#TODO: Ubaciti ispravnu putanju
-                                              },
-                                              child: CategoryCardRow(
-                                                icon: Transform.scale(
-                                                  scale: 0.8,
-                                                  child: SvgPicture.network(
-                                                      categories[index].icon),
-                                                ),
-                                                name: names[0],
-                                                count: counts[0].toString(),
+                                            CategoryCardRow(
+                                              icon: Transform.scale(
+                                                scale: 0.8,
+                                                child: SvgPicture.network(
+                                                    categories[index].icon),
                                               ),
+                                              name: names[0],
+                                              count: counts[0].toString(),
                                             ),
-                                            InkWell(
-                                              onTap: () {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (_) =>
-                                                            ItemCard(
-                                                              brandNameScreen:
-                                                                  names[1],
-                                                            ))); //#TODO: Ubaciti ispravnu putanju
-                                              },
-                                              child: CategoryCardRow(
-                                                icon: Transform.scale(
-                                                  scale: 0.8,
-                                                  child: SvgPicture.network(
-                                                      categories[index].icon),
-                                                ),
-                                                name: names[1],
-                                                count: counts[1].toString(),
+                                            CategoryCardRow(
+                                              icon: Transform.scale(
+                                                scale: 0.8,
+                                                child: SvgPicture.network(
+                                                    categories[index].icon),
                                               ),
+                                              name: names[1],
+                                              count: counts[1].toString(),
                                             ),
-                                            InkWell(
-                                              onTap: () {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (_) =>
-                                                            ItemCard(
-                                                              brandNameScreen:
-                                                                  names[2],
-                                                            ))); //#TODO: Ubaciti ispravnu putanju
-                                              },
-                                              child: CategoryCardRow(
-                                                icon: Transform.scale(
-                                                  scale: 0.8,
-                                                  child: SvgPicture.network(
-                                                      categories[index].icon),
-                                                ),
-                                                name: names[2],
-                                                count: counts[2].toString(),
+                                            CategoryCardRow(
+                                              icon: Transform.scale(
+                                                scale: 0.8,
+                                                child: SvgPicture.network(
+                                                    categories[index].icon),
                                               ),
+                                              name: names[2],
+                                              count: counts[2].toString(),
                                             ),
                                           ])
                                         : names.length == 2
                                             ? Column(children: <Widget>[
-                                                InkWell(
-                                                  onTap: () {
-                                                    Navigator.of(context).push(
-                                                        MaterialPageRoute(
-                                                            builder: (_) =>
-                                                                ItemCard(
-                                                                  brandNameScreen:
-                                                                      names[0],
-                                                                ))); //#TODO: Ubaciti ispravnu putanju
-                                                  },
-                                                  child: CategoryCardRow(
-                                                    icon: Transform.scale(
-                                                      scale: 0.8,
-                                                      child: SvgPicture.network(
-                                                          categories[index]
-                                                              .icon),
-                                                    ),
-                                                    name: names[0],
-                                                    count: counts[0].toString(),
+                                                CategoryCardRow(
+                                                  icon: Transform.scale(
+                                                    scale: 0.8,
+                                                    child: SvgPicture.network(
+                                                        categories[index].icon),
                                                   ),
+                                                  name: names[0],
+                                                  count: counts[0].toString(),
                                                 ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    Navigator.of(context).push(
-                                                        MaterialPageRoute(
-                                                            builder: (_) =>
-                                                                ItemCard(
-                                                                  brandNameScreen:
-                                                                      names[1],
-                                                                ))); //#TODO: Ubaciti ispravnu putanju
-                                                  },
-                                                  child: CategoryCardRow(
-                                                    icon: Transform.scale(
-                                                      scale: 0.8,
-                                                      child: SvgPicture.network(
-                                                          categories[index]
-                                                              .icon),
-                                                    ),
-                                                    name: names[1],
-                                                    count: counts[1].toString(),
+                                                CategoryCardRow(
+                                                  icon: Transform.scale(
+                                                    scale: 0.8,
+                                                    child: SvgPicture.network(
+                                                        categories[index].icon),
                                                   ),
+                                                  name: names[1],
+                                                  count: counts[1].toString(),
                                                 ),
                                               ])
                                             : names.length == 1
                                                 ? Column(children: <Widget>[
-                                                    InkWell(
-                                                      onTap: () {
-                                                        Navigator.of(context).push(
-                                                            MaterialPageRoute(
-                                                                builder: (_) =>
-                                                                    ItemCard(
-                                                                      brandNameScreen:
-                                                                          names[
-                                                                              0],
-                                                                    ))); //#TODO: Ubaciti ispravnu putanju
-                                                      },
-                                                      child: CategoryCardRow(
-                                                        icon: Transform.scale(
-                                                          scale: 0.8,
-                                                          child: SvgPicture
-                                                              .network(
-                                                                  categories[
-                                                                          index]
-                                                                      .icon),
-                                                        ),
-                                                        name: names[0],
-                                                        count: counts[0]
-                                                            .toString(),
+                                                    CategoryCardRow(
+                                                      icon: Transform.scale(
+                                                        scale: 0.8,
+                                                        child:
+                                                            SvgPicture.network(
+                                                                categories[
+                                                                        index]
+                                                                    .icon),
                                                       ),
+                                                      name: names[0],
+                                                      count:
+                                                          counts[0].toString(),
                                                     ),
                                                   ])
                                                 : Container(
@@ -259,6 +196,9 @@ class _CategoryCardState extends State<CategoryCard> {
               }
             }),
       ),
+      SizedBox(
+        height: SizeConfig.blockSizeVertical * 8,
+      )
     ]);
   }
 }

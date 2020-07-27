@@ -3,7 +3,6 @@ import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/a
 import 'package:flutter/material.dart';
 
 Container imageOneUploadButton(dynamic function) {
-  buttonOne = true;
   return Container(
     alignment: Alignment.centerLeft,
     margin: EdgeInsets.only(left: 35.0),
