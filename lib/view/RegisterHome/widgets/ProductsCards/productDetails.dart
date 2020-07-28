@@ -309,8 +309,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                               margin: EdgeInsets.only(
                                 left: SizeConfig.blockSizeHorizontal * 5,
                                 right: SizeConfig.blockSizeHorizontal * 3,
-                                top: SizeConfig.blockSizeVertical * 2,
-                                bottom: SizeConfig.blockSizeVertical * 1,
+                                top: SizeConfig.blockSizeVertical * 1.5,
+                                //bottom: SizeConfig.blockSizeVertical * 1,
                               ),
                               child: Column(
                                 children: <Widget>[
