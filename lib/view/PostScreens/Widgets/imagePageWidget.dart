@@ -21,9 +21,11 @@ class ImagePageWidget extends StatefulWidget {
   const ImagePageWidget({
     Key key,
     @required this.bottom,
+    @required this.onFlatButtonPressed,
   }) : super(key: key);
 
   final double bottom;
+  final VoidCallback onFlatButtonPressed;
 
   @override
   _ImagePageWidgetState createState() => _ImagePageWidgetState();
@@ -33,6 +35,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   String _path1, _path2, _path3;
   String _extension1, _extension2, _extension3;
   String _fileName1, _fileName2, _fileName3;
+
+  //final VoidCallback;
 
   bool loading = false;
 
@@ -138,7 +142,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       FocusScope.of(context).requestFocus(new FocusNode());
       if (pageController.page == 4) {
         if (productPriceFormKey.currentState.validate()) {
-          showIphoneButton = false;
+          widget.onFlatButtonPressed();
           setState(() => loading = true);
           createdGlob = true;
           if (img1 != immutableImg1)
@@ -150,7 +154,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           if (img3 != immutableImg3)
             await upload(img3, pathGlobal3, 3)
                 .then((value) => productImg3 = value);
-          showIphoneButton = false;
+          //showIphoneButton = false;
 
           productName = productNameController.text;
           productCategory = dropdownValueCategory;

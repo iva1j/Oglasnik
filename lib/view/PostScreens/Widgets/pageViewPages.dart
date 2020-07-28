@@ -12,9 +12,11 @@ class PageViewPages extends StatelessWidget {
   const PageViewPages({
     Key key,
     @required this.bottom,
+    @required this.onFlatButtonPressed,
   }) : super(key: key);
 
   final double bottom;
+  final VoidCallback onFlatButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,11 @@ class PageViewPages extends StatelessWidget {
                 Container(child: CategoryPage()),
                 Container(child: CityPage()),
                 Container(child: PageFour(bottom: bottom)),
-                Container(child: PageFive(bottom: bottom)),
+                Container(
+                    child: PageFive(
+                  bottom: bottom,
+                  onFlatButtonPressed: onFlatButtonPressed,
+                )),
               ],
             ),
           ),

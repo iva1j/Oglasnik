@@ -11,11 +11,16 @@ class ArticlePage extends StatefulWidget {
 }
 
 class _ArticlePageState extends State<ArticlePage> {
+  bool load = false;
   @override
   void initState() {
     pageViewInitControllers();
     dropDownInitialValueState();
     super.initState();
+  }
+
+  finishButtonPressed() {
+    setState(() => load = true);
   }
 
   @override
@@ -26,10 +31,14 @@ class _ArticlePageState extends State<ArticlePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading:
-            showIphoneButton ? newInputBackButtonIphone(context) : Container(),
+        leading: load
+            ? Container(height: 0, width: 0)
+            : newInputBackButtonIphone(context),
       ),
-      body: PageViewPages(bottom: bottom),
+      body: PageViewPages(
+        bottom: bottom,
+        onFlatButtonPressed: finishButtonPressed,
+      ),
     );
   }
 }

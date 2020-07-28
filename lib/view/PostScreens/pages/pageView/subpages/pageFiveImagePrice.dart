@@ -8,9 +8,11 @@ class PageFive extends StatefulWidget {
   const PageFive({
     Key key,
     @required this.bottom,
+    @required this.onFlatButtonPressed,
   }) : super(key: key);
 
   final double bottom;
+  final VoidCallback onFlatButtonPressed;
 
   @override
   _PageFiveState createState() => _PageFiveState();
@@ -33,7 +35,10 @@ class _PageFiveState extends State<PageFive> {
           resizeToAvoidBottomInset: false,
           body: SingleChildScrollView(
             reverse: true,
-            child: ImagePageWidget(bottom: widget.bottom),
+            child: ImagePageWidget(
+              bottom: widget.bottom,
+              onFlatButtonPressed: widget.onFlatButtonPressed,
+            ),
           ),
         ),
       ),

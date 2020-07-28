@@ -6,7 +6,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/successDialogButtons.dart';
 import 'package:flutter/material.dart';
 
 AlertDialog successOnCreateAlertDialog(BuildContext context) {
-  showIphoneButton = true;
+  //showIphoneButton = true;
   return new AlertDialog(
     title: Text(
       SuccessAlertDialog().cestitamo,
