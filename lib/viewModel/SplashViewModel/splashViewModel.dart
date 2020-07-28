@@ -3,6 +3,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCar
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
+import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
@@ -14,25 +15,14 @@ Future<void> splashScreenRouter() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString('email');
-  var phoneNumber = prefs.getString('phoneNumber');
   globals.email = email;
-  globals.phoneNumber = phoneNumber;
 
   globals.registeredGlob = false;
 
-  //print(globals.email);
-  //print(globals.phoneNumber);
+  phoneNumberSetting();
 
   print("LSASDSAGASHAHADH");
   numberOfProductsPerBrandTest("Ford").then((value) => print(value));
-/*
-  top3BrandsPerCategory("Nakit")
-      .then((value) => value.forEach((x) => print(x)));
-
-  CategoryViewModel().getCategories().then(
-      (value) => value.forEach((element) => print(element['productCategory'])));
-*/
-  //top3BrandsPerCategory("Automobili");
   print("AHDAHADHADHDHAHDADHADJ");
 
   runApp(MaterialApp(
