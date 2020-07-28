@@ -73,14 +73,14 @@ void onPressedSignInModel(
 }
 
 void loginPrefs(BuildContext context, String email) async {
-  phoneNumberSetting();
+  phoneNumberSetting(email);
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
   prefs.setString('email', email);
   //prefs.setString('phoneNumber', phoneNumber);
 }
 
-void phoneNumberSetting() async {
+void phoneNumberSetting(String email) async {
   final userQuery = await Firestore.instance
       .collection('firestoreUsers')
       .where('email', isEqualTo: email)
