@@ -44,6 +44,7 @@ bool buttonThree = false;
 bool allowAutoValidate = false;
 bool registeredGlob = false;
 bool createdGlob = false;
+bool showIphoneButton = true;
 
 String slika1;
 
