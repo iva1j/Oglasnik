@@ -22,6 +22,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
   void initState() {
     super.initState();
     if (registeredGlob) {
+      showIphoneButton = true;
       registeredGlob = false;
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         await showDialog<String>(
