@@ -34,6 +34,7 @@ class _CategoryCardState extends State<CategoryCard> {
                     .toList();
                 //print(snapshot.data.forEach((element) => print(element[])))
                 return ListView.builder(
+                    physics: AlwaysScrollableScrollPhysics(),
                     itemCount: categories.length,
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
@@ -63,8 +64,7 @@ class _CategoryCardState extends State<CategoryCard> {
                         margin: EdgeInsets.only(
                           left: SizeConfig.blockSizeHorizontal * 5,
                           right: SizeConfig.blockSizeHorizontal * 5,
-                          top: SizeConfig.blockSizeVertical * 2,
-                          bottom: SizeConfig.blockSizeVertical * 3,
+                          top: SizeConfig.blockSizeVertical * 5,
                         ),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -175,10 +175,7 @@ class _CategoryCardState extends State<CategoryCard> {
                                                           counts[0].toString(),
                                                     ),
                                                   ])
-                                                : Container(
-                                                    width: 0,
-                                                    height: 0,
-                                                  );
+                                                : Container();
                                   } else {
                                     return Center(
                                       child: SpinnerCircular(),
@@ -201,7 +198,7 @@ class _CategoryCardState extends State<CategoryCard> {
       ),
       SizedBox(
         height: SizeConfig.blockSizeVertical * 8,
-      )
+      ),
     ]);
   }
 }
