@@ -44,6 +44,7 @@ bool buttonThree = false;
 bool allowAutoValidate = false;
 bool registeredGlob = false;
 bool createdGlob = false;
+bool isLoading = false;
 
 String slika1;
 

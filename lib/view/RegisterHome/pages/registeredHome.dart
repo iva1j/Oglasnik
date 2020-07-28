@@ -43,6 +43,9 @@ class _RegisteredHomeState extends State<RegisteredHome> {
   List<dynamic> products = [];
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      isLoading = false;
+    });
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
