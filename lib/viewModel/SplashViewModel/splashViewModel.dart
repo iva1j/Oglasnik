@@ -19,7 +19,7 @@ Future<void> splashScreenRouter() async {
 
   globals.registeredGlob = false;
 
-  phoneNumberSetting();
+  phoneNumberSetting(email);
 
   print("LSASDSAGASHAHADH");
   numberOfProductsPerBrandTest("Ford").then((value) => print(value));
