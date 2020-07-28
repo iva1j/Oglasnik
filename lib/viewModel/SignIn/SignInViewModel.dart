@@ -73,9 +73,15 @@ void onPressedSignInModel(
 }
 
 void loginPrefs(BuildContext context, String email) async {
+  phoneNumberSetting();
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
-  var userQuery = Firestore.instance
+  prefs.setString('email', email);
+  //prefs.setString('phoneNumber', phoneNumber);
+}
+
+void phoneNumberSetting() async {
+  final userQuery = await Firestore.instance
       .collection('firestoreUsers')
       .where('email', isEqualTo: email)
       .limit(1);
@@ -85,5 +91,4 @@ void loginPrefs(BuildContext context, String email) async {
       phoneNumber = data.documents[0].data['phoneNumber'];
     }
   });
-  prefs.setString('email', email);
 }
