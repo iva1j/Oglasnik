@@ -154,6 +154,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           if (img3 != immutableImg3)
             await upload(img3, pathGlobal3, 3)
                 .then((value) => productImg3 = value);
+          //showIphoneButton = false;
 
           productName = productNameController.text;
           productCategory = dropdownValueCategory;
@@ -180,6 +181,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             productImg3,
             productprice,
           );
+
           img1 = immutableImg1;
           img2 = immutableImg2;
           img3 = immutableImg3;

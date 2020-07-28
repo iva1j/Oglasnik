@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/oglasTag.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -309,8 +310,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                               margin: EdgeInsets.only(
                                 left: SizeConfig.blockSizeHorizontal * 5,
                                 right: SizeConfig.blockSizeHorizontal * 3,
-                                top: SizeConfig.blockSizeVertical * 2,
-                                bottom: SizeConfig.blockSizeVertical * 1,
+                                top: SizeConfig.blockSizeVertical * 1.5,
+                                //bottom: SizeConfig.blockSizeVertical * 1,
                               ),
                               child: Column(
                                 children: <Widget>[
