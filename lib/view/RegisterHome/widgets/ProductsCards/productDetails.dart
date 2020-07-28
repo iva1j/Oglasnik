@@ -11,9 +11,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/showimage.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
 import 'package:intl/intl.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
@@ -162,7 +160,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                               Container(
                                 margin: EdgeInsets.symmetric(
                                     horizontal:
-                                        SizeConfig.blockSizeHorizontal * 3),
+                                        SizeConfig.blockSizeHorizontal * 3,
+                                    vertical: SizeConfig.blockSizeVertical * 1),
                                 child: Row(
                                   children: <Widget>[
                                     Container(child: Icon(Icons.location_on)),
@@ -197,9 +196,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                               ),
                               Container(
                                 margin: EdgeInsets.symmetric(
-                                    horizontal:
-                                        SizeConfig.blockSizeHorizontal * 4,
-                                    vertical: SizeConfig.blockSizeVertical * 2),
+                                  horizontal:
+                                      SizeConfig.blockSizeHorizontal * 5,
+                                ),
                                 child: Row(children: <Widget>[
                                   Container(
                                     width: 170.0,
@@ -220,9 +219,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                               ),
                               Container(
                                 margin: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 4,
-                                ),
+                                    horizontal:
+                                        SizeConfig.blockSizeHorizontal * 5,
+                                    vertical:
+                                        SizeConfig.blockSizeVertical * 1.8),
                                 child: Text(products[index].productDesc,
                                     style: TextStyle(
                                         color: descOfItem,
@@ -256,20 +256,20 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         )
                                         .toList(),
                                     /*
-                                             <Widget>[
-                                              OglasTag(naziv: "Sarajevo"),
-                                              OglasTag(naziv: "Audi"),
-                                              OglasTag(naziv: "Top"),
-                                              OglasTag(naziv: "Sarajevo"),
-                                              OglasTag(naziv: "Audi"),
-                                              OglasTag(naziv: "Top"),
-                                              OglasTag(naziv: "Sarajevo"),
-                                              OglasTag(naziv: "Audi"),
-                                              OglasTag(naziv: "Top"),
-                                              OglasTag(naziv: "Sarajevo"),
-                                              OglasTag(naziv: "Audi"),
-                                              OglasTag(naziv: "Top"),
-                                            ],*/
+                                               <Widget>[
+                                                OglasTag(naziv: "Sarajevo"),
+                                                OglasTag(naziv: "Audi"),
+                                                OglasTag(naziv: "Top"),
+                                                OglasTag(naziv: "Sarajevo"),
+                                                OglasTag(naziv: "Audi"),
+                                                OglasTag(naziv: "Top"),
+                                                OglasTag(naziv: "Sarajevo"),
+                                                OglasTag(naziv: "Audi"),
+                                                OglasTag(naziv: "Top"),
+                                                OglasTag(naziv: "Sarajevo"),
+                                                OglasTag(naziv: "Audi"),
+                                                OglasTag(naziv: "Top"),
+                                              ],*/
                                   ),
                                 ),
                               ),
@@ -278,9 +278,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                         ),
                       ),
                       Container(
+                        margin: EdgeInsets.only(
+                            top: SizeConfig.blockSizeVertical * 1,
+                            bottom: SizeConfig.blockSizeVertical *
+                                16), // ne mijenjati
                         color: mainAppColor,
                         width: SizeConfig.screenWidth,
-                        //height: 55,
                         height: SizeConfig.blockSizeVertical * 8,
                         child: Row(
                           children: <Widget>[
@@ -330,8 +333,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 ],
                               ),
                             ),
-
-                            //Spacer(),
                             Container(
                               margin: EdgeInsets.only(
                                 left: SizeConfig.blockSizeHorizontal * 8,
@@ -372,35 +373,6 @@ class _ProductDetailsState extends State<ProductDetails> {
     );
   }
 }
-
-// class OglasTag extends StatelessWidget {
-//   final String naziv;
-//   const OglasTag({
-//     Key key,
-//     this.naziv,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: EdgeInsets.only(
-//         left: SizeConfig.blockSizeHorizontal * 3,
-//         top: SizeConfig.blockSizeVertical * 1,
-//         bottom: SizeConfig.blockSizeVertical * 2,
-//       ),
-//       child: Text(
-//         "#" + naziv,
-//         style: TextStyle(
-//           fontSize: SizeConfig.safeBlockHorizontal * 3,
-//           fontWeight: FontWeight.w300,
-//           color: Colors.blueAccent,
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// String number = '0000000';
 
 class CallsAndMessagesService {
   void call(String number) => launch("tel:$number");
