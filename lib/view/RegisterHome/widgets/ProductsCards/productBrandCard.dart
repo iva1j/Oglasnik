@@ -1,5 +1,4 @@
 import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
@@ -9,7 +8,6 @@ import 'package:Oglasnik/viewModel/PreviewProduct/getBrandData.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 import 'dart:math';
 
@@ -151,7 +149,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                                                       brandNameScreen:
                                                                           categoryBrand[index]
                                                                               .productBrand,
-                                                                    ))); //#TODO: Ubaciti ispravnu putanju
+                                                                    )));
                                                       },
                                                       child: Text(
                                                         categoryBrand[index]

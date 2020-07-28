@@ -1,3 +1,4 @@
+import 'package:Oglasnik/view/AnonymousHome/pages/mainbody.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
@@ -58,16 +59,5 @@ class _AnonymousHomeState extends State<AnonymousHome> {
         ),
       ),
     );
-  }
-}
-
-class MainBody extends StatelessWidget {
-  const MainBody({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return CategoryCard();
   }
 }
