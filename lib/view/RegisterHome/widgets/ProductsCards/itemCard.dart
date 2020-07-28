@@ -2,11 +2,15 @@ import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemDescription.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemImage.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemName.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemPrice.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/oglasTag.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
 class ItemCard extends StatefulWidget {
@@ -218,140 +222,4 @@ class _ItemCardState extends State<ItemCard> {
   }
 }
 
-class ItemName extends StatelessWidget {
-  final String name;
-  const ItemName({
-    Key key,
-    @required this.name,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(
-        top: SizeConfig.blockSizeVertical * 2,
-        bottom: SizeConfig.blockSizeVertical,
-        left: SizeConfig.blockSizeHorizontal * 3,
-      ),
-      child: Align(
-        alignment: Alignment.topLeft,
-        child: Text(
-          name,
-          style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 6,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ItemDescription extends StatelessWidget {
-  final String description;
-  const ItemDescription({
-    Key key,
-    @required this.description,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(
-        // top: SizeConfig.blockSizeVertical * 1,
-        // bottom: SizeConfig.blockSizeVertical,
-        left: SizeConfig.blockSizeHorizontal * 3,
-      ),
-      child: Align(
-        alignment: Alignment.topLeft,
-        child: Text(
-          description,
-          style: TextStyle(color: descOfItem, fontWeight: FontWeight.w400),
-        ),
-      ),
-    );
-  }
-}
-
-class ItemImage extends StatelessWidget {
-  const ItemImage({
-    Key key,
-    @required this.img,
-  }) : super(key: key);
-
-  final String img;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(
-        top: SizeConfig.blockSizeVertical * 1,
-        right: SizeConfig.blockSizeHorizontal * 1,
-      ),
-      height: SizeConfig.blockSizeVertical * 20,
-      width: SizeConfig.blockSizeVertical * 20,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            fit: BoxFit.cover,
-            image: img == "" ? AssetImage(noPhoto) : NetworkImage(img)),
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-        color: Colors.redAccent,
-      ),
-    );
-  }
-}
-
-class ItemPrice extends StatelessWidget {
-  final String price;
-  const ItemPrice({
-    Key key,
-    this.price,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(
-        top: SizeConfig.blockSizeVertical,
-        // right: SizeConfig.blockSizeHorizontal * 3
-      ),
-      child: Text(
-        NumberFormat.currency(locale: 'eu', symbol: 'KM')
-            .format((double.parse(price))),
-        style: TextStyle(
-          fontSize: SizeConfig.safeBlockHorizontal * 5,
-          fontWeight: FontWeight.w700,
-        ),
-        textAlign: TextAlign.center,
-      ),
-    );
-  }
-}
-
-class OglasTag extends StatelessWidget {
-  final String naziv;
-  const OglasTag({Key key, this.naziv}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(
-        left: SizeConfig.blockSizeHorizontal * 3,
-        top: SizeConfig.blockSizeVertical * 1,
-        bottom: SizeConfig.blockSizeVertical * 2,
-      ),
-      child: Text(
-        // Task radio Elvir. Code handluje unos tagova na inputu to jest, ako korisnik unese sljedece:
-        // tag, #tag, ##tag to ce se prikazati kao: #tag #tag #tag
-        (naziv.contains('#'))
-            ? naziv.replaceFirst('##', '#')
-            : "#" + naziv.replaceAll(new RegExp(r"\s+"), ""),
-        style: TextStyle(
-          fontSize: SizeConfig.safeBlockHorizontal * 3,
-          fontWeight: FontWeight.w300,
-          color: tagsColor,
-        ),
-      ),
-    );
-  }
-}
