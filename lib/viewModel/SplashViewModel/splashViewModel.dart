@@ -14,7 +14,9 @@ Future<void> splashScreenRouter() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString('email');
+  var phoneNumber = prefs.getString('phoneNumber');
   globals.email = email;
+  globals.phoneNumber = phoneNumber;
 
   globals.registeredGlob = false;
 
@@ -22,14 +24,14 @@ Future<void> splashScreenRouter() async {
   //print(globals.phoneNumber);
 
   print("LSASDSAGASHAHADH");
-  //numberOfProductsPerBrandTest("Ford").then((value) => print(value));
+  numberOfProductsPerBrandTest("Ford").then((value) => print(value));
 /*
   top3BrandsPerCategory("Nakit")
       .then((value) => value.forEach((x) => print(x)));
-*/
+
   CategoryViewModel().getCategories().then(
       (value) => value.forEach((element) => print(element['productCategory'])));
-
+*/
   //top3BrandsPerCategory("Automobili");
   print("AHDAHADHADHDHAHDADHADJ");
 

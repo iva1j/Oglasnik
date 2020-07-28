@@ -91,8 +91,6 @@ numberOfProductsPerBrandTest(String brandName) async {
   return documents.length;
 }
 
-// implementacija ove funkcije blizu kraju
-
 top3BrandsPerCategory(String categoryName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
       .collection('products')

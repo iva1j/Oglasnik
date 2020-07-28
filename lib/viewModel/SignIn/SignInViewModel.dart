@@ -86,4 +86,5 @@ void loginPrefs(BuildContext context, String email) async {
     }
   });
   prefs.setString('email', email);
+  prefs.setString('phoneNumber', phoneNumber);
 }

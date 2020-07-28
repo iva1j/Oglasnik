@@ -25,6 +25,7 @@ class _LogoutButtonState extends State<LogoutButton> {
         await FirebaseAuth.instance.signOut();
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.remove('email');
+        prefs.remove('phoneNumber');
         //prefs.remove('phoneNumber');
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => AnonymousHome()),

@@ -7,6 +7,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/getBrandData.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
@@ -58,6 +59,15 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                         itemCount: categoryBrand.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
+                          //categoryBrand[index].productBrand
+                          /*
+                          var x;
+                          print("ASFSAGAHAHAHD");
+                          numberOfProductsPerBrandTest(
+                                  categoryBrand[index].productBrand)
+                              .then((value) => print(value));
+                          print("LOKASPKSGKSPAG");
+*/
                           return InkWell(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
@@ -96,61 +106,80 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: <Widget>[
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  3,
-                                              top:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            child: InkWell(
-                                              onTap: () {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (_) =>
-                                                            ItemCard(
-                                                              brandNameScreen:
-                                                                  categoryBrand[
-                                                                          index]
-                                                                      .productBrand,
-                                                            ))); //#TODO: Ubaciti ispravnu putanju
-                                              },
-                                              child: Text(
-                                                categoryBrand[index]
-                                                    .productBrand,
-                                                style: TextStyle(
-                                                  fontSize: SizeConfig
-                                                          .safeBlockHorizontal *
-                                                      5,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                    FutureBuilder(
+                                        future: numberOfProductsPerBrandTest(
+                                            categoryBrand[index].productBrand),
+                                        builder: (BuildContext context,
+                                            AsyncSnapshot snapshott) {
+                                          if (!snapshott.hasData)
+                                            return Center(
+                                              child: SpinnerCircular(),
+                                            );
+                                          else {
+                                            return Expanded(
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: <Widget>[
+                                                  Container(
+                                                    margin: EdgeInsets.only(
+                                                      left: SizeConfig
+                                                              .blockSizeHorizontal *
+                                                          3,
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          2,
+                                                    ),
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        Navigator.of(context).push(
+                                                            MaterialPageRoute(
+                                                                builder: (_) =>
+                                                                    ItemCard(
+                                                                      brandNameScreen:
+                                                                          categoryBrand[index]
+                                                                              .productBrand,
+                                                                    ))); //#TODO: Ubaciti ispravnu putanju
+                                                      },
+                                                      child: Text(
+                                                        categoryBrand[index]
+                                                            .productBrand,
+                                                        style: TextStyle(
+                                                          fontSize: SizeConfig
+                                                                  .safeBlockHorizontal *
+                                                              5,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                      margin: EdgeInsets.only(
+                                                        left: SizeConfig
+                                                                .blockSizeHorizontal *
+                                                            3,
+                                                        top: SizeConfig
+                                                                .blockSizeVertical *
+                                                            1,
+                                                      ),
+                                                      child: Text(
+                                                          'U ovoj kategoriji nalazi se ' +
+                                                              snapshott.data
+                                                                  .toString() +
+                                                              ' ' +
+                                                              categoryBrand[
+                                                                      index]
+                                                                  .productBrand +
+                                                              '.')),
+                                                ],
                                               ),
-                                            ),
-                                          ),
-                                          Container(
-                                              margin: EdgeInsets.only(
-                                                left: SizeConfig
-                                                        .blockSizeHorizontal *
-                                                    3,
-                                                top: SizeConfig
-                                                        .blockSizeVertical *
-                                                    1,
-                                              ),
-                                              child: Text(
-                                                  'U ovoj kategoriji nalazi se 123 Audi')),
-                                        ],
-                                      ),
-                                    ),
+                                            );
+                                          }
+                                        }),
                                     Container(
                                       child: Expanded(
                                         child: Container(
