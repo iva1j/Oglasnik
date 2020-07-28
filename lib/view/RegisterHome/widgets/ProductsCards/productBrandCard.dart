@@ -24,6 +24,15 @@ class ProductBrandCard extends StatefulWidget {
 class _ProductBrandCardState extends State<ProductBrandCard> {
   List<String> listaSlika = [];
 
+  bool listContains(int n, List<int> listaIntegera) {
+    for (var x in listaIntegera) {
+      if (n == x) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -200,7 +209,16 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                             builder: (BuildContext context,
                                                 AsyncSnapshot snapshot) {
                                               if (snapshot.hasData) {
+                                                //var random = new Random();
+                                                List<int> indexi = List<int>();
                                                 var random = new Random();
+                                                do {
+                                                  final result = random.nextInt(
+                                                      snapshot.data.length);
+                                                  if (!listContains(
+                                                      result, indexi))
+                                                    indexi.add(result);
+                                                } while (indexi.length < 4);
                                                 return new GridView.count(
                                                   padding: EdgeInsets.all(0),
                                                   physics:
@@ -211,27 +229,19 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                                                   mainAxisSpacing: 3,
                                                   children: <Widget>[
                                                     Image.network(
-                                                      snapshot.data[random
-                                                          .nextInt(snapshot
-                                                              .data.length)],
+                                                      snapshot.data[indexi[0]],
                                                       fit: BoxFit.cover,
                                                     ),
                                                     Image.network(
-                                                      snapshot.data[random
-                                                          .nextInt(snapshot
-                                                              .data.length)],
+                                                      snapshot.data[indexi[1]],
                                                       fit: BoxFit.cover,
                                                     ),
                                                     Image.network(
-                                                      snapshot.data[random
-                                                          .nextInt(snapshot
-                                                              .data.length)],
+                                                      snapshot.data[indexi[2]],
                                                       fit: BoxFit.cover,
                                                     ),
                                                     Image.network(
-                                                      snapshot.data[random
-                                                          .nextInt(snapshot
-                                                              .data.length)],
+                                                      snapshot.data[indexi[3]],
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ],
