@@ -1,6 +1,4 @@
 import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
