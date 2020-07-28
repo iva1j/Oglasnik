@@ -341,6 +341,8 @@ class OglasTag extends StatelessWidget {
         bottom: SizeConfig.blockSizeVertical * 2,
       ),
       child: Text(
+        // Task radio Elvir. Code handluje unos tagova na inputu to jest, ako korisnik unese sljedece:
+        // tag, #tag, ##tag to ce se prikazati kao: #tag #tag #tag
         (naziv.contains('#'))
             ? naziv.replaceFirst('##', '#')
             : "#" + naziv.replaceAll(new RegExp(r"\s+"), ""),
