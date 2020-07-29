@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:flutter/material.dart';
@@ -42,77 +43,81 @@ class ItemCardBody extends StatelessWidget {
                   child: ListView.builder(
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (_, int index) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => ProductDetails(
-                                productNameScreen: snapshot
-                                    .data.documents[index]['productName'],
+                      return Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          onTap: () {
+                            Navigator.of(context).push(
+                              FadeRoute(
+                                page: ProductDetails(
+                                  productNameScreen: snapshot
+                                      .data.documents[index]['productName'],
+                                ),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.2),
+                                  spreadRadius: 1,
+                                  blurRadius: 7,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
+                              border: Border.all(
+                                color: Colors.black26,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(4),
                               ),
                             ),
-                          );
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
-                                spreadRadius: 1,
-                                blurRadius: 7,
-                                offset: Offset(0, 3),
-                              ),
-                            ],
-                            border: Border.all(
-                              color: Colors.black26,
+                            margin: EdgeInsets.only(
+                              left: SizeConfig.blockSizeHorizontal * 5,
+                              right: SizeConfig.blockSizeHorizontal * 5,
+                              top: SizeConfig.blockSizeVertical * 4,
+                              bottom: SizeConfig.blockSizeVertical * 2,
                             ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                          ),
-                          margin: EdgeInsets.only(
-                            left: SizeConfig.blockSizeHorizontal * 5,
-                            right: SizeConfig.blockSizeHorizontal * 5,
-                            top: SizeConfig.blockSizeVertical * 4,
-                            bottom: SizeConfig.blockSizeVertical * 2,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        itemCardProductName(
-                                            context, snapshot, index),
-                                        itemCardDescription(snapshot, index),
-                                      ],
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: <Widget>[
+                                          itemCardProductName(
+                                              context, snapshot, index),
+                                          itemCardDescription(snapshot, index),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: <Widget>[
-                                        itemCardImage(snapshot, index),
-                                        itemCardPrice(snapshot, index),
-                                      ],
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
+                                        children: <Widget>[
+                                          itemCardImage(snapshot, index),
+                                          itemCardPrice(snapshot, index),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                thickness: SizeConfig.blockSizeVertical * 0.2,
-                              ),
-                              itemCardTags(snapshot, index),
-                            ],
+                                  ],
+                                ),
+                                Divider(
+                                  thickness: SizeConfig.blockSizeVertical * 0.2,
+                                ),
+                                itemCardTags(snapshot, index),
+                              ],
+                            ),
                           ),
                         ),
                       );
