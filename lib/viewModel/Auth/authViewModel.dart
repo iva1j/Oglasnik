@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 
 bool validSignIn = false;
 bool validPasswordReset = false;
+final AnonymousViewModel auth = AnonymousViewModel();
 
 class AuthService extends ChangeNotifier {
 // FUTURE BUILDER FOR REGISTER
@@ -266,4 +267,9 @@ class AnonymousViewModel implements AnonymousInterface {
       return null;
     }
   }
+}
+
+Future<FirebaseUser> _handleAnonymousSignIn() async {
+  dynamic result = await auth.getAnonymous();
+  return result;
 }

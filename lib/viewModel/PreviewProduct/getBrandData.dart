@@ -1,4 +1,3 @@
-import 'package:Oglasnik/interface/productInterface.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future getBrandData(String productBrand) async {
@@ -12,6 +11,12 @@ Future getBrandData(String productBrand) async {
   brandData.forEach((element) {
     if (element["productImg1"] != null) {
       slikeBrandova.add(element['productImg1']);
+    }
+    if (element["productImg2"] != null) {
+      slikeBrandova.add(element['productImg2']);
+    }
+    if (element["productImg3"] != null) {
+      slikeBrandova.add(element['productImg3']);
     }
   });
   while (slikeBrandova.length < 4) {
