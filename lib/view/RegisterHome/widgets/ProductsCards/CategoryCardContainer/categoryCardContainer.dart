@@ -1,3 +1,5 @@
+import 'package:Oglasnik/utils/enterexitTransitionRoutes.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
@@ -47,26 +49,30 @@ class CategoryCardContainer extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => ProductBrandCard(
-                            categoryName: categories[index].categoryName,
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      onTap: () {
+                        Navigator.of(context).push(
+                          FadeRoute(
+                            page: ProductBrandCard(
+                              categoryName: categories[index].categoryName,
+                            ),
                           ),
-                        ),
-                      ); //#TODO: Ubaciti ispravnu putanju
-                    },
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: Container(
-                        margin:
-                            EdgeInsets.only(top: SizeConfig.blockSizeVertical),
-                        child: Text(
-                          categories[index].categoryName,
-                          style: TextStyle(
-                            fontSize: SizeConfig.safeBlockHorizontal * 5,
-                            fontWeight: FontWeight.w700,
+                        );
+                      },
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical),
+                          child: Text(
+                            categories[index].categoryName,
+                            style: TextStyle(
+                              fontSize: SizeConfig.safeBlockHorizontal * 5,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
                       ),

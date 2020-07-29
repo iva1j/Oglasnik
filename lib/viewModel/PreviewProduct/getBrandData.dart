@@ -12,6 +12,12 @@ Future getBrandData(String productBrand) async {
     if (element["productImg1"] != null) {
       slikeBrandova.add(element['productImg1']);
     }
+    if (element["productImg2"] != null) {
+      slikeBrandova.add(element['productImg2']);
+    }
+    if (element["productImg3"] != null) {
+      slikeBrandova.add(element['productImg3']);
+    }
   });
   while (slikeBrandova.length < 4) {
     slikeBrandova.add(
