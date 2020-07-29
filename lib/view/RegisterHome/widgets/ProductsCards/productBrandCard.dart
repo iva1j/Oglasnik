@@ -4,7 +4,6 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/ProductBrandContainer/productBrandContainer.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
-
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
@@ -19,7 +18,6 @@ class ProductBrandCard extends StatefulWidget {
 
 class _ProductBrandCardState extends State<ProductBrandCard> {
   List<String> listaSlika = [];
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -53,8 +51,10 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                         .toList();
                     return ProductBrandContainer();
                   } else {
-                    return Center(
-                      child: SpinnerCircular(),
+                    return Expanded(
+                      child: Center(
+                        child: SpinnerCircular(),
+                      ),
                     );
                   }
                 }),

@@ -1,10 +1,10 @@
-import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/topBrands.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/CategoryCardContainer/categoryNameRow.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/CategoryCardContainer/threeCategoriesWidget.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/CategoryCardContainer/oneCategoryWidget.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/CategoryCardContainer/twoCategoriesWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
@@ -50,32 +50,7 @@ class CategoryCardContainer extends StatelessWidget {
                 children: <Widget>[
                   Material(
                     color: Colors.transparent,
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      onTap: () {
-                        Navigator.of(context).push(
-                          FadeRoute(
-                            page: ProductBrandCard(
-                              categoryName: categories[index].categoryName,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.blockSizeVertical),
-                          child: Text(
-                            categories[index].categoryName,
-                            style: TextStyle(
-                              fontSize: SizeConfig.safeBlockHorizontal * 5,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    child: categoryNameRow(context, index),
                   ),
                   Divider(
                     thickness: SizeConfig.blockSizeVertical * 0.2,
@@ -88,68 +63,11 @@ class CategoryCardContainer extends StatelessWidget {
                           List<String> names = snapshot.data.keys.toList();
                           List<dynamic> counts = snapshot.data.values.toList();
                           return names.length == 3
-                              ? Column(children: <Widget>[
-                                  CategoryCardRow(
-                                    icon: Transform.scale(
-                                      scale: 0.8,
-                                      child: SvgPicture.network(
-                                          categories[index].icon),
-                                    ),
-                                    name: names[0],
-                                    count: counts[0].toString(),
-                                  ),
-                                  CategoryCardRow(
-                                    icon: Transform.scale(
-                                      scale: 0.8,
-                                      child: SvgPicture.network(
-                                          categories[index].icon),
-                                    ),
-                                    name: names[1],
-                                    count: counts[1].toString(),
-                                  ),
-                                  CategoryCardRow(
-                                    icon: Transform.scale(
-                                      scale: 0.8,
-                                      child: SvgPicture.network(
-                                          categories[index].icon),
-                                    ),
-                                    name: names[2],
-                                    count: counts[2].toString(),
-                                  ),
-                                ])
+                              ? threeCategoriesWidget(index, names, counts)
                               : names.length == 2
-                                  ? Column(children: <Widget>[
-                                      CategoryCardRow(
-                                        icon: Transform.scale(
-                                          scale: 0.8,
-                                          child: SvgPicture.network(
-                                              categories[index].icon),
-                                        ),
-                                        name: names[0],
-                                        count: counts[0].toString(),
-                                      ),
-                                      CategoryCardRow(
-                                        icon: Transform.scale(
-                                          scale: 0.8,
-                                          child: SvgPicture.network(
-                                              categories[index].icon),
-                                        ),
-                                        name: names[1],
-                                        count: counts[1].toString(),
-                                      ),
-                                    ])
+                                  ? twoCategoriesWidget(index, names, counts)
                                   : names.length == 1
-                                      ? Column(children: <Widget>[
-                                          CategoryCardRow(
-                                            icon: Transform.scale(
-                                              scale: 0.8,
-                                              child: SvgPicture.network(
-                                                  categories[index].icon),
-                                            ),
-                                            name: names[0],
-                                            count: counts[0].toString(),
-                                          ),
-                                        ])
+                                      ? oneCategoryWidget(index, names, counts)
                                       : Container(
                                           width: 0,
                                           height: 0,
