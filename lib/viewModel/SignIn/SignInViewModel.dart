@@ -3,6 +3,8 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/successOnCreateAlertDialog.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
@@ -91,4 +93,43 @@ void phoneNumberSetting(String email) async {
       phoneNumber = data.documents[0].data['phoneNumber'];
     }
   });
+}
+
+allowPasswordChange(BuildContext context, String email) {
+  FutureBuilder(
+      future: AuthService().isEmailValid(email),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          allowUserToChangePassword = true;
+          print('korisnik postoji');
+          return Container();
+        } else {
+          print('korisnik nije u bazi');
+          allowUserToChangePassword = false;
+          return Container();
+        }
+      });
+}
+
+registeredShowDialog(BuildContext context) {
+  if (registeredGlob) {
+    registeredGlob = false;
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => successAlertDialog(context));
+    });
+  }
+}
+
+createdShowDialog(BuildContext context) {
+  if (createdGlob) {
+    createdGlob = false;
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await showDialog<String>(
+          context: context,
+          builder: (BuildContext context) =>
+              successOnCreateAlertDialog(context));
+    });
+  }
 }

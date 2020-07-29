@@ -1,11 +1,11 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/mainbody.dart';
-
+import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successOnCreateAlertDialog.dart';
-import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
@@ -22,23 +22,8 @@ class _RegisteredHomeState extends State<RegisteredHome> {
   @override
   void initState() {
     super.initState();
-    if (registeredGlob) {
-      registeredGlob = false;
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await showDialog<String>(
-            context: context,
-            builder: (BuildContext context) => successAlertDialog(context));
-      });
-    }
-    if (createdGlob) {
-      createdGlob = false;
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await showDialog<String>(
-            context: context,
-            builder: (BuildContext context) =>
-                successOnCreateAlertDialog(context));
-      });
-    }
+    registeredShowDialog(context);
+    createdShowDialog(context);
   }
 
   List<dynamic> products = [];
@@ -58,11 +43,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
       floatingActionButton: email != null
           ? mainFloatingButton(email)
           : homeFloatingAnimatedButton(),
-      bottomSheet: Container(
-        height: 55,
-        width: double.infinity,
-        color: Color.fromARGB(255, 226, 11, 48),
-      ),
+      bottomSheet: BottomSheetContainer(),
       body: MainBody(),
     );
   }

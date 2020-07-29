@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/priceTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageOneUploadButton.dart';
@@ -11,8 +10,8 @@ import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
+import 'package:Oglasnik/viewModel/ImageUpload/upload.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:random_string/random_string.dart';
@@ -81,59 +80,51 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     //upload(_fileName3, _path3, 3).then((value) => productImg3 = value);
   }
 
-  Future<String> upload(fileName, filePath, id) async {
-    StorageReference storageRef =
-        FirebaseStorage.instance.ref().child('images').child(fileName);
-    final StorageUploadTask task = storageRef.putFile(
-      File(filePath),
-    );
-    return await (await task.onComplete).ref.getDownloadURL();
-  }
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return loading
-        ? Loading()
-        : Container(
-            margin: EdgeInsets.all(15),
-            child: Column(
-              children: <Widget>[
-                MainTitle(),
-                Container(
-                  margin: EdgeInsets.only(
-                      bottom: SizeConfig.blockSizeVertical * 18),
+    return loading ? Loading() : imageUploadContainer(context);
+  }
+
+  Container imageUploadContainer(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(15),
+      child: Column(
+        children: <Widget>[
+          MainTitle(),
+          Container(
+            margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 18),
+          ),
+          imageOneUploadButton(openFileExplorer1),
+          imageTwoUploadButton(openFileExplorer2),
+          imageThreeUploadButton(openFileExplorer3),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                  margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
+                  child: priceTextField()),
+              Padding(
+                padding: EdgeInsets.only(left: 7, bottom: 5),
+                child: Text(
+                  MoneyText().kmText,
                 ),
-                imageOneUploadButton(openFileExplorer1),
-                imageTwoUploadButton(openFileExplorer2),
-                imageThreeUploadButton(openFileExplorer3),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                        margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
-                        child: priceTextField()),
-                    Padding(
-                      padding: EdgeInsets.only(left: 7, bottom: 5),
-                      child: Text(
-                        MoneyText().kmText,
-                      ),
-                    ),
-                  ],
-                ),
-                /*
-            Container(
-              child: PageViewButton(),
-            )*/
-                SizedBox(
-                  height: SizeConfig.blockSizeVertical * 6,
-                ),
-                Container(
-                  child: pageViewSubmitButton(context),
-                ),
-              ],
-            ),
-          );
+              ),
+            ],
+          ),
+          /*
+          Container(
+            child: PageViewButton(),
+          )*/
+          SizedBox(
+            height: SizeConfig.blockSizeVertical * 6,
+          ),
+          Container(
+            child: pageViewSubmitButton(context),
+          ),
+        ],
+      ),
+    );
   }
 
 //nije moguće refaktorisati zbog privatnih varijabli. Check it out

@@ -4,6 +4,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/categoryBrands.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/getBrandData.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewBrand.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
