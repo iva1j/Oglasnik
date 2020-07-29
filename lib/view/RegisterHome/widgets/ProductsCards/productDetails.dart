@@ -11,7 +11,6 @@ import '../showimage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/showimage.dart';
 import 'package:intl/intl.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -310,7 +309,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               margin: EdgeInsets.only(
                                 left: SizeConfig.blockSizeHorizontal * 5,
                                 right: SizeConfig.blockSizeHorizontal * 3,
-                                top: SizeConfig.blockSizeVertical * 1.5,
+                                top: SizeConfig.blockSizeVertical * 1.1,
                                 //bottom: SizeConfig.blockSizeVertical * 1,
                               ),
                               child: Column(

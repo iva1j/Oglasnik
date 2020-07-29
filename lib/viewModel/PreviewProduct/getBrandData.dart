@@ -1,4 +1,3 @@
-import 'package:Oglasnik/interface/productInterface.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future getBrandData(String productBrand) async {

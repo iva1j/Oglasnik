@@ -1,6 +1,4 @@
-import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemDescription.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemImage.dart';
@@ -221,5 +219,3 @@ class _ItemCardState extends State<ItemCard> {
         ));
   }
 }
-
-
