@@ -1,8 +1,6 @@
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/newbackButtonIphone.dart';
 import 'package:Oglasnik/view/PostScreens/pages/pageView/mainPageView.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
 import 'package:flutter/material.dart';
 
 class ArticlePage extends StatefulWidget {

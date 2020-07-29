@@ -1,11 +1,5 @@
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
-import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
-import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/confirmPassValidator.dart';
-import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/passValidator.dart';
-import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/tokenValidator.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
+import 'package:Oglasnik/view/PasswordChange/widgets/formPasswordChange.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +21,6 @@ class PasswordChange extends StatefulWidget {
 }
 
 class _PasswordChangeState extends State<PasswordChange> {
-  //final GlobalKey<FormState> _passwordChangeFormKey = GlobalKey<FormState>();
   final db = Firestore.instance;
   FirebaseUser user;
   @override
@@ -45,7 +38,6 @@ class _PasswordChangeState extends State<PasswordChange> {
   _PasswordChangeState(this.email);
   @override
   Widget build(BuildContext context) {
-    // dynamic formKey;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -66,123 +58,7 @@ class _PasswordChangeState extends State<PasswordChange> {
         reverse: true,
         child: Padding(
           padding: EdgeInsets.only(bottom: bottom),
-          child: Container(
-            height: SizeConfig.screenHeight,
-            margin: EdgeInsets.all(50),
-            child: Column(children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(bottom: 120.0),
-                child: Text(
-                  PasswordChangePage().columnFirstChild,
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.normal),
-                ),
-              ),
-              Form(
-                //autovalidate: true,
-                key: passwordChangeFormKey,
-                child: Column(children: <Widget>[
-                  new Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: new SizedBox(
-                      width: double.infinity,
-                      child: Container(
-                        child: TextFormField(
-                          textInputAction: TextInputAction.next,
-                          onFieldSubmitted: (v) {
-                            FocusScope.of(context).nextFocus();
-                          },
-                          decoration: InputDecoration(
-                            hintText: 'Unesi kod',
-                            contentPadding: EdgeInsets.only(left: 10),
-                          ),
-                          controller: tokenInputController,
-                          validator: tokenValidator,
-                        ),
-                      ),
-                    ),
-                  ),
-                  new Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: new SizedBox(
-                      width: double.infinity,
-                      child: Container(
-                        child: TextFormField(
-                          textInputAction: TextInputAction.next,
-                          onFieldSubmitted: (v) {
-                            FocusScope.of(context).nextFocus();
-                          },
-                          decoration: InputDecoration(
-                            hintText: 'Nova lozinka',
-                            contentPadding: EdgeInsets.only(left: 10),
-                          ),
-                          obscureText: true,
-                          validator: passwordValidator,
-                          controller: passwordInputController,
-                          // validator: (value) => value.isEmpty
-                          //     ? 'Polje ne može biti prazno!'
-                          //     : null,
-                          // onSaved: (value) => newPassword = value,
-                        ),
-                      ),
-                    ),
-                  ),
-                  new Container(
-                    margin: EdgeInsets.only(bottom: 30),
-                    child: new SizedBox(
-                      width: double.infinity,
-                      child: Container(
-                        child: TextFormField(
-                          textInputAction: TextInputAction.done,
-                          onFieldSubmitted: (v) {
-                            FocusScope.of(context).unfocus();
-                          },
-                          style: TextStyle(
-                              // color: (nepoklapanje == true)
-                              //     ? Colors.red
-                              //     : Colors.black,
-                              color: doesMatch ? Colors.red : Colors.black),
-                          decoration: InputDecoration(
-                            hintText: 'Potvrdi lozinku',
-                            contentPadding: EdgeInsets.only(left: 10),
-                          ),
-                          obscureText: true,
-                          controller: confirmPasswordInputController,
-                          validator: confirmpasswordValidator,
-                          // validator: (value) {
-                          //   if (value != passwordInputController.text) {
-                          //     return 'Lozinke se ne podudaraju!';
-                          //   }
-                          // }
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    child: AuthService().tokenExistOrNot(context, email, token),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 110),
-                    child: button('Sačuvaj', () {
-                      newPassword = passwordInputController.text;
-                      passwordConfirm = confirmPasswordInputController.text;
-                      token = tokenInputController.text;
-                      print('Nakon klika - ispis je sljedeći:');
-                      AuthService().onPressedChangePassword(
-                        context,
-                        email,
-                        passwordInputController.text,
-                        confirmPasswordInputController.text,
-                        token,
-                      );
-                    }),
-                  ),
-                ]),
-              ),
-            ]),
-          ),
+          child: FormPasswordChanged(email: email),
         ),
       ),
     );

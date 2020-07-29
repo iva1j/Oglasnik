@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -27,8 +28,7 @@ class _LogoutButtonState extends State<LogoutButton> {
         prefs.remove('email');
         //prefs.remove('phoneNumber');
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => AnonymousHome()),
-            (Route<dynamic> route) => false);
+            FadeRoute(page: AnonymousHome()), (Route<dynamic> route) => false);
       },
       icon: Icon(
         Icons.power_settings_new,

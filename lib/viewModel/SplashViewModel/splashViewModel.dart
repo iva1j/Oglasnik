@@ -1,8 +1,6 @@
-import 'package:Oglasnik/main.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/categoryBrands.dart';
+
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';

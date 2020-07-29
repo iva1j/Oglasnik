@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ IconButton newInputBackButtonIphone(BuildContext context) {
         img2 = immutableImg2;
         img3 = immutableImg3;
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => RegisteredHome()),
+            FadeRoute(page: RegisteredHome()),
             (Route<dynamic> route) =>
                 false); // obrise sve routes prije ove na koju pusha
       });
