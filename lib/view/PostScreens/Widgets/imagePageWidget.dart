@@ -110,6 +110,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+
                     Container(
                         margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
                         child: priceTextField()),

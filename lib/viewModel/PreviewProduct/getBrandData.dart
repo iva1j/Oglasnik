@@ -20,3 +20,4 @@ Future getBrandData(String productBrand) async {
   }
   return slikeBrandova;
 }
+
