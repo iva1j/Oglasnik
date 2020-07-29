@@ -26,14 +26,15 @@ class _PageFourState extends State<PageFour> {
         }
       },
       child: WillPopScope(
-          onWillPop: () => Future.sync(onWillPop),
-          child: Scaffold(
-            resizeToAvoidBottomPadding: false,
-            body: SingleChildScrollView(
-              reverse: true,
-              child: DescriptionPageWidget(bottom: widget.bottom),
-            ),
-          )),
+        onWillPop: () => Future.sync(onWillPop),
+        child: Scaffold(
+          resizeToAvoidBottomPadding: false,
+          body: SingleChildScrollView(
+            reverse: true,
+            child: DescriptionPageWidget(bottom: widget.bottom),
+          ),
+        ),
+      ),
     );
   }
 }

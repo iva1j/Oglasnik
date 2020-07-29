@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
     as custom;
@@ -16,11 +17,17 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 35.0, vertical: 20.0),
+      margin: EdgeInsets.symmetric(
+        horizontal: SizeConfig.blockSizeHorizontal * 9,
+      ),
       child: Card(
           elevation: 16,
           child: Container(
-              margin: EdgeInsets.only(left: 5.0, right: 5.0),
+              margin: EdgeInsets.only(
+                left: SizeConfig.blockSizeHorizontal * 5,
+                right: SizeConfig.blockSizeHorizontal * 2,
+                bottom: SizeConfig.blockSizeHorizontal * 20,
+              ),
               child: Center(
                   child: Align(
                       alignment: Alignment.topRight,
@@ -34,7 +41,7 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
                         isExpanded: true,
                         style: TextStyle(
                           color: Colors.black87,
-                          fontSize: 14,
+                          fontSize: SizeConfig.safeBlockHorizontal * 4,
                           height: 1.5,
                         ),
                         underline: Container(),

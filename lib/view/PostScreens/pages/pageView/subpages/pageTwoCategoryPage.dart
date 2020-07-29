@@ -48,12 +48,16 @@ class _CategoryPageState extends State<CategoryPage> {
                     ),
                   ),
                   Container(
-                    margin:
-                        EdgeInsets.symmetric(horizontal: 35.0, vertical: 20.0),
+                    margin: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.blockSizeHorizontal * 9,
+                    ),
                     child: Card(
                         elevation: 16,
                         child: Container(
-                            margin: EdgeInsets.only(left: 5.0, right: 5.0),
+                            margin: EdgeInsets.only(
+                              left: SizeConfig.blockSizeHorizontal * 5,
+                              right: SizeConfig.blockSizeHorizontal * 2,
+                            ),
                             child: Center(
                                 child: Align(
                                     alignment: Alignment.topRight,
@@ -75,7 +79,8 @@ class _CategoryPageState extends State<CategoryPage> {
                                       isExpanded: true,
                                       style: TextStyle(
                                         color: Colors.black87,
-                                        fontSize: 14,
+                                        fontSize:
+                                            SizeConfig.safeBlockHorizontal * 4,
                                         height: 1.5,
                                       ),
                                       underline: Container(),
@@ -98,12 +103,16 @@ class _CategoryPageState extends State<CategoryPage> {
                                     ))))),
                   ),
                   Container(
-                    margin:
-                        EdgeInsets.symmetric(horizontal: 35.0, vertical: 20.0),
+                    margin: EdgeInsets.symmetric(
+                        horizontal: SizeConfig.blockSizeHorizontal * 9,
+                        vertical: SizeConfig.blockSizeVertical * 3),
                     child: Card(
                       elevation: 16,
                       child: Container(
-                        margin: EdgeInsets.only(left: 5.0, right: 5.0),
+                        margin: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          right: SizeConfig.blockSizeHorizontal * 2,
+                        ),
                         child: Center(
                           child: Align(
                             alignment: Alignment.topRight,
