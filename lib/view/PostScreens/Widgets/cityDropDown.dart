@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
     as custom;
@@ -49,21 +50,7 @@ class _CityDropDownState extends State<CityDropDown> {
                     dropdownValueCity = newValue;
                   });
                 },
-                items: <String>[
-                  'Sarajevo',
-                  'London',
-                  'Lisabon',
-                  'Berlin',
-                  'New York',
-                  'Beč',
-                  'Madrid',
-                  'Rim',
-                  'Bukurešt',
-                  'Moskva',
-                  'Kopenhagen',
-                  'Basel',
-                  'Pariz'
-                ].map<custom.DropdownMenuItem<String>>(
+                items: cityDropdownItems.map<custom.DropdownMenuItem<String>>(
                     (String productCityValue) {
                   return custom.DropdownMenuItem<String>(
                     value: productCityValue,

@@ -174,3 +174,19 @@ final String immutableImg2 = "Dodaj sliku 2";
 final String immutableImg3 = "Dodaj sliku 3";
 
 final String noPhoto = "assets/images/nophoto.jpg";
+
+final List<String> cityDropdownItems = <String>[
+  'Sarajevo',
+  'London',
+  'Lisabon',
+  'Berlin',
+  'New York',
+  'Beč',
+  'Madrid',
+  'Rim',
+  'Bukurešt',
+  'Moskva',
+  'Kopenhagen',
+  'Basel',
+  'Pariz'
+];
