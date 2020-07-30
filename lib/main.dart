@@ -92,9 +92,7 @@ Future<int> numberOfProductsPerBrand(String brandName) async {
       .collection('products')
       .where('productBrand', isEqualTo: brandName)
       .getDocuments();
-
   print(productsQuery);
-
   final List<DocumentSnapshot> documents = productsQuery.documents;
   print(documents);
   print(brandName + " ima ");

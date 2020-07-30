@@ -14,3 +14,4 @@ class CategoryViewModel implements ReadCategoriesInterface {
     return qn;
   }
 }
+
