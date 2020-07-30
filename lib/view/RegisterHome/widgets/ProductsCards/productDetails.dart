@@ -6,20 +6,17 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsW
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsDesc.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsLocation.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsTags.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/oglasTag.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import '../showimage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/showimage.dart';
-import 'package:intl/intl.dart';
-import 'package:hexcolor/hexcolor.dart';
+
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
 class ProductDetails extends StatefulWidget {
