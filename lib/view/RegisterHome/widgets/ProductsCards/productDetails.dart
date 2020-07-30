@@ -88,14 +88,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 1,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
+                            blurRadius: 2,
+                            offset: Offset(0, 1), // changes position of shadow
                           ),
                         ],
                         border: Border.all(
                           color: Colors.black26,
+                          width: 0.2,
                         ),
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
@@ -111,7 +112,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                           children: <Widget>[
                             Container(
                               decoration: BoxDecoration(
-                                border: Border.all(color: Color(0x40080808)),
+                                border: Border.all(
+                                    color: Color(0x40080808), width: 0.8),
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(10.0),
                                     topRight: Radius.circular(10.0)),
