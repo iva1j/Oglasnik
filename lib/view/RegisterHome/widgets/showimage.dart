@@ -27,7 +27,7 @@ class PrikazSlika extends StatelessWidget {
                             ? Image.asset("assets/images/nophoto.jpg")
                             : Image.network(
                                 imgUrl,
-                                fit: BoxFit.fill,
+                                fit: BoxFit.cover,
                               ),
                       );
                     },
