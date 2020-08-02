@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
 import 'alertDialogWidget.dart';
 
-TextEditingController emailInputControllerAlertDialog =
-    new TextEditingController();
 String emailAlertDialog;
 String tokenCode = randomAlphaNumeric(5);
 

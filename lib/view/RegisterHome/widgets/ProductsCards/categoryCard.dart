@@ -1,4 +1,4 @@
-import 'package:Oglasnik/model/productCategoryModel.dart';
+import 'package:Oglasnik/model/productCategory.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
 import 'package:flutter/material.dart';
