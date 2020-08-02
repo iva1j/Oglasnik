@@ -9,6 +9,7 @@ Stack mainFloatingButton(String email) {
     Builder(
       builder: (context) => FabCircularMenu(
         //key: registeredButtonKey,
+
         alignment: Alignment.bottomRight,
         ringColor: Colors.grey[50].withAlpha(210),
         ringDiameter: 350.0,
@@ -27,7 +28,7 @@ Stack mainFloatingButton(String email) {
           Container(
             margin: EdgeInsets.only(bottom: 184.0, left: 60.0),
             child: SizedBox.fromSize(
-              size: Size(75, 75), // button width and height
+              size: Size(80, 80), // button width and height
               child: ClipOval(
                 child: Material(
                   color: Colors.transparent, // button color
