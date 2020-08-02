@@ -1,8 +1,6 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
+
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
-import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
 
 class PosaljiKodDugme extends StatelessWidget {

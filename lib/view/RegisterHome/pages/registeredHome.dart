@@ -29,6 +29,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
   Widget build(BuildContext context) {
     setState(() {
       isLoading = false;
+      doesPop = true;
     });
     SizeConfig().init(context);
     return Scaffold(

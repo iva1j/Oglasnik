@@ -41,7 +41,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   MainTitle(),
                   Container(
                     margin: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 18,
+                      top: SizeConfig.blockSizeVertical * 22,
                       left: SizeConfig.blockSizeHorizontal * 10,
                       right: SizeConfig.blockSizeHorizontal * 10,
                     ),
@@ -127,7 +127,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               isExpanded: true,
                               style: TextStyle(
                                 color: Colors.black87,
-                                fontSize: 14,
+                                fontSize: SizeConfig.safeBlockHorizontal * 4,
                                 height: 1.5,
                               ),
                               underline: Container(),
