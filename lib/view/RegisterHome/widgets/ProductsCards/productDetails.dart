@@ -36,7 +36,6 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      //resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: AppBarTheme.of(context).color,
         centerTitle: true,
@@ -76,7 +75,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             if (imageSlider.length == 0) {
               imageSlider.add("assets/images/nophoto.jpg");
             }
-            // Ovaj file nije moguce vise refaktorisan zbog privatne liste imageSlider
+            // Ovaj file nije moguce vise refaktorisati zbog privatne liste imageSlider
             return ListView.builder(
               shrinkWrap: true,
               itemCount: products.length,

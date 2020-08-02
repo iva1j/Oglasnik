@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 Container productBrandNumberItems(AsyncSnapshot snapshott, int index) {
   return Container(
+      width: 150,
       margin: EdgeInsets.only(
         left: SizeConfig.blockSizeHorizontal * 3,
         top: SizeConfig.blockSizeVertical * 1,

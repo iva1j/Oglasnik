@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/SigninTextFields/emailSigninTextField.dart';
@@ -32,6 +33,8 @@ class _FormSignInState extends State<FormSignIn> {
   @override
   void initState() {
     loginInitControllers();
+   // InternetConnection();
+    //  InternetConnection().checkForInternet();
     super.initState();
   }
 
@@ -74,7 +77,7 @@ class _FormSignInState extends State<FormSignIn> {
                   child: Column(
                 children: <Widget>[
                   Container(
-                      //  child: AuthService().tokenExistOrNot(context, email, token),
+                      // child: AuthService().tokenExistOrNot(context, email, token),
                       ),
                   Container(
                     child: AuthService().signInOrNot(
@@ -82,7 +85,7 @@ class _FormSignInState extends State<FormSignIn> {
                         signInEmailInputController.text,
                         signInPasswordInputController.text),
                   ),
-                  // Container(child: AuthService().checkStatus(context, email)),
+                  Container(child: AuthService().checkStatus(context, email)),
                   Container(
                       child: AuthService().allowPasswordChange(
                           context, emailInputControllerAlertDialog.text))
@@ -101,20 +104,19 @@ class _FormSignInState extends State<FormSignIn> {
                   },
                 ),
               ),
-
-              // Container(
-              //   margin: EdgeInsets.only(top: 15.0),
-              //   child: new GestureDetector(
-              //     onTap: () => displayDialog(context),
-              //     child: new Text(
-              //       "Zaboravili ste lozinku?",
-              //       style: TextStyle(
-              //           fontFamily: 'Roboto',
-              //           fontSize: 16,
-              //           color: Color.fromRGBO(0, 0, 0, 100)),
-              //     ),
-              //   ),
-              // )
+              Container(
+                margin: EdgeInsets.only(top: 15.0),
+                child: new GestureDetector(
+                  onTap: () => displayDialog(context),
+                  child: new Text(
+                    "Zaboravili ste lozinku?",
+                    style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 16,
+                        color: Color.fromRGBO(0, 0, 0, 100)),
+                  ),
+                ),
+              )
             ],
           ),
         ));

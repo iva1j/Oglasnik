@@ -45,6 +45,7 @@ bool allowAutoValidate = false;
 bool registeredGlob = false;
 bool createdGlob = false;
 bool isLoading = false;
+bool doesPop = true;
 
 String slika1;
 
@@ -56,6 +57,8 @@ final GlobalKey<FormState> productCategoryDropDownKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productBrandFormKey = GlobalKey<FormState>();
 
 List<String> categoryNames = List<String>();
+
+bool hasInternetConnection = false;
 
 var categoryBrands = Map();
 List categoryBrand = [];
