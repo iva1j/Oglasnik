@@ -8,6 +8,10 @@ import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:Oglasnik/utils/checkForInternetConnection.dart';
+import 'package:Oglasnik/utils/globals.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 
 class RegisterButton extends StatefulWidget {
   @override
@@ -25,6 +29,7 @@ class _RegisterButtonState extends State<RegisterButton> {
   @override
   initState() {
     super.initState();
+    
   }
 
   @override
@@ -37,34 +42,37 @@ void onPressedRegister(BuildContext context, String fullName, String email,
     String password, String phoneNumber, dynamic formKey) {
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-  Timer(Duration(seconds: 1), () {
-    if (formKey.currentState.validate() && allowUserToRegister) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        signUpPhoneNumberInputController.clear();
-        signUpPasswordInputController.clear();
-        signUpEmailInputController.clear();
-        signUpFullNameInputController.clear();
-      }); // clear content
+  if (!isOnline) {
+    Timer(Duration(seconds: 1), () {
+      if (formKey.currentState.validate() && allowUserToRegister) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          signUpPhoneNumberInputController.clear();
+          signUpPasswordInputController.clear();
+          signUpEmailInputController.clear();
+          signUpFullNameInputController.clear();
+        }); // clear content
 
-      db.collection("firestoreUsers").document(email).setData({
-        'fullName': fullName,
-        'email': email,
-        'password': password,
-        'phoneNumber': phoneNumber,
-      });
-      print('korisnik uspješno ubačen u bazi');
+        db.collection("firestoreUsers").document(email).setData({
+          'fullName': fullName,
+          'email': email,
+          'password': password,
+          'phoneNumber': phoneNumber,
+        });
+        print('korisnik uspješno ubačen u bazi');
 
-      loginPrefs(context, email);
-      globals.email = email;
+        loginPrefs(context, email);
+        globals.email = email;
 
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) {
-          registeredGlob = true;
-          return RegisteredHome();
-        }),
-      );
-    } else {
-      print('korisnik već u bazi, registracija nije uspjela');
-    }
-  });
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) {
+            registeredGlob = true;
+            return RegisteredHome();
+          }),
+        );
+      } else {
+        print('korisnik već u bazi, registracija nije uspjela');
+      }
+    });
+  } else
+    displayInternetDialog(context);
 }

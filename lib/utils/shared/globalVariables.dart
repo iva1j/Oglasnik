@@ -58,6 +58,8 @@ final GlobalKey<FormState> productBrandFormKey = GlobalKey<FormState>();
 
 List<String> categoryNames = List<String>();
 
+bool hasInternetConnection = false;
+
 var categoryBrands = Map();
 List categoryBrand = [];
 List numberofBrands = [];
