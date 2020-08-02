@@ -13,6 +13,7 @@ class Loading extends StatelessWidget {
         color: Colors.white,
         child: Center(
           child: Column(
+            //spinner radio : Amer
             children: <Widget>[
               Container(
                 margin:
