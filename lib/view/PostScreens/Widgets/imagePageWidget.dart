@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:Oglasnik/utils/checkForInternetConnection.dart';
+import 'package:Oglasnik/utils/globals.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/priceTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageOneUploadButton.dart';
@@ -34,12 +37,21 @@ class ImagePageWidget extends StatefulWidget {
 }
 
 class _ImagePageWidgetState extends State<ImagePageWidget> {
+  Map _source = {ConnectivityResult.none: false};
+  MyConnectivity _connectivity = MyConnectivity.instance;
+
   @override
   initState() {
+    _connectivity.initialise();
+    _connectivity.myStream.listen((source) {
+      setState(() => _source = source);
+    });
     super.initState();
   }
 
   void dispose() {
+    _connectivity.disposeStream();
+
     super.dispose();
   }
 
@@ -94,6 +106,19 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    switch (_source.keys.toList()[0]) {
+      case ConnectivityResult.none:
+        isOnline = true;
+        string = "Offline";
+        break;
+      case ConnectivityResult.mobile:
+        isOnline = false;
+        string = "Mobile: Online";
+        break;
+      case ConnectivityResult.wifi:
+        isOnline = false;
+        string = "WiFi: Online";
+    }
     SizeConfig().init(context);
     return loading ? Loading() : imageUploadContainer(context);
   }
@@ -143,63 +168,66 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   SizedBox pageViewSubmitButton(BuildContext context) {
     return button("Završi", () async {
       FocusScope.of(context).requestFocus(new FocusNode());
-      if (pageController.page == 4) {
-        if (productPriceFormKey.currentState.validate()) {
-          widget.onFlatButtonPressed();
-          setState(() => loading = true);
-          createdGlob = true;
-          if (img1 != immutableImg1)
-            await upload(img1, pathGlobal1, 1)
-                .then((value) => productImg1 = value);
-          if (img2 != immutableImg2)
-            await upload(img2, pathGlobal2, 2)
-                .then((value) => productImg2 = value);
-          if (img3 != immutableImg3)
-            await upload(img3, pathGlobal3, 3)
-                .then((value) => productImg3 = value);
-          //showIphoneButton = false;
+      if (!isOnline) {
+        if (pageController.page == 4) {
+          if (productPriceFormKey.currentState.validate()) {
+            widget.onFlatButtonPressed();
+            setState(() => loading = true);
+            createdGlob = true;
+            if (img1 != immutableImg1)
+              await upload(img1, pathGlobal1, 1)
+                  .then((value) => productImg1 = value);
+            if (img2 != immutableImg2)
+              await upload(img2, pathGlobal2, 2)
+                  .then((value) => productImg2 = value);
+            if (img3 != immutableImg3)
+              await upload(img3, pathGlobal3, 3)
+                  .then((value) => productImg3 = value);
+            //showIphoneButton = false;
 
-          productName = productNameController.text;
-          productCategory = dropdownValueCategory;
-          productBrand = dropdownValueBrand;
-          productLocation = dropdownValueCity;
-          productTag = productTagController.text;
-          productDesc = productDescController.text;
-          productprice = productPriceController.text;
+            productName = productNameController.text;
+            productCategory = dropdownValueCategory;
+            productBrand = dropdownValueBrand;
+            productLocation = dropdownValueCity;
+            productTag = productTagController.text;
+            productDesc = productDescController.text;
+            productprice = productPriceController.text;
 
-          print(email + productName + productTag);
-          await CreateProduct().createProduct(
-            context,
-            email,
-            phoneNumber,
-            productName,
-            productID = randomAlphaNumeric(20),
-            productCategory,
-            productBrand,
-            productLocation,
-            productTag,
-            productDesc,
-            productImg1,
-            productImg2,
-            productImg3,
-            productprice,
-          );
+            print(email + productName + productTag);
+            await CreateProduct().createProduct(
+              context,
+              email,
+              phoneNumber,
+              productName,
+              productID = randomAlphaNumeric(20),
+              productCategory,
+              productBrand,
+              productLocation,
+              productTag,
+              productDesc,
+              productImg1,
+              productImg2,
+              productImg3,
+              productprice,
+            );
 
-          img1 = immutableImg1;
-          img2 = immutableImg2;
-          img3 = immutableImg3;
-          productImg1 = null;
-          productImg2 = null;
-          productImg3 = null;
-          pathGlobal1 = null;
-          pathGlobal2 = null;
-          pathGlobal3 = null;
+            img1 = immutableImg1;
+            img2 = immutableImg2;
+            img3 = immutableImg3;
+            productImg1 = null;
+            productImg2 = null;
+            productImg3 = null;
+            pathGlobal1 = null;
+            pathGlobal2 = null;
+            pathGlobal3 = null;
 
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (_) => RegisteredHome()));
-        } else
-          return null;
-      }
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => RegisteredHome()));
+          } else
+            return null;
+        }
+      } else
+        displayInternetDialog(context);
     });
   }
 }
