@@ -8,10 +8,36 @@ Image buildImageWidget(String imagePath) {
 
 class CategoryViewModel implements ReadCategoriesInterface {
   @override
-  Future getCategories() async {
+  getCategories() async {
     var firestore = Firestore.instance;
-    QuerySnapshot qn = await firestore.collection('category').getDocuments();
-    return qn;
+    QuerySnapshot queryCategories =
+        await firestore.collection('category').getDocuments();
+
+    List<DocumentSnapshot> cats = queryCategories.documents;
+
+    List<DocumentSnapshot> forReturn = List<DocumentSnapshot>();
+
+    QuerySnapshot queryProducts =
+        await firestore.collection('products').getDocuments();
+    List<DocumentSnapshot> prods = queryProducts.documents;
+
+    prods.sort((a, b) => a['productCategory'].compareTo(b['productCategory']));
+
+    int i = 0;
+    while (i < prods.length - 1) {
+      if (prods[i]['productCategory'] != prods[i + 1]['productCategory'])
+        i++;
+      else
+        prods.removeAt(i + 1);
+    }
+
+    for (final x in cats) {
+      for (final y in prods) {
+        if (x['categoryName'] == y['productCategory']) forReturn.add(x);
+      }
+    }
+
+    return forReturn;
   }
 }
 

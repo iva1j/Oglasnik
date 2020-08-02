@@ -1,10 +1,12 @@
-import 'package:Oglasnik/utils/colorThemes.dart';
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
 class CategoryCardRow extends StatelessWidget {
   final String name, count;
-  final Icon icon;
+  final Widget icon;
 
   const CategoryCardRow({
     this.icon,
@@ -15,53 +17,65 @@ class CategoryCardRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(
-                    left: SizeConfig.blockSizeHorizontal * 5,
-                    top: SizeConfig.blockSizeVertical * 2,
-                  ),
-                  child: CircleAvatar(
-                    radius: 30,
-                    backgroundColor: mainAppColor,
-                    child: icon,
-                  ),
+    return Container(
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          splashColor: Colors.transparent,
+          onTap: () => {
+            Navigator.of(context).push(
+              FadeRoute(
+                page: ItemCard(
+                  brandNameScreen: name,
                 ),
-                Container(
-                  margin: EdgeInsets.only(
-                    left: SizeConfig.blockSizeHorizontal * 5,
-                    top: SizeConfig.blockSizeVertical * 2,
-                  ),
-                  child: Text(
-                    name,
-                    style: TextStyle(
-                      fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                      fontWeight: FontWeight.w500,
+              ),
+            )
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(
+                      left: SizeConfig.blockSizeHorizontal * 5,
+                      top: SizeConfig.blockSizeVertical * 2,
+                    ),
+                    child: CircleAvatar(
+                      radius: 20,
+                      backgroundColor: mainAppColor,
+                      child: icon,
                     ),
                   ),
-                ),
-              ],
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                right: SizeConfig.blockSizeHorizontal * 4,
-                top: SizeConfig.blockSizeVertical * 2,
+                  Container(
+                    margin: EdgeInsets.only(
+                      left: SizeConfig.blockSizeHorizontal * 5,
+                      top: SizeConfig.blockSizeVertical * 2,
+                    ),
+                    child: Text(
+                      name,
+                      style: TextStyle(
+                        fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              child: Text(
-                count,
-                style: TextStyle(
-                  color: Colors.grey,
+              Container(
+                margin: EdgeInsets.only(
+                  right: SizeConfig.blockSizeHorizontal * 4,
+                  top: SizeConfig.blockSizeVertical * 2,
+                ),
+                child: Text(
+                  count,
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

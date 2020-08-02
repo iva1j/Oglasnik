@@ -1,5 +1,3 @@
-import 'package:Oglasnik/utils/groupOfFunctions.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
@@ -14,18 +12,6 @@ class CityPage extends StatefulWidget {
 }
 
 class _CityPageState extends State<CityPage> {
-  @override
-  void initState() {
-    pageThreeInitControllers();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    pageThreeDisposeControllers();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -54,7 +40,7 @@ class _CityPageState extends State<CityPage> {
                   MainTitle(),
                   Container(
                     margin: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 10,
+                      top: SizeConfig.blockSizeVertical * 20.3,
                       left: SizeConfig.blockSizeHorizontal * 10,
                       right: SizeConfig.blockSizeHorizontal * 10,
                       //bottom: SizeConfig.blockSizeVertical * 20

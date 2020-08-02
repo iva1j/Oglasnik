@@ -29,6 +29,7 @@ class _BrandFormState extends State<BrandForm> {
               alignment: Alignment.topRight,
               child: custom2.DropdownButton<String>(
                 value: dropdownValueBrand,
+                key: productBrandFormKey,
                 disabledHint: Text('Molimo odaberite kategoriju'),
                 height: MediaQuery.of(context).size.height / 2.229,
                 icon: Icon(Icons.arrow_drop_down),
@@ -46,8 +47,7 @@ class _BrandFormState extends State<BrandForm> {
                     //     ? null
                     //     :
                     (String productBrandList) => setState(() {
-                  dropdownValueBrand =
-                      productBrandList; // u productBrandList treba povući vrijednosti iz Firestora ali imajući u vidu kategoriju koja se odabere (prvi brand iz kategorije)
+                  dropdownValueBrand = productBrandList;
                 }),
                 items: List<String>.from(categoryBrands[dropdownValueCategory])
                     .map<custom2.DropdownMenuItem<String>>((String value) {

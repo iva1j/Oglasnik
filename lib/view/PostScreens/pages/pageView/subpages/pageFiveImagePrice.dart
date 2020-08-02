@@ -1,5 +1,3 @@
-import 'package:Oglasnik/utils/groupOfFunctions.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/imagePageWidget.dart';
 import 'package:flutter/material.dart';
@@ -8,28 +6,17 @@ class PageFive extends StatefulWidget {
   const PageFive({
     Key key,
     @required this.bottom,
+    @required this.onFlatButtonPressed,
   }) : super(key: key);
 
   final double bottom;
+  final VoidCallback onFlatButtonPressed;
 
   @override
   _PageFiveState createState() => _PageFiveState();
 }
 
 class _PageFiveState extends State<PageFive> {
-  @override
-  void initState() {
-    pageFiveInitControllers();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    pageFiveDisposeControllers();
-    
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -46,7 +33,10 @@ class _PageFiveState extends State<PageFive> {
           resizeToAvoidBottomInset: false,
           body: SingleChildScrollView(
             reverse: true,
-            child: ImagePageWidget(bottom: widget.bottom),
+            child: ImagePageWidget(
+              bottom: widget.bottom,
+              onFlatButtonPressed: widget.onFlatButtonPressed,
+            ),
           ),
         ),
       ),

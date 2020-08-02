@@ -1,7 +1,8 @@
+import 'package:Oglasnik/utils/groupOfFunctions.dart';
+import 'package:Oglasnik/utils/shared/PageLogos/mainLogo.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/utils/shared/logoContainer.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/formSignUp.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/signUpFormName.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
@@ -9,6 +10,10 @@ import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:connectivity/connectivity.dart';
+import 'package:Oglasnik/utils/checkForInternetConnection.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:Oglasnik/utils/globals.dart';
 
 GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
 TextEditingController signUpFullNameInputController;
@@ -25,24 +30,43 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  Map _source = {ConnectivityResult.none: false};
+  MyConnectivity _connectivity = MyConnectivity.instance;
+
   @override
   initState() {
-    signUpFullNameInputController = new TextEditingController();
-    signUpPhoneNumberInputController = new TextEditingController();
-    signUpEmailInputController = new TextEditingController();
-    signUpPasswordInputController = new TextEditingController();
-    signUpRegisterFormKey = GlobalKey<FormState>();
+    registerPageInitControllers();
+    _connectivity.initialise();
+    _connectivity.myStream.listen((source) {
+      setState(() => _source = source);
+    });
     super.initState();
   }
 
   @override
   void dispose() {
-    signUpRegisterFormKey.currentState.dispose();
+    registerPageDispose();
+    _connectivity.disposeStream();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    switch (_source.keys.toList()[0]) {
+      case ConnectivityResult.none:
+        isOnline = true;
+        string = "Offline";
+        break;
+      case ConnectivityResult.mobile:
+        isOnline = false;
+        string = "Mobile: Online";
+        break;
+      case ConnectivityResult.wifi:
+        isOnline = false;
+        string = "WiFi: Online";
+    }
+
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return GestureDetector(
       onTap: () {
@@ -108,7 +132,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Container(
 
                   // height: SizeConfig.blockSizeVertical * 75,
-                  margin: EdgeInsets.all(50),
+                  margin: EdgeInsets.all(45),
                   child: Column(
                     children: <Widget>[
                       LogoContainer(),

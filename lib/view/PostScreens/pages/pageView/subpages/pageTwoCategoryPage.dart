@@ -1,76 +1,6 @@
-/*import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/brandForm.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
-import 'package:flutter/material.dart';
-
-class CategoryPage extends StatefulWidget {
-  @override
-  _CategoryPageState createState() => _CategoryPageState();
-}
-
-class _CategoryPageState extends State<CategoryPage> {
-  @override
-  void dispose() {
-    pageTwoDisposeControllers();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    SizeConfig().init(context);
-    final bottom = MediaQuery.of(context).viewInsets.bottom;
-
-    return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus &&
-            currentFocus.focusedChild != null) {
-          currentFocus.focusedChild.unfocus();
-        }
-      },
-      child: WillPopScope(
-        onWillPop: () => Future.sync(onWillPop),
-        child: Scaffold(
-          resizeToAvoidBottomPadding: false,
-          body: SingleChildScrollView(
-            reverse: true,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: bottom),
-              child: Column(
-                children: <Widget>[
-                  MainTitle(),
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 10,
-                      left: SizeConfig.blockSizeHorizontal * 10,
-                      right: SizeConfig.blockSizeHorizontal * 10,
-                    ),
-                  ),
-                  CategoryDropDown(),
-                  BrandForm(),
-                  PageViewButton(),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-*/
-
-import 'package:Oglasnik/utils/groupOfFunctions.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/brandForm.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
@@ -86,12 +16,6 @@ class CategoryPage extends StatefulWidget {
 
 class _CategoryPageState extends State<CategoryPage> {
   @override
-  void dispose() {
-    pageTwoDisposeControllers();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
@@ -117,22 +41,33 @@ class _CategoryPageState extends State<CategoryPage> {
                   MainTitle(),
                   Container(
                     margin: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 10,
+                      top: SizeConfig.blockSizeVertical * 18,
                       left: SizeConfig.blockSizeHorizontal * 10,
                       right: SizeConfig.blockSizeHorizontal * 10,
                     ),
                   ),
                   Container(
-                    margin:
-                        EdgeInsets.symmetric(horizontal: 35.0, vertical: 20.0),
+                    margin: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.blockSizeHorizontal * 9,
+                    ),
                     child: Card(
                         elevation: 16,
                         child: Container(
-                            margin: EdgeInsets.only(left: 5.0, right: 5.0),
+                            margin: EdgeInsets.only(
+                              left: SizeConfig.blockSizeHorizontal * 5,
+                              right: SizeConfig.blockSizeHorizontal * 2,
+                            ),
                             child: Center(
                                 child: Align(
                                     alignment: Alignment.topRight,
                                     child: custom.DropdownButton<String>(
+                                      selectedItemBuilder:
+                                          (BuildContext context) {
+                                        return categoryNames
+                                            .map<Widget>((String item) {
+                                          return Text(item);
+                                        }).toList();
+                                      },
                                       value: dropdownValueCategory,
                                       height:
                                           MediaQuery.of(context).size.height /
@@ -143,18 +78,20 @@ class _CategoryPageState extends State<CategoryPage> {
                                       isExpanded: true,
                                       style: TextStyle(
                                         color: Colors.black87,
-                                        fontSize: 14,
+                                        fontSize:
+                                            SizeConfig.safeBlockHorizontal * 4,
                                         height: 1.5,
                                       ),
                                       underline: Container(),
                                       onChanged: (String productCategoryList) =>
-                                          setState(() => {
-                                                dropdownValueCategory =
-                                                    productCategoryList,
-                                                dropdownValueBrand =
-                                                    categoryBrands[
-                                                        dropdownValueCategory][0],
-                                              }),
+                                          setState(
+                                        () => {
+                                          dropdownValueCategory =
+                                              productCategoryList,
+                                          dropdownValueBrand = categoryBrands[
+                                              dropdownValueCategory][0],
+                                        },
+                                      ),
                                       items: categoryNames
                                           .map<custom.DropdownMenuItem<String>>(
                                               (String value) {
@@ -166,12 +103,16 @@ class _CategoryPageState extends State<CategoryPage> {
                                     ))))),
                   ),
                   Container(
-                    margin:
-                        EdgeInsets.symmetric(horizontal: 35.0, vertical: 20.0),
+                    margin: EdgeInsets.symmetric(
+                        horizontal: SizeConfig.blockSizeHorizontal * 9,
+                        vertical: SizeConfig.blockSizeVertical * 3),
                     child: Card(
                       elevation: 16,
                       child: Container(
-                        margin: EdgeInsets.only(left: 5.0, right: 5.0),
+                        margin: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          right: SizeConfig.blockSizeHorizontal * 2,
+                        ),
                         child: Center(
                           child: Align(
                             alignment: Alignment.topRight,
@@ -212,6 +153,9 @@ class _CategoryPageState extends State<CategoryPage> {
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: SizeConfig.blockSizeVertical * 11.5,
                   ),
                   PageViewButton(),
                 ],

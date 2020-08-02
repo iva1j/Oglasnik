@@ -1,58 +1,35 @@
-import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/utils/colorThemes.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/categoryDropDown.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productBrandCard.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
+import 'package:Oglasnik/view/AnonymousHome/pages/mainbody.dart';
+import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/showimage.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/successOnCreateAlertDialog.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:fab_circular_menu/fab_circular_menu.dart';
+import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:intl/intl.dart';
+import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
 class RegisteredHome extends StatefulWidget {
   @override
   _RegisteredHomeState createState() => _RegisteredHomeState();
 }
 
-final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
+//final GlobalKey<FabCircularMenuState> registerhomeKey = GlobalKey();
 
 class _RegisteredHomeState extends State<RegisteredHome> {
   final keyIsFirstLoaded = 'is_first_loaded';
   @override
   void initState() {
     super.initState();
-    if (registeredGlob) {
-      registeredGlob = false;
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await showDialog<String>(
-            context: context,
-            builder: (BuildContext context) => successAlertDialog(context));
-      });
-    }
-    if (createdGlob) {
-      createdGlob = false;
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await showDialog<String>(
-            context: context,
-            builder: (BuildContext context) =>
-                successOnCreateAlertDialog(context));
-      });
-    }
+    registeredShowDialog(context);
+    createdShowDialog(context);
   }
 
   List<dynamic> products = [];
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      isLoading = false;
+    });
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
@@ -61,13 +38,11 @@ class _RegisteredHomeState extends State<RegisteredHome> {
         title: Text('Oglasnik'),
         leading: LogoutButton(),
       ),
-      floatingActionButton: mainFloatingButton(email),
-      bottomSheet: Container(
-        height: 55,
-        width: double.infinity,
-        color: Color.fromARGB(255, 226, 11, 48),
-      ),
-      body: CategoryCard(),
+      floatingActionButton: email != null
+          ? mainFloatingButton(email)
+          : homeFloatingAnimatedButton(),
+      bottomSheet: BottomSheetContainer(),
+      body: MainBody(),
     );
   }
 }

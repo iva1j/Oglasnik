@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
@@ -17,18 +16,6 @@ class PageOne extends StatefulWidget {
 }
 
 class _PageOneState extends State<PageOne> {
-  @override
-  void initState() {
-    pageOneInitControllers();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    pageOneDisposeControllers();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
