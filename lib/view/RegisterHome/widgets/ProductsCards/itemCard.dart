@@ -1,17 +1,10 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/transitionFade.dart';
-import 'package:Oglasnik/utils/strings.dart';
+
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemDescription.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemImage.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemName.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemPrice.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/oglasTag.dart';
+
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
 class ItemCard extends StatefulWidget {

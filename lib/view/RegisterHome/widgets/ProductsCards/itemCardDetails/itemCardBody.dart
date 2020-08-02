@@ -96,7 +96,15 @@ class ItemCardBody extends StatelessWidget {
                                         children: <Widget>[
                                           itemCardProductName(
                                               context, snapshot, index),
-                                          itemCardDescription(snapshot, index),
+                                          Container(
+                                              width: 170,
+                                              margin: EdgeInsets.only(
+                                                right: SizeConfig
+                                                        .blockSizeVertical *
+                                                    2,
+                                              ),
+                                              child: itemCardDescription(
+                                                  snapshot, index)),
                                         ],
                                       ),
                                     ),
