@@ -13,8 +13,8 @@ class Product {
       productDesc,
       productImg1,
       productImg2,
-      productImg3,
-      productCijena;
+      productImg3;
+  double productCijena;
   Product(
       {@required this.productBrand,
       @required this.productCategory,
@@ -48,5 +48,3 @@ class Product {
     );
   }
 }
-
-

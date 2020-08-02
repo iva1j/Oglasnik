@@ -10,7 +10,7 @@ class _TestInternetDialogState extends State<TestInternetDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       //backgroundColor: MyColors().lightBlack,
-      backgroundColor: Colors.pink,
+      backgroundColor: Colors.blue,
       title: Text(
         'Not connected!',
         style: TextStyle(color: Colors.redAccent),
@@ -19,13 +19,13 @@ class _TestInternetDialogState extends State<TestInternetDialog> {
         child: ListBody(
           children: <Widget>[
             Text(
-              'Internet connection is disabled.',
+              'Internet veza nije moguća.',
               style: TextStyle(
                   //color: MyColors().lightWhite
                   color: Colors.white),
             ),
             Text(
-              'You can change your athlete only in online mode.',
+              'Molimo konektujte se na internet',
               style: TextStyle(
                   // color: MyColors().lightWhite
                   color: Colors.white),
