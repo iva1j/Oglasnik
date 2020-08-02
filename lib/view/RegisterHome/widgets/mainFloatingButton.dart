@@ -24,26 +24,29 @@ Stack mainFloatingButton(String email) {
         ),
         fabMargin: const EdgeInsets.only(bottom: 24.0, right: 20.0),
         children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(bottom: 184.0, left: 70.0),
-            child: SizedBox.fromSize(
-              size: Size(75, 75), // button width and height
-              child: ClipOval(
-                child: Material(
-                  color: Colors.grey[50], // button color
-                  child: InkWell(
-                    splashColor: Colors.transparent, // splash color
-                    onTap: () {
-                      Navigator.of(context)
-                          .pushReplacement(FadeRoute(page: ArticlePage()));
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.add_circle_outline), // icon
-                        Text("Novi oglas"),
-                        // text
-                      ],
+          Opacity(
+            opacity: 0.85,
+            child: Container(
+              margin: EdgeInsets.only(bottom: 184.0, left: 70.0),
+              child: SizedBox.fromSize(
+                size: Size(75, 75), // button width and height
+                child: ClipOval(
+                  child: Material(
+                    color: Colors.grey[50], // button color
+                    child: InkWell(
+                      splashColor: Colors.transparent, // splash color
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushReplacement(FadeRoute(page: ArticlePage()));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(Icons.add_circle_outline), // icon
+                          Text("Novi oglas"),
+                          // text
+                        ],
+                      ),
                     ),
                   ),
                 ),
