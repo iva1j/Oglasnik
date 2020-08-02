@@ -8,7 +8,7 @@ Stack homeFloatingAnimatedButton() {
     Builder(
       builder: (context) => FabCircularMenu(
         alignment: Alignment.bottomRight,
-        ringColor: Colors.black.withAlpha(10),
+        ringColor: Colors.grey[50].withAlpha(210),
         ringDiameter: 350.0,
         ringWidth: 76.0,
         fabColor: Colors.white,
