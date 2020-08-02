@@ -2,6 +2,11 @@ import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+
+import 'package:flutter/material.dart';
+
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
+
 import 'package:intl/intl.dart';
 
 Container productDetailsPriceWidget(int index) {

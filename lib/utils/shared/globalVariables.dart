@@ -45,6 +45,7 @@ bool allowAutoValidate = false;
 bool registeredGlob = false;
 bool createdGlob = false;
 bool isLoading = false;
+bool doesPop = true;
 
 String slika1;
 
