@@ -25,7 +25,7 @@ Stack mainFloatingButton(String email) {
         fabMargin: const EdgeInsets.only(bottom: 24.0, right: 20.0),
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(bottom: 184.0, left: 70.0),
+            margin: EdgeInsets.only(bottom: 184.0, left: 60.0),
             child: SizedBox.fromSize(
               size: Size(75, 75), // button width and height
               child: ClipOval(
