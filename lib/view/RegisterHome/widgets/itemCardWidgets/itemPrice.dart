@@ -17,8 +17,9 @@ class ItemPrice extends StatelessWidget {
         // right: SizeConfig.blockSizeHorizontal * 3
       ),
       child: Text(
-        NumberFormat.currency(locale: 'eu', symbol: 'KM')
-            .format((double.parse(price))),
+        NumberFormat.currency(locale: 'eu', symbol: 'KM').format(
+          (double.parse('${price.toString().replaceAll(',', '.')}')),
+        ),
         style: TextStyle(
           fontSize: SizeConfig.safeBlockHorizontal * 5,
           fontWeight: FontWeight.w700,
