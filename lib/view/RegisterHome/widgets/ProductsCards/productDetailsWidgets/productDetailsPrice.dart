@@ -19,8 +19,10 @@ Container productDetailsPriceWidget(int index) {
       border: Border.all(color: mainAppColor),
     ),
     child: Text(
-        NumberFormat.currency(locale: 'eu', symbol: 'KM')
-            .format((double.parse(products[index].productCijena))),
+        NumberFormat.currency(locale: 'eu', symbol: 'KM').format(
+          (double.parse(
+              '${(products[index].productCijena).toString().replaceAll(',', '.')}')),
+        ),
         style: TextStyle(fontWeight: FontWeight.w500)),
   );
 }
