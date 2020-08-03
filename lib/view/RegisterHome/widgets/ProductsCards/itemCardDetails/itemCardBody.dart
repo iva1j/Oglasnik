@@ -20,14 +20,16 @@ class ItemCardBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<DocumentSnapshot> productItems = List<DocumentSnapshot>();
+
     return Column(
       children: <Widget>[
         Expanded(
-          child: StreamBuilder(
-              stream: Firestore.instance
+          child: FutureBuilder(
+              future: Firestore.instance
                   .collection('products')
                   .where('productBrand', isEqualTo: widget.brandNameScreen)
-                  .snapshots(),
+                  .getDocuments(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Container(
@@ -38,6 +40,7 @@ class ItemCardBody extends StatelessWidget {
                     ),
                   );
                 }
+
                 return Container(
                   padding: EdgeInsets.only(bottom: 55),
                   child: ListView.builder(
@@ -94,8 +97,8 @@ class ItemCardBody extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: <Widget>[
-                                          itemCardProductName(
-                                              context, snapshot, index),
+                                          itemCardProductName(context,
+                                              snapshot.data.documents[index]),
                                           Container(
                                               width: 170,
                                               margin: EdgeInsets.only(
@@ -138,59 +141,3 @@ class ItemCardBody extends StatelessWidget {
     );
   }
 }
-// SingleChildScrollView itemCardTags(AsyncSnapshot snapshot, int index) {
-//   return SingleChildScrollView(
-//     scrollDirection: Axis.horizontal,
-//     child: Row(
-//       mainAxisAlignment: MainAxisAlignment.start,
-//       children: snapshot.data.documents[index]['productTag']
-//           .split(',')
-//           //.removeWhere((item) => item.length == 0)
-//           //.remove("")
-//           .map<Widget>(
-//             (element) => element.trim().length > 0
-//                 ? new OglasTag(naziv: element)
-//                 : Container(),
-//           )
-//           .toList(),
-//     ),
-//   );
-// }
-
-//   ItemPrice itemCardPrice(AsyncSnapshot snapshot, int index) {
-//     return ItemPrice(price: snapshot.data.documents[index]['cijena']);
-//   }
-
-//   ItemImage itemCardImage(AsyncSnapshot snapshot, int index) {
-//     return ItemImage(
-//         img: (snapshot.data.documents[index]['productImg1'] != null)
-//             ? snapshot.data.documents[index]['productImg1']
-//             : (snapshot.data.documents[index]['productImg2'] != null)
-//                 ? snapshot.data.documents[index]['productImg2']
-//                 : (snapshot.data.documents[index]['productImg3'] != null)
-//                     ? snapshot.data.documents[index]['productImg3']
-//                     : "");
-//   }
-
-//   ItemDescription itemCardDescription(AsyncSnapshot snapshot, int index) {
-//     return ItemDescription(
-//       description: snapshot.data.documents[index]['productDesc'],
-//     );
-//   }
-
-//   InkWell itemCardProductName(
-//       BuildContext context, AsyncSnapshot snapshot, int index) {
-//     return InkWell(
-//       onTap: () {
-//         Navigator.of(context).push(MaterialPageRoute(
-//             builder: (_) => ProductDetails(
-//                   productNameScreen: snapshot.data.documents[index]
-//                       ['productName'],
-//                 )));
-//       },
-//       child: ItemName(
-//         name: snapshot.data.documents[index]['productName'],
-//       ),
-//     );
-//   }
-// }

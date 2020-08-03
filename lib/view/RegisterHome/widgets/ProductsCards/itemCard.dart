@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 
@@ -30,6 +31,14 @@ class _ItemCardState extends State<ItemCard> {
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,
           title: Text(widget.brandNameScreen),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              },
+            )
+          ],
         ),
         floatingActionButton: email != null
             ? mainFloatingButton(email)
