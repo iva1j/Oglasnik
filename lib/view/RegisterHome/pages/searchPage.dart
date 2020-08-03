@@ -101,9 +101,13 @@ class DataSearch extends SearchDelegate<String> {
           ? mainFloatingButton(email)
           : homeFloatingAnimatedButton(),
       bottomSheet: BottomSheetContainer(),
-      body: Container(
-        child: Card(
-          child: Text(query),
+      body: Center(
+        child: Container(
+          height: 200.0,
+          width: 200.0,
+          child: Card(
+            child: Center(child: Text(query)),
+          ),
         ),
       ),
     );
