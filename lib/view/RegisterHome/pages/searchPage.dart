@@ -1,54 +1,15 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
-// class SearchPage extends StatefulWidget {
-//   @override
-//   _SearchPageState createState() => _SearchPageState();
-// }
-
-// class _SearchPageState extends State<SearchPage> {
-//   List<dynamic> products = [];
-//   // @override
-//   // Widget build(BuildContext context) {
-//   //   setState(() {
-//   //     isLoading = false;
-//   //     doesPop = true;
-//   //   });
-//   //   SizeConfig().init(context);
-//   //   return Scaffold(
-//   //     appBar: AppBar(
-//   //       backgroundColor: AppBarTheme.of(context).color,
-//   //       centerTitle: true,
-//   //       title: Text('Oglasnik'),
-//   //       leading: LogoutButton(),
-//   //       actions: <Widget>[
-//   //         IconButton(
-//   //           icon: Icon(Icons.search),
-//   //           onPressed: () {
-//   //             showSearch(context: context, delegate: DataSearch());
-//   //           },
-//   //         )
-//   //       ],
-//   //     ),
-//   //     floatingActionButton: email != null
-//   //         ? mainFloatingButton(email)
-//   //         : homeFloatingAnimatedButton(),
-//   //     bottomSheet: BottomSheetContainer(),
-//   //     body: Container(
-//   //       child: Card(
-//   //         child: Text(query),
-//   //       ),
-//   //     ),
-//   //   );
-//   // }
-// }
-
 class DataSearch extends SearchDelegate<String> {
+  List<dynamic> _list;
+  bool _isSearching;
+  String _searchText = "";
+  List searchresult = new List();
+
   final cars = [
     "Audi",
     "Audi",
@@ -86,6 +47,7 @@ class DataSearch extends SearchDelegate<String> {
       icon: AnimatedIcon(
         icon: AnimatedIcons.menu_arrow,
         progress: transitionAnimation,
+        color: Colors.white,
       ),
       onPressed: () {
         close(context, null);
@@ -114,7 +76,9 @@ class DataSearch extends SearchDelegate<String> {
     // TODO: implement buildSuggestions
     final suggestionsList = query.isEmpty
         ? recentCars
-        : cars.where((e) => e.startsWith(query)).toList();
+        : cars
+            .where((e) => e.toLowerCase().contains(query.toLowerCase()))
+            .toList();
 
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(

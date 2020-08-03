@@ -51,7 +51,6 @@ class _SigninPageState extends State<SigninPage> {
   void dispose() {
     loginDisposeControllers();
     _connectivity.disposeStream();
-
     super.dispose();
   }
 
