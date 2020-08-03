@@ -27,7 +27,7 @@ Stack mainFloatingButton(String email) {
           Container(
             margin: EdgeInsets.only(bottom: 184.0, left: 60.0),
             child: SizedBox.fromSize(
-              size: Size(75, 75), // button width and height
+              size: Size(80, 80), // button width and height
               child: ClipOval(
                 child: Material(
                   color: Colors.transparent, // button color
