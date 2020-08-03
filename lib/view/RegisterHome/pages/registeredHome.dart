@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/mainbody.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
@@ -38,6 +39,14 @@ class _RegisteredHomeState extends State<RegisteredHome> {
         centerTitle: true,
         title: Text('Oglasnik'),
         leading: LogoutButton(),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: DataSearch());
+            },
+          )
+        ],
       ),
       floatingActionButton: email != null
           ? mainFloatingButton(email)
