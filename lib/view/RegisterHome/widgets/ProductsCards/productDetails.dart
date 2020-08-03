@@ -87,10 +87,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
+                            color: Colors.grey.withOpacity(0.3),
                             spreadRadius: 1,
-                            blurRadius: 2,
-                            offset: Offset(0, 1), // changes position of shadow
+                            blurRadius: 1,
+                            offset: Offset(0, 2), // changes position of shadow
                           ),
                         ],
                         border: Border.all(
