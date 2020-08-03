@@ -9,8 +9,9 @@ Stack mainFloatingButton(String email) {
     Builder(
       builder: (context) => FabCircularMenu(
         //key: registeredButtonKey,
+
         alignment: Alignment.bottomRight,
-        ringColor: Colors.black.withAlpha(10),
+        ringColor: Colors.grey[50].withAlpha(210),
         ringDiameter: 350.0,
         ringWidth: 76.0,
         fabColor: Colors.white,
@@ -25,12 +26,12 @@ Stack mainFloatingButton(String email) {
         fabMargin: const EdgeInsets.only(bottom: 24.0, right: 20.0),
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(bottom: 184.0, left: 70.0),
+            margin: EdgeInsets.only(bottom: 184.0, left: 60.0),
             child: SizedBox.fromSize(
-              size: Size(75, 75), // button width and height
+              size: Size(80, 80), // button width and height
               child: ClipOval(
                 child: Material(
-                  color: Colors.grey[50], // button color
+                  color: Colors.transparent, // button color
                   child: InkWell(
                     splashColor: Colors.transparent, // splash color
                     onTap: () {

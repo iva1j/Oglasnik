@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetAlertDialog.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
@@ -12,8 +13,13 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:Oglasnik/utils/checkForInternetConnection.dart';
+import 'package:Oglasnik/utils/globals.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 
 TextEditingController signInEmailInputController;
+TextEditingController emailInputControllerAlertDialog =
+    new TextEditingController();
 TextEditingController signInPasswordInputController;
 //When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
@@ -48,30 +54,31 @@ void cleanLoginInputFields() {
 
 void onPressedSignInModel(
     BuildContext context, String email, String password, dynamic formKey) {
-  //ovdje pozvati
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-  Timer(Duration(seconds: 1), () {
-    if (formKey.currentState.validate() && status == true) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        signInEmailInputController.clear();
-        signInPasswordInputController.clear();
-      });
-      print('Logged in');
-      globals.email = email;
-
-      loginPrefs(context, email);
-
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) {
-          registeredGlob = false;
-          return RegisteredHome();
-        }),
-      );
-    } else {
-      print('Email ili password nisu tacni');
-    }
-  });
+  print('Internet konekcija dostupna: ' + hasInternetConnection.toString());
+  if (!isOnline) {
+    Timer(Duration(seconds: 1), () {
+      if (formKey.currentState.validate() && status == true) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          signInEmailInputController.clear();
+          signInPasswordInputController.clear();
+        });
+        print('Logged in');
+        globals.email = email;
+        loginPrefs(context, email);
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) {
+            registeredGlob = false;
+            return RegisteredHome();
+          }),
+        );
+      } else {
+        print('Email ili password nisu tacni');
+      }
+    });
+  } else
+    displayInternetDialog(context);
 }
 
 void loginPrefs(BuildContext context, String email) async {

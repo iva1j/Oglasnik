@@ -40,3 +40,4 @@ class CategoryViewModel implements ReadCategoriesInterface {
     return forReturn;
   }
 }
+

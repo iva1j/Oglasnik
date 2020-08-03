@@ -7,13 +7,36 @@ class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Container(
-      height: SizeConfig.blockSizeVertical * 100 - 200,
-      color: Colors.white,
-      child: Center(
-        child: SpinKitCircle(
-          color: mainAppColor,
-          size: 80.0,
+    return Material(
+      child: Container(
+        // height: SizeConfig.blockSizeVertical * 100 - 200,
+        color: Colors.white,
+        child: Center(
+          child: Column(
+            //ovaj dio koda je radio  : Amer
+            children: <Widget>[
+              Container(
+                margin:
+                    EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 35),
+              ),
+              Container(
+                width: 350,
+                padding:
+                    EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 4),
+                child: Text(
+                  'Kreiranje artikla...',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: mainAppColor,
+                      fontSize: SizeConfig.safeBlockVertical * 3),
+                ),
+              ),
+              SpinKitCircle(
+                color: mainAppColor,
+                size: 80.0,
+              ),
+            ],
+          ),
         ),
       ),
     );

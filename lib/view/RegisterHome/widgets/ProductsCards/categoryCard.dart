@@ -1,4 +1,5 @@
-import 'package:Oglasnik/model/productCategoryModel.dart';
+import 'package:Oglasnik/model/productCategory.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _CategoryCardState extends State<CategoryCard> {
                 return CategoryCardContainer();
               } else {
                 return Center(
-                  child: Loading(),
+                  child: CategoryLoading(),
                 );
               }
             }),
