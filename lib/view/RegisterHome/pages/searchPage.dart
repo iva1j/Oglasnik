@@ -115,7 +115,7 @@ class DataSearch extends SearchDelegate<String> {
               future: Firestore.instance.collection('products').getDocuments(),
               builder: (BuildContext context, AsyncSnapshot snapshott) {
                 if (snapshott.hasData) {
-                  if (snapshott.hasData == null) {
+                  if (!snapshott.hasData) {
                     return Center(
                       child: Text('U bazi trenutno nemamo tog proizvoda'),
                     );
@@ -232,7 +232,7 @@ class DataSearch extends SearchDelegate<String> {
                     ),
                   );
                 } else {
-                  return CategoryLoading();
+                 return CategoryLoading();
                 }
               }),
         )
