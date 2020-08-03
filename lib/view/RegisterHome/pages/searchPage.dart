@@ -1,11 +1,13 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardDescription.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardImage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardPrice.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardProductName.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
@@ -113,7 +115,14 @@ class DataSearch extends SearchDelegate<String> {
               future: Firestore.instance.collection('products').getDocuments(),
               builder: (BuildContext context, AsyncSnapshot snapshott) {
                 if (snapshott.hasData) {
+                  if (snapshott.hasData == null) {
+                    return Center(
+                      child: Text('U bazi trenutno nemamo tog proizvoda'),
+                    );
+                  }
                   products = snapshott.data.documents;
+                  // if (products.length == 0){
+                  //   }
                   products.forEach((element) {
                     if (element['productName'].startsWith(query))
                       selectedProducts.add(element);
@@ -122,7 +131,6 @@ class DataSearch extends SearchDelegate<String> {
                   selectedProducts.forEach((element) {
                     print(element['productName']);
                   });
-
                   return Container(
                     padding: EdgeInsets.only(bottom: 55),
                     child: ListView.builder(
@@ -182,8 +190,8 @@ class DataSearch extends SearchDelegate<String> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           children: <Widget>[
-                                            itemCardProductName(
-                                                context, selectedProducts[index]),
+                                            itemCardProductName(context,
+                                                selectedProducts[index]),
                                             Container(
                                                 width: 170,
                                                 margin: EdgeInsets.only(
@@ -192,7 +200,7 @@ class DataSearch extends SearchDelegate<String> {
                                                       2,
                                                 ),
                                                 child: itemCardDescription(
-                                                    snapshott, index)),
+                                                    selectedProducts[index])),
                                           ],
                                         ),
                                       ),
@@ -201,8 +209,10 @@ class DataSearch extends SearchDelegate<String> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.stretch,
                                           children: <Widget>[
-                                            itemCardImage(snapshott, index),
-                                            itemCardPrice(snapshott, index),
+                                            itemCardImage(
+                                                selectedProducts[index]),
+                                            itemCardPrice(
+                                                selectedProducts[index]),
                                           ],
                                         ),
                                       ),
@@ -212,7 +222,7 @@ class DataSearch extends SearchDelegate<String> {
                                     thickness:
                                         SizeConfig.blockSizeVertical * 0.2,
                                   ),
-                                  itemCardTags(snapshott, index),
+                                  itemCardTags(selectedProducts[index]),
                                 ],
                               ),
                             ),
@@ -221,8 +231,9 @@ class DataSearch extends SearchDelegate<String> {
                       },
                     ),
                   );
-                } else
-                  return Text('nema products');
+                } else {
+                  return CategoryLoading();
+                }
               }),
         )
       ]),
