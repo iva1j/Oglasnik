@@ -1,13 +1,14 @@
 import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemImage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-ItemImage itemCardImage(AsyncSnapshot snapshot, int index) {
+ItemImage itemCardImage(DocumentSnapshot snapshot) {
   return ItemImage(
-      img: (snapshot.data.documents[index]['productImg1'] != null)
-          ? snapshot.data.documents[index]['productImg1']
-          : (snapshot.data.documents[index]['productImg2'] != null)
-              ? snapshot.data.documents[index]['productImg2']
-              : (snapshot.data.documents[index]['productImg3'] != null)
-                  ? snapshot.data.documents[index]['productImg3']
+      img: (snapshot['productImg1'] != null)
+          ? snapshot['productImg1']
+          : (snapshot['productImg2'] != null)
+              ? snapshot['productImg2']
+              : (snapshot['productImg3'] != null)
+                  ? snapshot['productImg3']
                   : "");
 }

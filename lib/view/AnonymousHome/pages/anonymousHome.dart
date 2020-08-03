@@ -1,6 +1,7 @@
 import 'package:Oglasnik/view/AnonymousHome/pages/mainbody.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
@@ -36,6 +37,14 @@ class _AnonymousHomeState extends State<AnonymousHome> {
           centerTitle: true,
           title: Text('Oglasnik'),
           leading: Container(),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch());
+              },
+            )
+          ],
         ),
         body: MainBody(),
         floatingActionButton: email != null

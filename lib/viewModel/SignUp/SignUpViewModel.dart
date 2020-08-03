@@ -13,11 +13,6 @@ import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dar
 
 String fullNameRegister, emailRegister, passwordRegister, phoneNumberRegister;
 dynamic formKeyRegister;
-// final GlobalKey<FormState> signUpRegisterFormKey;
-// final TextEditingController signUpFullNameInputController;
-// final TextEditingController signUpEmailInputController;
-// final TextEditingController signUpPasswordInputController;
-// final TextEditingController signUpPhoneNumberInputController;
 
 void cleanInputFields(signUpFullNameInputController, signUpEmailInputController,
     signUpPhoneNumberInputController, signUpPasswordInputController) {

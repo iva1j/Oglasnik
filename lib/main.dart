@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
 import 'package:Oglasnik/utils/lifecycle_manager.dart';
-import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetAlertDialog.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
@@ -41,7 +40,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: buildThemeData(),
-          home: CategoryLoading(),
+          home: Splash(),
           routes: {
             "/back": (_) => AnonymousHome(),
             "/homeregister": (_) => RegisteredHome(),
