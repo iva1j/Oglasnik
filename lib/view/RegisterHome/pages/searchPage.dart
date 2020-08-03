@@ -16,6 +16,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DataSearch extends SearchDelegate<String> {
   @override
+  String get searchFieldLabel => "Pretraga proizvoda...";
+
+  @override
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
@@ -70,7 +73,7 @@ class DataSearch extends SearchDelegate<String> {
                   });
                   if (selectedProducts == null || selectedProducts.isEmpty) {
                     return Center(
-                      child: Text('U bazi trenutno nemamo tog proizvoda'),
+                      child: Text('U bazi trenutno nemamo traženi proizvod'),
                     );
                   } else {
                     return Container(
