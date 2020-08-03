@@ -39,6 +39,7 @@ class DataSearch extends SearchDelegate<String> {
       ),
       onPressed: () {
         close(context, null);
+        
       },
     );
   }

@@ -26,7 +26,7 @@ class _TestInternetDialogState extends State<TestInternetDialog> {
         child: ListBody(
           children: <Widget>[
             Text(
-              'Naša veza nije moguća.',
+              'Povezivanje na internet nije moguće.',
             ),
             Text(
               'Molimo povežite se na internet',
