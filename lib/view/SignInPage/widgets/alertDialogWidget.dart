@@ -6,7 +6,6 @@ import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 //dynamic formAlertKey;
 
 class AlertDialogWidget extends StatefulWidget {
