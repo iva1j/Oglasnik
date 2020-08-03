@@ -8,8 +8,7 @@ import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:Oglasnik/utils/checkForInternetConnection.dart';
+
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 
@@ -29,7 +28,6 @@ class _RegisterButtonState extends State<RegisterButton> {
   @override
   initState() {
     super.initState();
-    
   }
 
   @override
