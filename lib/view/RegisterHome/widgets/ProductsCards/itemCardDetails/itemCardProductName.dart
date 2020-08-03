@@ -1,19 +1,20 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemName.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 InkWell itemCardProductName(
-    BuildContext context, AsyncSnapshot snapshot, int index) {
+    BuildContext context, DocumentSnapshot snapshott) {
   return InkWell(
     onTap: () {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (_) => ProductDetails(
-                productNameScreen: snapshot.data.documents[index]
-                    ['productName'],
+                productNameScreen: snapshott['productName'],
               )));
     },
     child: ItemName(
-      name: snapshot.data.documents[index]['productName'],
+      name: snapshott['productName'],
     ),
   );
 }

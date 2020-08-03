@@ -1,6 +1,7 @@
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/ProductBrandContainer/productBrandContainer.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
@@ -29,6 +30,14 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
         ),
         centerTitle: true,
         title: Text(widget.categoryName),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: DataSearch());
+            },
+          )
+        ],
       ),
       floatingActionButton: email != null
           ? mainFloatingButton(email)

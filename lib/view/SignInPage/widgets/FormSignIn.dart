@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/checkForInternetConnection.dart';
+import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/SigninTextFields/emailSigninTextField.dart';
@@ -33,7 +34,7 @@ class _FormSignInState extends State<FormSignIn> {
   @override
   void initState() {
     loginInitControllers();
-   // InternetConnection();
+    // InternetConnection();
     //  InternetConnection().checkForInternet();
     super.initState();
   }
@@ -104,6 +105,7 @@ class _FormSignInState extends State<FormSignIn> {
                   },
                 ),
               ),
+              Text(string),
               Container(
                 margin: EdgeInsets.only(top: 15.0),
                 child: new GestureDetector(
