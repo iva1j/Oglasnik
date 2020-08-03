@@ -96,6 +96,8 @@ class DataSearch extends SearchDelegate<String> {
   @override
   Widget buildResults(BuildContext context) {
     // return kartice
+    //var results = cars.where((element) => element.toLowerCase().contains(query.toLowerCase()));
+
     return Scaffold(
       floatingActionButton: email != null
           ? mainFloatingButton(email)
@@ -106,7 +108,7 @@ class DataSearch extends SearchDelegate<String> {
           height: 200.0,
           width: 200.0,
           child: Card(
-            child: Center(child: Text(query)),
+            child: Center(child: Text(query.toLowerCase())),
           ),
         ),
       ),
@@ -118,7 +120,9 @@ class DataSearch extends SearchDelegate<String> {
     // TODO: implement buildSuggestions
     final suggestionsList = query.isEmpty
         ? recentCars
-        : cars.where((e) => e.startsWith(query)).toList();
+        : cars
+            .where((e) => e.toLowerCase().contains(query.toLowerCase()))
+            .toList();
 
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
