@@ -131,11 +131,8 @@ class _CategoryPageState extends State<CategoryPage> {
                                 height: 1.5,
                               ),
                               underline: Container(),
-                              onChanged:
-                                  // (dropdownValueCategory == 'Kategorija1')
-                                  //     ? null
-                                  //     :
-                                  (String productBrandList) => setState(() {
+                              onChanged: (String productBrandList) =>
+                                  setState(() {
                                 dropdownValueBrand =
                                     productBrandList; // u productBrandList treba povući vrijednosti iz Firestora ali imajući u vidu kategoriju koja se odabere (prvi brand iz kategorije)
                               }),
