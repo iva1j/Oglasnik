@@ -1,12 +1,13 @@
 import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/oglasTag.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-SingleChildScrollView itemCardTags(AsyncSnapshot snapshot, int index) {
+SingleChildScrollView itemCardTags(DocumentSnapshot snapshot) {
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      children: snapshot.data.documents[index]['productTag']
+      children: snapshot['productTag']
           .split(',')
           //.removeWhere((item) => item.length == 0)
           //.remove("")
