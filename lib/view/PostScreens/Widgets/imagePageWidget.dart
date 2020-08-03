@@ -51,7 +51,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   void dispose() {
     _connectivity.disposeStream();
-
     super.dispose();
   }
 
@@ -108,15 +107,15 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   Widget build(BuildContext context) {
     switch (_source.keys.toList()[0]) {
       case ConnectivityResult.none:
-        isOnline = true;
+        productIsOnline = false;
         string = "Offline";
         break;
       case ConnectivityResult.mobile:
-        isOnline = false;
+        productIsOnline = true;
         string = "Mobile: Online";
         break;
       case ConnectivityResult.wifi:
-        isOnline = false;
+        productIsOnline = true;
         string = "WiFi: Online";
     }
     SizeConfig().init(context);
@@ -147,6 +146,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                   MoneyText().kmText,
                 ),
               ),
+              Text(string),
             ],
           ),
           /*
@@ -168,7 +168,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   SizedBox pageViewSubmitButton(BuildContext context) {
     return button("Završi", () async {
       FocusScope.of(context).requestFocus(new FocusNode());
-      if (!isOnline) {
+      if (productIsOnline != false) {
         if (pageController.page == 4) {
           if (productPriceFormKey.currentState.validate()) {
             widget.onFlatButtonPressed();
