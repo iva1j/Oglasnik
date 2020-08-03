@@ -9,6 +9,7 @@ Stack mainFloatingButton(String email) {
     Builder(
       builder: (context) => FabCircularMenu(
         //key: registeredButtonKey,
+
         alignment: Alignment.bottomRight,
         ringColor: Colors.grey[50].withAlpha(210),
         ringDiameter: 350.0,
