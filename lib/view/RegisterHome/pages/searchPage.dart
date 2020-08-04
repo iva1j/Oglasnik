@@ -115,124 +115,128 @@ class DataSearch extends SearchDelegate<String> {
               future: Firestore.instance.collection('products').getDocuments(),
               builder: (BuildContext context, AsyncSnapshot snapshott) {
                 if (snapshott.hasData) {
-                  if (!snapshott.hasData) {
-                    return Center(
-                      child: Text('U bazi trenutno nemamo tog proizvoda'),
-                    );
-                  }
                   products = snapshott.data.documents;
-                  // if (products.length == 0){
-                  //   }
+
                   products.forEach((element) {
                     if (element['productName'].startsWith(query))
                       selectedProducts.add(element);
-                    //  print(element['productName']);
                   });
                   selectedProducts.forEach((element) {
                     print(element['productName']);
                   });
-                  return Container(
-                    padding: EdgeInsets.only(bottom: 55),
-                    child: ListView.builder(
-                      itemCount: selectedProducts.length,
-                      itemBuilder: (_, int index) {
-                        return Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            onTap: () {
-                              Navigator.of(context).push(
-                                FadeRoute(
-                                  page: ProductDetails(
-                                    productNameScreen: selectedProducts[index]
-                                        ['productName'],
-                                    // snapshot
-                                    //     .data.documents[index]['productName'],
+                  print("HAHAHAHAHAHAHAHAHA");
+                  print(selectedProducts);
+                  print("LELELELELELELELELE");
+                  return selectedProducts.length == 0
+                      ? Center(child: Text("LEEEL"))
+                      : Container(
+                          padding: EdgeInsets.only(bottom: 55),
+                          child: ListView.builder(
+                            itemCount: selectedProducts.length,
+                            itemBuilder: (_, int index) {
+                              return Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      FadeRoute(
+                                        page: ProductDetails(
+                                          productNameScreen:
+                                              selectedProducts[index]
+                                                  ['productName'],
+                                          // snapshot
+                                          //     .data.documents[index]['productName'],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.2),
+                                          spreadRadius: 1,
+                                          blurRadius: 7,
+                                          offset: Offset(0, 3),
+                                        ),
+                                      ],
+                                      border: Border.all(
+                                        color: Colors.black26,
+                                      ),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(4),
+                                      ),
+                                    ),
+                                    margin: EdgeInsets.only(
+                                      left: SizeConfig.blockSizeHorizontal * 5,
+                                      right: SizeConfig.blockSizeHorizontal * 5,
+                                      top: SizeConfig.blockSizeVertical * 4,
+                                      bottom: SizeConfig.blockSizeVertical * 2,
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            Expanded(
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  itemCardProductName(context,
+                                                      selectedProducts[index]),
+                                                  Container(
+                                                      width: 170,
+                                                      margin: EdgeInsets.only(
+                                                        right: SizeConfig
+                                                                .blockSizeVertical *
+                                                            2,
+                                                      ),
+                                                      child:
+                                                          itemCardDescription(
+                                                              selectedProducts[
+                                                                  index])),
+                                                ],
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.stretch,
+                                                children: <Widget>[
+                                                  itemCardImage(
+                                                      selectedProducts[index]),
+                                                  itemCardPrice(
+                                                      selectedProducts[index]),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Divider(
+                                          thickness:
+                                              SizeConfig.blockSizeVertical *
+                                                  0.2,
+                                        ),
+                                        itemCardTags(selectedProducts[index]),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );
                             },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.2),
-                                    spreadRadius: 1,
-                                    blurRadius: 7,
-                                    offset: Offset(0, 3),
-                                  ),
-                                ],
-                                border: Border.all(
-                                  color: Colors.black26,
-                                ),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(4),
-                                ),
-                              ),
-                              margin: EdgeInsets.only(
-                                left: SizeConfig.blockSizeHorizontal * 5,
-                                right: SizeConfig.blockSizeHorizontal * 5,
-                                top: SizeConfig.blockSizeVertical * 4,
-                                bottom: SizeConfig.blockSizeVertical * 2,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: <Widget>[
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: <Widget>[
-                                            itemCardProductName(context,
-                                                selectedProducts[index]),
-                                            Container(
-                                                width: 170,
-                                                margin: EdgeInsets.only(
-                                                  right: SizeConfig
-                                                          .blockSizeVertical *
-                                                      2,
-                                                ),
-                                                child: itemCardDescription(
-                                                    selectedProducts[index])),
-                                          ],
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.stretch,
-                                          children: <Widget>[
-                                            itemCardImage(
-                                                selectedProducts[index]),
-                                            itemCardPrice(
-                                                selectedProducts[index]),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Divider(
-                                    thickness:
-                                        SizeConfig.blockSizeVertical * 0.2,
-                                  ),
-                                  itemCardTags(selectedProducts[index]),
-                                ],
-                              ),
-                            ),
                           ),
                         );
-                      },
-                    ),
-                  );
                 } else {
-                 return CategoryLoading();
+                  return CategoryLoading();
                 }
               }),
         )
