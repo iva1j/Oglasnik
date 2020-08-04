@@ -19,6 +19,7 @@ class _CategoryCardState extends State<CategoryCard> {
     SizeConfig().init(context);
     return Column(children: <Widget>[
       Expanded(
+      
         child: FutureBuilder(
             future: CategoryViewModel().getCategories(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {

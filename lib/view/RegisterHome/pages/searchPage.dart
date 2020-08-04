@@ -60,11 +60,11 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    //Na ovom dijelu koda (buildResults) su radili : Faruk, Fahrudin i Amer
-    /*OPIS LOGIKE: Kao što vidimo , definisane su dvije liste : products i selectedProducts.
-    Ove dvije liste ćemo koristiti kako bi useru prikazali artikle koje on pretražuje na način da
-    ćemo u listi products imati storane naše proizvode iz baze, a u listu selectedProduct ćemo puniti na osnovu toga šta
-    user ukuca u search, te na osnovu te liste ćemo prikazivati željene produkte na screen. */
+    ///Na ovom dijelu koda (buildResults) su radili : Faruk, Fahrudin i Amer
+    ///OPIS LOGIKE: Kao što vidimo , definisane su dvije liste : products i selectedProducts.
+    ///Ove dvije liste ćemo koristiti kako bi useru prikazali artikle koje on pretražuje na način da
+    ///ćemo u listi products imati storane naše proizvode iz baze, a u listu selectedProduct ćemo puniti na osnovu toga šta
+    ///user ukuca u search, te na osnovu te liste ćemo prikazivati željene produkte na screen. 
     List<DocumentSnapshot> products = List<DocumentSnapshot>();
     List<DocumentSnapshot> selectedProducts = List<DocumentSnapshot>();
 
@@ -77,7 +77,7 @@ class DataSearch extends SearchDelegate<String> {
         children: <Widget>[
           Expanded(
             child: FutureBuilder(
-              // Future funkcija koja je zadužena za povlačenje proizvoda iz baze:
+              /// Future funkcija koja je zadužena za povlačenje proizvoda iz baze:
               future: Firestore.instance.collection('products').getDocuments(),
               builder: (BuildContext context, AsyncSnapshot snapshott) {
                 if (snapshott.hasData) {
