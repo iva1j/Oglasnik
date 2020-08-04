@@ -30,16 +30,24 @@ class ItemCardBody extends StatefulWidget {
 }
 
 class _ItemCardBodyState extends State<ItemCardBody> {
-
   @override
   Widget build(BuildContext context) {
     List<DocumentSnapshot> cities = List<DocumentSnapshot>();
 
     dynamicChips() {
-      return Row(
+      return Wrap(
+        spacing: 5.0,
         children: List<Widget>.generate(citysuggestions.length, (int index) {
-          return Chip(
-            label: Text(citysuggestions[index]),
+          return Container(
+            margin: EdgeInsets.only(left: 10),
+            child: Row(
+              children: <Widget>[
+                ActionChip(
+                  label: Text(citysuggestions[index]),
+                  onPressed: () {},
+                ),
+              ],
+            ),
           );
         }),
       );

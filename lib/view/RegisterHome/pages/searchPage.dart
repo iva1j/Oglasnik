@@ -15,6 +15,22 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DataSearch extends SearchDelegate<String> {
+  final cars = [
+    "Audi",
+    "audi",
+    "Mercedes",
+    "Volvo",
+    "Range rover",
+    "Toyota",
+    "Subaru",
+    "BMW",
+    "Ford"
+  ];
+  final recentCars = [
+    "Audi",
+    "Mercedes",
+    "Volvo",
+  ];
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
@@ -38,7 +54,6 @@ class DataSearch extends SearchDelegate<String> {
       ),
       onPressed: () {
         close(context, null);
-        
       },
     );
   }
@@ -49,7 +64,7 @@ class DataSearch extends SearchDelegate<String> {
     ///OPIS LOGIKE: Kao što vidimo , definisane su dvije liste : products i selectedProducts.
     ///Ove dvije liste ćemo koristiti kako bi useru prikazali artikle koje on pretražuje na način da
     ///ćemo u listi products imati storane naše proizvode iz baze, a u listu selectedProduct ćemo puniti na osnovu toga šta
-    ///user ukuca u search, te na osnovu te liste ćemo prikazivati željene produkte na screen. 
+    ///user ukuca u search, te na osnovu te liste ćemo prikazivati željene produkte na screen.
     List<DocumentSnapshot> products = List<DocumentSnapshot>();
     List<DocumentSnapshot> selectedProducts = List<DocumentSnapshot>();
 
@@ -207,5 +222,27 @@ class DataSearch extends SearchDelegate<String> {
   @override
   Widget buildSuggestions(BuildContext context) {
     return Container();
+    // final suggestionsList = query.isEmpty
+    //     ? recentCars
+    //     : cars.where((e) => e.startsWith(query)).toList();
+    // return ListView.builder(
+    //   itemBuilder: (context, index) => ListTile(
+    //     onTap: () {
+    //       showResults(context);
+    //     },
+    //     title: RichText(
+    //       text: TextSpan(
+    //           text: suggestionsList[index].substring(0, query.length),
+    //           style:
+    //               TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+    //           children: [
+    //             TextSpan(
+    //                 text: suggestionsList[index].substring(query.length),
+    //                 style: TextStyle(color: Colors.grey))
+    //           ]),
+    //     ),
+    //   ),
+    //   itemCount: suggestionsList.length,
+    // );
   }
 }
