@@ -42,7 +42,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
             margin: EdgeInsets.only(left: 10),
             child: Row(
               children: <Widget>[
-                ActionChip(
+                ActionChip(  
                   label: Text(citysuggestions[index]),
                   onPressed: () {},
                 ),
