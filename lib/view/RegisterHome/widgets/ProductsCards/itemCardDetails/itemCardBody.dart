@@ -42,71 +42,99 @@ class _ItemCardBodyState extends State<ItemCardBody> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    List<DocumentSnapshot> cities = List<DocumentSnapshot>();
-
     actionChips() {
-      //selectedChips.add("LOL");
-      //selectedChips.clear();
       selectedChips.sort();
-      return Row(
+      return Container(
+        margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 6),
+        child: Row(
           children: List<Widget>.generate(selectedChips.length, (index) {
-        return Container(
-          margin: EdgeInsets.only(
-            left: SizeConfig.blockSizeHorizontal * 2,
-            right: SizeConfig.blockSizeHorizontal * 2,
-          ),
-          child: Chip(
-            label: Text(selectedChips[index]),
-            backgroundColor: Colors.red,
-            onDeleted: () {
-              setState(() {
-                citysuggestions.add(selectedChips[index]);
-                selectedChips.removeAt(index);
-              });
-            },
-          ),
-        );
-      }));
+            return Container(
+              margin: EdgeInsets.only(
+                right: SizeConfig.blockSizeHorizontal * 2,
+              ),
+              child: Chip(
+                label: Text(
+                  selectedChips[index],
+                  style: TextStyle(
+                    color: Color.fromRGBO(0, 0, 0, 0.34),
+                  ),
+                ),
+                backgroundColor: Color.fromRGBO(226, 11, 48, 0.1),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                  Radius.circular(14),
+                )),
+                deleteIconColor: Color.fromRGBO(0, 0, 0, 0.54),
+                onDeleted: () {
+                  setState(() {
+                    citysuggestions.add(selectedChips[index]);
+                    selectedChips.removeAt(index);
+                  });
+                },
+              ),
+            );
+          }),
+        ),
+      );
     }
 
     dynamicChips() {
       citysuggestions.sort();
-      return Row(
-        children: List<Widget>.generate(citysuggestions.length, (int index) {
-          return Container(
-            margin: EdgeInsets.only(
-              left: SizeConfig.blockSizeHorizontal * 2,
-              right: SizeConfig.blockSizeHorizontal * 2,
-            ),
-            child: ActionChip(
-              label: Text(citysuggestions[index]),
-              onPressed: () {
-                if (selectedChips.length < 3) {
-                  setState(() {
-                    selectedChips.add(citysuggestions[index]);
-                    citysuggestions.removeAt(index);
-                  });
-                } else {
-                  print("HAHA");
-                  Flushbar(
-                    message: "Ne moze biti vise od 3 odabrana grada",
-                    duration: Duration(seconds: 3),
-                    flushbarPosition: FlushbarPosition.BOTTOM,
-                    flushbarStyle: FlushbarStyle.FLOATING,
-                    borderRadius: 30.0,
-                  )..show(context);
-                }
-              },
-            ),
-          );
-        }),
+      return Container(
+        margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 6),
+        child: Row(
+          children: List<Widget>.generate(citysuggestions.length, (int index) {
+            return Container(
+              margin: EdgeInsets.only(
+                right: SizeConfig.blockSizeHorizontal * 2,
+              ),
+              child: ActionChip(
+                label: Text(
+                  citysuggestions[index],
+                  style: TextStyle(
+                    color: Color.fromRGBO(0, 0, 0, 0.54),
+                  ),
+                ),
+                backgroundColor: Color.fromRGBO(153, 153, 153, 0.2),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                  Radius.circular(14),
+                )),
+                onPressed: () {
+                  if (selectedChips.length < 3) {
+                    setState(() {
+                      selectedChips.add(citysuggestions[index]);
+                      citysuggestions.removeAt(index);
+                    });
+                  } else {
+                    print("HAHA");
+                    Flushbar(
+                      message: "Ne moze biti vise od 3 odabrana grada",
+                      duration: Duration(seconds: 3),
+                      flushbarPosition: FlushbarPosition.BOTTOM,
+                      flushbarStyle: FlushbarStyle.FLOATING,
+                      borderRadius: 30.0,
+                    )..show(context);
+                  }
+                },
+              ),
+            );
+          }),
+        ),
       );
     }
 
-    List<DocumentSnapshot> productItems = List<DocumentSnapshot>();
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        //Text('Ovdje trebaju ići chipovi'),
+        Container(
+            margin: EdgeInsets.only(
+                left: SizeConfig.blockSizeHorizontal * 6,
+                top: SizeConfig.blockSizeVertical * 2),
+            child: Text(
+              'Filter',
+              style: TextStyle(fontSize: 16.0),
+            )),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: actionChips(),
@@ -247,39 +275,4 @@ class _ItemCardBodyState extends State<ItemCardBody> {
       ],
     );
   }
-}
-
-rowChips() {
-  return Row(
-    children: <Widget>[
-      chipForRow('Health', Color(0xFFff8a65)),
-      chipForRow('Food', Color(0xFF4fc3f7)),
-      chipForRow('Lifestyle', Color(0xFF9575cd)),
-      chipForRow('Sports', Color(0xFF4db6ac)),
-      chipForRow('Nature', Color(0xFF5cda65)),
-    ],
-  );
-}
-
-Widget chipForRow(String label, Color color) {
-  return Container(
-    margin: EdgeInsets.all(6.0),
-    child: Chip(
-      labelPadding: EdgeInsets.all(5.0),
-      avatar: CircleAvatar(
-        backgroundColor: Colors.grey.shade600,
-        child: Text(label[0].toUpperCase()),
-      ),
-      label: Text(
-        label,
-        style: TextStyle(
-          color: Colors.white,
-        ),
-      ),
-      backgroundColor: color,
-      elevation: 6.0,
-      shadowColor: Colors.grey[60],
-      padding: EdgeInsets.all(6.0),
-    ),
-  );
 }
