@@ -1,13 +1,7 @@
-import 'package:Oglasnik/model/productCategory.dart';
-import 'package:Oglasnik/model/productCity.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/CategoryCardContainer/categoryCardContainer.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -42,7 +36,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
             margin: EdgeInsets.only(left: 10),
             child: Row(
               children: <Widget>[
-                ActionChip(  
+                ActionChip(
                   label: Text(citysuggestions[index]),
                   onPressed: () {},
                 ),
@@ -78,7 +72,6 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                     ),
                   );
                 }
-
                 return Container(
                   padding: EdgeInsets.only(bottom: 55),
                   child: ListView.builder(

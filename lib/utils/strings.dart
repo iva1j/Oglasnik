@@ -103,6 +103,10 @@ class SignInPageWidgetFout {
   String prijavaTekst = "Prijava";
 }
 
+class EmptyProductList {
+  String emptyList = "U bazi trenutno nemamo traženi proizvod";
+}
+
 class SuccessAlertDialog {
   String odlicno = "Odlično!";
   String cestitamo = "Čestitamo!";
