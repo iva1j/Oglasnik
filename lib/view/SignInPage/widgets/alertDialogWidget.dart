@@ -52,7 +52,7 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
             validator: emailAlertDialogValidation,
             controller: emailInputControllerAlertDialog,
           ),
-        ),
+        ), 
       ),
       actions: <Widget>[
         Container(
