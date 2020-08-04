@@ -6,7 +6,7 @@ ThemeData buildThemeData() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Color.fromARGB(255, 226, 11, 48),
-    textSelectionHandleColor: mainAppColor,
+    textSelectionHandleColor: Colors.grey[500].withOpacity(0.8),
     inputDecorationTheme: InputDecorationTheme(),
     buttonTheme: ButtonThemeData(
       height: 48,
