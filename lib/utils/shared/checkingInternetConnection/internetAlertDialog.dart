@@ -1,3 +1,5 @@
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:flutter/material.dart';
 
 class TestInternetDialog extends StatefulWidget {
@@ -9,36 +11,42 @@ class _TestInternetDialogState extends State<TestInternetDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      //backgroundColor: MyColors().lightBlack,
-      backgroundColor: Colors.blue,
-      title: Text(
-        'Not connected!',
-        style: TextStyle(color: Colors.redAccent),
+      backgroundColor: alertDialogBgColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        side: BorderSide(
+          color: alertDialogBorderColor,
+        ),
       ),
+      title: Container(
+          child: Text(
+        'Opcija nije moguća! \n',
+      )),
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
             Text(
-              'Internet veza nije moguća.',
-              style: TextStyle(
-                  //color: MyColors().lightWhite
-                  color: Colors.white),
+              'Povezivanje na internet nije moguće.',
             ),
             Text(
-              'Molimo konektujte se na internet',
-              style: TextStyle(
-                  // color: MyColors().lightWhite
-                  color: Colors.white),
+              'Molimo povežite se na internet',
             ),
           ],
         ),
       ),
       actions: <Widget>[
-        FlatButton(
-          child: Text('Ok'),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+        Container(
+          width: double.maxFinite,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                child: button('OK', () {
+                  Navigator.of(context).pop();
+                }),
+              ),
+            ],
+          ),
         ),
       ],
     );

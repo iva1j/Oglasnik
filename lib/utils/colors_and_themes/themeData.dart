@@ -1,10 +1,12 @@
 import 'package:Oglasnik/utils/colors_and_themes/appBarTheme.dart';
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData buildThemeData() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Color.fromARGB(255, 226, 11, 48),
+    textSelectionHandleColor: mainAppColor,
     inputDecorationTheme: InputDecorationTheme(),
     buttonTheme: ButtonThemeData(
       height: 48,
