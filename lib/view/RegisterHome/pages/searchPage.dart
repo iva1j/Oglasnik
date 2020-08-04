@@ -26,6 +26,8 @@ class DataSearch extends SearchDelegate<String> {
   /// Izmjene su se morale odraditi direktno u klasi SearchDelegate
   /// Izmjene se ticu promjene boje bara, boje ikona, boje title-a
   /// Plus izmjena boje kursora na liniji 538
+  /// promjena vrijednosti varijable na 203 liniji jer ThemeData povlaci vrijednosti
+  /// iz biblioteke theme_data.dart, a kako nismo smijeli dirati izmjene te biblioteke morali smo odraditi drugacije
   /// Task radili: Elvir i Iva
   @override
   List<Widget> buildActions(BuildContext context) {
