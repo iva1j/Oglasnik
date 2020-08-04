@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 ThemeData buildThemeData() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
-    primaryColor: Colors.grey[500],
-    textSelectionHandleColor: mainAppColor,
+    primaryColor: Color.fromARGB(255, 226, 11, 48),
+    textSelectionHandleColor: Colors.grey[500].withOpacity(0.8),
     inputDecorationTheme: InputDecorationTheme(),
     buttonTheme: ButtonThemeData(
       height: 48,

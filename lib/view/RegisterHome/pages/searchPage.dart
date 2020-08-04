@@ -224,7 +224,6 @@ class DataSearch extends SearchDelegate<String> {
     );
   }
 
-  @override
   Widget buildSuggestions(BuildContext context) {
     return Container();
   }
