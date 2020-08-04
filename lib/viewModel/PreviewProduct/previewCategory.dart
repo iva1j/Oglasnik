@@ -41,3 +41,12 @@ class CategoryViewModel implements ReadCategoriesInterface {
   }
 }
 
+class CityViewModel implements ReadCitiesInterface {
+  @override
+  Future getCitiesFromProducts() async {
+    var firestore = Firestore.instance;
+    QuerySnapshot queryCities =
+        await firestore.collection('category').getDocuments();
+    return queryCities;
+  }
+}

@@ -30,3 +30,7 @@ abstract class ReadCategoriesInterface{
 abstract class ReadBrandInterface{
   Future getBrandsByCategories(String categoryName);
 }
+
+abstract class ReadCitiesInterface{
+  Future getCitiesFromProducts();
+}
