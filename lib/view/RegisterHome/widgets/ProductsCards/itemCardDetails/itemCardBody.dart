@@ -1,13 +1,7 @@
-import 'package:Oglasnik/model/productCategory.dart';
-import 'package:Oglasnik/model/productCity.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/CategoryCardContainer/categoryCardContainer.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -30,7 +24,6 @@ class ItemCardBody extends StatefulWidget {
 }
 
 class _ItemCardBodyState extends State<ItemCardBody> {
-
   @override
   Widget build(BuildContext context) {
     List<DocumentSnapshot> cities = List<DocumentSnapshot>();
