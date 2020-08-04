@@ -14,12 +14,22 @@ import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+/// Na ovom dijelu koda radili Iva i Elvir
+/// Kreiranje SearchDelegate klase sa njenim funkcijama koje cemo koristiti za kreiranje searcha,
+//buildactions,buildLeading,buildresults,buildSuggestions
 class DataSearch extends SearchDelegate<String> {
   @override
-  String get searchFieldLabel => "Pretraga proizvoda...";
-
+  String get searchFieldLabel =>
+      "Pretraga proizvoda..."; // Iva i Elvir, promjena teksta na search baru +
+  ///dodatne promjene u search biblioteci searchdelegate klase.Sve promjene vezane za dizajn su u biblioteci.
+  /// U narednim linijama code-a (200, 209) u searchu.dart biblioteka moralo je doci do izmjena da bi search bar bio u skladu sa nasom aplikacijom
+  /// Izmjene su se morale odraditi direktno u klasi SearchDelegate
+  /// Izmjene se ticu promjene boje bara, boje ikona, boje title-a
+  /// Plus izmjena boje kursora na liniji 538
+  /// Task radili: Elvir i Iva
   @override
   List<Widget> buildActions(BuildContext context) {
+    ///Iva Elvir kreiranje buildAction funkcije
     return [
       IconButton(
         icon: Icon(Icons.clear),
@@ -31,6 +41,7 @@ class DataSearch extends SearchDelegate<String> {
     ];
   }
 
+  ///Iva Elvir kreiranje buildLeadingfunkcije
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
@@ -41,7 +52,6 @@ class DataSearch extends SearchDelegate<String> {
       ),
       onPressed: () {
         close(context, null);
-        
       },
     );
   }
@@ -74,9 +84,9 @@ class DataSearch extends SearchDelegate<String> {
                   /*Korištenjem forEach metode popunjavamo selectedProducts listu, ,na način da userov unos
                   u search (query) , poredimo sa 'productName' koji je neki user unio pri kreiranju artikla */
                   products.forEach((element) {
-                    if (element['productName']
-                        .toLowerCase()
-                        .startsWith(query.toLowerCase()))
+                    if (element['productName'].toLowerCase().startsWith(query
+                        .toLowerCase())) //Iva Elvir, omogucuje se ispis artikla bez
+                      ///obzira da li je user unio veliko ili malo slovo u search
                       selectedProducts.add(element);
                   });
                   selectedProducts.forEach((element) {
