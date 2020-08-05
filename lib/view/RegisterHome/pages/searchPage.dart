@@ -15,42 +15,6 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DataSearch extends SearchDelegate<String> {
-  final cars = [
-    "Audi",
-    "audi",
-    "Mercedes",
-    "Volvo",
-    "Range rover",
-    "Toyota",
-    "Subaru",
-    "BMW",
-    "Ford"
-  ];
-  final recentCars = [
-    "Audi",
-    "Mercedes",
-    "Volvo",
-  ];
-  @override
-  String get searchFieldLabel => "Pretraga proizvoda...";
-
-  // final cars = [
-  //   "Audi",
-  //   "Audi",
-  //   "Mercedes",
-  //   "Volvo",
-  //   "Range rover",
-  //   "Toyota",
-  //   "Subaru",
-  //   "BMW",
-  //   "Ford"
-  // ];
-
-  // final recentCars = [
-  //   "Audi",
-  //   "Mercedes",
-  //   "Volvo",
-  // ];
   @override
   List<Widget> buildActions(BuildContext context) {
     return [

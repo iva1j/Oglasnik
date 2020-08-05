@@ -1,5 +1,3 @@
-import 'package:Oglasnik/model/productCategory.dart';
-import 'package:Oglasnik/model/productCity.dart';
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -15,7 +13,6 @@ import 'itemCardImage.dart';
 import 'itemCardPrice.dart';
 import 'itemCardProductName.dart';
 import 'package:flushbar/flushbar.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
 
 class ItemCardBody extends StatefulWidget {
   const ItemCardBody({
@@ -139,7 +136,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                     ///
                     /// Flushbar is some kind of snackbar that is showed in the bottom of the screen and display (in this case) an error and display a warning to the user
                     /// Once when user select 3 cities and try to add more in filter, code bellow will be triggered
-                    
+
                     Flushbar(
                       title: "Pogreška!",
                       icon: Icon(
