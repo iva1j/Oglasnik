@@ -54,6 +54,13 @@ class _ItemCardBodyState extends State<ItemCardBody> {
   ///u actionChips, a ActionChips u dynamicChips (mozda smo malo neprecizno nazvali varijable, ali to nije toliko bitno))
 
   @override
+  void dispose() {
+    citysuggestions.addAll(selectedChips);
+    selectedChips.clear();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     actionChips() {
