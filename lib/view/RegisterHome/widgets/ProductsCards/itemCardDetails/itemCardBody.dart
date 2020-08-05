@@ -1,9 +1,8 @@
-import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/actionChips.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/dynamicChips.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/actionChips.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/dynamicChips.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
@@ -15,7 +14,6 @@ import 'itemCardDescription.dart';
 import 'itemCardImage.dart';
 import 'itemCardPrice.dart';
 import 'itemCardProductName.dart';
-import 'package:flushbar/flushbar.dart';
 
 class ItemCardBody extends StatefulWidget {
   const ItemCardBody({
@@ -206,8 +204,9 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                           );
                         } else if (showMessage == true) {
                           return Container(
-                              child:
-                                  Center(child: Text("Nema produkata u bazi")));
+                              height: SizeConfig.blockSizeVertical * 60,
+                              child: Center(
+                                  child: Text(EmptyProductList().emptyList)));
                         } else {
                           return Container();
                         }

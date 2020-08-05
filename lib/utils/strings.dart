@@ -10,6 +10,22 @@ class MoneyText {
   String kmText = "KM";
 }
 
+class FilterFlush {
+  String naslov = "Pogreška!";
+}
+
+class FilterTitle {
+  String filterNaslov = 'Filter';
+}
+
+class TrazeniProizvod {
+  String trazeniProizvod = 'U bazi trenutno nemamo traženi proizvod';
+}
+
+class Welcome {
+  String dobrodosli = 'Dobrodošli u Oglasnik';
+}
+
 class AppLabelsAuth {
   String signInButton = 'testing';
   String registracija = 'Registruj se';
@@ -104,7 +120,7 @@ class SignInPageWidgetFout {
 }
 
 class EmptyProductList {
-  String emptyList = "U bazi trenutno nemamo traženi proizvod";
+  String emptyList = "U bazi trenutno nema traženog proizvoda";
 }
 
 class SuccessAlertDialog {
