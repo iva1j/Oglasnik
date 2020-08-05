@@ -99,7 +99,10 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                     itemBuilder: (_, int index) {
                       if (index == snapshot.data.documents.length - 1) {
                         if (showMessage == true) {
-                          return Center(child: Text("Nema produkata u bazi"));
+                          return SizedBox(
+                              height: SizeConfig.blockSizeVertical * 50,
+                              child:
+                                  Center(child: Text("Nema proizvoda u bazi")));
                         }
                       } else {
                         if (locationIsSelected(
