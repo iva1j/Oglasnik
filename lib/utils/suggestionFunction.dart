@@ -19,16 +19,6 @@ List<String> citysuggestions = [
 
 List<String> selectedChips = List<String>();
 
-final List<String> immutableCitySuggestions = citysuggestions;
-final List<String> immutableSelectedChips = selectedChips;
-
-moveFromSelectedToAll() {
-  for (var x in selectedChips) {
-    citysuggestions.add(x);
-    selectedChips.remove(x);
-  }
-}
-
 bool onWillPop() {
   pageController.previousPage(
     duration: Duration(milliseconds: 800),

@@ -18,8 +18,6 @@ class _CategoryCardState extends State<CategoryCard> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    citysuggestions = immutableCitySuggestions;
-    selectedChips = immutableSelectedChips;
     return Column(children: <Widget>[
       Expanded(
         child: FutureBuilder(

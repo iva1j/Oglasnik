@@ -24,6 +24,8 @@ class CategoryCardRow extends StatelessWidget {
         child: InkWell(
           splashColor: Colors.transparent,
           onTap: () {
+            citysuggestions.addAll(selectedChips);
+            selectedChips.clear();
             Navigator.of(context).push(
               FadeRoute(
                 page: ItemCard(
