@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/actionChips.dart';
@@ -202,10 +203,10 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                             ),
                           );
                         } else if (showMessage == true) {
-                          return SizedBox(
+                          return Container(
                               height: SizeConfig.blockSizeVertical * 50,
-                              child:
-                                  Center(child: Text("Nema proizvoda u bazi")));
+                              child: Center(
+                                  child: Text(EmptyProductList().emptyList)));
                         } else {
                           return Container();
                         }

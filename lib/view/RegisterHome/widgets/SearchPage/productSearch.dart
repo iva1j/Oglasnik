@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/shared/ItemContainer/itemContainerDecoration.dart';
 import 'package:Oglasnik/utils/shared/ItemContainer/itemContainerMargins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/actionChips.dart';
@@ -157,12 +158,12 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                   ),
                                 );
                               } else if (showMessage == true) {
-                                return Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Center(
-                                          child: Text("Nema proizvoda u bazi"))
-                                    ]);
+                                return Container(
+                                    margin: EdgeInsets.symmetric(
+                                        vertical:
+                                            SizeConfig.blockSizeVertical * 30),
+                                    child: Center(
+                                        child: Text(EmptyProductList().emptyList)));
                               } else {
                                 return Container();
                               }
