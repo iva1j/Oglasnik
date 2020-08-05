@@ -204,7 +204,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                           );
                         } else if (showMessage == true) {
                           return Container(
-                              height: SizeConfig.blockSizeVertical * 50,
+                              height: SizeConfig.blockSizeVertical * 60,
                               child: Center(
                                   child: Text(EmptyProductList().emptyList)));
                         } else {
