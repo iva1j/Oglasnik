@@ -44,10 +44,10 @@ class _ActionChipsWidgetState extends State<ActionChipsWidget> {
               /// Funkcija brise chipove iz rowa i vraca ga u prvobitno stanje
               deleteIconColor: Color.fromRGBO(0, 0, 0, 0.54),
               onDeleted: () {
-                widget.actionChipDeleted();
                 setState(() {
                   citysuggestions.add(selectedChips[index]);
                   selectedChips.removeAt(index);
+                  widget.actionChipDeleted();
                 });
               },
             ),

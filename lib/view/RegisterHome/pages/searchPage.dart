@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/productSearch.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
@@ -18,6 +19,8 @@ class DataSearch extends SearchDelegate<String> {
   /// Task radili: Elvir i Iva
   @override
   List<Widget> buildActions(BuildContext context) {
+    citysuggestions.addAll(selectedChips);
+    selectedChips.clear();
     return [
       IconButton(
         icon: Icon(Icons.clear),
@@ -50,6 +53,7 @@ class DataSearch extends SearchDelegate<String> {
     ///Ove dvije liste ćemo koristiti kako bi useru prikazali artikle koje on pretražuje na način da
     ///ćemo u listi products imati storane naše proizvode iz baze, a u listu selectedProduct ćemo puniti na osnovu toga šta
     ///user ukuca u search, te na osnovu te liste ćemo prikazivati željene produkte na screen.
+
     List<DocumentSnapshot> selectedProducts = List<DocumentSnapshot>();
 
     return Scaffold(
@@ -60,8 +64,7 @@ class DataSearch extends SearchDelegate<String> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: SearchPageFutureBuilder(
-                query: query, selectedProducts: selectedProducts),
+            child: SearchPageFutureBuilder(query: query),
           ),
         ],
       ),
