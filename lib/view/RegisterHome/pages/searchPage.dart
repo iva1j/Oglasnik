@@ -14,9 +14,6 @@ import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-/// Na ovom dijelu koda radili Iva i Elvir
-/// Kreiranje SearchDelegate klase sa njenim funkcijama koje cemo koristiti za kreiranje searcha,
-//buildactions,buildLeading,buildresults,buildSuggestions
 class DataSearch extends SearchDelegate<String> {
   final cars = [
     "Audi",
@@ -35,19 +32,27 @@ class DataSearch extends SearchDelegate<String> {
     "Volvo",
   ];
   @override
-  String get searchFieldLabel =>
-      "Pretraga proizvoda..."; // Iva i Elvir, promjena teksta na search baru +
-  ///dodatne promjene u search biblioteci searchdelegate klase.Sve promjene vezane za dizajn su u biblioteci.
-  /// U narednim linijama code-a (200, 209) u searchu.dart biblioteka moralo je doci do izmjena da bi search bar bio u skladu sa nasom aplikacijom
-  /// Izmjene su se morale odraditi direktno u klasi SearchDelegate
-  /// Izmjene se ticu promjene boje bara, boje ikona, boje title-a
-  /// Plus izmjena boje kursora na liniji 538
-  /// promjena vrijednosti varijable na 203 liniji jer ThemeData povlaci vrijednosti
-  /// iz biblioteke theme_data.dart, a kako nismo smijeli dirati izmjene te biblioteke morali smo odraditi drugacije
-  /// Task radili: Elvir i Iva
+  String get searchFieldLabel => "Pretraga proizvoda...";
+
+  // final cars = [
+  //   "Audi",
+  //   "Audi",
+  //   "Mercedes",
+  //   "Volvo",
+  //   "Range rover",
+  //   "Toyota",
+  //   "Subaru",
+  //   "BMW",
+  //   "Ford"
+  // ];
+
+  // final recentCars = [
+  //   "Audi",
+  //   "Mercedes",
+  //   "Volvo",
+  // ];
   @override
   List<Widget> buildActions(BuildContext context) {
-    ///Iva Elvir kreiranje buildAction funkcije
     return [
       IconButton(
         icon: Icon(Icons.clear),
@@ -59,7 +64,6 @@ class DataSearch extends SearchDelegate<String> {
     ];
   }
 
-  ///Iva Elvir kreiranje buildLeadingfunkcije
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
@@ -102,9 +106,9 @@ class DataSearch extends SearchDelegate<String> {
                   /*Korištenjem forEach metode popunjavamo selectedProducts listu, ,na način da userov unos
                   u search (query) , poredimo sa 'productName' koji je neki user unio pri kreiranju artikla */
                   products.forEach((element) {
-                    if (element['productName'].toLowerCase().startsWith(query
-                        .toLowerCase())) //Iva Elvir, omogucuje se ispis artikla bez
-                      ///obzira da li je user unio veliko ili malo slovo u search
+                    if (element['productName']
+                        .toLowerCase()
+                        .startsWith(query.toLowerCase()))
                       selectedProducts.add(element);
                   });
                   selectedProducts.forEach((element) {
@@ -113,7 +117,7 @@ class DataSearch extends SearchDelegate<String> {
                   //Handlovanje slučaja da u bazi nema niti jednog artikla koji je user tražio:
                   if (selectedProducts == null || selectedProducts.isEmpty) {
                     return Center(
-                      child: Text('U bazi trenutno nemamo traženi proizvod'),
+                      child: Text('U bazi trenutno nemamo tog proizvoda'),
                     );
                   } else {
                     /*Ako u bazi postoje proizvodi koji se poklapaju sa query-om koji je user ukucao u search,
@@ -235,7 +239,6 @@ class DataSearch extends SearchDelegate<String> {
     );
   }
 
-  @override
   Widget buildSuggestions(BuildContext context) {
     return Container();
     // final suggestionsList = query.isEmpty
