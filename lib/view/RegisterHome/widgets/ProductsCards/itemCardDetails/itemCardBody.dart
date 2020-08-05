@@ -205,7 +205,9 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                             ),
                           );
                         } else if (showMessage == true) {
-                          return Center(child: Text("Nema produkata u bazi"));
+                          return Container(
+                              child:
+                                  Center(child: Text("Nema produkata u bazi")));
                         } else {
                           return Container();
                         }
