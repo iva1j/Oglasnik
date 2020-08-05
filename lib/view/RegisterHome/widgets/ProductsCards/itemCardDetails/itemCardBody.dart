@@ -44,12 +44,28 @@ bool locationIsSelected(String location, List<String> selected) {
 class _ItemCardBodyState extends State<ItemCardBody> {
   List<String> selectedChips = List<String>();
 
-  ///Iva i Elvir , sortiranje čipova za odabrane čipove i čipove iz liste,
-  ///pomoću sortiranja čipovi se nakon sto su obrisani vrate na svoje prvobitne pozicije u listi
+
+
+  ///Task rade: Faruk i Fahrudin
+  ///
+  ///Kreiranje filter chipova te ispisivanje gradova u njima
+  ///
+  ///Na pocetku ce biti dvije liste gradova cija cemo imena ispisivati u chipove (lista svih gradova - dynamicChips i
+  ///lista odabranih - actionChips).
+  ///Nakon sto sortiramo gradove abecedno, generisemo Widgete (Chip-ove) na osnovu stringova u listama. Prosljedjujemo
+  ///tekst u sam Chip na osnovu liste i indexa. Stvari su analogne za dynamicChip-ove s tim da je razlika u tipovima
+  ///chipova (Chip widget omogucava onDeleted property pa se automatski generise x button u samom chipu i on se koristi
+  ///u actionChips, a ActionChips u dynamicChips (mozda smo malo neprecizno nazvali varijable, ali to nije toliko bitno))
+
+  
+  
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     actionChips() {
+      ///Iva i Elvir , sortiranje čipova za odabrane čipove i čipove iz liste,
+      ///pomoću sortiranja čipovi se nakon sto su obrisani vrate na svoje prvobitne pozicije u listi
       selectedChips.sort();
       return Container(
         margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 6),
@@ -85,9 +101,10 @@ class _ItemCardBodyState extends State<ItemCardBody> {
       );
     }
 
-    ///Iva i Elvir , sortiranje čipova za odabrane čipove i čipove iz liste,
-    ///pomoću sortiranja čipovi se nakon sto su obrisani vrate na svoje prvobitne pozicije u listi
+    
     dynamicChips() {
+      ///Iva i Elvir , sortiranje čipova za odabrane čipove i čipove iz liste,
+      ///pomoću sortiranja čipovi se nakon sto su obrisani vrate na svoje prvobitne pozicije u listi
       citysuggestions.sort();
       return Container(
         margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 6),
