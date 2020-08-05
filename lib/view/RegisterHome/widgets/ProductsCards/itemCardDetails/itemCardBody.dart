@@ -44,8 +44,6 @@ bool locationIsSelected(String location, List<String> selected) {
 class _ItemCardBodyState extends State<ItemCardBody> {
   List<String> selectedChips = List<String>();
 
-
-
   ///Task rade: Faruk i Fahrudin
   ///
   ///Kreiranje filter chipova te ispisivanje gradova u njima
@@ -56,9 +54,6 @@ class _ItemCardBodyState extends State<ItemCardBody> {
   ///tekst u sam Chip na osnovu liste i indexa. Stvari su analogne za dynamicChip-ove s tim da je razlika u tipovima
   ///chipova (Chip widget omogucava onDeleted property pa se automatski generise x button u samom chipu i on se koristi
   ///u actionChips, a ActionChips u dynamicChips (mozda smo malo neprecizno nazvali varijable, ali to nije toliko bitno))
-
-  
-  
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +82,9 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                     borderRadius: BorderRadius.all(
                   Radius.circular(14),
                 )),
+
+                /// Fahrudin i Elvir, brisanje chipova kada ne zelimo vise taj chip u nasem filteru
+                /// Funkcija brise chipove iz rowa i vraca ga u prvobitno stanje
                 deleteIconColor: Color.fromRGBO(0, 0, 0, 0.54),
                 onDeleted: () {
                   setState(() {
@@ -101,7 +99,6 @@ class _ItemCardBodyState extends State<ItemCardBody> {
       );
     }
 
-    
     dynamicChips() {
       ///Iva i Elvir , sortiranje čipova za odabrane čipove i čipove iz liste,
       ///pomoću sortiranja čipovi se nakon sto su obrisani vrate na svoje prvobitne pozicije u listi
