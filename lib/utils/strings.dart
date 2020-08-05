@@ -10,6 +10,22 @@ class MoneyText {
   String kmText = "KM";
 }
 
+class FilterFlush {
+  String naslov = "Pogreška!";
+}
+
+class FilterTitle {
+  String filterNaslov = 'Filter';
+}
+
+class TrazeniProizvod {
+  String trazeniProizvod = 'U bazi trenutno nemamo traženi proizvod';
+}
+
+class Welcome {
+  String dobrodosli = 'Dobrodošli u Oglasnik';
+}
+
 class AppLabelsAuth {
   String signInButton = 'testing';
   String registracija = 'Registruj se';

@@ -51,7 +51,7 @@ class _ProductDetailsState extends State<ProductDetails> {
       bottomSheet: Container(
         height: 55,
         width: double.infinity,
-        color: Color.fromARGB(255, 226, 11, 48),
+        color: bottomSheetColor,
       ),
       body: FutureBuilder(
         future: Firestore.instance
