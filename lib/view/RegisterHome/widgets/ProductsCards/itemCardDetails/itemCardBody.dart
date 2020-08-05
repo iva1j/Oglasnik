@@ -2,8 +2,10 @@ import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -203,10 +205,8 @@ class _ItemCardBodyState extends State<ItemCardBody> {
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Container(
-                    child: Card(
-                      elevation: 8,
-                      color: Colors.white,
-                      child: Text('No Items'),
+                    child: Center(
+                      child: SpinnerCircular(),
                     ),
                   );
                 }
@@ -278,7 +278,9 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                                     snapshot
                                                         .data.documents[index]),
                                                 Container(
-                                                  width: 170,
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      53,
                                                   margin: EdgeInsets.only(
                                                     right: SizeConfig
                                                             .blockSizeVertical *
