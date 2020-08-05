@@ -53,13 +53,6 @@ class _ItemCardBodyState extends State<ItemCardBody> {
   ///u actionChips, a ActionChips u dynamicChips (mozda smo malo neprecizno nazvali varijable, ali to nije toliko bitno))
 
   @override
-  void dispose() {
-    citysuggestions.addAll(selectedChips);
-    selectedChips.clear();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
@@ -104,8 +97,9 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (_, int index) {
                       return locationIsSelected(
-                              snapshot.data.documents[index]['productLocation'],
-                              selectedChips)
+                        snapshot.data.documents[index]['productLocation'],
+                        selectedChips,
+                      )
                           ? Material(
                               color: Colors.transparent,
                               child: InkWell(
@@ -205,11 +199,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                 ),
                               ),
                             )
-                          : Container(
-                              child: Center(
-                                child: Text('Nema proizvoda!'),
-                              ),
-                            );
+                          : Container();
                     },
                   ),
                 );

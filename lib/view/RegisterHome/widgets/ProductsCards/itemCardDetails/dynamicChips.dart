@@ -48,10 +48,10 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
               /// način pratimo koliko je user izabrao gradova.
               onPressed: () {
                 if (selectedChips.length < 3) {
-                  widget.dynamicChipPressed();
                   setState(() {
                     selectedChips.add(citysuggestions[index]);
                     citysuggestions.removeAt(index);
+                    widget.dynamicChipPressed();
                   });
                 } else {
                   Flushbar(
@@ -61,7 +61,9 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                     /// Once when user select 3 cities and try to add more in filter, code bellow will be triggered
                     title: "Pogreška!",
                     //message: "Ne moze biti vise od 3 odabrana grada",
-
+                    isDismissible: false,
+                    // animationDuration: Duration(milliseconds: 500),
+                    blockBackgroundInteraction: true,
                     icon: Icon(
                       Icons.error,
                       size: 34,
@@ -70,7 +72,7 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                     backgroundColor: mainAppColor,
                     barBlur: 10,
 
-                    duration: Duration(seconds: 5),
+                    duration: Duration(milliseconds: 1200),
                     flushbarPosition: FlushbarPosition.BOTTOM,
                     boxShadows: [
                       BoxShadow(
