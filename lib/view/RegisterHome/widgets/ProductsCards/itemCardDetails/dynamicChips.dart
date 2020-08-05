@@ -65,7 +65,8 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                     /// Once when user select 3 cities and try to add more in filter, code bellow will be triggered
                     title: "Pogreška!",
                     //message: "Ne moze biti vise od 3 odabrana grada",
-                    isDismissible: false,
+                    isDismissible: true,
+                    animationDuration: Duration(milliseconds: 500),
                     blockBackgroundInteraction: true,
                     icon: Icon(
                       Icons.error,
@@ -74,7 +75,8 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                     ),
                     backgroundColor: mainAppColor,
                     barBlur: 10,
-                    duration: Duration(seconds: 5),
+
+                     duration: Duration(milliseconds: 1500),
                     flushbarPosition: FlushbarPosition.BOTTOM,
                     boxShadows: [
                       BoxShadow(
