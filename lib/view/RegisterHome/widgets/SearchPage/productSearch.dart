@@ -1,9 +1,7 @@
 import 'package:Oglasnik/utils/shared/ItemContainer/itemContainerDecoration.dart';
 import 'package:Oglasnik/utils/shared/ItemContainer/itemContainerMargins.dart';
-import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/actionChips.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/dynamicChips.dart';
@@ -77,9 +75,8 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                           itemCount: selectedProducts.length,
                           itemBuilder: (_, int index) {
                             return locationIsSelected(
-                              selectedProducts[index]['productLocation'],
-                              selectedChips,
-                            )
+                                    selectedProducts[index]['productLocation'],
+                                    selectedChips)
                                 ? Material(
                                     color: Colors.transparent,
                                     child: InkWell(

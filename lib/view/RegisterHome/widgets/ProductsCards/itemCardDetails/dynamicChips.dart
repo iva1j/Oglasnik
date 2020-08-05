@@ -72,7 +72,7 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                     backgroundColor: mainAppColor,
                     barBlur: 10,
 
-                    duration: Duration(milliseconds: 1200),
+                    duration: Duration(milliseconds: 1500),
                     flushbarPosition: FlushbarPosition.BOTTOM,
                     boxShadows: [
                       BoxShadow(
