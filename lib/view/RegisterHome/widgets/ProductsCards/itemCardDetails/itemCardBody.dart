@@ -101,8 +101,113 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (_, int index) {
                       if (index == snapshot.data.documents.length - 1) {
-                        if (showMessage == true) {
+                        if (locationIsSelected(
+                            snapshot.data.documents[index]['productLocation'],
+                            selectedChips)) {
+                          showMessage = false;
+
+                          return Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  FadeRoute(
+                                    page: ProductDetails(
+                                      productNameScreen: snapshot
+                                          .data.documents[index]['productName'],
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.2),
+                                      spreadRadius: 1,
+                                      blurRadius: 7,
+                                      offset: Offset(0, 3),
+                                    ),
+                                  ],
+                                  border: Border.all(
+                                    color: Colors.black26,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(4),
+                                  ),
+                                ),
+                                margin: EdgeInsets.only(
+                                  left: SizeConfig.blockSizeHorizontal * 5,
+                                  right: SizeConfig.blockSizeHorizontal * 5,
+                                  top: SizeConfig.blockSizeVertical * 4,
+                                  bottom: SizeConfig.blockSizeVertical * 2,
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: <Widget>[
+                                              itemCardProductName(
+                                                  context,
+                                                  snapshot
+                                                      .data.documents[index]),
+                                              Container(
+                                                width: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    53,
+                                                margin: EdgeInsets.only(
+                                                  right: SizeConfig
+                                                          .blockSizeVertical *
+                                                      2,
+                                                ),
+                                                child: itemCardDescription(
+                                                    snapshot
+                                                        .data.documents[index]),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: <Widget>[
+                                              itemCardImage(snapshot
+                                                  .data.documents[index]),
+                                              itemCardPrice(snapshot
+                                                  .data.documents[index]),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Divider(
+                                      thickness:
+                                          SizeConfig.blockSizeVertical * 0.2,
+                                    ),
+                                    itemCardTags(
+                                        snapshot.data.documents[index]),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        } else if (showMessage == true) {
                           return Center(child: Text("Nema produkata u bazi"));
+                        } else {
+                          return Container();
                         }
                       } else {
                         if (locationIsSelected(
