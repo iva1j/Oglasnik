@@ -51,11 +51,10 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
               /// način pratimo koliko je user izabrao gradova.
               onPressed: () {
                 if (selectedChips.length < 3) {
-                  widget.dynamicChipPressed();
-                  flushbarChecker = false;
                   setState(() {
                     selectedChips.add(citysuggestions[index]);
                     citysuggestions.removeAt(index);
+                    widget.dynamicChipPressed();
                   });
                 } else {
                   Flushbar(
