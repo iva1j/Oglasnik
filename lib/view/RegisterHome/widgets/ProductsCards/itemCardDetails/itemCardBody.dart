@@ -43,7 +43,7 @@ bool locationIsSelected(String location, List<String> selected) {
 class _ItemCardBodyState extends State<ItemCardBody> {
   List<String> selectedChips = List<String>();
 
-  ///Iva i Amer , sortiranje čipova za odabrane čipove i čipove iz liste,
+  ///Iva i Elvir , sortiranje čipova za odabrane čipove i čipove iz liste,
   ///pomoću sortiranja čipovi se nakon sto su obrisani vrate na svoje prvobitne pozicije u listi
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
       );
     }
 
-    ///Iva i Amer , sortiranje čipova za odabrane čipove i čipove iz liste,
+    ///Iva i Elvir , sortiranje čipova za odabrane čipove i čipove iz liste,
     ///pomoću sortiranja čipovi se nakon sto su obrisani vrate na svoje prvobitne pozicije u listi
     dynamicChips() {
       citysuggestions.sort();
