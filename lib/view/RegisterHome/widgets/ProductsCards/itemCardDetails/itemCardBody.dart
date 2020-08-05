@@ -15,6 +15,7 @@ import 'itemCardImage.dart';
 import 'itemCardPrice.dart';
 import 'itemCardProductName.dart';
 import 'package:flushbar/flushbar.dart';
+import 'package:Oglasnik/utils/sizeconfig.dart';
 
 class ItemCardBody extends StatefulWidget {
   const ItemCardBody({
@@ -105,9 +106,14 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                 ),
                 backgroundColor: Color.fromRGBO(153, 153, 153, 0.2),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(14),
-                )),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(14),
+                  ),
+                ),
+
+                /// Ovaj dio koda radili : Iva i Amer
+                /// na onPressed , uzimamo element iz liste citysuggestions i dodajemo ga u listu selectedChips, na taj
+                /// način pratimo koliko je user izabrao gradova.
                 onPressed: () {
                   if (selectedChips.length < 3) {
                     setState(() {
