@@ -171,6 +171,10 @@ class FlushBarText {
   String message = "Nije moguće odabrati više od 3 grada.";
 }
 
+class SearchPageText {
+  String hintText = "Pretraga proizvoda...";
+}
+
 //#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc
 String img1 = "Dodaj sliku 1";
 String img2 = "Dodaj sliku 2";
@@ -198,5 +202,3 @@ final List<String> cityDropdownItems = <String>[
   'Basel',
   'Pariz'
 ];
-
-

@@ -9,7 +9,6 @@ class CategoryLoading extends StatelessWidget {
     SizeConfig().init(context);
     return Material(
       child: Container(
-        // height: SizeConfig.blockSizeVertical * 100 - 200,
         color: Colors.white,
         child: Center(
           child: Column(

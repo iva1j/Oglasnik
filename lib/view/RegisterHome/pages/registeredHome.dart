@@ -32,8 +32,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
     setState(() {
       isLoading = false;
       doesPop = true;
-      citysuggestions = immutableCitySuggestions;
-      selectedChips = immutableSelectedChips;
     });
     SizeConfig().init(context);
     return Scaffold(

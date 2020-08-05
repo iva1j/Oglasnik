@@ -2,8 +2,7 @@ import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
 import 'package:Oglasnik/utils/lifecycle_manager.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
+
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/view/SplashScreen/pages/splash.dart';

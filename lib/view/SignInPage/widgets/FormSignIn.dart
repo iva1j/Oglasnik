@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
