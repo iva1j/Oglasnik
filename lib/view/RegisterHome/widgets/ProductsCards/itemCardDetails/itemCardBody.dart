@@ -138,25 +138,28 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                       citysuggestions.removeAt(index);
                     });
                   } else {
+                    /// Ovaj task radili su Amer i Faruk.
+                    ///
+                    /// Flushbar is some kind of snackbar that is showed in the bottom of the screen and display (in this case) an error and display a warning to the user
+                    /// Once when user select 3 cities and try to add more in filter, code bellow will be triggered
+                    
                     Flushbar(
                       title: "Pogreška!",
-                      //message: "Ne moze biti vise od 3 odabrana grada",
-
                       icon: Icon(
                         Icons.error,
                         size: 34,
                         color: Colors.white,
                       ),
                       backgroundColor: mainAppColor,
-                      barBlur: 10,
-
+                      barBlur: 100,
                       duration: Duration(seconds: 5),
                       flushbarPosition: FlushbarPosition.BOTTOM,
                       boxShadows: [
                         BoxShadow(
-                          color: Colors.black,
+                          color: mainAppColor,
+                          spreadRadius: 1,
                           offset: Offset(0.0, 2.0),
-                          blurRadius: 3.0,
+                          blurRadius: 1.0,
                         )
                       ],
                       progressIndicatorBackgroundColor: Colors.blue,
