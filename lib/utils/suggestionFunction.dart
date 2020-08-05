@@ -17,6 +17,8 @@ List<String> citysuggestions = [
   'Pariz'
 ];
 
+List<String> selectedChips = List<String>();
+
 bool onWillPop() {
   pageController.previousPage(
     duration: Duration(milliseconds: 800),

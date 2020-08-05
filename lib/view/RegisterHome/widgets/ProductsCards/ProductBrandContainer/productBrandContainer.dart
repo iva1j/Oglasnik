@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
@@ -36,6 +37,8 @@ class ProductBrandContainer extends StatelessWidget {
           child: InkWell(
             splashColor: Colors.transparent,
             onTap: () {
+              citysuggestions.addAll(selectedChips);
+              selectedChips.clear();
               Navigator.of(context).push(
                 FadeRoute(
                   page: ItemCard(

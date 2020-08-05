@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
+import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/categoryBrands.dart';
 
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
@@ -18,10 +19,6 @@ Future<void> splashScreenRouter() async {
   globals.registeredGlob = false;
 
   phoneNumberSetting(email);
-
-  print("LSASDSAGASHAHADH");
-  numberOfProductsPerBrandTest("Ford").then((value) => print(value));
-  print("AHDAHADHADHDHAHDADHADJ");
 
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
