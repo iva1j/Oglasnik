@@ -60,6 +60,9 @@ List<String> categoryNames = List<String>();
 
 bool hasInternetConnection = false;
 
+///global variable that is true for 3 sec, when user wants to add more then 3 cities in filters
+bool flushbarChecker = false;
+
 var categoryBrands = Map();
 List categoryBrand = [];
 List numberofBrands = [];
