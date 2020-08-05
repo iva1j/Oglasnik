@@ -1,6 +1,5 @@
 import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/itemImage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 ItemImage itemCardImage(DocumentSnapshot snapshot) {
   return ItemImage(

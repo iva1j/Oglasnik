@@ -1,11 +1,11 @@
-import 'package:Oglasnik/model/productCategory.dart';
-import 'package:Oglasnik/model/productCity.dart';
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -43,6 +43,17 @@ bool locationIsSelected(String location, List<String> selected) {
 class _ItemCardBodyState extends State<ItemCardBody> {
   List<String> selectedChips = List<String>();
 
+  ///Task rade: Faruk i Fahrudin
+  ///
+  ///Kreiranje filter chipova te ispisivanje gradova u njima
+  ///
+  ///Na pocetku ce biti dvije liste gradova cija cemo imena ispisivati u chipove (lista svih gradova - dynamicChips i
+  ///lista odabranih - actionChips).
+  ///Nakon sto sortiramo gradove abecedno, generisemo Widgete (Chip-ove) na osnovu stringova u listama. Prosljedjujemo
+  ///tekst u sam Chip na osnovu liste i indexa. Stvari su analogne za dynamicChip-ove s tim da je razlika u tipovima
+  ///chipova (Chip widget omogucava onDeleted property pa se automatski generise x button u samom chipu i on se koristi
+  ///u actionChips, a ActionChips u dynamicChips (mozda smo malo neprecizno nazvali varijable, ali to nije toliko bitno))
+
   @override
   void dispose() {
     citysuggestions.addAll(selectedChips);
@@ -54,6 +65,8 @@ class _ItemCardBodyState extends State<ItemCardBody> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     actionChips() {
+      ///Iva i Elvir , sortiranje čipova za odabrane čipove i čipove iz liste,
+      ///pomoću sortiranja čipovi se nakon sto su obrisani vrate na svoje prvobitne pozicije u listi
       selectedChips.sort();
       return Container(
         margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 6),
@@ -75,6 +88,9 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                     borderRadius: BorderRadius.all(
                   Radius.circular(14),
                 )),
+
+                /// Fahrudin i Elvir, brisanje chipova kada ne zelimo vise taj chip u nasem filteru
+                /// Funkcija brise chipove iz rowa i vraca ga u prvobitno stanje
                 deleteIconColor: Color.fromRGBO(0, 0, 0, 0.54),
                 onDeleted: () {
                   setState(() {
@@ -90,6 +106,8 @@ class _ItemCardBodyState extends State<ItemCardBody> {
     }
 
     dynamicChips() {
+      ///Iva i Elvir , sortiranje čipova za odabrane čipove i čipove iz liste,
+      ///pomoću sortiranja čipovi se nakon sto su obrisani vrate na svoje prvobitne pozicije u listi
       citysuggestions.sort();
       return Container(
         margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 6),
@@ -108,9 +126,14 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                 ),
                 backgroundColor: Color.fromRGBO(153, 153, 153, 0.2),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(14),
-                )),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(14),
+                  ),
+                ),
+
+                /// Ovaj dio koda radili : Iva i Amer
+                /// na onPressed , uzimamo element iz liste citysuggestions i dodajemo ga u listu selectedChips, na taj
+                /// način pratimo koliko je user izabrao gradova.
                 onPressed: () {
                   if (selectedChips.length < 3) {
                     setState(() {
@@ -189,10 +212,8 @@ class _ItemCardBodyState extends State<ItemCardBody> {
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Container(
-                    child: Card(
-                      elevation: 8,
-                      color: Colors.white,
-                      child: Text('No Items'),
+                    child: Center(
+                      child: SpinnerCircular(),
                     ),
                   );
                 }

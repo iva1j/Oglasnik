@@ -1,3 +1,5 @@
+import 'package:Oglasnik/utils/shared/SearchPage/itemContainerDecoration.dart';
+import 'package:Oglasnik/utils/shared/SearchPage/itemContainerMargins.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -74,7 +76,9 @@ class SearchPageFutureBuilder extends StatelessWidget {
                                           itemCardProductName(
                                               context, selectedProducts[index]),
                                           Container(
-                                            width: SizeConfig.blockSizeHorizontal*53,
+                                            width:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    53,
                                             margin: EdgeInsets.only(
                                               right:
                                                   SizeConfig.blockSizeVertical *
@@ -136,35 +140,6 @@ class SearchPageFutureBuilder extends StatelessWidget {
     selectedProducts.forEach((element) {
       print(element['productName']);
     });
-  }
-
-  EdgeInsets itemContainerMargins() {
-    return EdgeInsets.only(
-      left: SizeConfig.blockSizeHorizontal * 5,
-      right: SizeConfig.blockSizeHorizontal * 5,
-      top: SizeConfig.blockSizeVertical * 4,
-      bottom: SizeConfig.blockSizeVertical * 2,
-    );
-  }
-
-  BoxDecoration itemContainerDecoration() {
-    return BoxDecoration(
-      color: Colors.white,
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.2),
-          spreadRadius: 1,
-          blurRadius: 7,
-          offset: Offset(0, 3),
-        ),
-      ],
-      border: Border.all(
-        color: Colors.black26,
-      ),
-      borderRadius: BorderRadius.all(
-        Radius.circular(4),
-      ),
-    );
   }
 
   void itemProductName(BuildContext context, int index) {

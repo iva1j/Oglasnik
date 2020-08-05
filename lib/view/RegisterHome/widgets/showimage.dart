@@ -2,15 +2,10 @@ import 'package:Oglasnik/viewModel/PreviewProduct/imageSizeCalculator.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'dart:io';
-import 'package:zoom_widget/zoom_widget.dart';
+
 import 'package:photo_view/photo_view.dart';
-import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
-import 'dart:math';
+
 import 'dart:ui';
-import 'dart:async';
-import 'package:flutter/services.dart';
 
 class PrikazSlika extends StatelessWidget {
   final List<dynamic> listaSlika;

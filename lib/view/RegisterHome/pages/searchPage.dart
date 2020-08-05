@@ -6,9 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-/// Na ovom dijelu koda radili Iva i Elvir
-/// Kreiranje SearchDelegate klase sa njenim funkcijama koje cemo koristiti za kreiranje searcha,
-//buildactions,buildLeading,buildresults,buildSuggestions
 class DataSearch extends SearchDelegate<String> {
 // Iva i Elvir, promjena teksta na search baru +
   ///dodatne promjene u search biblioteci searchdelegate klase.Sve promjene vezane za dizajn su u biblioteci.
@@ -21,7 +18,6 @@ class DataSearch extends SearchDelegate<String> {
   /// Task radili: Elvir i Iva
   @override
   List<Widget> buildActions(BuildContext context) {
-    ///Iva Elvir kreiranje buildAction funkcije
     return [
       IconButton(
         icon: Icon(Icons.clear),
@@ -33,7 +29,6 @@ class DataSearch extends SearchDelegate<String> {
     ];
   }
 
-  ///Iva Elvir kreiranje buildLeadingfunkcije
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
@@ -73,7 +68,6 @@ class DataSearch extends SearchDelegate<String> {
     );
   }
 
-  @override
   Widget buildSuggestions(BuildContext context) {
     return Container();
     // final suggestionsList = query.isEmpty
