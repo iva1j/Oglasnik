@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({
@@ -16,7 +17,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         children: <Widget>[
           Container(
             child: Text(
-              'Dobrodošli u Oglasnik',
+              Welcome().dobrodosli,
               style: TextStyle(fontSize: 22),
             ),
             alignment: Alignment.centerLeft,

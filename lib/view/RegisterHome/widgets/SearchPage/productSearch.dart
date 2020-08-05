@@ -1,13 +1,14 @@
 import 'package:Oglasnik/utils/shared/SearchPage/itemContainerDecoration.dart';
 import 'package:Oglasnik/utils/shared/SearchPage/itemContainerMargins.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/actionChips.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/dynamicChips.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/actionChips.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/dynamicChips.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardDescription.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardImage.dart';
@@ -50,7 +51,7 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                 left: SizeConfig.blockSizeHorizontal * 7,
                 top: SizeConfig.blockSizeVertical * 2),
             child: Text(
-              'Filter',
+              FilterTitle().filterNaslov,
               style: TextStyle(fontSize: 16.0),
             )),
         SingleChildScrollView(
@@ -72,7 +73,7 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                 //Handlovanje slučaja da u bazi nema niti jednog artikla koji je user tražio:
                 return selectedProducts == null || selectedProducts.isEmpty
                     ? Center(
-                        child: Text('U bazi trenutno nemamo traženi proizvod'),
+                        child: Text(TrazeniProizvod().trazeniProizvod),
                       )
                     : Container(
                         padding: EdgeInsets.only(bottom: 55),
