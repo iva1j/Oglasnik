@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
@@ -15,7 +16,7 @@ Column phoneNumberWidget(int index) {
         ProductDetailsStrings().callInfoText,
         style: TextStyle(
           //Hexcolor("#95989A"),
-          color: Color.fromARGB(160, 255, 255, 255),
+          color: phoneNumberTextColor,
           fontWeight: FontWeight.w100,
         ),
       ),

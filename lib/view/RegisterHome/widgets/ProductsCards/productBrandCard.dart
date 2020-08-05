@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -46,7 +47,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
       bottomSheet: Container(
         height: 55,
         width: double.infinity,
-        color: Color.fromARGB(255, 226, 11, 48),
+        color: bottomSheetColor,
       ),
       body: Column(
         children: <Widget>[
