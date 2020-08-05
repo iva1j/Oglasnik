@@ -10,7 +10,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 /// Kreiranje SearchDelegate klase sa njenim funkcijama koje cemo koristiti za kreiranje searcha,
 //buildactions,buildLeading,buildresults,buildSuggestions
 class DataSearch extends SearchDelegate<String> {
-
 // Iva i Elvir, promjena teksta na search baru +
   ///dodatne promjene u search biblioteci searchdelegate klase.Sve promjene vezane za dizajn su u biblioteci.
   /// U narednim linijama code-a (200, 209) u searchu.dart biblioteka moralo je doci do izmjena da bi search bar bio u skladu sa nasom aplikacijom

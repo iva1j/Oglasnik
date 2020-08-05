@@ -44,6 +44,13 @@ class _ItemCardBodyState extends State<ItemCardBody> {
   List<String> selectedChips = List<String>();
 
   @override
+  void dispose() {
+    citysuggestions.addAll(selectedChips);
+    selectedChips.clear();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     actionChips() {
@@ -256,8 +263,10 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                                     context,
                                                     snapshot
                                                         .data.documents[index]),
-                                                Container( 
-                                                  width: SizeConfig.blockSizeHorizontal*53,
+                                                Container(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      53,
                                                   margin: EdgeInsets.only(
                                                     right: SizeConfig
                                                             .blockSizeVertical *
