@@ -47,6 +47,20 @@ bool locationIsSelected(String location, List<String> selected) {
 class _ItemCardBodyState extends State<ItemCardBody> {
   List<String> selectedChips = List<String>();
 
+  actionChipDeleted(index) {
+    setState(() {
+      citysuggestions.add(selectedChips[index]);
+      selectedChips.removeAt(index);
+    });
+  }
+
+  dynamicChipPressed(index) {
+    setState(() {
+      selectedChips.add(citysuggestions[index]);
+      citysuggestions.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -55,7 +69,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
     actionChips() {
       //selectedChips.add("LOL");
       //selectedChips.clear();
-      selectedChips.sort();
+
       return Row(
           children: List<Widget>.generate(selectedChips.length, (index) {
         return Container(
@@ -64,15 +78,11 @@ class _ItemCardBodyState extends State<ItemCardBody> {
             right: SizeConfig.blockSizeHorizontal * 2,
           ),
           child: Chip(
-            label: Text(selectedChips[index]),
-            backgroundColor: Colors.red,
-            onDeleted: () {
-              setState(() {
-                citysuggestions.add(selectedChips[index]);
-                selectedChips.removeAt(index);
-              });
-            },
-          ),
+              label: Text(selectedChips[index]),
+              backgroundColor: Colors.red,
+              onDeleted: () {
+                actionChipDeleted(index);
+              }),
         );
       }));
     }
@@ -90,12 +100,9 @@ class _ItemCardBodyState extends State<ItemCardBody> {
               label: Text(citysuggestions[index]),
               onPressed: () {
                 if (selectedChips.length < 3) {
-                  setState(() {
-                    selectedChips.add(citysuggestions[index]);
-                    citysuggestions.removeAt(index);
-                  });
+                  dynamicChipPressed(index);
                 } else {
-                  print("HAHA");
+                  //print("HAHA");
                   Flushbar(
                     message: "Ne moze biti vise od 3 odabrana grada",
                     duration: Duration(seconds: 3),
