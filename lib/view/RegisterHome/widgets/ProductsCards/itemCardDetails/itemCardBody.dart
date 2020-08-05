@@ -203,7 +203,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                           );
                         } else if (showMessage == true) {
                           return SizedBox(
-                              height: SizeConfig.blockSizeVertical * 50,
+                              height: SizeConfig.blockSizeVertical * 60,
                               child:
                                   Center(child: Text("Nema proizvoda u bazi")));
                         } else {

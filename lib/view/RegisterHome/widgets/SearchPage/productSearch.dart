@@ -157,12 +157,10 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                   ),
                                 );
                               } else if (showMessage == true) {
-                                return Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Center(
-                                          child: Text("Nema proizvoda u bazi"))
-                                    ]);
+                                return SizedBox(
+                                    height: SizeConfig.blockSizeVertical * 60,
+                                    child: Center(
+                                        child: Text("Nema proizvoda u bazi")));
                               } else {
                                 return Container();
                               }
