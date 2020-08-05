@@ -120,7 +120,7 @@ class SignInPageWidgetFout {
 }
 
 class EmptyProductList {
-  String emptyList = "U bazi trenutno nemamo traženi proizvod";
+  String emptyList = "U bazi trenutno nema traženog proizvoda";
 }
 
 class SuccessAlertDialog {
