@@ -1,5 +1,4 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/mainbody.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
