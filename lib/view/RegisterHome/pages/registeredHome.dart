@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/mainbody.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
@@ -31,6 +32,8 @@ class _RegisteredHomeState extends State<RegisteredHome> {
     setState(() {
       isLoading = false;
       doesPop = true;
+      citysuggestions = immutableCitySuggestions;
+      selectedChips = immutableSelectedChips;
     });
     SizeConfig().init(context);
     return Scaffold(

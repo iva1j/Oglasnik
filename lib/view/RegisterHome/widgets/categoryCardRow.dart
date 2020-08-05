@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +23,14 @@ class CategoryCardRow extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           splashColor: Colors.transparent,
-          onTap: () => {
+          onTap: () {
             Navigator.of(context).push(
               FadeRoute(
                 page: ItemCard(
                   brandNameScreen: name,
                 ),
               ),
-            )
+            );
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
