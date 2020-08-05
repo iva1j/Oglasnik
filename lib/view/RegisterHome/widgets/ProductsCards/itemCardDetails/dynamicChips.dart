@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -61,7 +64,9 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                     /// Once when user select 3 cities and try to add more in filter, code bellow will be triggered
                     title: "Pogreška!",
                     //message: "Ne moze biti vise od 3 odabrana grada",
-
+                    isDismissible: true,
+                    animationDuration: Duration(milliseconds: 500),
+                    blockBackgroundInteraction: true,
                     icon: Icon(
                       Icons.error,
                       size: 34,
@@ -70,7 +75,7 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                     backgroundColor: mainAppColor,
                     barBlur: 10,
 
-                    duration: Duration(seconds: 5),
+                     duration: Duration(milliseconds: 1500),
                     flushbarPosition: FlushbarPosition.BOTTOM,
                     boxShadows: [
                       BoxShadow(
