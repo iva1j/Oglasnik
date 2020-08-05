@@ -115,7 +115,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                     ///
                     /// Flushbar is some kind of snackbar that is showed in the bottom of the screen and display (in this case) an error and display a warning to the user
                     /// Once when user select 3 cities and try to add more in filter, code bellow will be triggered
-                    
+
                     Flushbar(
                       title: "Pogreška!",
                       icon: Icon(
@@ -256,8 +256,8 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                                     context,
                                                     snapshot
                                                         .data.documents[index]),
-                                                Container(
-                                                  width: 170,
+                                                Container( 
+                                                  width: SizeConfig.blockSizeHorizontal*53,
                                                   margin: EdgeInsets.only(
                                                     right: SizeConfig
                                                             .blockSizeVertical *
