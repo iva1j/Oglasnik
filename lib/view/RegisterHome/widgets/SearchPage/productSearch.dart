@@ -35,6 +35,7 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
   List<DocumentSnapshot> selectedProducts = List<DocumentSnapshot>();
   @override
   Widget build(BuildContext context) {
+    bool showMessage = true;
     List<DocumentSnapshot> products = List<DocumentSnapshot>();
 
     return Column(
@@ -74,87 +75,182 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                         child: ListView.builder(
                           itemCount: selectedProducts.length,
                           itemBuilder: (_, int index) {
-                            return locationIsSelected(
-                                    selectedProducts[index]['productLocation'],
-                                    selectedChips)
-                                ? Material(
-                                    color: Colors.transparent,
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      onTap: () {
-                                        itemProductName(context, index);
-                                      },
-                                      child: Container(
-                                        decoration: itemContainerDecoration(),
-                                        margin: itemContainerMargins(),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: <Widget>[
-                                                Expanded(
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    children: <Widget>[
-                                                      itemCardProductName(
-                                                          context,
-                                                          selectedProducts[
-                                                              index]),
-                                                      Container(
-                                                        width: SizeConfig
-                                                                .blockSizeHorizontal *
-                                                            53,
-                                                        margin: EdgeInsets.only(
-                                                          right: SizeConfig
-                                                                  .blockSizeVertical *
-                                                              2,
-                                                        ),
-                                                        child:
-                                                            itemCardDescription(
-                                                          selectedProducts[
-                                                              index],
-                                                        ),
+                            if (index == selectedProducts.length - 1) {
+                              if (locationIsSelected(
+                                  selectedProducts[index]['productLocation'],
+                                  selectedChips)) {
+                                showMessage = false;
+
+                                return Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    onTap: () {
+                                      itemProductName(context, index);
+                                    },
+                                    child: Container(
+                                      decoration: itemContainerDecoration(),
+                                      margin: itemContainerMargins(),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: <Widget>[
+                                              Expanded(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: <Widget>[
+                                                    itemCardProductName(
+                                                        context,
+                                                        selectedProducts[
+                                                            index]),
+                                                    Container(
+                                                      width: SizeConfig
+                                                              .blockSizeHorizontal *
+                                                          53,
+                                                      margin: EdgeInsets.only(
+                                                        right: SizeConfig
+                                                                .blockSizeVertical *
+                                                            2,
                                                       ),
-                                                    ],
-                                                  ),
+                                                      child:
+                                                          itemCardDescription(
+                                                        selectedProducts[index],
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                                Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .stretch,
-                                                    children: <Widget>[
-                                                      itemCardImage(
-                                                          selectedProducts[
-                                                              index]),
-                                                      itemCardPrice(
-                                                          selectedProducts[
-                                                              index]),
-                                                    ],
-                                                  ),
+                                              ),
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .stretch,
+                                                  children: <Widget>[
+                                                    itemCardImage(
+                                                        selectedProducts[
+                                                            index]),
+                                                    itemCardPrice(
+                                                        selectedProducts[
+                                                            index]),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
-                                            Divider(
-                                              thickness:
-                                                  SizeConfig.blockSizeVertical *
-                                                      0.2,
-                                            ),
-                                            itemCardTags(
-                                                selectedProducts[index]),
-                                          ],
-                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                          Divider(
+                                            thickness:
+                                                SizeConfig.blockSizeVertical *
+                                                    0.2,
+                                          ),
+                                          itemCardTags(selectedProducts[index]),
+                                        ],
                                       ),
                                     ),
-                                  )
-                                : Container();
+                                  ),
+                                );
+                              } else if (showMessage == true) {
+                                return Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Center(
+                                          child: Text("Nema proizvoda u bazi"))
+                                    ]);
+                              } else {
+                                return Container();
+                              }
+                            } else {
+                              if (locationIsSelected(
+                                  selectedProducts[index]['productLocation'],
+                                  selectedChips)) {
+                                showMessage = false;
+
+                                return Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    onTap: () {
+                                      itemProductName(context, index);
+                                    },
+                                    child: Container(
+                                      decoration: itemContainerDecoration(),
+                                      margin: itemContainerMargins(),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: <Widget>[
+                                              Expanded(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: <Widget>[
+                                                    itemCardProductName(
+                                                        context,
+                                                        selectedProducts[
+                                                            index]),
+                                                    Container(
+                                                      width: SizeConfig
+                                                              .blockSizeHorizontal *
+                                                          53,
+                                                      margin: EdgeInsets.only(
+                                                        right: SizeConfig
+                                                                .blockSizeVertical *
+                                                            2,
+                                                      ),
+                                                      child:
+                                                          itemCardDescription(
+                                                        selectedProducts[index],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .stretch,
+                                                  children: <Widget>[
+                                                    itemCardImage(
+                                                        selectedProducts[
+                                                            index]),
+                                                    itemCardPrice(
+                                                        selectedProducts[
+                                                            index]),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Divider(
+                                            thickness:
+                                                SizeConfig.blockSizeVertical *
+                                                    0.2,
+                                          ),
+                                          itemCardTags(selectedProducts[index]),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return Container();
+                              }
+                            }
                           },
                         ),
                       );
