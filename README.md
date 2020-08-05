@@ -33,7 +33,7 @@ Sprint 4
 ## User Story 1: As a User I want to SEARCHING POSTS so that I can easily find appropriate post.
 Datum početka rada: 30.07.2020 <br>
 Kreirane cjeline: <ul><li>Mogućnost korisnika da pretrazuje proizvode iz baze kroz search bar</li></ul><br>
-## User Story 2:As a User I want to FILTER POSTS so that I can choose one of them.
+## User Story 2: As a User I want to FILTER POSTS so that I can choose one of them.
 Kreirane cjeline: <ul><li>Mogućnost korisnika da filtrira proizvode iz baze na osnovu lokacije(grada trazenog proizvoda)</li></ul><br>
 Datum završetka US: 07.08.2020<br><br><br>
 
