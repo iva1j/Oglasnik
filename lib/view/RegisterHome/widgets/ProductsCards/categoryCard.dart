@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productCategory.dart';
+import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
@@ -19,7 +20,6 @@ class _CategoryCardState extends State<CategoryCard> {
     SizeConfig().init(context);
     return Column(children: <Widget>[
       Expanded(
-      
         child: FutureBuilder(
             future: CategoryViewModel().getCategories(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
