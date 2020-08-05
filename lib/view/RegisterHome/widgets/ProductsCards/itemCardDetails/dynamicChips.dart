@@ -18,6 +18,9 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
+    ///Iva i Elvir , sortiranje čipova za odabrane čipove i čipove iz liste,
+    ///pomoću sortiranja čipovi se nakon sto su obrisani vrate na svoje prvobitne pozicije u listi
     citysuggestions.sort();
     return Container(
       margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 6),
@@ -39,6 +42,10 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                   borderRadius: BorderRadius.all(
                 Radius.circular(14),
               )),
+
+              /// Ovaj dio koda radili : Iva i Amer
+              /// na onPressed , uzimamo element iz liste citysuggestions i dodajemo ga u listu selectedChips, na taj
+              /// način pratimo koliko je user izabrao gradova.
               onPressed: () {
                 if (selectedChips.length < 3) {
                   widget.dynamicChipPressed();
@@ -48,6 +55,10 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                   });
                 } else {
                   Flushbar(
+                    /// Ovaj task radili su Amer i Faruk.
+                    ///
+                    /// Flushbar is some kind of snackbar that is showed in the bottom of the screen and display (in this case) an error and display a warning to the user
+                    /// Once when user select 3 cities and try to add more in filter, code bellow will be triggered
                     title: "Pogreška!",
                     //message: "Ne moze biti vise od 3 odabrana grada",
 

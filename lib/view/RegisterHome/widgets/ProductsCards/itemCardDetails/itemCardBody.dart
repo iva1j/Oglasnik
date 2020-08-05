@@ -17,6 +17,7 @@ import 'itemCardImage.dart';
 import 'itemCardPrice.dart';
 import 'itemCardProductName.dart';
 import 'package:flushbar/flushbar.dart';
+import 'package:Oglasnik/utils/sizeconfig.dart';
 
 class ItemCardBody extends StatefulWidget {
   const ItemCardBody({
@@ -55,6 +56,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
   ///tekst u sam Chip na osnovu liste i indexa. Stvari su analogne za dynamicChip-ove s tim da je razlika u tipovima
   ///chipova (Chip widget omogucava onDeleted property pa se automatski generise x button u samom chipu i on se koristi
   ///u actionChips, a ActionChips u dynamicChips (mozda smo malo neprecizno nazvali varijable, ali to nije toliko bitno))
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
