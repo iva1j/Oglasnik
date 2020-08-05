@@ -1,5 +1,3 @@
-import 'package:Oglasnik/model/productCategory.dart';
-import 'package:Oglasnik/model/productCity.dart';
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -8,6 +6,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/dynamicChips.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,7 +16,6 @@ import 'itemCardImage.dart';
 import 'itemCardPrice.dart';
 import 'itemCardProductName.dart';
 import 'package:flushbar/flushbar.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
 
 class ItemCardBody extends StatefulWidget {
   const ItemCardBody({
@@ -58,6 +56,13 @@ class _ItemCardBodyState extends State<ItemCardBody> {
   ///u actionChips, a ActionChips u dynamicChips (mozda smo malo neprecizno nazvali varijable, ali to nije toliko bitno))
 
   @override
+  void dispose() {
+    citysuggestions.addAll(selectedChips);
+    selectedChips.clear();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
@@ -90,10 +95,8 @@ class _ItemCardBodyState extends State<ItemCardBody> {
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Container(
-                    child: Card(
-                      elevation: 8,
-                      color: Colors.white,
-                      child: Text('No Items'),
+                    child: Center(
+                      child: SpinnerCircular(),
                     ),
                   );
                 }
@@ -165,7 +168,9 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                                     snapshot
                                                         .data.documents[index]),
                                                 Container(
-                                                  width: 170,
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      53,
                                                   margin: EdgeInsets.only(
                                                     right: SizeConfig
                                                             .blockSizeVertical *

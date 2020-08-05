@@ -1,5 +1,4 @@
 import 'package:Oglasnik/utils/colors_and_themes/appBarTheme.dart';
-import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData buildThemeData() {
