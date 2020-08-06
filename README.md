@@ -35,6 +35,6 @@ Datum početka rada: 30.07.2020 <br>
 Kreirane cjeline: <ul><li>Mogućnost korisnika da pretrazuje proizvode iz baze kroz search bar</li></ul><br>
 ## User Story 2: As a User I want to FILTER POSTS so that I can choose one of them.
 Kreirane cjeline: <ul><li>Mogućnost korisnika da filtrira proizvode iz baze na osnovu lokacije(grada trazenog proizvoda)</li></ul><br>
-Datum završetka US: 07.08.2020<br><br><br>
+Datum završetka US: 06.08.2020<br><br><br>
 
 
