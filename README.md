@@ -1,14 +1,22 @@
 # Oglasnik - User Stories Report
 Hey 👋 </br></br>
 
-This is a reposistory of mobile application made in Flutter. Oglasnik is an application that provides features:
-</br>⭐️Registration⭐️</br>
+</br>
+This is a reposistory of mobile application made in Flutter. Oglasnik is an application that provides next features: </br></br>
+
+⭐️Registration⭐️</br>
 ⭐️Login⭐️</br>
 ⭐️Create a product⭐️</br>
 ⭐️Product search⭐️</br>
 ⭐️Filtering products⭐️</br></br>
 
+<div>
+	<br>
+	<img src="https://raw.githubusercontent.com/Aniket965/Aniket965/master/pacman.svg?sanitize=true" width="100" height="100" align="left"> Bugs, deprecated methods, package version...😃
+	<br>
+</div>
 
+</br></br>
 Bellow is a list of all sprints with description (which features we implemented in them), so enjoy 😃 </br>
 </br>
 <details>
