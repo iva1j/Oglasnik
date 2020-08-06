@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/material.dart';
@@ -27,12 +28,12 @@ class _PageOneState extends State<PageOne> {
         }
       },
       child: WillPopScope(
-        onWillPop: () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) {
-            registeredGlob = false;
-            return RegisteredHome();
-          }),
-        ),
+        onWillPop: () {
+          Navigator.of(context).pushAndRemoveUntil(
+              FadeRoute(page: RegisteredHome()),
+              (Route<dynamic> route) => false); // važno: ne brisati
+          registeredGlob = false;
+        },
         child: Scaffold(
           body: SingleChildScrollView(
             reverse: true,
