@@ -1,12 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+///Future funkcija pomocu koje izvlačimo proizvode iz baze na osnovu imena branda svakog proizvoda
+/// iz kolekcije proizvodi, to storamo u varijablu getBrandData
 Future getBrandData(String productBrand) async {
   List slikeBrandova = [];
+
+  /// lista u kojoj cemo storati dole izabrane slikebrandova na osnovu uslova iz if petlje
   final QuerySnapshot getBrandData = await Firestore.instance
       .collection('products')
       .where('productBrand', isEqualTo: productBrand)
       .getDocuments();
 
+  /// storamo snapshot brandova iz baze u novu listu brandData, gdje za svaki produkt iz te liste
+  /// uzimamo njihov ["productImg1"],["productImg2"],["productImg3"] item(ukoliko ih ima u bazi) i storamo ih u novu listu naziva slikeBrandova
   final List<DocumentSnapshot> brandData = getBrandData.documents;
   brandData.forEach((element) {
     if (element["productImg1"] != null) {
@@ -19,6 +25,9 @@ Future getBrandData(String productBrand) async {
       slikeBrandova.add(element['productImg3']);
     }
   });
+
+  ///sve dok nam je duzina liste slikaBrandova manja od 4 slike za dati item,
+  ///dodajemo drugu sliku u listu; u ovom slucaju (no photo) sliku
   while (slikeBrandova.length < 4) {
     slikeBrandova.add(
         'https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2Fnophoto.jpg?alt=media&token=a4d040c4-b5b4-4c13-a49d-b6ecf292fafe');

@@ -46,12 +46,15 @@ void toggleRegister(BuildContext context) {
   cleanLoginInputFields();
 }
 
-///Clear email and password input fields on click
+//clearing input fields with:
 void cleanLoginInputFields() {
   emailInputController.clear();
   passwordInputController.clear();
 }
 
+///funkcija kojom provjeravamo da li cemo pustiti usera da se sign in
+///prvobitno se provjerava status konekcije sa isOnline, ako jeste
+///provjerava se da li su inputi ispravni i da li postoji u bazi preko varijable status
 void onPressedSignInModel(
     BuildContext context, String email, String password, dynamic formKey) {
   FocusScope.of(context).unfocus();
@@ -81,14 +84,17 @@ void onPressedSignInModel(
     displayInternetDialog(context);
 }
 
+///Metoda kojom preko SharedPrefernces zapamtimo koji se user log in
+///da bi kasnije na splash screenu mogli provjeravati da li se user prethodno logovao
 void loginPrefs(BuildContext context, String email) async {
   phoneNumberSetting(email);
   SharedPreferences prefs = await SharedPreferences.getInstance();
-
   prefs.setString('email', email);
   //prefs.setString('phoneNumber', phoneNumber);
 }
 
+///Query kojim provjeravamo da li je željeni user unio broj telefona u bazu
+///ako jeste, dodjeljujemo value iz baze u varijablu phoneNumber
 void phoneNumberSetting(String email) async {
   final userQuery = await Firestore.instance
       .collection('firestoreUsers')
@@ -102,6 +108,10 @@ void phoneNumberSetting(String email) async {
   });
 }
 
+///Future builder kojim provjeravamo da li je user unio email koji postoji u bazi
+///u alert dialog za promjenu passworda, ako ukucani email postoji u bazi
+///globalnu varijablu allowUserToChangePassword na true, na osnovu koje ćemo ga poslati na screen
+///gdje ce ukucati token i novi password
 allowPasswordChange(BuildContext context, String email) {
   FutureBuilder(
       future: AuthService().isEmailValid(email),
@@ -118,6 +128,9 @@ allowPasswordChange(BuildContext context, String email) {
       });
 }
 
+///Kada se user registruje, on se šalje na registered home, gdje mu iskače "čestitamo" alert dialog,
+///da bi spriječili da se svaki put pokazuje taj dialog kada se user navigira na registeredHome,
+///po iskakanju aler dialoga, postavljamo globalnu varijablu registeredGlob na false, da se više ne bi ponavljao
 registeredShowDialog(BuildContext context) {
   if (registeredGlob) {
     registeredGlob = false;
@@ -129,6 +142,10 @@ registeredShowDialog(BuildContext context) {
   }
 }
 
+///Po kreiranju novog artikla, user se navigira na registered home, gdje dobija alert dialog koji ga
+///obavjestava da je kreirao novi artikal, da bi sprijecili nepotrebno iskakanje alert dialoga kada se user
+///navigira kroz aplikaciju, taj problem smo riješili koristenjem createdGlob globalne varijable koja prati da li je user
+///zaista kreirao artikal ili je nekim drugim putem dosao do screena gdje iskace alert dialog.
 createdShowDialog(BuildContext context) {
   if (createdGlob) {
     createdGlob = false;
