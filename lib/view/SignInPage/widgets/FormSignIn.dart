@@ -5,6 +5,7 @@ import 'package:Oglasnik/utils/shared/sharedTextFields.dart/SigninTextFields/ema
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/SigninTextFields/passwordSigninTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
@@ -77,8 +78,8 @@ class _FormSignInState extends State<FormSignIn> {
                   child: Column(
                 children: <Widget>[
                   Container(
-                      // child: AuthService().tokenExistOrNot(context, email, token),
-                      ),
+                    child: AuthService().tokenExistOrNot(context, email, token),
+                  ),
                   Container(
                     child: AuthService().signInOrNot(
                         context,
@@ -104,21 +105,20 @@ class _FormSignInState extends State<FormSignIn> {
                   },
                 ),
               ),
-              // Text(string),
-              // Container(
-              //   margin: EdgeInsets.only(top: 15.0),
-              //   child: new GestureDetector(
-              //     onTap: () => displayDialog(context),
-              //     child: new Text(
-              //       "Zaboravili ste lozinku?",
-              //       style: TextStyle(
-              //           fontFamily: 'Roboto',
-              //           fontSize: 16,
-              //           color: Color.fromRGBO(0, 0, 0, 100)),
-              //     ),
-              //   ),
-              // )
-           
+              Text(string),
+              Container(
+                margin: EdgeInsets.only(top: 15.0),
+                child: new GestureDetector(
+                  onTap: () => displayDialog(context),
+                  child: new Text(
+                    "Zaboravili ste lozinku?",
+                    style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 16,
+                        color: Color.fromRGBO(0, 0, 0, 100)),
+                  ),
+                ),
+              )
             ],
           ),
         ));

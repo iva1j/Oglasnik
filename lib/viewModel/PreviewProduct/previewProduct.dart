@@ -2,10 +2,9 @@ import 'package:Oglasnik/interface/productInterface.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-Image buildImageWidget(String imagePath) {
-  return Image.asset(imagePath);
-}
-
+///Future function that takes all product from db and it's used in a Future Builder 
+///for listing(showing) all products once when user cancel his Search in App.
+///
 class ProductViewModel implements ReadProductInterface {
   @override
   Future getProduct() async {
