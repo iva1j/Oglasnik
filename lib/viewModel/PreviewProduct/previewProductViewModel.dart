@@ -1,6 +1,8 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+/// asynhrona funkcija koja povlači sve kategorije iz baze te sprema
+///  u listu ime kategorija da bi ih kasnije mogli ispisati
 void initCategoryNames() async {
   final QuerySnapshot categoryQuery =
       await Firestore.instance.collection('category').getDocuments();
@@ -10,6 +12,8 @@ void initCategoryNames() async {
   });
 }
 
+///funkcija koja povlaci iz baze produkte iz kolekcije kategorija na osnovu unikatnog id-a
+///svakog proizvoda
 Future<String> returnCategoryName(String id) async {
   final QuerySnapshot categoryNameQuery = await Firestore.instance
       .collection('category')
@@ -17,6 +21,7 @@ Future<String> returnCategoryName(String id) async {
       .limit(1)
       .getDocuments();
 
+  ///storanje i ispisivanje imena kategorija
   final List<DocumentSnapshot> documents = categoryNameQuery.documents;
   String s;
   documents.forEach((element) => s = element["categoryName"]);
