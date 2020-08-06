@@ -16,7 +16,7 @@ This is a reposistory of mobile application made in Flutter. Oglasnik is an appl
 	<br>
 </div>
 
-</br></br></br></br></br>
+</br></br></br>
 Bellow is a list of all sprints with description (which features we implemented in them), so enjoy 😃 </br>
 </br>
 <details>
