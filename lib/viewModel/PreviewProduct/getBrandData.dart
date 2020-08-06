@@ -12,7 +12,7 @@ Future getBrandData(String productBrand) async {
       .getDocuments();
 
   /// storamo snapshot brandova iz baze u novu listu brandData, gdje za svaki produkt iz te liste
-  /// uzimamo njihov productImg1,2,3 item(ukoliko ih ima u bazi) i storamo ih u novu listu naziva slikeBrandova
+  /// uzimamo njihov ["productImg1"],["productImg2"],["productImg3"] item(ukoliko ih ima u bazi) i storamo ih u novu listu naziva slikeBrandova
   final List<DocumentSnapshot> brandData = getBrandData.documents;
   brandData.forEach((element) {
     if (element["productImg1"] != null) {
