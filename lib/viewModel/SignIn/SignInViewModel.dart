@@ -19,7 +19,8 @@ TextEditingController signInEmailInputController;
 TextEditingController emailInputControllerAlertDialog =
     new TextEditingController();
 TextEditingController signInPasswordInputController;
-//When user enter his email on AlertDialog, button "pošalji" is configured bellow
+
+///When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
   // Container(
   //     child: AuthService()
@@ -28,13 +29,13 @@ void onPressedPosaljiKod(BuildContext context) {
       context, emailInputControllerAlertDialog.text, tokenCode);
 }
 
-//When user enter his email on AlertDialog, onPressed "odustani" is bellow:
+///When user enter his email on AlertDialog, onPressed "odustani" is bellow:
 void alerDialogOnPressedOdustani(BuildContext context) {
   Navigator.of(context).pop();
   emailInputController.clear();
 }
 
-//onPressed toggle that switch SignIn screen to SignUp
+///onPressed toggle that switch SignIn screen to SignUp
 void toggleRegister(BuildContext context) {
   Navigator.pushReplacement(
     context,
