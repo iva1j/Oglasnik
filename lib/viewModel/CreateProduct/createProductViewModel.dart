@@ -40,3 +40,4 @@ class CreateProduct extends ProductInterface {
     return null;
   }
 }
+
