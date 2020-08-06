@@ -1,6 +1,8 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+///Method that is getting all brands from categories in our db
+///this method is called at the first loading of the page (main.dart)
 void initCategoryBrands() async {
   final QuerySnapshot brandsQuery =
       await Firestore.instance.collection('categoryBrand').getDocuments();
@@ -18,23 +20,16 @@ void initCategoryBrands() async {
   });
 }
 
-Future<bool> checkIfProductBrandExists(String brandName) async {
-  final QuerySnapshot productsQuery = await Firestore.instance
-      .collection('products')
-      .where('brandName', isEqualTo: brandName)
-      .getDocuments();
-
-  final List<DocumentSnapshot> documents = productsQuery.documents;
-  return documents.length > 0;
-}
-
+///this function is used in FutureBuilder as a Future function
+///
+///it's checking userInput that is stored in [brandName] in all products 
+///from database ['productBrand'] field in [products] collection
+///
 numberOfProductsPerBrandTest(String brandName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
       .collection('products')
       .where('productBrand', isEqualTo: brandName)
       .getDocuments();
-
   final List<DocumentSnapshot> documents = productsQuery.documents;
-
   return documents.length;
 }
