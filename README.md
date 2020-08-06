@@ -10,10 +10,10 @@ This is a reposistory of mobile application made in Flutter. Oglasnik is an appl
 ⭐️Product search⭐️</br>
 ⭐️Filtering products⭐️</br></br>
 
-<div align="left">
+<div align="center">
 	<br>
 	<img src="https://raw.githubusercontent.com/Aniket965/Aniket965/master/pacman.svg?sanitize=true" width="100" height="100" align="left"> Bugs, deprecated methods, package version...😃
-	<br>
+	
 </div>
 
 </br></br></br></br>
