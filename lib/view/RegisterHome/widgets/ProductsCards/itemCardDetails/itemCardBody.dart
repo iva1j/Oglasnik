@@ -162,18 +162,32 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                                   snapshot
                                                       .data.documents[index]),
                                               Container(
-                                                width: SizeConfig
-                                                        .blockSizeHorizontal *
-                                                    53,
-                                                margin: EdgeInsets.only(
-                                                  right: SizeConfig
-                                                          .blockSizeVertical *
-                                                      2,
-                                                ),
-                                                child: itemCardDescription(
-                                                    snapshot
-                                                        .data.documents[index]),
-                                              )
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      53,
+                                                  margin: EdgeInsets.only(
+                                                    right: SizeConfig
+                                                            .blockSizeVertical *
+                                                        2,
+                                                  ),
+                                                  child: snapshot
+                                                              .data
+                                                              .documents[index][
+                                                                  'productDesc']
+                                                              .length <
+                                                          150
+                                                      ? itemCardDescription(
+                                                          snapshot.data
+                                                                  .documents[index]
+                                                              ['productDesc'])
+                                                      : itemCardDescription(snapshot
+                                                              .data
+                                                              .documents[index]
+                                                                  ['productDesc']
+                                                              .toString()
+                                                              .substring(0, 150)
+                                                              .trim() +
+                                                          "..."))
                                             ],
                                           ),
                                         ),
@@ -282,9 +296,24 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                                           .blockSizeVertical *
                                                       2,
                                                 ),
-                                                child: itemCardDescription(
-                                                    snapshot
-                                                        .data.documents[index]),
+                                                child: snapshot
+                                                            .data
+                                                            .documents[index]
+                                                                ['productDesc']
+                                                            .length <
+                                                        150
+                                                    ? itemCardDescription(
+                                                        snapshot.data.documents[
+                                                                index]
+                                                            ['productDesc'])
+                                                    : itemCardDescription(snapshot
+                                                            .data
+                                                            .documents[index]
+                                                                ['productDesc']
+                                                            .toString()
+                                                            .substring(0, 150)
+                                                            .trim() +
+                                                        "..."),
                                               )
                                             ],
                                           ),

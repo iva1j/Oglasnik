@@ -127,7 +127,8 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                       ),
                                                       child:
                                                           itemCardDescription(
-                                                        selectedProducts[index],
+                                                        selectedProducts[index]
+                                                            ['productDesc'],
                                                       ),
                                                     ),
                                                   ],
@@ -219,7 +220,8 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                       ),
                                                       child:
                                                           itemCardDescription(
-                                                        selectedProducts[index],
+                                                        selectedProducts[index]
+                                                            ['productDesc'],
                                                       ),
                                                     ),
                                                   ],
