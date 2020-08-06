@@ -12,7 +12,7 @@ This is a reposistory of mobile application made in Flutter. Oglasnik is an appl
 
 <div align="left">
 	<br>
-	<img src="https://raw.githubusercontent.com/Aniket965/Aniket965/master/pacman.svg?sanitize=true" width="100" height="100" align="left"> </br>Bugs, deprecated methods, package version...😃
+	<img src="https://raw.githubusercontent.com/Aniket965/Aniket965/master/pacman.svg?sanitize=true" width="100" height="100" align="left"> </br>Bugs, deprecated methods, package versions...😃
 </div>
 
 
