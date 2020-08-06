@@ -167,7 +167,8 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                         vertical:
                                             SizeConfig.blockSizeVertical * 30),
                                     child: Center(
-                                        child: Text(EmptyProductList().emptyList)));
+                                        child: Text(
+                                            EmptyProductList().emptyList)));
                               } else {
                                 return Container();
                               }
