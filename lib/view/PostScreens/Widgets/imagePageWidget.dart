@@ -47,10 +47,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     super.initState();
   }
 
-  void dispose() {
-    _connectivity.disposeStream();
-    super.dispose();
-  }
+  // void dispose() {
+  //   _connectivity.disposeStream();
+  //   super.dispose();
+  // }
 
   String _path1, _path2, _path3;
   String _extension1, _extension2, _extension3;
@@ -144,7 +144,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                   MoneyText().kmText,
                 ),
               ),
-              Text(string),
+              // Text(string),
             ],
           ),
           /*
@@ -218,7 +218,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             pathGlobal1 = null;
             pathGlobal2 = null;
             pathGlobal3 = null;
-
+            print('status interneta:' + productIsOnline.toString());
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (_) => RegisteredHome()));
           } else
