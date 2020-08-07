@@ -1,7 +1,10 @@
 import 'package:Oglasnik/model/productCategory.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/Search/productSearchViewModel.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'CategoryCardContainer/categoryCardContainer.dart';
@@ -18,6 +21,7 @@ class _CategoryCardState extends State<CategoryCard> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Column(children: <Widget>[
+      ProductSearchDB(),
       Expanded(
         child: FutureBuilder(
             future: CategoryViewModel().getCategories(),
