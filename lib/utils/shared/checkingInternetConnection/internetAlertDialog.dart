@@ -1,5 +1,7 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/posaljiKodDugme.dart';
 import 'package:flutter/material.dart';
 
 class TestInternetDialog extends StatefulWidget {
@@ -20,16 +22,13 @@ class _TestInternetDialogState extends State<TestInternetDialog> {
       ),
       title: Container(
           child: Text(
-        'Opcija nije moguća! \n',
+        InternetConnectionMessage().errorHead,
       )),
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
             Text(
-              'Povezivanje na internet nije moguće.',
-            ),
-            Text(
-              'Molimo povežite se na internet',
+              InternetConnectionMessage().errorBody,
             ),
           ],
         ),
@@ -38,13 +37,24 @@ class _TestInternetDialogState extends State<TestInternetDialog> {
         Container(
           width: double.maxFinite,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Container(
-                child: button('OK', () {
-                  Navigator.of(context).pop();
-                }),
-              ),
+                child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(2.0)),
+                    color: mainAppColor,
+                    child: Text(
+                      InternetConnectionMessage().buttonOK,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Roboto',
+                          fontSize: 14),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    }),
+              )
             ],
           ),
         ),

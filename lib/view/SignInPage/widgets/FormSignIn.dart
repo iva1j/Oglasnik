@@ -105,7 +105,6 @@ class _FormSignInState extends State<FormSignIn> {
                   },
                 ),
               ),
-              Text(string),
               Container(
                 margin: EdgeInsets.only(top: 15.0),
                 child: new GestureDetector(
