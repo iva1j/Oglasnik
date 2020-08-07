@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'dart:async';
+import 'dart:async'; 
 
 ///Funkcija sluzi za odredjivanje dimenzija neke slike (na osnovu njenog URL-a koji proslijedimo kao parametar).
 ///Sluzice za odredjivanje kako ce slika biti fit-ovana u container.
