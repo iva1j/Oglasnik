@@ -37,7 +37,7 @@ class _TestInternetDialogState extends State<TestInternetDialog> {
         Container(
           width: double.maxFinite,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Container(
                 child: FlatButton(
@@ -58,19 +58,6 @@ class _TestInternetDialogState extends State<TestInternetDialog> {
             ],
           ),
         ),
-        // Container(
-        //   width: double.maxFinite,
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.center,
-        //     children: <Widget>[
-        //       Container(
-        //         child: button('OK', () {
-        //           Navigator.of(context).pop();
-        //         }),
-        //       ),
-        //     ],
-        //   ),
-        // ),
       ],
     );
   }

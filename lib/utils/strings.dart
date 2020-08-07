@@ -191,7 +191,7 @@ class InternetConnectionMessage {
   String errorHead = "Provjerite internet konekciju \n";
   String errorBody =
       'Željena opcija nije dostupna, jer veza sa internet provajderom ne postoji';
-  String buttonOK = 'OK';
+  String buttonOK = 'Pokušajte ponovo';
 }
 
 class SearchPageText {
