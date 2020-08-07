@@ -16,6 +16,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardPrice.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardProductName.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/Search/productSearchViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';

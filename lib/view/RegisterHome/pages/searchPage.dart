@@ -1,8 +1,11 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/productSearch.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/Search/productSearchViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -72,28 +75,38 @@ class DataSearch extends SearchDelegate<String> {
   }
 
   Widget buildSuggestions(BuildContext context) {
-    return Container();
-    // final suggestionsList = query.isEmpty
-    //     ? recentCars
-    //     : cars.where((e) => e.startsWith(query)).toList();
-    // return ListView.builder(
-    //   itemBuilder: (context, index) => ListTile(
-    //     onTap: () {
-    //       showResults(context);
-    //     },
-    //     title: RichText(
-    //       text: TextSpan(
-    //           text: suggestionsList[index].substring(0, query.length),
-    //           style:
-    //               TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-    //           children: [
-    //             TextSpan(
-    //                 text: suggestionsList[index].substring(query.length),
-    //                 style: TextStyle(color: Colors.grey))
-    //           ]),
-    //     ),
-    //   ),
-    //   itemCount: suggestionsList.length,
-    // );
+    ///Faruk Cidic
+    ///
+    ///Since user will receive suggestions after 3 characters, we are bellow setting statemant suitable
+    ///for that request. Also, we are showing him products without taking care about LowerCase or UpperCase
+    ///
+    ///If user starts to type and decide to select something from our suggestionList, on the next screen
+    ///in appbar (searchbar), selectedProduct name will be written.
+    if (query.length > 2) {
+      suggestionsList = productsForSearch
+          .where((e) => e.toLowerCase().startsWith(query.toLowerCase()))
+          .toList();
+      return ListView.builder(
+        itemBuilder: (context, index) => ListTile(
+          onTap: () {
+            query = suggestionsList[index];
+            showResults(context);
+          },
+          title: RichText(
+            text: TextSpan(
+                text: suggestionsList[index].substring(0, query.length),
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                children: [
+                  TextSpan(
+                      text: suggestionsList[index].substring(query.length),
+                      style: TextStyle(color: Colors.grey))
+                ]),
+          ),
+        ),
+        itemCount: suggestionsList.length,
+      );
+    } else
+      return Container();
   }
 }

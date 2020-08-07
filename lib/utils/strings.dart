@@ -202,7 +202,9 @@ final String immutableImg2 = "Dodaj sliku 2";
 final String immutableImg3 = "Dodaj sliku 3";
 
 final String noPhoto = "assets/images/nophoto.jpg";
+List<String> productsForSearch = List<String>();
 
+List<String> suggestionsList;
 final List<String> cityDropdownItems = <String>[
   'Sarajevo',
   'London',
@@ -216,5 +218,5 @@ final List<String> cityDropdownItems = <String>[
   'Moskva',
   'Kopenhagen',
   'Basel',
-  'Pariz'
+  'Pariz',
 ];
