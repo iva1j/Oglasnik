@@ -131,29 +131,26 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                       ///jeste onda ga jednostavno ispisujemo u item card-u. Ako nije onda
                                                       ///uzimamo njegovih prvih 150 character-a, uklanjamo whitespace-ove
                                                       ///i dodajemo mu ... na kraj.
-                                                      child: selectedProducts[
-                                                                          index]
-                                                                      [
+                                                      child: selectedProducts[index][
                                                                       'productDesc']
                                                                   .toString()
                                                                   .trim()
                                                                   .length <
                                                               150
                                                           ? itemCardDescription(
-                                                              selectedProducts[
-                                                                      index][
+                                                              selectedProducts[index][
                                                                   'productDesc'])
-                                                          : itemCardDescription(
-                                                              selectedProducts[
-                                                                              index]
-                                                                          [
-                                                                          'productDesc']
-                                                                      .toString()
-                                                                      .substring(
-                                                                          0,
-                                                                          150)
-                                                                      .trim() +
-                                                                  "..."),
+                                                          : itemCardDescription(selectedProducts[
+                                                                          index][
+                                                                      'productDesc']
+                                                                  .toString()
+                                                                  .substring(
+                                                                      0,
+                                                                      selectedProducts[index]['productDesc']
+                                                                          .toString()
+                                                                          .lastIndexOf('.'))
+                                                                  .trim() +
+                                                              "..."),
                                                     ),
                                                   ],
                                                 ),
@@ -242,29 +239,26 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                                 .blockSizeVertical *
                                                             2,
                                                       ),
-                                                      child: selectedProducts[
-                                                                          index]
-                                                                      [
+                                                      child: selectedProducts[index][
                                                                       'productDesc']
                                                                   .toString()
                                                                   .trim()
                                                                   .length <
                                                               150
                                                           ? itemCardDescription(
-                                                              selectedProducts[
-                                                                      index][
+                                                              selectedProducts[index][
                                                                   'productDesc'])
-                                                          : itemCardDescription(
-                                                              selectedProducts[
-                                                                              index]
-                                                                          [
-                                                                          'productDesc']
-                                                                      .toString()
-                                                                      .substring(
-                                                                          0,
-                                                                          150)
-                                                                      .trim() +
-                                                                  "..."),
+                                                          : itemCardDescription(selectedProducts[
+                                                                          index][
+                                                                      'productDesc']
+                                                                  .toString()
+                                                                  .substring(
+                                                                      0,
+                                                                      selectedProducts[index]['productDesc']
+                                                                          .toString()
+                                                                          .lastIndexOf('.'))
+                                                                  .trim() +
+                                                              "..."),
                                                     ),
                                                   ],
                                                 ),
