@@ -84,7 +84,7 @@ class DataSearch extends SearchDelegate<String> {
     ///in appbar (searchbar), selectedProduct name will be written.
     if (query.length > 2) {
       suggestionsList = productsForSearch
-          .where((e) => e.toLowerCase().startsWith(query.toLowerCase()))
+          .where((e) => e.toLowerCase().contains(query.toLowerCase()))
           .toList();
       return ListView.builder(
         itemBuilder: (context, index) => ListTile(
@@ -95,8 +95,7 @@ class DataSearch extends SearchDelegate<String> {
           title: RichText(
             text: TextSpan(
                 text: suggestionsList[index].substring(0, query.length),
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.grey),
                 children: [
                   TextSpan(
                       text: suggestionsList[index].substring(query.length),
