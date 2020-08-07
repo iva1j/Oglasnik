@@ -66,7 +66,7 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                     title: FilterFlush().naslov,
                     //message: "Ne moze biti vise od 3 odabrana grada",
                     isDismissible: false,
-                    animationDuration: Duration(milliseconds: 800),
+                    //animationDuration: Duration(seconds: 12),
                     blockBackgroundInteraction: true,
                     icon: Icon(
                       Icons.error,
@@ -75,7 +75,7 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                     ),
                     backgroundColor: mainAppColor,
                     barBlur: 10,
-                    duration: Duration(seconds: 4),
+                    //duration: Duration(seconds: 12),
                     flushbarPosition: FlushbarPosition.BOTTOM,
                     boxShadows: [
                       BoxShadow(
