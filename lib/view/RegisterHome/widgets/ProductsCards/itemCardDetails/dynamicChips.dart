@@ -63,10 +63,10 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                     ///
                     /// Flushbar is some kind of snackbar that is showed in the bottom of the screen and display (in this case) an error and display a warning to the user
                     /// Once when user select 3 cities and try to add more in filter, code bellow will be triggered
-                    title: "Pogreška!",
+                    title: FilterFlush().naslov,
                     //message: "Ne moze biti vise od 3 odabrana grada",
                     isDismissible: false,
-                    // animationDuration: Duration(milliseconds: 500),
+                    animationDuration: Duration(milliseconds: 800),
                     blockBackgroundInteraction: true,
                     icon: Icon(
                       Icons.error,
@@ -75,8 +75,7 @@ class _DynamicChipsWidgetState extends State<DynamicChipsWidget> {
                     ),
                     backgroundColor: mainAppColor,
                     barBlur: 10,
-
-                    duration: Duration(milliseconds: 1500),
+                    duration: Duration(seconds: 4),
                     flushbarPosition: FlushbarPosition.BOTTOM,
                     boxShadows: [
                       BoxShadow(
