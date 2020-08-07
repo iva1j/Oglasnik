@@ -70,7 +70,7 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
               if (snapshott.hasData) {
                 showingSelectedProducts(products, snapshott);
 
-                //Handlovanje slučaja da u bazi nema niti jednog artikla koji je user tražio:
+                ///Handlovanje slučaja da u bazi nema niti jednog artikla koji je user tražio:
                 return selectedProducts == null || selectedProducts.isEmpty
                     ? Center(
                         child: Text(TrazeniProizvod().trazeniProizvod),
