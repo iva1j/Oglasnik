@@ -162,8 +162,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                                   snapshot
                                                       .data.documents[index]),
                                               Container(
-                                                  width: SizeConfig
-                                                          .blockSizeHorizontal *
+                                                  width: SizeConfig.blockSizeHorizontal *
                                                       53,
                                                   margin: EdgeInsets.only(
                                                     right: SizeConfig
@@ -174,12 +173,14 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                                               .data
                                                               .documents[index][
                                                                   'productDesc']
+                                                              .toString()
+                                                              .trim()
                                                               .length <
                                                           150
-                                                      ? itemCardDescription(
-                                                          snapshot.data
-                                                                  .documents[index]
-                                                              ['productDesc'])
+                                                      ? itemCardDescription(snapshot
+                                                              .data
+                                                              .documents[index]
+                                                          ['productDesc'])
                                                       : itemCardDescription(snapshot
                                                               .data
                                                               .documents[index]
@@ -305,6 +306,8 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                                             .data
                                                             .documents[index]
                                                                 ['productDesc']
+                                                            .toString()
+                                                            .trim()
                                                             .length <
                                                         150
                                                     ? itemCardDescription(

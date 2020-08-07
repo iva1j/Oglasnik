@@ -134,6 +134,8 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                                           index]
                                                                       [
                                                                       'productDesc']
+                                                                  .toString()
+                                                                  .trim()
                                                                   .length <
                                                               150
                                                           ? itemCardDescription(
@@ -243,6 +245,8 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                                           index]
                                                                       [
                                                                       'productDesc']
+                                                                  .toString()
+                                                                  .trim()
                                                                   .length <
                                                               150
                                                           ? itemCardDescription(
