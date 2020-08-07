@@ -296,6 +296,11 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                                           .blockSizeVertical *
                                                       2,
                                                 ),
+
+                                                ///gledamo da li je duzina opisa nekog artikla manja od 150, u slucaju da
+                                                ///jeste onda ga jednostavno ispisujemo u item card-u. Ako nije onda
+                                                ///uzimamo njegovih prvih 150 character-a, uklanjamo whitespace-ove
+                                                ///i dodajemo mu ... na kraj.
                                                 child: snapshot
                                                             .data
                                                             .documents[index]

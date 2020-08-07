@@ -125,11 +125,32 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                                 .blockSizeVertical *
                                                             2,
                                                       ),
-                                                      child:
-                                                          itemCardDescription(
-                                                        selectedProducts[index]
-                                                            ['productDesc'],
-                                                      ),
+
+                                                      ///gledamo da li je duzina opisa nekog artikla manja od 150, u slucaju da
+                                                      ///jeste onda ga jednostavno ispisujemo u item card-u. Ako nije onda
+                                                      ///uzimamo njegovih prvih 150 character-a, uklanjamo whitespace-ove
+                                                      ///i dodajemo mu ... na kraj.
+                                                      child: selectedProducts[
+                                                                          index]
+                                                                      [
+                                                                      'productDesc']
+                                                                  .length <
+                                                              150
+                                                          ? itemCardDescription(
+                                                              selectedProducts[
+                                                                      index][
+                                                                  'productDesc'])
+                                                          : itemCardDescription(
+                                                              selectedProducts[
+                                                                              index]
+                                                                          [
+                                                                          'productDesc']
+                                                                      .toString()
+                                                                      .substring(
+                                                                          0,
+                                                                          150)
+                                                                      .trim() +
+                                                                  "..."),
                                                     ),
                                                   ],
                                                 ),
@@ -218,11 +239,27 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                                 .blockSizeVertical *
                                                             2,
                                                       ),
-                                                      child:
-                                                          itemCardDescription(
-                                                        selectedProducts[index]
-                                                            ['productDesc'],
-                                                      ),
+                                                      child: selectedProducts[
+                                                                          index]
+                                                                      [
+                                                                      'productDesc']
+                                                                  .length <
+                                                              150
+                                                          ? itemCardDescription(
+                                                              selectedProducts[
+                                                                      index][
+                                                                  'productDesc'])
+                                                          : itemCardDescription(
+                                                              selectedProducts[
+                                                                              index]
+                                                                          [
+                                                                          'productDesc']
+                                                                      .toString()
+                                                                      .substring(
+                                                                          0,
+                                                                          150)
+                                                                      .trim() +
+                                                                  "..."),
                                                     ),
                                                   ],
                                                 ),
