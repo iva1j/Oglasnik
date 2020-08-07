@@ -1,27 +1,15 @@
-// import 'dart:io';
 import 'package:Oglasnik/utils/globals.dart';
-
-// class InternetConnection {
-//   checkForInternet() async {
-//     try {
-//       final result = await InternetAddress.lookup('google.com');
-//       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-//         hasInternetConnection = true;
-//         print('User Connected');
-//       }
-//     } on SocketException catch (_) {
-//       hasInternetConnection = false;
-//       print('not connected');
-//     }
-//   }
-// }
 
 import 'dart:async';
 import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 
-// void main() => runApp(MaterialApp(home: HomePage()));
+Map internetSource = {ConnectivityResult.none: false};
+MyConnectivity internetConnectivity = MyConnectivity.instance;
+void connectivityInitmethod() {
+  internetConnectivity.initialise();
+}
 
 class InternetConnection extends StatefulWidget {
   @override
@@ -29,21 +17,18 @@ class InternetConnection extends StatefulWidget {
 }
 
 class _InternetConnectionState extends State<InternetConnection> {
-  Map _source = {ConnectivityResult.none: false};
-  MyConnectivity _connectivity = MyConnectivity.instance;
-
   @override
   void initState() {
     super.initState();
-    _connectivity.initialise();
-    _connectivity.myStream.listen((source) {
-      setState(() => _source = source);
+    connectivityInitmethod();
+    internetConnectivity.myStream.listen((source) {
+      setState(() => internetSource = source);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    switch (_source.keys.toList()[0]) {
+    switch (internetSource.keys.toList()[0]) {
       case ConnectivityResult.none:
         isOnline = true;
         string = "Offline";
@@ -57,15 +42,12 @@ class _InternetConnectionState extends State<InternetConnection> {
         string = "WiFi: Online";
     }
 
-    return Scaffold(
-        // appBar: AppBar(title: Text("Internet")),
-        // body: Center(child: Text("$string", style: TextStyle(fontSize: 36))),
-        );
+    return Container();
   }
 
   @override
   void dispose() {
-    _connectivity.disposeStream();
+    internetConnectivity.disposeStream();
     super.dispose();
   }
 }
