@@ -70,7 +70,7 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
               if (snapshott.hasData) {
                 showingSelectedProducts(products, snapshott);
 
-                //Handlovanje slučaja da u bazi nema niti jednog artikla koji je user tražio:
+                ///Handlovanje slučaja da u bazi nema niti jednog artikla koji je user tražio:
                 return selectedProducts == null || selectedProducts.isEmpty
                     ? Center(
                         child: Text(TrazeniProizvod().trazeniProizvod),
@@ -125,10 +125,34 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                                 .blockSizeVertical *
                                                             2,
                                                       ),
-                                                      child:
-                                                          itemCardDescription(
-                                                        selectedProducts[index],
-                                                      ),
+
+                                                      ///gledamo da li je duzina opisa nekog artikla manja od 150, u slucaju da
+                                                      ///jeste onda ga jednostavno ispisujemo u item card-u. Ako nije onda
+                                                      ///uzimamo njegovih prvih 150 character-a, uklanjamo whitespace-ove
+                                                      ///i dodajemo mu ... na kraj.
+                                                      child: selectedProducts[
+                                                                          index]
+                                                                      [
+                                                                      'productDesc']
+                                                                  .toString()
+                                                                  .trim()
+                                                                  .length <
+                                                              150
+                                                          ? itemCardDescription(
+                                                              selectedProducts[
+                                                                      index][
+                                                                  'productDesc'])
+                                                          : itemCardDescription(
+                                                              selectedProducts[
+                                                                              index]
+                                                                          [
+                                                                          'productDesc']
+                                                                      .toString()
+                                                                      .substring(
+                                                                          0,
+                                                                          150)
+                                                                      .trim() +
+                                                                  "..."),
                                                     ),
                                                   ],
                                                 ),
@@ -217,10 +241,29 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                                 .blockSizeVertical *
                                                             2,
                                                       ),
-                                                      child:
-                                                          itemCardDescription(
-                                                        selectedProducts[index],
-                                                      ),
+                                                      child: selectedProducts[
+                                                                          index]
+                                                                      [
+                                                                      'productDesc']
+                                                                  .toString()
+                                                                  .trim()
+                                                                  .length <
+                                                              150
+                                                          ? itemCardDescription(
+                                                              selectedProducts[
+                                                                      index][
+                                                                  'productDesc'])
+                                                          : itemCardDescription(
+                                                              selectedProducts[
+                                                                              index]
+                                                                          [
+                                                                          'productDesc']
+                                                                      .toString()
+                                                                      .substring(
+                                                                          0,
+                                                                          150)
+                                                                      .trim() +
+                                                                  "..."),
                                                     ),
                                                   ],
                                                 ),
