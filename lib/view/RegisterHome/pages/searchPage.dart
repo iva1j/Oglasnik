@@ -94,7 +94,7 @@ class DataSearch extends SearchDelegate<String> {
           },
           title: RichText(
             text: TextSpan(
-                text: suggestionsList[index].substring(0, query.length),
+                text: suggestionsList[index].allMatches(query).toString(),
                 style:
                     TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
                 children: [
