@@ -152,7 +152,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               signUpPasswordInputController,
                           signUpPhoneNumberInputController:
                               signUpPhoneNumberInputController),
-                      //Text(string),
                     ],
                   )),
             ),

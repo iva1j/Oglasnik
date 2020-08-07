@@ -187,6 +187,13 @@ class FlushBarText {
   String message = "Nije moguće odabrati više od 3 grada.";
 }
 
+class InternetConnectionMessage {
+  String errorHead = "Provjerite internet konekciju \n";
+  String errorBody =
+      'Željena opcija nije dostupna, jer veza sa internet provajderom ne postoji';
+  String buttonOK = 'OK';
+}
+
 class SearchPageText {
   String hintText = "Pretraga proizvoda...";
 }

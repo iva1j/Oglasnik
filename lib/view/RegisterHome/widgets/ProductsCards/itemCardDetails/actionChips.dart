@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class ActionChipsWidget extends StatefulWidget {
   const ActionChipsWidget(
-    @required this.actionChipDeleted,
+    @required this.actionChipDeleted, 
   );
   @override
   final VoidCallback actionChipDeleted;

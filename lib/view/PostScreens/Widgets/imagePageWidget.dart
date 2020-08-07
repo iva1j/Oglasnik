@@ -144,7 +144,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                   MoneyText().kmText,
                 ),
               ),
-              // Text(string),
             ],
           ),
           /*
