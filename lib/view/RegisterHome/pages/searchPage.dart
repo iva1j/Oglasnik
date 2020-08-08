@@ -5,6 +5,7 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/productSearch.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/Search/getProductsByBrand.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/Search/productSearchViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
@@ -57,8 +58,6 @@ class DataSearch extends SearchDelegate<String> {
     ///ćemo u listi products imati storane naše proizvode iz baze, a u listu selectedProduct ćemo puniti na osnovu toga šta
     ///user ukuca u search, te na osnovu te liste ćemo prikazivati željene produkte na screen.
 
-    List<DocumentSnapshot> selectedProducts = List<DocumentSnapshot>();
-
     return Scaffold(
       floatingActionButton: email != null
           ? mainFloatingButton(email)
@@ -82,10 +81,20 @@ class DataSearch extends SearchDelegate<String> {
     ///
     ///If user starts to type and decide to select something from our suggestionList, on the next screen
     ///in appbar (searchbar), selectedProduct name will be written.
+    ///
+    ///UPDATE!
+    ///
+    ///Nakon što je donešena odluka da se u kroz search može pretraživati i brendovi (pored naziva
+    ///proizvoda), potrebno je bilo i modificirati listu sugestija. Pa smo tako listi
+    ///
+    var productsAndBrandList = [
+      ...{...productsForSearch}
+    ];
     if (query.length > 2) {
-      suggestionsList = productsForSearch
+      suggestionsList = productsAndBrandList
           .where((e) => e.toLowerCase().startsWith(query.toLowerCase()))
           .toList();
+
       return ListView.builder(
         itemBuilder: (context, index) => ListTile(
           onTap: () {
