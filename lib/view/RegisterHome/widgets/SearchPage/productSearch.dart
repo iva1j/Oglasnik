@@ -614,12 +614,20 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
     if (brandEntered) {
       selectedProducts.addAll(products);
       products.forEach((element) {
-        if ((element['productName']
-                    .toLowerCase()
-                    .contains(widget.query.toLowerCase() + ' ') ||
-                element['productName']
-                    .toLowerCase()
-                    .contains(' ' + widget.query.toLowerCase()) ||
+        if (((element['productName']
+                        .toLowerCase()
+                        .contains(widget.query.toLowerCase() + ' ') &&
+                    element['productName']
+                        .toLowerCase()
+                        .toString()
+                        .startsWith(widget.query.toLowerCase())) ||
+                (element['productName']
+                        .toLowerCase()
+                        .contains(' ' + widget.query.toLowerCase()) &&
+                    element['productName']
+                        .toLowerCase()
+                        .toString()
+                        .endsWith(widget.query.toLowerCase())) ||
                 element['productName']
                     .toLowerCase()
                     .contains(' ' + widget.query.toLowerCase() + ' ')) &&
