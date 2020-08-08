@@ -16,8 +16,6 @@ import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 
 TextEditingController signInEmailInputController;
-TextEditingController emailInputControllerAlertDialog =
-    new TextEditingController();
 TextEditingController signInPasswordInputController;
 
 ///When user enter his email on AlertDialog, button "pošalji" is configured bellow
@@ -55,14 +53,14 @@ void cleanLoginInputFields() {
 ///funkcija kojom provjeravamo da li cemo pustiti usera da se sign in
 ///prvobitno se provjerava status konekcije sa isOnline, ako jeste
 ///provjerava se da li su inputi ispravni i da li postoji u bazi preko varijable status
-void onPressedSignInModel(BuildContext context, String email, String password,
-    dynamic signInRegisterFormKey) {
+void onPressedSignInModel(
+    BuildContext context, String email, String password, dynamic formKey) {
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   print('Internet konekcija dostupna: ' + hasInternetConnection.toString());
   if (!isOnline) {
     Timer(Duration(seconds: 1), () {
-      if (signInRegisterFormKey.currentState.validate() && status == true) {
+      if (formKey.currentState.validate() && status == true) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           signInEmailInputController.clear();
           signInPasswordInputController.clear();

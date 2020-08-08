@@ -15,6 +15,7 @@ import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Oglasnik/utils/globals.dart';
 
+GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
 TextEditingController signUpFullNameInputController;
 TextEditingController signUpPhoneNumberInputController;
 TextEditingController signUpEmailInputController;
@@ -145,6 +146,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       SignUpFormName(),
                       FormSignUp(
+                          registerFormKey: signUpRegisterFormKey,
                           signUpFullNameInputController:
                               signUpFullNameInputController,
                           signUpEmailInputController:

@@ -12,6 +12,7 @@ import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
 
 String fullNameRegister, emailRegister, passwordRegister, phoneNumberRegister;
+dynamic formKeyRegister;
 
 void cleanInputFields(signUpFullNameInputController, signUpEmailInputController,
     signUpPhoneNumberInputController, signUpPasswordInputController) {
@@ -42,9 +43,9 @@ SizedBox registerButton(BuildContext context) {
       emailRegister = signUpEmailInputController.text;
       passwordRegister = signUpPasswordInputController.text;
       phoneNumberRegister = signUpPhoneNumberInputController.text;
-      signUpRegisterFormKey = signUpRegisterFormKey;
+      formKeyRegister = signUpRegisterFormKey;
       onPressedRegister(context, fullNameRegister, emailRegister,
-          passwordRegister, phoneNumberRegister, signUpRegisterFormKey);
+          passwordRegister, phoneNumberRegister, formKeyRegister);
     },
   );
 }
