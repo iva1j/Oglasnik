@@ -630,7 +630,9 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                         .endsWith(widget.query.toLowerCase())) ||
                 element['productName']
                     .toLowerCase()
-                    .contains(' ' + widget.query.toLowerCase() + ' ')) &&
+                    .contains(' ' + widget.query.toLowerCase() + ' ') ||
+                element['productName'].toString().toLowerCase() ==
+                    widget.query.toLowerCase()) &&
             !selectedProducts
                 .contains(element)) //Iva Elvir, omogucuje se ispis artikla bez
           ///obzira da li je user unio veliko ili malo slovo u search
@@ -638,11 +640,6 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
       });
     } else {
       products.forEach((element) {
-        //pitanje je da li zelimo npr. na pum izbaciti sve artikle koji u nazivu imaju pum ili samo one koji u nazivu
-        //imaju rijec pum
-/*
-        if (element['productName'].toLowerCase().contains(widget.query
-            .toLowerCase())) */
         if ((element['productName']
                     .toLowerCase()
                     .contains(widget.query.toLowerCase() + ' ') &&
@@ -659,8 +656,9 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                     .endsWith(widget.query.toLowerCase())) ||
             element['productName']
                 .toLowerCase()
-                .contains(' ' + widget.query.toLowerCase() + ' '))
-          selectedProducts.add(element);
+                .contains(' ' + widget.query.toLowerCase() + ' ') ||
+            element['productName'].toString().toLowerCase() ==
+                widget.query.toLowerCase()) selectedProducts.add(element);
       });
     }
   }
