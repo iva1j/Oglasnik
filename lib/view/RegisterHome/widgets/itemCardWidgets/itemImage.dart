@@ -2,7 +2,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 
-class ItemImage extends StatelessWidget {
+class ItemImage extends StatefulWidget {
   const ItemImage({
     Key key,
     @required this.img,
@@ -10,6 +10,11 @@ class ItemImage extends StatelessWidget {
 
   final String img;
 
+  @override
+  _ItemImageState createState() => _ItemImageState();
+}
+
+class _ItemImageState extends State<ItemImage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +27,9 @@ class ItemImage extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
             fit: BoxFit.cover,
-            image: img == "" ? AssetImage(noPhoto) : NetworkImage(img)),
+            image: widget.img == ""
+                ? AssetImage(noPhoto)
+                : NetworkImage(widget.img)),
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
         color: Colors.redAccent,
       ),
