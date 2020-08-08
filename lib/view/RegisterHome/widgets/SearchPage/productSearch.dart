@@ -631,7 +631,8 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                 element['productName']
                     .toLowerCase()
                     .contains(' ' + widget.query.toLowerCase() + ' ') ||
-                element['productName'] == widget.query) &&
+                element['productName'].toString().toLowerCase() ==
+                    widget.query.toLowerCase()) &&
             !selectedProducts
                 .contains(element)) //Iva Elvir, omogucuje se ispis artikla bez
           ///obzira da li je user unio veliko ili malo slovo u search
@@ -656,8 +657,8 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
             element['productName']
                 .toLowerCase()
                 .contains(' ' + widget.query.toLowerCase() + ' ') ||
-            element['productName'] == widget.query)
-          selectedProducts.add(element);
+            element['productName'].toString().toLowerCase() ==
+                widget.query.toLowerCase()) selectedProducts.add(element);
       });
     }
   }
