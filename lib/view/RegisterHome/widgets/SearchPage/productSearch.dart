@@ -631,9 +631,20 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
       });
     } else {
       products.forEach((element) {
+        //pitanje je da li zelimo npr. na pum izbaciti sve artikle koji u nazivu imaju pum ili samo one koji u nazivu
+        //imaju rijec pum
+/*
         if (element['productName'].toLowerCase().contains(widget.query
-            .toLowerCase())) //Iva Elvir, omogucuje se ispis artikla bez
-          ///obzira da li je user unio veliko ili malo slovo u search
+            .toLowerCase())) */
+        if (element['productName']
+                .toLowerCase()
+                .contains(widget.query.toLowerCase() + ' ') ||
+            element['productName']
+                .toLowerCase()
+                .contains(' ' + widget.query.toLowerCase()) ||
+            element['productName']
+                .toLowerCase()
+                .contains(' ' + widget.query.toLowerCase() + ' '))
           selectedProducts.add(element);
       });
     }
