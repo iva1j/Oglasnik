@@ -171,7 +171,6 @@ bool allowUserToRegister = true;
 //final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
 //final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
 GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
 
 //final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();

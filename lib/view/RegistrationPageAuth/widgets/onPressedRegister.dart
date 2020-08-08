@@ -26,23 +26,19 @@ class _RegisterButtonState extends State<RegisterButton> {
   TextEditingController passwordInputController;
 
   @override
-  initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container();
   }
 }
 
 void onPressedRegister(BuildContext context, String fullName, String email,
-    String password, String phoneNumber, dynamic formKey) {
+    String password, String phoneNumber, dynamic signUpRegisterFormKey) {
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   if (!isOnline) {
     Timer(Duration(seconds: 1), () {
-      if (formKey.currentState.validate() && allowUserToRegister) {
+      if (signUpRegisterFormKey.currentState.validate() &&
+          allowUserToRegister) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           signUpPhoneNumberInputController.clear();
           signUpPasswordInputController.clear();

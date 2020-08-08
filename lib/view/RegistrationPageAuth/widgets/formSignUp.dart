@@ -1,18 +1,17 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:flutter/material.dart';
 
 class FormSignUp extends StatefulWidget {
   const FormSignUp({
     Key key,
-    @required GlobalKey<FormState> registerFormKey,
     @required this.signUpFullNameInputController,
     @required this.signUpEmailInputController,
     @required this.signUpPasswordInputController,
     @required this.signUpPhoneNumberInputController,
-  })  : signUpRegisterFormKey = registerFormKey,
-        super(key: key);
+  }) : super(key: key);
 
-  final GlobalKey<FormState> signUpRegisterFormKey;
   final TextEditingController signUpFullNameInputController;
   final TextEditingController signUpEmailInputController;
   final TextEditingController signUpPasswordInputController;
@@ -26,7 +25,7 @@ class _FormSignUpState extends State<FormSignUp> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: widget.signUpRegisterFormKey,
+        key: signUpRegisterFormKey,
         child: Theme(
           data: ThemeData(
             primaryColor: Colors.black54,

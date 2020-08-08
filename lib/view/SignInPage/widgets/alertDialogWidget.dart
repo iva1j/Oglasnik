@@ -20,12 +20,12 @@ class AlertDialogWidget extends StatefulWidget {
 class _AlertDialogWidgetState extends State<AlertDialogWidget> {
   @override
   void initState() {
-    alertDialogInitControllers();
+    //alertDialogInitControllers();
     super.initState();
   }
 
   void dispose() {
-    alertDialogDispose();
+    //alertDialogDispose();
     super.dispose();
   }
 
@@ -52,7 +52,7 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
             validator: emailAlertDialogValidation,
             controller: emailInputControllerAlertDialog,
           ),
-        ), 
+        ),
       ),
       actions: <Widget>[
         Container(

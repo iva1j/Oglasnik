@@ -23,7 +23,9 @@ TextEditingController productTagController;
 TextEditingController productDescController;
 TextEditingController productPriceController;
 
-// GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
+
 // TextEditingController signUpFullNameInputController;
 // TextEditingController signUpPhoneNumberInputController;
 // TextEditingController signUpEmailInputController;

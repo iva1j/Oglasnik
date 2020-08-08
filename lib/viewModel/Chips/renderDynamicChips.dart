@@ -47,7 +47,7 @@ renderDynamicChips(BuildContext context, dynamicChipPressed) {
                   title: FilterFlush().naslov,
                   //message: "Ne moze biti vise od 3 odabrana grada",
                   isDismissible: false,
-                  //animationDuration: Duration(milliseconds: 500),
+                  animationDuration: Duration(milliseconds: 800),
                   blockBackgroundInteraction: true,
                   icon: Icon(
                     Icons.error,
@@ -57,7 +57,7 @@ renderDynamicChips(BuildContext context, dynamicChipPressed) {
                   backgroundColor: mainAppColor,
                   barBlur: 10,
 
-                  duration: Duration(milliseconds: 1200),
+                  duration: Duration(seconds: 3),
                   flushbarPosition: FlushbarPosition.BOTTOM,
                   boxShadows: [
                     BoxShadow(

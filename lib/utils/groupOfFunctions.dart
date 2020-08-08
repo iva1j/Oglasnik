@@ -25,22 +25,25 @@ registerPageInitControllers() {
   signUpPhoneNumberInputController = new TextEditingController();
   signUpEmailInputController = new TextEditingController();
   signUpPasswordInputController = new TextEditingController();
-  signUpRegisterFormKey = GlobalKey<FormState>();
 }
 
 registerPageDispose() {
+  signUpFullNameInputController.dispose();
+  signUpEmailInputController.dispose();
+  signUpPhoneNumberInputController.dispose();
+  signUpPasswordInputController.dispose();
   signUpRegisterFormKey.currentState.dispose();
 }
 
-alertDialogInitControllers() {
-  alertFormKey = GlobalKey<FormState>();
-  emailInputControllerAlertDialog = new TextEditingController();
-}
+// alertDialogInitControllers() {
+//   alertFormKey = GlobalKey<FormState>();
+//   emailInputControllerAlertDialog = new TextEditingController();
+// }
 
-alertDialogDispose() {
-  alertFormKey = GlobalKey<FormState>();
-  emailInputControllerAlertDialog.dispose();
-}
+// alertDialogDispose() {
+//   alertFormKey = GlobalKey<FormState>();
+//   emailInputControllerAlertDialog.dispose();
+// }
 
 passwordChangeInitControllers() {
   emailInputController = new TextEditingController();
@@ -50,8 +53,8 @@ passwordChangeInitControllers() {
 }
 
 passwordChangeDispose() {
-  // passwordChangeFormKey.currentState.dispose();
-  //emailInputController.dispose();
+  passwordChangeFormKey.currentState.dispose();
+  emailInputController.dispose();
   tokenInputController.dispose();
   confirmPasswordInputController.dispose();
 }
@@ -75,7 +78,6 @@ dropDownInitialValueState() {
 loginInitControllers() {
   signInEmailInputController = new TextEditingController();
   signInPasswordInputController = new TextEditingController();
-  signInRegisterFormKey = GlobalKey<FormState>();
 }
 
 loginDisposeControllers() {

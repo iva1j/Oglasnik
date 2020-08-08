@@ -55,14 +55,14 @@ void cleanLoginInputFields() {
 ///funkcija kojom provjeravamo da li cemo pustiti usera da se sign in
 ///prvobitno se provjerava status konekcije sa isOnline, ako jeste
 ///provjerava se da li su inputi ispravni i da li postoji u bazi preko varijable status
-void onPressedSignInModel(
-    BuildContext context, String email, String password, dynamic formKey) {
+void onPressedSignInModel(BuildContext context, String email, String password,
+    dynamic signInRegisterFormKey) {
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   print('Internet konekcija dostupna: ' + hasInternetConnection.toString());
   if (!isOnline) {
     Timer(Duration(seconds: 1), () {
-      if (formKey.currentState.validate() && status == true) {
+      if (signInRegisterFormKey.currentState.validate() && status == true) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           signInEmailInputController.clear();
           signInPasswordInputController.clear();
