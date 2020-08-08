@@ -140,24 +140,29 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                             ///jeste onda ga jednostavno ispisujemo u item card-u. Ako nije onda
                                                             ///uzimamo njegovih prvih 150 character-a, uklanjamo whitespace-ove
                                                             ///i dodajemo mu ... na kraj.
-                                                            child: selectedProducts[index][
-                                                                            'productDesc']
+                                                            child: selectedProducts[index]['productDesc']
                                                                         .toString()
                                                                         .trim()
                                                                         .length <
                                                                     150
                                                                 ? itemCardDescription(
-                                                                    selectedProducts[
-                                                                            index][
+                                                                    selectedProducts[index]
+                                                                        [
                                                                         'productDesc'])
-                                                                : itemCardDescription(selectedProducts[index][
-                                                                            'productDesc']
+                                                                : selectedProducts[index]['productDesc']
                                                                         .toString()
+                                                                        .trim()
                                                                         .substring(
                                                                             0,
-                                                                            selectedProducts[index]['productDesc'].toString().substring(0, 150).lastIndexOf('.'))
-                                                                        .trim() +
-                                                                    "..."),
+                                                                            150)
+                                                                        .contains(
+                                                                            '.')
+                                                                    ? itemCardDescription(selectedProducts[index]['productDesc']
+                                                                            .toString()
+                                                                            .substring(0, selectedProducts[index]['productDesc'].toString().substring(0, 150).lastIndexOf('.'))
+                                                                            .trim() +
+                                                                        "...")
+                                                                    : itemCardDescription(selectedProducts[index]['productDesc'].toString().substring(0, 150) + '...'),
                                                           ),
                                                         ],
                                                       ),
@@ -258,20 +263,23 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                                         .length <
                                                                     150
                                                                 ? itemCardDescription(
-                                                                    selectedProducts[
-                                                                            index][
+                                                                    selectedProducts[index]
+                                                                        [
                                                                         'productDesc'])
-                                                                : itemCardDescription(selectedProducts[index][
-                                                                            'productDesc']
+                                                                : selectedProducts[index]['productDesc']
                                                                         .toString()
+                                                                        .trim()
                                                                         .substring(
                                                                             0,
                                                                             150)
-                                                                        .substring(
-                                                                            0,
-                                                                            selectedProducts[index]['productDesc'].toString().substring(0, 150).lastIndexOf('.'))
-                                                                        .trim() +
-                                                                    "..."),
+                                                                        .contains(
+                                                                            '.')
+                                                                    ? itemCardDescription(selectedProducts[index]['productDesc']
+                                                                            .toString()
+                                                                            .substring(0, selectedProducts[index]['productDesc'].toString().substring(0, 150).lastIndexOf('.'))
+                                                                            .trim() +
+                                                                        "...")
+                                                                    : itemCardDescription(selectedProducts[index]['productDesc'].toString().substring(0, 150) + '...'),
                                                           ),
                                                         ],
                                                       ),
@@ -398,20 +406,23 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                                         .length <
                                                                     150
                                                                 ? itemCardDescription(
-                                                                    selectedProducts[
-                                                                            index][
+                                                                    selectedProducts[index]
+                                                                        [
                                                                         'productDesc'])
-                                                                : itemCardDescription(selectedProducts[index][
-                                                                            'productDesc']
+                                                                : selectedProducts[index]['productDesc']
                                                                         .toString()
+                                                                        .trim()
                                                                         .substring(
                                                                             0,
                                                                             150)
-                                                                        .substring(
-                                                                            0,
-                                                                            selectedProducts[index]['productDesc'].toString().substring(0, 150).lastIndexOf('.'))
-                                                                        .trim() +
-                                                                    "..."),
+                                                                        .contains(
+                                                                            '.')
+                                                                    ? itemCardDescription(selectedProducts[index]['productDesc']
+                                                                            .toString()
+                                                                            .substring(0, selectedProducts[index]['productDesc'].toString().substring(0, 150).lastIndexOf('.'))
+                                                                            .trim() +
+                                                                        "...")
+                                                                    : itemCardDescription(selectedProducts[index]['productDesc'].toString().substring(0, 150) + '...'),
                                                           ),
                                                         ],
                                                       ),
@@ -512,20 +523,23 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                                                         .length <
                                                                     150
                                                                 ? itemCardDescription(
-                                                                    selectedProducts[
-                                                                            index][
+                                                                    selectedProducts[index]
+                                                                        [
                                                                         'productDesc'])
-                                                                : itemCardDescription(selectedProducts[index][
-                                                                            'productDesc']
+                                                                : selectedProducts[index]['productDesc']
                                                                         .toString()
+                                                                        .trim()
                                                                         .substring(
                                                                             0,
                                                                             150)
-                                                                        .substring(
-                                                                            0,
-                                                                            selectedProducts[index]['productDesc'].toString().substring(0, 150).lastIndexOf('.'))
-                                                                        .trim() +
-                                                                    "..."),
+                                                                        .contains(
+                                                                            '.')
+                                                                    ? itemCardDescription(selectedProducts[index]['productDesc']
+                                                                            .toString()
+                                                                            .substring(0, selectedProducts[index]['productDesc'].toString().substring(0, 150).lastIndexOf('.'))
+                                                                            .trim() +
+                                                                        "...")
+                                                                    : itemCardDescription(selectedProducts[index]['productDesc'].toString().substring(0, 150) + '...'),
                                                           ),
                                                         ],
                                                       ),
@@ -597,8 +611,24 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
     ///biti uradjeno posto korisnik moze unijeti npr. i puma/Puma/PUMA itd. i u svakom slucaju bi trebalo da ispise
     ///proizvode brand-a puma.
 
+//dopisati jos
     if (brandEntered) {
       selectedProducts.addAll(products);
+      products.forEach((element) {
+        if ((element['productName']
+                    .toLowerCase()
+                    .contains(widget.query.toLowerCase() + ' ') ||
+                element['productName']
+                    .toLowerCase()
+                    .contains(' ' + widget.query.toLowerCase()) ||
+                element['productName']
+                    .toLowerCase()
+                    .contains(' ' + widget.query.toLowerCase() + ' ')) &&
+            !selectedProducts
+                .contains(element)) //Iva Elvir, omogucuje se ispis artikla bez
+          ///obzira da li je user unio veliko ili malo slovo u search
+          selectedProducts.add(element);
+      });
     } else {
       products.forEach((element) {
         if (element['productName'].toLowerCase().contains(widget.query
