@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/categoryBrands.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/getAllBrands.dart';
 
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,8 @@ Future<void> splashScreenRouter() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString('email');
+  globals.allBrands = await getAllBrands();
+  print(globals.allBrands);
   globals.email = email;
 
   globals.registeredGlob = false;
