@@ -68,6 +68,7 @@ bool flushbarChecker = false;
 var categoryBrands = Map();
 List categoryBrand = [];
 List numberofBrands = [];
+var allBrands;
 //var catBrands = Map<String, List<String>>();
 
 List products = [];
