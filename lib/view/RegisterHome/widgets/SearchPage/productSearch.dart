@@ -611,16 +611,23 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
     ///biti uradjeno posto korisnik moze unijeti npr. i puma/Puma/PUMA itd. i u svakom slucaju bi trebalo da ispise
     ///proizvode brand-a puma.
 
-//dopisati jos
     if (brandEntered) {
       selectedProducts.addAll(products);
       products.forEach((element) {
-        if ((element['productName']
-                    .toLowerCase()
-                    .contains(widget.query.toLowerCase() + ' ') ||
-                element['productName']
-                    .toLowerCase()
-                    .contains(' ' + widget.query.toLowerCase()) ||
+        if (((element['productName']
+                        .toLowerCase()
+                        .contains(widget.query.toLowerCase() + ' ') &&
+                    element['productName']
+                        .toLowerCase()
+                        .toString()
+                        .startsWith(widget.query.toLowerCase())) ||
+                (element['productName']
+                        .toLowerCase()
+                        .contains(' ' + widget.query.toLowerCase()) &&
+                    element['productName']
+                        .toLowerCase()
+                        .toString()
+                        .endsWith(widget.query.toLowerCase())) ||
                 element['productName']
                     .toLowerCase()
                     .contains(' ' + widget.query.toLowerCase() + ' ')) &&
@@ -636,12 +643,20 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
 /*
         if (element['productName'].toLowerCase().contains(widget.query
             .toLowerCase())) */
-        if (element['productName']
-                .toLowerCase()
-                .contains(widget.query.toLowerCase() + ' ') ||
-            element['productName']
-                .toLowerCase()
-                .contains(' ' + widget.query.toLowerCase()) ||
+        if ((element['productName']
+                    .toLowerCase()
+                    .contains(widget.query.toLowerCase() + ' ') &&
+                element['productName']
+                    .toLowerCase()
+                    .toString()
+                    .startsWith(widget.query.toLowerCase())) ||
+            (element['productName']
+                    .toLowerCase()
+                    .contains(' ' + widget.query.toLowerCase()) &&
+                element['productName']
+                    .toLowerCase()
+                    .toString()
+                    .endsWith(widget.query.toLowerCase())) ||
             element['productName']
                 .toLowerCase()
                 .contains(' ' + widget.query.toLowerCase() + ' '))
