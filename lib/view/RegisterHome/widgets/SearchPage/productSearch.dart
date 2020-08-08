@@ -324,7 +324,7 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
     /*Korištenjem forEach metode popunjavamo selectedProducts listu, ,na način da userov unos
     u search (query) , poredimo sa 'productName' koji je neki user unio pri kreiranju artikla */
     products.forEach((element) {
-      if (element['productName'].toLowerCase().startsWith(widget.query
+      if (element['productName'].toLowerCase().contains(widget.query
           .toLowerCase())) //Iva Elvir, omogucuje se ispis artikla bez
         ///obzira da li je user unio veliko ili malo slovo u search
         selectedProducts.add(element);
