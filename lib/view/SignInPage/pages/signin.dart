@@ -129,9 +129,6 @@ class _SigninPageState extends State<SigninPage> {
                   margin: EdgeInsets.all(45),
                   child: Column(
                     children: <Widget>[
-                      Container(
-                          child: AuthService().allowPasswordChange(
-                              context, emailInputControllerAlertDialog.text)),
                       LogoContainer(),
                       WelcomeScreen(),
                       PrijavaWelcomeScreen(),

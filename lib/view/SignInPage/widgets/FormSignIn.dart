@@ -73,9 +73,10 @@ class _FormSignInState extends State<FormSignIn> {
                         signInPasswordInputController.text),
                   ),
                   Container(child: AuthService().checkStatus(context, email)),
-                  Container(
-                      child: AuthService().allowPasswordChange(
-                          context, emailInputControllerAlertDialog.text))
+                  // Container(
+                  //   child: AuthService().allowPasswordChange(
+                  //       context, emailInputControllerAlertDialog.text),
+                  // )
                 ],
               )),
               Container(
