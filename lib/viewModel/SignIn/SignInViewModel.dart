@@ -17,12 +17,13 @@ import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.
 
 TextEditingController signInEmailInputController;
 TextEditingController signInPasswordInputController;
+TextEditingController emailInputControllerAlertDialog;
 
 ///When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
-  // Container(
-  //     child: AuthService()
-  //         .allowPasswordChange(context, emailInputControllerAlertDialog.text));
+  Container(
+      child: AuthService()
+          .allowPasswordChange(context, emailInputControllerAlertDialog.text));
   AuthService().onPressedAlertDialog(
       context, emailInputControllerAlertDialog.text, tokenCode);
 }

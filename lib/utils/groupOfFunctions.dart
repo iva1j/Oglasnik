@@ -51,7 +51,7 @@ passwordChangeInitControllers() {
   emailInputController = new TextEditingController();
   tokenInputController = new TextEditingController();
   confirmPasswordInputController = new TextEditingController();
-  //passwordChangeFormKey = GlobalKey<FormState>();
+  passwordChangeFormKey = GlobalKey<FormState>();
 }
 
 passwordChangeDispose() {
@@ -59,6 +59,7 @@ passwordChangeDispose() {
   emailInputController.dispose();
   tokenInputController.dispose();
   confirmPasswordInputController.dispose();
+  
 }
 
 pageViewInitControllers() {
@@ -78,6 +79,7 @@ dropDownInitialValueState() {
 }
 
 loginInitControllers() {
+  emailInputControllerAlertDialog = new TextEditingController();
   signInEmailInputController = new TextEditingController();
   signInPasswordInputController = new TextEditingController();
   signInRegisterFormKey = GlobalKey<FormState>();

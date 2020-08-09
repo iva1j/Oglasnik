@@ -7,6 +7,7 @@ import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/sendMail.dart';
+import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -58,6 +59,7 @@ class AuthService extends ChangeNotifier {
   onPressedAlertDialog(BuildContext context, String email, String token) {
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
+
     Timer(Duration(milliseconds: 1000), () {
       if (alertFormKey.currentState.validate() &&
           allowUserToChangePassword == true) {
@@ -91,6 +93,9 @@ class AuthService extends ChangeNotifier {
     String passwordConfirm,
     String token,
   ) {
+    print('token: ' + token.toString());
+    print('password: ' + newPassword.toString());
+    print('confirm password: ' + passwordConfirm.toString());
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
     Timer(Duration(seconds: 1), () {
@@ -110,12 +115,6 @@ class AuthService extends ChangeNotifier {
         passwordInputController.clear();
         confirmPasswordInputController.clear();
         tokenInputController.clear();
-        // emailInputControllerAlertDialog.clear();
-        // passwordInputController.dispose();
-        // confirmPasswordInputController.dispose();
-        //tokenInputController.dispose();
-        // emailInputControllerAlertDialog.dispose();
-        // emailInputController.dispose();
         Navigator.pushReplacement(
           context,
           PageRouteBuilder(
@@ -132,9 +131,10 @@ class AuthService extends ChangeNotifier {
         });
         nepoklapanje = true;
         print('lozinke se ne poklapaju');
-      } else {
-        print('Nešto nije uredu, molimo provjerite i ispravite grešku');
       }
+      //  else {
+      //   print('Nešto nije uredu, molimo provjerite i ispravite grešku');
+      // }
     });
   }
 

@@ -5,6 +5,7 @@ import 'package:Oglasnik/utils/shared/sharedvalidation/signinValidation/emailAle
 import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
+import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 
 class AlertDialogWidget extends StatefulWidget {
@@ -19,12 +20,14 @@ class AlertDialogWidget extends StatefulWidget {
 class _AlertDialogWidgetState extends State<AlertDialogWidget> {
   @override
   void initState() {
-    alertDialogInitControllers();
+    //alertDialogInitControllers();
+    emailInputControllerAlertDialog = new TextEditingController();
+    setState(() {});
     super.initState();
   }
 
   void dispose() {
-    //alertDialogDispose();
+    emailInputControllerAlertDialog.clear();
     super.dispose();
   }
 
