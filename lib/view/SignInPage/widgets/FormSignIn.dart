@@ -6,6 +6,7 @@ import 'package:Oglasnik/utils/shared/sharedTextFields.dart/SigninTextFields/pas
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
@@ -13,7 +14,6 @@ import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/cupertino.dart';
 
 String email, password;
-dynamic formKey;
 
 // ignore: must_be_immutable
 class FormSignIn extends StatefulWidget {
@@ -31,20 +31,6 @@ class FormSignIn extends StatefulWidget {
 }
 
 class _FormSignInState extends State<FormSignIn> {
-  @override
-  void initState() {
-    loginInitControllers();
-    // InternetConnection();
-    //  InternetConnection().checkForInternet();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    loginDisposeControllers();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -100,8 +86,8 @@ class _FormSignInState extends State<FormSignIn> {
                     allowAutoValidate = true;
                     email = widget.signInEmailInputController.text;
                     password = widget.signInPasswordInputController.text;
-                    formKey = signInRegisterFormKey;
-                    onPressedSignInModel(context, email, password, formKey);
+
+                    onPressedSignInModel(context, email, password);
                   },
                 ),
               ),

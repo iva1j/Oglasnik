@@ -2,6 +2,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 
@@ -28,30 +29,34 @@ registerPageInitControllers() {
   signUpRegisterFormKey = GlobalKey<FormState>();
 }
 
-registerPageDispose() {
-  signUpRegisterFormKey.currentState.dispose();
-}
+// registerPageDispose() {
+//   signUpEmailInputController.dispose();
+//   signUpFullNameInputController.dispose();
+//   signUpPasswordInputController.dispose();
+//   signUpPhoneNumberInputController.dispose();
+//   signUpRegisterFormKey.currentState.dispose();
+// }
 
-alertDialogInitControllers() {
-  alertFormKey = GlobalKey<FormState>();
-  emailInputControllerAlertDialog = new TextEditingController();
-}
+// alertDialogInitControllers() {
+//   //alertFormKey = GlobalKey<FormState>();
+//   emailInputControllerAlertDialog = new TextEditingController();
+// }
 
-alertDialogDispose() {
-  alertFormKey = GlobalKey<FormState>();
-  emailInputControllerAlertDialog.dispose();
-}
+// alertDialogDispose() {
+//   alertFormKey = GlobalKey<FormState>();
+//   emailInputControllerAlertDialog.dispose();
+// }
 
 passwordChangeInitControllers() {
   emailInputController = new TextEditingController();
   tokenInputController = new TextEditingController();
   confirmPasswordInputController = new TextEditingController();
-  passwordChangeFormKey = GlobalKey<FormState>();
+  //passwordChangeFormKey = GlobalKey<FormState>();
 }
 
 passwordChangeDispose() {
-  // passwordChangeFormKey.currentState.dispose();
-  //emailInputController.dispose();
+  passwordChangeFormKey.currentState.dispose();
+  emailInputController.dispose();
   tokenInputController.dispose();
   confirmPasswordInputController.dispose();
 }
@@ -78,8 +83,8 @@ loginInitControllers() {
   signInRegisterFormKey = GlobalKey<FormState>();
 }
 
-loginDisposeControllers() {
-  signInEmailInputController.dispose();
-  signInPasswordInputController.dispose();
-  signInRegisterFormKey.currentState.dispose();
-}
+// loginDisposeControllers() {
+//   signInEmailInputController.dispose();
+//   signInPasswordInputController.dispose();
+//   signInRegisterFormKey.currentState.dispose();
+// }

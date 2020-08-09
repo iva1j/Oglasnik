@@ -43,9 +43,8 @@ SizedBox registerButton(BuildContext context) {
       emailRegister = signUpEmailInputController.text;
       passwordRegister = signUpPasswordInputController.text;
       phoneNumberRegister = signUpPhoneNumberInputController.text;
-      formKeyRegister = signUpRegisterFormKey;
       onPressedRegister(context, fullNameRegister, emailRegister,
-          passwordRegister, phoneNumberRegister, formKeyRegister);
+          passwordRegister, phoneNumberRegister);
     },
   );
 }

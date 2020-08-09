@@ -1,10 +1,11 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/signinValidation/emailAlertDialogValidator.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
-import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 //dynamic formAlertKey;
 
@@ -20,12 +21,12 @@ class AlertDialogWidget extends StatefulWidget {
 class _AlertDialogWidgetState extends State<AlertDialogWidget> {
   @override
   void initState() {
-    alertDialogInitControllers();
+    //alertDialogInitControllers();
     super.initState();
   }
 
   void dispose() {
-    alertDialogDispose();
+    //alertDialogDispose();
     super.dispose();
   }
 
@@ -52,7 +53,7 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
             validator: emailAlertDialogValidation,
             controller: emailInputControllerAlertDialog,
           ),
-        ), 
+        ),
       ),
       actions: <Widget>[
         Container(

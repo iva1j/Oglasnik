@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PasswordChangeTextFields/naslovPromijeniSifru.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PasswordChangeTextFields/novaLozinkaTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PasswordChangeTextFields/potvrdiLozinkuTextField.dart';

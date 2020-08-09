@@ -168,15 +168,6 @@ bool tokenstatus = false;
 var nepoklapanje = false;
 bool allowUserToChangePassword = false;
 bool allowUserToRegister = true;
-//final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
-//final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
-
-//final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
-//GlobalKey<FormState> globalKey() => registerFormKey;
-GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
 
 class InputFields {
   TextEditingController emailInputController = new TextEditingController();

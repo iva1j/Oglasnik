@@ -10,12 +10,10 @@ import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
-import 'package:connectivity/connectivity.dart';
 import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:Oglasnik/utils/globals.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
-GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
 TextEditingController signUpFullNameInputController;
 TextEditingController signUpPhoneNumberInputController;
 TextEditingController signUpEmailInputController;
@@ -35,7 +33,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   initState() {
-    InternetConnection();
+    //InternetConnection();
     registerPageInitControllers();
     // _connectivity.initialise();
     // _connectivity.myStream.listen((source) {
@@ -46,11 +44,11 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void dispose() {
-    registerPageDispose();
-    connectivityInitmethod();
-    internetConnectivity.myStream.listen((source) {
-      setState(() => internetSource = source);
-    });
+    //registerPageDispose();
+    // connectivityInitmethod();
+    // internetConnectivity.myStream.listen((source) {
+    //   setState(() => internetSource = source);
+    // });
     super.dispose();
   }
 
@@ -146,7 +144,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       SignUpFormName(),
                       FormSignUp(
-                          registerFormKey: signUpRegisterFormKey,
                           signUpFullNameInputController:
                               signUpFullNameInputController,
                           signUpEmailInputController:
