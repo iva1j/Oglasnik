@@ -22,13 +22,14 @@ void initCategoryBrands() async {
 
 ///this function is used in FutureBuilder as a Future function
 ///
-///it's checking userInput that is stored in [brandName] in all products 
+///it's checking userInput that is stored in [brandName] in all products
 ///from database ['productBrand'] field in [products] collection
 ///
-numberOfProductsPerBrandTest(String brandName) async {
+numberOfProductsPerBrandTest(String brandName, String categoryName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
       .collection('products')
       .where('productBrand', isEqualTo: brandName)
+      .where('productCategory', isEqualTo: categoryName)
       .getDocuments();
   final List<DocumentSnapshot> documents = productsQuery.documents;
   return documents.length;
