@@ -4,7 +4,8 @@ import 'package:Oglasnik/view/RegisterHome/widgets/categoryCardRow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 
-Column threeCategoriesWidget(int index, List<String> names, List counts) {
+Column threeCategoriesWidget(
+    int index, List<String> names, List counts, String categoryName) {
   return Column(children: <Widget>[
     CategoryCardRow(
       icon: Transform.scale(
@@ -13,6 +14,7 @@ Column threeCategoriesWidget(int index, List<String> names, List counts) {
       ),
       name: names[0],
       count: counts[0].toString(),
+      categoryName: categoryName,
     ),
     CategoryCardRow(
       icon: Transform.scale(
@@ -21,6 +23,7 @@ Column threeCategoriesWidget(int index, List<String> names, List counts) {
       ),
       name: names[1],
       count: counts[1].toString(),
+      categoryName: categoryName,
     ),
     CategoryCardRow(
       icon: Transform.scale(
@@ -29,6 +32,7 @@ Column threeCategoriesWidget(int index, List<String> names, List counts) {
       ),
       name: names[2],
       count: counts[2].toString(),
+      categoryName: categoryName,
     ),
   ]);
 }
