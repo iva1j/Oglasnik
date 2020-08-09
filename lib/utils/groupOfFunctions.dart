@@ -37,15 +37,15 @@ registerPageInitControllers() {
 //   signUpRegisterFormKey.currentState.dispose();
 // }
 
-// alertDialogInitControllers() {
-//   //alertFormKey = GlobalKey<FormState>();
-//   emailInputControllerAlertDialog = new TextEditingController();
-// }
+alertDialogInitControllers() {
+  //alertFormKey = GlobalKey<FormState>();
+  emailInputControllerAlertDialog = new TextEditingController();
+}
 
-// alertDialogDispose() {
-//   alertFormKey = GlobalKey<FormState>();
-//   emailInputControllerAlertDialog.dispose();
-// }
+alertDialogDispose() {
+  alertFormKey = GlobalKey<FormState>();
+  emailInputControllerAlertDialog.dispose();
+}
 
 passwordChangeInitControllers() {
   emailInputController = new TextEditingController();
