@@ -59,7 +59,6 @@ passwordChangeDispose() {
   emailInputController.dispose();
   tokenInputController.dispose();
   confirmPasswordInputController.dispose();
-  
 }
 
 pageViewInitControllers() {
