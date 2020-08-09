@@ -71,7 +71,7 @@ class AuthService extends ChangeNotifier {
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
           return PasswordChange(email);
         }));
-        sendemail();
+        //sendemail();
         print('Za korisnika: ' +
             email +
             ' uspješno generisan token(na mail i firestore poslan), a on je: ' +

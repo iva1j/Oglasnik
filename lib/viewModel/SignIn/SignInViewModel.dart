@@ -54,32 +54,35 @@ void cleanLoginInputFields() {
 ///prvobitno se provjerava status konekcije sa isOnline, ako jeste
 ///provjerava se da li su inputi ispravni i da li postoji u bazi preko varijable status
 void onPressedSignInModel(
-    BuildContext context, String email, String password, dynamic formKey) {
+  BuildContext context,
+  String email,
+  String password,
+) {
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   print('Internet konekcija dostupna: ' + hasInternetConnection.toString());
-  if (!isOnline) {
-    Timer(Duration(seconds: 1), () {
-      if (formKey.currentState.validate() && status == true) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          signInEmailInputController.clear();
-          signInPasswordInputController.clear();
-        });
-        print('Logged in');
-        globals.email = email;
-        loginPrefs(context, email);
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) {
-            registeredGlob = false;
-            return RegisteredHome();
-          }),
-        );
-      } else {
-        print('Email ili password nisu tacni');
-      }
-    });
-  } else
-    displayInternetDialog(context);
+  //if (!isOnline) {
+  Timer(Duration(seconds: 1), () {
+    if (signInRegisterFormKey.currentState.validate() && status == true) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        signInEmailInputController.clear();
+        signInPasswordInputController.clear();
+      });
+      print('Logged in');
+      globals.email = email;
+      loginPrefs(context, email);
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) {
+          registeredGlob = false;
+          return RegisteredHome();
+        }),
+      );
+    } else {
+      print('Email ili password nisu tacni');
+    }
+  });
+  // } else
+  //   displayInternetDialog(context);
 }
 
 ///Metoda kojom preko SharedPrefernces zapamtimo koji se user log in
