@@ -169,68 +169,141 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
 //nije moguće refaktorisati zbog privatnih varijabli. Check it out
   SizedBox pageViewSubmitButton(BuildContext context) {
-    return button("Završi", () async {
-      FocusScope.of(context).requestFocus(new FocusNode());
-      // if (productIsOnline != false) {
-      if (pageController.page == 4) {
-        if (productPriceFormKey.currentState.validate()) {
-          widget.onFlatButtonPressed();
-          setState(() => loading = true);
-          createdGlob = true;
-          if (img1 != immutableImg1)
-            await upload(img1, pathGlobal1, 1)
-                .then((value) => productImg1 = value);
-          if (img2 != immutableImg2)
-            await upload(img2, pathGlobal2, 2)
-                .then((value) => productImg2 = value);
-          if (img3 != immutableImg3)
-            await upload(img3, pathGlobal3, 3)
-                .then((value) => productImg3 = value);
-          //showIphoneButton = false;
+    if ((noviNaziv != null ||
+        novaKategorija != noviBrend ||
+        noviGrad != null ||
+        noviOpis != null ||
+        novaCijena != null ||
+        novaLokacija != null ||
+        noviTag != null)) {
+      return button("Završi", () async {
+        FocusScope.of(context).requestFocus(new FocusNode());
+        // if (productIsOnline != false) {
+        if (pageController.page == 4) {
+          if (productPriceFormKey.currentState.validate()) {
+            widget.onFlatButtonPressed();
 
-          productName = productNameController.text;
-          productCategory = dropdownValueCategory;
-          productBrand = dropdownValueBrand;
-          productLocation = dropdownValueCity;
-          productTag = productTagController.text;
-          productDesc = productDescController.text;
-          productprice = productPriceController.text;
+            setState(() => loading = true);
+            // createdGlob = true;
+            // if (img1 != immutableImg1)
+            //   await upload(img1, pathGlobal1, 1)
+            //       .then((value) => productImg1 = value);
+            // if (img2 != immutableImg2)
+            //   await upload(img2, pathGlobal2, 2)
+            //       .then((value) => productImg2 = value);
+            // if (img3 != immutableImg3)
+            //   await upload(img3, pathGlobal3, 3)
+            //       .then((value) => productImg3 = value);
 
-          print(email + productName + productTag);
-          await CreateProduct().createProduct(
-            context,
-            email,
-            phoneNumber,
-            productName,
-            productID = randomAlphaNumeric(20),
-            productCategory,
-            productBrand,
-            productLocation,
-            productTag,
-            productDesc,
-            productImg1,
-            productImg2,
-            productImg3,
-            productprice,
-          );
+            noviNaziv = productNameController.text;
+            novaKategorija = dropdownValueCategory;
+            noviBrend = dropdownValueBrand;
+            noviGrad = dropdownValueCity;
+            noviTag = productTagController.text;
+           // noviOpis = productDescController.text;
+            novaCijena = productPriceController.text;
 
-          img1 = immutableImg1;
-          img2 = immutableImg2;
-          img3 = immutableImg3;
-          productImg1 = null;
-          productImg2 = null;
-          productImg3 = null;
-          pathGlobal1 = null;
-          pathGlobal2 = null;
-          pathGlobal3 = null;
-          print('status interneta:' + productIsOnline.toString());
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (_) => RegisteredHome()));
-        } else
-          return null;
-      }
-      // } else
-      // displayInternetDialog(context);
-    });
+            print('update proizvoda: ' + noviNaziv.toString());
+            await CreateProduct().updateProduct(
+              context,
+              email,
+              phoneNumber,
+              noviNaziv,
+              productID = oldProductID,
+              // novaKategorija,
+              // noviBrend,
+              // productLocation,
+              productTag,
+              productDesc,
+              // productImg1,
+              // productImg2,
+              // productImg3,
+              novaCijena,
+            );
+
+            img1 = immutableImg1;
+            img2 = immutableImg2;
+            img3 = immutableImg3;
+            productImg1 = null;
+            productImg2 = null;
+            productImg3 = null;
+            pathGlobal1 = null;
+            pathGlobal2 = null;
+            pathGlobal3 = null;
+            print('status interneta:' + productIsOnline.toString());
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => RegisteredHome()));
+          } else
+            return null;
+        }
+        // } else
+        // displayInternetDialog(context);
+      });
+    } else {
+      return button("Završi", () async {
+        FocusScope.of(context).requestFocus(new FocusNode());
+        // if (productIsOnline != false) {
+        if (pageController.page == 4) {
+          if (productPriceFormKey.currentState.validate()) {
+            widget.onFlatButtonPressed();
+
+            setState(() => loading = true);
+            createdGlob = true;
+            if (img1 != immutableImg1)
+              await upload(img1, pathGlobal1, 1)
+                  .then((value) => productImg1 = value);
+            if (img2 != immutableImg2)
+              await upload(img2, pathGlobal2, 2)
+                  .then((value) => productImg2 = value);
+            if (img3 != immutableImg3)
+              await upload(img3, pathGlobal3, 3)
+                  .then((value) => productImg3 = value);
+            //showIphoneButton = false;
+
+            productName = productNameController.text;
+            productCategory = dropdownValueCategory;
+            productBrand = dropdownValueBrand;
+            productLocation = dropdownValueCity;
+            productTag = productTagController.text;
+            productDesc = productDescController.text;
+            productprice = productPriceController.text;
+
+            print(email + productName + productTag);
+            await CreateProduct().createProduct(
+              context,
+              email,
+              phoneNumber,
+              productName,
+              productID = randomAlphaNumeric(20),
+              productCategory,
+              productBrand,
+              productLocation,
+              productTag,
+              productDesc,
+              productImg1,
+              productImg2,
+              productImg3,
+              productprice,
+            );
+
+            img1 = immutableImg1;
+            img2 = immutableImg2;
+            img3 = immutableImg3;
+            productImg1 = null;
+            productImg2 = null;
+            productImg3 = null;
+            pathGlobal1 = null;
+            pathGlobal2 = null;
+            pathGlobal3 = null;
+            print('status interneta:' + productIsOnline.toString());
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => RegisteredHome()));
+          } else
+            return null;
+        }
+        // } else
+        // displayInternetDialog(context);
+      });
+    }
   }
 }

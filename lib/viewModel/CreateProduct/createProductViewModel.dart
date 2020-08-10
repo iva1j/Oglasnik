@@ -40,12 +40,46 @@ class CreateProduct extends ProductInterface {
     });
     return null;
   }
+
+  Future updateProduct(
+      BuildContext context,
+      String email,
+      phoneNumber,
+      productName,
+      productID,
+      // productCategory,
+      // productBrand,
+      // productLocation,
+      productTag,
+      productDesc,
+      // productImg1,
+      // productImg2,
+      // productImg3,
+      productCijena) {
+    db.collection("products").document(productID).updateData({
+      'productID': productID,
+      'email': email,
+      'phoneNumber': phoneNumber,
+      'productName': productName,
+      'productCategory': productCategory,
+      'productBrand': productBrand,
+      'productLocation': productLocation,
+      'cijena': productCijena,
+      'productTag': productTag,
+      'productFinished': false,
+      'productDesc': productDesc,
+      // 'productImg1': productImg1,
+      // 'productImg2': productImg2,
+      // 'productImg3': productImg3,
+    });
+    return null;
+  }
 }
 
 class UpdateProduct extends UpdateProductInterface {
   @override
   Future updateProduct(String productID) {
-    print('productID je: '+productID.toString());
+    print('productID je: ' + productID.toString());
     db.collection("products").document(productID).updateData({
       'productFinished': true,
     });
