@@ -1,5 +1,7 @@
+import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
@@ -10,6 +12,14 @@ import 'package:Oglasnik/view/PostScreens/Widgets/custom2_dropdown.dart'
     as custom2;
 
 class CategoryPage extends StatefulWidget {
+  const CategoryPage({
+    Key key,
+    @required this.productSnapshot,
+    @required this.editProduct,
+  }) : super(key: key);
+
+  final String editProduct;
+  final Product productSnapshot;
   @override
   _CategoryPageState createState() => _CategoryPageState();
 }
@@ -17,6 +27,13 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
+    if (widget.productSnapshot != null) {
+      dropdownValueCategory = widget.productSnapshot.productCategory;
+      dropdownValueBrand = widget.productSnapshot.productBrand;
+      novaKategorija != null ? dropdownValueCategory = novaKategorija : null;
+      noviBrend != null ? dropdownValueBrand = noviBrend : null;
+    }
+
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
 
@@ -38,7 +55,9 @@ class _CategoryPageState extends State<CategoryPage> {
               padding: EdgeInsets.only(bottom: bottom),
               child: Column(
                 children: <Widget>[
-                  MainTitle(),
+                  // MainTitle(
+                  //   editProduct: widget.editProduct,
+                  // ),
                   Container(
                     margin: EdgeInsets.only(
                       top: SizeConfig.blockSizeVertical * 22,

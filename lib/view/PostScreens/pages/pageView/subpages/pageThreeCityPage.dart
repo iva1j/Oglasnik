@@ -1,3 +1,4 @@
+import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
@@ -7,6 +8,14 @@ import 'package:Oglasnik/view/PostScreens/Widgets/tagsForm.dart';
 import 'package:flutter/material.dart';
 
 class CityPage extends StatefulWidget {
+  const CityPage({
+    Key key,
+    @required this.productSnapshot,
+    @required this.editProduct,
+  }) : super(key: key);
+
+  final String editProduct;
+  final Product productSnapshot;
   @override
   _CityPageState createState() => _CityPageState();
 }
@@ -14,6 +23,7 @@ class CityPage extends StatefulWidget {
 class _CityPageState extends State<CityPage> {
   @override
   Widget build(BuildContext context) {
+    
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return GestureDetector(
@@ -37,7 +47,9 @@ class _CityPageState extends State<CityPage> {
                   // Container(
                   //   margin: EdgeInsets.only(bottom: 80.0, top: 15),
                   // ),
-                  MainTitle(),
+                  // MainTitle(
+                  //   editProduct: widget.editProduct,
+                  // ),
                   Container(
                     margin: EdgeInsets.only(
                       top: SizeConfig.blockSizeVertical * 22,
@@ -47,8 +59,8 @@ class _CityPageState extends State<CityPage> {
                     ),
                   ),
                   // ),
-                  CityDropDown(),
-                  TagsForm(),
+                  CityDropDown(productSnapshot: widget.productSnapshot),
+                  TagsForm(productSnapshot: widget.productSnapshot),
                   PageViewButton(),
                 ],
               ),

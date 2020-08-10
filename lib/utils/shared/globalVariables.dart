@@ -23,7 +23,18 @@ TextEditingController productTagController;
 TextEditingController productDescController;
 TextEditingController productPriceController;
 
-// GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> signUpRegisterFormKey =
+    new GlobalKey<FormState>(debugLabel: 'signUpRegisterFormKey');
+GlobalKey<FormState> signInRegisterFormKey =
+    new GlobalKey<FormState>(debugLabel: 'signInRegisterFormKey');
+
+GlobalKey<FormState> passwordChangeFormKey =
+    new GlobalKey<FormState>(debugLabel: 'passwordChangeFormKey');
+GlobalKey<FormState> alertFormKey =
+    new GlobalKey<FormState>(debugLabel: 'alertFormKey');
+
+GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
+
 // TextEditingController signUpFullNameInputController;
 // TextEditingController signUpPhoneNumberInputController;
 // TextEditingController signUpEmailInputController;

@@ -1,3 +1,4 @@
+import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/descriptionPageWidget.dart';
 import 'package:flutter/material.dart';
@@ -6,10 +7,13 @@ class PageFour extends StatefulWidget {
   const PageFour({
     Key key,
     @required this.bottom,
+    @required this.productSnapshot,
+    @required this.editProduct,
   }) : super(key: key);
 
   final double bottom;
-
+  final String editProduct;
+  final Product productSnapshot;
   @override
   _PageFourState createState() => _PageFourState();
 }
@@ -31,7 +35,11 @@ class _PageFourState extends State<PageFour> {
           resizeToAvoidBottomPadding: false,
           body: SingleChildScrollView(
             reverse: true,
-            child: DescriptionPageWidget(bottom: widget.bottom),
+            child: DescriptionPageWidget(
+              bottom: widget.bottom,
+              editProduct: widget.editProduct,
+              productSnapshot: widget.productSnapshot,
+            ),
           ),
         ),
       ),

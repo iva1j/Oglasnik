@@ -16,15 +16,14 @@ import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 
 TextEditingController signInEmailInputController;
-TextEditingController emailInputControllerAlertDialog =
-    new TextEditingController();
 TextEditingController signInPasswordInputController;
+TextEditingController emailInputControllerAlertDialog;
 
 ///When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
-  // Container(
-  //     child: AuthService()
-  //         .allowPasswordChange(context, emailInputControllerAlertDialog.text));
+  Container(
+      child: AuthService()
+          .allowPasswordChange(context, emailInputControllerAlertDialog.text));
   AuthService().onPressedAlertDialog(
       context, emailInputControllerAlertDialog.text, tokenCode);
 }
@@ -56,13 +55,16 @@ void cleanLoginInputFields() {
 ///prvobitno se provjerava status konekcije sa isOnline, ako jeste
 ///provjerava se da li su inputi ispravni i da li postoji u bazi preko varijable status
 void onPressedSignInModel(
-    BuildContext context, String email, String password, dynamic formKey) {
+  BuildContext context,
+  String email,
+  String password,
+) {
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   print('Internet konekcija dostupna: ' + hasInternetConnection.toString());
   if (!isOnline) {
     Timer(Duration(seconds: 1), () {
-      if (formKey.currentState.validate() && status == true) {
+      if (signInRegisterFormKey.currentState.validate() && status == true) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           signInEmailInputController.clear();
           signInPasswordInputController.clear();

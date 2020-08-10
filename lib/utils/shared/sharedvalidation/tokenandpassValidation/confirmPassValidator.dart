@@ -10,7 +10,7 @@ String confirmpasswordValidator(String value) {
     print('Password ne smije biti manji od 8 char');
     return 'Password ne smije biti manji od 8 char';
   }
-  if (nepoklapanje == true) {
+  if (value != passwordInputController.text) {
     print('status poklapanja: ' + nepoklapanje.toString());
     return 'Šifra se ne podudara!';
   }

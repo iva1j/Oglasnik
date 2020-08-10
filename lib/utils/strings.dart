@@ -154,6 +154,15 @@ class ProductDetailsStrings {
   String callNumberText = '060 335 221 3';
 }
 
+class UserProducts {
+  String editProfile = 'Uredi';
+  String editProduct = 'Uredi unos';
+  String newProduct = 'Novi unos';
+  String finishProduct = 'Završi';
+}
+
+String noviNaziv, novaKategorija, noviBrend, noviGrad, noviOpis, novaCijena, novaLokacija, noviTag;
+
 class ImageOneUpload {}
 
 class ImageTwoUpload {}
@@ -168,15 +177,6 @@ bool tokenstatus = false;
 var nepoklapanje = false;
 bool allowUserToChangePassword = false;
 bool allowUserToRegister = true;
-//final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
-//final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
-
-//final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
-//GlobalKey<FormState> globalKey() => registerFormKey;
-GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
 
 class InputFields {
   TextEditingController emailInputController = new TextEditingController();

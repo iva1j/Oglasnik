@@ -1,9 +1,8 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PasswordChangeTextFields/naslovPromijeniSifru.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PasswordChangeTextFields/novaLozinkaTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PasswordChangeTextFields/potvrdiLozinkuTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PasswordChangeTextFields/unesiKodTextField.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/PasswordChange/widgets/buttonPasswordChange.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
@@ -20,7 +19,7 @@ class FormPasswordChanged extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.screenHeight,
+      //height: SizeConfig.screenHeight,
       margin: EdgeInsets.all(50),
       child: Column(
         children: <Widget>[

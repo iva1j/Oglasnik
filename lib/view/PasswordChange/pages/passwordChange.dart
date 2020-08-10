@@ -25,12 +25,15 @@ class _PasswordChangeState extends State<PasswordChange> {
   FirebaseUser user;
   @override
   void dispose() {
-    passwordChangeDispose();
+    // passwordChangeDispose();
     super.dispose();
   }
 
   initState() {
-    passwordChangeInitControllers();
+    // passwordChangeInitControllers();¸
+    passwordInputController.clear();
+    tokenInputController.clear();
+    confirmPasswordInputController.clear();
     super.initState();
   }
 
