@@ -1,5 +1,9 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/PostScreens/Pages/articlePage.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsCategory.dart';
@@ -8,6 +12,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsW
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
+import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -196,6 +201,30 @@ class _ProductDetailsState extends State<ProductDetails> {
                         ),
                       ),
                     ),
+                    products[index].email == email
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              button(UserProducts().editProfile, () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (_) {
+                                  return ArticlePage(
+                                    editProduct: UserProducts().editProduct,
+                                    productSnapshot: products[index],
+                                  );
+                                }));
+                              }),
+                              button(UserProducts().editProfile, () async {
+                                await UpdateProduct()
+                                    .updateProduct(products[index].productID);
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (_) {
+                                  return RegisteredHome();
+                                }));
+                              })
+                            ],
+                          )
+                        : Container(),
                     Container(
                       margin: EdgeInsets.only(
                           top: SizeConfig.blockSizeVertical * 1,

@@ -1,3 +1,6 @@
+import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/productsFieldsValidator.dart';
@@ -6,7 +9,11 @@ import 'package:flutter/material.dart';
 class NazivTextField extends StatefulWidget {
   const NazivTextField({
     Key key,
+    //@required this.editProduct,
+    @required this.productSnapshot,
   }) : super(key: key);
+  final Product productSnapshot;
+  // final String editProduct;
   @override
   _NazivTextFieldState createState() => _NazivTextFieldState();
 }
@@ -14,6 +21,11 @@ class NazivTextField extends StatefulWidget {
 class _NazivTextFieldState extends State<NazivTextField> {
   @override
   Widget build(BuildContext context) {
+    if (widget.productSnapshot != null) {
+      productNameController.text = widget.productSnapshot.productName;
+      noviNaziv != null ? productNameController.text = noviNaziv : null;
+    }
+
     return Form(
       key: productNameFormKey,
       //autovalidate: true,

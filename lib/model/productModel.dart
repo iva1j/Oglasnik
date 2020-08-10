@@ -15,6 +15,7 @@ class Product {
       productImg2,
       productImg3,
       productCijena;
+      bool productFinished = false;
   Product(
       {@required this.productBrand,
       @required this.productCategory,
@@ -28,6 +29,7 @@ class Product {
       this.productImg1,
       this.productImg2,
       this.productImg3,
+      this.productFinished,
       this.productTag});
 
   factory Product.fromDocument(DocumentSnapshot doc) {
@@ -42,6 +44,7 @@ class Product {
       productLocation: doc['productLocation'],
       productDesc: doc['productDesc'],
       productTag: doc['productTag'],
+      productFinished: doc['productFinished'],
       productImg1: doc['productImg1'],
       productImg2: doc['productImg2'],
       productImg3: doc['productImg3'],

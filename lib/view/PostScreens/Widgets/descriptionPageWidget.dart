@@ -1,3 +1,4 @@
+import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/opisTextField.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
@@ -8,8 +9,11 @@ class DescriptionPageWidget extends StatefulWidget {
   const DescriptionPageWidget({
     Key key,
     @required this.bottom,
+    @required this.productSnapshot,
+    @required this.editProduct,
   }) : super(key: key);
-
+  final String editProduct;
+  final Product productSnapshot;
   final double bottom;
 
   @override
@@ -26,7 +30,9 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
         //margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
-            MainTitle(),
+            // MainTitle(
+            //   editProduct: widget.editProduct,
+            // ),
             SizedBox(
               height: SizeConfig.blockSizeVertical * 20,
             ),
@@ -35,7 +41,9 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
                 left: SizeConfig.blockSizeHorizontal * 10,
                 right: SizeConfig.blockSizeHorizontal * 10,
               ),
-              child: OpisTextField(),
+              child: OpisTextField(
+                productSnapshot: widget.productSnapshot,
+              ),
             ),
             SizedBox(
               height: SizeConfig.blockSizeVertical * 27.64,

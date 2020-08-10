@@ -154,6 +154,15 @@ class ProductDetailsStrings {
   String callNumberText = '060 335 221 3';
 }
 
+class UserProducts {
+  String editProfile = 'Uredi';
+  String editProduct = 'Uredi unos';
+  String newProduct = 'Novi unos';
+  String finishProduct = 'Završi';
+}
+
+String noviNaziv, novaKategorija, noviBrend, noviGrad, noviOpis, novaCijena, novaLokacija, noviTag;
+
 class ImageOneUpload {}
 
 class ImageTwoUpload {}

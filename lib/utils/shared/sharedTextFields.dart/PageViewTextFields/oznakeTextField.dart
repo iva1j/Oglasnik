@@ -1,15 +1,23 @@
+import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/productTagValidator.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class OznakeTextField extends StatelessWidget {
   const OznakeTextField({
     Key key,
+    @required this.productSnapshot,
   }) : super(key: key);
-
+  final Product productSnapshot;
   @override
   Widget build(BuildContext context) {
+    if (productSnapshot != null) {
+      productTagController.text = productSnapshot.productTag;
+      noviOpis != null ? productTagController.text = noviOpis : null;
+    }
+
     return TextFormField(
       inputFormatters: [
         new BlacklistingTextInputFormatter(RegExp(

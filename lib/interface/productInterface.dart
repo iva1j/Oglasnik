@@ -1,3 +1,4 @@
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/cupertino.dart';
 
 abstract class ProductInterface {
@@ -18,19 +19,22 @@ abstract class ProductInterface {
       productCijena);
 }
 
+abstract class UpdateProductInterface {
+  Future updateProduct(String productID);
+}
+
 abstract class ReadProductInterface {
   Future getProduct();
 }
 
-abstract class ReadCategoriesInterface{
+abstract class ReadCategoriesInterface {
   Future getCategories();
 }
 
-
-abstract class ReadBrandInterface{
+abstract class ReadBrandInterface {
   Future getBrandsByCategories(String categoryName);
 }
 
-abstract class ReadCitiesInterface{
+abstract class ReadCitiesInterface {
   Future getCitiesFromProducts();
 }
