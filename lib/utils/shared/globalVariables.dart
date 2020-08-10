@@ -86,3 +86,7 @@ class Data {
   List imagesPass;
   Data({this.imagesPass});
 }
+
+
+String noviNaziv, novaKategorija, noviBrend, noviGrad, noviOpis, novaCijena, novaLokacija, noviTag;
+String oldProductID;
