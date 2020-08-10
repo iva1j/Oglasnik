@@ -169,13 +169,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
 //nije moguće refaktorisati zbog privatnih varijabli. Check it out
   SizedBox pageViewSubmitButton(BuildContext context) {
-    if ((noviNaziv != null ||
-        novaKategorija != noviBrend ||
-        noviGrad != null ||
-        noviOpis != null ||
-        novaCijena != null ||
-        novaLokacija != null ||
-        noviTag != null)) {
+    if (!createSwitcher) {
       return button("Završi", () async {
         FocusScope.of(context).requestFocus(new FocusNode());
         // if (productIsOnline != false) {
