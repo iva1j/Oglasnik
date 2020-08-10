@@ -44,7 +44,12 @@ GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
 
 String dropdownValueCategory = "Automobili";
 String dropdownValueBrand = "Audi";
+String updateDropdownValueCategory;
+String updateDropdownValueBrand;
 String dropdownValueCity = 'Sarajevo';
+String updateDropdownValueCity;
+
+String image1Name, image2Name, image3Name;
 
 //String dropdownValueBrand = 'Brands';
 
@@ -88,5 +93,12 @@ class Data {
 }
 
 bool createSwitcher = false;
-String noviNaziv, novaKategorija, noviBrend, noviGrad, noviOpis, novaCijena, novaLokacija, noviTag;
+String noviNaziv,
+    novaKategorija,
+    noviBrend,
+    noviGrad,
+    noviOpis,
+    novaCijena,
+    novaLokacija,
+    noviTag;
 String oldProductID;

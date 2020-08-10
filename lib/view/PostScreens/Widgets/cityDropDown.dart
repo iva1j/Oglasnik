@@ -17,13 +17,15 @@ class CityDropDown extends StatefulWidget {
   _CityDropDownState createState() => _CityDropDownState();
 }
 
-class _CityDropDownState extends State<CityDropDown> { 
+class _CityDropDownState extends State<CityDropDown> {
   @override
   Widget build(BuildContext context) {
+    /*
     if (widget.productSnapshot != null) {
       dropdownValueCity = widget.productSnapshot.productLocation;
       noviGrad != null ? dropdownValueCity = noviGrad : null;
     }
+*/
 
     SizeConfig().init(context);
     return Container(
@@ -41,7 +43,9 @@ class _CityDropDownState extends State<CityDropDown> {
             child: Align(
               alignment: Alignment.topRight,
               child: custom.DropdownButton<String>(
-                value: dropdownValueCity,
+                value: createSwitcher
+                    ? dropdownValueCity
+                    : updateDropdownValueCity,
                 height: MediaQuery.of(context).size.height / 2.229,
                 icon: Icon(Icons.arrow_drop_down),
                 iconSize: 24,
@@ -55,7 +59,10 @@ class _CityDropDownState extends State<CityDropDown> {
                 underline: Container(),
                 onChanged: (String newValue) {
                   setState(() {
-                    dropdownValueCity = newValue;
+                    if (createSwitcher)
+                      dropdownValueCity = newValue;
+                    else
+                      updateDropdownValueCity = newValue;
                   });
                 },
                 items: citysuggestions.map<custom.DropdownMenuItem<String>>(

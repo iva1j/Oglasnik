@@ -32,6 +32,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
       isLoading = false;
       doesPop = true;
     });
+    createSwitcher = false;
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(

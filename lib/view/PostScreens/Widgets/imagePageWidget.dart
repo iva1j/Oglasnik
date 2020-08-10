@@ -194,7 +194,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             noviBrend = dropdownValueBrand;
             noviGrad = dropdownValueCity;
             noviTag = productTagController.text;
-           // noviOpis = productDescController.text;
+            // noviOpis = productDescController.text;
             novaCijena = productPriceController.text;
 
             print('update proizvoda: ' + noviNaziv.toString());
