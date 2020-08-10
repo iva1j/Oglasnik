@@ -71,7 +71,6 @@ class _PageViewPagesState extends State<PageViewPages> {
               ],
             ),
           ),
-          //PageViewButton(),
         ],
       ),
     );

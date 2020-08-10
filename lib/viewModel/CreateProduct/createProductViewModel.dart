@@ -32,6 +32,7 @@ class CreateProduct extends ProductInterface {
       'productLocation': productLocation,
       'cijena': productCijena,
       'productTag': productTag,
+      'productfinished': false,
       'productDesc': productDesc,
       'productImg1': productImg1,
       'productImg2': productImg2,
@@ -41,3 +42,13 @@ class CreateProduct extends ProductInterface {
   }
 }
 
+class UpdateProduct extends UpdateProductInterface {
+  @override
+  Future updateProduct(String productID) {
+    db.collection("products").document(productID).updateData({
+      'productFinished': true,
+    });
+
+    return null;
+  }
+}

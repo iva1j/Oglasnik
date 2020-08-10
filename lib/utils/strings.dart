@@ -155,9 +155,10 @@ class ProductDetailsStrings {
 }
 
 class UserProducts {
-  String editProfile = 'Edit';
-  String editProduct = 'Izmijeni proizvod';
-  String newProduct = 'newProduct';
+  String editProfile = 'Uredi';
+  String editProduct = 'Uredi unos';
+  String newProduct = 'Novi unos';
+  String finishProduct = 'Završi';
 }
 
 class ImageOneUpload {}
