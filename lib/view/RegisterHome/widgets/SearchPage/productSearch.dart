@@ -667,10 +667,11 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
     Navigator.of(context).push(
       FadeRoute(
         page: ProductDetails(
-          productNameScreen: selectedProducts[index]['productName'],
-          // snapshot
-          //     .data.documents[index]['productName'],
-        ),
+            productNameScreen: selectedProducts[index]['productName'],
+            productIdScreen: selectedProducts[index]['productID']
+            // snapshot
+            //     .data.documents[index]['productName'],
+            ),
       ),
     );
   }

@@ -60,7 +60,8 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                     categoryBrand = snapshot.data
                         .map((doc) => Product.fromDocument(doc))
                         .toList();
-                    return ProductBrandContainer();
+                    return ProductBrandContainer(
+                        categoryName: widget.categoryName);
                   } else {
                     return Expanded(
                       child: Center(

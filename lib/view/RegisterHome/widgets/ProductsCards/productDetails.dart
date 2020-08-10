@@ -21,10 +21,12 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
 class ProductDetails extends StatefulWidget {
   final String productNameScreen;
-  ProductDetails({
-    Key key,
-    @required this.productNameScreen,
-  }) : super(key: key);
+  final String productIdScreen;
+  ProductDetails(
+      {Key key,
+      @required this.productNameScreen,
+      @required this.productIdScreen})
+      : super(key: key);
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -56,7 +58,7 @@ class _ProductDetailsState extends State<ProductDetails> {
       body: FutureBuilder(
         future: Firestore.instance
             .collection('products')
-            .where('productName', isEqualTo: widget.productNameScreen)
+            .where('productID', isEqualTo: widget.productIdScreen)
             .getDocuments(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {

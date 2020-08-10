@@ -8,11 +8,13 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 class CategoryCardRow extends StatelessWidget {
   final String name, count;
   final Widget icon;
+  final String categoryName;
 
   const CategoryCardRow({
     this.icon,
     this.name,
     this.count,
+    this.categoryName,
     Key key,
   }) : super(key: key);
 
@@ -30,6 +32,7 @@ class CategoryCardRow extends StatelessWidget {
               FadeRoute(
                 page: ItemCard(
                   brandNameScreen: name,
+                  categoryName: categoryName,
                 ),
               ),
             );
