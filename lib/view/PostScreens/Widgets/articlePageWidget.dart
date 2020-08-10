@@ -5,6 +5,7 @@ import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 class ArticlePageWidget extends StatefulWidget {
   const ArticlePageWidget({
@@ -21,9 +22,32 @@ class ArticlePageWidget extends StatefulWidget {
   _ArticlePageWidgetState createState() => _ArticlePageWidgetState();
 }
 
+String imageName(String imgURL) {
+  return imgURL.substring(82, imgURL.indexOf('?alt=media'));
+}
+
 class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   @override
   Widget build(BuildContext context) {
+    print("AGSAGAGSG");
+    print(createSwitcher);
+    if (!createSwitcher) {
+      updateDropdownValueCategory = widget.productSnapshot.productCategory;
+      updateDropdownValueBrand = widget.productSnapshot.productBrand;
+      updateDropdownValueCity = widget.productSnapshot.productLocation;
+      if (widget.productSnapshot.productImg1 != null)
+        image1Name = imageName(widget.productSnapshot.productImg1);
+      if (widget.productSnapshot.productImg2 != null)
+        image2Name = imageName(widget.productSnapshot.productImg2);
+      if (widget.productSnapshot.productImg3 != null)
+        image3Name = imageName(widget.productSnapshot.productImg3);
+      print(updateDropdownValueCategory);
+      print(updateDropdownValueBrand);
+      print(updateDropdownValueCity);
+      print(imageName(widget.productSnapshot.productImg1));
+      //print(widget.productSnapshot.productImg1.indexOf("2F"));
+    }
+
     SizeConfig().init(context);
     return Container(
       child: Column(

@@ -27,13 +27,14 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
+    /*
     if (widget.productSnapshot != null) {
       dropdownValueCategory = widget.productSnapshot.productCategory;
       dropdownValueBrand = widget.productSnapshot.productBrand;
       novaKategorija != null ? dropdownValueCategory = novaKategorija : null;
       noviBrend != null ? dropdownValueBrand = noviBrend : null;
     }
-
+*/
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
 
@@ -87,7 +88,9 @@ class _CategoryPageState extends State<CategoryPage> {
                                           return Text(item);
                                         }).toList();
                                       },
-                                      value: dropdownValueCategory,
+                                      value: createSwitcher
+                                          ? dropdownValueCategory
+                                          : updateDropdownValueCategory,
                                       height:
                                           MediaQuery.of(context).size.height /
                                               2.229,
@@ -105,10 +108,22 @@ class _CategoryPageState extends State<CategoryPage> {
                                       onChanged: (String productCategoryList) =>
                                           setState(
                                         () => {
-                                          dropdownValueCategory =
-                                              productCategoryList,
-                                          dropdownValueBrand = categoryBrands[
-                                              dropdownValueCategory][0],
+                                          if (createSwitcher)
+                                            {
+                                              dropdownValueCategory =
+                                                  productCategoryList,
+                                              dropdownValueBrand =
+                                                  categoryBrands[
+                                                      dropdownValueCategory][0],
+                                            }
+                                          else
+                                            {
+                                              updateDropdownValueCategory =
+                                                  productCategoryList,
+                                              updateDropdownValueBrand =
+                                                  categoryBrands[
+                                                      updateDropdownValueCategory][0],
+                                            }
                                         },
                                       ),
                                       items: categoryNames
@@ -136,7 +151,9 @@ class _CategoryPageState extends State<CategoryPage> {
                           child: Align(
                             alignment: Alignment.topRight,
                             child: custom2.DropdownButton<String>(
-                              value: dropdownValueBrand,
+                              value: createSwitcher
+                                  ? dropdownValueBrand
+                                  : updateDropdownValueBrand,
                               disabledHint: Text('Molimo odaberite kategoriju'),
                               height:
                                   MediaQuery.of(context).size.height / 2.229,
@@ -152,11 +169,16 @@ class _CategoryPageState extends State<CategoryPage> {
                               underline: Container(),
                               onChanged: (String productBrandList) =>
                                   setState(() {
-                                dropdownValueBrand =
-                                    productBrandList; // u productBrandList treba povući vrijednosti iz Firestora ali imajući u vidu kategoriju koja se odabere (prvi brand iz kategorije)
+                                if (createSwitcher)
+                                  dropdownValueBrand =
+                                      productBrandList; // u productBrandList treba povući vrijednosti iz Firestora ali imajući u vidu kategoriju koja se odabere (prvi brand iz kategorije)
+                                else
+                                  updateDropdownValueBrand = productBrandList;
                               }),
-                              items: List<String>.from(
-                                      categoryBrands[dropdownValueCategory])
+                              items: List<String>.from(categoryBrands[
+                                      createSwitcher
+                                          ? dropdownValueCategory
+                                          : updateDropdownValueCategory])
                                   .map<custom2.DropdownMenuItem<String>>(
                                       (String value) {
                                 return custom2.DropdownMenuItem<String>(

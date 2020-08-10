@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class AddImageOne extends StatelessWidget {
     return Container(
       width: 200,
       child: Text(
-        img1,
+        createSwitcher ? img1 : image1Name != null ? image1Name : img1,
         style: TextStyle(
           fontSize: 12.0,
           fontWeight: FontWeight.normal,
