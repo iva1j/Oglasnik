@@ -279,6 +279,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               productImg3,
               productprice,
             );
+            createSwitcher = false;
 
             img1 = immutableImg1;
             img2 = immutableImg2;
