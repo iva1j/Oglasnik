@@ -9,6 +9,7 @@ InkWell itemCardProductName(BuildContext context, DocumentSnapshot snapshott) {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (_) => ProductDetails(
                 productNameScreen: snapshott['productName'],
+                productIdScreen: snapshott['productID'],
               )));
     },
     child: ItemName(

@@ -1,3 +1,4 @@
+import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/productDescValidator.dart';
 import 'package:flutter/material.dart';
@@ -6,10 +7,12 @@ import 'package:flutter/services.dart';
 class OpisTextField extends StatelessWidget {
   const OpisTextField({
     Key key,
+    @required this.productSnapshot,
   }) : super(key: key);
-
+  final Product productSnapshot;
   @override
   Widget build(BuildContext context) {
+    productDescController.text = productSnapshot.productDesc;
     return Form(
       key: productDescFormKey,
       //autovalidate: true,

@@ -1,5 +1,8 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/PostScreens/Pages/articlePage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsCategory.dart';
@@ -196,6 +199,17 @@ class _ProductDetailsState extends State<ProductDetails> {
                         ),
                       ),
                     ),
+                    products[index].email == email
+                        ? button(UserProducts().editProfile, () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (_) {
+                              return ArticlePage(
+                                editProduct: UserProducts().editProduct,
+                                productSnapshot: products[index],
+                              );
+                            }));
+                          })
+                        : Container(),
                     Container(
                       margin: EdgeInsets.only(
                           top: SizeConfig.blockSizeVertical * 1,

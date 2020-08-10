@@ -1,3 +1,4 @@
+import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/imagePageWidget.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +8,14 @@ class PageFive extends StatefulWidget {
     Key key,
     @required this.bottom,
     @required this.onFlatButtonPressed,
+    @required this.editProduct,
+    @required this.productSnapshot,
   }) : super(key: key);
 
   final double bottom;
   final VoidCallback onFlatButtonPressed;
-
+  final String editProduct;
+  final Product productSnapshot;
   @override
   _PageFiveState createState() => _PageFiveState();
 }
@@ -35,6 +39,8 @@ class _PageFiveState extends State<PageFive> {
             reverse: true,
             child: ImagePageWidget(
               bottom: widget.bottom,
+              editProduct: widget.editProduct,
+              productSnapshot: widget.productSnapshot,
               onFlatButtonPressed: widget.onFlatButtonPressed,
             ),
           ),

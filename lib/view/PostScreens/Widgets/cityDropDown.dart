@@ -1,3 +1,4 @@
+import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -8,8 +9,9 @@ import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
 class CityDropDown extends StatefulWidget {
   const CityDropDown({
     Key key,
+    @required this.productSnapshot,
   }) : super(key: key);
-
+  final Product productSnapshot;
   @override
   _CityDropDownState createState() => _CityDropDownState();
 }
@@ -17,6 +19,7 @@ class CityDropDown extends StatefulWidget {
 class _CityDropDownState extends State<CityDropDown> {
   @override
   Widget build(BuildContext context) {
+    dropdownValueCity = widget.productSnapshot.productLocation;
     SizeConfig().init(context);
     return Container(
       margin: EdgeInsets.symmetric(

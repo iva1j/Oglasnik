@@ -1,3 +1,4 @@
+import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
@@ -24,11 +25,14 @@ class ImagePageWidget extends StatefulWidget {
     Key key,
     @required this.bottom,
     @required this.onFlatButtonPressed,
+    @required this.editProduct,
+    @required this.productSnapshot,
   }) : super(key: key);
 
   final double bottom;
   final VoidCallback onFlatButtonPressed;
-
+  final String editProduct;
+  final Product productSnapshot;
   @override
   _ImagePageWidgetState createState() => _ImagePageWidgetState();
 }
@@ -120,11 +124,12 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   }
 
   Container imageUploadContainer(BuildContext context) {
+    productPriceController.text = widget.productSnapshot.productCijena;
     return Container(
       margin: EdgeInsets.all(15),
       child: Column(
         children: <Widget>[
-          MainTitle(),
+          MainTitle(editProduct: widget.editProduct,),
           Container(
             margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 18),
           ),

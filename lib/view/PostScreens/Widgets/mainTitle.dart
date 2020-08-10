@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 class MainTitle extends StatelessWidget {
   const MainTitle({
     Key key,
+    @required this.editProduct,
   }) : super(key: key);
+  final String editProduct;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +15,7 @@ class MainTitle extends StatelessWidget {
         children: <Widget>[
           Container(
             child: Text(
-              NewPostScreen().unosNaslov,
+              editProduct,
               style: TextStyle(fontFamily: "Roboto", fontSize: 20),
             ),
             alignment: Alignment.topCenter,
