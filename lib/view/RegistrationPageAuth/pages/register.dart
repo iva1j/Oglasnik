@@ -13,6 +13,9 @@ import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/globals.dart';
+import 'package:connectivity/connectivity.dart';
+
 
 TextEditingController signUpFullNameInputController;
 TextEditingController signUpPhoneNumberInputController;
@@ -28,45 +31,45 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  // Map _source = {ConnectivityResult.none: false};
-  // MyConnectivity _connectivity = MyConnectivity.instance;
+  Map _source = {ConnectivityResult.none: false};
+  MyConnectivity _connectivity = MyConnectivity.instance;
 
   @override
   initState() {
     //InternetConnection();
     registerPageInitControllers();
-    // _connectivity.initialise();
-    // _connectivity.myStream.listen((source) {
-    //   setState(() => _source = source);
-    // });
+      _connectivity.initialise();
+      _connectivity.myStream.listen((source) {
+        setState(() => _source = source);
+      });
     super.initState();
   }
 
   @override
   void dispose() {
     //registerPageDispose();
-    // connectivityInitmethod();
-    // internetConnectivity.myStream.listen((source) {
-    //   setState(() => internetSource = source);
-    // });
+    connectivityInitmethod();
+    internetConnectivity.myStream.listen((source) {
+      setState(() => internetSource = source);
+    });
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // switch (_source.keys.toList()[0]) {
-    //   case ConnectivityResult.none:
-    //     isOnline = true;
-    //     string = "Offline";
-    //     break;
-    //   case ConnectivityResult.mobile:
-    //     isOnline = false;
-    //     string = "Mobile: Online";
-    //     break;
-    //   case ConnectivityResult.wifi:
-    //     isOnline = false;
-    //     string = "WiFi: Online";
-    // }
+    switch (_source.keys.toList()[0]) {
+      case ConnectivityResult.none:
+        isOnline = true;
+        string = "Offline";
+        break;
+      case ConnectivityResult.mobile:
+        isOnline = false;
+        string = "Mobile: Online";
+        break;
+      case ConnectivityResult.wifi:
+        isOnline = false;
+        string = "WiFi: Online";
+    }
 
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return GestureDetector(
