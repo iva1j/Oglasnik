@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
@@ -37,9 +38,11 @@ Stack mainFloatingButton(String email) {
                   child: InkWell(
                     splashColor: Colors.transparent, // splash color
                     onTap: () {
+                      createSwitcher = true;
                       Navigator.of(context).pushReplacement(FadeRoute(
                           page: ArticlePage(
                         editProduct: UserProducts().newProduct,
+                        
                         productSnapshot: null,
                       )));
                     },

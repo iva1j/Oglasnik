@@ -32,7 +32,7 @@ class CreateProduct extends ProductInterface {
       'productLocation': productLocation,
       'cijena': productCijena,
       'productTag': productTag,
-      'productfinished': false,
+      'productFinished': false,
       'productDesc': productDesc,
       'productImg1': productImg1,
       'productImg2': productImg2,

@@ -87,6 +87,6 @@ class Data {
   Data({this.imagesPass});
 }
 
-
+bool createSwitcher = false;
 String noviNaziv, novaKategorija, noviBrend, noviGrad, noviOpis, novaCijena, novaLokacija, noviTag;
 String oldProductID;
