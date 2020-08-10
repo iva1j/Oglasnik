@@ -28,8 +28,6 @@ class PageViewButton extends StatelessWidget {
           productTag = productTagController.text;
           productDesc = productDescController.text;
 
-
-
           if (productPriceFormKey.currentState.validate()) {
             FocusScope.of(context).requestFocus(new FocusNode());
             pageController.nextPage(
@@ -60,6 +58,9 @@ class PageViewButton extends StatelessWidget {
         if (pageController.page == 3) {
           productDesc = productDescController.text;
           noviOpis = productDescController.text;
+          print('stari opis je: ' + productDesc.toString());
+          print('updateovani opis je: ' + noviOpis.toString());
+
           if (productDescFormKey.currentState.validate()) {
             FocusScope.of(context).requestFocus(new FocusNode());
             Timer(Duration(milliseconds: 500), () {
@@ -71,10 +72,11 @@ class PageViewButton extends StatelessWidget {
             print('molimo popunite polje opis!');
           return null;
         } else if (pageController.page == 2) {
-         productTag = productTagController.text;
+          productTag = productTagController.text;
           productLocation = dropdownValueCity;
-          
           noviGrad = dropdownValueCity;
+          print('stari tag je: ' + productTag.toString());
+          print('updateovani tag je: ' + noviTag.toString());
           // noviTag = productTagController.text;
           if (productTagFormKey.currentState.validate()) {
             FocusScope.of(context).requestFocus(new FocusNode());

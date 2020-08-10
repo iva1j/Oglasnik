@@ -211,6 +211,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   return ArticlePage(
                                     editProduct: UserProducts().editProduct,
                                     productSnapshot: products[index],
+                                    productID: products[index].productID,
                                   );
                                 }));
                               }),
