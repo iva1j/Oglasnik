@@ -12,23 +12,11 @@ Container productBrandTitle(BuildContext context, int index) {
     ),
     child: Material(
       color: Colors.transparent,
-      child: InkWell(
-        splashColor: Colors.transparent,
-        onTap: () {
-          Navigator.of(context).push(
-            FadeRoute(
-              page: ItemCard(
-                brandNameScreen: categoryBrand[index].productBrand,
-              ),
-            ),
-          );
-        },
-        child: Text(
-          categoryBrand[index].productBrand,
-          style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 5,
-            fontWeight: FontWeight.w500,
-          ),
+      child: Text(
+        categoryBrand[index].productBrand,
+        style: TextStyle(
+          fontSize: SizeConfig.safeBlockHorizontal * 5,
+          fontWeight: FontWeight.w500,
         ),
       ),
     ),
