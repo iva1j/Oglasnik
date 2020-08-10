@@ -45,6 +45,7 @@ class CreateProduct extends ProductInterface {
 class UpdateProduct extends UpdateProductInterface {
   @override
   Future updateProduct(String productID) {
+    print('productID je: '+productID.toString());
     db.collection("products").document(productID).updateData({
       'productFinished': true,
     });

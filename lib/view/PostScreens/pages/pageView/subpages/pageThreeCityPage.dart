@@ -47,9 +47,9 @@ class _CityPageState extends State<CityPage> {
                   // Container(
                   //   margin: EdgeInsets.only(bottom: 80.0, top: 15),
                   // ),
-                  MainTitle(
-                    editProduct: widget.editProduct,
-                  ),
+                  // MainTitle(
+                  //   editProduct: widget.editProduct,
+                  // ),
                   Container(
                     margin: EdgeInsets.only(
                       top: SizeConfig.blockSizeVertical * 22,

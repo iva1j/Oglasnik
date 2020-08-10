@@ -161,6 +161,8 @@ class UserProducts {
   String finishProduct = 'Završi';
 }
 
+String noviNaziv, novaKategorija, noviBrend, noviGrad, noviOpis, novaCijena, novaLokacija, noviTag;
+
 class ImageOneUpload {}
 
 class ImageTwoUpload {}

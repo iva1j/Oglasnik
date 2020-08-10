@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
@@ -18,10 +19,13 @@ class NazivTextField extends StatefulWidget {
 }
 
 class _NazivTextFieldState extends State<NazivTextField> {
-
   @override
   Widget build(BuildContext context) {
-    productNameController.text = widget.productSnapshot.productName;
+    if (widget.productSnapshot != null) {
+      productNameController.text = widget.productSnapshot.productName;
+      noviNaziv != null ? productNameController.text = noviNaziv : null;
+    }
+
     return Form(
       key: productNameFormKey,
       //autovalidate: true,
@@ -40,6 +44,7 @@ class _NazivTextFieldState extends State<NazivTextField> {
           controller: productNameController,
           maxLength: 28,
           decoration: const InputDecoration(
+              hintText: 'Naziv artikla',
               contentPadding: EdgeInsets.only(left: 15.0)),
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
@@ -16,10 +17,14 @@ class CityDropDown extends StatefulWidget {
   _CityDropDownState createState() => _CityDropDownState();
 }
 
-class _CityDropDownState extends State<CityDropDown> {
+class _CityDropDownState extends State<CityDropDown> { 
   @override
   Widget build(BuildContext context) {
-    dropdownValueCity = widget.productSnapshot.productLocation;
+    if (widget.productSnapshot != null) {
+      dropdownValueCity = widget.productSnapshot.productLocation;
+      noviGrad != null ? dropdownValueCity = noviGrad : null;
+    }
+
     SizeConfig().init(context);
     return Container(
       margin: EdgeInsets.symmetric(

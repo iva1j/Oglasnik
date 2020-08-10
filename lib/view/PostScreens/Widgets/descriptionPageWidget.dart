@@ -30,9 +30,9 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
         //margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
-            MainTitle(
-              editProduct: widget.editProduct,
-            ),
+            // MainTitle(
+            //   editProduct: widget.editProduct,
+            // ),
             SizedBox(
               height: SizeConfig.blockSizeVertical * 20,
             ),

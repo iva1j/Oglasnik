@@ -124,12 +124,14 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   }
 
   Container imageUploadContainer(BuildContext context) {
-    productPriceController.text = widget.productSnapshot.productCijena;
+    widget.productSnapshot != null
+        ? productPriceController.text = widget.productSnapshot.productCijena
+        : null;
     return Container(
       margin: EdgeInsets.all(15),
       child: Column(
         children: <Widget>[
-          MainTitle(editProduct: widget.editProduct,),
+          // MainTitle(editProduct: widget.editProduct,),
           Container(
             margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 18),
           ),

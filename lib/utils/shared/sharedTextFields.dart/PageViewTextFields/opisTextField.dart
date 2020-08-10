@@ -12,7 +12,9 @@ class OpisTextField extends StatelessWidget {
   final Product productSnapshot;
   @override
   Widget build(BuildContext context) {
-    productDescController.text = productSnapshot.productDesc;
+    productSnapshot != null
+        ? productDescController.text = productSnapshot.productDesc
+        : null;
     return Form(
       key: productDescFormKey,
       //autovalidate: true,

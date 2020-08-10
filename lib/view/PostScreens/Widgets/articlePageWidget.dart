@@ -28,9 +28,9 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
     return Container(
       child: Column(
         children: <Widget>[
-          MainTitle(
-            editProduct: widget.editProduct,
-          ),
+          // MainTitle(
+          //   editProduct: widget.editProduct,
+          // ),
           SizedBox(
             height: SizeConfig.blockSizeVertical * 20,
           ),
