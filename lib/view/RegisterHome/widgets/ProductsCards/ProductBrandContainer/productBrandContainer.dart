@@ -13,6 +13,8 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/ProductBrandCon
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/ProductBrandContainer/productBrandNumberItems.dart';
 
 class ProductBrandContainer extends StatelessWidget {
+  final String categoryName;
+
   bool listContains(int n, List<int> listaIntegera) {
     for (var x in listaIntegera) {
       if (n == x) {
@@ -22,9 +24,8 @@ class ProductBrandContainer extends StatelessWidget {
     return false;
   }
 
-  const ProductBrandContainer({
-    Key key,
-  }) : super(key: key);
+  const ProductBrandContainer({Key key, @required this.categoryName})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +44,7 @@ class ProductBrandContainer extends StatelessWidget {
                 FadeRoute(
                   page: ItemCard(
                     brandNameScreen: categoryBrand[index].productBrand,
+                    categoryName: categoryName,
                   ),
                 ),
               );
@@ -78,7 +80,7 @@ class ProductBrandContainer extends StatelessWidget {
                   children: <Widget>[
                     FutureBuilder(
                         future: numberOfProductsPerBrandTest(
-                            categoryBrand[index].productBrand),
+                            categoryBrand[index].productBrand, categoryName),
                         builder:
                             (BuildContext context, AsyncSnapshot snapshott) {
                           if (!snapshott.hasData)
