@@ -168,6 +168,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
             setState(() => loading = true);
             createdGlob = true;
+            azurload = true;
             if (!createSwitcher) {
               if (img1 != immutableImg1)
                 await upload(img1, pathGlobal1, 1)

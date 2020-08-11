@@ -25,6 +25,7 @@ class NoviOglasButton extends StatelessWidget {
                 newProductDescriptionReturn = null;
                 newProductPriceReturn = null;
                 createSwitcher = true;
+                azurload = false;
                 print("Create switcher je sada: ");
                 print(createSwitcher);
                 Navigator.of(context).pushReplacement(FadeRoute(

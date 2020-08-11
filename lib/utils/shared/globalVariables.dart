@@ -107,5 +107,6 @@ class Data {
 }
 
 bool createSwitcher = false;
+bool azurload = false;
 
 String oldProductID;
