@@ -20,6 +20,7 @@ class FilterTitle {
 
 class TrazeniProizvod {
   String trazeniProizvod = 'U bazi trenutno nemamo traženi proizvod';
+  String nemaProizvoda = 'Lista vaših proizvoda je prazna';
 }
 
 class Welcome {

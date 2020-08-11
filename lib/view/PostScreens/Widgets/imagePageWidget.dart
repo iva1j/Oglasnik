@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:random_string/random_string.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 
 class ImagePageWidget extends StatefulWidget {
   const ImagePageWidget({
@@ -59,8 +60,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   String _extension1, _extension2, _extension3;
   String _fileName1, _fileName2, _fileName3;
 
-  //final VoidCallback;
-
   bool loading = false;
 
   FileType _imageType = FileType.image;
@@ -68,8 +67,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   List<StorageUploadTask> _tasks = <StorageUploadTask>[];
 
   void openFileExplorer1() async {
-    //_path1 = null;
-
     _path1 = await FilePicker.getFilePath(type: _imageType);
     _fileName1 = _path1.split('/').last;
     _extension1 = _fileName1.toString().split('.').last;
@@ -92,7 +89,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       pathGlobal2 = _path2;
       buttonTwo = true;
     });
-    //upload(_fileName2, _path2, 2).then((value) => productImg2 = value);
   }
 
   void openFileExplorer3() async {
@@ -154,10 +150,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               ),
             ],
           ),
-          /*
-          Container(
-            child: PageViewButton(),
-          )*/
+
           SizedBox(
             height: SizeConfig.blockSizeVertical * 6,
           ),
@@ -213,7 +206,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               productImg3,
               novaCijena,
             );
-
             img1 = immutableImg1;
             img2 = immutableImg2;
             img3 = immutableImg3;
@@ -224,6 +216,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             pathGlobal2 = null;
             pathGlobal3 = null;
             print('status interneta:' + productIsOnline.toString());
+            noviNaziv = null;
+            novaCijena = null;
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (_) => RegisteredHome()));
           } else
@@ -239,7 +233,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         if (pageController.page == 4) {
           if (productPriceFormKey.currentState.validate()) {
             widget.onFlatButtonPressed();
-
             setState(() => loading = true);
             createdGlob = true;
             if (img1 != immutableImg1)
@@ -251,8 +244,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             if (img3 != immutableImg3)
               await upload(img3, pathGlobal3, 3)
                   .then((value) => productImg3 = value);
-            //showIphoneButton = false;
-
             productName = productNameController.text;
             productCategory = dropdownValueCategory;
             productBrand = dropdownValueBrand;
@@ -260,7 +251,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             productTag = productTagController.text;
             productDesc = productDescController.text;
             productprice = productPriceController.text;
-
             print(email + productName + productTag);
             await CreateProduct().createProduct(
               context,
@@ -290,6 +280,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             pathGlobal2 = null;
             pathGlobal3 = null;
             print('status interneta:' + productIsOnline.toString());
+
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (_) => RegisteredHome()));
           } else

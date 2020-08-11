@@ -96,7 +96,7 @@ class PageViewButton extends StatelessWidget {
           noviBrend = updateDropdownValueBrand;
           print('productCategory: ' + productCategory.toString());
           print('productBrand: ' + productBrand.toString());
-           print('novaKategorija: ' + novaKategorija.toString());
+          print('novaKategorija: ' + novaKategorija.toString());
           print('noviBrend: ' + noviBrend.toString());
           print('key: ' + productCategoryDropDownKey.currentState.toString());
           if (dropdownValueCategory != 'Kategorija1' &&

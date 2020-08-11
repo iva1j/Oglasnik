@@ -18,7 +18,29 @@ class NazivTextField extends StatefulWidget {
   _NazivTextFieldState createState() => _NazivTextFieldState();
 }
 
+String newText;
+
 class _NazivTextFieldState extends State<NazivTextField> {
+  FocusNode _textFocus = new FocusNode();
+
+  void onChange() {
+    String text = productNameController.text;
+    bool hasFocus = _textFocus.hasFocus;
+    //do your text transforming
+    productNameController.text = newText;
+    productNameController.selection = new TextSelection(
+      baseOffset: newText.length,
+      extentOffset: newText.length,
+    );
+  }
+
+  @override
+  void initState() {
+    productNameController.addListener(onChange);
+    _textFocus.addListener(onChange);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget.productSnapshot != null) {
@@ -37,6 +59,16 @@ class _NazivTextFieldState extends State<NazivTextField> {
         child: TextFormField(
           textCapitalization: TextCapitalization.sentences,
           validator: productFieldsValidator,
+          onEditingComplete: () {
+            noviNaziv = productNameController.text;
+            productName = productNameController.text;
+          },
+          focusNode: _textFocus,
+          // onChanged: (noviNaziv) {
+          //   //productNameController.text = noviNaziv;
+          //   productName = productNameController.text;
+          //   noviNaziv = productNameController.text;
+          // },
           inputFormatters: [
             new BlacklistingTextInputFormatter(RegExp(
                 '(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])')),

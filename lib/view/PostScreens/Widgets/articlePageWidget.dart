@@ -36,7 +36,8 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
       updateDropdownValueBrand = widget.productSnapshot.productBrand;
       updateDropdownValueCity = widget.productSnapshot.productLocation;
       productTag = productTagController.text;
-
+      
+      
       if (widget.productSnapshot.productImg1 != null)
         image1Name = imageName(widget.productSnapshot.productImg1);
       if (widget.productSnapshot.productImg2 != null)

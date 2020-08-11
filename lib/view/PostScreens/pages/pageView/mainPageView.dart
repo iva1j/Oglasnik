@@ -29,6 +29,10 @@ class PageViewPages extends StatefulWidget {
 class _PageViewPagesState extends State<PageViewPages> {
   @override
   Widget build(BuildContext context) {
+    if (widget.productSnapshot != null) {
+      productNameController.text = widget.productSnapshot.productName;
+      noviNaziv != null ? productNameController.text = noviNaziv : null;
+    }
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

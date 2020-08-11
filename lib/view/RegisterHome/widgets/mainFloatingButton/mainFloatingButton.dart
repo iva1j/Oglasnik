@@ -25,7 +25,9 @@ Stack mainFloatingButton(String email) {
         fabMargin: const EdgeInsets.only(bottom: 24.0, right: 20.0),
         children: <Widget>[
           SacuvanoButton(),
-          MojiOglasiButton(),
+          MojiOglasiButton(
+            email: email,
+          ),
           NoviOglasButton(),
           ProfilButton(),
           SizedBox.fromSize(
