@@ -1,19 +1,13 @@
-import 'package:Oglasnik/utils/globals.dart';
-import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/shared/sharedTextFields.dart/SigninTextFields/emailSigninTextField.dart';
-import 'package:Oglasnik/utils/shared/sharedTextFields.dart/SigninTextFields/passwordSigninTextField.dart';
-import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
-import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
-import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
-import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
-import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
-import 'package:flutter/cupertino.dart';
 
-String email, password;
+import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/ForgotPassText.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/PasswordSignInForm.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/SignInButtonForm.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/authentication.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/emailSignInForm.dart';
+import 'package:flutter/material.dart';
+
+import 'package:flutter/cupertino.dart';
 
 // ignore: must_be_immutable
 class FormSignIn extends StatefulWidget {
@@ -42,69 +36,11 @@ class _FormSignInState extends State<FormSignIn> {
           ),
           child: Column(
             children: <Widget>[
-              new Container(
-                margin: EdgeInsets.only(bottom: 10),
-                child: new SizedBox(
-                  width: double.infinity,
-                  child: Container(
-                    child: EmailSignInTextField(widget: widget),
-                  ),
-                ),
-              ),
-              new Container(
-                margin: EdgeInsets.only(bottom: 10),
-                child: new SizedBox(
-                  width: double.infinity,
-                  child: Container(
-                    child: PassSigninTextField(widget: widget),
-                  ),
-                ),
-              ),
-              Container(
-                  child: Column(
-                children: <Widget>[
-                  Container(
-                    child: AuthService().tokenExistOrNot(context, email, token),
-                  ),
-                  Container(
-                    child: AuthService().signInOrNot(
-                        context,
-                        signInEmailInputController.text,
-                        signInPasswordInputController.text),
-                  ),
-                  Container(child: AuthService().checkStatus(context, email)),
-                  // Container(
-                  //   child: AuthService().allowPasswordChange(
-                  //       context, emailInputControllerAlertDialog.text),
-                  // )
-                ],
-              )),
-              Container(
-                margin: EdgeInsets.only(top: 20.0),
-                child: button(
-                  'Prijavi se',
-                  () async {
-                    allowAutoValidate = true;
-                    email = widget.signInEmailInputController.text;
-                    password = widget.signInPasswordInputController.text;
-
-                    onPressedSignInModel(context, email, password);
-                  },
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 15.0),
-                child: new GestureDetector(
-                  onTap: () => displayDialog(context),
-                  child: new Text(
-                    "Zaboravili ste lozinku?",
-                    style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 16,
-                        color: Color.fromRGBO(0, 0, 0, 100)),
-                  ),
-                ),
-              )
+              EmailSignInForm(widget: widget),
+              PasswordSignInForm(widget: widget),
+              Authentication(),
+              SignInButtonForm(widget: widget),
+              ForgotPassSignInText()
             ],
           ),
         ));

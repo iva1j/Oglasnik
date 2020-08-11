@@ -1,7 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/transitionFade.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
+
 import 'package:flutter/material.dart';
 
 Container productBrandTitle(BuildContext context, int index) {

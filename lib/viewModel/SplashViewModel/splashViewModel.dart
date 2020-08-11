@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
-import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/categoryBrands.dart';
+
 import 'package:Oglasnik/viewModel/PreviewProduct/getAllBrands.dart';
 
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';

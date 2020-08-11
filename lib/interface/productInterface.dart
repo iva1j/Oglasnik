@@ -1,4 +1,3 @@
-import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/cupertino.dart';
 
 abstract class ProductInterface {

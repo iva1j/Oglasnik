@@ -1,6 +1,6 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/shared/sharedvalidation/signinValidation/emailAlertDialogValidator.dart';
+import 'package:Oglasnik/utils/shared/sharedTextFields.dart/SigninTextFields/emailAlertDialog.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertDialogButtons.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
@@ -43,15 +43,7 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
         margin: EdgeInsets.only(top: 43.0),
         child: Form(
           key: alertFormKey,
-          child: TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Email',
-              contentPadding: EdgeInsets.only(left: 10),
-            ),
-            keyboardType: TextInputType.visiblePassword,
-            validator: emailAlertDialogValidation,
-            controller: emailInputControllerAlertDialog,
-          ),
+          child: EmailAlertDialog(),
         ),
       ),
       actions: <Widget>[

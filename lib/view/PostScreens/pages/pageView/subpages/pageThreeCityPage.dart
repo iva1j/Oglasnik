@@ -2,7 +2,6 @@ import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/tagsForm.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,6 @@ class CityPage extends StatefulWidget {
 class _CityPageState extends State<CityPage> {
   @override
   Widget build(BuildContext context) {
-    
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return GestureDetector(

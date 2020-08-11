@@ -19,15 +19,6 @@ TextEditingController signInEmailInputController;
 TextEditingController signInPasswordInputController;
 TextEditingController emailInputControllerAlertDialog;
 
-///When user enter his email on AlertDialog, button "pošalji" is configured bellow
-void onPressedPosaljiKod(BuildContext context) {
-  Container(
-      child: AuthService()
-          .allowPasswordChange(context, emailInputControllerAlertDialog.text));
-  AuthService().onPressedAlertDialog(
-      context, emailInputControllerAlertDialog.text, tokenCode);
-}
-
 ///When user enter his email on AlertDialog, onPressed "odustani" is bellow:
 void alerDialogOnPressedOdustani(BuildContext context) {
   Navigator.of(context).pop();
@@ -158,4 +149,13 @@ createdShowDialog(BuildContext context) {
               successOnCreateAlertDialog(context));
     });
   }
+}
+
+///When user enter his email on AlertDialog, button "pošalji" is configured bellow
+void onPressedPosaljiKod(BuildContext context) {
+  Container(
+      child: AuthService()
+          .allowPasswordChange(context, emailInputControllerAlertDialog.text));
+  AuthService().onPressedAlertDialog(
+      context, emailInputControllerAlertDialog.text, tokenCode);
 }

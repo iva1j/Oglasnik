@@ -26,3 +26,15 @@ class EmailTextField extends StatelessWidget {
     );
   }
 }
+
+Container emailInputField(BuildContext context) {
+  return new Container(
+    margin: EdgeInsets.only(bottom: 10),
+    child: new SizedBox(
+      width: double.infinity,
+      child: Container(
+        child: EmailTextField(),
+      ),
+    ),
+  );
+}
