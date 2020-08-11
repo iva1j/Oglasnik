@@ -1,6 +1,4 @@
 import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/productsFieldsValidator.dart';
@@ -18,7 +16,11 @@ class NazivTextField extends StatefulWidget {
   _NazivTextFieldState createState() => _NazivTextFieldState();
 }
 
+String newText;
+
 class _NazivTextFieldState extends State<NazivTextField> {
+  FocusNode _textFocus = new FocusNode();
+
   @override
   Widget build(BuildContext context) {
     /*

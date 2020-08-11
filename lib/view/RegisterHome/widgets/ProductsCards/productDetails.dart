@@ -38,6 +38,14 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
+  int _selectedIndex;
+  _onSelected(int index) {
+    //https://inducesmile.com/google-flutter/how-to-change-the-background-color-of-selected-listview-in-flutter/
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   final List imageSlider = [];
   @override
   Widget build(BuildContext context) {
@@ -196,7 +204,29 @@ class _ProductDetailsState extends State<ProductDetails> {
                               indent: 15,
                               endIndent: 15,
                             ),
-                            productDetailsTagsWidget(index),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                productDetailsTagsWidget(index),
+                                //  Spacer(),
+
+                                // margin: EdgeInsets.only(bottom:1),
+                                // width: SizeConfig.blockSizeHorizontal*,
+                                IconButton(
+                                    icon: Icon(
+                                      Icons.favorite,
+                                      size: 28,
+                                      color: _selectedIndex != null &&
+                                              _selectedIndex == index
+                                          ? Colors.redAccent
+                                          : Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      _onSelected(index);
+                                    }),
+                              ],
+                            ),
                           ],
                         ),
                       ),
