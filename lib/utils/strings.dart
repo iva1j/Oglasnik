@@ -127,6 +127,8 @@ class EmptyProductList {
 class SuccessAlertDialog {
   String odlicno = "Odlično!";
   String cestitamo = "Čestitamo!";
+  String azuriranje = "Uspješno";
+  String azuriranjeopis = "Artikal je ažuriran!";
   String opis1 =
       "Uspješno ste se registrovali na našu platformu Oglasnik.Sada možete napraviti svoj prvi artikal i ponuditi ga našim korisnicima.";
   String opis2 = "Želimo Vam uspješno trgovanje.";
@@ -135,6 +137,7 @@ class SuccessAlertDialog {
 
   String uredu = "UREDU";
   String kreiraj = "KREIRAJ";
+  String empty = "";
 }
 
 //..view/SplashScreen
@@ -200,6 +203,11 @@ class InternetConnectionMessage {
 
 class SearchPageText {
   String hintText = "Pretraga proizvoda...";
+}
+
+class LoadingText {
+  String kreiranjeText = " Kreiranje artikla...";
+  String updateText = "Ažuriranje artikla...";
 }
 
 //#TODO create file named "globalVariables" and there store global Variables such as GlobalKey etc

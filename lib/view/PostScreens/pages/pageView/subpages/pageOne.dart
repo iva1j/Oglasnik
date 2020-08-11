@@ -35,7 +35,7 @@ class _PageOneState extends State<PageOne> {
         onWillPop: () {
           Navigator.of(context).pushAndRemoveUntil(
               FadeRoute(page: RegisteredHome()),
-              (Route<dynamic> route) => false); // važno: ne brisati
+              (Route<dynamic> route) => false);
           registeredGlob = false;
         },
         child: Scaffold(
