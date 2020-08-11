@@ -74,9 +74,11 @@ class PageViewButton extends StatelessWidget {
         } else if (pageController.page == 2) {
           productTag = productTagController.text;
           productLocation = dropdownValueCity;
-          noviGrad = dropdownValueCity;
+          noviGrad = updateDropdownValueCity;
           print('stari tag je: ' + productTag.toString());
           print('updateovani tag je: ' + noviTag.toString());
+          print('stari grad je: ' + productLocation.toString());
+          print('updateovani grad je: ' + noviGrad.toString());
           // noviTag = productTagController.text;
           if (productTagFormKey.currentState.validate()) {
             FocusScope.of(context).requestFocus(new FocusNode());
@@ -90,9 +92,12 @@ class PageViewButton extends StatelessWidget {
         } else if (pageController.page == 1) {
           productCategory = dropdownValueCategory;
           productBrand = dropdownValueBrand;
-          novaKategorija = dropdownValueCategory;
-          noviBrend = dropdownValueBrand;
-          print(dropdownValueCategory);
+          novaKategorija = updateDropdownValueCategory;
+          noviBrend = updateDropdownValueBrand;
+          print('productCategory: ' + productCategory.toString());
+          print('productBrand: ' + productBrand.toString());
+           print('novaKategorija: ' + novaKategorija.toString());
+          print('noviBrend: ' + noviBrend.toString());
           print('key: ' + productCategoryDropDownKey.currentState.toString());
           if (dropdownValueCategory != 'Kategorija1' &&
               productCategoryDropDownKey.currentState.toString() !=

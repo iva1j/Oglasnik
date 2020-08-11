@@ -76,6 +76,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
     setState(() {
       img1 = _fileName1;
+      image1Name = _fileName1;
       pathGlobal1 = _path1;
       buttonOne = true;
     });
@@ -87,6 +88,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     _extension2 = _fileName2.toString().split('.').last;
     setState(() {
       img2 = _fileName2;
+      pathGlobal2 = _path2;
       pathGlobal2 = _path2;
       buttonTwo = true;
     });
@@ -100,8 +102,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img3 = _fileName3;
       pathGlobal3 = _path3;
+      pathGlobal3 = _path3;
     });
-    //upload(_fileName3, _path3, 3).then((value) => productImg3 = value);
   }
 
   @override
@@ -178,25 +180,22 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             widget.onFlatButtonPressed();
 
             setState(() => loading = true);
-            // createdGlob = true;
-            // if (img1 != immutableImg1)
-            //   await upload(img1, pathGlobal1, 1)
-            //       .then((value) => productImg1 = value);
-            // if (img2 != immutableImg2)
-            //   await upload(img2, pathGlobal2, 2)
-            //       .then((value) => productImg2 = value);
-            // if (img3 != immutableImg3)
-            //   await upload(img3, pathGlobal3, 3)
-            //       .then((value) => productImg3 = value);
+            createdGlob = true;
+            if (!createSwitcher) {
+              if (img1 != immutableImg1)
+                await upload(img1, pathGlobal1, 1)
+                    .then((value) => productImg1 = value);
+              if (img2 != immutableImg2)
+                await upload(img2, pathGlobal2, 2)
+                    .then((value) => productImg2 = value);
+              if (img3 != immutableImg3)
+                await upload(img3, pathGlobal3, 3)
+                    .then((value) => productImg3 = value);
+            } else
+              await uploadImageAndPrintName();
 
             noviNaziv = productNameController.text;
-            novaKategorija = dropdownValueCategory;
-            noviBrend = dropdownValueBrand;
-            noviGrad = dropdownValueCity;
-            noviTag = productTagController.text;
-            // noviOpis = productDescController.text;
             novaCijena = productPriceController.text;
-
             print('update proizvoda: ' + noviNaziv.toString());
             await CreateProduct().updateProduct(
               context,
@@ -204,14 +203,14 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               phoneNumber,
               noviNaziv,
               productID = oldProductID,
-              // novaKategorija,
-              // noviBrend,
-              // productLocation,
+              novaKategorija,
+              noviBrend,
+              noviGrad,
               productTag,
               productDesc,
-              // productImg1,
-              // productImg2,
-              // productImg3,
+              productImg1,
+              productImg2,
+              productImg3,
               novaCijena,
             );
 
@@ -300,5 +299,14 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         // displayInternetDialog(context);
       });
     }
+  }
+
+  Future uploadImageAndPrintName() async {
+    if (img1 != immutableImg1)
+      await upload(img1, pathGlobal1, 1).then((value) => productImg1 = value);
+    if (img2 != immutableImg2)
+      await upload(img2, pathGlobal2, 2).then((value) => productImg2 = value);
+    if (img3 != immutableImg3)
+      await upload(img3, pathGlobal3, 3).then((value) => productImg3 = value);
   }
 }
