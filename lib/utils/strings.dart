@@ -155,10 +155,15 @@ class ProductDetailsStrings {
 }
 
 class UserProducts {
-  String editProfile = 'Uredi';
+  String editProfile = 'UREDI';
   String editProduct = 'Uredi unos';
   String newProduct = 'Novi unos';
-  String finishProduct = 'Završi';
+  String finishProduct = 'ZAVRŠI';
+}
+
+class Titles {
+  String myPosts = 'Moji oglasi';
+  String myFavorites = 'Sačuvani oglasi';
 }
 
 class ImageOneUpload {}

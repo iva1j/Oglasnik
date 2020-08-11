@@ -4,7 +4,7 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 class AnonymousHome extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
-import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/smallMainButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PostScreens/Pages/articlePage.dart';
@@ -10,7 +10,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsW
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsDesc.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsLocation.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsTags.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -205,7 +205,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         ? Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              button(UserProducts().editProfile, () {
+                              smallMainButton(UserProducts().editProfile, () {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (_) {
                                   return ArticlePage(
@@ -215,7 +215,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   );
                                 }));
                               }),
-                              button(UserProducts().editProfile, () async {
+                              smallMainButton(UserProducts().finishProduct,
+                                  () async {
                                 await UpdateProduct()
                                     .updateProduct(products[index].productID);
                                 Navigator.of(context)
@@ -225,48 +226,47 @@ class _ProductDetailsState extends State<ProductDetails> {
                               })
                             ],
                           )
-                        : Container(),
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: SizeConfig.blockSizeVertical * 1,
-                          bottom: SizeConfig.blockSizeVertical *
-                              16), // ne mijenjati
-                      color: mainAppColor,
-                      width: SizeConfig.screenWidth,
-                      height: SizeConfig.blockSizeVertical * 8,
-                      child: Row(
-                        children: <Widget>[
-                          Container(
+                        : Container(
                             margin: EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 10,
-                              top: SizeConfig.blockSizeVertical * 1,
-                              bottom: SizeConfig.blockSizeVertical * 1,
-                            ),
-                            child: CircleAvatar(
-                              radius: 20,
-                              backgroundColor: Colors.white,
-                              child: Transform.scale(
-                                scale: 1,
-                                child: Icon(
-                                  Icons.call,
-                                  color: Colors.black,
+                                top: SizeConfig.blockSizeVertical * 1,
+                                bottom: SizeConfig.blockSizeVertical *
+                                    16), // ne mijenjati
+                            color: mainAppColor,
+                            width: SizeConfig.screenWidth,
+                            height: SizeConfig.blockSizeVertical * 8,
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: SizeConfig.blockSizeHorizontal * 10,
+                                    top: SizeConfig.blockSizeVertical * 1,
+                                    bottom: SizeConfig.blockSizeVertical * 1,
+                                  ),
+                                  child: CircleAvatar(
+                                    radius: 20,
+                                    backgroundColor: Colors.white,
+                                    child: Transform.scale(
+                                      scale: 1,
+                                      child: Icon(
+                                        Icons.call,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: SizeConfig.blockSizeHorizontal * 5,
+                                    right: SizeConfig.blockSizeHorizontal * 3,
+                                    top: SizeConfig.blockSizeVertical * 1.5,
+                                    //bottom: SizeConfig.blockSizeVertical * 1,
+                                  ),
+                                  child: phoneNumberWidget(index),
+                                ),
+                                phoneNumberButtonWidget(index),
+                              ],
                             ),
                           ),
-                          Container(
-                            margin: EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 5,
-                              right: SizeConfig.blockSizeHorizontal * 3,
-                              top: SizeConfig.blockSizeVertical * 1.5,
-                              //bottom: SizeConfig.blockSizeVertical * 1,
-                            ),
-                            child: phoneNumberWidget(index),
-                          ),
-                          phoneNumberButtonWidget(index),
-                        ],
-                      ),
-                    ),
                   ],
                 );
               },

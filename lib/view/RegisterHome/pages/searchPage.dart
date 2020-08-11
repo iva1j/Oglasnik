@@ -4,7 +4,7 @@ import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/productSearch.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/Search/getProductsByBrand.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/Search/productSearchViewModel.dart';
 import 'package:flutter/material.dart';
