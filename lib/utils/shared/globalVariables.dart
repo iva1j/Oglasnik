@@ -46,8 +46,22 @@ String dropdownValueCategory = "Automobili";
 String dropdownValueBrand = "Audi";
 String updateDropdownValueCategory;
 String updateDropdownValueBrand;
+String updateProductName;
+String updateProductPrice;
+String updateProductTags;
+String updateProductDescription;
 String dropdownValueCity = 'Sarajevo';
 String updateDropdownValueCity;
+
+String newProductNameReturn,
+    newProductTagsReturn,
+    newProductDescriptionReturn,
+    newProductPriceReturn;
+
+String updateProductNameReturn,
+    updateProductTagsReturn,
+    updateProductDescriptionReturn,
+    updateProductPriceReturn;
 
 String image1Name, image2Name, image3Name;
 
@@ -93,12 +107,5 @@ class Data {
 }
 
 bool createSwitcher = false;
-String noviNaziv,
-    novaKategorija,
-    noviBrend,
-    noviGrad,
-    noviOpis,
-    novaCijena,
-    novaLokacija,
-    noviTag;
+
 String oldProductID;

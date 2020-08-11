@@ -21,11 +21,13 @@ class NazivTextField extends StatefulWidget {
 class _NazivTextFieldState extends State<NazivTextField> {
   @override
   Widget build(BuildContext context) {
+    /*
     if (widget.productSnapshot != null) {
-      productNameController.text = widget.productSnapshot.productName;
+      
       noviNaziv != null ? productNameController.text = noviNaziv : null;
-    }
+    }*/
 
+    print(productNameController.text);
     return Form(
       key: productNameFormKey,
       //autovalidate: true,
@@ -35,13 +37,24 @@ class _NazivTextFieldState extends State<NazivTextField> {
           errorColor: Colors.red,
         ),
         child: TextFormField(
+          initialValue: createSwitcher
+              ? newProductNameReturn == null ? "" : newProductNameReturn
+              : updateProductNameReturn == null
+                  ? updateProductName
+                  : updateProductNameReturn,
+          onChanged: (value) {
+            if (!createSwitcher)
+              updateProductNameReturn = value;
+            else
+              newProductNameReturn = value;
+          },
           textCapitalization: TextCapitalization.sentences,
           validator: productFieldsValidator,
           inputFormatters: [
             new BlacklistingTextInputFormatter(RegExp(
                 '(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])')),
           ],
-          controller: productNameController,
+          //controller: productNameController,
           maxLength: 28,
           decoration: const InputDecoration(
               hintText: 'Naziv artikla',

@@ -13,12 +13,24 @@ class OznakeTextField extends StatelessWidget {
   final Product productSnapshot;
   @override
   Widget build(BuildContext context) {
+    /*
     if (productSnapshot != null) {
       productTagController.text = productSnapshot.productTag;
       noviOpis != null ? productTagController.text = noviOpis : null;
     }
-
+  */
     return TextFormField(
+      initialValue: createSwitcher
+          ? newProductTagsReturn == null ? "" : newProductTagsReturn
+          : updateProductTagsReturn == null
+              ? updateProductTags
+              : updateProductTagsReturn,
+      onChanged: (value) {
+        if (!createSwitcher)
+          updateProductTagsReturn = value;
+        else
+          newProductTagsReturn = value;
+      },
       inputFormatters: [
         new BlacklistingTextInputFormatter(RegExp(
             '(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])')),
@@ -27,7 +39,7 @@ class OznakeTextField extends StatelessWidget {
       onFieldSubmitted: (v) {
         FocusScope.of(context).nextFocus();
       },
-      controller: productTagController,
+      //controller: productTagController,
       validator: productTagValidation,
       maxLines: null,
       keyboardType: TextInputType.multiline,

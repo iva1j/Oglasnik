@@ -206,6 +206,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               smallMainButton(UserProducts().editProfile, () {
+                                updateProductNameReturn = null;
+                                updateProductDescriptionReturn = null;
+                                updateProductPriceReturn = null;
+                                updateProductTagsReturn = null;
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (_) {
                                   return ArticlePage(

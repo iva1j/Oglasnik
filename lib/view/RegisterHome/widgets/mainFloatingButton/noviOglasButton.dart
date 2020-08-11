@@ -20,7 +20,13 @@ class NoviOglasButton extends StatelessWidget {
             child: InkWell(
               splashColor: Colors.transparent, // splash color
               onTap: () {
+                newProductNameReturn = null;
+                newProductTagsReturn = null;
+                newProductDescriptionReturn = null;
+                newProductPriceReturn = null;
                 createSwitcher = true;
+                print("Create switcher je sada: ");
+                print(createSwitcher);
                 Navigator.of(context).pushReplacement(FadeRoute(
                     page: ArticlePage(
                   editProduct: UserProducts().newProduct,
