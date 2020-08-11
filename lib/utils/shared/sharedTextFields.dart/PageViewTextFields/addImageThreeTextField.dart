@@ -12,7 +12,12 @@ class AddImageThree extends StatelessWidget {
     return Container(
       width: 200,
       child: Text(
-        createSwitcher ? img3 : image3Name != null ? image3Name : img3,
+        //img3,
+        createSwitcher
+            ? img3
+            : img3 != immutableImg1
+                ? img3
+                : image3Name != null ? image3Name : img3,
         style: TextStyle(
           fontSize: 12.0,
           fontWeight: FontWeight.normal,

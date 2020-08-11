@@ -12,7 +12,11 @@ class AddImageOne extends StatelessWidget {
     return Container(
       width: 200,
       child: Text(
-        createSwitcher ? img1 : image1Name != null ? image1Name : img1,
+        createSwitcher
+            ? img1
+            : img1 != immutableImg1
+                ? img1
+                : image1Name != null ? image1Name : img1,
         style: TextStyle(
           fontSize: 12.0,
           fontWeight: FontWeight.normal,

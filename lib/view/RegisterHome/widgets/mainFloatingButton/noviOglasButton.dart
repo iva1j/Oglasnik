@@ -24,6 +24,12 @@ class NoviOglasButton extends StatelessWidget {
                 newProductTagsReturn = null;
                 newProductDescriptionReturn = null;
                 newProductPriceReturn = null;
+                image1Name = null;
+                image2Name = null;
+                image3Name = null;
+                img1 = immutableImg1;
+                img2 = immutableImg2;
+                img3 = immutableImg3;
                 createSwitcher = true;
                 azurload = false;
                 print("Create switcher je sada: ");
@@ -32,7 +38,7 @@ class NoviOglasButton extends StatelessWidget {
                     page: ArticlePage(
                   editProduct: UserProducts().newProduct,
                   productSnapshot: null,
-                  //productID: null,
+                  productID: null,
                 )));
               },
               child: Column(

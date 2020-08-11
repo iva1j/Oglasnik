@@ -12,7 +12,12 @@ class AddImageTwo extends StatelessWidget {
     return Container(
       width: 200,
       child: Text(
-        createSwitcher ? img2 : image2Name != null ? image2Name : img2,
+        //img2,
+        createSwitcher
+            ? img2
+            : img2 != immutableImg2
+                ? img2
+                : image2Name != null ? image2Name : img2,
         style: TextStyle(
           fontSize: 12.0,
           fontWeight: FontWeight.normal,
