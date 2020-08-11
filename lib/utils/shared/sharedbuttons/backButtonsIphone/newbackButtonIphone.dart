@@ -13,9 +13,6 @@ IconButton newInputBackButtonIphone(BuildContext context) {
         size: 30,
       ),
       onPressed: () {
-        img1 = immutableImg1;
-        img2 = immutableImg2;
-        img3 = immutableImg3;
         Navigator.of(context).pushAndRemoveUntil(
             FadeRoute(page: RegisteredHome()),
             (Route<dynamic> route) =>

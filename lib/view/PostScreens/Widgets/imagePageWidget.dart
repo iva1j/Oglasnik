@@ -73,9 +73,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
     setState(() {
       img1 = _fileName1;
-      image1Name = _fileName1;
+      //image1Name = _fileName1;
       pathGlobal1 = _path1;
-      buttonOne = true;
     });
   }
 
@@ -86,7 +85,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img2 = _fileName2;
       pathGlobal2 = _path2;
-      buttonTwo = true;
     });
   }
 
@@ -100,8 +98,43 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     });
   }
 
+  void deleteFirstEntry() {
+    setState(() {
+      if (img2 != immutableImg2 && img3 != immutableImg3) {
+        img1 = img2;
+        img2 = img3;
+        img3 = immutableImg3;
+      } else if (img2 != immutableImg2) {
+        img1 = img2;
+        img2 = immutableImg2;
+      } else {
+        img1 = immutableImg1;
+      }
+    });
+  }
+
+  void deleteSecondEntry() {
+    setState(() {
+      if (img3 != immutableImg3) {
+        img2 = img3;
+        img3 = immutableImg3;
+      } else {
+        img2 = immutableImg2;
+      }
+    });
+  }
+
+  void deleteThirdEntry() {
+    setState(() {
+      img3 = immutableImg3;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("CUJ IMAGE1NAME BAAAAAAAa");
+    print(image1Name);
+    SizeConfig().init(context);
     switch (_source.keys.toList()[0]) {
       case ConnectivityResult.none:
         productIsOnline = false;
@@ -115,27 +148,28 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         productIsOnline = true;
         string = "WiFi: Online";
     }
-    SizeConfig().init(context);
     return loading ? Loading() : imageUploadContainer(context);
   }
 
   Container imageUploadContainer(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(15),
+      //margin: EdgeInsets.all(15),
       child: Column(
         children: <Widget>[
           // MainTitle(editProduct: widget.editProduct,),
           Container(
             margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 18),
           ),
-          imageOneUploadButton(openFileExplorer1),
-          imageTwoUploadButton(openFileExplorer2),
-          imageThreeUploadButton(openFileExplorer3),
+          imageOneUploadButton(openFileExplorer1, deleteFirstEntry),
+          imageTwoUploadButton(openFileExplorer2, deleteSecondEntry),
+          imageThreeUploadButton(openFileExplorer3, deleteThirdEntry),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                  margin: EdgeInsets.only(left: 35.0, bottom: 30.0),
+                  margin: EdgeInsets.only(
+                      top: SizeConfig.blockSizeVertical * 3,
+                      bottom: SizeConfig.blockSizeVertical * 3),
                   child: priceTextField()),
               Padding(
                 padding: EdgeInsets.only(left: 7, bottom: 5),
@@ -200,9 +234,15 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               updateProductDescriptionReturn == null
                   ? updateProductDescription
                   : updateProductDescriptionReturn,
-              productImg1,
-              productImg2,
-              productImg3,
+              productImg1 == null
+                  ? widget.productSnapshot.productImg1
+                  : productImg1,
+              productImg2 == null
+                  ? widget.productSnapshot.productImg2
+                  : productImg2,
+              productImg3 == null
+                  ? widget.productSnapshot.productImg3
+                  : productImg3,
               updateProductPriceReturn == null
                   ? updateProductPrice
                   : updateProductPriceReturn,

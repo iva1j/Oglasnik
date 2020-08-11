@@ -1,6 +1,7 @@
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/nazivTextField.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,12 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
       print(updateDropdownValueCategory);
       print(updateDropdownValueBrand);
       print(updateDropdownValueCity);
+      print(widget.productSnapshot.productImg1);
+      print(widget.productSnapshot.productImg2);
+      print(widget.productSnapshot.productImg3);
+      print(productImg1);
+      print(productImg2);
+      print(productImg3);
       //  print(imageName(widget.productSnapshot.productImg1));
       //print(widget.productSnapshot.productImg1.indexOf("2F"));
     }
