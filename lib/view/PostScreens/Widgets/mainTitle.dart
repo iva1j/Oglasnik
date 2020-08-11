@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 
 class MainTitle extends StatelessWidget {

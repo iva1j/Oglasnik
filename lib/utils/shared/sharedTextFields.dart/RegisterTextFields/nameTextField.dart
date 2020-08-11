@@ -33,3 +33,15 @@ class NameTextField extends StatelessWidget {
     );
   }
 }
+
+Container fullNameInputField(BuildContext context) {
+  return new Container(
+    margin: EdgeInsets.only(top: 15, bottom: 10),
+    child: new SizedBox(
+      width: double.infinity,
+      child: Container(
+        child: NameTextField(),
+      ),
+    ),
+  );
+}

@@ -36,8 +36,6 @@ class BottomBarNavigation extends StatelessWidget {
               color: Colors.black, fontSize: 20, fontWeight: FontWeight.normal),
         ),
       ),
-      // height: 60,
-      // width: double.infinity,
     );
   }
 }

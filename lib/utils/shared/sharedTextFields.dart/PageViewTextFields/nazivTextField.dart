@@ -1,6 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/services.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/productsFieldsValidator.dart';
