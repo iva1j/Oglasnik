@@ -33,3 +33,15 @@ class PhoneTextField extends StatelessWidget {
     );
   }
 }
+
+Container phoneNumberInputField(BuildContext context) {
+  return new Container(
+    margin: EdgeInsets.only(bottom: 30),
+    child: new SizedBox(
+      width: double.infinity,
+      child: Container(
+        child: PhoneTextField(),
+      ),
+    ),
+  );
+}

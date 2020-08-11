@@ -1,6 +1,6 @@
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/viewModel/Chips/renderActionChips.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/Chips/renderActionChips.dart';
 import 'package:flutter/material.dart';
 
 class ActionChipsWidget extends StatefulWidget {

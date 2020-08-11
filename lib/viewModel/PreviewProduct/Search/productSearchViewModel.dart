@@ -1,9 +1,5 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/productSearch.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/Search/getProductsByBrand.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/getAllBrands.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -40,9 +36,10 @@ class ProductSearchDB extends StatelessWidget {
     );
   }
 }
+
 ///Faruk
 ///
-///ukoliko želimo postaviti sva slova u jednom stringu UPPERCASE, tom stringu je dovoljno pozvati 
+///ukoliko želimo postaviti sva slova u jednom stringu UPPERCASE, tom stringu je dovoljno pozvati
 ///[allInCaps] a ukoliko pak želimo samo prvo slovo postaviti velikim, onda je [inCaps] dovoljno pozvati
 ///
 extension CapExtension on String {

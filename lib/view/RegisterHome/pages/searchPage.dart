@@ -2,14 +2,11 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/productSearch.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/Search/getProductsByBrand.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/Search/productSearchViewModel.dart';
+
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DataSearch extends SearchDelegate<String> {
 // Iva i Elvir, promjena teksta na search baru +

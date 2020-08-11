@@ -5,7 +5,6 @@ import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageFourDescri
 import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageOne.dart';
 import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageThreeCityPage.dart';
 import 'package:Oglasnik/view/PostScreens/pages/pageView/subpages/pageTwoCategoryPage.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 

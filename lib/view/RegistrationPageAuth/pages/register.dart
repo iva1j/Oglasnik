@@ -1,21 +1,19 @@
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/PageLogos/mainLogo.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/registerButton.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/formSignUp.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/signUpFormName.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
-import 'package:Oglasnik/viewModel/SignUp/SignUpViewModel.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:connectivity/connectivity.dart';
-
 
 TextEditingController signUpFullNameInputController;
 TextEditingController signUpPhoneNumberInputController;
@@ -38,10 +36,10 @@ class _RegisterPageState extends State<RegisterPage> {
   initState() {
     //InternetConnection();
     registerPageInitControllers();
-      _connectivity.initialise();
-      _connectivity.myStream.listen((source) {
-        setState(() => _source = source);
-      });
+    _connectivity.initialise();
+    _connectivity.myStream.listen((source) {
+      setState(() => _source = source);
+    });
     super.initState();
   }
 
