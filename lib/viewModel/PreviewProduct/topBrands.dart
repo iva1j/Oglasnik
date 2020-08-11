@@ -76,6 +76,7 @@ top3BrandsPerCategoryV2(String categoryName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
       .collection('products')
       .where('productCategory', isEqualTo: categoryName)
+      .where('productFinished', isEqualTo: false)
       .getDocuments();
 
   final List<DocumentSnapshot> documents = productsQuery.documents;

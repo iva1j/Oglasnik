@@ -30,6 +30,7 @@ numberOfProductsPerBrandTest(String brandName, String categoryName) async {
       .collection('products')
       .where('productBrand', isEqualTo: brandName)
       .where('productCategory', isEqualTo: categoryName)
+      .where('productFinished', isEqualTo: false)
       .getDocuments();
   final List<DocumentSnapshot> documents = productsQuery.documents;
   return documents.length;

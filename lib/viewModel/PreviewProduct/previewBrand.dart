@@ -15,6 +15,7 @@ class BrandViewModel implements ReadBrandInterface {
     QuerySnapshot qn = await firestore
         .collection('products')
         .where('productCategory', isEqualTo: categoryName)
+        .where('productFinished', isEqualTo: false)
         .getDocuments();
 
     List<DocumentSnapshot> l = qn.documents;
