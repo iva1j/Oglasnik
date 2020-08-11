@@ -1,13 +1,18 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/smallMainButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/PostScreens/Pages/articlePage.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsCategory.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsDesc.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsLocation.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsTags.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
+import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -21,16 +26,26 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
 class ProductDetails extends StatefulWidget {
   final String productNameScreen;
-  ProductDetails({
-    Key key,
-    @required this.productNameScreen,
-  }) : super(key: key);
+  final String productIdScreen;
+  ProductDetails(
+      {Key key,
+      @required this.productNameScreen,
+      @required this.productIdScreen})
+      : super(key: key);
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
+  int _selectedIndex;
+  _onSelected(int index) {
+    //https://inducesmile.com/google-flutter/how-to-change-the-background-color-of-selected-listview-in-flutter/
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   final List imageSlider = [];
   @override
   Widget build(BuildContext context) {
@@ -56,7 +71,7 @@ class _ProductDetailsState extends State<ProductDetails> {
       body: FutureBuilder(
         future: Firestore.instance
             .collection('products')
-            .where('productName', isEqualTo: widget.productNameScreen)
+            .where('productID', isEqualTo: widget.productIdScreen)
             .getDocuments(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
@@ -189,52 +204,103 @@ class _ProductDetailsState extends State<ProductDetails> {
                               indent: 15,
                               endIndent: 15,
                             ),
-                            productDetailsTagsWidget(index),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                productDetailsTagsWidget(index),
+                                //  Spacer(),
+
+                                // margin: EdgeInsets.only(bottom:1),
+                                // width: SizeConfig.blockSizeHorizontal*,
+                                IconButton(
+                                    icon: Icon(
+                                      Icons.favorite,
+                                      size: 28,
+                                      color: _selectedIndex != null &&
+                                              _selectedIndex == index
+                                          ? Colors.redAccent
+                                          : Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      _onSelected(index);
+                                    }),
+                              ],
+                            ),
                           ],
                         ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: SizeConfig.blockSizeVertical * 1,
-                          bottom: SizeConfig.blockSizeVertical *
-                              16), // ne mijenjati
-                      color: mainAppColor,
-                      width: SizeConfig.screenWidth,
-                      height: SizeConfig.blockSizeVertical * 8,
-                      child: Row(
-                        children: <Widget>[
-                          Container(
+                    products[index].email == email
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              smallMainButton(UserProducts().editProfile, () {
+                                updateProductNameReturn = null;
+                                updateProductDescriptionReturn = null;
+                                updateProductPriceReturn = null;
+                                updateProductTagsReturn = null;
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (_) {
+                                  return ArticlePage(
+                                    editProduct: UserProducts().editProduct,
+                                    productSnapshot: products[index],
+                                    productID: products[index].productID,
+                                  );
+                                }));
+                              }),
+                              smallMainButton(UserProducts().finishProduct,
+                                  () async {
+                                await UpdateProduct()
+                                    .updateProduct(products[index].productID);
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (_) {
+                                  return RegisteredHome();
+                                }));
+                              })
+                            ],
+                          )
+                        : Container(
                             margin: EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 10,
-                              top: SizeConfig.blockSizeVertical * 1,
-                              bottom: SizeConfig.blockSizeVertical * 1,
-                            ),
-                            child: CircleAvatar(
-                              radius: 20,
-                              backgroundColor: Colors.white,
-                              child: Transform.scale(
-                                scale: 1,
-                                child: Icon(
-                                  Icons.call,
-                                  color: Colors.black,
+                                top: SizeConfig.blockSizeVertical * 1,
+                                bottom: SizeConfig.blockSizeVertical *
+                                    16), // ne mijenjati
+                            color: mainAppColor,
+                            width: SizeConfig.screenWidth,
+                            height: SizeConfig.blockSizeVertical * 8,
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: SizeConfig.blockSizeHorizontal * 10,
+                                    top: SizeConfig.blockSizeVertical * 1,
+                                    bottom: SizeConfig.blockSizeVertical * 1,
+                                  ),
+                                  child: CircleAvatar(
+                                    radius: 20,
+                                    backgroundColor: Colors.white,
+                                    child: Transform.scale(
+                                      scale: 1,
+                                      child: Icon(
+                                        Icons.call,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: SizeConfig.blockSizeHorizontal * 5,
+                                    right: SizeConfig.blockSizeHorizontal * 3,
+                                    top: SizeConfig.blockSizeVertical * 1.5,
+                                    //bottom: SizeConfig.blockSizeVertical * 1,
+                                  ),
+                                  child: phoneNumberWidget(index),
+                                ),
+                                phoneNumberButtonWidget(index),
+                              ],
                             ),
                           ),
-                          Container(
-                            margin: EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 5,
-                              right: SizeConfig.blockSizeHorizontal * 3,
-                              top: SizeConfig.blockSizeVertical * 1.5,
-                              //bottom: SizeConfig.blockSizeVertical * 1,
-                            ),
-                            child: phoneNumberWidget(index),
-                          ),
-                          phoneNumberButtonWidget(index),
-                        ],
-                      ),
-                    ),
                   ],
                 );
               },

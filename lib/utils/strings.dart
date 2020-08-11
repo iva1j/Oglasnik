@@ -20,6 +20,7 @@ class FilterTitle {
 
 class TrazeniProizvod {
   String trazeniProizvod = 'U bazi trenutno nemamo traženi proizvod';
+  String nemaProizvoda = 'Lista vaših proizvoda je prazna';
 }
 
 class Welcome {
@@ -154,6 +155,18 @@ class ProductDetailsStrings {
   String callNumberText = '060 335 221 3';
 }
 
+class UserProducts {
+  String editProfile = 'UREDI';
+  String editProduct = 'Uredi unos';
+  String newProduct = 'Novi unos';
+  String finishProduct = 'ZAVRŠI';
+}
+
+class Titles {
+  String myPosts = 'Moji oglasi';
+  String myFavorites = 'Sačuvani oglasi';
+}
+
 class ImageOneUpload {}
 
 class ImageTwoUpload {}
@@ -168,15 +181,6 @@ bool tokenstatus = false;
 var nepoklapanje = false;
 bool allowUserToChangePassword = false;
 bool allowUserToRegister = true;
-//final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
-//final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> passwordChangeFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> signInRegisterFormKey = GlobalKey<FormState>();
-GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
-
-//final GlobalKey<FormState> alertFormKey = GlobalKey<FormState>();
-//GlobalKey<FormState> globalKey() => registerFormKey;
-GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
 
 class InputFields {
   TextEditingController emailInputController = new TextEditingController();
@@ -209,6 +213,10 @@ final String immutableImg2 = "Dodaj sliku 2";
 final String immutableImg3 = "Dodaj sliku 3";
 
 final String noPhoto = "assets/images/nophoto.jpg";
+//final String noPhotoNetwork =
+//    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2Fnophoto.jpg?alt=media&token=cd241b95-8a79-4f1b-a4e0-4f4a77c255a8";
+final String noPhotoNetwork =
+    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2Fnophoto.jpg?alt=media&token=96dd6536-d191-4c8a-bd21-26e88705d306";
 List<String> productsForSearch = List<String>();
 
 List<String> suggestionsList;

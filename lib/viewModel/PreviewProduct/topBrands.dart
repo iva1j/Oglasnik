@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 /// ali je ostavljena u slucaju promjene zahtjeva klijenta u smislu dizajna. Razlika izmedju ove funkcije i gore navedene
 /// je u tome sto ce ova vratiti u svakom slucaju 3 branda iako ce mozda biti neki od njih sa 0 produkata u bazi.
 /// Ostatak tijela funkcije je podudaran sa top3BrandsPerCategoryV2 koja je dole opisana.
+/*
 top3BrandsPerCategory(String categoryName) async {
   final QuerySnapshot productsQuery = await Firestore.instance
       .collection('products')
@@ -59,7 +60,7 @@ top3BrandsPerCategory(String categoryName) async {
 
   return mapForReturn;
 }
-
+*/
 /// Ova funkcija ce sluziti prilikom ispisa 3 branda sa najvise produkata u category karticama na home page-u. Na pocetku
 /// povlacimo sve proizvode iz baze iz odredjene kategorije i smjestamo ih u lokalnu listu. U odvojen string potom
 /// smjestamo nazive brandova tih produkata te u mapu tipa <String, dynamic> smjestamo uredjene parove key - value gdje
@@ -89,7 +90,7 @@ top3BrandsPerCategoryV2(String categoryName) async {
 
   ///pravljenje mape tipa key: naziv branda, value: broj ponavljanja u bazi koja ce nam pomoci prilikom sortiranja
   for (final item in stringsForReturn) {
-    var numb = await numberOfProductsPerBrandTest(item);
+    var numb = await numberOfProductsPerBrandTest(item, categoryName);
     top3[item] = numb;
   }
 
@@ -107,7 +108,7 @@ top3BrandsPerCategoryV2(String categoryName) async {
   ///formiramo mapu koju cemo vratiti iz funkcije na osnovu gore napravljene liste brandova
   final mapForReturn = <String, dynamic>{};
   for (final x in stringsForReturn) {
-    var numX = await numberOfProductsPerBrandTest(x);
+    var numX = await numberOfProductsPerBrandTest(x, categoryName);
     mapForReturn[x] = numX;
     if (mapForReturn.length == 3) break;
   }

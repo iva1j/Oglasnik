@@ -17,8 +17,6 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardProductName.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/Search/getProductsByBrand.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/Search/productSearchViewModel.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/getAllBrands.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
@@ -46,7 +44,8 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
     bool showMessage = true;
     List<DocumentSnapshot> products = List<DocumentSnapshot>();
 
-    return Column(
+    return 
+    Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
@@ -70,11 +69,9 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
               ? FutureBuilder(
                   /// Future funkcija koja je zadužena za povlačenje proizvoda iz baze:
                   future: getProductsPerBrand(widget.query.toLowerCase()),
-
                   builder: (BuildContext context, AsyncSnapshot snapshott) {
                     if (snapshott.hasData) {
                       showingSelectedProducts(products, snapshott, true);
-
                       ///Handlovanje slučaja da u bazi nema niti jednog artikla koji je user tražio:
                       return selectedProducts == null ||
                               selectedProducts.isEmpty
@@ -573,6 +570,7 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                                           ),
                                         ),
                                       );
+                                 
                                     } else {
                                       return Container();
                                     }
@@ -667,10 +665,11 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
     Navigator.of(context).push(
       FadeRoute(
         page: ProductDetails(
-          productNameScreen: selectedProducts[index]['productName'],
-          // snapshot
-          //     .data.documents[index]['productName'],
-        ),
+            productNameScreen: selectedProducts[index]['productName'],
+            productIdScreen: selectedProducts[index]['productID']
+            // snapshot
+            //     .data.documents[index]['productName'],
+            ),
       ),
     );
   }

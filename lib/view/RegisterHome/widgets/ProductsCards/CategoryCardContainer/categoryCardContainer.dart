@@ -63,11 +63,14 @@ class CategoryCardContainer extends StatelessWidget {
                           List<String> names = snapshot.data.keys.toList();
                           List<dynamic> counts = snapshot.data.values.toList();
                           return names.length == 3
-                              ? threeCategoriesWidget(index, names, counts)
+                              ? threeCategoriesWidget(index, names, counts,
+                                  categories[index].categoryName)
                               : names.length == 2
-                                  ? twoCategoriesWidget(index, names, counts)
+                                  ? twoCategoriesWidget(index, names, counts,
+                                      categories[index].categoryName)
                                   : names.length == 1
-                                      ? oneCategoryWidget(index, names, counts)
+                                      ? oneCategoryWidget(index, names, counts,
+                                          categories[index].categoryName)
                                       : Container(
                                           width: 0,
                                           height: 0,

@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/PageLogos/mainLogo.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
@@ -9,11 +8,11 @@ import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/FormSignIn.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/PrijavaWelcomeScreen.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
-import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:Oglasnik/utils/globals.dart';
 
 class SigninPage extends StatefulWidget {
@@ -25,8 +24,7 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
-  // var _connectionStatus = 'Unknown';
-  // Connectivity connectivity;
+  Connectivity connectivity;
   // StreamSubscription<ConnectivityResult> subscription;
 
   Map _source = {ConnectivityResult.none: false};
@@ -40,7 +38,7 @@ class _SigninPageState extends State<SigninPage> {
   initState() {
     loginInitControllers();
     //   InternetConnection().checkForInternet();
-    //InternetConnection();
+    InternetConnection();
     _connectivity.initialise();
     _connectivity.myStream.listen((source) {
       setState(() => _source = source);
@@ -49,7 +47,7 @@ class _SigninPageState extends State<SigninPage> {
   }
 
   void dispose() {
-    loginDisposeControllers();
+    //loginDisposeControllers();
     _connectivity.disposeStream();
     super.dispose();
   }
@@ -128,9 +126,6 @@ class _SigninPageState extends State<SigninPage> {
                   margin: EdgeInsets.all(45),
                   child: Column(
                     children: <Widget>[
-                      Container(
-                          child: AuthService().allowPasswordChange(
-                              context, emailInputControllerAlertDialog.text)),
                       LogoContainer(),
                       WelcomeScreen(),
                       PrijavaWelcomeScreen(),

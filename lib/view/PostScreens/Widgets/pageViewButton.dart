@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +32,8 @@ class PageViewButton extends StatelessWidget {
             FocusScope.of(context).requestFocus(new FocusNode());
             pageController.nextPage(
                 duration: Duration(milliseconds: 800), curve: Curves.ease);
-
-            productprice = productPriceController.text;
+            //novaCijena = productPriceController.text;
+            //productprice = productPriceController.text;
             Timer(Duration(seconds: 7), () {
               CreateProduct().createProduct(
                   context,
@@ -55,7 +56,12 @@ class PageViewButton extends StatelessWidget {
           }
         }
         if (pageController.page == 3) {
+          /*
           productDesc = productDescController.text;
+          noviOpis = productDescController.text;
+          print('stari opis je: ' + productDesc.toString());
+          print('updateovani opis je: ' + noviOpis.toString());
+*/
           if (productDescFormKey.currentState.validate()) {
             FocusScope.of(context).requestFocus(new FocusNode());
             Timer(Duration(milliseconds: 500), () {
@@ -69,6 +75,13 @@ class PageViewButton extends StatelessWidget {
         } else if (pageController.page == 2) {
           productTag = productTagController.text;
           productLocation = dropdownValueCity;
+          /*
+          noviGrad = updateDropdownValueCity;
+          print('stari tag je: ' + productTag.toString());
+          print('updateovani tag je: ' + noviTag.toString());
+          print('stari grad je: ' + productLocation.toString());
+          print('updateovani grad je: ' + noviGrad.toString());*/
+          // noviTag = productTagController.text;
           if (productTagFormKey.currentState.validate()) {
             FocusScope.of(context).requestFocus(new FocusNode());
             Timer(Duration(milliseconds: 500), () {
@@ -81,7 +94,13 @@ class PageViewButton extends StatelessWidget {
         } else if (pageController.page == 1) {
           productCategory = dropdownValueCategory;
           productBrand = dropdownValueBrand;
-          print(dropdownValueCategory);
+          /*
+          novaKategorija = updateDropdownValueCategory;
+          noviBrend = updateDropdownValueBrand;
+          print('productCategory: ' + productCategory.toString());
+          print('productBrand: ' + productBrand.toString());
+          print('novaKategorija: ' + novaKategorija.toString());
+          print('noviBrend: ' + noviBrend.toString());*/
           print('key: ' + productCategoryDropDownKey.currentState.toString());
           if (dropdownValueCategory != 'Kategorija1' &&
               productCategoryDropDownKey.currentState.toString() !=
@@ -96,7 +115,8 @@ class PageViewButton extends StatelessWidget {
             print('Molimo ispravno unesite kategoriju!');
           return null;
         } else if (pageController.page == 0) {
-          productName = productNameController.text;
+          //productName = productNameController.text;
+          //noviNaziv = productNameController.text;
           if (productNameFormKey.currentState.validate()) {
             FocusScope.of(context).requestFocus(new FocusNode());
             Timer(Duration(milliseconds: 500), () {

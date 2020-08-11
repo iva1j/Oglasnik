@@ -16,10 +16,14 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 Future<void> main() async {
   await DotEnv().load('.env');
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]).then((_) {
-    runApp(MyApp());
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+    ],
+  ).then((_) {
+    runApp(
+      MyApp(),
+    );
   });
 }
 

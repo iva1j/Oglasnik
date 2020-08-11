@@ -16,12 +16,12 @@ import 'itemCardPrice.dart';
 import 'itemCardProductName.dart';
 
 class ItemCardBody extends StatefulWidget {
-  const ItemCardBody({
-    Key key,
-    @required this.widget,
-  }) : super(key: key);
+  const ItemCardBody(
+      {Key key, @required this.widget, @required this.categoryName})
+      : super(key: key);
 
   final ItemCard widget;
+  final String categoryName;
 
   @override
   _ItemCardBodyState createState() => _ItemCardBodyState();
@@ -83,6 +83,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                   .collection('products')
                   .where('productBrand',
                       isEqualTo: widget.widget.brandNameScreen)
+                  .where('productCategory', isEqualTo: widget.categoryName)
                   .getDocuments(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
@@ -114,6 +115,8 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                     page: ProductDetails(
                                       productNameScreen: snapshot
                                           .data.documents[index]['productName'],
+                                      productIdScreen: snapshot
+                                          .data.documents[index]['productID'],
                                     ),
                                   ),
                                 );
@@ -271,9 +274,10 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                                 Navigator.of(context).push(
                                   FadeRoute(
                                     page: ProductDetails(
-                                      productNameScreen: snapshot
-                                          .data.documents[index]['productName'],
-                                    ),
+                                        productNameScreen: snapshot.data
+                                            .documents[index]['productName'],
+                                        productIdScreen: snapshot.data
+                                            .documents[index]['productID']),
                                   ),
                                 );
                               },

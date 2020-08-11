@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
@@ -19,14 +21,19 @@ class ButtonSacuvaj extends StatelessWidget {
         newPassword = passwordInputController.text;
         passwordConfirm = confirmPasswordInputController.text;
         token = tokenInputController.text;
-        print('Nakon klika - ispis je sljedeći:');
-        AuthService().onPressedChangePassword(
-          context,
-          email,
-          passwordInputController.text,
-          confirmPasswordInputController.text,
-          token,
-        );
+        AuthService().tokenExistOrNot(context, email, token);
+
+        print('Nakon klika sačuvaj - ispis je sljedeći:');
+
+        Timer(Duration(milliseconds: 500), () {
+          AuthService().onPressedChangePassword(
+            context,
+            email,
+            passwordInputController.text,
+            confirmPasswordInputController.text,
+            token,
+          );
+        });
       }),
     );
   }

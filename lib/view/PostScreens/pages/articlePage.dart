@@ -1,10 +1,22 @@
+import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/newbackButtonIphone.dart';
 import 'package:Oglasnik/view/PostScreens/pages/pageView/mainPageView.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 
 class ArticlePage extends StatefulWidget {
+  const ArticlePage(
+      {Key key,
+      @required this.editProduct,
+      @required this.productSnapshot,
+      @required this.productID})
+      : super(key: key);
+  final String editProduct;
+  final Product productSnapshot;
+  final String productID;
   @override
   _ArticlePageState createState() => _ArticlePageState();
 }
@@ -15,6 +27,7 @@ class _ArticlePageState extends State<ArticlePage> {
   void initState() {
     pageViewInitControllers();
     dropDownInitialValueState();
+    print(widget.productSnapshot.productName);
     super.initState();
   }
 
@@ -27,6 +40,8 @@ class _ArticlePageState extends State<ArticlePage> {
 
   @override
   Widget build(BuildContext context) {
+    
+    oldProductID = widget.productID;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       //resizeToAvoidBottomInset: true,
@@ -40,6 +55,8 @@ class _ArticlePageState extends State<ArticlePage> {
       body: WillPopScope(
         onWillPop: () async => Future.value(doesPop),
         child: PageViewPages(
+          productSnapshot: widget.productSnapshot,
+          editProduct: widget.editProduct,
           bottom: bottom,
           onFlatButtonPressed: finishButtonPressed,
         ),

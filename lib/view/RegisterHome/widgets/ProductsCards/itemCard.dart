@@ -4,7 +4,7 @@ import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 
-import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
@@ -12,7 +12,10 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 class ItemCard extends StatefulWidget {
   //String audi = "assets/images/audi.jpg";
   final String brandNameScreen;
-  ItemCard({Key key, @required this.brandNameScreen}) : super(key: key);
+  final String categoryName;
+  ItemCard(
+      {Key key, @required this.brandNameScreen, @required this.categoryName})
+      : super(key: key);
 
   @override
   _ItemCardState createState() => _ItemCardState();
@@ -49,6 +52,9 @@ class _ItemCardState extends State<ItemCard> {
           width: double.infinity,
           color: Color.fromARGB(255, 226, 11, 48),
         ),
-        body: ItemCardBody(widget: widget));
+        body: ItemCardBody(
+          widget: widget,
+          categoryName: widget.categoryName,
+        ));
   }
 }

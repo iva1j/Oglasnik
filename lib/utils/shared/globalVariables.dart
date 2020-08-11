@@ -23,7 +23,18 @@ TextEditingController productTagController;
 TextEditingController productDescController;
 TextEditingController productPriceController;
 
-// GlobalKey<FormState> signUpRegisterFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> signUpRegisterFormKey =
+    new GlobalKey<FormState>(debugLabel: 'signUpRegisterFormKey');
+GlobalKey<FormState> signInRegisterFormKey =
+    new GlobalKey<FormState>(debugLabel: 'signInRegisterFormKey');
+
+GlobalKey<FormState> passwordChangeFormKey =
+    new GlobalKey<FormState>(debugLabel: 'passwordChangeFormKey');
+GlobalKey<FormState> alertFormKey =
+    new GlobalKey<FormState>(debugLabel: 'alertFormKey');
+
+GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
+
 // TextEditingController signUpFullNameInputController;
 // TextEditingController signUpPhoneNumberInputController;
 // TextEditingController signUpEmailInputController;
@@ -33,7 +44,26 @@ TextEditingController productPriceController;
 
 String dropdownValueCategory = "Automobili";
 String dropdownValueBrand = "Audi";
+String updateDropdownValueCategory;
+String updateDropdownValueBrand;
+String updateProductName;
+String updateProductPrice;
+String updateProductTags;
+String updateProductDescription;
 String dropdownValueCity = 'Sarajevo';
+String updateDropdownValueCity;
+
+String newProductNameReturn,
+    newProductTagsReturn,
+    newProductDescriptionReturn,
+    newProductPriceReturn;
+
+String updateProductNameReturn,
+    updateProductTagsReturn,
+    updateProductDescriptionReturn,
+    updateProductPriceReturn;
+
+String image1Name, image2Name, image3Name;
 
 //String dropdownValueBrand = 'Brands';
 
@@ -75,3 +105,7 @@ class Data {
   List imagesPass;
   Data({this.imagesPass});
 }
+
+bool createSwitcher = false;
+
+String oldProductID;
