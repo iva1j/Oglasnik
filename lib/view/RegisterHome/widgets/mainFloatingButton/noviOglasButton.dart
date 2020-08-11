@@ -31,6 +31,7 @@ class NoviOglasButton extends StatelessWidget {
                     page: ArticlePage(
                   editProduct: UserProducts().newProduct,
                   productSnapshot: null,
+                  //productID: null,
                 )));
               },
               child: Column(

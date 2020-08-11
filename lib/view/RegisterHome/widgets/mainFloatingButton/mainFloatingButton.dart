@@ -6,7 +6,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/noviOglasB
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/profilButton.dart';
 
 Stack mainFloatingButton(String email) {
-  return Stack(overflow: Overflow.visible, children: <Widget>[
+  return Stack(overflow: Overflow.visible, children: <Widget>[ 
     Builder(
       builder: (context) => FabCircularMenu(
         alignment: Alignment.bottomRight,
