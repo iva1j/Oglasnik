@@ -7,7 +7,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 Container productDetailsTagsWidget(int index) {
   return Container(
-    width: SizeConfig.blockSizeHorizontal*75,
+    width: SizeConfig.blockSizeHorizontal * 75,
     child: SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(

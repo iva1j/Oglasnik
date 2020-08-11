@@ -1,3 +1,5 @@
+import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/model/userModel.dart';
 import 'package:flutter/cupertino.dart';
 
 abstract class ProductInterface {
@@ -20,6 +22,10 @@ abstract class ProductInterface {
 
 abstract class UpdateProductInterface {
   Future updateProduct(String productID);
+}
+
+abstract class AddFavoriteProductInterface{
+  Future addFavorite(String email, product);
 }
 
 abstract class ReadProductInterface {

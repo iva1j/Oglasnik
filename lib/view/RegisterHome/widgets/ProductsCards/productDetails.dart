@@ -4,6 +4,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PostScreens/Pages/articlePage.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/anonProductDetailsTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsCategory.dart';
@@ -13,6 +14,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsW
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
+import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -40,7 +42,6 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   int _selectedIndex;
   _onSelected(int index) {
-    //https://inducesmile.com/google-flutter/how-to-change-the-background-color-of-selected-listview-in-flutter/
     setState(() {
       _selectedIndex = index;
     });
@@ -204,29 +205,37 @@ class _ProductDetailsState extends State<ProductDetails> {
                               indent: 15,
                               endIndent: 15,
                             ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                productDetailsTagsWidget(index),
-                                //  Spacer(),
-
-                                // margin: EdgeInsets.only(bottom:1),
-                                // width: SizeConfig.blockSizeHorizontal*,
-                                IconButton(
-                                    icon: Icon(
-                                      Icons.favorite,
-                                      size: 28,
-                                      color: _selectedIndex != null &&
-                                              _selectedIndex == index
-                                          ? Colors.redAccent
-                                          : Colors.grey,
-                                    ),
-                                    onPressed: () {
-                                      _onSelected(index);
-                                    }),
-                              ],
-                            ),
+                            email != null
+                                ? Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      productDetailsTagsWidget(index),
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 5),
+                                        child: IconButton(
+                                            color: Colors.white,
+                                            icon: Icon(
+                                              Icons.star,
+                                              size: 30,
+                                              color: _selectedIndex != null &&
+                                                      _selectedIndex == index
+                                                  ? Colors.yellow
+                                                  : Colors.red,
+                                            ),
+                                            onPressed: () async {
+                                              _onSelected(index);
+                                              await FavoriteProduct()
+                                                  .addFavorite(
+                                                      email,
+                                                      products[index]
+                                                          .productID);
+                                            }),
+                                      ),
+                                    ],
+                                  )
+                                : anonProductDetailsTagsWidget(index),
                           ],
                         ),
                       ),
