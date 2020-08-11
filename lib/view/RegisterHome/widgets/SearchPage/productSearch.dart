@@ -75,8 +75,10 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                 )
               : FutureBuilder(
                   /// Future funkcija koja je zadužena za povlačenje proizvoda iz baze:
-                  future:
-                      Firestore.instance.collection('products').getDocuments(),
+                  future: Firestore.instance
+                      .collection('products')
+                      .where('productFinished', isEqualTo: false)
+                      .getDocuments(),
 
                   builder: (BuildContext context, AsyncSnapshot snapshott) {
                     if (snapshott.hasData) {

@@ -27,8 +27,10 @@ class CategoryViewModel implements ReadCategoriesInterface {
     List<DocumentSnapshot> forReturn = List<DocumentSnapshot>();
 
     ///povlacimo sve produkte iz baze
-    QuerySnapshot queryProducts =
-        await firestore.collection('products').getDocuments();
+    QuerySnapshot queryProducts = await firestore
+        .collection('products')
+        .where('productFinished', isEqualTo: false)
+        .getDocuments();
     List<DocumentSnapshot> prods = queryProducts.documents;
 
     ///sortiramo produkte prema nazivu kategorije

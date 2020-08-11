@@ -7,8 +7,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 ///ukoliko se otkomentira, vratice produkte iz baze ciji je tip branda proslijedjeni parametar brandName i koje u nazivu
 ///imaju naziv tog branda
 getProductsPerBrand(String brandName) async {
-  final QuerySnapshot productQuery =
-      await Firestore.instance.collection('products').getDocuments();
+  final QuerySnapshot productQuery = await Firestore.instance
+      .collection('products')
+      .where('productFinished', isEqualTo: false)
+      .getDocuments();
 
   List<DocumentSnapshot> productsList = productQuery.documents;
   List<DocumentSnapshot> forReturn = List<DocumentSnapshot>();
