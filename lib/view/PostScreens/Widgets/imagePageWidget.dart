@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:random_string/random_string.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 
 class ImagePageWidget extends StatefulWidget {
   const ImagePageWidget({
@@ -58,8 +59,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   String _extension1, _extension2, _extension3;
   String _fileName1, _fileName2, _fileName3;
 
-  //final VoidCallback;
-
   bool loading = false;
 
   FileType _imageType = FileType.image;
@@ -67,14 +66,13 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   List<StorageUploadTask> _tasks = <StorageUploadTask>[];
 
   void openFileExplorer1() async {
-    //_path1 = null;
-
     _path1 = await FilePicker.getFilePath(type: _imageType);
     _fileName1 = _path1.split('/').last;
     _extension1 = _fileName1.toString().split('.').last;
 
     setState(() {
       img1 = _fileName1;
+      image1Name = _fileName1;
       pathGlobal1 = _path1;
       buttonOne = true;
     });
@@ -89,7 +87,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       pathGlobal2 = _path2;
       buttonTwo = true;
     });
-    //upload(_fileName2, _path2, 2).then((value) => productImg2 = value);
   }
 
   void openFileExplorer3() async {
@@ -100,7 +97,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       img3 = _fileName3;
       pathGlobal3 = _path3;
     });
-    //upload(_fileName3, _path3, 3).then((value) => productImg3 = value);
   }
 
   @override
@@ -123,9 +119,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   }
 
   Container imageUploadContainer(BuildContext context) {
-    widget.productSnapshot != null
-        ? productPriceController.text = widget.productSnapshot.productCijena
-        : null;
     return Container(
       margin: EdgeInsets.all(15),
       child: Column(
@@ -151,10 +144,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               ),
             ],
           ),
-          /*
-          Container(
-            child: PageViewButton(),
-          )*/
+
           SizedBox(
             height: SizeConfig.blockSizeVertical * 6,
           ),
@@ -177,43 +167,45 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             widget.onFlatButtonPressed();
 
             setState(() => loading = true);
-            // createdGlob = true;
-            // if (img1 != immutableImg1)
-            //   await upload(img1, pathGlobal1, 1)
-            //       .then((value) => productImg1 = value);
-            // if (img2 != immutableImg2)
-            //   await upload(img2, pathGlobal2, 2)
-            //       .then((value) => productImg2 = value);
-            // if (img3 != immutableImg3)
-            //   await upload(img3, pathGlobal3, 3)
-            //       .then((value) => productImg3 = value);
+            createdGlob = true;
+            if (!createSwitcher) {
+              if (img1 != immutableImg1)
+                await upload(img1, pathGlobal1, 1)
+                    .then((value) => productImg1 = value);
+              if (img2 != immutableImg2)
+                await upload(img2, pathGlobal2, 2)
+                    .then((value) => productImg2 = value);
+              if (img3 != immutableImg3)
+                await upload(img3, pathGlobal3, 3)
+                    .then((value) => productImg3 = value);
+            } else
+              await uploadImageAndPrintName();
 
-            noviNaziv = productNameController.text;
-            novaKategorija = dropdownValueCategory;
-            noviBrend = dropdownValueBrand;
-            noviGrad = dropdownValueCity;
-            noviTag = productTagController.text;
-            // noviOpis = productDescController.text;
-            novaCijena = productPriceController.text;
-
-            print('update proizvoda: ' + noviNaziv.toString());
+            //print('update proizvoda: ' + noviNaziv.toString());
             await CreateProduct().updateProduct(
               context,
               email,
               phoneNumber,
-              noviNaziv,
+              updateProductNameReturn == null
+                  ? updateProductName
+                  : updateProductNameReturn,
               productID = oldProductID,
-              // novaKategorija,
-              // noviBrend,
-              // productLocation,
-              productTag,
-              productDesc,
-              // productImg1,
-              // productImg2,
-              // productImg3,
-              novaCijena,
+              updateDropdownValueCategory,
+              updateDropdownValueBrand,
+              updateDropdownValueCity,
+              updateProductTagsReturn == null
+                  ? updateProductTags
+                  : updateProductTagsReturn,
+              updateProductDescriptionReturn == null
+                  ? updateProductDescription
+                  : updateProductDescriptionReturn,
+              productImg1,
+              productImg2,
+              productImg3,
+              updateProductPriceReturn == null
+                  ? updateProductPrice
+                  : updateProductPriceReturn,
             );
-
             img1 = immutableImg1;
             img2 = immutableImg2;
             img3 = immutableImg3;
@@ -239,7 +231,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         if (pageController.page == 4) {
           if (productPriceFormKey.currentState.validate()) {
             widget.onFlatButtonPressed();
-
             setState(() => loading = true);
             createdGlob = true;
             if (img1 != immutableImg1)
@@ -253,13 +244,13 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                   .then((value) => productImg3 = value);
             //showIphoneButton = false;
 
-            productName = productNameController.text;
+            productName = newProductNameReturn;
             productCategory = dropdownValueCategory;
             productBrand = dropdownValueBrand;
             productLocation = dropdownValueCity;
-            productTag = productTagController.text;
-            productDesc = productDescController.text;
-            productprice = productPriceController.text;
+            productTag = newProductTagsReturn;
+            productDesc = newProductDescriptionReturn;
+            productprice = newProductPriceReturn;
 
             print(email + productName + productTag);
             await CreateProduct().createProduct(
@@ -290,6 +281,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             pathGlobal2 = null;
             pathGlobal3 = null;
             print('status interneta:' + productIsOnline.toString());
+
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (_) => RegisteredHome()));
           } else
@@ -299,5 +291,14 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
         // displayInternetDialog(context);
       });
     }
+  }
+
+  Future uploadImageAndPrintName() async {
+    if (img1 != immutableImg1)
+      await upload(img1, pathGlobal1, 1).then((value) => productImg1 = value);
+    if (img2 != immutableImg2)
+      await upload(img2, pathGlobal2, 2).then((value) => productImg2 = value);
+    if (img3 != immutableImg3)
+      await upload(img3, pathGlobal3, 3).then((value) => productImg3 = value);
   }
 }

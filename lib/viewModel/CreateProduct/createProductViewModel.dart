@@ -47,14 +47,14 @@ class CreateProduct extends ProductInterface {
       phoneNumber,
       productName,
       productID,
-      // productCategory,
-      // productBrand,
-      // productLocation,
+      productCategory,
+      productBrand,
+      productLocation,
       productTag,
       productDesc,
-      // productImg1,
-      // productImg2,
-      // productImg3,
+      productImg1,
+      productImg2,
+      productImg3,
       productCijena) {
     db.collection("products").document(productID).updateData({
       'productID': productID,
@@ -68,9 +68,9 @@ class CreateProduct extends ProductInterface {
       'productTag': productTag,
       'productFinished': false,
       'productDesc': productDesc,
-      // 'productImg1': productImg1,
-      // 'productImg2': productImg2,
-      // 'productImg3': productImg3,
+      'productImg1': productImg1,
+      'productImg2': productImg2,
+      'productImg3': productImg3,
     });
     return null;
   }

@@ -5,9 +5,13 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/myProducts.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class MyPosts extends StatefulWidget {
+  const MyPosts({Key key, this.email}) : super(key: key);
+  final String email;
   @override
   _MyPostsState createState() => _MyPostsState();
 }
@@ -15,6 +19,7 @@ class MyPosts extends StatefulWidget {
 class _MyPostsState extends State<MyPosts> {
   @override
   Widget build(BuildContext context) {
+    print('korisnik prijavljen sa: ' + widget.email.toString() + ' emailom');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppBarTheme.of(context).color,
@@ -26,6 +31,7 @@ class _MyPostsState extends State<MyPosts> {
               .pushReplacement(FadeRoute(page: RegisteredHome())),
         ),
       ),
+      body: MyProducts(),
       floatingActionButton: email != null
           ? mainFloatingButton(email)
           : homeFloatingAnimatedButton(),

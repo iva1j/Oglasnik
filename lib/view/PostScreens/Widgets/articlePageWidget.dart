@@ -30,9 +30,15 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
     print("AGSAGAGSG");
     print(createSwitcher);
     if (!createSwitcher) {
+      updateProductName = widget.productSnapshot.productName;
+      updateProductPrice = widget.productSnapshot.productCijena;
+      updateProductTags = widget.productSnapshot.productTag;
+      updateProductDescription = widget.productSnapshot.productDesc;
       updateDropdownValueCategory = widget.productSnapshot.productCategory;
       updateDropdownValueBrand = widget.productSnapshot.productBrand;
       updateDropdownValueCity = widget.productSnapshot.productLocation;
+      //productTag = productTagController.text;
+
       if (widget.productSnapshot.productImg1 != null)
         image1Name = imageName(widget.productSnapshot.productImg1);
       if (widget.productSnapshot.productImg2 != null)
@@ -42,7 +48,7 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
       print(updateDropdownValueCategory);
       print(updateDropdownValueBrand);
       print(updateDropdownValueCity);
-      print(imageName(widget.productSnapshot.productImg1));
+      //  print(imageName(widget.productSnapshot.productImg1));
       //print(widget.productSnapshot.productImg1.indexOf("2F"));
     }
 

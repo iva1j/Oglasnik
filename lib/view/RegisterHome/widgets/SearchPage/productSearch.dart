@@ -54,7 +54,6 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
               ? FutureBuilder(
                   /// Future funkcija koja je zadužena za povlačenje proizvoda iz baze:
                   future: getProductsPerBrand(widget.query.toLowerCase()),
-
                   builder: (BuildContext context, AsyncSnapshot snapshott) {
                     if (snapshott.hasData) {
                       showingSelectedProducts(products, snapshott, true);

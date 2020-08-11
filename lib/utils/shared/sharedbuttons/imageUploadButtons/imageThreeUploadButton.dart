@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/addImageThreeTextField.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 
 //buttons for image upload located in imagePageWidget
@@ -21,7 +22,7 @@ Container imageThreeUploadButton(dynamic function) {
         size: 25,
       ),
       label: AddImageThree(),
-      onPressed: buttonTwo == true ? function : null,
+      onPressed: img2 != immutableImg2 || image2Name != null ? function : null,
     ),
   );
 }

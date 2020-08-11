@@ -1,12 +1,17 @@
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/myPosts.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/SignInButtonForm.dart';
 import 'package:flutter/material.dart';
 
-class MojiOglasiButton extends StatelessWidget {
-  const MojiOglasiButton({
-    Key key,
-  }) : super(key: key);
+class MojiOglasiButton extends StatefulWidget {
+  const MojiOglasiButton({Key key, this.email}) : super(key: key);
+  final String email;
 
+  @override
+  _MojiOglasiButtonState createState() => _MojiOglasiButtonState();
+}
+
+class _MojiOglasiButtonState extends State<MojiOglasiButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +24,7 @@ class MojiOglasiButton extends StatelessWidget {
               splashColor: Colors.transparent, // splash color
               onTap: () {
                 Navigator.of(context)
-                    .pushReplacement(FadeRoute(page: MyPosts()));
+                    .pushReplacement(FadeRoute(page: MyPosts(email: email)));
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
