@@ -29,7 +29,7 @@ class _NazivTextFieldState extends State<NazivTextField> {
       noviNaziv != null ? productNameController.text = noviNaziv : null;
     }*/
 
-    print(productNameController.text);
+    //print(productNameController.text);
     return Form(
       key: productNameFormKey,
       //autovalidate: true,

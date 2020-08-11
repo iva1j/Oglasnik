@@ -26,7 +26,6 @@ class _ArticlePageState extends State<ArticlePage> {
   void initState() {
     pageViewInitControllers();
     dropDownInitialValueState();
-    print(widget.productSnapshot.productName);
     super.initState();
   }
 
