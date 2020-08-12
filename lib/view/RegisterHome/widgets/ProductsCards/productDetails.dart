@@ -31,10 +31,12 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 class ProductDetails extends StatefulWidget {
   final String productNameScreen;
   final String productIdScreen;
+  final Function setStateParent;
   ProductDetails(
       {Key key,
       @required this.productNameScreen,
-      @required this.productIdScreen})
+      @required this.productIdScreen,
+      @required this.setStateParent})
       : super(key: key);
 
   @override
@@ -52,7 +54,8 @@ class _ProductDetailsState extends State<ProductDetails> {
   final List imageSlider = [];
   @override
   Widget build(BuildContext context) {
-    getFavoriteProducts(email);
+    print(favoritesList);
+    //getFavoriteProducts(email);
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
@@ -60,9 +63,11 @@ class _ProductDetailsState extends State<ProductDetails> {
         centerTitle: true,
         title: Text(widget.productNameScreen),
         leading: IconButton(
-          icon: Icon(Icons.close, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+            icon: Icon(Icons.close, color: Colors.white),
+            onPressed: () {
+              widget.setStateParent();
+              Navigator.of(context).pop();
+            }),
       ),
       floatingActionButton: email != null
           ? mainFloatingButton(email)
@@ -216,27 +221,44 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     children: <Widget>[
                                       productDetailsTagsWidget(index),
                                       Container(
-                                        margin: EdgeInsets.only(bottom: 5),
                                         child: IconButton(
                                             color: Colors.white,
-                                            icon: favorite
+                                            icon: favoritesList.contains(
+                                                    snapshot.data
+                                                            .documents[index]
+                                                        ['productID'])
                                                 ? Icon(
-                                                    Icons.star_border,
+                                                    Icons.star,
                                                     size: 30,
-                                                    color: starBorderColor,
+                                                    color: mainAppColor,
                                                   )
-                                                : Icon(Icons.star,
+                                                : Icon(Icons.star_border,
                                                     size: 30,
-                                                    color: mainAppColor),
+                                                    color: starBorderColor),
                                             onPressed: () async {
                                               // FavoriteProduct().removeFavorite(
                                               //     email, products[index]);
-                                              FavoriteProduct()
-                                                  .isProductFavorite(
-                                                      products[index]);
-                                              setState(() {
-                                                getFavoriteProducts(email);
-                                              });
+                                              final result = favoritesList
+                                                  .contains(snapshot
+                                                          .data.documents[index]
+                                                      ['productID']);
+                                              if (result) {
+                                                favoritesList.remove(snapshot
+                                                        .data.documents[index]
+                                                    ['productID']);
+
+                                                await FavoriteProduct()
+                                                    .removeFavorite(
+                                                        email, products[index]);
+                                              } else {
+                                                favoritesList.add(snapshot
+                                                        .data.documents[index]
+                                                    ['productID']);
+                                                await FavoriteProduct()
+                                                    .addFavorite(
+                                                        email, products[index]);
+                                              }
+                                              setState(() {});
                                             }),
                                       ),
                                     ],

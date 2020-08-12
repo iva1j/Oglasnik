@@ -31,12 +31,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
       doesPop = true;
     });
     createSwitcher = false;
-    /*
-    updateProductNameReturn = "";
-    updateProductPriceReturn = "";
-    updateProductTagsReturn = "";
-    updateProductDescriptionReturn = "";
-    */
     print("Create switcher je sada: ");
     print(createSwitcher);
     SizeConfig().init(context);

@@ -20,6 +20,11 @@ class MyFavorites extends StatefulWidget {
 
 class _MyFavoritesState extends State<MyFavorites> {
   @override
+  void justSetState() {
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: FavoriteProduct().listAllFavorites(),
@@ -50,6 +55,7 @@ class _MyFavoritesState extends State<MyFavorites> {
                                         ['productName'],
                                     productIdScreen: snapshot.data[index]
                                         ['productID'],
+                                    setStateParent: justSetState,
                                   ),
                                 ),
                               );

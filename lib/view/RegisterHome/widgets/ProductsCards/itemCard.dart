@@ -23,8 +23,14 @@ class ItemCard extends StatefulWidget {
 
 class _ItemCardState extends State<ItemCard> {
   @override
+  void justSetState() {
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
-    getFavoriteProducts(email);
+    print(favoritesList);
+    //getFavoriteProducts(email);
     SizeConfig().init(context);
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -56,6 +62,7 @@ class _ItemCardState extends State<ItemCard> {
         body: ItemCardBody(
           widget: widget,
           categoryName: widget.categoryName,
+          setStateParent: justSetState,
         ));
   }
 }

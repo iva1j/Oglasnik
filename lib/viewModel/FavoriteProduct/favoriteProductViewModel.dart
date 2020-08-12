@@ -59,7 +59,7 @@ class FavoriteProduct extends AddFavoriteProductInterface {
     //     .where('productID', isEqualTo: product.productID)
     //     .getDocuments();
     // final List<DocumentSnapshot> document = results.documents;
-
+/*
     if (listaProizvoda.contains(product.productID)) {
       favorite = true;
       FavoriteProduct().removeFavorite(email, product);
@@ -68,7 +68,15 @@ class FavoriteProduct extends AddFavoriteProductInterface {
       favorite = false;
       print('ne postoji proizvod, upravo smo ga dodali');
       FavoriteProduct().addFavorite(email, product);
+    }*/
+
+    List<DocumentSnapshot> allFavs = await getAllFavoritesIDs();
+
+    for (final x in allFavs) {
+      if (product.productID == x['productID']) return true;
     }
+
+    return false;
   }
 
   Future getAllFavoritesIDs() async {
