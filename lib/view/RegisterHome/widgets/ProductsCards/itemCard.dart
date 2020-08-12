@@ -4,6 +4,7 @@ import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
+import 'package:Oglasnik/viewModel/SplashViewModel/splashViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
@@ -23,6 +24,7 @@ class ItemCard extends StatefulWidget {
 class _ItemCardState extends State<ItemCard> {
   @override
   Widget build(BuildContext context) {
+    getFavoriteProducts(email);
     SizeConfig().init(context);
     return Scaffold(
         resizeToAvoidBottomInset: false,
