@@ -138,6 +138,10 @@ class SuccessAlertDialog {
   String uredu = "UREDU";
   String kreiraj = "KREIRAJ";
   String empty = "";
+  String obrisinaslov = "Obriši artikal?";
+  String obrisitext = "Da li ste sigurni da želite obrisati artikal?";
+  String delete = "OBRIŠI";
+  String odustani = "ODUSTANI";
 }
 
 //..view/SplashScreen
@@ -168,6 +172,7 @@ class UserProducts {
 class Titles {
   String myPosts = 'Moji oglasi';
   String myFavorites = 'Sačuvani oglasi';
+  String updateProfile = "Profil";
 }
 
 class ImageOneUpload {}
