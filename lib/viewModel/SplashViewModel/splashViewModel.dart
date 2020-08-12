@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
+import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 
 import 'package:Oglasnik/viewModel/PreviewProduct/getAllBrands.dart';
 
@@ -38,6 +39,10 @@ Future<void> splashScreenRouter() async {
   print(globals.allBrands);
   globals.email = email;
   getFavoriteProducts(globals.email);
+
+  print("HAHAHAHAHAHAHHAH");
+  FavoriteProduct().listAllFavorites().then((value) => print(value));
+  print("HAHAHAHAHAHAHHAH");
 
   globals.registeredGlob = false;
 

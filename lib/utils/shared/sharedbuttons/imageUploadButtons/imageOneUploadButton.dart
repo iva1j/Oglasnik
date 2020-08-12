@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/addImageOneTextField.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/strings.dart';
 

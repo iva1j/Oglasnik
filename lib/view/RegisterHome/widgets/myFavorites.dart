@@ -33,7 +33,7 @@ class _MyFavoritesState extends State<MyFavorites> {
           } else {
             return Container(
               padding: EdgeInsets.only(bottom: 55),
-              child: snapshot.data.length == null
+              child: snapshot.data.length == 0
                   ? Center(child: Text("Nemate sacuvanih proizvoda."))
                   : ListView.builder(
                       itemCount: snapshot.data.length,
@@ -120,29 +120,28 @@ class _MyFavoritesState extends State<MyFavorites> {
                                           // crossAxisAlignment: CrossAxisAlignment.center,
                                           // mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
-                                            itemCardTags(snapshot.data[
-                                                index]), /*
-                                              Container(
-                                                margin:
-                                                    EdgeInsets.only(bottom: 5),
-                                                child: IconButton(
-                                                    color: Colors.white,
-                                                    icon: Icon(
-                                                      Icons.star,
-                                                      size: 30,
-                                                      color: favorite
-                                                          ? Colors.yellow
-                                                          : Colors.red,
-                                                    ),
-                                                    onPressed: () async {
-                                                      FavoriteProduct()
-                                                          .removeFavorite(email,
-                                                              products[index]);
-                                                      FavoriteProduct()
-                                                          .isProductFavorite(
-                                                              products[index]);
-                                                    }),
-                                              ),*/
+                                            itemCardTags(snapshot.data[index]),
+                                            Container(
+                                              margin:
+                                                  EdgeInsets.only(bottom: 5),
+                                              child: IconButton(
+                                                  color: Colors.white,
+                                                  icon: Icon(
+                                                    Icons.star,
+                                                    size: 30,
+                                                    color: favorite
+                                                        ? Colors.yellow
+                                                        : Colors.red,
+                                                  ),
+                                                  onPressed: () async {
+                                                    FavoriteProduct()
+                                                        .removeFavorite(email,
+                                                            products[index]);
+                                                    FavoriteProduct()
+                                                        .isProductFavorite(
+                                                            products[index]);
+                                                  }),
+                                            ),
                                           ],
                                         )
                                       : itemCardTags(snapshot.data[index]),

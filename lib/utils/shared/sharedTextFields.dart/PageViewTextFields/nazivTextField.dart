@@ -39,6 +39,7 @@ class _NazivTextFieldState extends State<NazivTextField> {
           errorColor: Colors.red,
         ),
         child: TextFormField(
+          autocorrect: false,
           initialValue: createSwitcher
               ? newProductNameReturn == null ? "" : newProductNameReturn
               : updateProductNameReturn == null
