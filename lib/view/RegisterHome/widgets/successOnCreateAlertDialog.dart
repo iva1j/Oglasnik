@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successDialogButtons.dart';
@@ -7,7 +8,9 @@ import 'package:flutter/material.dart';
 AlertDialog successOnCreateAlertDialog(BuildContext context) {
   return new AlertDialog(
     title: Text(
-      SuccessAlertDialog().cestitamo,
+      !azurload
+          ? SuccessAlertDialog().cestitamo
+          : SuccessAlertDialog().azuriranje,
       style: TextStyle(color: mainAppColor),
     ),
     content: Column(
@@ -17,7 +20,9 @@ AlertDialog successOnCreateAlertDialog(BuildContext context) {
           child: Column(
             children: [
               Text(
-                SuccessAlertDialog().opis3,
+                !azurload
+                    ? SuccessAlertDialog().opis3
+                    : SuccessAlertDialog().azuriranjeopis,
                 style: TextStyle(color: alertDialogTextColor),
               ),
               Container(
@@ -27,7 +32,9 @@ AlertDialog successOnCreateAlertDialog(BuildContext context) {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    SuccessAlertDialog().opis2,
+                    !azurload
+                        ? SuccessAlertDialog().opis2
+                        : SuccessAlertDialog().empty,
                     style: TextStyle(color: alertDialogTextColor),
                   ),
                 ),

@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/myPosts.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/SignInButtonForm.dart';
@@ -15,6 +16,9 @@ class _MojiOglasiButtonState extends State<MojiOglasiButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(
+        bottom: SizeConfig.blockSizeVertical * 2,
+      ),
       child: SizedBox.fromSize(
         size: Size(80, 80), // button width and height
         child: ClipOval(

@@ -246,6 +246,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 updateProductDescriptionReturn = null;
                                 updateProductPriceReturn = null;
                                 updateProductTagsReturn = null;
+                                img1 = immutableImg1;
+                                img2 = immutableImg2;
+                                img3 = immutableImg3;
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (_) {
                                   return ArticlePage(

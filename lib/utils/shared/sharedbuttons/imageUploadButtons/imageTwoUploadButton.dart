@@ -1,15 +1,28 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/addImageTwoTextField.dart';
+import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 
 //buttons for image upload located in imagePageWidget
-Container imageTwoUploadButton(dynamic function) {
+Container imageTwoUploadButton(dynamic function, dynamic functionDelete) {
   return Container(
     alignment: Alignment.centerLeft,
-    margin: EdgeInsets.only(left: 35.0),
+    margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 5),
     child: Row(
       children: <Widget>[
+        isDeleteShown2
+            ? IconButton(
+                icon: Icon(
+                  Icons.delete,
+                ),
+                onPressed: functionDelete)
+            : IconButton(
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.transparent,
+                ),
+                onPressed: null),
         FlatButton.icon(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),

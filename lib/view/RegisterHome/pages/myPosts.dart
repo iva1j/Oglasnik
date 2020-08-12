@@ -31,7 +31,12 @@ class _MyPostsState extends State<MyPosts> {
               .pushReplacement(FadeRoute(page: RegisteredHome())),
         ),
       ),
-      body: MyProducts(),
+      body: WillPopScope(
+          onWillPop: () => Navigator.of(context)
+                  .pushReplacement(MaterialPageRoute(builder: (_) {
+                return RegisteredHome();
+              })),
+          child: MyProducts()),
       floatingActionButton: email != null
           ? mainFloatingButton(email)
           : homeFloatingAnimatedButton(),

@@ -76,6 +76,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                   .where('productBrand',
                       isEqualTo: widget.widget.brandNameScreen)
                   .where('productCategory', isEqualTo: widget.categoryName)
+                  .where('productFinished', isEqualTo: false)
                   .getDocuments(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {

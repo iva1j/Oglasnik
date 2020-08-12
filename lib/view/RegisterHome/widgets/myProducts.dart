@@ -67,7 +67,7 @@ class MyProducts extends StatelessWidget {
 
                 return myPosts == null || myPosts.isEmpty
                     ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Center(
                             child: Text(TrazeniProizvod().nemaProizvoda),
