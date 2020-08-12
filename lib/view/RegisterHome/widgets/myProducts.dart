@@ -53,6 +53,7 @@ class MyProducts extends StatelessWidget {
             future: Firestore.instance
                 .collection('products')
                 .where('email', isEqualTo: email)
+                .where('productFinished', isEqualTo: false)
                 // .where('field')
                 .getDocuments(),
             builder: (BuildContext context, AsyncSnapshot snapshott) {
