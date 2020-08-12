@@ -49,7 +49,7 @@ Container itemCardContainer1(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   itemCardProductName(context, snapshot.data.documents[index]),
-                  itemCardBodyDesc(snapshot, index),
+                  itemCardBodyDesc(snapshot.data.documents[index], index),
                 ],
               ),
             ),
@@ -85,7 +85,7 @@ Container itemCardContainer1(
                         onPressed: () async {
                           FavoriteProduct()
                               .removeFavorite(email, products[index]);
-                          isProductFavorite(products[index]);
+                          FavoriteProduct().isProductFavorite(products[index]);
                         }),
                   ),
                 ],

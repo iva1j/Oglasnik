@@ -228,8 +228,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                                             onPressed: () async {
                                               // FavoriteProduct().removeFavorite(
                                               //     email, products[index]);
-                                              isProductFavorite(
-                                                  products[index]);
+                                              FavoriteProduct()
+                                                  .isProductFavorite(
+                                                      products[index]);
                                               setState(() {
                                                 getFavoriteProducts(email);
                                               });

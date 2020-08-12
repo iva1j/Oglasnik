@@ -50,24 +50,53 @@ class FavoriteProduct extends AddFavoriteProductInterface {
         .delete();
     return null;
   }
-}
 
-Future isProductFavorite(Product product) async {
-  // final QuerySnapshot results = await Firestore.instance
-  //     .collection('firestoreUsers')
-  //     .document(email)
-  //     .collection('savedProducts')
-  //     .where('productID', isEqualTo: product.productID)
-  //     .getDocuments();
-  // final List<DocumentSnapshot> document = results.documents;
+  Future isProductFavorite(Product product) async {
+    // final QuerySnapshot results = await Firestore.instance
+    //     .collection('firestoreUsers')
+    //     .document(email)
+    //     .collection('savedProducts')
+    //     .where('productID', isEqualTo: product.productID)
+    //     .getDocuments();
+    // final List<DocumentSnapshot> document = results.documents;
 
-  if (listaProizvoda.contains(product.productID)) {
-    favorite = true;
-    FavoriteProduct().removeFavorite(email, product);
-    print("Proizvod već postoji u bazi: " + favorite.toString());
-  } else {
-    favorite = false;
-    print('ne postoji proizvod, upravo smo ga dodali');
-    FavoriteProduct().addFavorite(email, product);
+    if (listaProizvoda.contains(product.productID)) {
+      favorite = true;
+      FavoriteProduct().removeFavorite(email, product);
+      print("Proizvod već postoji u bazi: " + favorite.toString());
+    } else {
+      favorite = false;
+      print('ne postoji proizvod, upravo smo ga dodali');
+      FavoriteProduct().addFavorite(email, product);
+    }
+  }
+
+  Future listAllFavorites() async {
+    final QuerySnapshot favorites = await Firestore.instance
+        .collection('firestoreUsers')
+        .document(email)
+        .collection('savedProducts')
+        .getDocuments();
+
+    final QuerySnapshot favoritesProducts = await Firestore.instance
+        .collection('products')
+        .where('productFinished', isEqualTo: false)
+        .getDocuments();
+
+    List<DocumentSnapshot> favoritesDocs = favorites.documents;
+    List<DocumentSnapshot> productsDocs = favoritesProducts.documents;
+
+    List<DocumentSnapshot> retuList;
+
+    for (int i = 0; i < favoritesDocs.length; i++) {
+      for (int j = 0; j < productsDocs.length; j++) {
+        if (favoritesDocs[i]['productID'] == productsDocs[j]['productID']) {
+          retuList.add(productsDocs[j]);
+          break;
+        }
+      }
+    }
+
+    return retuList;
   }
 }

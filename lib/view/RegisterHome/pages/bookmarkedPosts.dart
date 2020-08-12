@@ -5,6 +5,7 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/myFavorites.dart';
 import 'package:flutter/material.dart';
 
 class BookmarkedPosts extends StatefulWidget {
@@ -31,7 +32,7 @@ class _BookmarkedPostsState extends State<BookmarkedPosts> {
                   .pushReplacement(MaterialPageRoute(builder: (_) {
                 return RegisteredHome();
               })),
-          child: Container()),
+          child: MyFavorites()),
       floatingActionButton: email != null
           ? mainFloatingButton(email)
           : homeFloatingAnimatedButton(),
