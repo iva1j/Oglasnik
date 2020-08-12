@@ -1,8 +1,11 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/itemCardBodyWidgets/itemCardBodyDesc.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardImage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardPrice.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardProductName.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
+import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -64,7 +67,30 @@ Container itemCardContainer1(
         Divider(
           thickness: SizeConfig.blockSizeVertical * 0.2,
         ),
-        itemCardTags(snapshot.data.documents[index]),
+        email != null
+            ? Row(
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  itemCardTags(snapshot.data.documents[index]),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 5),
+                    child: IconButton(
+                        color: Colors.white,
+                        icon: Icon(
+                          Icons.star,
+                          size: 30,
+                          color: favorite ? Colors.yellow : Colors.red,
+                        ),
+                        onPressed: () async {
+                          FavoriteProduct()
+                              .removeFavorite(email, products[index]);
+                          isProductFavorite(products[index]);
+                        }),
+                  ),
+                ],
+              )
+            : itemCardTags(snapshot.data.documents[index]),
       ],
     ),
   );
