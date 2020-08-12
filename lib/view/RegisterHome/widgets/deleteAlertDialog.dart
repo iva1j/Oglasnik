@@ -35,9 +35,9 @@ deleteAlertDialog(BuildContext context) async {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Container(
-                  child: DeleteButtonDialog(),
-                ),
+                // Container(
+                //   child: DeleteButtonDialog(),
+                // ),
                 Container(
                   child: OdustaniButtonDialog(),
                 ),
