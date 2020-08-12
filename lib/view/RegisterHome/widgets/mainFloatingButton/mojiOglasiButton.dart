@@ -17,8 +17,8 @@ class _MojiOglasiButtonState extends State<MojiOglasiButton> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-          bottom: SizeConfig.blockSizeVertical * 3.5,
-          left: SizeConfig.blockSizeHorizontal * 1),
+        bottom: SizeConfig.blockSizeVertical * 2,
+      ),
       child: SizedBox.fromSize(
         size: Size(80, 80), // button width and height
         child: ClipOval(
