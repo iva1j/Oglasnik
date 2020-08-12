@@ -15,6 +15,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloati
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
+import 'package:Oglasnik/viewModel/SplashViewModel/splashViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -50,6 +51,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   final List imageSlider = [];
   @override
   Widget build(BuildContext context) {
+    getFavoriteProducts(email);
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
@@ -211,10 +213,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
-                                       productDetailsTagsWidget(index),
+                                      productDetailsTagsWidget(index),
                                       Container(
                                         margin: EdgeInsets.only(bottom: 5),
-                                         child: IconButton(
+                                        child: IconButton(
                                             color: Colors.white,
                                             icon: Icon(
                                               Icons.star,
@@ -228,6 +230,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                                               //     email, products[index]);
                                               isProductFavorite(
                                                   products[index]);
+                                              setState(() {
+                                                getFavoriteProducts(email);
+                                              });
                                             }),
                                       ),
                                     ],
