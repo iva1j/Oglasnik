@@ -26,6 +26,12 @@ class _BookmarkedPostsState extends State<BookmarkedPosts> {
               .pushReplacement(FadeRoute(page: RegisteredHome())),
         ),
       ),
+      body: WillPopScope(
+          onWillPop: () => Navigator.of(context)
+                  .pushReplacement(MaterialPageRoute(builder: (_) {
+                return RegisteredHome();
+              })),
+          child: Container()),
       floatingActionButton: email != null
           ? mainFloatingButton(email)
           : homeFloatingAnimatedButton(),

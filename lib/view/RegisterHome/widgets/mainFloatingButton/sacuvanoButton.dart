@@ -11,7 +11,7 @@ class SacuvanoButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: SizeConfig.blockSizeHorizontal * 17),
+      margin: EdgeInsets.only(bottom: SizeConfig.blockSizeHorizontal * 13),
       child: SizedBox.fromSize(
         size: Size(80, 80), // button width and height
         child: ClipOval(

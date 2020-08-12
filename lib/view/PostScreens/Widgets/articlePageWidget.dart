@@ -2,6 +2,7 @@ import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/nazivTextField.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
@@ -63,9 +64,9 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
     return Container(
       child: Column(
         children: <Widget>[
-          // MainTitle(
-          //   editProduct: widget.editProduct,
-          // ),
+          MainTitle(
+            editProduct: widget.editProduct,
+          ),
           SizedBox(
             height: SizeConfig.blockSizeVertical * 20,
           ),

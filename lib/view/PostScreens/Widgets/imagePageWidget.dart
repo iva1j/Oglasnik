@@ -9,6 +9,7 @@ import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageTwoU
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
@@ -74,6 +75,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       img1 = _fileName1;
       //image1Name = _fileName1;
       pathGlobal1 = _path1;
+      isDeleteShown1 = true;
     });
   }
 
@@ -84,6 +86,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img2 = _fileName2;
       pathGlobal2 = _path2;
+      isDeleteShown2 = true;
     });
   }
 
@@ -94,10 +97,12 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img3 = _fileName3;
       pathGlobal3 = _path3;
+      isDeleteShown3 = true;
     });
   }
 
   void deleteFirstEntry() {
+    isDeleteShown1 = false;
     setState(() {
       if (img2 != immutableImg2 && img3 != immutableImg3) {
         img1 = img2;
@@ -113,6 +118,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   }
 
   void deleteSecondEntry() {
+    isDeleteShown2 = false;
     setState(() {
       if (img3 != immutableImg3) {
         img2 = img3;
@@ -124,6 +130,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   }
 
   void deleteThirdEntry() {
+    isDeleteShown3 = false;
     setState(() {
       img3 = immutableImg3;
     });
@@ -155,7 +162,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       //margin: EdgeInsets.all(15),
       child: Column(
         children: <Widget>[
-          // MainTitle(editProduct: widget.editProduct,),
+          MainTitle(
+            editProduct: widget.editProduct,
+          ),
           Container(
             margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 18),
           ),
@@ -178,7 +187,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               ),
             ],
           ),
-
           SizedBox(
             height: SizeConfig.blockSizeVertical * 6,
           ),
