@@ -11,18 +11,24 @@ Container imageThreeUploadButton(dynamic function, dynamic functionDelete) {
     margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 5),
     child: Row(
       children: <Widget>[
-        isDeleteShown3
+        img3 != immutableImg3
             ? IconButton(
                 icon: Icon(
                   Icons.delete,
                 ),
                 onPressed: functionDelete)
-            : IconButton(
-                icon: Icon(
-                  Icons.delete,
-                  color: Colors.transparent,
-                ),
-                onPressed: null),
+            : image3Name == null
+                ? IconButton(
+                    icon: Icon(
+                      Icons.delete,
+                      color: Colors.transparent,
+                    ),
+                    onPressed: null)
+                : IconButton(
+                    icon: Icon(
+                      Icons.delete,
+                    ),
+                    onPressed: functionDelete),
         FlatButton.icon(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),

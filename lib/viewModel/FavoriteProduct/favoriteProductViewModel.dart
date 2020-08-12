@@ -71,32 +71,43 @@ class FavoriteProduct extends AddFavoriteProductInterface {
     }
   }
 
-  Future listAllFavorites() async {
+  Future getAllFavoritesIDs() async {
     final QuerySnapshot favorites = await Firestore.instance
         .collection('firestoreUsers')
         .document(email)
         .collection('savedProducts')
         .getDocuments();
 
+    List<DocumentSnapshot> favoritesDocs = favorites.documents;
+
+    return favoritesDocs;
+  }
+
+  Future getAllUnfinishedProducts() async {
     final QuerySnapshot favoritesProducts = await Firestore.instance
         .collection('products')
         .where('productFinished', isEqualTo: false)
         .getDocuments();
 
-    List<DocumentSnapshot> favoritesDocs = favorites.documents;
     List<DocumentSnapshot> productsDocs = favoritesProducts.documents;
 
-    List<DocumentSnapshot> retuList;
+    return productsDocs;
+  }
 
-    for (int i = 0; i < favoritesDocs.length; i++) {
-      for (int j = 0; j < productsDocs.length; j++) {
-        if (favoritesDocs[i]['productID'] == productsDocs[j]['productID']) {
-          retuList.add(productsDocs[j]);
+  Future listAllFavorites() async {
+    List<DocumentSnapshot> favsIDs = await getAllFavoritesIDs();
+    List<DocumentSnapshot> allProds = await getAllUnfinishedProducts();
+
+    List<DocumentSnapshot> retList = List<DocumentSnapshot>();
+
+    for (int i = 0; i < favsIDs.length; i++) {
+      for (int j = 0; j < allProds.length; j++) {
+        if (favsIDs[i]['productID'] == allProds[j]['productID']) {
+          retList.add(allProds[j]);
           break;
         }
       }
     }
-
-    return retuList;
+    return retList;
   }
 }
