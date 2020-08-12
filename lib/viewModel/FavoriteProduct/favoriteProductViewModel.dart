@@ -67,6 +67,7 @@ Future isProductFavorite(Product product) async {
     print("Proizvod već postoji u bazi: " + favorite.toString());
   } else {
     favorite = false;
+    print('ne postoji proizvod, upravo smo ga dodali');
     FavoriteProduct().addFavorite(email, product);
   }
 }

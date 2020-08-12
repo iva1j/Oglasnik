@@ -14,6 +14,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 List<String> listaProizvoda = List<String>();
 
 getFavoriteProducts(email) async {
+  listaProizvoda.clear();
   final QuerySnapshot favoriteProducts = await Firestore.instance
       .collection('firestoreUsers')
       .document(email)
@@ -22,7 +23,7 @@ getFavoriteProducts(email) async {
 
   List<DocumentSnapshot> allSavedProducts = favoriteProducts.documents;
   for (int i = 0; i < allSavedProducts.length; i++) {
-    listaProizvoda.add(allSavedProducts[i]["productName"]);
+    listaProizvoda.add(allSavedProducts[i]["productID"]);
   }
   print('printic: ');
   print(listaProizvoda);
