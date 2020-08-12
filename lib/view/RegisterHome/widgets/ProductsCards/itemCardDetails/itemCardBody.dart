@@ -19,11 +19,15 @@ bool showMessage = true;
 
 class ItemCardBody extends StatefulWidget {
   const ItemCardBody(
-      {Key key, @required this.widget, @required this.categoryName})
+      {Key key,
+      @required this.widget,
+      @required this.categoryName,
+      @required this.setStateParent})
       : super(key: key);
 
   final ItemCard widget;
   final String categoryName;
+  final Function setStateParent;
 
   @override
   _ItemCardBodyState createState() => _ItemCardBodyState();
@@ -58,7 +62,6 @@ class _ItemCardBodyState extends State<ItemCardBody> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -100,6 +103,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                 return ItemCardBodyContainer(
                   snapshot: snapshot,
                   context: context,
+                  setStateParent: widget.setStateParent,
                 );
               }),
         ),
