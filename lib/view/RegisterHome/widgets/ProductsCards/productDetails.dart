@@ -211,26 +211,23 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
-                                      productDetailsTagsWidget(index),
+                                       productDetailsTagsWidget(index),
                                       Container(
                                         margin: EdgeInsets.only(bottom: 5),
-                                        child: IconButton(
+                                         child: IconButton(
                                             color: Colors.white,
                                             icon: Icon(
                                               Icons.star,
                                               size: 30,
-                                              color: _selectedIndex != null &&
-                                                      _selectedIndex == index
+                                              color: favorite
                                                   ? Colors.yellow
                                                   : Colors.red,
                                             ),
                                             onPressed: () async {
-                                              _onSelected(index);
-                                              await FavoriteProduct()
-                                                  .addFavorite(
-                                                      email,
-                                                      products[index]
-                                                          .productID);
+                                              // FavoriteProduct().removeFavorite(
+                                              //     email, products[index]);
+                                              isProductFavorite(
+                                                  products[index]);
                                             }),
                                       ),
                                     ],

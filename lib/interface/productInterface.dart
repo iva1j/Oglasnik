@@ -25,7 +25,7 @@ abstract class UpdateProductInterface {
 }
 
 abstract class AddFavoriteProductInterface{
-  Future addFavorite(String email, product);
+  Future addFavorite(String email, Product product);
 }
 
 abstract class ReadProductInterface {
