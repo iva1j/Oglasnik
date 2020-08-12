@@ -16,3 +16,4 @@ const Color textDynamicChip = Color.fromRGBO(0, 0, 0, 0.54);
 const Color backgroundDynamicChip = Color.fromRGBO(153, 153, 153, 0.2);
 const Color phoneNumberTextColor = Color.fromARGB(160, 255, 255, 255);
 const Color bottomSheetColor = Color.fromARGB(255, 226, 11, 48);
+const Color starBorderColor = Color.fromARGB(123, 226, 11, 48);

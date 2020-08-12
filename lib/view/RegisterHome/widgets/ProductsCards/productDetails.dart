@@ -219,13 +219,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         margin: EdgeInsets.only(bottom: 5),
                                         child: IconButton(
                                             color: Colors.white,
-                                            icon: Icon(
-                                              Icons.star,
-                                              size: 30,
-                                              color: favorite
-                                                  ? Colors.yellow
-                                                  : Colors.red,
-                                            ),
+                                            icon: favorite
+                                                ? Icon(
+                                                    Icons.star_border,
+                                                    size: 30,
+                                                    color: starBorderColor,
+                                                  )
+                                                : Icon(Icons.star,
+                                                    size: 30,
+                                                    color: mainAppColor),
                                             onPressed: () async {
                                               // FavoriteProduct().removeFavorite(
                                               //     email, products[index]);

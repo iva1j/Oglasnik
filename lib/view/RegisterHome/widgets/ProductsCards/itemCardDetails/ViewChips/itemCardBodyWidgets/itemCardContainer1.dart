@@ -6,7 +6,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardProductName.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
-
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
@@ -77,11 +77,13 @@ Container itemCardContainer1(
                     margin: EdgeInsets.only(bottom: 5),
                     child: IconButton(
                         color: Colors.white,
-                        icon: Icon(
-                          Icons.star,
-                          size: 30,
-                          color: favorite ? Colors.yellow : Colors.red,
-                        ),
+                        icon: favorite
+                            ? Icon(
+                                Icons.star_border,
+                                size: 30,
+                                color: starBorderColor,
+                              )
+                            : Icon(Icons.star, size: 30, color: mainAppColor),
                         onPressed: () async {
                           FavoriteProduct()
                               .removeFavorite(email, products[index]);
