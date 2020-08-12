@@ -24,7 +24,7 @@ class _MyFavoritesState extends State<MyFavorites> {
     return FutureBuilder(
         future: FavoriteProduct().listAllFavorites(),
         builder: (context, snapshot) {
-          if (snapshot.hasError) {
+          if (!snapshot.hasData) {
             return Container(
               child: Center(
                 child: SpinnerCircular(),
