@@ -11,6 +11,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsW
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsDesc.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsLocation.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsTags.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/deleteAlertDialog.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
@@ -218,13 +219,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         margin: EdgeInsets.only(bottom: 5),
                                         child: IconButton(
                                             color: Colors.white,
-                                            icon: Icon(
-                                              Icons.star,
-                                              size: 30,
-                                              color: favorite
-                                                  ? Colors.yellow
-                                                  : Colors.red,
-                                            ),
+                                            icon: favorite
+                                                ? Icon(
+                                                    Icons.star_border,
+                                                    size: 30,
+                                                    color: starBorderColor,
+                                                  )
+                                                : Icon(Icons.star,
+                                                    size: 30,
+                                                    color: mainAppColor),
                                             onPressed: () async {
                                               // FavoriteProduct().removeFavorite(
                                               //     email, products[index]);
@@ -244,36 +247,35 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                     ),
                     products[index].email == email
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              smallMainButton(UserProducts().editProfile, () {
-                                updateProductNameReturn = null;
-                                updateProductDescriptionReturn = null;
-                                updateProductPriceReturn = null;
-                                updateProductTagsReturn = null;
-                                img1 = immutableImg1;
-                                img2 = immutableImg2;
-                                img3 = immutableImg3;
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (_) {
-                                  return ArticlePage(
-                                    editProduct: UserProducts().editProduct,
-                                    productSnapshot: products[index],
-                                    productID: products[index].productID,
-                                  );
-                                }));
-                              }),
-                              smallMainButton(UserProducts().finishProduct,
-                                  () async {
-                                await UpdateProduct()
-                                    .updateProduct(products[index].productID);
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (_) {
-                                  return RegisteredHome();
-                                }));
-                              })
-                            ],
+                        ? Container(
+                            margin: EdgeInsets.only(
+                                bottom: SizeConfig.blockSizeVertical * 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                smallMainButton(UserProducts().editProfile, () {
+                                  updateProductNameReturn = null;
+                                  updateProductDescriptionReturn = null;
+                                  updateProductPriceReturn = null;
+                                  updateProductTagsReturn = null;
+                                  img1 = immutableImg1;
+                                  img2 = immutableImg2;
+                                  img3 = immutableImg3;
+                                  Navigator.of(context)
+                                      .push(MaterialPageRoute(builder: (_) {
+                                    return ArticlePage(
+                                      editProduct: UserProducts().editProduct,
+                                      productSnapshot: products[index],
+                                      productID: products[index].productID,
+                                    );
+                                  }));
+                                }),
+                                smallMainButton(UserProducts().finishProduct,
+                                    () {
+                                  deleteAlertDialog(context);
+                                }),
+                              ],
+                            ),
                           )
                         : Container(
                             margin: EdgeInsets.only(

@@ -6,36 +6,20 @@ import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'ProductsCards/categoryLoading.dart';
 import 'ProductsCards/itemCardDetails/itemCardPrice.dart';
 import 'ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'ProductsCards/productDetails.dart';
-import 'package:Oglasnik/utils/shared/ItemContainer/itemContainerDecoration.dart';
-import 'package:Oglasnik/utils/shared/ItemContainer/itemContainerMargins.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/actionChips.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/dynamicChips.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardDescription.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardImage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardPrice.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardProductName.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/Search/getProductsByBrand.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/Search/productSearchViewModel.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/getAllBrands.dart';
-import 'package:flutter/material.dart';
-import 'package:Oglasnik/utils/transitionFade.dart';
+
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 List<DocumentSnapshot> myPosts = List<DocumentSnapshot>();
 List myProducts = [];
@@ -46,7 +30,6 @@ class MyProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Expanded(
           child: FutureBuilder(
