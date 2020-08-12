@@ -229,8 +229,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                                                     size: 30,
                                                     color: mainAppColor),
                                             onPressed: () async {
-                                              isProductFavorite(
-                                                  products[index]);
+                                              // FavoriteProduct().removeFavorite(
+                                              //     email, products[index]);
+                                              FavoriteProduct()
+                                                  .isProductFavorite(
+                                                      products[index]);
                                               setState(() {
                                                 getFavoriteProducts(email);
                                               });

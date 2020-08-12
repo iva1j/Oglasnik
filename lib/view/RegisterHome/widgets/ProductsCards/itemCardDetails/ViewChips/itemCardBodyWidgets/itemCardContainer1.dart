@@ -66,7 +66,9 @@ class _ItemCardContainer1State extends State<ItemCardContainer1> {
                   children: <Widget>[
                     itemCardProductName(
                         context, widget.snapshot.data.documents[widget.index]),
-                    itemCardBodyDesc(widget.snapshot, widget.index),
+                    itemCardBodyDesc(
+                        widget.snapshot.data.documents[widget.index],
+                        widget.index),
                   ],
                 ),
               ),
@@ -100,7 +102,8 @@ class _ItemCardContainer1State extends State<ItemCardContainer1> {
                                 )
                               : Icon(Icons.star, size: 30, color: mainAppColor),
                           onPressed: () async {
-                            isProductFavorite(products[widget.index]);
+                            FavoriteProduct()
+                                .isProductFavorite(products[widget.index]);
                             setState(() {
                               getFavoriteProducts(email);
                             });
