@@ -2,6 +2,7 @@ import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/smallMainButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/PostScreens/Pages/articlePage.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/anonProductDetailsTags.dart';
@@ -11,15 +12,14 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsW
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsDesc.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsLocation.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsTags.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/deleteAlertDialog.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
-import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 import 'package:Oglasnik/viewModel/SplashViewModel/splashViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../deleteDialogButtons.dart';
 import '../showimage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
@@ -272,7 +272,58 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 }),
                                 smallMainButton(UserProducts().finishProduct,
                                     () {
-                                  deleteAlertDialog(context);
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          title: Text(
+                                            SuccessAlertDialog().obrisinaslov,
+                                            style:
+                                                TextStyle(color: mainAppColor),
+                                          ),
+                                          content: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      SuccessAlertDialog()
+                                                          .obrisitext,
+                                                      style: TextStyle(
+                                                          color:
+                                                              alertDialogTextColor),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          backgroundColor: successDialogBgColor,
+                                          elevation: 10,
+                                          actions: <Widget>[
+                                            Container(
+                                              width: double.maxFinite,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: <Widget>[
+                                                  Container(
+                                                    child: DeleteButtonDialog(
+                                                      snapshot: products[index],
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    child:
+                                                        OdustaniButtonDialog(),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        );
+                                      });
                                 }),
                               ],
                             ),
