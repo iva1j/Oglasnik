@@ -11,18 +11,24 @@ Container imageTwoUploadButton(dynamic function, dynamic functionDelete) {
     margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 5),
     child: Row(
       children: <Widget>[
-        isDeleteShown2
+        img2 != immutableImg2
             ? IconButton(
                 icon: Icon(
                   Icons.delete,
                 ),
                 onPressed: functionDelete)
-            : IconButton(
-                icon: Icon(
-                  Icons.delete,
-                  color: Colors.transparent,
-                ),
-                onPressed: null),
+            : image2Name == null
+                ? IconButton(
+                    icon: Icon(
+                      Icons.delete,
+                      color: Colors.transparent,
+                    ),
+                    onPressed: null)
+                : IconButton(
+                    icon: Icon(
+                      Icons.delete,
+                    ),
+                    onPressed: functionDelete),
         FlatButton.icon(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),

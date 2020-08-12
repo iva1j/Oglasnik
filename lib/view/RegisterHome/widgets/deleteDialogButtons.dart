@@ -1,5 +1,4 @@
 import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';

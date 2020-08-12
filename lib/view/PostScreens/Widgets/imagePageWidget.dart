@@ -75,7 +75,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
       img1 = _fileName1;
       //image1Name = _fileName1;
       pathGlobal1 = _path1;
-      isDeleteShown1 = true;
+      //isDeleteShown1 = true;
     });
   }
 
@@ -86,7 +86,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img2 = _fileName2;
       pathGlobal2 = _path2;
-      isDeleteShown2 = true;
+      //isDeleteShown2 = true;
     });
   }
 
@@ -97,12 +97,12 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img3 = _fileName3;
       pathGlobal3 = _path3;
-      isDeleteShown3 = true;
+      //isDeleteShown3 = true;
     });
   }
 
   void deleteFirstEntry() {
-    isDeleteShown1 = false;
+    //isDeleteShown1 = false;
     setState(() {
       if (img2 != immutableImg2 && img3 != immutableImg3) {
         img1 = img2;
@@ -118,7 +118,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   }
 
   void deleteSecondEntry() {
-    isDeleteShown2 = false;
+    //isDeleteShown2 = false;
     setState(() {
       if (img3 != immutableImg3) {
         img2 = img3;
@@ -130,7 +130,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   }
 
   void deleteThirdEntry() {
-    isDeleteShown3 = false;
+    //isDeleteShown3 = false;
     setState(() {
       img3 = immutableImg3;
     });
