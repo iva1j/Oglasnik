@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,17 @@ class ProfileSaveButton extends StatelessWidget {
             bottom: SizeConfig.blockSizeVertical * 1),
         child: button(
           'Sačuvaj',
-          () {},
+          () {
+            
+            if (signUpRegisterFormKey.currentState.validate()) {
+              db.collection("firestoreUsers").document(email).updateData({
+                'fullName': updateProfileName,
+                'email': updateProfileEmail,
+                //'password': password,
+                'phoneNumber': updateProfilePhoneNumber,
+              });
+            }
+          },
         ),
       ),
     );

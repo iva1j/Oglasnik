@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation/emailRegisterCheckValidator.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/updateProfile.dart';
@@ -24,6 +25,9 @@ class UpdateEmail extends StatelessWidget {
             initialValue: user["email"],
             validator: emailRegisterCheck,
             autovalidate: false,
+            onChanged: (value) {
+              updateProfileEmail = value;
+            },
             decoration: InputDecoration(
               hintText: 'Email',
               contentPadding: EdgeInsets.only(left: 20),

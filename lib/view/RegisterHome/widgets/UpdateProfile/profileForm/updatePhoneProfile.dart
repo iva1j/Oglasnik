@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation/phoneValidator.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/updateProfile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,6 +21,9 @@ class UpdatePhone extends StatelessWidget {
           child: TextFormField(
             initialValue: user["phoneNumber"],
             validator: phoneValidator,
+            onChanged: (value) {
+              updateProfilePhoneNumber = value;
+            },
             autovalidate: false,
             inputFormatters: [
               new BlacklistingTextInputFormatter(
