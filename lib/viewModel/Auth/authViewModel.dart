@@ -17,7 +17,7 @@ bool validPasswordReset = false;
 final AnonymousViewModel auth = AnonymousViewModel();
 
 class AuthService extends ChangeNotifier {
-// FUTURE BUILDER FOR REGISTER
+// FUTURE BUILDER FOR REGISTER 
   Future<bool> userExistingorNot(String email) async {
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
