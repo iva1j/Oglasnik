@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/odustaniDugme.dart';
@@ -24,12 +25,12 @@ class _AlertDialogButtonsState extends State<AlertDialogButtons> {
         children: <Widget>[
           OdustaniDugme(),
           Container(
-              child: AuthService()
-                  .tokenExistOrNot(context, emailAlertDialog, token)),
+              child:
+                  AuthService().tokenExistOrNot(context, forgetEmail, token)),
           PosaljiKodDugme(),
           Container(
-              child:
-                  AuthService().allowPasswordChange(context, emailAlertDialog))
+            child: AuthService().allowPasswordChange(context, forgetEmail),
+          )
         ],
       ),
     );

@@ -2,6 +2,8 @@ import 'package:Oglasnik/utils/shared/sharedvalidation/signinValidation/emailAle
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 
+import '../../globalVariables.dart';
+
 class EmailAlertDialog extends StatelessWidget {
   const EmailAlertDialog({
     Key key,
@@ -16,7 +18,9 @@ class EmailAlertDialog extends StatelessWidget {
       ),
       keyboardType: TextInputType.visiblePassword,
       validator: emailAlertDialogValidation,
-      controller: emailInputControllerAlertDialog,
+      onChanged: (value) {
+        forgetEmail = value;
+      },
     );
   }
 }
