@@ -1,6 +1,8 @@
+import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/material.dart';
 
 class ProfileSaveButton extends StatelessWidget {
@@ -18,15 +20,21 @@ class ProfileSaveButton extends StatelessWidget {
         child: button(
           'Sačuvaj',
           () {
-            
-            if (signUpRegisterFormKey.currentState.validate()) {
+
+            if (productNameFormKey.currentState.validate()) {
               db.collection("firestoreUsers").document(email).updateData({
                 'fullName': updateProfileName,
                 'email': updateProfileEmail,
                 //'password': password,
                 'phoneNumber': updateProfilePhoneNumber,
               });
+
+              Navigator.of(context)
+                  .pushReplacement(MaterialPageRoute(builder: (_) {
+                return RegisteredHome();
+              }));
             }
+            else print('Nemoguce');
           },
         ),
       ),
