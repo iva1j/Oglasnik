@@ -65,6 +65,8 @@ String updateProductNameReturn,
 
 String updateProfileName, updateProfilePhoneNumber, updateProfileEmail, updateProfilePassword;
 
+String forgetEmail;
+
 String updateProfileNameReturn,
     updateProfilePhoneNumberReturn,
     updateProfileEmailReturn;

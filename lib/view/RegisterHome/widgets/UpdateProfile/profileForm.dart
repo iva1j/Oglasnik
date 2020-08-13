@@ -5,6 +5,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileForm/updateEmailProfile.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileForm/updateNameProfile.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileForm/updatePhoneProfile.dart';
+import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:Oglasnik/viewModel/EditingUser/editUserViewModel.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,6 +25,7 @@ class _ProfileFormState extends State<ProfileForm> {
 
   @override
   Widget build(BuildContext context) {
+    AuthService().userExistingorNot(updateProfileEmail);
     return Container(
       margin: EdgeInsets.only(
         left: SizeConfig.blockSizeHorizontal * 13,

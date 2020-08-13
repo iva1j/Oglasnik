@@ -159,7 +159,7 @@ createdShowDialog(BuildContext context) {
 void onPressedPosaljiKod(BuildContext context) {
   Container(
       child: AuthService()
-          .allowPasswordChange(context, emailInputControllerAlertDialog.text));
+          .allowPasswordChange(context, forgetEmail));
   AuthService().onPressedAlertDialog(
-      context, emailInputControllerAlertDialog.text, tokenCode);
+      context, forgetEmail, tokenCode);
 }

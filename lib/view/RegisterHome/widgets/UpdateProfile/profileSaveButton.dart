@@ -3,6 +3,7 @@ import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
@@ -30,44 +31,45 @@ class ProfileSaveButton extends StatelessWidget {
             //     ? updateProfileEmail = email
             //     : updateProfileEmail;
 
-            // if (productNameFormKey.currentState.validate()) {
-
-            db.collection("firestoreUsers").document(email).updateData({
-              'fullName': updateProfileName,
-              'email': updateProfileEmail,
-              'phoneNumber': updateProfilePhoneNumber,
-            });
-            if (updateProfileEmail != email) {
-              db.collection("firestoreUsers").document(email).delete();
-              db
-                  .collection("firestoreUsers")
-                  .document(updateProfileEmail)
-                  .setData({
+            if (updateproductNameFormKey.currentState.validate() &&
+                allowUserToRegister == true) {
+              db.collection("firestoreUsers").document(email).updateData({
                 'fullName': updateProfileName,
                 'email': updateProfileEmail,
-                'password': updateProfilePassword,
                 'phoneNumber': updateProfilePhoneNumber,
               });
+              if (updateProfileEmail != email) {
+                db.collection("firestoreUsers").document(email).delete();
+                db
+                    .collection("firestoreUsers")
+                    .document(updateProfileEmail)
+                    .setData({
+                  'fullName': updateProfileName,
+                  'email': updateProfileEmail,
+                  'password': updateProfilePassword,
+                  'phoneNumber': updateProfilePhoneNumber,
+                });
+              }
+              email = null;
+              await FirebaseAuth.instance.signOut();
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.remove('email');
+              prefs.remove('phoneNumber');
+              print("email: " +
+                  email.toString() +
+                  " phoneNumber: " +
+                  phoneNumber.toString());
+              Navigator.of(context).pushAndRemoveUntil(
+                  FadeRoute(page: AnonymousHome()),
+                  (Route<dynamic> route) => false);
+              print('drugi' + isOnline.toString());
+              // Navigator.of(context).pushReplacement(
+              //   MaterialPageRoute(builder: (_) {
+              //     return RegisteredHome();
+              //   }),
+              // );
             }
-            email = null;
-            await FirebaseAuth.instance.signOut();
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-            prefs.remove('email');
-            prefs.remove('phoneNumber');
-            print("email: " +
-                email.toString() + 
-                " phoneNumber: " +
-                phoneNumber.toString());
-            Navigator.of(context).pushAndRemoveUntil(
-                FadeRoute(page: AnonymousHome()),
-                (Route<dynamic> route) => false);
-            print('drugi' + isOnline.toString());
-            // Navigator.of(context).pushReplacement(
-            //   MaterialPageRoute(builder: (_) {
-            //     return RegisteredHome();
-            //   }),
-            // );
-            // } else
+            // else
             //   print('Nemoguce');
           },
         ),

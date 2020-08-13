@@ -19,13 +19,13 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
   @override
   void initState() {
     //alertDialogInitControllers();
-    emailInputControllerAlertDialog = new TextEditingController();
+    //emailInputControllerAlertDialog = new TextEditingController();
     setState(() {});
     super.initState();
   }
 
   void dispose() {
-    emailInputControllerAlertDialog.clear();
+    //  emailInputControllerAlertDialog.clear();
     super.dispose();
   }
 
@@ -48,8 +48,8 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
       ),
       actions: <Widget>[
         Container(
-            child: AuthService().allowPasswordChange(
-                context, emailInputControllerAlertDialog.text)),
+          child: AuthService().allowPasswordChange(context, forgetEmail),
+        ),
         AlertDialogButtons(),
       ],
     );
