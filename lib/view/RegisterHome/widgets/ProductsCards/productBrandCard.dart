@@ -40,9 +40,8 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
           )
         ],
       ),
-      floatingActionButton: email != null
-          ? mainFloatingButton(email)
-          : homeFloatingAnimatedButton(),
+      floatingActionButton:
+          email != null ? MainFloatingButton() : homeFloatingAnimatedButton(),
       bottomSheet: Container(
         height: 55,
         width: double.infinity,

@@ -9,7 +9,6 @@ class ProfilButton extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  @override
   Widget build(BuildContext context) {
     return Container(
       child: SizedBox.fromSize(

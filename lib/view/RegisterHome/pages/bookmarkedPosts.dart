@@ -33,9 +33,8 @@ class _BookmarkedPostsState extends State<BookmarkedPosts> {
                 return RegisteredHome();
               })),
           child: MyFavorites()),
-      floatingActionButton: email != null
-          ? mainFloatingButton(email)
-          : homeFloatingAnimatedButton(),
+      floatingActionButton:
+          email != null ? MainFloatingButton() : homeFloatingAnimatedButton(),
       bottomSheet: BottomSheetContainer(),
     );
   }

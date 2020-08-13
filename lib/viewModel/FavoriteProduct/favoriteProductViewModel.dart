@@ -52,14 +52,6 @@ class FavoriteProduct extends AddFavoriteProductInterface {
   }
 
   Future isProductFavorite(Product product) async {
-    // final QuerySnapshot results = await Firestore.instance
-    //     .collection('firestoreUsers')
-    //     .document(email)
-    //     .collection('savedProducts')
-    //     .where('productID', isEqualTo: product.productID)
-    //     .getDocuments();
-    // final List<DocumentSnapshot> document = results.documents;
-
     if (listaProizvoda.contains(product.productID)) {
       favorite = true;
       FavoriteProduct().removeFavorite(email, product);
@@ -77,9 +69,7 @@ class FavoriteProduct extends AddFavoriteProductInterface {
         .document(email)
         .collection('savedProducts')
         .getDocuments();
-
     List<DocumentSnapshot> favoritesDocs = favorites.documents;
-
     return favoritesDocs;
   }
 
@@ -88,16 +78,13 @@ class FavoriteProduct extends AddFavoriteProductInterface {
         .collection('products')
         .where('productFinished', isEqualTo: false)
         .getDocuments();
-
     List<DocumentSnapshot> productsDocs = favoritesProducts.documents;
-
     return productsDocs;
   }
 
   Future listAllFavorites() async {
     List<DocumentSnapshot> favsIDs = await getAllFavoritesIDs();
     List<DocumentSnapshot> allProds = await getAllUnfinishedProducts();
-
     List<DocumentSnapshot> retList = List<DocumentSnapshot>();
 
     for (int i = 0; i < favsIDs.length; i++) {

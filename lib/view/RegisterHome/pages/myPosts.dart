@@ -38,7 +38,7 @@ class _MyPostsState extends State<MyPosts> {
               })),
           child: MyProducts()),
       floatingActionButton: email != null
-          ? mainFloatingButton(email)
+          ? MainFloatingButton()
           : homeFloatingAnimatedButton(),
       bottomSheet: BottomSheetContainer(),
     );

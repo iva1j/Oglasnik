@@ -45,7 +45,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                ProfileText(),
+                ProfileText(), 
                 ProfileForm(),
                 ProfileChangePassButton(),
                 ProfileSaveButton(),
