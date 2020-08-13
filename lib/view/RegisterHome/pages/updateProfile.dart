@@ -22,34 +22,43 @@ class _UpdateProfileState extends State<UpdateProfile> {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
 
     SizeConfig().init(context);
-    return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        leading: IconButton(
-          icon: Icon(Icons.close, color: Colors.black),
-          onPressed: () => Navigator.of(context)
-              .pushReplacement(FadeRoute(page: RegisteredHome())),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          currentFocus.focusedChild.unfocus();
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomPadding: false,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0.0,
+          leading: IconButton(
+            icon: Icon(Icons.close, color: Colors.black),
+            onPressed: () => Navigator.of(context)
+                .pushReplacement(FadeRoute(page: RegisteredHome())),
+          ),
         ),
-      ),
-      body: WillPopScope(
-        onWillPop: () => Navigator.of(context)
-            .pushReplacement(MaterialPageRoute(builder: (_) {
-          return RegisteredHome();
-        })),
-        child: SingleChildScrollView(
-          reverse: true,
-          child: Padding(
-            padding: EdgeInsets.only(bottom: bottom),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ProfileText(),
-                ProfileForm(),
-                ProfileChangePassButton(),
-                ProfileSaveButton(),
-              ],
+        body: WillPopScope(
+          onWillPop: () => Navigator.of(context)
+              .pushReplacement(MaterialPageRoute(builder: (_) {
+            return RegisteredHome();
+          })),
+          child: SingleChildScrollView(
+            reverse: true,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: bottom),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  ProfileText(),
+                  ProfileForm(),
+                  ProfileChangePassButton(),
+                  ProfileSaveButton(),
+                ],
+              ),
             ),
           ),
         ),
