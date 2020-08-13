@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -125,29 +126,49 @@ class _MyFavoritesState extends State<MyFavorites> {
                                   ),
                                   email != null
                                       ? Row(
-                                          // crossAxisAlignment: CrossAxisAlignment.center,
-                                          // mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
                                             itemCardTags(snapshot.data[index]),
                                             Container(
-                                              margin:
-                                                  EdgeInsets.only(bottom: 5),
                                               child: IconButton(
                                                   color: Colors.white,
-                                                  icon: Icon(
-                                                    Icons.star,
-                                                    size: 30,
-                                                    color: favorite
-                                                        ? Colors.yellow
-                                                        : Colors.red,
-                                                  ),
+                                                  icon: favoritesList.contains(
+                                                          snapshot.data[index]
+                                                              ['productID'])
+                                                      ? Icon(
+                                                          Icons.star,
+                                                          size: 30,
+                                                          color: mainAppColor,
+                                                        )
+                                                      : Icon(Icons.star_border,
+                                                          size: 30,
+                                                          color:
+                                                              starBorderColor),
                                                   onPressed: () async {
-                                                    FavoriteProduct()
-                                                        .removeFavorite(email,
-                                                            products[index]);
-                                                    FavoriteProduct()
-                                                        .isProductFavorite(
-                                                            products[index]);
+                                                    final result =
+                                                        favoritesList.contains(
+                                                            snapshot.data[index]
+                                                                ['productID']);
+                                                    if (result) {
+                                                      favoritesList.remove(
+                                                          snapshot.data[index]
+                                                              ['productID']);
+                                                      await FavoriteProduct()
+                                                          .removeFavorite(
+                                                              email,
+                                                              snapshot
+                                                                  .data[index]);
+                                                      setState(() {});
+                                                    } else {
+                                                      favoritesList.add(
+                                                          snapshot.data[index]
+                                                              ['productID']);
+                                                      await FavoriteProduct()
+                                                          .addFavorite(
+                                                              email,
+                                                              snapshot
+                                                                  .data[index]);
+                                                      setState(() {});
+                                                    }
                                                   }),
                                             ),
                                           ],
