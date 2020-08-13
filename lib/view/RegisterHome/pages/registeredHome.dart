@@ -5,6 +5,7 @@ import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
+import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
@@ -49,9 +50,8 @@ class _RegisteredHomeState extends State<RegisteredHome> {
           )
         ],
       ),
-      floatingActionButton: email != null
-          ? mainFloatingButton(email)
-          : homeFloatingAnimatedButton(),
+      floatingActionButton:
+          email != null ? MainFloatingButton() : homeFloatingAnimatedButton(),
       bottomSheet: BottomSheetContainer(),
       body: MainBody(),
     );

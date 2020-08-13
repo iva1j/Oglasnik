@@ -86,9 +86,7 @@ class FavoriteProduct extends AddFavoriteProductInterface {
         .document(email)
         .collection('savedProducts')
         .getDocuments();
-
     List<DocumentSnapshot> favoritesDocs = favorites.documents;
-
     return favoritesDocs;
   }
 
@@ -97,16 +95,13 @@ class FavoriteProduct extends AddFavoriteProductInterface {
         .collection('products')
         .where('productFinished', isEqualTo: false)
         .getDocuments();
-
     List<DocumentSnapshot> productsDocs = favoritesProducts.documents;
-
     return productsDocs;
   }
 
   Future listAllFavorites() async {
     List<DocumentSnapshot> favsIDs = await getAllFavoritesIDs();
     List<DocumentSnapshot> allProds = await getAllUnfinishedProducts();
-
     List<DocumentSnapshot> retList = List<DocumentSnapshot>();
 
     for (int i = 0; i < favsIDs.length; i++) {

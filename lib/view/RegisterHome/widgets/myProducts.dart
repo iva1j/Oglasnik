@@ -43,12 +43,12 @@ class _MyProductsState extends State<MyProducts> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Expanded(
-          child: FutureBuilder(
+          child: 
+          FutureBuilder(
             future: Firestore.instance
                 .collection('products')
                 .where('email', isEqualTo: email)
                 .where('productFinished', isEqualTo: false)
-                // .where('field')
                 .getDocuments(),
             builder: (BuildContext context, AsyncSnapshot snapshott) {
               if (snapshott.hasData) {
