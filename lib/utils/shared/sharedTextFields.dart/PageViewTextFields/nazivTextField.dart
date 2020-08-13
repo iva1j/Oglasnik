@@ -5,6 +5,7 @@ import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/produc
 import 'package:flutter/material.dart';
 
 class NazivTextField extends StatefulWidget {
+  
   const NazivTextField({
     Key key,
     //@required this.editProduct,

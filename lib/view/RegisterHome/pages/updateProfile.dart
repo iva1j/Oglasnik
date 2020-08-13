@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
@@ -5,6 +6,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileChangePa
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileForm.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileSaveButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileText.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 TextEditingController updateFullNameInputController;

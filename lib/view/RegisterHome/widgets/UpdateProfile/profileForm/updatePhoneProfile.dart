@@ -1,11 +1,16 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation/phoneValidator.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/updateProfile.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class UpdatePhone extends StatelessWidget {
   const UpdatePhone({
     Key key,
+    this.user,
   }) : super(key: key);
+  final DocumentSnapshot user;
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +19,12 @@ class UpdatePhone extends StatelessWidget {
         width: double.infinity,
         child: Container(
           child: TextFormField(
+            initialValue: user["phoneNumber"],
+            validator: phoneValidator,
+            onChanged: (value) {
+              updateProfilePhoneNumber = value;
+            },
+            autovalidate: false,
             inputFormatters: [
               new BlacklistingTextInputFormatter(
                 RegExp(
@@ -24,7 +35,6 @@ class UpdatePhone extends StatelessWidget {
               contentPadding: EdgeInsets.only(left: 20),
               hintText: 'Broj telefona',
             ),
-            controller: updatePhoneNumberInputController,
             keyboardType: TextInputType.phone,
           ),
         ),
