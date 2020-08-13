@@ -53,10 +53,9 @@ class _ProfileFormState extends State<ProfileForm> {
                           itemBuilder: (BuildContext context, int index) {
                             return Column(
                               children: <Widget>[
-                                //UpdateName(user: userInfo[index]),
-                                UpdateName(),
-                                // UpdateEmail(user: userInfo[index]),
-                                // UpdatePhone(user: userInfo[index]),
+                                UpdateName(user: userInfo[index]),
+                                UpdateEmail(user: userInfo[index]),
+                                UpdatePhone(user: userInfo[index]),
                               ],
                             );
                           });
