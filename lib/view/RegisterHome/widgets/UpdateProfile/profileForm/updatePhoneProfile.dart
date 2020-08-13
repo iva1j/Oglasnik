@@ -19,7 +19,9 @@ class UpdatePhone extends StatelessWidget {
         width: double.infinity,
         child: Container(
           child: TextFormField(
-            initialValue: user["phoneNumber"],
+            initialValue: updateProfilePhoneNumber == null
+                ? updateProfilePhoneNumber = user["phoneNumber"]
+                : updateProfilePhoneNumber,
             validator: phoneValidator,
             onChanged: (value) {
               updateProfilePhoneNumber = value;

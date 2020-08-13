@@ -22,7 +22,8 @@ class UpdateEmail extends StatelessWidget {
         width: double.infinity,
         child: Container(
           child: TextFormField(
-            initialValue: user["email"],
+            initialValue: updateProfileEmail ==
+                null ? updateProfileEmail = email : updateProfileEmail,
             validator: emailRegisterCheck,
             autovalidate: false,
             onChanged: (value) {
