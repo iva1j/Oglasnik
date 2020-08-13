@@ -66,7 +66,9 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                             )
                           : ItemProductContainer(
                               selectedProducts: selectedProducts,
-                              showMessage: showMessage);
+                              showMessage: showMessage,
+                              setStateParent: refresh,
+                            );
                     } else {
                       //prikazivanje spinnera, u slučaju da učitavanje potraje malo duže
                       return CategoryLoading();
@@ -92,7 +94,9 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
                             )
                           : ItemProductContainer(
                               selectedProducts: selectedProducts,
-                              showMessage: showMessage);
+                              showMessage: showMessage,
+                              setStateParent: refresh,
+                            );
                     } else {
                       //prikazivanje spinnera, u slučaju da učitavanje potraje malo duže
                       return CategoryLoading();

@@ -13,14 +13,14 @@ import 'package:flutter/material.dart';
 ///
 class FavoriteProduct extends AddFavoriteProductInterface {
   @override
-  Future addFavorite(String email, Product product) {
+  Future addFavorite(String email, DocumentSnapshot product) {
     db
         .collection("firestoreUsers")
         .document(email)
         .collection('savedProducts')
-        .document(product.productID)
+        .document(product["productID"])
         .setData({
-      'productID': product.productID,
+      'productID': product["productID"],
       // 'favorite products': [
       //   product.productID,
       // ],
@@ -41,13 +41,14 @@ class FavoriteProduct extends AddFavoriteProductInterface {
     return null;
   }
 
-  Future removeFavorite(String email, Product product) {
+  Future removeFavorite(String email, DocumentSnapshot product) {
     db
         .collection("firestoreUsers")
         .document(email)
         .collection('savedProducts')
-        .document(product.productID)
+        .document(product["productID"])
         .delete();
+
     return null;
   }
 

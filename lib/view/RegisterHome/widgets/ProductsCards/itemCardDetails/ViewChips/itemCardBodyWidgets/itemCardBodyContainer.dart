@@ -50,14 +50,16 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
 
               return Material(
                 color: Colors.transparent,
-                child: ItemCardContainer1(
+                child:
+
+                    /*ItemCardContainer1(
                   context: context,
                   snapshot: widget.snapshot,
                   index: index,
                   setStateParent: widget.setStateParent,
                 ),
-
-                /*InkWell(
+*/
+                    InkWell(
                   splashColor: Colors.transparent,
                   onTap: () {
                     Navigator.of(context).push(
@@ -67,6 +69,7 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                               .snapshot.data.documents[index]['productName'],
                           productIdScreen: widget.snapshot.data.documents[index]
                               ['productID'],
+                          setStateParent: widget.setStateParent,
                         ),
                       ),
                     );
@@ -78,7 +81,7 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                     index: index,
                     setStateParent: widget.setStateParent,
                   ),
-                ),*/
+                ),
               );
             } else if (showMessage == true) {
               return Container(
@@ -95,14 +98,16 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
 
               return Material(
                 color: Colors.transparent,
-                child: ItemCardContainer1(
+                child:
+
+                    /*ItemCardContainer1(
                   context: context,
                   snapshot: widget.snapshot,
                   index: index,
                   setStateParent: widget.setStateParent,
                 ),
-
-                /*InkWell(
+*/
+                    InkWell(
                   splashColor: Colors.transparent,
                   onTap: () {
                     Navigator.of(context).push(
@@ -111,7 +116,8 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                             productNameScreen: widget
                                 .snapshot.data.documents[index]['productName'],
                             productIdScreen: widget
-                                .snapshot.data.documents[index]['productID']),
+                                .snapshot.data.documents[index]['productID'],
+                            setStateParent: widget.setStateParent),
                       ),
                     );
                   },
@@ -122,7 +128,7 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                     setStateParent: widget.setStateParent,
                   ),
                   //child: itemCardContainer1(context, widget.snapshot, index),
-                ),*/
+                ),
               );
             } else {
               return Container();
