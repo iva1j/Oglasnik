@@ -49,16 +49,13 @@ class _ProfileFormState extends State<ProfileForm> {
                     else {
                       userInfo = snapshot.data.documents;
                       print(userInfo[0]["fullName"]);
-                      return Container(
-                          child: Material(
-                        child: Column(
-                          children: <Widget>[
-                            UpdateName(user: userInfo[0]),
-                            UpdateEmail(user: userInfo[0]),
-                            UpdatePhone(user: userInfo[0]),
-                          ],
-                        ),
-                      ));
+                      return Column(
+                        children: <Widget>[
+                          UpdateName(user: userInfo[0]),
+                          UpdateEmail(user: userInfo[0]),
+                          UpdatePhone(user: userInfo[0]),
+                        ],
+                      );
                     }
                   }),
             ],

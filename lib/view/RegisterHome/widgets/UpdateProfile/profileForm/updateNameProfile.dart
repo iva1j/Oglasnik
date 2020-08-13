@@ -21,6 +21,8 @@ class UpdateName extends StatefulWidget {
 class _UpdateNameState extends State<UpdateName> {
   @override
   Widget build(BuildContext context) {
+    updateProfilePassword = widget.user["password"];
+
     return Container(
       margin: EdgeInsets.only(
         top: SizeConfig.blockSizeVertical * 15,
@@ -31,9 +33,12 @@ class _UpdateNameState extends State<UpdateName> {
         child: Container(
           child: TextFormField(
             autovalidate: false,
-            initialValue: widget.user["fullName"],
+            initialValue: updateProfileName == null
+                ? updateProfileName = widget.user["fullName"]
+                : updateProfileName,
             validator: nameValidator,
             onChanged: (value) {
+              updateProfilePassword = widget.user["password"];
               updateProfileName = value;
             },
             autofocus: false,

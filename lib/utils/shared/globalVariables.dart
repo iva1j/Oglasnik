@@ -63,7 +63,7 @@ String updateProductNameReturn,
     updateProductDescriptionReturn,
     updateProductPriceReturn;
 
-String updateProfileName, updateProfilePhoneNumber, updateProfileEmail;
+String updateProfileName, updateProfilePhoneNumber, updateProfileEmail, updateProfilePassword;
 
 String updateProfileNameReturn,
     updateProfilePhoneNumberReturn,
