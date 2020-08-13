@@ -61,57 +61,37 @@ class _ItemCardContainer1State extends State<ItemCardContainer1> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          InkWell(
-            splashColor: Colors.transparent,
-            onTap: () {
-              Navigator.of(context).push(
-                FadeRoute(
-                  page: ProductDetails(
-                    productNameScreen: widget
-                        .snapshot.data.documents[widget.index]['productName'],
-                    productIdScreen: widget
-                        .snapshot.data.documents[widget.index]['productID'],
-                    setStateParent: widget.setStateParent,
-                  ),
-                ),
-              );
-            },
-            child: Column(
-              children: <Widget>[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          itemCardProductName(context,
-                              widget.snapshot.data.documents[widget.index]),
-                          itemCardBodyDesc(
-                              widget.snapshot.data.documents[widget.index],
-                              widget.index),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          itemCardImage(
-                              widget.snapshot.data.documents[widget.index]),
-                          itemCardPrice(
-                              widget.snapshot.data.documents[widget.index]),
-                        ],
-                      ),
-                    ),
+                    itemCardProductName(
+                        context,
+                        widget.snapshot.data.documents[widget.index],
+                        widget.setStateParent),
+                    itemCardBodyDesc(
+                        widget.snapshot.data.documents[widget.index],
+                        widget.index),
                   ],
                 ),
-                Divider(
-                  thickness: SizeConfig.blockSizeVertical * 0.2,
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    itemCardImage(widget.snapshot.data.documents[widget.index]),
+                    itemCardPrice(widget.snapshot.data.documents[widget.index]),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
+          ),
+          Divider(
+            thickness: SizeConfig.blockSizeVertical * 0.2,
           ),
           email != null
               ? Row(
@@ -137,15 +117,14 @@ class _ItemCardContainer1State extends State<ItemCardContainer1> {
                             if (result) {
                               favoritesList.remove(widget.snapshot.data
                                   .documents[widget.index]['productID']);
-
-                              await FavoriteProduct().removeFavorite(
-                                  email, products[widget.index]);
+                              await FavoriteProduct().removeFavorite(email,
+                                  widget.snapshot.data.documents[widget.index]);
                               widget.setStateParent();
                             } else {
                               favoritesList.add(widget.snapshot.data
                                   .documents[widget.index]['productID']);
-                              await FavoriteProduct()
-                                  .addFavorite(email, products[widget.index]);
+                              await FavoriteProduct().addFavorite(email,
+                                  widget.snapshot.data.documents[widget.index]);
                               widget.setStateParent();
                             }
                           }),

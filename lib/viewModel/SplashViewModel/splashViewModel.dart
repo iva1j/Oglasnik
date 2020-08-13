@@ -36,6 +36,7 @@ Future<void> splashScreenRouter() async {
   var email = prefs.getString('email');
   globals.allBrands = await getAllBrands();
   globals.email = email;
+  globals.favoritesList.clear();
   FavoriteProduct().getAllFavoritesIDs().then((value) =>
       {for (final x in value) globals.favoritesList.add(x['productID'])});
 

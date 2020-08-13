@@ -99,7 +99,9 @@ class _MyFavoritesState extends State<MyFavorites> {
                                               MainAxisAlignment.start,
                                           children: <Widget>[
                                             itemCardProductName(
-                                                context, snapshot.data[index]),
+                                                context,
+                                                snapshot.data[index],
+                                                justSetState),
                                             itemCardBodyDesc(
                                                 snapshot.data[index], index),
                                           ],

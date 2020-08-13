@@ -14,10 +14,12 @@ class ItemProductContainer extends StatelessWidget {
     Key key,
     @required this.selectedProducts,
     @required this.showMessage,
+    @required this.setStateParent,
   }) : super(key: key);
 
   final List<DocumentSnapshot> selectedProducts;
   final bool showMessage;
+  final Function setStateParent;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +39,9 @@ class ItemProductContainer extends StatelessWidget {
                 child: InkWell(
                   splashColor: Colors.transparent,
                   onTap: () {
-                    itemProductName(context, index);
+                    itemProductName(context, index, setStateParent);
                   },
-                  child: itemContainer(context, index),
+                  child: itemContainer(context, index, setStateParent),
                 ),
               );
             } else if (showMessage == true) {
@@ -60,9 +62,9 @@ class ItemProductContainer extends StatelessWidget {
                 child: InkWell(
                   splashColor: Colors.transparent,
                   onTap: () {
-                    itemProductName(context, index);
+                    itemProductName(context, index, setStateParent);
                   },
-                  child: itemContainer(context, index),
+                  child: itemContainer(context, index, setStateParent),
                 ),
               );
             } else {

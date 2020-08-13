@@ -32,12 +32,12 @@ class ProductDetails extends StatefulWidget {
   final String productNameScreen;
   final String productIdScreen;
   final Function setStateParent;
-  ProductDetails(
-      {Key key,
-      @required this.productNameScreen,
-      @required this.productIdScreen,
-      @required this.setStateParent})
-      : super(key: key);
+  ProductDetails({
+    Key key,
+    @required this.productNameScreen,
+    @required this.productIdScreen,
+    @required this.setStateParent,
+  }) : super(key: key);
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -65,7 +65,9 @@ class _ProductDetailsState extends State<ProductDetails> {
         leading: IconButton(
             icon: Icon(Icons.close, color: Colors.white),
             onPressed: () {
-              widget.setStateParent();
+              if (widget.setStateParent != null) {
+                widget.setStateParent();
+              }
               Navigator.of(context).pop();
             }),
       ),
@@ -249,14 +251,18 @@ class _ProductDetailsState extends State<ProductDetails> {
 
                                                 await FavoriteProduct()
                                                     .removeFavorite(
-                                                        email, products[index]);
+                                                        email,
+                                                        snapshot.data
+                                                            .documents[index]);
                                               } else {
                                                 favoritesList.add(snapshot
                                                         .data.documents[index]
                                                     ['productID']);
                                                 await FavoriteProduct()
                                                     .addFavorite(
-                                                        email, products[index]);
+                                                        email,
+                                                        snapshot.data
+                                                            .documents[index]);
                                               }
                                               setState(() {});
                                             }),
