@@ -3,14 +3,17 @@ import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/sendMail.dart';
 
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 bool validSignIn = false;
 bool validPasswordReset = false;
@@ -63,7 +66,7 @@ class AuthService extends ChangeNotifier {
       if (alertFormKey.currentState.validate() &&
           allowUserToChangePassword == true) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          emailInputControllerAlertDialog.clear();
+          //emailInputControllerAlertDialog.clear();
         });
         db.collection("firestoreUsers").document(email).updateData({
           'email': email,
@@ -72,7 +75,7 @@ class AuthService extends ChangeNotifier {
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
           return PasswordChange(email);
         }));
-        //sendemail();
+        sendemail();
         print('Za korisnika: ' +
             email +
             ' uspješno generisan token(na mail i firestore poslan), a on je: ' +
@@ -91,13 +94,13 @@ class AuthService extends ChangeNotifier {
     String newPassword,
     String passwordConfirm,
     String token,
-  ) {
+  ) async {
     print('token: ' + token.toString());
     print('password: ' + newPassword.toString());
     print('confirm password: ' + passwordConfirm.toString());
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-    Timer(Duration(seconds: 1), () {
+    Timer(Duration(seconds: 1), () async {
       if (passwordChangeFormKey.currentState.validate() &&
           tokenstatus == true &&
           newPassword == passwordConfirm) {
@@ -114,16 +117,30 @@ class AuthService extends ChangeNotifier {
         passwordInputController.clear();
         confirmPasswordInputController.clear();
         tokenInputController.clear();
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (context, animation1, animation2) => AnonymousHome(),
-          ),
-        );
+        email = null;
+        phoneNumber = null;
+        await FirebaseAuth.instance.signOut();
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.remove('email');
+        prefs.remove('phoneNumber');
+        print("email: " +
+            email.toString() +
+            " phoneNumber: " +
+            phoneNumber.toString());
+        Navigator.of(context).pushAndRemoveUntil(
+            FadeRoute(page: AnonymousHome()), (Route<dynamic> route) => false);
+        // print('drugi' + isOnline.toString());
+        // Navigator.pushReplacement(
+        //   context,
+        //   PageRouteBuilder(
+        //     pageBuilder: (context, animation1, animation2) => AnonymousHome(),
+        //   ),
+        // );
 
         // Navigator.of(context)
         //     .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
-      } else if (newPassword != passwordConfirm) {
+      }
+      if (newPassword != passwordConfirm) {
         doesMatch = true;
         Timer(Duration(seconds: 1), () {
           doesMatch = false;

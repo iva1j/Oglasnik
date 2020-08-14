@@ -138,6 +138,10 @@ class SuccessAlertDialog {
   String uredu = "UREDU";
   String kreiraj = "KREIRAJ";
   String empty = "";
+  String obrisinaslov = "Obriši artikal?";
+  String obrisitext = "Da li ste sigurni da želite obrisati artikal?";
+  String delete = "OBRIŠI";
+  String odustani = "ODUSTANI";
 }
 
 //..view/SplashScreen
@@ -168,6 +172,7 @@ class UserProducts {
 class Titles {
   String myPosts = 'Moji oglasi';
   String myFavorites = 'Sačuvani oglasi';
+  String updateProfile = "Profil";
 }
 
 class ImageOneUpload {}
@@ -220,6 +225,7 @@ final String immutableImg1 = "Dodaj sliku 1";
 final String immutableImg2 = "Dodaj sliku 2";
 final String immutableImg3 = "Dodaj sliku 3";
 
+bool favorite = false;
 final String noPhoto = "assets/images/nophoto.jpg";
 //final String noPhotoNetwork =
 //    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2Fnophoto.jpg?alt=media&token=cd241b95-8a79-4f1b-a4e0-4f4a77c255a8";

@@ -6,54 +6,49 @@ import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'ProductsCards/categoryLoading.dart';
 import 'ProductsCards/itemCardDetails/itemCardPrice.dart';
 import 'ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'ProductsCards/productDetails.dart';
-import 'package:Oglasnik/utils/shared/ItemContainer/itemContainerDecoration.dart';
-import 'package:Oglasnik/utils/shared/ItemContainer/itemContainerMargins.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/actionChips.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/dynamicChips.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardDescription.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardImage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardPrice.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardProductName.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/Search/getProductsByBrand.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/Search/productSearchViewModel.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/getAllBrands.dart';
-import 'package:flutter/material.dart';
-import 'package:Oglasnik/utils/transitionFade.dart';
+
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 List<DocumentSnapshot> myPosts = List<DocumentSnapshot>();
 List myProducts = [];
 
-class MyProducts extends StatelessWidget {
+class MyProducts extends StatefulWidget {
+  @override
+  _MyProductsState createState() => _MyProductsState();
+}
+
+class _MyProductsState extends State<MyProducts> {
   bool showMessage = true;
+
+  @override
+  void justSetState() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Expanded(
-          child: FutureBuilder(
+          child: 
+          FutureBuilder(
             future: Firestore.instance
                 .collection('products')
                 .where('email', isEqualTo: email)
-                // .where('field')
+                .where('productFinished', isEqualTo: false)
                 .getDocuments(),
             builder: (BuildContext context, AsyncSnapshot snapshott) {
               if (snapshott.hasData) {
@@ -111,8 +106,10 @@ class MyProducts extends StatelessWidget {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
                                                   children: <Widget>[
-                                                    itemCardProductName(context,
-                                                        myPosts[index]),
+                                                    itemCardProductName(
+                                                        context,
+                                                        myPosts[index],
+                                                        justSetState),
                                                     Container(
                                                       width: SizeConfig
                                                               .blockSizeHorizontal *
@@ -222,8 +219,10 @@ class MyProducts extends StatelessWidget {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
                                                   children: <Widget>[
-                                                    itemCardProductName(context,
-                                                        myPosts[index]),
+                                                    itemCardProductName(
+                                                        context,
+                                                        myPosts[index],
+                                                        justSetState),
                                                     Container(
                                                       width: SizeConfig
                                                               .blockSizeHorizontal *
@@ -307,11 +306,12 @@ class MyProducts extends StatelessWidget {
     Navigator.of(context).push(
       FadeRoute(
         page: ProductDetails(
-            productNameScreen: myPosts[index]['productName'],
-            productIdScreen: myPosts[index]['productID']
-            // snapshot
-            //     .data.documents[index]['productName'],
-            ),
+          productNameScreen: myPosts[index]['productName'],
+          productIdScreen: myPosts[index]['productID'],
+          setStateParent: justSetState,
+          // snapshot
+          //     .data.documents[index]['productName'],
+        ),
       ),
     );
   }

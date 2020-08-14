@@ -6,14 +6,28 @@ import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/suggestionFunction.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/itemCardBodyWidgets/itemCardContainer1.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
+import 'package:flutter/material.dart';
+import 'package:Oglasnik/utils/sizeconfig.dart';
+
+bool showMessage = true;
 
 class ItemCardBody extends StatefulWidget {
   const ItemCardBody(
-      {Key key, @required this.widget, @required this.categoryName})
+      {Key key,
+      @required this.widget,
+      @required this.categoryName,
+      @required this.setStateParent})
       : super(key: key);
 
   final ItemCard widget;
   final String categoryName;
+  final Function setStateParent;
 
   @override
   _ItemCardBodyState createState() => _ItemCardBodyState();
@@ -47,9 +61,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
 
   @override
   Widget build(BuildContext context) {
-    bool showMessage = true;
     SizeConfig().init(context);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -87,7 +99,12 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                   );
                 }
 
-                return itemCardBodyContainer(snapshot, showMessage, context);
+                // return itemCardBodyContainer(snapshot, showMessage, context);
+                return ItemCardBodyContainer(
+                  snapshot: snapshot,
+                  context: context,
+                  setStateParent: widget.setStateParent,
+                );
               }),
         ),
       ],

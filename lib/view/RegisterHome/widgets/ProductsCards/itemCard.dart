@@ -4,6 +4,7 @@ import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
+import 'package:Oglasnik/viewModel/SplashViewModel/splashViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
@@ -22,7 +23,14 @@ class ItemCard extends StatefulWidget {
 
 class _ItemCardState extends State<ItemCard> {
   @override
+  void justSetState() {
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print(favoritesList);
+    //getFavoriteProducts(email);
     SizeConfig().init(context);
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -43,9 +51,8 @@ class _ItemCardState extends State<ItemCard> {
             )
           ],
         ),
-        floatingActionButton: email != null
-            ? mainFloatingButton(email)
-            : homeFloatingAnimatedButton(),
+        floatingActionButton:
+            email != null ? MainFloatingButton() : homeFloatingAnimatedButton(),
         bottomSheet: Container(
           height: 55,
           width: double.infinity,
@@ -54,6 +61,7 @@ class _ItemCardState extends State<ItemCard> {
         body: ItemCardBody(
           widget: widget,
           categoryName: widget.categoryName,
+          setStateParent: justSetState,
         ));
   }
 }

@@ -40,7 +40,7 @@ class _FormSignInState extends State<FormSignIn> {
               PasswordSignInForm(widget: widget),
               Authentication(),
               SignInButtonForm(widget: widget),
-              ForgotPassSignInText()
+              // ForgotPassSignInText()
             ],
           ),
         ));

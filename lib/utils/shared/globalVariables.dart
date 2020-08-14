@@ -63,6 +63,14 @@ String updateProductNameReturn,
     updateProductDescriptionReturn,
     updateProductPriceReturn;
 
+String updateProfileName, updateProfilePhoneNumber, updateProfileEmail, updateProfilePassword;
+
+String forgetEmail;
+
+String updateProfileNameReturn,
+    updateProfilePhoneNumberReturn,
+    updateProfileEmailReturn;
+
 String image1Name, image2Name, image3Name;
 
 //String dropdownValueBrand = 'Brands';
@@ -86,6 +94,8 @@ final GlobalKey<FormState> productPriceFormKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productCategoryDropDownKey = GlobalKey<FormState>();
 final GlobalKey<FormState> productBrandFormKey = GlobalKey<FormState>();
 
+final GlobalKey<FormState> updateproductNameFormKey = GlobalKey<FormState>();
+
 List<String> categoryNames = List<String>();
 
 bool hasInternetConnection = false;
@@ -97,6 +107,7 @@ var categoryBrands = Map();
 List categoryBrand = [];
 List numberofBrands = [];
 var allBrands;
+List<String> favoritesList = List<String>();
 //var catBrands = Map<String, List<String>>();
 
 List products = [];

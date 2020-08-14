@@ -47,9 +47,8 @@ class _AnonymousHomeState extends State<AnonymousHome> {
           ],
         ),
         body: MainBody(),
-        floatingActionButton: email != null
-            ? mainFloatingButton(email)
-            : homeFloatingAnimatedButton(),
+        floatingActionButton:
+            email != null ? MainFloatingButton() : homeFloatingAnimatedButton(),
         bottomSheet: BottomSheetContainer(),
       ),
     );

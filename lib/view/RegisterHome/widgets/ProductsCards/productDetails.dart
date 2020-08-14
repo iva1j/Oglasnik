@@ -2,8 +2,10 @@ import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/smallMainButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/PostScreens/Pages/articlePage.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/anonProductDetailsTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsCategory.dart';
@@ -12,10 +14,12 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsW
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
-import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
+import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
+import 'package:Oglasnik/viewModel/SplashViewModel/splashViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../deleteDialogButtons.dart';
 import '../showimage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
@@ -27,11 +31,13 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 class ProductDetails extends StatefulWidget {
   final String productNameScreen;
   final String productIdScreen;
-  ProductDetails(
-      {Key key,
-      @required this.productNameScreen,
-      @required this.productIdScreen})
-      : super(key: key);
+  final Function setStateParent;
+  ProductDetails({
+    Key key,
+    @required this.productNameScreen,
+    @required this.productIdScreen,
+    @required this.setStateParent,
+  }) : super(key: key);
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -40,7 +46,6 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   int _selectedIndex;
   _onSelected(int index) {
-    //https://inducesmile.com/google-flutter/how-to-change-the-background-color-of-selected-listview-in-flutter/
     setState(() {
       _selectedIndex = index;
     });
@@ -49,6 +54,8 @@ class _ProductDetailsState extends State<ProductDetails> {
   final List imageSlider = [];
   @override
   Widget build(BuildContext context) {
+    print(favoritesList);
+    //getFavoriteProducts(email);
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
@@ -56,13 +63,16 @@ class _ProductDetailsState extends State<ProductDetails> {
         centerTitle: true,
         title: Text(widget.productNameScreen),
         leading: IconButton(
-          icon: Icon(Icons.close, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+            icon: Icon(Icons.close, color: Colors.white),
+            onPressed: () {
+              if (widget.setStateParent != null) {
+                widget.setStateParent();
+              }
+              Navigator.of(context).pop();
+            }),
       ),
-      floatingActionButton: email != null
-          ? mainFloatingButton(email)
-          : homeFloatingAnimatedButton(),
+      floatingActionButton:
+          email != null ? MainFloatingButton() : homeFloatingAnimatedButton(),
       bottomSheet: Container(
         height: 55,
         width: double.infinity,
@@ -204,64 +214,146 @@ class _ProductDetailsState extends State<ProductDetails> {
                               indent: 15,
                               endIndent: 15,
                             ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                productDetailsTagsWidget(index),
-                                //  Spacer(),
+                            email != null
+                                ? Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      productDetailsTagsWidget(index),
+                                      Container(
+                                        child: IconButton(
+                                            color: Colors.white,
+                                            icon: favoritesList.contains(
+                                                    snapshot.data
+                                                            .documents[index]
+                                                        ['productID'])
+                                                ? Icon(
+                                                    Icons.star,
+                                                    size: 30,
+                                                    color: mainAppColor,
+                                                  )
+                                                : Icon(Icons.star_border,
+                                                    size: 30,
+                                                    color: starBorderColor),
+                                            onPressed: () async {
+                                              // FavoriteProduct().removeFavorite(
+                                              //     email, products[index]);
+                                              final result = favoritesList
+                                                  .contains(snapshot
+                                                          .data.documents[index]
+                                                      ['productID']);
+                                              if (result) {
+                                                favoritesList.remove(snapshot
+                                                        .data.documents[index]
+                                                    ['productID']);
 
-                                // margin: EdgeInsets.only(bottom:1),
-                                // width: SizeConfig.blockSizeHorizontal*,
-                                IconButton(
-                                    icon: Icon(
-                                      Icons.favorite,
-                                      size: 28,
-                                      color: _selectedIndex != null &&
-                                              _selectedIndex == index
-                                          ? Colors.redAccent
-                                          : Colors.grey,
-                                    ),
-                                    onPressed: () {
-                                      _onSelected(index);
-                                    }),
-                              ],
-                            ),
+                                                await FavoriteProduct()
+                                                    .removeFavorite(
+                                                        email,
+                                                        snapshot.data
+                                                            .documents[index]);
+                                              } else {
+                                                favoritesList.add(snapshot
+                                                        .data.documents[index]
+                                                    ['productID']);
+                                                await FavoriteProduct()
+                                                    .addFavorite(
+                                                        email,
+                                                        snapshot.data
+                                                            .documents[index]);
+                                              }
+                                              setState(() {});
+                                            }),
+                                      ),
+                                    ],
+                                  )
+                                : anonProductDetailsTagsWidget(index),
                           ],
                         ),
                       ),
                     ),
                     products[index].email == email
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              smallMainButton(UserProducts().editProfile, () {
-                                updateProductNameReturn = null;
-                                updateProductDescriptionReturn = null;
-                                updateProductPriceReturn = null;
-                                updateProductTagsReturn = null;
-                                img1 = immutableImg1;
-                                img2 = immutableImg2;
-                                img3 = immutableImg3;
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (_) {
-                                  return ArticlePage(
-                                    editProduct: UserProducts().editProduct,
-                                    productSnapshot: products[index],
-                                    productID: products[index].productID,
-                                  );
-                                }));
-                              }),
-                              smallMainButton(UserProducts().finishProduct,
-                                  () async {
-                                await UpdateProduct()
-                                    .updateProduct(products[index].productID);
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (_) {
-                                  return RegisteredHome();
-                                }));
-                              })
-                            ],
+                        ? Container(
+                            margin: EdgeInsets.only(
+                                bottom: SizeConfig.blockSizeVertical * 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                smallMainButton(UserProducts().editProfile, () {
+                                  updateProductNameReturn = null;
+                                  updateProductDescriptionReturn = null;
+                                  updateProductPriceReturn = null;
+                                  updateProductTagsReturn = null;
+                                  img1 = immutableImg1;
+                                  img2 = immutableImg2;
+                                  img3 = immutableImg3;
+                                  Navigator.of(context)
+                                      .push(MaterialPageRoute(builder: (_) {
+                                    return ArticlePage(
+                                      editProduct: UserProducts().editProduct,
+                                      productSnapshot: products[index],
+                                      productID: products[index].productID,
+                                    );
+                                  }));
+                                }),
+                                smallMainButton(UserProducts().finishProduct,
+                                    () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          title: Text(
+                                            SuccessAlertDialog().obrisinaslov,
+                                            style:
+                                                TextStyle(color: mainAppColor),
+                                          ),
+                                          content: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Container(
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      SuccessAlertDialog()
+                                                          .obrisitext,
+                                                      style: TextStyle(
+                                                          color:
+                                                              alertDialogTextColor),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          backgroundColor: successDialogBgColor,
+                                          elevation: 10,
+                                          actions: <Widget>[
+                                            Container(
+                                              width: double.maxFinite,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: <Widget>[
+                                                  Container(
+                                                    child: DeleteButtonDialog(
+                                                      snapshot: products[index],
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    child:
+                                                        OdustaniButtonDialog(),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        );
+                                      });
+                                }),
+                              ],
+                            ),
                           )
                         : Container(
                             margin: EdgeInsets.only(

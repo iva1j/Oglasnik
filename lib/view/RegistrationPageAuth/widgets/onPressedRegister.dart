@@ -3,6 +3,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
+import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +60,10 @@ void onPressedRegister(BuildContext context, String fullName, String email,
 
         loginPrefs(context, email);
         globals.email = email;
+
+        favoritesList.clear();
+        FavoriteProduct().getAllFavoritesIDs().then((value) =>
+            {for (final x in value) favoritesList.add(x['productID'])});
 
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (_) {

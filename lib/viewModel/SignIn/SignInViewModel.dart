@@ -8,6 +8,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/successOnCreateAlertDialog.da
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
+import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
@@ -62,6 +63,9 @@ void onPressedSignInModel(
         });
         print('Logged in');
         globals.email = email;
+        favoritesList.clear();
+        FavoriteProduct().getAllFavoritesIDs().then((value) =>
+            {for (final x in value) favoritesList.add(x['productID'])});
         loginPrefs(context, email);
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (_) {
@@ -155,7 +159,7 @@ createdShowDialog(BuildContext context) {
 void onPressedPosaljiKod(BuildContext context) {
   Container(
       child: AuthService()
-          .allowPasswordChange(context, emailInputControllerAlertDialog.text));
+          .allowPasswordChange(context, forgetEmail));
   AuthService().onPressedAlertDialog(
-      context, emailInputControllerAlertDialog.text, tokenCode);
+      context, forgetEmail, tokenCode);
 }

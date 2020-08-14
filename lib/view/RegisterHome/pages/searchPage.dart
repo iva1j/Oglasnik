@@ -56,9 +56,8 @@ class DataSearch extends SearchDelegate<String> {
     ///user ukuca u search, te na osnovu te liste ćemo prikazivati željene produkte na screen.
 
     return Scaffold(
-      floatingActionButton: email != null
-          ? mainFloatingButton(email)
-          : homeFloatingAnimatedButton(),
+      floatingActionButton:
+          email != null ? MainFloatingButton() : homeFloatingAnimatedButton(),
       bottomSheet: BottomSheetContainer(),
       body: Column(
         children: <Widget>[
