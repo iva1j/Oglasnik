@@ -27,7 +27,7 @@ class UpdateEmail extends StatelessWidget {
             initialValue: updateProfileEmail == null
                 ? updateProfileEmail = email
                 : updateProfileEmail,
-            validator: emailRegisterCheck,
+           // validator: emailRegisterCheck,
             autovalidate: false,
             onChanged: (value) {
               updateProfileEmail = value;
