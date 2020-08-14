@@ -138,9 +138,9 @@ class SuccessAlertDialog {
   String uredu = "UREDU";
   String kreiraj = "KREIRAJ";
   String empty = "";
-  String obrisinaslov = "Obriši artikal?";
-  String obrisitext = "Da li ste sigurni da želite obrisati artikal?";
-  String delete = "OBRIŠI";
+  String obrisinaslov = "Završi artikal?";
+  String obrisitext = "Da li ste sigurni da želite završiti artikal?";
+  String delete = "ZAVRŠI";
   String odustani = "ODUSTANI";
 }
 
