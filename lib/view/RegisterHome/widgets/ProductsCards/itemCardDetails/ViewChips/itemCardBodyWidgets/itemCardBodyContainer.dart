@@ -23,10 +23,12 @@ class ItemCardBodyContainer extends StatefulWidget {
     Key key,
     @required this.snapshot,
     @required this.context,
+    @required this.setStateParent,
   }) : super(key: key);
 
   final AsyncSnapshot snapshot;
   final BuildContext context;
+  final Function setStateParent;
 
   @override
   _ItemCardBodyContainerState createState() => _ItemCardBodyContainerState();
@@ -48,7 +50,16 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
 
               return Material(
                 color: Colors.transparent,
-                child: InkWell(
+                child:
+
+                    /*ItemCardContainer1(
+                  context: context,
+                  snapshot: widget.snapshot,
+                  index: index,
+                  setStateParent: widget.setStateParent,
+                ),
+*/
+                    InkWell(
                   splashColor: Colors.transparent,
                   onTap: () {
                     Navigator.of(context).push(
@@ -58,6 +69,7 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                               .snapshot.data.documents[index]['productName'],
                           productIdScreen: widget.snapshot.data.documents[index]
                               ['productID'],
+                          setStateParent: widget.setStateParent,
                         ),
                       ),
                     );
@@ -67,6 +79,7 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                     context: context,
                     snapshot: widget.snapshot,
                     index: index,
+                    setStateParent: widget.setStateParent,
                   ),
                 ),
               );
@@ -85,7 +98,16 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
 
               return Material(
                 color: Colors.transparent,
-                child: InkWell(
+                child:
+
+                    /*ItemCardContainer1(
+                  context: context,
+                  snapshot: widget.snapshot,
+                  index: index,
+                  setStateParent: widget.setStateParent,
+                ),
+*/
+                    InkWell(
                   splashColor: Colors.transparent,
                   onTap: () {
                     Navigator.of(context).push(
@@ -94,14 +116,16 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                             productNameScreen: widget
                                 .snapshot.data.documents[index]['productName'],
                             productIdScreen: widget
-                                .snapshot.data.documents[index]['productID']),
+                                .snapshot.data.documents[index]['productID'],
+                            setStateParent: widget.setStateParent),
                       ),
                     );
                   },
-                  child:ItemCardContainer1(
+                  child: ItemCardContainer1(
                     context: context,
                     snapshot: widget.snapshot,
                     index: index,
+                    setStateParent: widget.setStateParent,
                   ),
                   //child: itemCardContainer1(context, widget.snapshot, index),
                 ),

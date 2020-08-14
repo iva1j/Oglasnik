@@ -32,7 +32,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
       doesPop = true;
     });
     createSwitcher = false;
-
     print("Create switcher je sada: ");
     print(createSwitcher);
     SizeConfig().init(context);

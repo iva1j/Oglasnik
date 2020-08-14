@@ -17,7 +17,7 @@ class MainFloatingButton extends StatelessWidget {
       Builder(
         builder: (context) => FabCircularMenu(
           alignment: Alignment.bottomRight,
-          ringColor: Colors.grey[50].withAlpha(210),
+          ringColor: Colors.grey[50].withAlpha(250),
           ringDiameter: 350.0,
           ringWidth: 76.0,
           fabColor: Colors.white,

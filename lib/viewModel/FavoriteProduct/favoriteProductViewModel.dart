@@ -13,14 +13,14 @@ import 'package:flutter/material.dart';
 ///
 class FavoriteProduct extends AddFavoriteProductInterface {
   @override
-  Future addFavorite(String email, Product product) {
+  Future addFavorite(String email, DocumentSnapshot product) {
     db
         .collection("firestoreUsers")
         .document(email)
         .collection('savedProducts')
-        .document(product.productID)
+        .document(product["productID"])
         .setData({
-      'productID': product.productID,
+      'productID': product["productID"],
       // 'favorite products': [
       //   product.productID,
       // ],
@@ -41,17 +41,26 @@ class FavoriteProduct extends AddFavoriteProductInterface {
     return null;
   }
 
-  Future removeFavorite(String email, Product product) {
+  Future removeFavorite(String email, DocumentSnapshot product) {
     db
         .collection("firestoreUsers")
         .document(email)
         .collection('savedProducts')
-        .document(product.productID)
+        .document(product["productID"])
         .delete();
+
     return null;
   }
 
   Future isProductFavorite(Product product) async {
+    // final QuerySnapshot results = await Firestore.instance
+    //     .collection('firestoreUsers')
+    //     .document(email)
+    //     .collection('savedProducts')
+    //     .where('productID', isEqualTo: product.productID)
+    //     .getDocuments();
+    // final List<DocumentSnapshot> document = results.documents;
+/*
     if (listaProizvoda.contains(product.productID)) {
       favorite = true;
       FavoriteProduct().removeFavorite(email, product);
@@ -60,7 +69,15 @@ class FavoriteProduct extends AddFavoriteProductInterface {
       favorite = false;
       print('ne postoji proizvod, upravo smo ga dodali');
       FavoriteProduct().addFavorite(email, product);
+    }*/
+
+    List<DocumentSnapshot> allFavs = await getAllFavoritesIDs();
+
+    for (final x in allFavs) {
+      if (product.productID == x['productID']) return true;
     }
+
+    return false;
   }
 
   Future getAllFavoritesIDs() async {

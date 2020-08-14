@@ -24,8 +24,19 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.
 List<DocumentSnapshot> myPosts = List<DocumentSnapshot>();
 List myProducts = [];
 
-class MyProducts extends StatelessWidget {
+class MyProducts extends StatefulWidget {
+  @override
+  _MyProductsState createState() => _MyProductsState();
+}
+
+class _MyProductsState extends State<MyProducts> {
   bool showMessage = true;
+
+  @override
+  void justSetState() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -95,8 +106,10 @@ class MyProducts extends StatelessWidget {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
                                                   children: <Widget>[
-                                                    itemCardProductName(context,
-                                                        myPosts[index]),
+                                                    itemCardProductName(
+                                                        context,
+                                                        myPosts[index],
+                                                        justSetState),
                                                     Container(
                                                       width: SizeConfig
                                                               .blockSizeHorizontal *
@@ -206,8 +219,10 @@ class MyProducts extends StatelessWidget {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
                                                   children: <Widget>[
-                                                    itemCardProductName(context,
-                                                        myPosts[index]),
+                                                    itemCardProductName(
+                                                        context,
+                                                        myPosts[index],
+                                                        justSetState),
                                                     Container(
                                                       width: SizeConfig
                                                               .blockSizeHorizontal *
@@ -291,11 +306,12 @@ class MyProducts extends StatelessWidget {
     Navigator.of(context).push(
       FadeRoute(
         page: ProductDetails(
-            productNameScreen: myPosts[index]['productName'],
-            productIdScreen: myPosts[index]['productID']
-            // snapshot
-            //     .data.documents[index]['productName'],
-            ),
+          productNameScreen: myPosts[index]['productName'],
+          productIdScreen: myPosts[index]['productID'],
+          setStateParent: justSetState,
+          // snapshot
+          //     .data.documents[index]['productName'],
+        ),
       ),
     );
   }
