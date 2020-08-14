@@ -1,6 +1,7 @@
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:Oglasnik/utils/globals.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/priceTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageOneUploadButton.dart';
@@ -203,75 +204,75 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     if (!createSwitcher) {
       return button("Završi", () async {
         FocusScope.of(context).requestFocus(new FocusNode());
-        // if (productIsOnline != false) {
-        if (pageController.page == 4) {
-          if (productPriceFormKey.currentState.validate()) {
-            widget.onFlatButtonPressed();
+        if (productIsOnline != false) {
+          if (pageController.page == 4) {
+            if (productPriceFormKey.currentState.validate()) {
+              widget.onFlatButtonPressed();
 
-            setState(() => loading = true);
-            createdGlob = true;
-            azurload = true;
-            if (!createSwitcher) {
-              if (img1 != immutableImg1)
-                await upload(img1, pathGlobal1, 1)
-                    .then((value) => productImg1 = value);
-              if (img2 != immutableImg2)
-                await upload(img2, pathGlobal2, 2)
-                    .then((value) => productImg2 = value);
-              if (img3 != immutableImg3)
-                await upload(img3, pathGlobal3, 3)
-                    .then((value) => productImg3 = value);
+              setState(() => loading = true);
+              createdGlob = true;
+              azurload = true;
+              if (!createSwitcher) {
+                if (img1 != immutableImg1)
+                  await upload(img1, pathGlobal1, 1)
+                      .then((value) => productImg1 = value);
+                if (img2 != immutableImg2)
+                  await upload(img2, pathGlobal2, 2)
+                      .then((value) => productImg2 = value);
+                if (img3 != immutableImg3)
+                  await upload(img3, pathGlobal3, 3)
+                      .then((value) => productImg3 = value);
+              } else
+                await uploadImageAndPrintName();
+
+              //print('update proizvoda: ' + noviNaziv.toString());
+              await CreateProduct().updateProduct(
+                context,
+                email,
+                phoneNumber,
+                updateProductNameReturn == null
+                    ? updateProductName
+                    : updateProductNameReturn,
+                productID = oldProductID,
+                updateDropdownValueCategory,
+                updateDropdownValueBrand,
+                updateDropdownValueCity,
+                updateProductTagsReturn == null
+                    ? updateProductTags
+                    : updateProductTagsReturn,
+                updateProductDescriptionReturn == null
+                    ? updateProductDescription
+                    : updateProductDescriptionReturn,
+                productImg1 == null
+                    ? widget.productSnapshot.productImg1
+                    : productImg1,
+                productImg2 == null
+                    ? widget.productSnapshot.productImg2
+                    : productImg2,
+                productImg3 == null
+                    ? widget.productSnapshot.productImg3
+                    : productImg3,
+                updateProductPriceReturn == null
+                    ? updateProductPrice
+                    : updateProductPriceReturn,
+              );
+              img1 = immutableImg1;
+              img2 = immutableImg2;
+              img3 = immutableImg3;
+              productImg1 = null;
+              productImg2 = null;
+              productImg3 = null;
+              pathGlobal1 = null;
+              pathGlobal2 = null;
+              pathGlobal3 = null;
+              print('status interneta:' + productIsOnline.toString());
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (_) => RegisteredHome()));
             } else
-              await uploadImageAndPrintName();
-
-            //print('update proizvoda: ' + noviNaziv.toString());
-            await CreateProduct().updateProduct(
-              context,
-              email,
-              phoneNumber,
-              updateProductNameReturn == null
-                  ? updateProductName
-                  : updateProductNameReturn,
-              productID = oldProductID,
-              updateDropdownValueCategory,
-              updateDropdownValueBrand,
-              updateDropdownValueCity,
-              updateProductTagsReturn == null
-                  ? updateProductTags
-                  : updateProductTagsReturn,
-              updateProductDescriptionReturn == null
-                  ? updateProductDescription
-                  : updateProductDescriptionReturn,
-              productImg1 == null
-                  ? widget.productSnapshot.productImg1
-                  : productImg1,
-              productImg2 == null
-                  ? widget.productSnapshot.productImg2
-                  : productImg2,
-              productImg3 == null
-                  ? widget.productSnapshot.productImg3
-                  : productImg3,
-              updateProductPriceReturn == null
-                  ? updateProductPrice
-                  : updateProductPriceReturn,
-            );
-            img1 = immutableImg1;
-            img2 = immutableImg2;
-            img3 = immutableImg3;
-            productImg1 = null;
-            productImg2 = null;
-            productImg3 = null;
-            pathGlobal1 = null;
-            pathGlobal2 = null;
-            pathGlobal3 = null;
-            print('status interneta:' + productIsOnline.toString());
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (_) => RegisteredHome()));
-          } else
-            return null;
-        }
-        // } else
-        // displayInternetDialog(context);
+              return null;
+          }
+        } else
+          displayInternetDialog(context);
       });
     } else {
       return button("Završi", () async {

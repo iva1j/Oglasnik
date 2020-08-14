@@ -31,8 +31,10 @@ class ProfileSaveButton extends StatelessWidget {
             //     ? updateProfileEmail = email
             //     : updateProfileEmail;
 
-            if (updateproductNameFormKey.currentState.validate() &&
-                allowUserToRegister == true) {
+            if (updateproductNameFormKey.currentState.validate()
+
+                // && allowUserToRegister == true
+                ) {
               db.collection("firestoreUsers").document(email).updateData({
                 'fullName': updateProfileName,
                 'email': updateProfileEmail,
