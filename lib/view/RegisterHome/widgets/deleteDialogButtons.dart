@@ -31,7 +31,9 @@ class _DeleteButtonDialogState extends State<DeleteButtonDialog> {
         ),
         onPressed: () async {
           await UpdateProduct().updateProduct(widget.snapshot.productID);
-          Navigator.of(context).push(FadeRoute(page: RegisteredHome()));
+          Navigator.of(context).pushAndRemoveUntil(
+              FadeRoute(page: RegisteredHome()),
+              (Route<dynamic> route) => false);
         });
   }
 }
