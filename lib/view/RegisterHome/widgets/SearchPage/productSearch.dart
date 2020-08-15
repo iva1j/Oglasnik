@@ -11,11 +11,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../../utils/shared/globalVariables.dart';
 import '../../../../utils/suggestionFunction.dart';
+import '../../../../utils/suggestionFunction.dart';
+import '../../../../viewModel/PreviewProduct/previewProduct.dart';
 import '../../../../viewModel/PreviewProduct/previewProduct.dart';
 import '../../../../viewModel/PreviewProduct/previewProduct.dart';
 import '../../../../viewModel/PreviewProduct/previewProduct.dart';
 import '../ProductsCards/categoryLoading.dart';
 import '../ProductsCards/categoryLoading.dart';
+import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
+import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
+import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
+import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
+import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
+import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
 import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
 import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
 import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
@@ -41,8 +49,15 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
   @override
   Widget build(BuildContext context) {
     initSelectedProducts(widget.query);
-    bool showMessage = true;
 
+    print("SELEKTED PRODUKTS LOLLL");
+    print(selectedProductsGlobal);
+    bool showMessage = true;
+    List<DocumentSnapshot> additionalProds = List<DocumentSnapshot>();
+    additionalProds
+        .addAll(ProductViewModel().addAdditionalBrandProducts(widget.query));
+    print("A SADA SPEKTAKLLLL");
+    print(additionalProds);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -64,37 +79,30 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
         ),
         allBrands.contains(widget.query.toLowerCase())
             ? Expanded(
-                child: FutureBuilder(
-                  future: ProductViewModel()
-                      .getProductsPerBrand(widget.query.toLowerCase()),
-                  builder: (context, snapshotProds) {
-                    if (snapshotProds.hasData) {
-                      selectedProducts.addAll(snapshotProds.data);
-                      return selectedProducts == null ||
-                              selectedProducts.isEmpty
-                          ? Center(
-                              child: Text(TrazeniProizvod().trazeniProizvod),
-                            )
-                          : ItemProductContainer(
-                              selectedProducts: selectedProducts,
-                              showMessage: showMessage,
-                              setStateParent: refresh,
-                            );
-                    } else {
-                      return CategoryLoading();
-                    }
-                  },
-                ),
-              )
-            : Expanded(
-                child: selectedProducts == null || selectedProducts.isEmpty
+                child: selectedProductsGlobal == null ||
+                        selectedProductsGlobal.isEmpty
                     ? Center(
                         child: Text(TrazeniProizvod().trazeniProizvod),
                       )
                     : ItemProductContainer(
-                        selectedProducts: selectedProducts,
+                        //selectedProducts:
+                        //    selectedProductsGlobal + additionalProds,
+
                         showMessage: showMessage,
                         setStateParent: refresh,
+                        additionals: additionalProds,
+                      ))
+            : Expanded(
+                child: selectedProductsGlobal == null ||
+                        selectedProductsGlobal.isEmpty
+                    ? Center(
+                        child: Text(TrazeniProizvod().trazeniProizvod),
+                      )
+                    : ItemProductContainer(
+                        //selectedProducts: selectedProductsGlobal,
+                        showMessage: showMessage,
+                        setStateParent: refresh,
+                        additionals: null,
                       ),
               ),
       ],

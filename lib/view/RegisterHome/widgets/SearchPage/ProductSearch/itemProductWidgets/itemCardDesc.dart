@@ -14,24 +14,28 @@ Container itemCardDesc(int index) {
     ///jeste onda ga jednostavno ispisujemo u item card-u. Ako nije onda
     ///uzimamo njegovih prvih 150 character-a, uklanjamo whitespace-ove
     ///i dodajemo mu ... na kraj.
-    child: selectedProducts[index]['productDesc'].toString().trim().length < 150
-        ? itemCardDescription(selectedProducts[index]['productDesc'])
-        : selectedProducts[index]['productDesc']
+    child: selectedProductsGlobal[index]['productDesc']
+                .toString()
+                .trim()
+                .length <
+            150
+        ? itemCardDescription(selectedProductsGlobal[index]['productDesc'])
+        : selectedProductsGlobal[index]['productDesc']
                 .toString()
                 .trim()
                 .substring(0, 150)
                 .contains('.')
-            ? itemCardDescription(selectedProducts[index]['productDesc']
+            ? itemCardDescription(selectedProductsGlobal[index]['productDesc']
                     .toString()
                     .substring(
                         0,
-                        selectedProducts[index]['productDesc']
+                        selectedProductsGlobal[index]['productDesc']
                             .toString()
                             .substring(0, 150)
                             .lastIndexOf('.'))
                     .trim() +
                 "...")
-            : itemCardDescription(selectedProducts[index]['productDesc']
+            : itemCardDescription(selectedProductsGlobal[index]['productDesc']
                     .toString()
                     .substring(0, 150) +
                 '...'),

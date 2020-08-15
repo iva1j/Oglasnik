@@ -1,6 +1,12 @@
 import 'package:Oglasnik/interface/productInterface.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../utils/shared/globalVariables.dart';
+import '../../view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemProductContainer.dart';
+import '../../view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemProductContainer.dart';
+import '../../view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemProductContainer.dart';
+import '../../view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemProductContainer.dart';
+
 ///Future function that takes all product from db and it's used in a Future Builder
 ///for listing(showing) all products once when user cancel his Search in App.
 ///
@@ -23,24 +29,16 @@ class ProductViewModel implements ReadProductInterface {
   ///iz baze sa proslijedjenim nazivom branda i radice bez obzira na mala i velika slova. Takodjer dole zakomentirana linija
   ///ukoliko se otkomentira, vratice produkte iz baze ciji je tip branda proslijedjeni parametar brandName i koje u nazivu
   ///imaju naziv tog branda
-  Future getProductsPerBrand(String brandName) async {
-    final QuerySnapshot productQuery = await Firestore.instance
-        .collection('products')
-        .where('productFinished', isEqualTo: false)
-        .getDocuments();
-
-    List<DocumentSnapshot> productsList = productQuery.documents;
+  List<DocumentSnapshot> addAdditionalBrandProducts(String brandName) {
     List<DocumentSnapshot> forReturn = List<DocumentSnapshot>();
-    //brandName = brandName.toLowerCase();
-
-    for (int i = 0; i < productsList.length; i++) {
-      if (productsList[i]['productBrand'].toString().toLowerCase() ==
-          brandName) {
+    for (int i = 0; i < allProducts.length; i++) {
+      if ((allProducts[i]['productBrand'].toString().toLowerCase() ==
+              brandName) &&
+          !selectedProductsGlobal.contains(allProducts[i])) {
         //if (productList[i]['productName'].toString().toLowerCase().contains(brandName))
-        forReturn.add(productsList[i]);
+        forReturn.add(allProducts[i]);
       }
     }
-
     return forReturn;
   }
 }

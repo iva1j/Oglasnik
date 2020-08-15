@@ -38,7 +38,6 @@ Future<void> splashScreenRouter() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString('email');
   globals.allBrands = await getAllBrands();
-  globals.allProducts = await ProductViewModel().getProducts();
   globals.email = email;
   globals.favoritesList.clear();
   FavoriteProduct().getAllFavoritesIDs().then((value) =>
