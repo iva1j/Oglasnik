@@ -54,8 +54,8 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
     print(selectedProductsGlobal);
     bool showMessage = true;
     List<DocumentSnapshot> additionalProds = List<DocumentSnapshot>();
-    additionalProds
-        .addAll(ProductViewModel().addAdditionalBrandProducts(widget.query));
+    additionalProds.addAll(ProductViewModel()
+        .addAdditionalBrandProducts(widget.query.toLowerCase()));
     print("A SADA SPEKTAKLLLL");
     print(additionalProds);
     return Column(
@@ -77,34 +77,17 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
           scrollDirection: Axis.horizontal,
           child: DynamicChipsWidget(refresh),
         ),
-        allBrands.contains(widget.query.toLowerCase())
-            ? Expanded(
-                child: selectedProductsGlobal == null ||
-                        selectedProductsGlobal.isEmpty
-                    ? Center(
-                        child: Text(TrazeniProizvod().trazeniProizvod),
-                      )
-                    : ItemProductContainer(
-                        //selectedProducts:
-                        //    selectedProductsGlobal + additionalProds,
-
-                        showMessage: showMessage,
-                        setStateParent: refresh,
-                        additionals: additionalProds,
-                      ))
-            : Expanded(
-                child: selectedProductsGlobal == null ||
-                        selectedProductsGlobal.isEmpty
-                    ? Center(
-                        child: Text(TrazeniProizvod().trazeniProizvod),
-                      )
-                    : ItemProductContainer(
-                        //selectedProducts: selectedProductsGlobal,
-                        showMessage: showMessage,
-                        setStateParent: refresh,
-                        additionals: null,
-                      ),
-              ),
+        Expanded(
+          child: additionalProds.isEmpty && selectedProductsGlobal.isEmpty
+              ? Center(
+                  child: Text(TrazeniProizvod().trazeniProizvod),
+                )
+              : ItemProductContainer(
+                  showMessage: showMessage,
+                  setStateParent: refresh,
+                  additionals: additionalProds,
+                ),
+        ),
       ],
     );
   }

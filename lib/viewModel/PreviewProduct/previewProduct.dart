@@ -23,12 +23,6 @@ class ProductViewModel implements ReadProductInterface {
     return prods;
   }
 
-  ///Fahrudin
-  ///
-  ///Funkcija je nastala iz potrebe za rjesavanje taska OG-205 (search query (hint: puma)) i ona vraca sve produkte
-  ///iz baze sa proslijedjenim nazivom branda i radice bez obzira na mala i velika slova. Takodjer dole zakomentirana linija
-  ///ukoliko se otkomentira, vratice produkte iz baze ciji je tip branda proslijedjeni parametar brandName i koje u nazivu
-  ///imaju naziv tog branda
   List<DocumentSnapshot> addAdditionalBrandProducts(String brandName) {
     List<DocumentSnapshot> forReturn = List<DocumentSnapshot>();
     for (int i = 0; i < allProducts.length; i++) {

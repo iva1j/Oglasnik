@@ -25,7 +25,7 @@ class ItemProductContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (additionals != null) selectedProductsGlobal.addAll(additionals);
+    selectedProductsGlobal.addAll(additionals);
     print("DAJ DA VIDIM STA SMO DOBILIIIIII");
     print(selectedProductsGlobal);
     bool showMessage = true;
