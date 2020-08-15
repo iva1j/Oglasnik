@@ -15,6 +15,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
 
 TextEditingController signInEmailInputController;
 TextEditingController signInPasswordInputController;
@@ -50,11 +51,19 @@ void onPressedSignInModel(
   BuildContext context,
   String email,
   String password,
-) {
+) async {
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   print('Internet konekcija dostupna: ' + hasInternetConnection.toString());
-  if (!isOnline) {
+  await InternetConnectivity().checkForConnectivity();
+
+  // Timer(Duration(seconds: 1), () {
+  //   print('trajanje sekunde:');
+  //   InternetConnectivity().checkForConnectivity();
+  // });
+  // print('sekunda prošla:');
+
+  if (hasActiveConnection) {
     Timer(Duration(seconds: 1), () {
       if (signInRegisterFormKey.currentState.validate() && status == true) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -157,9 +166,6 @@ createdShowDialog(BuildContext context) {
 
 ///When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) {
-  Container(
-      child: AuthService()
-          .allowPasswordChange(context, forgetEmail));
-  AuthService().onPressedAlertDialog(
-      context, forgetEmail, tokenCode);
+  Container(child: AuthService().allowPasswordChange(context, forgetEmail));
+  AuthService().onPressedAlertDialog(context, forgetEmail, tokenCode);
 }

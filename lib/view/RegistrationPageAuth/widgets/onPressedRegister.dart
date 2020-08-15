@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
 
 class RegisterButton extends StatefulWidget {
   @override
@@ -36,10 +37,17 @@ class _RegisterButtonState extends State<RegisterButton> {
 }
 
 void onPressedRegister(BuildContext context, String fullName, String email,
-    String password, String phoneNumber) {
+    String password, String phoneNumber) async {
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-  if (!isOnline) {
+
+  await InternetConnectivity().checkForConnectivity();
+  // Timer(Duration(seconds: 1), () {
+  //   print('trajanje sekunde:');
+  //   InternetConnectivity().checkForConnectivity();
+  // });
+  // print('sekunda prošla:');
+  if (hasActiveConnection) {
     Timer(Duration(seconds: 1), () {
       if (signUpRegisterFormKey.currentState.validate() &&
           allowUserToRegister) {

@@ -21,6 +21,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:random_string/random_string.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
 
 class ImagePageWidget extends StatefulWidget {
   const ImagePageWidget({
@@ -40,15 +41,16 @@ class ImagePageWidget extends StatefulWidget {
 }
 
 class _ImagePageWidgetState extends State<ImagePageWidget> {
-  Map _source = {ConnectivityResult.none: false};
-  MyConnectivity _connectivity = MyConnectivity.instance;
+  // Map _source = {ConnectivityResult.none: false};
+  // MyConnectivity _connectivity = MyConnectivity.instance;
 
   @override
   initState() {
-    _connectivity.initialise();
-    _connectivity.myStream.listen((source) {
-      setState(() => _source = source);
-    });
+    // _connectivity.initialise();
+    // _connectivity.myStream.listen((source) {
+    //   setState(() => _source = source);
+    // });
+    //  InternetConnectivity().checkForConnectivity();
     super.initState();
   }
 
@@ -142,19 +144,19 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     print("CUJ IMAGE1NAME BAAAAAAAa");
     print(image1Name);
     SizeConfig().init(context);
-    switch (_source.keys.toList()[0]) {
-      case ConnectivityResult.none:
-        productIsOnline = false;
-        string = "Offline";
-        break;
-      case ConnectivityResult.mobile:
-        productIsOnline = true;
-        string = "Mobile: Online";
-        break;
-      case ConnectivityResult.wifi:
-        productIsOnline = true;
-        string = "WiFi: Online";
-    }
+    // switch (_source.keys.toList()[0]) {
+    //   case ConnectivityResult.none:
+    //     productIsOnline = false;
+    //     string = "Offline";
+    //     break;
+    //   case ConnectivityResult.mobile:
+    //     productIsOnline = true;
+    //     string = "Mobile: Online";
+    //     break;
+    //   case ConnectivityResult.wifi:
+    //     productIsOnline = true;
+    //     string = "WiFi: Online";
+    // }
     return loading ? Loading() : imageUploadContainer(context);
   }
 
@@ -204,7 +206,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     if (!createSwitcher) {
       return button("Završi", () async {
         FocusScope.of(context).requestFocus(new FocusNode());
-        if (productIsOnline != false) {
+        await InternetConnectivity().checkForConnectivity();
+        print(
+            "value of hasActiveConnection: " + hasActiveConnection.toString());
+        if (hasActiveConnection == true) {
           if (pageController.page == 4) {
             if (productPriceFormKey.currentState.validate()) {
               widget.onFlatButtonPressed();
@@ -277,68 +282,70 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     } else {
       return button("Završi", () async {
         FocusScope.of(context).requestFocus(new FocusNode());
-        // if (productIsOnline != false) {
-        if (pageController.page == 4) {
-          if (productPriceFormKey.currentState.validate()) {
-            widget.onFlatButtonPressed();
-            setState(() => loading = true);
-            createdGlob = true;
-            if (img1 != immutableImg1)
-              await upload(img1, pathGlobal1, 1)
-                  .then((value) => productImg1 = value);
-            if (img2 != immutableImg2)
-              await upload(img2, pathGlobal2, 2)
-                  .then((value) => productImg2 = value);
-            if (img3 != immutableImg3)
-              await upload(img3, pathGlobal3, 3)
-                  .then((value) => productImg3 = value);
-            //showIphoneButton = false;
+        await InternetConnectivity().checkForConnectivity();
 
-            productName = newProductNameReturn;
-            productCategory = dropdownValueCategory;
-            productBrand = dropdownValueBrand;
-            productLocation = dropdownValueCity;
-            productTag = newProductTagsReturn;
-            productDesc = newProductDescriptionReturn;
-            productprice = newProductPriceReturn;
+        if (hasActiveConnection) {
+          if (pageController.page == 4) {
+            if (productPriceFormKey.currentState.validate()) {
+              widget.onFlatButtonPressed();
+              setState(() => loading = true);
+              createdGlob = true;
+              if (img1 != immutableImg1)
+                await upload(img1, pathGlobal1, 1)
+                    .then((value) => productImg1 = value);
+              if (img2 != immutableImg2)
+                await upload(img2, pathGlobal2, 2)
+                    .then((value) => productImg2 = value);
+              if (img3 != immutableImg3)
+                await upload(img3, pathGlobal3, 3)
+                    .then((value) => productImg3 = value);
+              //showIphoneButton = false;
 
-            print(email + productName + productTag);
-            await CreateProduct().createProduct(
-              context,
-              email,
-              phoneNumber,
-              productName,
-              productID = randomAlphaNumeric(20),
-              productCategory,
-              productBrand,
-              productLocation,
-              productTag,
-              productDesc,
-              productImg1,
-              productImg2,
-              productImg3,
-              productprice,
-            );
-            createSwitcher = false;
+              productName = newProductNameReturn;
+              productCategory = dropdownValueCategory;
+              productBrand = dropdownValueBrand;
+              productLocation = dropdownValueCity;
+              productTag = newProductTagsReturn;
+              productDesc = newProductDescriptionReturn;
+              productprice = newProductPriceReturn;
 
-            img1 = immutableImg1;
-            img2 = immutableImg2;
-            img3 = immutableImg3;
-            productImg1 = null;
-            productImg2 = null;
-            productImg3 = null;
-            pathGlobal1 = null;
-            pathGlobal2 = null;
-            pathGlobal3 = null;
-            print('status interneta:' + productIsOnline.toString());
+              print(email + productName + productTag);
+              await CreateProduct().createProduct(
+                context,
+                email,
+                phoneNumber,
+                productName,
+                productID = randomAlphaNumeric(20),
+                productCategory,
+                productBrand,
+                productLocation,
+                productTag,
+                productDesc,
+                productImg1,
+                productImg2,
+                productImg3,
+                productprice,
+              );
+              createSwitcher = false;
 
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (_) => RegisteredHome()));
-          } else
-            return null;
-        }
-        // } else
-        // displayInternetDialog(context);
+              img1 = immutableImg1;
+              img2 = immutableImg2;
+              img3 = immutableImg3;
+              productImg1 = null;
+              productImg2 = null;
+              productImg3 = null;
+              pathGlobal1 = null;
+              pathGlobal2 = null;
+              pathGlobal3 = null;
+              print('status interneta:' + productIsOnline.toString());
+
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (_) => RegisteredHome()));
+            } else
+              return null;
+          }
+        } else
+          displayInternetDialog(context);
       });
     }
   }
