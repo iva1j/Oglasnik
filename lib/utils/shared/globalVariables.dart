@@ -63,7 +63,10 @@ String updateProductNameReturn,
     updateProductDescriptionReturn,
     updateProductPriceReturn;
 
-String updateProfileName, updateProfilePhoneNumber, updateProfileEmail, updateProfilePassword;
+String updateProfileName,
+    updateProfilePhoneNumber,
+    updateProfileEmail,
+    updateProfilePassword;
 
 String forgetEmail;
 
@@ -107,6 +110,7 @@ var categoryBrands = Map();
 List categoryBrand = [];
 List numberofBrands = [];
 var allBrands;
+List<DocumentSnapshot> allProducts = List<DocumentSnapshot>();
 List<String> favoritesList = List<String>();
 //var catBrands = Map<String, List<String>>();
 

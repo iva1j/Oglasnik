@@ -26,8 +26,8 @@ class ProductSearchDB extends StatelessWidget {
           allProductsObject.forEach((element) {
             productsForSearch.add(element['productName']);
           });
-          print("Lista svih proizvoda u ispravnom builderu: " +
-              productsForSearch.toString());
+          //print("Lista svih proizvoda u ispravnom builderu: " +
+          //    productsForSearch.toString());
           return Container();
         } else {
           return Container();

@@ -13,6 +13,8 @@ import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 
+import '../PreviewProduct/previewProduct.dart';
+
 /*
 getFavoriteProducts(email) async {
   listaProizvoda.clear();
@@ -36,6 +38,7 @@ Future<void> splashScreenRouter() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString('email');
   globals.allBrands = await getAllBrands();
+  globals.allProducts = await ProductViewModel().getProducts();
   globals.email = email;
   globals.favoritesList.clear();
   FavoriteProduct().getAllFavoritesIDs().then((value) =>
