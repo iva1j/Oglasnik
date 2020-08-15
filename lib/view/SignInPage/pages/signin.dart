@@ -12,6 +12,7 @@ import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:Oglasnik/utils/globals.dart';
@@ -25,11 +26,11 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
-  Connectivity connectivity;
-  // StreamSubscription<ConnectivityResult> subscription;
+  // Connectivity connectivity;
+  // // StreamSubscription<ConnectivityResult> subscription;
 
-  Map _source = {ConnectivityResult.none: false};
-  MyConnectivity _connectivity = MyConnectivity.instance;
+  // Map _source = {ConnectivityResult.none: false};
+  // MyConnectivity _connectivity = MyConnectivity.instance;
 
   FirebaseUser user;
 
@@ -39,36 +40,38 @@ class _SigninPageState extends State<SigninPage> {
   initState() {
     loginInitControllers();
     //   InternetConnection().checkForInternet();
-    InternetConnection();
-    _connectivity.initialise();
-    _connectivity.myStream.listen((source) {
-      setState(() => _source = source);
-    });
+    // InternetConnection();
+    // _connectivity.initialise();
+    // _connectivity.myStream.listen((source) {
+    //   setState(() => _source = source);
+    // });
+
+    InternetConnectivity().checkForConnectivity();
     super.initState();
   }
 
   void dispose() {
     //loginDisposeControllers();
-    _connectivity.disposeStream();
+    // _connectivity.disposeStream();
     super.dispose();
   }
 
   String error = '';
   @override
   Widget build(BuildContext context) {
-    switch (_source.keys.toList()[0]) {
-      case ConnectivityResult.none:
-        isOnline = true;
-        string = "Offline";
-        break;
-      case ConnectivityResult.mobile:
-        isOnline = false;
-        string = "Mobile: Online";
-        break;
-      case ConnectivityResult.wifi:
-        isOnline = false;
-        string = "WiFi: Online";
-    }
+    // switch (_source.keys.toList()[0]) {
+    //   case ConnectivityResult.none:
+    //     isOnline = true;
+    //     string = "Offline";
+    //     break;
+    //   case ConnectivityResult.mobile:
+    //     isOnline = false;
+    //     string = "Mobile: Online";
+    //     break;
+    //   case ConnectivityResult.wifi:
+    //     isOnline = false;
+    //     string = "WiFi: Online";
+    // }
 
     SizeConfig().init(context);
     email = signInEmailInputController.text;
