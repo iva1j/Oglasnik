@@ -9,16 +9,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 class FormSignUp extends StatefulWidget {
   const FormSignUp({
     Key key,
-    @required this.signUpFullNameInputController,
-    @required this.signUpEmailInputController,
-    @required this.signUpPasswordInputController,
-    @required this.signUpPhoneNumberInputController,
   }) : super(key: key);
-
-  final TextEditingController signUpFullNameInputController;
-  final TextEditingController signUpEmailInputController;
-  final TextEditingController signUpPasswordInputController;
-  final TextEditingController signUpPhoneNumberInputController;
 
   @override
   _FormSignUpState createState() => _FormSignUpState();

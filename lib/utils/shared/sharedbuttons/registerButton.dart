@@ -20,10 +20,7 @@ SizedBox registerButton(BuildContext context) {
     AppLabelsAuth().registracija,
     () {
       allowAutoValidate = true;
-      fullNameRegister = signUpFullNameInputController.text;
-      emailRegister = signUpEmailInputController.text;
-      passwordRegister = signUpPasswordInputController.text;
-      phoneNumberRegister = signUpPhoneNumberInputController.text;
+
       onPressedRegister(context, fullNameRegister, emailRegister,
           passwordRegister, phoneNumberRegister);
     },

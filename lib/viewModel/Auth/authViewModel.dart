@@ -24,7 +24,7 @@ class AuthService extends ChangeNotifier {
   Future<bool> userExistingorNot(String email) async {
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
-        .where('email', isEqualTo: email)
+        .where('email', isEqualTo: registerEmail)
         .limit(1)
         .getDocuments();
     final List<DocumentSnapshot> documents = result.documents;
