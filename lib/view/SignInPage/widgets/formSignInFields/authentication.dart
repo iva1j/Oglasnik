@@ -20,10 +20,8 @@ class Authentication extends StatelessWidget {
             child: AuthService().tokenExistOrNot(context, email, token),
           ),
           Container(
-            child: AuthService().signInOrNot(
-                context,
-                signInEmailInputController.text,
-                signInPasswordInputController.text),
+            child:
+                AuthService().signInOrNot(context, signInEmail, signInPassword),
           ),
           Container(child: AuthService().checkStatus(context, email)),
           // Container(

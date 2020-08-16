@@ -21,6 +21,11 @@ cleanRegister() {
   registerEmail = null;
 }
 
+cleanSignIn() {
+  signInEmail = null;
+  signInPassword = null;
+}
+
 alertDialogDispose() {
   alertFormKey = GlobalKey<FormState>();
   emailInputControllerAlertDialog.dispose();
@@ -58,13 +63,9 @@ dropDownInitialValueState() {
 
 loginInitControllers() {
   emailInputControllerAlertDialog = new TextEditingController();
-  signInEmailInputController = new TextEditingController();
-  signInPasswordInputController = new TextEditingController();
   signInRegisterFormKey = GlobalKey<FormState>();
 }
 
 // loginDisposeControllers() {
-//   signInEmailInputController.dispose();
-//   signInPasswordInputController.dispose();
 //   signInRegisterFormKey.currentState.dispose();
 // }

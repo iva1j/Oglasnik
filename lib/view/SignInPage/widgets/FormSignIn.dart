@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
-import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/ForgotPassText.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/PasswordSignInForm.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/SignInButtonForm.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/authentication.dart';
@@ -13,12 +12,7 @@ import 'package:flutter/cupertino.dart';
 class FormSignIn extends StatefulWidget {
   FormSignIn({
     Key key,
-    @required this.signInEmailInputController,
-    @required this.signInPasswordInputController,
   }) : super(key: key);
-
-  TextEditingController signInEmailInputController;
-  TextEditingController signInPasswordInputController;
 
   @override
   _FormSignInState createState() => _FormSignInState();
