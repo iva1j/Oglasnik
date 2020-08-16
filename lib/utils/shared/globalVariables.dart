@@ -63,7 +63,10 @@ String updateProductNameReturn,
     updateProductDescriptionReturn,
     updateProductPriceReturn;
 
-String updateProfileName, updateProfilePhoneNumber, updateProfileEmail, updateProfilePassword;
+String updateProfileName,
+    updateProfilePhoneNumber,
+    updateProfileEmail,
+    updateProfilePassword;
 
 String forgetEmail;
 
@@ -72,6 +75,8 @@ String updateProfileNameReturn,
     updateProfileEmailReturn;
 
 String image1Name, image2Name, image3Name;
+String registerFullName, registerEmail, registerPhoneNumber, registerPassword;
+String signInEmail, signInPassword;
 
 //String dropdownValueBrand = 'Brands';
 

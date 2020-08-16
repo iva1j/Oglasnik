@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation/emailRegisterCheckValidator.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,10 @@ class EmailTextField extends StatelessWidget {
         hintText: 'Email',
         contentPadding: EdgeInsets.only(left: 20),
       ),
-      controller: signUpEmailInputController,
+
       //keyboardType: TextInputType.emailAddress,
+      initialValue: registerEmail,
+      onChanged: (value) => registerEmail = value,
       keyboardType: TextInputType.visiblePassword,
       validator: emailRegisterCheck,
       textInputAction: TextInputAction.next,

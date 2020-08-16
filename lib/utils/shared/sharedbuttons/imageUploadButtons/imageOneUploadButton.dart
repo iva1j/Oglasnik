@@ -3,6 +3,7 @@ import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/a
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
+import 'package:Oglasnik/utils/strings.dart';
 
 Container imageOneUploadButton(dynamic function, dynamic functionDelete) {
   return Container(
