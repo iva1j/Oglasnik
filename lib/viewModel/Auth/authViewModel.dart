@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/model/userModel.dart';
+import 'package:Oglasnik/utils/globals.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
@@ -58,33 +61,37 @@ class AuthService extends ChangeNotifier {
   }
 
 //if statement must be replaced with correct validation; currently status represents user in firestore (user existed)
-  onPressedAlertDialog(BuildContext context, String email, String token) {
+  onPressedAlertDialog(BuildContext context, String email, String token) async {
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
+    await InternetConnectivity().checkForConnectivity();
 
-    Timer(Duration(milliseconds: 1000), () {
-      if (alertFormKey.currentState.validate() &&
-          allowUserToChangePassword == true) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          //emailInputControllerAlertDialog.clear();
-        });
-        db.collection("firestoreUsers").document(email).updateData({
-          'email': email,
-          'token': token,
-        });
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-          return PasswordChange(email);
-        }));
-        sendemail();
-        print('Za korisnika: ' +
-            email +
-            ' uspješno generisan token(na mail i firestore poslan), a on je: ' +
-            token);
-      } else {
-        //emailInputControllerAlertDialog.clear();
-        print('Korisnik ne postoji u bazi!');
-      }
-    });
+    (hasActiveConnection)
+        ? Timer(Duration(milliseconds: 1000), () {
+            if (alertFormKey.currentState.validate() &&
+                allowUserToChangePassword == true) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                //emailInputControllerAlertDialog.clear();
+              });
+              db.collection("firestoreUsers").document(email).updateData({
+                'email': email,
+                'token': token,
+              });
+              Navigator.of(context)
+                  .pushReplacement(MaterialPageRoute(builder: (_) {
+                return PasswordChange(email);
+              }));
+              sendemail();
+              print('Za korisnika: ' +
+                  email +
+                  ' uspješno generisan token(na mail i firestore poslan), a on je: ' +
+                  token);
+            } else {
+              //emailInputControllerAlertDialog.clear();
+              print('Korisnik ne postoji u bazi!');
+            }
+          })
+        : displayInternetDialog(context);
   }
 
 //if statement must be replaced with correct validation

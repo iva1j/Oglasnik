@@ -25,8 +25,6 @@ class ProfileChangePassButton extends StatelessWidget {
               return AlertDialogWidget();
             },
           );
-          //   Navigator.of(context)
-          //       .push(MaterialPageRoute(builder: (_) => PasswordChange(email)));
         },
       ),
     );

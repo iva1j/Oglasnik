@@ -118,11 +118,21 @@ void phoneNumberSetting(String email) async {
 ///u alert dialog za promjenu passworda, ako ukucani email postoji u bazi
 ///globalnu varijablu allowUserToChangePassword na true, na osnovu koje ćemo ga poslati na screen
 ///gdje ce ukucati token i novi password
+///
+
+List<DocumentSnapshot> testUser = List<DocumentSnapshot>();
 allowPasswordChange(BuildContext context, String email) {
   FutureBuilder(
       future: AuthService().isEmailValid(email),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
+          testUser = snapshot.data.documents;
+          //print('sejhul kurra: Omer Faruk Bukurević');
+          //print(testUser[0]["email"]);
+
+          // (email != testUser[0]["email"])
+          //     ? allowUserToChangePassword = true
+          //     : allowUserToChangePassword = false;
           allowUserToChangePassword = true;
           print('korisnik postoji');
           return Container();
@@ -165,7 +175,7 @@ createdShowDialog(BuildContext context) {
 }
 
 ///When user enter his email on AlertDialog, button "pošalji" is configured bellow
-void onPressedPosaljiKod(BuildContext context) {
+void onPressedPosaljiKod(BuildContext context) async{
   Container(child: AuthService().allowPasswordChange(context, forgetEmail));
   AuthService().onPressedAlertDialog(context, forgetEmail, tokenCode);
 }
