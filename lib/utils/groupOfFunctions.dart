@@ -59,13 +59,14 @@ passwordChangeDispose() {
   confirmPasswordInputController.dispose();
 }
 
+/*
 pageViewInitControllers() {
   productNameController = new TextEditingController();
   productTagController = new TextEditingController();
   productDescController = new TextEditingController();
   productPriceController = new TextEditingController();
 }
-
+*/
 dropDownInitialValueState() {
   dropdownValueCategory = "Automobili";
   dropdownValueBrand = "Audi";

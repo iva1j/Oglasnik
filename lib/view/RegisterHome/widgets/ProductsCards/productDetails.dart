@@ -281,6 +281,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 smallMainButton(UserProducts().editProfile, () {
+                                  createSwitcher = false;
                                   updateProductNameReturn = null;
                                   updateProductDescriptionReturn = null;
                                   updateProductPriceReturn = null;

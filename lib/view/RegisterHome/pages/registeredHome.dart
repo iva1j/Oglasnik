@@ -34,9 +34,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
       isLoading = false;
       doesPop = true;
     });
-    createSwitcher = false;
-    print("Create switcher je sada: ");
-    print(createSwitcher);
+
     allProducts.clear();
     ProductViewModel().getProducts().then((value) => allProducts.addAll(value));
     SizeConfig().init(context);

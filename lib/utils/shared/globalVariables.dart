@@ -18,11 +18,6 @@ String productName,
     productImg3,
     productprice;
 
-TextEditingController productNameController;
-TextEditingController productTagController;
-TextEditingController productDescController;
-TextEditingController productPriceController;
-
 GlobalKey<FormState> signUpRegisterFormKey =
     new GlobalKey<FormState>(debugLabel: 'signUpRegisterFormKey');
 GlobalKey<FormState> signInRegisterFormKey =

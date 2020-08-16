@@ -24,7 +24,7 @@ class _ArticlePageState extends State<ArticlePage> {
   bool load = false;
   @override
   void initState() {
-    pageViewInitControllers();
+    //pageViewInitControllers();
     dropDownInitialValueState();
     super.initState();
   }
@@ -38,7 +38,7 @@ class _ArticlePageState extends State<ArticlePage> {
 
   @override
   Widget build(BuildContext context) {
-    
+    print("SADA SMO U ARTICLEPAGE-U ");
     oldProductID = widget.productID;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(

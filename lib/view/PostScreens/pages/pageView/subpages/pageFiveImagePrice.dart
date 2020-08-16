@@ -24,6 +24,8 @@ class PageFive extends StatefulWidget {
 class _PageFiveState extends State<PageFive> {
   @override
   Widget build(BuildContext context) {
+    /*
+    print("SADA SMO U PAGEFIVEIMAGEPRICE-U ");
     if (!createSwitcher) {
       print("Name");
       print(updateProductNameReturn == null
@@ -57,7 +59,7 @@ class _PageFiveState extends State<PageFive> {
       print("Description");
       print(newProductDescriptionReturn);
     }
-
+*/
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);

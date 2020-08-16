@@ -151,15 +151,17 @@ class SplashScreen {
 }
 
 class ProductDetailsStrings {
-  String cityLocation = 'Sarajevo';
+  String callText = 'NAZOVI';
+  String callInfoText = 'Kontakt telefon';
+  /*String cityLocation = 'Sarajevo';
   String productPriceText = '72.000 KM';
   String categoryName = 'Automobili';
   String productName = 'Audi A6';
   String productTestDesc =
       'Prodajem Audi A6 2012 godište, u izvrsnom stanju sa ljetnim gumama. Registrovan do maja 2020. Sve informacije na broj 061367223. Moguca je zamjena za ovaj artikal.';
-  String callText = 'NAZOVI';
-  String callInfoText = 'Kontakt telefon';
-  String callNumberText = '060 335 221 3';
+  
+  
+  String callNumberText = '060 335 221 3';*/
 }
 
 class UserProducts {

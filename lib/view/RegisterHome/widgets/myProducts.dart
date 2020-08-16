@@ -309,8 +309,6 @@ class _MyProductsState extends State<MyProducts> {
           productNameScreen: myPosts[index]['productName'],
           productIdScreen: myPosts[index]['productID'],
           setStateParent: justSetState,
-          // snapshot
-          //     .data.documents[index]['productName'],
         ),
       ),
     );

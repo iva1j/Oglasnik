@@ -5,7 +5,6 @@ import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/produc
 import 'package:flutter/material.dart';
 
 class NazivTextField extends StatefulWidget {
-  
   const NazivTextField({
     Key key,
     //@required this.editProduct,
@@ -24,13 +23,6 @@ class _NazivTextFieldState extends State<NazivTextField> {
 
   @override
   Widget build(BuildContext context) {
-    /*
-    if (widget.productSnapshot != null) {
-      
-      noviNaziv != null ? productNameController.text = noviNaziv : null;
-    }*/
-
-    //print(productNameController.text);
     return Form(
       key: productNameFormKey,
       //autovalidate: true,

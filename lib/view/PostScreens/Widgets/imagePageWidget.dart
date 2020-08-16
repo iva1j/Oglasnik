@@ -41,23 +41,10 @@ class ImagePageWidget extends StatefulWidget {
 }
 
 class _ImagePageWidgetState extends State<ImagePageWidget> {
-  // Map _source = {ConnectivityResult.none: false};
-  // MyConnectivity _connectivity = MyConnectivity.instance;
-
   @override
   initState() {
-    // _connectivity.initialise();
-    // _connectivity.myStream.listen((source) {
-    //   setState(() => _source = source);
-    // });
-    //  InternetConnectivity().checkForConnectivity();
     super.initState();
   }
-
-  // void dispose() {
-  //   _connectivity.disposeStream();
-  //   super.dispose();
-  // }
 
   String _path1, _path2, _path3;
   String _extension1, _extension2, _extension3;
@@ -141,22 +128,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print("CUJ IMAGE1NAME BAAAAAAAa");
-    print(image1Name);
     SizeConfig().init(context);
-    // switch (_source.keys.toList()[0]) {
-    //   case ConnectivityResult.none:
-    //     productIsOnline = false;
-    //     string = "Offline";
-    //     break;
-    //   case ConnectivityResult.mobile:
-    //     productIsOnline = true;
-    //     string = "Mobile: Online";
-    //     break;
-    //   case ConnectivityResult.wifi:
-    //     productIsOnline = true;
-    //     string = "WiFi: Online";
-    // }
     return loading ? Loading() : imageUploadContainer(context);
   }
 
@@ -217,37 +189,43 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               setState(() => loading = true);
               createdGlob = true;
               azurload = true;
-              if (!createSwitcher) {
-                if (img1 != immutableImg1)
-                  await upload(img1, pathGlobal1, 1)
-                      .then((value) => productImg1 = value);
-                if (img2 != immutableImg2)
-                  await upload(img2, pathGlobal2, 2)
-                      .then((value) => productImg2 = value);
-                if (img3 != immutableImg3)
-                  await upload(img3, pathGlobal3, 3)
-                      .then((value) => productImg3 = value);
-              } else
-                await uploadImageAndPrintName();
+              if (img1 != immutableImg1)
+                await upload(img1, pathGlobal1, 1)
+                    .then((value) => productImg1 = value);
+              if (img2 != immutableImg2)
+                await upload(img2, pathGlobal2, 2)
+                    .then((value) => productImg2 = value);
+              if (img3 != immutableImg3)
+                await upload(img3, pathGlobal3, 3)
+                    .then((value) => productImg3 = value);
 
-              //print('update proizvoda: ' + noviNaziv.toString());
+              productName = updateProductNameReturn == null
+                  ? updateProductName
+                  : updateProductNameReturn;
+              productCategory = updateDropdownValueCategory;
+              productBrand = updateDropdownValueBrand;
+              productLocation = updateDropdownValueCity;
+              productTag = updateProductTagsReturn == null
+                  ? updateProductTags
+                  : updateProductTagsReturn;
+              productDesc = updateProductDescriptionReturn == null
+                  ? updateProductDescription
+                  : updateProductDescriptionReturn;
+              productprice = updateProductPriceReturn == null
+                  ? updateProductPrice
+                  : updateProductPriceReturn;
+
               await CreateProduct().updateProduct(
                 context,
                 email,
                 phoneNumber,
-                updateProductNameReturn == null
-                    ? updateProductName
-                    : updateProductNameReturn,
+                productName,
                 productID = oldProductID,
-                updateDropdownValueCategory,
-                updateDropdownValueBrand,
-                updateDropdownValueCity,
-                updateProductTagsReturn == null
-                    ? updateProductTags
-                    : updateProductTagsReturn,
-                updateProductDescriptionReturn == null
-                    ? updateProductDescription
-                    : updateProductDescriptionReturn,
+                productCategory,
+                productBrand,
+                productLocation,
+                productTag,
+                productDesc,
                 productImg1 == null
                     ? widget.productSnapshot.productImg1
                     : productImg1,
@@ -257,9 +235,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                 productImg3 == null
                     ? widget.productSnapshot.productImg3
                     : productImg3,
-                updateProductPriceReturn == null
-                    ? updateProductPrice
-                    : updateProductPriceReturn,
+                productprice,
               );
               img1 = immutableImg1;
               img2 = immutableImg2;

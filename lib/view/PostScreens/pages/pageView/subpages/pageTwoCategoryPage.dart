@@ -26,14 +26,6 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
-    /*
-    if (widget.productSnapshot != null) {
-      dropdownValueCategory = widget.productSnapshot.productCategory;
-      dropdownValueBrand = widget.productSnapshot.productBrand;
-      novaKategorija != null ? dropdownValueCategory = novaKategorija : null;
-      noviBrend != null ? dropdownValueBrand = noviBrend : null;
-    }
-*/
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
 
