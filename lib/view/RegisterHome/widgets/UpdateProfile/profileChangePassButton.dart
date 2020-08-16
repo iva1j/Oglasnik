@@ -1,7 +1,5 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/lightPinkButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/alertDialogWidget.dart';
 import 'package:flutter/material.dart';
 

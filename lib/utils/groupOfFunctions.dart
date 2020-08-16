@@ -9,35 +9,21 @@ class InputFields {
   TextEditingController passwordInputController = new TextEditingController();
 }
 
-class PswChangeFields {}
-
-class RegisterControllers {
-  TextEditingController fullNameInputController = new TextEditingController();
-  TextEditingController phoneNumberInputController =
-      new TextEditingController();
-  TextEditingController emailInputController = new TextEditingController();
-  TextEditingController passwordInputController = new TextEditingController();
-}
-
-registerPageInitControllers() {
-  signUpFullNameInputController = new TextEditingController();
-  signUpPhoneNumberInputController = new TextEditingController();
-  signUpEmailInputController = new TextEditingController();
-  signUpPasswordInputController = new TextEditingController();
-  signUpRegisterFormKey = GlobalKey<FormState>();
-}
-
-// registerPageDispose() {
-//   signUpEmailInputController.dispose();
-//   signUpFullNameInputController.dispose();
-//   signUpPasswordInputController.dispose();
-//   signUpPhoneNumberInputController.dispose();
-//   signUpRegisterFormKey.currentState.dispose();
-// }
-
 alertDialogInitControllers() {
   //alertFormKey = GlobalKey<FormState>();
   emailInputControllerAlertDialog = new TextEditingController();
+}
+
+cleanRegister() {
+  registerFullName = null;
+  registerPassword = null;
+  registerPhoneNumber = null;
+  registerEmail = null;
+}
+
+cleanSignIn() {
+  signInEmail = null;
+  signInPassword = null;
 }
 
 alertDialogDispose() {
@@ -59,13 +45,14 @@ passwordChangeDispose() {
   confirmPasswordInputController.dispose();
 }
 
+/*
 pageViewInitControllers() {
   productNameController = new TextEditingController();
   productTagController = new TextEditingController();
   productDescController = new TextEditingController();
   productPriceController = new TextEditingController();
 }
-
+*/
 dropDownInitialValueState() {
   dropdownValueCategory = "Automobili";
   dropdownValueBrand = "Audi";
@@ -77,13 +64,9 @@ dropDownInitialValueState() {
 
 loginInitControllers() {
   emailInputControllerAlertDialog = new TextEditingController();
-  signInEmailInputController = new TextEditingController();
-  signInPasswordInputController = new TextEditingController();
   signInRegisterFormKey = GlobalKey<FormState>();
 }
 
 // loginDisposeControllers() {
-//   signInEmailInputController.dispose();
-//   signInPasswordInputController.dispose();
 //   signInRegisterFormKey.currentState.dispose();
 // }

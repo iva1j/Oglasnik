@@ -19,6 +19,7 @@ class ProfileSaveButton extends StatelessWidget {
             bottom: SizeConfig.blockSizeVertical * 1),
         child: button(
           'Sačuvaj',
+          //extract Faruk
           () async {
             await EditProfile().isEmailReserved(email);
             print('prvi' + isOnline.toString());

@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/signinValidation/passwordCheckSignInValidator.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/FormSignIn.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,7 +26,8 @@ class PassSigninTextField extends StatelessWidget {
         hintText: 'Lozinka',
         contentPadding: EdgeInsets.only(left: 20),
       ),
-      controller: widget.signInPasswordInputController,
+      initialValue: signInPassword,
+      onChanged: (value) => signInPassword = value,
       keyboardType: TextInputType.visiblePassword,
       obscureText: true,
       validator: passwordCheckSignIn,

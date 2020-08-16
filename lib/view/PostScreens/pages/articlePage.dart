@@ -24,7 +24,7 @@ class _ArticlePageState extends State<ArticlePage> {
   bool load = false;
   @override
   void initState() {
-    pageViewInitControllers();
+    //pageViewInitControllers();
     dropDownInitialValueState();
     super.initState();
   }
@@ -41,7 +41,6 @@ class _ArticlePageState extends State<ArticlePage> {
     oldProductID = widget.productID;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
-      //resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,

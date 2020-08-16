@@ -29,8 +29,7 @@ String imageName(String imgURL) {
 class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   @override
   Widget build(BuildContext context) {
-    print("AGSAGAGSG");
-    print(createSwitcher);
+    //extract Iva
     if (!createSwitcher) {
       updateProductName = widget.productSnapshot.productName;
       updateProductPrice = widget.productSnapshot.productCijena;
@@ -39,7 +38,6 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
       updateDropdownValueCategory = widget.productSnapshot.productCategory;
       updateDropdownValueBrand = widget.productSnapshot.productBrand;
       updateDropdownValueCity = widget.productSnapshot.productLocation;
-      //productTag = productTagController.text;
 
       if (widget.productSnapshot.productImg1 != null)
         image1Name = imageName(widget.productSnapshot.productImg1);
@@ -47,17 +45,6 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
         image2Name = imageName(widget.productSnapshot.productImg2);
       if (widget.productSnapshot.productImg3 != null)
         image3Name = imageName(widget.productSnapshot.productImg3);
-      print(updateDropdownValueCategory);
-      print(updateDropdownValueBrand);
-      print(updateDropdownValueCity);
-      print(widget.productSnapshot.productImg1);
-      print(widget.productSnapshot.productImg2);
-      print(widget.productSnapshot.productImg3);
-      print(productImg1);
-      print(productImg2);
-      print(productImg3);
-      //  print(imageName(widget.productSnapshot.productImg1));
-      //print(widget.productSnapshot.productImg1.indexOf("2F"));
     }
 
     SizeConfig().init(context);

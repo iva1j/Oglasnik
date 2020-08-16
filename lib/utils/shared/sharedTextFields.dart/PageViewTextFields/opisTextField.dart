@@ -12,19 +12,15 @@ class OpisTextField extends StatelessWidget {
   final Product productSnapshot;
   @override
   Widget build(BuildContext context) {
-    /*
-    productSnapshot != null
-        ? productDescController.text = productSnapshot.productDesc
-        : null; */
     return Form(
       key: productDescFormKey,
-      //autovalidate: true,
       child: Theme(
         data: ThemeData(
           primaryColor: Colors.black54,
           errorColor: Colors.red,
         ),
         child: TextFormField(
+          ////extract Iva
           initialValue: createSwitcher
               ? newProductDescriptionReturn == null
                   ? ""
@@ -49,7 +45,6 @@ class OpisTextField extends StatelessWidget {
           validator: productDescValidation,
           maxLines: null,
           keyboardType: TextInputType.multiline,
-          //controller: productDescController,
           textCapitalization: TextCapitalization.sentences,
           decoration: const InputDecoration(
             labelText: 'Opis',

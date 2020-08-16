@@ -32,7 +32,8 @@ abstract class AddFavoriteProductInterface {
 }
 
 abstract class ReadProductInterface {
-  Future getProduct();
+  Future getProducts();
+  List<DocumentSnapshot> addAdditionalBrandProducts(String brandName);
 }
 
 abstract class ReadCategoriesInterface {

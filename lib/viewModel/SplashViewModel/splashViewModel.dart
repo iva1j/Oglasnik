@@ -13,6 +13,8 @@ import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 
+import '../PreviewProduct/previewProduct.dart';
+
 /*
 getFavoriteProducts(email) async {
   listaProizvoda.clear();

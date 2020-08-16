@@ -18,11 +18,6 @@ String productName,
     productImg3,
     productprice;
 
-TextEditingController productNameController;
-TextEditingController productTagController;
-TextEditingController productDescController;
-TextEditingController productPriceController;
-
 GlobalKey<FormState> signUpRegisterFormKey =
     new GlobalKey<FormState>(debugLabel: 'signUpRegisterFormKey');
 GlobalKey<FormState> signInRegisterFormKey =
@@ -63,7 +58,10 @@ String updateProductNameReturn,
     updateProductDescriptionReturn,
     updateProductPriceReturn;
 
-String updateProfileName, updateProfilePhoneNumber, updateProfileEmail, updateProfilePassword;
+String updateProfileName,
+    updateProfilePhoneNumber,
+    updateProfileEmail,
+    updateProfilePassword;
 
 String forgetEmail;
 
@@ -72,6 +70,8 @@ String updateProfileNameReturn,
     updateProfileEmailReturn;
 
 String image1Name, image2Name, image3Name;
+String registerFullName, registerEmail, registerPhoneNumber, registerPassword;
+String signInEmail, signInPassword;
 
 //String dropdownValueBrand = 'Brands';
 
@@ -107,6 +107,7 @@ var categoryBrands = Map();
 List categoryBrand = [];
 List numberofBrands = [];
 var allBrands;
+List<DocumentSnapshot> allProducts = List<DocumentSnapshot>();
 List<String> favoritesList = List<String>();
 //var catBrands = Map<String, List<String>>();
 

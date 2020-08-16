@@ -23,6 +23,8 @@ class NoviOglasButton extends StatelessWidget {
             color: Colors.transparent, // button color
             child: InkWell(
               splashColor: Colors.transparent, // splash color
+
+              //extract onTap metod  Iva
               onTap: () {
                 newProductNameReturn = null;
                 newProductTagsReturn = null;

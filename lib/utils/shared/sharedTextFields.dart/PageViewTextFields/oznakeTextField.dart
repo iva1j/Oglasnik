@@ -12,13 +12,8 @@ class OznakeTextField extends StatelessWidget {
   final Product productSnapshot;
   @override
   Widget build(BuildContext context) {
-    /*
-    if (productSnapshot != null) {
-      productTagController.text = productSnapshot.productTag;
-      noviOpis != null ? productTagController.text = noviOpis : null;
-    }
-  */
     return TextFormField(
+      ////extract Iva 
       initialValue: createSwitcher
           ? newProductTagsReturn == null ? "" : newProductTagsReturn
           : updateProductTagsReturn == null
