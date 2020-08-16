@@ -56,6 +56,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   List<StorageUploadTask> _tasks = <StorageUploadTask>[];
 
+  //extract
   void openFileExplorer1() async {
     _path1 = await FilePicker.getFilePath(type: _imageType);
     _fileName1 = _path1.split('/').last;
@@ -63,12 +64,11 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
     setState(() {
       img1 = _fileName1;
-      //image1Name = _fileName1;
       pathGlobal1 = _path1;
-      isDeleteShown1 = true;
     });
   }
 
+//extract
   void openFileExplorer2() async {
     _path2 = await FilePicker.getFilePath(type: _imageType);
     _fileName2 = _path2.split('/').last;
@@ -76,10 +76,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img2 = _fileName2;
       pathGlobal2 = _path2;
-      isDeleteShown2 = true;
     });
   }
 
+//extract
   void openFileExplorer3() async {
     _path3 = await FilePicker.getFilePath(type: _imageType);
     _fileName3 = _path3.split('/').last;
@@ -87,12 +87,11 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     setState(() {
       img3 = _fileName3;
       pathGlobal3 = _path3;
-      isDeleteShown3 = true;
     });
   }
 
+//extract
   void deleteFirstEntry() {
-    isDeleteShown1 = false;
     setState(() {
       if (img2 != immutableImg2 && img3 != immutableImg3) {
         img1 = img2;
@@ -107,8 +106,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     });
   }
 
+//extract
   void deleteSecondEntry() {
-    isDeleteShown2 = false;
     setState(() {
       if (img3 != immutableImg3) {
         img2 = img3;
@@ -119,8 +118,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     });
   }
 
+//extract
   void deleteThirdEntry() {
-    isDeleteShown3 = false;
     setState(() {
       img3 = immutableImg3;
     });
@@ -134,7 +133,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   Container imageUploadContainer(BuildContext context) {
     return Container(
-      //margin: EdgeInsets.all(15),
       child: Column(
         children: <Widget>[
           MainTitle(
@@ -173,7 +171,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     );
   }
 
-//nije moguće refaktorisati zbog privatnih varijabli. Check it out
+//extract
   SizedBox pageViewSubmitButton(BuildContext context) {
     if (!createSwitcher) {
       return button("Završi", () async {
@@ -264,6 +262,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           if (pageController.page == 4) {
             if (productPriceFormKey.currentState.validate()) {
               widget.onFlatButtonPressed();
+
               setState(() => loading = true);
               createdGlob = true;
               if (img1 != immutableImg1)
@@ -275,7 +274,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               if (img3 != immutableImg3)
                 await upload(img3, pathGlobal3, 3)
                     .then((value) => productImg3 = value);
-              //showIphoneButton = false;
 
               productName = newProductNameReturn;
               productCategory = dropdownValueCategory;
@@ -326,6 +324,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     }
   }
 
+//extract
   Future uploadImageAndPrintName() async {
     if (img1 != immutableImg1)
       await upload(img1, pathGlobal1, 1).then((value) => productImg1 = value);

@@ -23,8 +23,6 @@ class PageOne extends StatefulWidget {
 class _PageOneState extends State<PageOne> {
   @override
   Widget build(BuildContext context) {
-    print("U PAGEONE CREATE SWITCHER JE: ");
-    print(createSwitcher);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);

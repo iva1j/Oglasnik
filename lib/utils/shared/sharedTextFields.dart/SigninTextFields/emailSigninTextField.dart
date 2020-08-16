@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/signinValidation/emailCheckSignInValidator.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/FormSignIn.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,7 +26,8 @@ class EmailSignInTextField extends StatelessWidget {
         hintText: 'Email',
         contentPadding: EdgeInsets.only(left: 20),
       ),
-      controller: widget.signInEmailInputController,
+      initialValue: signInEmail,
+      onChanged: (value) => signInEmail = value,
       keyboardType: TextInputType.visiblePassword,
       validator: emailCheckSignIn,
       textInputAction: TextInputAction.next,

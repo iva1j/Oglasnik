@@ -21,22 +21,6 @@ class FavoriteProduct extends AddFavoriteProductInterface {
         .document(product["productID"])
         .setData({
       'productID': product["productID"],
-      // 'favorite products': [
-      //   product.productID,
-      // ],
-      // 'email': email,
-      // 'phoneNumber': product.phoneNumber,
-      // 'productName': product.productName,
-      // 'productCategory': product.productCategory,
-      // 'productBrand': product.productBrand,
-      // 'productLocation': product.productLocation,
-      // 'cijena': product.productCijena,
-      // 'productTag': product.productTag,
-      // 'productFinished': false,
-      // 'productDesc': product.productDesc,
-      // 'productImg1': product.productImg1,
-      // 'productImg2': product.productImg2,
-      // 'productImg3': product.productImg3,
     });
     return null;
   }
@@ -53,24 +37,6 @@ class FavoriteProduct extends AddFavoriteProductInterface {
   }
 
   Future isProductFavorite(Product product) async {
-    // final QuerySnapshot results = await Firestore.instance
-    //     .collection('firestoreUsers')
-    //     .document(email)
-    //     .collection('savedProducts')
-    //     .where('productID', isEqualTo: product.productID)
-    //     .getDocuments();
-    // final List<DocumentSnapshot> document = results.documents;
-/*
-    if (listaProizvoda.contains(product.productID)) {
-      favorite = true;
-      FavoriteProduct().removeFavorite(email, product);
-      print("Proizvod već postoji u bazi: " + favorite.toString());
-    } else {
-      favorite = false;
-      print('ne postoji proizvod, upravo smo ga dodali');
-      FavoriteProduct().addFavorite(email, product);
-    }*/
-
     List<DocumentSnapshot> allFavs = await getAllFavoritesIDs();
 
     for (final x in allFavs) {

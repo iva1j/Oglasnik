@@ -17,8 +17,6 @@ import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
 
-TextEditingController signInEmailInputController;
-TextEditingController signInPasswordInputController;
 TextEditingController emailInputControllerAlertDialog;
 
 ///When user enter his email on AlertDialog, onPressed "odustani" is bellow:
@@ -66,10 +64,6 @@ void onPressedSignInModel(
   if (hasActiveConnection) {
     Timer(Duration(seconds: 1), () {
       if (signInRegisterFormKey.currentState.validate() && status == true) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          signInEmailInputController.clear();
-          signInPasswordInputController.clear();
-        });
         print('Logged in');
         globals.email = email;
         favoritesList.clear();

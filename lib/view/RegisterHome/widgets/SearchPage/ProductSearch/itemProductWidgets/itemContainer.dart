@@ -66,6 +66,7 @@ Container itemContainer(
                               )
                             : Icon(Icons.star_border,
                                 size: 30, color: starBorderColor),
+                        //extract
                         onPressed: () async {
                           final result = favoritesList.contains(
                               selectedProductsGlobal[index]['productID']);

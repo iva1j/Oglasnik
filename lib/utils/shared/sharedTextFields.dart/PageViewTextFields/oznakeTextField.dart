@@ -13,6 +13,7 @@ class OznakeTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      //extract
       initialValue: createSwitcher
           ? newProductTagsReturn == null ? "" : newProductTagsReturn
           : updateProductTagsReturn == null

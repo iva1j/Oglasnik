@@ -43,8 +43,9 @@ class _MyProductsState extends State<MyProducts> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Expanded(
-          child: 
-          FutureBuilder(
+          child:
+              //extract
+              FutureBuilder(
             future: Firestore.instance
                 .collection('products')
                 .where('email', isEqualTo: email)
@@ -58,7 +59,6 @@ class _MyProductsState extends State<MyProducts> {
                 myPosts.forEach((element) {
                   myProducts.add(element['productName']);
                 });
-                print("Lista mojih proizvoda: " + myPosts.toString());
 
                 return myPosts == null || myPosts.isEmpty
                     ? Column(
@@ -79,7 +79,7 @@ class _MyProductsState extends State<MyProducts> {
                                   myPosts[index]['productLocation'],
                                   selectedChips)) {
                                 showMessage = false;
-
+//extract
                                 return Material(
                                   color: Colors.transparent,
                                   child: InkWell(
@@ -124,6 +124,8 @@ class _MyProductsState extends State<MyProducts> {
                                                       ///jeste onda ga jednostavno ispisujemo u item card-u. Ako nije onda
                                                       ///uzimamo njegovih prvih 150 character-a, uklanjamo whitespace-ove
                                                       ///i dodajemo mu ... na kraj.
+                                                      ///
+                                                      // extract (vec extractovano - iskorisiti ga samo)
                                                       child: myPosts[index]['productDesc']
                                                                   .toString()
                                                                   .trim()
@@ -192,7 +194,7 @@ class _MyProductsState extends State<MyProducts> {
                                   myPosts[index]['productLocation'],
                                   selectedChips)) {
                                 showMessage = false;
-
+//extract
                                 return Material(
                                   color: Colors.transparent,
                                   child: InkWell(
@@ -232,6 +234,7 @@ class _MyProductsState extends State<MyProducts> {
                                                                 .blockSizeVertical *
                                                             2,
                                                       ),
+                                                      //extract (vec extractovano - iskoristiti)
                                                       child: myPosts[index]['productDesc']
                                                                   .toString()
                                                                   .trim()
@@ -302,6 +305,7 @@ class _MyProductsState extends State<MyProducts> {
     );
   }
 
+//extract
   void itemProductName(BuildContext context, int index) {
     Navigator.of(context).push(
       FadeRoute(

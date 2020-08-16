@@ -18,6 +18,7 @@ AlertDialog successOnCreateAlertDialog(BuildContext context) {
       children: [
         Container(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 !azurload

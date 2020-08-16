@@ -39,6 +39,7 @@ class _SigninPageState extends State<SigninPage> {
   @override
   initState() {
     loginInitControllers();
+    cleanSignIn();
     //   InternetConnection().checkForInternet();
     // InternetConnection();
     // _connectivity.initialise();
@@ -74,8 +75,7 @@ class _SigninPageState extends State<SigninPage> {
     // }
 
     SizeConfig().init(context);
-    email = signInEmailInputController.text;
-    password = signInPasswordInputController.text;
+
     var resetemail = emailInputControllerAlertDialog.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return GestureDetector(
@@ -133,11 +133,7 @@ class _SigninPageState extends State<SigninPage> {
                       LogoContainer(),
                       WelcomeScreen(),
                       PrijavaWelcomeScreen(),
-                      FormSignIn(
-                          signInEmailInputController:
-                              signInEmailInputController,
-                          signInPasswordInputController:
-                              signInPasswordInputController),
+                      FormSignIn(),
                     ],
                   )),
             ),

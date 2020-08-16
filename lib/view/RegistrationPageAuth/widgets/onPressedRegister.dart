@@ -20,10 +20,6 @@ class RegisterButton extends StatefulWidget {
 class _RegisterButtonState extends State<RegisterButton> {
   //bool isRegistered = false;
   final db = Firestore.instance;
-  TextEditingController fullNameInputController;
-  TextEditingController phoneNumberInputController;
-  TextEditingController emailInputController;
-  TextEditingController passwordInputController;
 
   @override
   initState() {
@@ -51,23 +47,16 @@ void onPressedRegister(BuildContext context, String fullName, String email,
     Timer(Duration(seconds: 1), () {
       if (signUpRegisterFormKey.currentState.validate() &&
           allowUserToRegister) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          signUpPhoneNumberInputController.clear();
-          signUpPasswordInputController.clear();
-          signUpEmailInputController.clear();
-          signUpFullNameInputController.clear();
-        }); // clear content
-
-        db.collection("firestoreUsers").document(email).setData({
-          'fullName': fullName,
-          'email': email,
-          'password': password,
-          'phoneNumber': phoneNumber,
+        db.collection("firestoreUsers").document(registerEmail).setData({
+          'fullName': registerFullName,
+          'email': registerEmail,
+          'password': registerPassword,
+          'phoneNumber': registerPhoneNumber,
         });
         print('korisnik uspješno ubačen u bazi');
 
-        loginPrefs(context, email);
-        globals.email = email;
+        loginPrefs(context, registerEmail);
+        globals.email = registerEmail;
 
         favoritesList.clear();
         FavoriteProduct().getAllFavoritesIDs().then((value) =>

@@ -1,10 +1,8 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/itemCardBodyWidgets/itemCardBodyDesc.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/itemCardBodyWidgets/itemCardContainer1.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardImage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardPrice.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardProductName.dart';
@@ -49,6 +47,7 @@ class _MyFavoritesState extends State<MyFavorites> {
                           child: InkWell(
                             splashColor: Colors.transparent,
                             onTap: () {
+                              //extract
                               Navigator.of(context).push(
                                 FadeRoute(
                                   page: ProductDetails(
@@ -124,6 +123,7 @@ class _MyFavoritesState extends State<MyFavorites> {
                                     thickness:
                                         SizeConfig.blockSizeVertical * 0.2,
                                   ),
+                                  //extract
                                   email != null
                                       ? Row(
                                           children: <Widget>[
@@ -143,6 +143,7 @@ class _MyFavoritesState extends State<MyFavorites> {
                                                           size: 30,
                                                           color:
                                                               starBorderColor),
+                                                  //extract
                                                   onPressed: () async {
                                                     final result =
                                                         favoritesList.contains(

@@ -1,4 +1,3 @@
-import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
@@ -6,8 +5,6 @@ import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileForm/upd
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileForm/updateNameProfile.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileForm/updatePhoneProfile.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
-import 'package:Oglasnik/viewModel/EditingUser/editUserViewModel.dart';
-import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

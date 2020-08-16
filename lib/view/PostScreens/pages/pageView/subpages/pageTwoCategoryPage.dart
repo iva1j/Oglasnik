@@ -96,6 +96,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                         height: 1.5,
                                       ),
                                       underline: Container(),
+                                      //extract
                                       onChanged: (String productCategoryList) =>
                                           setState(
                                         () => {

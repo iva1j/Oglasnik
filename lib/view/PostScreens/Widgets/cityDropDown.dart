@@ -19,13 +19,6 @@ class CityDropDown extends StatefulWidget {
 class _CityDropDownState extends State<CityDropDown> {
   @override
   Widget build(BuildContext context) {
-    /*
-    if (widget.productSnapshot != null) {
-      dropdownValueCity = widget.productSnapshot.productLocation;
-      noviGrad != null ? dropdownValueCity = noviGrad : null;
-    }
-*/
-
     SizeConfig().init(context);
     return Container(
       margin: EdgeInsets.symmetric(

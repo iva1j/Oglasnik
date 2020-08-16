@@ -26,8 +26,6 @@ class ItemProductContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     selectedProductsGlobal.addAll(additionals);
-    print("DAJ DA VIDIM STA SMO DOBILIIIIII");
-    print(selectedProductsGlobal);
     bool showMessage = true;
     return Container(
       padding: EdgeInsets.only(bottom: 55),

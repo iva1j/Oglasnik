@@ -1,23 +1,15 @@
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/actionChips.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/dynamicChips.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemProductContainer.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/ProductSearch/selectedProductsInitialization.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../../../../utils/shared/globalVariables.dart';
-import '../../../../utils/suggestionFunction.dart';
-import '../../../../utils/suggestionFunction.dart';
 import '../../../../viewModel/PreviewProduct/previewProduct.dart';
 import '../../../../viewModel/PreviewProduct/previewProduct.dart';
 import '../../../../viewModel/PreviewProduct/previewProduct.dart';
 import '../../../../viewModel/PreviewProduct/previewProduct.dart';
-import '../ProductsCards/categoryLoading.dart';
-import '../ProductsCards/categoryLoading.dart';
 import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
 import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
 import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
@@ -50,14 +42,10 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
   Widget build(BuildContext context) {
     initSelectedProducts(widget.query);
 
-    print("SELEKTED PRODUKTS LOLLL");
-    print(selectedProductsGlobal);
     bool showMessage = true;
     List<DocumentSnapshot> additionalProds = List<DocumentSnapshot>();
     additionalProds.addAll(ProductViewModel()
         .addAdditionalBrandProducts(widget.query.toLowerCase()));
-    print("A SADA SPEKTAKLLLL");
-    print(additionalProds);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

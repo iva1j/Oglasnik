@@ -86,6 +86,8 @@ class DataSearch extends SearchDelegate<String> {
     var productsAndBrandList = [
       ...{...productsForSearch}
     ];
+
+    //extract
     if (query.length > 2) {
       suggestionsList = productsAndBrandList
           .where((e) => e.toLowerCase().startsWith(query.toLowerCase()))

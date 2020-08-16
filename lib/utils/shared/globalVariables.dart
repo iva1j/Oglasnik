@@ -70,6 +70,8 @@ String updateProfileNameReturn,
     updateProfileEmailReturn;
 
 String image1Name, image2Name, image3Name;
+String registerFullName, registerEmail, registerPhoneNumber, registerPassword;
+String signInEmail, signInPassword;
 
 //String dropdownValueBrand = 'Brands';
 

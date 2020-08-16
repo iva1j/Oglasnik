@@ -1,12 +1,9 @@
-import 'package:Oglasnik/interface/authUserInterface.dart';
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,16 +22,11 @@ class ProfileSaveButton extends StatelessWidget {
             bottom: SizeConfig.blockSizeVertical * 1),
         child: button(
           'Sačuvaj',
+          //extract
           () async {
             print('prvi' + isOnline.toString());
-            // updateProfileEmail.isEmpty || updateProfileEmail == null
-            //     ? updateProfileEmail = email
-            //     : updateProfileEmail;
 
-            if (updateproductNameFormKey.currentState.validate()
-
-                // && allowUserToRegister == true
-                ) {
+            if (updateproductNameFormKey.currentState.validate()) {
               db.collection("firestoreUsers").document(email).updateData({
                 'fullName': updateProfileName,
                 'email': updateProfileEmail,
@@ -65,14 +57,7 @@ class ProfileSaveButton extends StatelessWidget {
                   FadeRoute(page: AnonymousHome()),
                   (Route<dynamic> route) => false);
               print('drugi' + isOnline.toString());
-              // Navigator.of(context).pushReplacement(
-              //   MaterialPageRoute(builder: (_) {
-              //     return RegisteredHome();
-              //   }),
-              // );
             }
-            // else
-            //   print('Nemoguce');
           },
         ),
       ),
