@@ -17,6 +17,7 @@ class EmailAlertDialog extends StatelessWidget {
       ),
       keyboardType: TextInputType.visiblePassword,
       validator: emailAlertDialogValidation,
+      initialValue: forgetEmail,
       onChanged: (value) {
         forgetEmail = value;
       },

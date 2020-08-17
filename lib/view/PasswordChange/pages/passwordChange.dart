@@ -4,11 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-TextEditingController emailInputController = new TextEditingController();
-TextEditingController tokenInputController = new TextEditingController();
-TextEditingController passwordInputController = new TextEditingController();
-TextEditingController confirmPasswordInputController =
-    new TextEditingController();
 String token, newPassword, confirmPassword, passwordConfirm;
 bool doesMatch = false;
 
@@ -25,16 +20,11 @@ class _PasswordChangeState extends State<PasswordChange> {
   FirebaseUser user;
   @override
   void dispose() {
-    // passwordChangeDispose();
     super.dispose();
   }
 
   initState() {
     cleanPasswordChanged();
-    // passwordChangeInitControllers();¸
-    // passwordInputController.clear();
-    // tokenInputController.clear();
-    // confirmPasswordInputController.clear();
     super.initState();
   }
 

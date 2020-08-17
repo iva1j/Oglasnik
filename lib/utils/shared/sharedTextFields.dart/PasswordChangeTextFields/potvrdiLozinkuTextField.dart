@@ -20,11 +20,7 @@ class PovrdiLozinku extends StatelessWidget {
             onFieldSubmitted: (v) {
               FocusScope.of(context).unfocus();
             },
-            style: TextStyle(
-                // color: (nepoklapanje == true)
-                //     ? Colors.red
-                //     : Colors.black,
-                color: doesMatch ? Colors.red : Colors.black),
+            style: TextStyle(color: doesMatch ? Colors.red : Colors.black),
             decoration: InputDecoration(
               hintText: 'Potvrdi lozinku',
               contentPadding: EdgeInsets.only(left: 10),
@@ -34,11 +30,6 @@ class PovrdiLozinku extends StatelessWidget {
             initialValue: confirmPasswordChanged,
             onChanged: (value) => confirmPasswordChanged = value,
             validator: confirmpasswordValidator,
-            // validator: (value) {
-            //   if (value != passwordInputController.text) {
-            //     return 'Lozinke se ne podudaraju!';
-            //   }
-            // }
           ),
         ),
       ),

@@ -24,7 +24,6 @@ class _ArticlePageState extends State<ArticlePage> {
   bool load = false;
   @override
   void initState() {
-    //pageViewInitControllers();
     dropDownInitialValueState();
     super.initState();
   }

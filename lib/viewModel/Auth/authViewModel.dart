@@ -69,9 +69,7 @@ class AuthService extends ChangeNotifier {
         ? Timer(Duration(milliseconds: 1000), () {
             if (alertFormKey.currentState.validate() &&
                 allowUserToChangePassword == true) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                //emailInputControllerAlertDialog.clear();
-              });
+              WidgetsBinding.instance.addPostFrameCallback((_) {});
               db.collection("firestoreUsers").document(email).updateData({
                 'email': email,
                 'token': randomAlphaNumeric(5),
@@ -86,7 +84,6 @@ class AuthService extends ChangeNotifier {
                   ' uspješno generisan token(na mail i firestore poslan), a on je: ' +
                   token);
             } else {
-              //emailInputControllerAlertDialog.clear();
               print('Korisnik ne postoji u bazi!');
             }
           })
@@ -120,9 +117,6 @@ class AuthService extends ChangeNotifier {
             email +
             ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
             newPassword);
-        passwordInputController.clear();
-        confirmPasswordInputController.clear();
-        tokenInputController.clear();
         email = null;
         phoneNumber = null;
         await FirebaseAuth.instance.signOut();
@@ -135,16 +129,6 @@ class AuthService extends ChangeNotifier {
             phoneNumber.toString());
         Navigator.of(context).pushAndRemoveUntil(
             FadeRoute(page: AnonymousHome()), (Route<dynamic> route) => false);
-        // print('drugi' + isOnline.toString());
-        // Navigator.pushReplacement(
-        //   context,
-        //   PageRouteBuilder(
-        //     pageBuilder: (context, animation1, animation2) => AnonymousHome(),
-        //   ),
-        // );
-
-        // Navigator.of(context)
-        //     .pushReplacement(MaterialPageRoute(builder: (_) => SigninPage()));
       }
       if (newPassword != passwordConfirm) {
         doesMatch = true;
@@ -154,9 +138,6 @@ class AuthService extends ChangeNotifier {
         nepoklapanje = true;
         print('lozinke se ne poklapaju');
       }
-      //  else {
-      //   print('Nešto nije uredu, molimo provjerite i ispravite grešku');
-      // }
     });
   }
 

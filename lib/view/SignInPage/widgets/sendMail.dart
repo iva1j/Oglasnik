@@ -22,7 +22,7 @@ Future<void> sendemail() async {
 Future<void> sendemail3() async {
   var response = await mailgun.send(
     from: 'fcidicwebmail@gmail.com',
-    to: [emailInputControllerAlertDialog.text],
+    to: [forgetEmail], // provjeriti jel ovo okay
     subject: "Test email",
     template: "prvitemplate",
     // options: {

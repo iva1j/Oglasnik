@@ -1,18 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
-import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
-import 'package:flutter/material.dart';
 import 'shared/globalVariables.dart';
-
-class InputFields {
-  TextEditingController emailInputController = new TextEditingController();
-  TextEditingController passwordInputController = new TextEditingController();
-}
-
-alertDialogInitControllers() {
-  //alertFormKey = GlobalKey<FormState>();
-  emailInputControllerAlertDialog = new TextEditingController();
-}
 
 cleanRegister() {
   registerFullName = null;
@@ -26,40 +13,16 @@ cleanSignIn() {
   signInPassword = null;
 }
 
+cleanAlertDialog() {
+  forgetEmail = null;
+}
+
 cleanPasswordChanged() {
   passwordChangedToken = null;
   newPasswordChanged = null;
   confirmPasswordChanged = null;
 }
 
-alertDialogDispose() {
-  alertFormKey = GlobalKey<FormState>();
-  emailInputControllerAlertDialog.dispose();
-}
-
-passwordChangeInitControllers() {
-  emailInputController = new TextEditingController();
-  tokenInputController = new TextEditingController();
-  confirmPasswordInputController = new TextEditingController();
-  passwordChangeFormKey = GlobalKey<FormState>();
-}
-
-passwordChangeDispose() {
-  // ignore: invalid_use_of_protected_member
-  passwordChangeFormKey.currentState.dispose();
-  emailInputController.dispose();
-  tokenInputController.dispose();
-  confirmPasswordInputController.dispose();
-}
-
-/*
-pageViewInitControllers() {
-  productNameController = new TextEditingController();
-  productTagController = new TextEditingController();
-  productDescController = new TextEditingController();
-  productPriceController = new TextEditingController();
-}
-*/
 dropDownInitialValueState() {
   dropdownValueCategory = "Automobili";
   dropdownValueBrand = "Audi";
@@ -68,12 +31,3 @@ dropDownInitialValueState() {
   buttonTwo = false;
   buttonThree = false;
 }
-
-loginInitControllers() {
-  emailInputControllerAlertDialog = new TextEditingController();
-  signInRegisterFormKey = GlobalKey<FormState>();
-}
-
-// loginDisposeControllers() {
-//   signInRegisterFormKey.currentState.dispose();
-// }
