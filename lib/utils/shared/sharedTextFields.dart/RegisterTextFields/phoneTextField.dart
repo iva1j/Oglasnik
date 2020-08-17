@@ -1,5 +1,5 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation/phoneValidator.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -21,7 +21,9 @@ class PhoneTextField extends StatelessWidget {
         contentPadding: EdgeInsets.only(left: 20),
         hintText: 'Broj telefona',
       ),
-      controller: signUpPhoneNumberInputController,
+
+      initialValue: registerPhoneNumber,
+      onChanged: (value) => registerPhoneNumber = value,
       keyboardType: TextInputType.phone,
       validator: phoneValidator,
       textInputAction: TextInputAction.done,

@@ -26,8 +26,8 @@ class SignInButtonForm extends StatelessWidget {
         'Prijavi se',
         () async {
           allowAutoValidate = true;
-          email = widget.signInEmailInputController.text;
-          password = widget.signInPasswordInputController.text;
+          email = signInEmail;
+          password = signInPassword;
 
           onPressedSignInModel(context, email, password);
         },

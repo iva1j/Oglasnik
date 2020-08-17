@@ -13,7 +13,7 @@ class MainFloatingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(overflow: Overflow.visible, children: <Widget>[
+    return Stack(children: <Widget>[
       Builder(
         builder: (context) => FabCircularMenu(
           alignment: Alignment.bottomRight,

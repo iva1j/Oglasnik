@@ -1,5 +1,5 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation/nameValidator.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,7 +22,9 @@ class NameTextField extends StatelessWidget {
         hintText: 'Ime i prezime',
         contentPadding: EdgeInsets.only(left: 20),
       ),
-      controller: signUpFullNameInputController,
+
+      initialValue: registerFullName,
+      onChanged: (value) => registerFullName = value,
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.next,
       //  autofocus: true,

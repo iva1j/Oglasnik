@@ -30,7 +30,7 @@ Container itemContainer(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   itemCardProductName(
-                      context, selectedProducts[index], setStateParent),
+                      context, selectedProductsGlobal[index], setStateParent),
                   itemCardDesc(index),
                 ],
               ),
@@ -39,8 +39,8 @@ Container itemContainer(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  itemCardImage(selectedProducts[index]),
-                  itemCardPrice(selectedProducts[index]),
+                  itemCardImage(selectedProductsGlobal[index]),
+                  itemCardPrice(selectedProductsGlobal[index]),
                 ],
               ),
             ),
@@ -53,12 +53,12 @@ Container itemContainer(
         email != null
             ? Row(
                 children: <Widget>[
-                  itemCardTags(selectedProducts[index]),
+                  itemCardTags(selectedProductsGlobal[index]),
                   Container(
                     child: IconButton(
                         color: Colors.white,
-                        icon: favoritesList
-                                .contains(selectedProducts[index]['productID'])
+                        icon: favoritesList.contains(
+                                selectedProductsGlobal[index]['productID'])
                             ? Icon(
                                 Icons.star,
                                 size: 30,
@@ -66,27 +66,15 @@ Container itemContainer(
                               )
                             : Icon(Icons.star_border,
                                 size: 30, color: starBorderColor),
+                        //extract Fahrudin
                         onPressed: () async {
-                          final result = favoritesList
-                              .contains(selectedProducts[index]['productID']);
-                          if (result) {
-                            favoritesList
-                                .remove(selectedProducts[index]['productID']);
-                            await FavoriteProduct()
-                                .removeFavorite(email, selectedProducts[index]);
-                            setStateParent();
-                          } else {
-                            favoritesList
-                                .add(selectedProducts[index]['productID']);
-                            await FavoriteProduct()
-                                .addFavorite(email, selectedProducts[index]);
-                            setStateParent();
-                          }
+                          FavoriteProduct().addOrRemoveFavorite(
+                              index, setStateParent, selectedProductsGlobal);
                         }),
                   ),
                 ],
               )
-            : itemCardTags(selectedProducts[index]),
+            : itemCardTags(selectedProductsGlobal[index]),
       ],
     ),
   );

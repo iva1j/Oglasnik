@@ -4,6 +4,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
+import 'package:Oglasnik/viewModel/CreateProduct/productCategoryViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
     as custom;
@@ -26,14 +27,6 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
-    /*
-    if (widget.productSnapshot != null) {
-      dropdownValueCategory = widget.productSnapshot.productCategory;
-      dropdownValueBrand = widget.productSnapshot.productBrand;
-      novaKategorija != null ? dropdownValueCategory = novaKategorija : null;
-      noviBrend != null ? dropdownValueBrand = noviBrend : null;
-    }
-*/
     SizeConfig().init(context);
     final bottom = MediaQuery.of(context).viewInsets.bottom;
 
@@ -106,24 +99,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                       underline: Container(),
                                       onChanged: (String productCategoryList) =>
                                           setState(
-                                        () => {
-                                          if (createSwitcher)
-                                            {
-                                              dropdownValueCategory =
-                                                  productCategoryList,
-                                              dropdownValueBrand =
-                                                  categoryBrands[
-                                                      dropdownValueCategory][0],
-                                            }
-                                          else
-                                            {
-                                              updateDropdownValueCategory =
-                                                  productCategoryList,
-                                              updateDropdownValueBrand =
-                                                  categoryBrands[
-                                                      updateDropdownValueCategory][0],
-                                            }
-                                        },
+                                        () => categoryListValue(productCategoryList),
                                       ),
                                       items: categoryNames
                                           .map<custom.DropdownMenuItem<String>>(
@@ -203,4 +179,6 @@ class _CategoryPageState extends State<CategoryPage> {
       ),
     );
   }
+
+  
 }

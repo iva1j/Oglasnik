@@ -7,8 +7,8 @@ void itemProductName(BuildContext context, int index, Function setStateParent) {
   Navigator.of(context).push(
     FadeRoute(
       page: ProductDetails(
-        productNameScreen: selectedProducts[index]['productName'],
-        productIdScreen: selectedProducts[index]['productID'],
+        productNameScreen: selectedProductsGlobal[index]['productName'],
+        productIdScreen: selectedProductsGlobal[index]['productID'],
         setStateParent: null,
       ),
     ),

@@ -1,11 +1,11 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/services.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/productsFieldsValidator.dart';
 import 'package:flutter/material.dart';
 
 class NazivTextField extends StatefulWidget {
-  
   const NazivTextField({
     Key key,
     //@required this.editProduct,
@@ -20,17 +20,8 @@ class NazivTextField extends StatefulWidget {
 String newText;
 
 class _NazivTextFieldState extends State<NazivTextField> {
-  FocusNode _textFocus = new FocusNode();
-
   @override
   Widget build(BuildContext context) {
-    /*
-    if (widget.productSnapshot != null) {
-      
-      noviNaziv != null ? productNameController.text = noviNaziv : null;
-    }*/
-
-    //print(productNameController.text);
     return Form(
       key: productNameFormKey,
       //autovalidate: true,
@@ -41,17 +32,13 @@ class _NazivTextFieldState extends State<NazivTextField> {
         ),
         child: TextFormField(
           autocorrect: false,
+          //extract Iva
           initialValue: createSwitcher
               ? newProductNameReturn == null ? "" : newProductNameReturn
               : updateProductNameReturn == null
                   ? updateProductName
                   : updateProductNameReturn,
-          onChanged: (value) {
-            if (!createSwitcher)
-              updateProductNameReturn = value;
-            else
-              newProductNameReturn = value;
-          },
+          onChanged: nazivFieldOnChanged,
           textCapitalization: TextCapitalization.sentences,
           validator: productFieldsValidator,
           inputFormatters: [

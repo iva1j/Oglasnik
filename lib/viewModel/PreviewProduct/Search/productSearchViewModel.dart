@@ -26,8 +26,10 @@ class ProductSearchDB extends StatelessWidget {
           allProductsObject.forEach((element) {
             productsForSearch.add(element['productName']);
           });
-          print("Lista svih proizvoda u ispravnom builderu: " +
-              productsForSearch.toString());
+          print('sasasasasasasas');
+          print(productsForSearch);
+          //print("Lista svih proizvoda u ispravnom builderu: " +
+          //    productsForSearch.toString());
           return Container();
         } else {
           return Container();
@@ -46,3 +48,10 @@ extension CapExtension on String {
   String get inCaps => '${this[0].toUpperCase()}${this.substring(1)}';
   String get allInCaps => this.toUpperCase();
 }
+
+void suggestionLogic(List<String> productsAndBrandList, String query) {
+  suggestionsList = productsAndBrandList
+      .where((e) => e.toLowerCase().startsWith(query.toLowerCase()))
+      .toList();
+}
+

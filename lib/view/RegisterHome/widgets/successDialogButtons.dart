@@ -44,8 +44,6 @@ class KreirajButtonDialog extends StatelessWidget {
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
           return ArticlePage(
             editProduct: UserProducts().newProduct,
-            productSnapshot: null,
-            productID: null,
           );
         }));
       },

@@ -43,9 +43,6 @@ class _CityPageState extends State<CityPage> {
               padding: EdgeInsets.only(bottom: bottom),
               child: Column(
                 children: <Widget>[
-                  // Container(
-                  //   margin: EdgeInsets.only(bottom: 80.0, top: 15),
-                  // ),
                   MainTitle(
                     editProduct: widget.editProduct,
                   ),
@@ -54,7 +51,6 @@ class _CityPageState extends State<CityPage> {
                       top: SizeConfig.blockSizeVertical * 22,
                       left: SizeConfig.blockSizeHorizontal * 10,
                       right: SizeConfig.blockSizeHorizontal * 10,
-                      //bottom: SizeConfig.blockSizeVertical * 20
                     ),
                   ),
                   // ),

@@ -7,31 +7,36 @@ import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/ProductSearch/item
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-List<DocumentSnapshot> selectedProducts = List<DocumentSnapshot>();
+List<DocumentSnapshot> selectedProductsGlobal = List<DocumentSnapshot>();
 
 class ItemProductContainer extends StatelessWidget {
   const ItemProductContainer({
     Key key,
-    @required this.selectedProducts,
+    //@required this.selectedProducts,
     @required this.showMessage,
     @required this.setStateParent,
+    @required this.additionals,
   }) : super(key: key);
 
-  final List<DocumentSnapshot> selectedProducts;
+  //final List<DocumentSnapshot> selectedProducts;
   final bool showMessage;
   final Function setStateParent;
+  final List<DocumentSnapshot> additionals;
 
   @override
   Widget build(BuildContext context) {
+    selectedProductsGlobal.addAll(additionals);
     bool showMessage = true;
     return Container(
       padding: EdgeInsets.only(bottom: 55),
       child: ListView.builder(
-        itemCount: selectedProducts.length,
+        itemCount: selectedProductsGlobal.length,
         itemBuilder: (_, int index) {
-          if (index == selectedProducts.length - 1) {
+          print(selectedProductsGlobal.length);
+          if (index == selectedProductsGlobal.length - 1) {
             if (locationIsSelected(
-                selectedProducts[index]['productLocation'], selectedChips)) {
+                selectedProductsGlobal[index]['productLocation'],
+                selectedChips)) {
               showMessage = false;
 
               return Material(
@@ -54,7 +59,8 @@ class ItemProductContainer extends StatelessWidget {
             }
           } else {
             if (locationIsSelected(
-                selectedProducts[index]['productLocation'], selectedChips)) {
+                selectedProductsGlobal[index]['productLocation'],
+                selectedChips)) {
               showMessage = false;
 
               return Material(

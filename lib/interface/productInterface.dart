@@ -1,5 +1,4 @@
 import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/model/userModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -32,7 +31,8 @@ abstract class AddFavoriteProductInterface {
 }
 
 abstract class ReadProductInterface {
-  Future getProduct();
+  Future getProducts();
+  List<DocumentSnapshot> addAdditionalBrandProducts(String brandName);
 }
 
 abstract class ReadCategoriesInterface {
@@ -45,4 +45,8 @@ abstract class ReadBrandInterface {
 
 abstract class ReadCitiesInterface {
   Future getCitiesFromProducts();
+}
+
+abstract class ProductDetailsInterface {
+  void onUpdatePressed(BuildContext context, int index);
 }

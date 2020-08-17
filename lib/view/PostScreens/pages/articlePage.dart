@@ -10,8 +10,8 @@ class ArticlePage extends StatefulWidget {
   const ArticlePage(
       {Key key,
       @required this.editProduct,
-      @required this.productSnapshot,
-      @required this.productID})
+      this.productSnapshot,
+      this.productID})
       : super(key: key);
   final String editProduct;
   final Product productSnapshot;
@@ -24,7 +24,7 @@ class _ArticlePageState extends State<ArticlePage> {
   bool load = false;
   @override
   void initState() {
-    pageViewInitControllers();
+    //pageViewInitControllers();
     dropDownInitialValueState();
     super.initState();
   }
@@ -38,11 +38,9 @@ class _ArticlePageState extends State<ArticlePage> {
 
   @override
   Widget build(BuildContext context) {
-    
     oldProductID = widget.productID;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
-      //resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,

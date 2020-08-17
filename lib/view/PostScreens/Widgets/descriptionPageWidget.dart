@@ -25,9 +25,7 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-      //padding: EdgeInsets.only(bottom: widget.bottom),
       child: Container(
-        //margin: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
             MainTitle(

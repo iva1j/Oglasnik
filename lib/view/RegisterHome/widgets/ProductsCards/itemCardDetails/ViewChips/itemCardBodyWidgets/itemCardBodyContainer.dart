@@ -2,19 +2,13 @@ import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/itemCardBodyWidgets/itemCardContainer1.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/itemCardBodyWidgets/itemCardWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/itemCardBodyWidgets/itemCardBodyDesc.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardImage.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardPrice.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardProductName.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
-import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
-import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
@@ -48,40 +42,10 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                 selectedChips)) {
               showMessage = false;
 
-              return Material(
-                color: Colors.transparent,
-                child:
-
-                    /*ItemCardContainer1(
-                  context: context,
-                  snapshot: widget.snapshot,
-                  index: index,
-                  setStateParent: widget.setStateParent,
-                ),
-*/
-                    InkWell(
-                  splashColor: Colors.transparent,
-                  onTap: () {
-                    Navigator.of(context).push(
-                      FadeRoute(
-                        page: ProductDetails(
-                          productNameScreen: widget
-                              .snapshot.data.documents[index]['productName'],
-                          productIdScreen: widget.snapshot.data.documents[index]
-                              ['productID'],
-                          setStateParent: widget.setStateParent,
-                        ),
-                      ),
-                    );
-                  },
-                  //child: itemCardContainer1(context, widget.snapshot, index),
-                  child: ItemCardContainer1(
-                    context: context,
-                    snapshot: widget.snapshot,
-                    index: index,
-                    setStateParent: widget.setStateParent,
-                  ),
-                ),
+              return ItemCardWidget(
+                setStateParent: widget.setStateParent,
+                index: index,
+                docs: widget.snapshot.data.documents,
               );
             } else if (showMessage == true) {
               return Container(
@@ -96,39 +60,10 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                 selectedChips)) {
               showMessage = false;
 
-              return Material(
-                color: Colors.transparent,
-                child:
-
-                    /*ItemCardContainer1(
-                  context: context,
-                  snapshot: widget.snapshot,
-                  index: index,
-                  setStateParent: widget.setStateParent,
-                ),
-*/
-                    InkWell(
-                  splashColor: Colors.transparent,
-                  onTap: () {
-                    Navigator.of(context).push(
-                      FadeRoute(
-                        page: ProductDetails(
-                            productNameScreen: widget
-                                .snapshot.data.documents[index]['productName'],
-                            productIdScreen: widget
-                                .snapshot.data.documents[index]['productID'],
-                            setStateParent: widget.setStateParent),
-                      ),
-                    );
-                  },
-                  child: ItemCardContainer1(
-                    context: context,
-                    snapshot: widget.snapshot,
-                    index: index,
-                    setStateParent: widget.setStateParent,
-                  ),
-                  //child: itemCardContainer1(context, widget.snapshot, index),
-                ),
+              return ItemCardWidget(
+                setStateParent: widget.setStateParent,
+                index: index,
+                docs: widget.snapshot.data.documents,
               );
             } else {
               return Container();

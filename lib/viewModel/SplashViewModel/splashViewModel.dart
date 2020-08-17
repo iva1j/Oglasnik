@@ -1,11 +1,7 @@
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
-import 'package:Oglasnik/viewModel/EditingUser/editUserViewModel.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
-
 import 'package:Oglasnik/viewModel/PreviewProduct/getAllBrands.dart';
-
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';

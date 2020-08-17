@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/productPriceValidator.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

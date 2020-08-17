@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dart';
@@ -20,10 +19,7 @@ SizedBox registerButton(BuildContext context) {
     AppLabelsAuth().registracija,
     () {
       allowAutoValidate = true;
-      fullNameRegister = signUpFullNameInputController.text;
-      emailRegister = signUpEmailInputController.text;
-      passwordRegister = signUpPasswordInputController.text;
-      phoneNumberRegister = signUpPhoneNumberInputController.text;
+
       onPressedRegister(context, fullNameRegister, emailRegister,
           passwordRegister, phoneNumberRegister);
     },

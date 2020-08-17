@@ -1,7 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
-import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,10 +18,8 @@ class Authentication extends StatelessWidget {
             child: AuthService().tokenExistOrNot(context, email, token),
           ),
           Container(
-            child: AuthService().signInOrNot(
-                context,
-                signInEmailInputController.text,
-                signInPasswordInputController.text),
+            child:
+                AuthService().signInOrNot(context, signInEmail, signInPassword),
           ),
           Container(child: AuthService().checkStatus(context, email)),
           // Container(

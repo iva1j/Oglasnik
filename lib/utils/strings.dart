@@ -138,9 +138,9 @@ class SuccessAlertDialog {
   String uredu = "UREDU";
   String kreiraj = "KREIRAJ";
   String empty = "";
-  String obrisinaslov = "Obriši artikal?";
-  String obrisitext = "Da li ste sigurni da želite obrisati artikal?";
-  String delete = "OBRIŠI";
+  String obrisinaslov = "Završi artikal?";
+  String obrisitext = "Da li ste sigurni da želite završiti artikal?";
+  String delete = "ZAVRŠI";
   String odustani = "ODUSTANI";
 }
 
@@ -151,15 +151,17 @@ class SplashScreen {
 }
 
 class ProductDetailsStrings {
-  String cityLocation = 'Sarajevo';
+  String callText = 'NAZOVI';
+  String callInfoText = 'Kontakt telefon';
+  /*String cityLocation = 'Sarajevo';
   String productPriceText = '72.000 KM';
   String categoryName = 'Automobili';
   String productName = 'Audi A6';
   String productTestDesc =
       'Prodajem Audi A6 2012 godište, u izvrsnom stanju sa ljetnim gumama. Registrovan do maja 2020. Sve informacije na broj 061367223. Moguca je zamjena za ovaj artikal.';
-  String callText = 'NAZOVI';
-  String callInfoText = 'Kontakt telefon';
-  String callNumberText = '060 335 221 3';
+  
+  
+  String callNumberText = '060 335 221 3';*/
 }
 
 class UserProducts {
@@ -189,6 +191,8 @@ bool tokenstatus = false;
 var nepoklapanje = false;
 bool allowUserToChangePassword = false;
 bool allowUserToRegister = true;
+bool allowUsertoUpdateEmail = false;
+bool currentEmail = false;
 
 class InputFields {
   TextEditingController emailInputController = new TextEditingController();
@@ -225,7 +229,7 @@ final String immutableImg1 = "Dodaj sliku 1";
 final String immutableImg2 = "Dodaj sliku 2";
 final String immutableImg3 = "Dodaj sliku 3";
 
-bool favorite = false;
+bool favorite = true;
 final String noPhoto = "assets/images/nophoto.jpg";
 //final String noPhotoNetwork =
 //    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2Fnophoto.jpg?alt=media&token=cd241b95-8a79-4f1b-a4e0-4f4a77c255a8";

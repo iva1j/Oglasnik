@@ -1,5 +1,5 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/passValidator.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,7 +22,9 @@ class PasswordTextField extends StatelessWidget {
         hintText: 'Lozinka',
         contentPadding: EdgeInsets.only(left: 20),
       ),
-      controller: signUpPasswordInputController,
+
+      initialValue: registerPassword,
+      onChanged: (value) => registerPassword = value,
       keyboardType: TextInputType.visiblePassword,
       obscureText: true,
       textInputAction: TextInputAction.next,
