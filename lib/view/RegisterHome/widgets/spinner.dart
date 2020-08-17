@@ -26,7 +26,7 @@ class Loading extends StatelessWidget {
                 padding:
                     EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 4),
                 child: Text(
-                  createSwitcher
+                  !azurload
                       ? LoadingText().kreiranjeText
                       : LoadingText().updateText,
                   textAlign: TextAlign.center,

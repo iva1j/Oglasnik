@@ -10,6 +10,7 @@ class ProductDetailsViewModel extends ProductDetailsInterface {
   @override
   void onUpdatePressed(BuildContext context, int index) {
     createSwitcher = false;
+
     updateProductNameReturn = null;
     updateProductDescriptionReturn = null;
     updateProductPriceReturn = null;
