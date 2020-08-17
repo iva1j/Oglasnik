@@ -5,21 +5,14 @@ import 'package:Oglasnik/view/RegisterHome/widgets/MyFavorites/favProductsRow.da
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
 import 'package:flutter/material.dart';
 
-class FavoritesContainer extends StatefulWidget {
-  const FavoritesContainer({
+class FavContainer extends StatelessWidget {
+  const FavContainer({
     Key key,
     this.index,
     this.snapshot,
   }) : super(key: key);
-
   final AsyncSnapshot snapshot;
   final int index;
-
-  @override
-  _FavoritesContainerState createState() => _FavoritesContainerState();
-}
-
-class _FavoritesContainerState extends State<FavoritesContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,16 +44,16 @@ class _FavoritesContainerState extends State<FavoritesContainer> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           FavItemRow(
-            snapshot: widget.snapshot,
-            index: widget.index,
+            snapshot: snapshot,
+            index: index,
           ),
           Divider(
             thickness: SizeConfig.blockSizeVertical * 0.2,
           ),
           //extract
           email != null
-              ? FavProductsRow(snapshot: widget.snapshot, index: widget.index)
-              : itemCardTags(widget.snapshot.data[widget.index]),
+              ? FavProductsRow(snapshot: snapshot, index: index)
+              : itemCardTags(snapshot.data[index]),
         ],
       ),
     );
