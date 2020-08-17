@@ -35,8 +35,7 @@ class _FavItemRowState extends State<FavItemRow> {
             children: <Widget>[
               itemCardProductName(
                   context, widget.snapshot.data[widget.index], justSetState),
-              itemCardBodyDesc(
-                  widget.snapshot.data[widget.index], widget.index),
+              itemCardBodyDesc(widget.snapshot.data[widget.index]),
             ],
           ),
         ),
