@@ -14,6 +14,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:random_string/random_string.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 bool validSignIn = false;
@@ -73,7 +74,7 @@ class AuthService extends ChangeNotifier {
               });
               db.collection("firestoreUsers").document(email).updateData({
                 'email': email,
-                'token': token,
+                'token': randomAlphaNumeric(5),
               });
               Navigator.of(context)
                   .pushReplacement(MaterialPageRoute(builder: (_) {
