@@ -47,7 +47,6 @@ class _ProfileFormState extends State<ProfileForm> {
                       return CategoryLoading();
                     else {
                       userInfo = snapshot.data.documents;
-                      print(userInfo[0]["fullName"]);
                       return Column(
                         children: <Widget>[
                           UpdateName(user: userInfo[0]),

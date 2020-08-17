@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/updateProfile.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,9 @@ class ProfilButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // margin: EdgeInsets.only(
+      //   left: SizeConfig.blockSizeHorizontal * 10,
+      // ),
       child: SizedBox.fromSize(
         size: Size(80, 80), // button width and height
         child: ClipOval(
