@@ -6,7 +6,6 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/myProducts.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class MyPosts extends StatefulWidget {
@@ -37,9 +36,8 @@ class _MyPostsState extends State<MyPosts> {
                 return RegisteredHome();
               })),
           child: MyProducts()),
-      floatingActionButton: email != null
-          ? MainFloatingButton()
-          : homeFloatingAnimatedButton(),
+      floatingActionButton:
+          email != null ? MainFloatingButton() : homeFloatingAnimatedButton(),
       bottomSheet: BottomSheetContainer(),
     );
   }

@@ -4,8 +4,9 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemProductContainer.dart';
 import 'package:Oglasnik/viewModel/SplashViewModel/splashViewModel.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// Faruk Cidic
@@ -94,4 +95,17 @@ class FavoriteProduct extends AddFavoriteProductInterface {
       setStateParent();
     }
   }
+}
+
+void onTapFavorites(BuildContext context, AsyncSnapshot snapshot, int index,
+    Function setStateParent) {
+  Navigator.of(context).push(
+    FadeRoute(
+      page: ProductDetails(
+        productNameScreen: snapshot.data[index]['productName'],
+        productIdScreen: snapshot.data[index]['productID'],
+        setStateParent: setStateParent,
+      ),
+    ),
+  );
 }

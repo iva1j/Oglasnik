@@ -1,8 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/shared/sharedTextFields.dart/RegisterTextFields/nameTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation/nameValidator.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/updateProfile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

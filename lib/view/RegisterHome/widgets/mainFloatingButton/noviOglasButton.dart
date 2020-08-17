@@ -1,8 +1,5 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/transitionFade.dart';
-import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
+import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 
 class NoviOglasButton extends StatelessWidget {
@@ -26,26 +23,7 @@ class NoviOglasButton extends StatelessWidget {
 
               //extract onTap metod  Iva
               onTap: () {
-                newProductNameReturn = null;
-                newProductTagsReturn = null;
-                newProductDescriptionReturn = null;
-                newProductPriceReturn = null;
-                image1Name = null;
-                image2Name = null;
-                image3Name = null;
-                img1 = immutableImg1;
-                img2 = immutableImg2;
-                img3 = immutableImg3;
-                createSwitcher = true;
-                azurload = false;
-                print("Create switcher je sada: ");
-                print(createSwitcher);
-                Navigator.of(context).pushReplacement(FadeRoute(
-                    page: ArticlePage(
-                  editProduct: UserProducts().newProduct,
-                  productSnapshot: null,
-                  productID: null,
-                )));
+                noviOglasButton(context);
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

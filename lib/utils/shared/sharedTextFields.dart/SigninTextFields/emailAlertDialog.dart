@@ -1,5 +1,4 @@
 import 'package:Oglasnik/utils/shared/sharedvalidation/signinValidation/emailAlertDialogValidator.dart';
-import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 
 import '../../globalVariables.dart';

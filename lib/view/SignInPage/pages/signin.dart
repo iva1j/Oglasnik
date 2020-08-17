@@ -7,15 +7,11 @@ import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/FormSignIn.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/PrijavaWelcomeScreen.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/SignInButtonForm.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
-import 'package:connectivity/connectivity.dart';
-import 'package:Oglasnik/utils/checkForInternetConnection.dart';
-import 'package:Oglasnik/utils/globals.dart';
 
 class SigninPage extends StatefulWidget {
   final Function toggleView;
@@ -76,7 +72,6 @@ class _SigninPageState extends State<SigninPage> {
 
     SizeConfig().init(context);
 
-    var resetemail = emailInputControllerAlertDialog.text;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return GestureDetector(
       onTap: () {

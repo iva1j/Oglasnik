@@ -7,19 +7,6 @@ import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/ProductSearch/sele
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../../viewModel/PreviewProduct/previewProduct.dart';
-import '../../../../viewModel/PreviewProduct/previewProduct.dart';
-import '../../../../viewModel/PreviewProduct/previewProduct.dart';
-import '../../../../viewModel/PreviewProduct/previewProduct.dart';
-import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
-import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
-import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
-import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
-import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
-import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
-import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
-import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
-import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
-import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
 import 'ProductSearch/itemProductWidgets/itemProductContainer.dart';
 
 class SearchPageFutureBuilder extends StatefulWidget {

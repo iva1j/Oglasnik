@@ -1,10 +1,6 @@
 import 'package:Oglasnik/interface/productInterface.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../utils/shared/globalVariables.dart';
-import '../../view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemProductContainer.dart';
-import '../../view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemProductContainer.dart';
-import '../../view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemProductContainer.dart';
 import '../../view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemProductContainer.dart';
 
 ///Future function that takes all product from db and it's used in a Future Builder
