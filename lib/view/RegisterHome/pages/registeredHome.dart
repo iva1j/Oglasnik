@@ -4,6 +4,7 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
+import 'package:Oglasnik/viewModel/EditingUser/editUserViewModel.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -33,7 +34,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
       isLoading = false;
       doesPop = true;
     });
-
+    EditProfile().isEmailReserved(email);
     allProducts.clear();
     ProductViewModel().getProducts().then((value) => allProducts = value);
     print("LISTA SVIH PRODUKATA JE");
