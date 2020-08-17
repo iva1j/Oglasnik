@@ -29,7 +29,7 @@ String imageName(String imgURL) {
 class _ArticlePageWidgetState extends State<ArticlePageWidget> {
   @override
   Widget build(BuildContext context) {
-    //extract Iva
+    //extract
     if (!createSwitcher) {
       updateProductName = widget.productSnapshot.productName;
       updateProductPrice = widget.productSnapshot.productCijena;
