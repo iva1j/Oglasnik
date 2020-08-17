@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/services.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/pageViewValidation/productsFieldsValidator.dart';
@@ -19,8 +20,6 @@ class NazivTextField extends StatefulWidget {
 String newText;
 
 class _NazivTextFieldState extends State<NazivTextField> {
-  FocusNode _textFocus = new FocusNode();
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -39,12 +38,7 @@ class _NazivTextFieldState extends State<NazivTextField> {
               : updateProductNameReturn == null
                   ? updateProductName
                   : updateProductNameReturn,
-          onChanged: (value) {
-            if (!createSwitcher)
-              updateProductNameReturn = value;
-            else
-              newProductNameReturn = value;
-          },
+          onChanged: nazivFieldOnChanged,
           textCapitalization: TextCapitalization.sentences,
           validator: productFieldsValidator,
           inputFormatters: [

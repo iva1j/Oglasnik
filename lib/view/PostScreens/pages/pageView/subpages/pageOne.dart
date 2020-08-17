@@ -32,6 +32,7 @@ class _PageOneState extends State<PageOne> {
         }
       },
       child: WillPopScope(
+        // ignore: missing_return
         onWillPop: () {
           Navigator.of(context).pushAndRemoveUntil(
               FadeRoute(page: RegisteredHome()),

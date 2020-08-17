@@ -16,7 +16,8 @@ String productName,
     productImg1,
     productImg2,
     productImg3,
-    productprice;
+    productprice,
+    productCijena;
 
 GlobalKey<FormState> signUpRegisterFormKey =
     new GlobalKey<FormState>(debugLabel: 'signUpRegisterFormKey');

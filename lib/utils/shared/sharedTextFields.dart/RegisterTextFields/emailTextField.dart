@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation/emailRegisterCheckValidator.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:flutter/material.dart';
 
 class EmailTextField extends StatelessWidget {

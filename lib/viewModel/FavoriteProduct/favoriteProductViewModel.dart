@@ -2,9 +2,11 @@ import 'package:Oglasnik/interface/productInterface.dart';
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemProductContainer.dart';
 import 'package:Oglasnik/viewModel/SplashViewModel/splashViewModel.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// Faruk Cidic
@@ -80,4 +82,30 @@ class FavoriteProduct extends AddFavoriteProductInterface {
     }
     return retList;
   }
+
+  addOrRemoveFavorite(index, setStateParent, container) async {
+    final result = favoritesList.contains(container[index]['productID']);
+    if (result) {
+      favoritesList.remove(container[index]['productID']);
+      await FavoriteProduct().removeFavorite(email, container[index]);
+      setStateParent();
+    } else {
+      favoritesList.add(container[index]['productID']);
+      await FavoriteProduct().addFavorite(email, container[index]);
+      setStateParent();
+    }
+  }
+}
+
+void onTapFavorites(BuildContext context, AsyncSnapshot snapshot, int index,
+    Function setStateParent) {
+  Navigator.of(context).push(
+    FadeRoute(
+      page: ProductDetails(
+        productNameScreen: snapshot.data[index]['productName'],
+        productIdScreen: snapshot.data[index]['productID'],
+        setStateParent: setStateParent,
+      ),
+    ),
+  );
 }
