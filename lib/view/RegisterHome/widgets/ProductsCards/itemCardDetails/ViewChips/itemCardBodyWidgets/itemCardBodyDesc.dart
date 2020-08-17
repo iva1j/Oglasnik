@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
-Container itemCardBodyDesc(DocumentSnapshot snapshot, int index) {
+Container itemCardBodyDesc(DocumentSnapshot snapshot) {
   return Container(
     width: SizeConfig.blockSizeHorizontal * 53,
     margin: EdgeInsets.only(

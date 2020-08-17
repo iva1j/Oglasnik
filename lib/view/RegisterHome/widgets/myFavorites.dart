@@ -103,7 +103,7 @@ class _MyFavoritesState extends State<MyFavorites> {
                                                 snapshot.data[index],
                                                 justSetState),
                                             itemCardBodyDesc(
-                                                snapshot.data[index], index),
+                                                snapshot.data[index]),
                                           ],
                                         ),
                                       ),
@@ -145,31 +145,11 @@ class _MyFavoritesState extends State<MyFavorites> {
                                                               starBorderColor),
                                                   //extract
                                                   onPressed: () async {
-                                                    final result =
-                                                        favoritesList.contains(
-                                                            snapshot.data[index]
-                                                                ['productID']);
-                                                    if (result) {
-                                                      favoritesList.remove(
-                                                          snapshot.data[index]
-                                                              ['productID']);
-                                                      await FavoriteProduct()
-                                                          .removeFavorite(
-                                                              email,
-                                                              snapshot
-                                                                  .data[index]);
-                                                      setState(() {});
-                                                    } else {
-                                                      favoritesList.add(
-                                                          snapshot.data[index]
-                                                              ['productID']);
-                                                      await FavoriteProduct()
-                                                          .addFavorite(
-                                                              email,
-                                                              snapshot
-                                                                  .data[index]);
-                                                      setState(() {});
-                                                    }
+                                                    FavoriteProduct()
+                                                        .addOrRemoveFavorite(
+                                                            index,
+                                                            null,
+                                                            snapshot.data);
                                                   }),
                                             ),
                                           ],

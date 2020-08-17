@@ -68,21 +68,8 @@ Container itemContainer(
                                 size: 30, color: starBorderColor),
                         //extract Fahrudin
                         onPressed: () async {
-                          final result = favoritesList.contains(
-                              selectedProductsGlobal[index]['productID']);
-                          if (result) {
-                            favoritesList.remove(
-                                selectedProductsGlobal[index]['productID']);
-                            await FavoriteProduct().removeFavorite(
-                                email, selectedProductsGlobal[index]);
-                            setStateParent();
-                          } else {
-                            favoritesList.add(
-                                selectedProductsGlobal[index]['productID']);
-                            await FavoriteProduct().addFavorite(
-                                email, selectedProductsGlobal[index]);
-                            setStateParent();
-                          }
+                          FavoriteProduct().addOrRemoveFavorite(
+                              index, setStateParent, selectedProductsGlobal);
                         }),
                   ),
                 ],

@@ -47,3 +47,7 @@ abstract class ReadBrandInterface {
 abstract class ReadCitiesInterface {
   Future getCitiesFromProducts();
 }
+
+abstract class ProductDetailsInterface {
+  void onUpdatePressed(BuildContext context, int index);
+}
