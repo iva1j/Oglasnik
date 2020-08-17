@@ -17,11 +17,13 @@ class ItemCardContainer1 extends StatefulWidget {
     this.snapshot,
     this.index,
     this.setStateParent,
+    this.inMyProducts,
   }) : super(key: key);
   final BuildContext context;
   final List<DocumentSnapshot> snapshot;
   final int index;
   final Function setStateParent;
+  final bool inMyProducts;
   @override
   _ItemCardContainer1State createState() => _ItemCardContainer1State();
 }
@@ -91,23 +93,27 @@ class _ItemCardContainer1State extends State<ItemCardContainer1> {
               ? Row(
                   children: <Widget>[
                     itemCardTags(widget.snapshot[widget.index]),
-                    Container(
-                      child: IconButton(
-                          color: Colors.white,
-                          icon: favoritesList.contains(
-                                  widget.snapshot[widget.index]['productID'])
-                              ? Icon(
-                                  Icons.star,
-                                  size: 30,
-                                  color: mainAppColor,
-                                )
-                              : Icon(Icons.star_border,
-                                  size: 30, color: starBorderColor),
-                          onPressed: () async {
-                            FavoriteProduct().addOrRemoveFavorite(widget.index,
-                                widget.setStateParent, widget.snapshot);
-                          }),
-                    ),
+                    !widget.inMyProducts
+                        ? Container(
+                            child: IconButton(
+                                color: Colors.white,
+                                icon: favoritesList.contains(widget
+                                        .snapshot[widget.index]['productID'])
+                                    ? Icon(
+                                        Icons.star,
+                                        size: 30,
+                                        color: mainAppColor,
+                                      )
+                                    : Icon(Icons.star_border,
+                                        size: 30, color: starBorderColor),
+                                onPressed: () async {
+                                  FavoriteProduct().addOrRemoveFavorite(
+                                      widget.index,
+                                      widget.setStateParent,
+                                      widget.snapshot);
+                                }),
+                          )
+                        : Container(),
                   ],
                 )
               : itemCardTags(widget.snapshot[widget.index]),
