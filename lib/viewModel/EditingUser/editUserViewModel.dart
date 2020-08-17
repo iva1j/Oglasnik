@@ -46,42 +46,6 @@ class EditProfile extends UpdateProfileInterface {
   }
 }
 
-// @override
-// Future<List<DocumentSnapshot>> getCurrentUserInfo(String email) async {
-//   var firestore = Firestore.instance;
-//   QuerySnapshot qn = await firestore
-//       .collection('firestoreUsers')
-//       .where('email', isEqualTo: email)
-//       .getDocuments();
-//   return qn.documents;
-// }
-
-// Future<bool> isEmailReserved(String email) async {
-//   final QuerySnapshot result = await Firestore.instance
-//       .collection('firestoreUsers')
-//       .where('email', isEqualTo: email)
-//       .limit(1)
-//       .getDocuments();
-//   final List<DocumentSnapshot> emailDoc = result.documents;
-//   if (emailDoc.length > 0) {
-//     if (email == emailDoc[0]["email"]) {
-//       allowUsertoUpdateEmail = true;
-//       currentEmail = true;
-
-//       print('email ostao nepromijenjen, ostali podaci uspješno editovani!');
-//     } else {
-//       allowUsertoUpdateEmail = false;
-//       currentEmail = false;
-//       print(
-//           'Bila je korekcija emaila, provjera u validaciji je nakon ovog ispisa!');
-//     }
-//   } else {
-//     allowUsertoUpdateEmail = true;
-//     currentEmail = false;
-//     print("else: Trenutni status Alert Dialoga:" +
-//         allowUsertoUpdateEmail.toString());
-//   }
-// }
 
 void onPressedSaveButton(BuildContext context) async {
   if (!allowUsertoUpdateEmail && !currentEmail)
