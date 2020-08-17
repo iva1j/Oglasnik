@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/strings.dart';
 
+// ignore: missing_return
 String emailRegisterCheck(String value) {
   bool smislen = false;
   bool dodatni = false;
@@ -51,7 +52,7 @@ String emailRegisterCheck(String value) {
     return 'Email se već koristi';
 }
 
-
+// ignore: missing_return
 String emailUpdateCheck(String value) {
   bool smislen = false;
   bool dodatni = false;
@@ -102,6 +103,5 @@ String emailUpdateCheck(String value) {
   } else
     return 'Neispravan unos ili se email već koristi';
 }
-
 
 // allowUsertoUpdateEmail || currentEmail

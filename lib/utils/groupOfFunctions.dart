@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
-import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 
@@ -39,6 +38,7 @@ passwordChangeInitControllers() {
 }
 
 passwordChangeDispose() {
+  // ignore: invalid_use_of_protected_member
   passwordChangeFormKey.currentState.dispose();
   emailInputController.dispose();
   tokenInputController.dispose();

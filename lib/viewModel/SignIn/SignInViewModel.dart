@@ -169,7 +169,7 @@ createdShowDialog(BuildContext context) {
 }
 
 ///When user enter his email on AlertDialog, button "pošalji" is configured bellow
-void onPressedPosaljiKod(BuildContext context) async{
+void onPressedPosaljiKod(BuildContext context) async {
   Container(child: AuthService().allowPasswordChange(context, forgetEmail));
   AuthService().onPressedAlertDialog(context, forgetEmail, tokenCode);
 }

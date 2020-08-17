@@ -294,7 +294,6 @@ class _MyProductsState extends State<MyProducts> {
                           },
                         ),
                       );
-                ;
               } else {
                 return CategoryLoading();
               }

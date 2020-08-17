@@ -12,8 +12,6 @@ Container itemCardTags(DocumentSnapshot snapshot) {
         mainAxisAlignment: MainAxisAlignment.start,
         children: snapshot['productTag']
             .split(',')
-            //.removeWhere((item) => item.length == 0)
-            //.remove("")
             .map<Widget>(
               (element) => element.trim().length > 0
                   ? new OglasTag(naziv: element)

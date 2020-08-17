@@ -3,8 +3,6 @@ import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../strings.dart';
-
 IconButton newInputBackButtonIphone(BuildContext context) {
   return IconButton(
       icon: Icon(

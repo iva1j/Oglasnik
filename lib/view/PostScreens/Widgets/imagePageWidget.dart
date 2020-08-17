@@ -1,5 +1,4 @@
 import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/utils/checkForInternetConnection.dart';
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
@@ -15,12 +14,10 @@ import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:Oglasnik/viewModel/ImageUpload/upload.dart';
-import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:random_string/random_string.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
 
 class ImagePageWidget extends StatefulWidget {
@@ -47,14 +44,12 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
   }
 
   String _path1, _path2, _path3;
-  String _extension1, _extension2, _extension3;
   String _fileName1, _fileName2, _fileName3;
+  String _extension1, _extension2, _extension3;
 
   bool loading = false;
 
   FileType _imageType = FileType.image;
-
-  List<StorageUploadTask> _tasks = <StorageUploadTask>[];
 
   //extract
   void openFileExplorer1() async {

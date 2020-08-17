@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/updateProfile.dart';
 import 'package:flutter/material.dart';

@@ -2,7 +2,6 @@ import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/imagePageWidget.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 class PageFive extends StatefulWidget {
   const PageFive({
