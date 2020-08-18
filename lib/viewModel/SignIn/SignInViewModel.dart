@@ -37,9 +37,7 @@ void onPressedSignInModel(
 
   if (hasActiveConnection) {
     Timer(Duration(seconds: 1), () {
-      if (
-          //signInFormKey.currentState.validate() &&
-          status == true) {
+      if (signInFormKey.currentState.validate() && status == true) {
         print('Logged in');
         globals.email = email;
         favoritesList.clear();

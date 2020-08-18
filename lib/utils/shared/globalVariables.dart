@@ -20,7 +20,7 @@ String productName,
     productCijena;
 
 GlobalKey<FormState> registerFormKey = new GlobalKey<FormState>();
-//GlobalKey<FormState> signInFormKey = new GlobalKey<FormState>();
+GlobalKey<FormState> signInFormKey = new GlobalKey<FormState>();
 
 GlobalKey<FormState> passwordChangeFormKey = new GlobalKey<FormState>();
 GlobalKey<FormState> alertFormKey = new GlobalKey<FormState>();

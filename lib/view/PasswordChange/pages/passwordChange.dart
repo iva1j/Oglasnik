@@ -33,26 +33,35 @@ class _PasswordChangeState extends State<PasswordChange> {
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-    return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        leading: IconButton(
-            icon: Icon(
-              Icons.clear,
-              color: Colors.black,
-              size: 24,
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }),
-      ),
-      body: SingleChildScrollView(
-        reverse: true,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: bottom),
-          child: FormPasswordChanged(email: email),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          currentFocus.focusedChild.unfocus();
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomPadding: false,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0.0,
+          leading: IconButton(
+              icon: Icon(
+                Icons.clear,
+                color: Colors.black,
+                size: 24,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              }),
+        ),
+        body: SingleChildScrollView(
+          reverse: true,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: bottom),
+            child: FormPasswordChanged(email: email),
+          ),
         ),
       ),
     );

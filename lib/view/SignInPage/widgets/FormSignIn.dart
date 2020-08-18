@@ -21,21 +21,21 @@ class _FormSignInState extends State<FormSignIn> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        //key: signInFormKey,
+        key: signInFormKey,
         child: Theme(
-      data: ThemeData(
-        primaryColor: Colors.black54,
-        errorColor: Colors.red,
-      ),
-      child: Column(
-        children: <Widget>[
-          EmailSignInForm(widget: widget),
-          PasswordSignInForm(widget: widget),
-          Authentication(),
-          SignInButtonForm(widget: widget),
-          ForgotPassSignInText()
-        ],
-      ),
-    ));
+          data: ThemeData(
+            primaryColor: Colors.black54,
+            errorColor: Colors.red,
+          ),
+          child: Column(
+            children: <Widget>[
+              EmailSignInForm(widget: widget),
+              PasswordSignInForm(widget: widget),
+              Authentication(),
+              SignInButtonForm(widget: widget),
+              ForgotPassSignInText()
+            ],
+          ),
+        ));
   }
 }
