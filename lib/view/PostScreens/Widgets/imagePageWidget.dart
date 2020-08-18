@@ -42,6 +42,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
     super.initState();
   }
 
+  void refresh() {
+    setState(() {});
+  }
+
   String _path1, _path2, _path3;
   String _fileName1, _fileName2, _fileName3;
   String _extension1, _extension2, _extension3;
@@ -86,41 +90,188 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
 //extract
   void deleteFirstEntry() {
-    setState(() {
-      if (img2 != immutableImg2 && img3 != immutableImg3) {
-        img1 = img2;
-        img2 = img3;
-        img3 = immutableImg3;
-      } else if (img2 != immutableImg2) {
-        img1 = img2;
-        img2 = immutableImg2;
-      } else {
-        img1 = immutableImg1;
-      }
-    });
+    if (createSwitcher) {
+      setState(() {
+        if (img2 != immutableImg2 && img3 != immutableImg3) {
+          img1 = img2;
+          img2 = img3;
+          img3 = immutableImg3;
+        } else if (img2 != immutableImg2) {
+          img1 = img2;
+          img2 = immutableImg2;
+        } else {
+          img1 = immutableImg1;
+        }
+      });
+    } else {
+      setState(() {
+        if ((img2 != immutableImg2 || image2Name != null) &&
+            (img3 != immutableImg3 || image3Name != null)) {
+          if (img1 != immutableImg1) {
+            if (img2 != immutableImg2) {
+              /*
+              img1 = immutableImg1;
+              image1Name = img2;*/
+
+              img1 = img2;
+              pathGlobal1 = pathGlobal2;
+              productImg1Update = productImg2Update;
+            } else {
+              image1Name = image2Name;
+              productImg1Update = productImg2Update;
+            }
+
+            if (img3 != immutableImg3) {
+              img2 = img3;
+              pathGlobal2 = pathGlobal3;
+              img3 = immutableImg3;
+              productImg2Update = productImg3Update;
+              productImg3Update = null;
+            } else {
+              image2Name = image3Name;
+              image3Name = null;
+              productImg2Update = productImg3Update;
+              productImg3Update = null;
+            }
+          } else {
+            if (img2 != immutableImg2) {
+              img1 = img2;
+              pathGlobal1 = pathGlobal2;
+              productImg1Update = productImg2Update;
+            } else {
+              image1Name = image2Name;
+              productImg1Update = productImg2Update;
+            }
+
+            if (img3 != immutableImg3) {
+              img2 = img3;
+              pathGlobal2 = pathGlobal3;
+              img3 = immutableImg3;
+              productImg2Update = productImg3Update;
+              productImg3Update = null;
+            } else {
+              image2Name = image3Name;
+              image3Name = null;
+              productImg2Update = productImg3Update;
+              productImg3Update = null;
+            }
+          }
+        } else if (img2 != immutableImg2 || image2Name != null) {
+          if (img2 != immutableImg2) {
+            //if (img1 != immutableImg1) {
+            img1 = img2;
+            img2 = immutableImg2;
+            pathGlobal1 = pathGlobal2;
+            pathGlobal2 = null;
+            productImg1Update = productImg2Update;
+            productImg2Update = null;
+            /*} else {
+              img1 = img2;
+              img2 = immutableImg2;
+              pathGlobal1 = pathGlobal2;
+              pathGlobal2 = null;
+              productImg1Update = productImg2Update;
+              productImg2Update = null;
+            }*/
+          } else {
+            if (img1 != immutableImg1) {
+              img1 = immutableImg1;
+              image1Name = image2Name;
+              image2Name = null;
+              productImg1Update = productImg2Update;
+              productImg2Update = null;
+            } else {
+              image1Name = image2Name;
+              image2Name = null;
+              productImg1Update = productImg2Update;
+              productImg2Update = null;
+            }
+          }
+        } else {
+          img1 != immutableImg1 ? img1 = immutableImg1 : image1Name = null;
+          productImg1Update = null;
+        }
+      });
+    }
   }
 
 //extract
   void deleteSecondEntry() {
-    setState(() {
-      if (img3 != immutableImg3) {
-        img2 = img3;
-        img3 = immutableImg3;
-      } else {
-        img2 = immutableImg2;
-      }
-    });
+    if (createSwitcher) {
+      setState(() {
+        if (img3 != immutableImg3) {
+          img2 = img3;
+          img3 = immutableImg3;
+        } else {
+          img2 = immutableImg2;
+        }
+      });
+    } else {
+      setState(() {
+        if (img3 != immutableImg3 || image3Name != null) {
+          if (img3 != immutableImg3) {
+            //if (img2 != immutableImg2) {
+            img2 = img3;
+            pathGlobal2 = pathGlobal3;
+            pathGlobal3 = null;
+            img3 = immutableImg3;
+            productImg2Update = productImg3Update;
+            productImg3Update = null;
+            /*} else {
+              img2 = img3;
+              pathGlobal2 = pathGlobal3;
+              pathGlobal3 = null;
+              img3 = immutableImg3;
+              productImg2Update = productImg3Update;
+              productImg3Update = null;
+            }*/
+          } else {
+            if (img2 != immutableImg2) {
+              img2 = immutableImg2;
+              image2Name = image3Name;
+              image3Name = null;
+              productImg2Update = productImg3Update;
+              productImg3Update = null;
+            } else {
+              image2Name = image3Name;
+              image3Name = null;
+              productImg2Update = productImg3Update;
+              productImg3Update = null;
+            }
+          }
+        } else {
+          img2 != immutableImg2 ? img2 = immutableImg2 : image2Name = null;
+          productImg2Update = null;
+        }
+      });
+    }
   }
 
 //extract
   void deleteThirdEntry() {
-    setState(() {
-      img3 = immutableImg3;
-    });
+    if (createSwitcher) {
+      setState(() {
+        img3 = immutableImg3;
+      });
+    } else {
+      setState(() {
+        if (img3 != immutableImg3) {
+          img3 = immutableImg3;
+          productImg3Update = null;
+        } else {
+          image3Name = null;
+          productImg3Update = null;
+        }
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    /*
+    print('Image1Name ' + image1Name);
+    print('Image2Name ' + image2Name);
+    print('Image3Name ' + image3Name);*/
     SizeConfig().init(context);
     return loading ? Loading() : imageUploadContainer(context);
   }
@@ -183,13 +334,13 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               azurload = true;
               if (img1 != immutableImg1)
                 await upload(img1, pathGlobal1, 1)
-                    .then((value) => productImg1 = value);
+                    .then((value) => productImg1Update = value);
               if (img2 != immutableImg2)
                 await upload(img2, pathGlobal2, 2)
-                    .then((value) => productImg2 = value);
+                    .then((value) => productImg2Update = value);
               if (img3 != immutableImg3)
                 await upload(img3, pathGlobal3, 3)
-                    .then((value) => productImg3 = value);
+                    .then((value) => productImg3Update = value);
 
               productName = updateProductNameReturn == null
                   ? updateProductName
@@ -218,6 +369,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                 productLocation,
                 productTag,
                 productDesc,
+                productImg1Update,
+                productImg2Update,
+                productImg3Update,
+                /*
                 productImg1 == null
                     ? widget.productSnapshot.productImg1
                     : productImg1,
@@ -226,7 +381,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                     : productImg2,
                 productImg3 == null
                     ? widget.productSnapshot.productImg3
-                    : productImg3,
+                    : productImg3,*/
                 productprice,
               );
               img1 = immutableImg1;
@@ -238,6 +393,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               pathGlobal1 = null;
               pathGlobal2 = null;
               pathGlobal3 = null;
+              productImg1Update = null;
+              productImg2Update = null;
+              productImg3Update = null;
               print('status interneta:' + productIsOnline.toString());
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (_) => RegisteredHome()));
