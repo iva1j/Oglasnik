@@ -285,7 +285,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             editProduct: widget.editProduct,
           ),
           Container(
-            margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 18),
+            margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 16),
           ),
           imageOneUploadButton(openFileExplorer1, deleteFirstEntry),
           imageTwoUploadButton(openFileExplorer2, deleteSecondEntry),
@@ -296,6 +296,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               Container(
                   margin: EdgeInsets.only(
                       top: SizeConfig.blockSizeVertical * 3,
+                      left: SizeConfig.blockSizeHorizontal * 12,
                       bottom: SizeConfig.blockSizeVertical * 3),
                   child: priceTextField()),
               Padding(
@@ -307,7 +308,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             ],
           ),
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 6,
+            height: SizeConfig.blockSizeVertical * 8,
           ),
           Container(
             margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
