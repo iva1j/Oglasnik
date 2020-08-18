@@ -27,6 +27,16 @@ class FavoriteProduct extends AddFavoriteProductInterface {
     return null;
   }
 
+  Future getAllFavoritesIDs() async {
+    final QuerySnapshot favorites = await Firestore.instance
+        .collection('firestoreUsers')
+        .document(email)
+        .collection('savedProducts')
+        .getDocuments();
+    List<DocumentSnapshot> favoritesDocs = favorites.documents;
+    return favoritesDocs;
+  }
+
   Future removeFavorite(String email, DocumentSnapshot product) {
     db
         .collection("firestoreUsers")
@@ -46,16 +56,6 @@ class FavoriteProduct extends AddFavoriteProductInterface {
     }
 
     return false;
-  }
-
-  Future getAllFavoritesIDs() async {
-    final QuerySnapshot favorites = await Firestore.instance
-        .collection('firestoreUsers')
-        .document(email)
-        .collection('savedProducts')
-        .getDocuments();
-    List<DocumentSnapshot> favoritesDocs = favorites.documents;
-    return favoritesDocs;
   }
 
   Future getAllUnfinishedProducts() async {
