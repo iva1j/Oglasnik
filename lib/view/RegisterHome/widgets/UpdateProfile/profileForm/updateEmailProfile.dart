@@ -5,12 +5,23 @@ import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class UpdateEmail extends StatelessWidget {
+class UpdateEmail extends StatefulWidget {
   const UpdateEmail({
     Key key,
     this.user,
   }) : super(key: key);
   final DocumentSnapshot user;
+
+  @override
+  _UpdateEmailState createState() => _UpdateEmailState();
+}
+
+class _UpdateEmailState extends State<UpdateEmail> {
+  @override
+  void initState() {
+    updateProfileEmail = email;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

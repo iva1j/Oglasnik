@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successOnCreateAlertDialog.dart';
@@ -84,6 +83,7 @@ void loginPrefs(BuildContext context, String email) async {
 ///Query kojim provjeravamo da li je željeni user unio broj telefona u bazu
 ///ako jeste, dodjeljujemo value iz baze u varijablu phoneNumber
 void phoneNumberSetting(String email) async {
+  // ignore: await_only_futures
   final userQuery = await Firestore.instance
       .collection('firestoreUsers')
       .where('email', isEqualTo: email)

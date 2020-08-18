@@ -15,6 +15,7 @@ class SearchPageFutureBuilder extends StatefulWidget {
     @required this.query,
   }) : super(key: key);
   @override
+  // ignore: override_on_non_overriding_member
   final String query;
   _SearchPageFutureBuilderState createState() =>
       _SearchPageFutureBuilderState();
