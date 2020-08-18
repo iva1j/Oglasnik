@@ -55,7 +55,7 @@ class OdustaniButtonDialog extends StatelessWidget {
               fontSize: 14),
         ),
         onPressed: () {
-          Navigator.of(context).pop(FadeRoute());
+          Navigator.of(context).pop();
         });
   }
 }

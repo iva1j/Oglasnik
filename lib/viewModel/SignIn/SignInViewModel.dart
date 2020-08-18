@@ -20,7 +20,7 @@ import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInterne
 
 ///When user enter his email on AlertDialog, onPressed "odustani" is bellow:
 void alerDialogOnPressedOdustani(BuildContext context) {
-  Navigator.of(context).pop(FadeRoute());
+  Navigator.of(context).pop();
 }
 
 ///funkcija kojom provjeravamo da li cemo pustiti usera da se sign in

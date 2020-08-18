@@ -44,7 +44,7 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
               ),
             ),
             SizedBox(
-              height: SizeConfig.blockSizeVertical * 27.64,
+              height: SizeConfig.blockSizeVertical * 28,
             ),
             PageViewButton(),
           ],

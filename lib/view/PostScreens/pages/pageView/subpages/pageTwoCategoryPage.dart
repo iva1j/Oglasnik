@@ -99,7 +99,8 @@ class _CategoryPageState extends State<CategoryPage> {
                                       underline: Container(),
                                       onChanged: (String productCategoryList) =>
                                           setState(
-                                        () => categoryListValue(productCategoryList),
+                                        () => categoryListValue(
+                                            productCategoryList),
                                       ),
                                       items: categoryNames
                                           .map<custom.DropdownMenuItem<String>>(
@@ -168,7 +169,7 @@ class _CategoryPageState extends State<CategoryPage> {
                     ),
                   ),
                   SizedBox(
-                    height: SizeConfig.blockSizeVertical * 11.5,
+                    height: SizeConfig.blockSizeVertical * 11.7,
                   ),
                   PageViewButton(),
                 ],
@@ -179,6 +180,4 @@ class _CategoryPageState extends State<CategoryPage> {
       ),
     );
   }
-
-  
 }
