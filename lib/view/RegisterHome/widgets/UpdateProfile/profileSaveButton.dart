@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -21,10 +20,7 @@ class ProfileSaveButton extends StatelessWidget {
           'Sačuvaj',
           () async {
             await EditProfile().isEmailReserved(email);
-            print('prvi' + isOnline.toString());
-            // updateProfileEmail.isEmpty || updateProfileEmail == null
-            //     ? updateProfileEmail = email
-            //     : updateProfileEmail;
+
             onPressedSaveButton(context);
           },
         ),

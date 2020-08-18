@@ -5,7 +5,6 @@ import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successOnCreateAlertDialog.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +14,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
+
 
 ///When user enter his email on AlertDialog, onPressed "odustani" is bellow:
 void alerDialogOnPressedOdustani(BuildContext context) {
@@ -158,6 +158,7 @@ createdShowDialog(BuildContext context) {
 
 ///When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) async {
+ 
   Container(child: AuthService().allowPasswordChange(context, forgetEmail));
-  AuthService().onPressedAlertDialog(context, forgetEmail, tokenCode);
+  AuthService().onPressedAlertDialog(context, forgetEmail);
 }
