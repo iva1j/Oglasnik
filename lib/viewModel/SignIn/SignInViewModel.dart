@@ -17,12 +17,9 @@ import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
 
-TextEditingController emailInputControllerAlertDialog;
-
 ///When user enter his email on AlertDialog, onPressed "odustani" is bellow:
 void alerDialogOnPressedOdustani(BuildContext context) {
   Navigator.of(context).pop();
-  emailInputController.clear();
 }
 
 ///onPressed toggle that switch SignIn screen to SignUp
@@ -37,10 +34,7 @@ void toggleRegister(BuildContext context) {
 }
 
 //clearing input fields with:
-void cleanLoginInputFields() {
-  emailInputController.clear();
-  passwordInputController.clear();
-}
+void cleanLoginInputFields() {}
 
 ///funkcija kojom provjeravamo da li cemo pustiti usera da se sign in
 ///prvobitno se provjerava status konekcije sa isOnline, ako jeste
@@ -54,12 +48,6 @@ void onPressedSignInModel(
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
   print('Internet konekcija dostupna: ' + hasInternetConnection.toString());
   await InternetConnectivity().checkForConnectivity();
-
-  // Timer(Duration(seconds: 1), () {
-  //   print('trajanje sekunde:');
-  //   InternetConnectivity().checkForConnectivity();
-  // });
-  // print('sekunda prošla:');
 
   if (hasActiveConnection) {
     Timer(Duration(seconds: 1), () {

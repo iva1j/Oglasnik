@@ -22,10 +22,6 @@ class Authentication extends StatelessWidget {
                 AuthService().signInOrNot(context, signInEmail, signInPassword),
           ),
           Container(child: AuthService().checkStatus(context, email)),
-          // Container(
-          //   child: AuthService().allowPasswordChange(
-          //       context, emailInputControllerAlertDialog.text),
-          // )
         ],
       ),
     );

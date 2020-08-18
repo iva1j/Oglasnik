@@ -194,11 +194,6 @@ bool allowUserToRegister = true;
 bool allowUsertoUpdateEmail = false;
 bool currentEmail = false;
 
-class InputFields {
-  TextEditingController emailInputController = new TextEditingController();
-  TextEditingController passwordInputController = new TextEditingController();
-}
-
 class FlushBarText {
   String message = "Nije moguće odabrati više od 3 grada.";
 }

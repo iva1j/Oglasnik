@@ -26,6 +26,9 @@ class _LogoutButtonState extends State<LogoutButton> {
         await FirebaseAuth.instance.signOut();
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.remove('email');
+        updateProfileEmail = null;
+        updateProfileName = null;
+        updateProfilePhoneNumber = null;
         //prefs.remove('phoneNumber');
         Navigator.of(context).pushAndRemoveUntil(
             FadeRoute(page: AnonymousHome()), (Route<dynamic> route) => false);

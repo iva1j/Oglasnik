@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/confirmPassValidator.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:flutter/material.dart';
@@ -19,23 +20,16 @@ class PovrdiLozinku extends StatelessWidget {
             onFieldSubmitted: (v) {
               FocusScope.of(context).unfocus();
             },
-            style: TextStyle(
-                // color: (nepoklapanje == true)
-                //     ? Colors.red
-                //     : Colors.black,
-                color: doesMatch ? Colors.red : Colors.black),
+            style: TextStyle(color: doesMatch ? Colors.red : Colors.black),
             decoration: InputDecoration(
               hintText: 'Potvrdi lozinku',
               contentPadding: EdgeInsets.only(left: 10),
             ),
             obscureText: true,
-            controller: confirmPasswordInputController,
+            //controller: confirmPasswordInputController,
+            initialValue: confirmPasswordChanged,
+            onChanged: (value) => confirmPasswordChanged = value,
             validator: confirmpasswordValidator,
-            // validator: (value) {
-            //   if (value != passwordInputController.text) {
-            //     return 'Lozinke se ne podudaraju!';
-            //   }
-            // }
           ),
         ),
       ),

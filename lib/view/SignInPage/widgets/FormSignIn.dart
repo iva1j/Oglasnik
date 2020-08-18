@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/ForgotPassText.dart';
 
 import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/PasswordSignInForm.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/formSignInFields/SignInButtonForm.dart';
@@ -34,7 +35,7 @@ class _FormSignInState extends State<FormSignIn> {
               PasswordSignInForm(widget: widget),
               Authentication(),
               SignInButtonForm(widget: widget),
-              // ForgotPassSignInText()
+              ForgotPassSignInText()
             ],
           ),
         ));

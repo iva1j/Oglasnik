@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/tokenValidator.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,9 @@ class UnesiKod extends StatelessWidget {
               hintText: 'Unesi kod',
               contentPadding: EdgeInsets.only(left: 10),
             ),
-            controller: tokenInputController,
+            //controller: tokenInputController,
+            initialValue: passwordChangedToken,
+            onChanged: (value) => passwordChangedToken = value,
             validator: tokenValidator,
           ),
         ),

@@ -22,54 +22,24 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
-  // Connectivity connectivity;
-  // // StreamSubscription<ConnectivityResult> subscription;
-
-  // Map _source = {ConnectivityResult.none: false};
-  // MyConnectivity _connectivity = MyConnectivity.instance;
-
   FirebaseUser user;
 
   bool islogin = false;
 
   @override
   initState() {
-    loginInitControllers();
     cleanSignIn();
-    //   InternetConnection().checkForInternet();
-    // InternetConnection();
-    // _connectivity.initialise();
-    // _connectivity.myStream.listen((source) {
-    //   setState(() => _source = source);
-    // });
-
     InternetConnectivity().checkForConnectivity();
     super.initState();
   }
 
   void dispose() {
-    //loginDisposeControllers();
-    // _connectivity.disposeStream();
     super.dispose();
   }
 
   String error = '';
   @override
   Widget build(BuildContext context) {
-    // switch (_source.keys.toList()[0]) {
-    //   case ConnectivityResult.none:
-    //     isOnline = true;
-    //     string = "Offline";
-    //     break;
-    //   case ConnectivityResult.mobile:
-    //     isOnline = false;
-    //     string = "Mobile: Online";
-    //     break;
-    //   case ConnectivityResult.wifi:
-    //     isOnline = false;
-    //     string = "WiFi: Online";
-    // }
-
     SizeConfig().init(context);
 
     final bottom = MediaQuery.of(context).viewInsets.bottom;

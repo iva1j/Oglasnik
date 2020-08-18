@@ -32,7 +32,7 @@ class _NazivTextFieldState extends State<NazivTextField> {
         ),
         child: TextFormField(
           autocorrect: false,
-          //extract Iva
+          //extract
           initialValue: createSwitcher
               ? newProductNameReturn == null ? "" : newProductNameReturn
               : updateProductNameReturn == null

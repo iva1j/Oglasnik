@@ -6,14 +6,6 @@ import 'package:Oglasnik/view/RegistrationPageAuth/widgets/onPressedRegister.dar
 
 String fullNameRegister, emailRegister, passwordRegister, phoneNumberRegister;
 
-void cleanInputFields(signUpFullNameInputController, signUpEmailInputController,
-    signUpPhoneNumberInputController, signUpPasswordInputController) {
-  signUpFullNameInputController.clear();
-  signUpEmailInputController.clear();
-  signUpPhoneNumberInputController.clear();
-  signUpPasswordInputController.clear();
-}
-
 SizedBox registerButton(BuildContext context) {
   return button(
     AppLabelsAuth().registracija,

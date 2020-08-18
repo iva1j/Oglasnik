@@ -11,13 +11,17 @@ class MojiOglasiButton extends StatefulWidget {
   @override
   _MojiOglasiButtonState createState() => _MojiOglasiButtonState();
 }
-
+ 
 class _MojiOglasiButtonState extends State<MojiOglasiButton> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Container(
+      // height: SizeConfig.blockSizeVertical *8,
+      // width: SizeConfig.blockSizeHorizontal * 15,
       margin: EdgeInsets.only(
-        bottom: SizeConfig.blockSizeVertical * 3,
+        bottom: SizeConfig.blockSizeVertical * 2,
+      //  left: SizeConfig.blockSizeHorizontal*5,
+        // right: SizeConfig.blockSizeHorizontal*3
       ),
       child: SizedBox.fromSize(
         size: Size(80, 80), // button width and height
@@ -34,7 +38,7 @@ class _MojiOglasiButtonState extends State<MojiOglasiButton> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.assignment), // icon
-                  Text("Moji oglasi"),
+                  Text("Moji oglasi",textAlign: TextAlign.center,),
                   // text
                 ],
               ),

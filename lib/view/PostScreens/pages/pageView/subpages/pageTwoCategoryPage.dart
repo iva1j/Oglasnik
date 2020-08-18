@@ -4,6 +4,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
+import 'package:Oglasnik/viewModel/CreateProduct/productCategoryViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/custom_dropdown.dart'
     as custom;
@@ -96,27 +97,9 @@ class _CategoryPageState extends State<CategoryPage> {
                                         height: 1.5,
                                       ),
                                       underline: Container(),
-                                      //extract Faruk
                                       onChanged: (String productCategoryList) =>
                                           setState(
-                                        () => {
-                                          if (createSwitcher)
-                                            {
-                                              dropdownValueCategory =
-                                                  productCategoryList,
-                                              dropdownValueBrand =
-                                                  categoryBrands[
-                                                      dropdownValueCategory][0],
-                                            }
-                                          else
-                                            {
-                                              updateDropdownValueCategory =
-                                                  productCategoryList,
-                                              updateDropdownValueBrand =
-                                                  categoryBrands[
-                                                      updateDropdownValueCategory][0],
-                                            }
-                                        },
+                                        () => categoryListValue(productCategoryList),
                                       ),
                                       items: categoryNames
                                           .map<custom.DropdownMenuItem<String>>(
@@ -196,4 +179,6 @@ class _CategoryPageState extends State<CategoryPage> {
       ),
     );
   }
+
+  
 }

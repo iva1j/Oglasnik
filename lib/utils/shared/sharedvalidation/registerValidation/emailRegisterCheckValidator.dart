@@ -63,7 +63,7 @@ String emailUpdateCheck(String value) {
   RegExp regex = new RegExp(pattern);
   RegExp newregex = new RegExp(newpattern);
   if (value.length == null || value == '') return 'Polje ne smije biti prazno';
-  if (allowUsertoUpdateEmail) {
+  if (allowUsertoUpdateEmail) { 
     if (newregex.hasMatch(value)) {
       smislen = true;
     }
