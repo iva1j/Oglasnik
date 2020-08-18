@@ -86,10 +86,11 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ),
         body: WillPopScope(
-          onWillPop: () => Navigator.of(context)
-              .pushReplacement(MaterialPageRoute(builder: (_) {
-            return AnonymousHome();
-          })),
+          onWillPop: () {
+            Navigator.of(context).pushReplacement(
+              FadeRoute(page: AnonymousHome()),
+            );
+          },
           child: SingleChildScrollView(
             reverse: true,
             child: Padding(

@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/smallMainButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/anonProductDetailsTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsCategory.dart';
@@ -108,9 +109,8 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                           onTap: () {
                                             Navigator.push(
                                               context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    PrikazSlika(
+                                              FadeRoute(
+                                                page: PrikazSlika(
                                                   listaSlika:
                                                       widget.imageSlider,
                                                 ),

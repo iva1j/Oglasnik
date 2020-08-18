@@ -38,10 +38,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
           ),
         ),
         body: WillPopScope(
-          onWillPop: () => Navigator.of(context)
-              .pushReplacement(MaterialPageRoute(builder: (_) {
-            return RegisteredHome();
-          })),
+          onWillPop: () {
+            Navigator.of(context).pushReplacement(
+              FadeRoute(page: RegisteredHome()),
+            );
+          },
           child: SingleChildScrollView(
             reverse: true,
             child: Padding(

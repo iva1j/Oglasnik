@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
@@ -56,16 +57,14 @@ void onPressedRegister(BuildContext context, String fullName, String email,
 
         loginPrefs(context, registerEmail);
         globals.email = registerEmail;
+        registeredGlob = true;
 
         favoritesList.clear();
         FavoriteProduct().getAllFavoritesIDs().then((value) =>
             {for (final x in value) favoritesList.add(x['productID'])});
 
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) {
-            registeredGlob = true;
-            return RegisteredHome();
-          }),
+          FadeRoute(page: RegisteredHome()),
         );
       } else {
         print('korisnik već u bazi, registracija nije uspjela');

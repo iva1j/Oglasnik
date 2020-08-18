@@ -9,6 +9,7 @@ import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageTwoU
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
@@ -397,8 +398,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               productImg2Update = null;
               productImg3Update = null;
               print('status interneta:' + productIsOnline.toString());
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => RegisteredHome()));
+              Navigator.of(context)
+                  .pushReplacement(FadeRoute(page: RegisteredHome()));
             } else
               return null;
           }
@@ -465,8 +466,8 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               pathGlobal3 = null;
               print('status interneta:' + productIsOnline.toString());
 
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => RegisteredHome()));
+              Navigator.of(context)
+                  .pushReplacement(FadeRoute(page: RegisteredHome()));
             } else
               return null;
           }

@@ -28,11 +28,13 @@ class _BookmarkedPostsState extends State<BookmarkedPosts> {
         ),
       ),
       body: WillPopScope(
-          onWillPop: () => Navigator.of(context)
-                  .pushReplacement(MaterialPageRoute(builder: (_) {
-                return RegisteredHome();
-              })),
-          child: MyFavorites()),
+        onWillPop: () {
+          Navigator.of(context).pushReplacement(
+            FadeRoute(page: RegisteredHome()),
+          );
+        },
+        child: MyFavorites(),
+      ),
       floatingActionButton:
           email != null ? MainFloatingButton() : homeFloatingAnimatedButton(),
       bottomSheet: BottomSheetContainer(),

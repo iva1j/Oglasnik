@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
@@ -35,7 +36,7 @@ class _ItemCardState extends State<ItemCard> {
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.close, color: Colors.white),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Navigator.of(context).pop(FadeRoute()),
           ),
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,

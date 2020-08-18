@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
@@ -19,7 +20,7 @@ import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInterne
 
 ///When user enter his email on AlertDialog, onPressed "odustani" is bellow:
 void alerDialogOnPressedOdustani(BuildContext context) {
-  Navigator.of(context).pop();
+  Navigator.of(context).pop(FadeRoute());
 }
 
 ///funkcija kojom provjeravamo da li cemo pustiti usera da se sign in
@@ -40,15 +41,15 @@ void onPressedSignInModel(
       if (signInFormKey.currentState.validate() && status == true) {
         print('Logged in');
         globals.email = email;
+        registeredGlob = false;
         favoritesList.clear();
         FavoriteProduct().getAllFavoritesIDs().then((value) =>
             {for (final x in value) favoritesList.add(x['productID'])});
         loginPrefs(context, email);
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) {
-            registeredGlob = false;
-            return RegisteredHome();
-          }),
+          FadeRoute(
+            page: RegisteredHome(),
+          ),
         );
       } else {
         print('Email ili password nisu tacni');

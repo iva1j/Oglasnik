@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/PasswordChange/widgets/formPasswordChange.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -53,7 +54,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                 size: 24,
               ),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(FadeRoute());
               }),
         ),
         body: SingleChildScrollView(
