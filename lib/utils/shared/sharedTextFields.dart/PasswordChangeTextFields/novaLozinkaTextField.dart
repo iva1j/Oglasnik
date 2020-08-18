@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/passValidator.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,9 @@ class NovaLozinka extends StatelessWidget {
             ),
             obscureText: true,
             validator: passwordValidator,
-            controller: passwordInputController,
+            initialValue: newPasswordChanged,
+            onChanged: (value) => newPasswordChanged = value,
+            //controller: passwordInputController,
             // validator: (value) => value.isEmpty
             //     ? 'Polje ne može biti prazno!'
             //     : null,

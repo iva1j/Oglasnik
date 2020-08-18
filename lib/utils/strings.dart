@@ -194,11 +194,6 @@ bool allowUserToRegister = true;
 bool allowUsertoUpdateEmail = false;
 bool currentEmail = false;
 
-class InputFields {
-  TextEditingController emailInputController = new TextEditingController();
-  TextEditingController passwordInputController = new TextEditingController();
-}
-
 class FlushBarText {
   String message = "Nije moguće odabrati više od 3 grada.";
 }
@@ -224,6 +219,7 @@ String img1 = "Dodaj sliku 1";
 String img2 = "Dodaj sliku 2";
 String img3 = "Dodaj sliku 3";
 String pathGlobal1, pathGlobal2, pathGlobal3;
+String productImg1Update, productImg2Update, productImg3Update;
 
 final String immutableImg1 = "Dodaj sliku 1";
 final String immutableImg2 = "Dodaj sliku 2";

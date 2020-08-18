@@ -19,7 +19,6 @@ class FormPasswordChanged extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //height: SizeConfig.screenHeight,
       margin: EdgeInsets.all(50),
       child: Column(
         children: <Widget>[

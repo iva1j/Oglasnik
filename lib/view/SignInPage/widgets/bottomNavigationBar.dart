@@ -26,8 +26,6 @@ class BottomBarNavigation extends StatelessWidget {
               pageBuilder: (context, animation1, animation2) => RegisterPage(),
             ),
           );
-          // widget.toggleView();
-          //    islogin ? formSignin(email, password, formKey, context) : formRegister(fullNameInputController.text, email, password, phoneNumber, formKey, context);
         },
         child: Text(
           'Registruj se',

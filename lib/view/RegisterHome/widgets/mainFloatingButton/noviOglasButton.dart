@@ -12,7 +12,8 @@ class NoviOglasButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(
           left: SizeConfig.blockSizeHorizontal * 2,
-          bottom: SizeConfig.blockSizeVertical * 1),
+          // bottom: SizeConfig.blockSizeVertical * 1,
+          ),
       child: SizedBox.fromSize(
         size: Size(80, 80), // button width and height
         child: ClipOval(

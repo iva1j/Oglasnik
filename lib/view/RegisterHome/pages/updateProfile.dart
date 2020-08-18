@@ -7,10 +7,6 @@ import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileSaveButt
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileText.dart';
 import 'package:flutter/material.dart';
 
-TextEditingController updateFullNameInputController;
-TextEditingController updatePhoneNumberInputController;
-TextEditingController updateEmailInputController;
-
 class UpdateProfile extends StatefulWidget {
   @override
   _UpdateProfileState createState() => _UpdateProfileState();

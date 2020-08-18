@@ -31,13 +31,6 @@ GlobalKey<FormState> alertFormKey =
 
 GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
 
-// TextEditingController signUpFullNameInputController;
-// TextEditingController signUpPhoneNumberInputController;
-// TextEditingController signUpEmailInputController;
-// TextEditingController signUpPasswordInputController;
-
-//String dropdownValueCategory = 'Kategorija1';
-
 String dropdownValueCategory = "Automobili";
 String dropdownValueBrand = "Audi";
 String updateDropdownValueCategory;
@@ -70,11 +63,11 @@ String updateProfileNameReturn,
     updateProfilePhoneNumberReturn,
     updateProfileEmailReturn;
 
+String passwordChangedToken, newPasswordChanged, confirmPasswordChanged;
+
 String image1Name, image2Name, image3Name;
 String registerFullName, registerEmail, registerPhoneNumber, registerPassword;
 String signInEmail, signInPassword;
-
-//String dropdownValueBrand = 'Brands';
 
 int buttonIdentifier;
 bool buttonOne = false;
@@ -110,7 +103,6 @@ List numberofBrands = [];
 var allBrands;
 List<DocumentSnapshot> allProducts = List<DocumentSnapshot>();
 List<String> favoritesList = List<String>();
-//var catBrands = Map<String, List<String>>();
 
 List products = [];
 

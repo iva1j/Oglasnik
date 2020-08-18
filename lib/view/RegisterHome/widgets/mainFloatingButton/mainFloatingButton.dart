@@ -18,7 +18,7 @@ class MainFloatingButton extends StatelessWidget {
         builder: (context) => FabCircularMenu(
           alignment: Alignment.bottomRight,
           ringColor: Colors.grey[50].withAlpha(250),
-          ringDiameter: 350.0,
+          ringDiameter: 400.0,
           ringWidth: 76.0,
           fabColor: Colors.white,
           fabOpenIcon: Icon(
@@ -31,12 +31,20 @@ class MainFloatingButton extends StatelessWidget {
           ),
           fabMargin: const EdgeInsets.only(bottom: 24.0, right: 20.0),
           children: <Widget>[
-            SacuvanoButton(),
-            MojiOglasiButton(
-              email: email,
-            ),
-            NoviOglasButton(),
-            ProfilButton(),
+            Stack(children: <Widget>[
+              SacuvanoButton(),
+            ]),
+            Stack(children: <Widget>[
+              MojiOglasiButton(
+                email: email,
+              ),
+            ]),
+            Stack(children: <Widget>[
+              NoviOglasButton(),
+            ]),
+            Stack(children: <Widget>[
+              ProfilButton(),
+            ]),
           ],
         ),
       ),
