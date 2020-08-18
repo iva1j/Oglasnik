@@ -20,6 +20,7 @@ class ItemCard extends StatefulWidget {
 
 class _ItemCardState extends State<ItemCard> {
   @override
+  // ignore: override_on_non_overriding_member
   void justSetState() {
     setState(() {});
   }

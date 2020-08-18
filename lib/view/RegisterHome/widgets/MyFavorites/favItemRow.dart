@@ -19,6 +19,7 @@ class FavItemRow extends StatefulWidget {
 
 class _FavItemRowState extends State<FavItemRow> {
   @override
+  // ignore: override_on_non_overriding_member
   void justSetState() {
     setState(() {});
   }

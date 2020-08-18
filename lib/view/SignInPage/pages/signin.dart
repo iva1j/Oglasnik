@@ -1,9 +1,14 @@
+import 'dart:async';
+
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/PageLogos/mainLogo.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/FormSignIn.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/PrijavaWelcomeScreen.dart';
@@ -34,6 +39,7 @@ class _SigninPageState extends State<SigninPage> {
   }
 
   void dispose() {
+    //registerFormKey.currentState.dispose();
     super.dispose();
   }
 
@@ -70,7 +76,9 @@ class _SigninPageState extends State<SigninPage> {
             ),
             color: Colors.white,
             onPressed: () {
-              toggleRegister(context);
+              FocusScope.of(context).requestFocus(new FocusNode());
+              Navigator.of(context)
+                  .pushReplacement(FadeRoute(page: RegisterPage()));
             },
             child: Text(
               RegistrationPageAuthSecondWidget().buttonText,

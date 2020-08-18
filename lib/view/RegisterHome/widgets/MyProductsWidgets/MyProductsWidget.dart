@@ -9,6 +9,7 @@ import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 
+// ignore: must_be_immutable
 class MyProductsWidget extends StatefulWidget {
   MyProductsWidget({
     Key key,

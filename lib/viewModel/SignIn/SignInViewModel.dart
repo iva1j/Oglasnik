@@ -22,20 +22,6 @@ void alerDialogOnPressedOdustani(BuildContext context) {
   Navigator.of(context).pop();
 }
 
-///onPressed toggle that switch SignIn screen to SignUp
-void toggleRegister(BuildContext context) {
-  Navigator.pushReplacement(
-    context,
-    PageRouteBuilder(
-      pageBuilder: (context, animation1, animation2) => RegisterPage(),
-    ),
-  );
-  cleanLoginInputFields();
-}
-
-//clearing input fields with:
-void cleanLoginInputFields() {}
-
 ///funkcija kojom provjeravamo da li cemo pustiti usera da se sign in
 ///prvobitno se provjerava status konekcije sa isOnline, ako jeste
 ///provjerava se da li su inputi ispravni i da li postoji u bazi preko varijable status
@@ -51,7 +37,9 @@ void onPressedSignInModel(
 
   if (hasActiveConnection) {
     Timer(Duration(seconds: 1), () {
-      if (signInRegisterFormKey.currentState.validate() && status == true) {
+      if (
+          //signInFormKey.currentState.validate() &&
+          status == true) {
         print('Logged in');
         globals.email = email;
         favoritesList.clear();

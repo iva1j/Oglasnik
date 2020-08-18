@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/PageLogos/mainLogo.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/registerButton.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/formSignUp.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/signUpFormName.dart';
@@ -31,6 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void dispose() {
+    //registerFormKey.currentState.dispose();
     super.dispose();
   }
 
@@ -65,13 +70,8 @@ class _RegisterPageState extends State<RegisterPage> {
             color: Colors.white,
             onPressed: () {
               FocusScope.of(context).requestFocus(new FocusNode());
-              Navigator.pushReplacement(
-                context,
-                PageRouteBuilder(
-                  pageBuilder: (context, animation1, animation2) =>
-                      SigninPage(),
-                ),
-              );
+              Navigator.of(context)
+                  .pushReplacement(FadeRoute(page: SigninPage()));
             },
             child: Text(
               RegistrationPageAuthPages().prijava,
@@ -93,8 +93,6 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Padding(
               padding: EdgeInsets.only(bottom: bottom),
               child: Container(
-
-                  // height: SizeConfig.blockSizeVertical * 75,
                   margin: EdgeInsets.all(45),
                   child: Column(
                     children: <Widget>[

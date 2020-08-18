@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 
 class DynamicChipsWidget extends StatefulWidget {
   const DynamicChipsWidget(
+    // ignore: invalid_required_positional_param
     @required this.dynamicChipPressed,
   );
   @override
+  // ignore: override_on_non_overriding_member
   final VoidCallback dynamicChipPressed;
   _DynamicChipsWidgetState createState() => _DynamicChipsWidgetState();
 }

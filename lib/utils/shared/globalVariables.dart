@@ -19,15 +19,11 @@ String productName,
     productprice,
     productCijena;
 
-GlobalKey<FormState> signUpRegisterFormKey =
-    new GlobalKey<FormState>(debugLabel: 'signUpRegisterFormKey');
-GlobalKey<FormState> signInRegisterFormKey =
-    new GlobalKey<FormState>(debugLabel: 'signInRegisterFormKey');
+GlobalKey<FormState> registerFormKey = new GlobalKey<FormState>();
+//GlobalKey<FormState> signInFormKey = new GlobalKey<FormState>();
 
-GlobalKey<FormState> passwordChangeFormKey =
-    new GlobalKey<FormState>(debugLabel: 'passwordChangeFormKey');
-GlobalKey<FormState> alertFormKey =
-    new GlobalKey<FormState>(debugLabel: 'alertFormKey');
+GlobalKey<FormState> passwordChangeFormKey = new GlobalKey<FormState>();
+GlobalKey<FormState> alertFormKey = new GlobalKey<FormState>();
 
 GlobalKey<FormState> globalKeyPass() => passwordChangeFormKey;
 

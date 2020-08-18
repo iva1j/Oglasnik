@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -44,8 +45,7 @@ void onPressedRegister(BuildContext context, String fullName, String email,
   // print('sekunda prošla:');
   if (hasActiveConnection) {
     Timer(Duration(seconds: 1), () {
-      if (signUpRegisterFormKey.currentState.validate() &&
-          allowUserToRegister) {
+      if (registerFormKey.currentState.validate() && allowUserToRegister) {
         db.collection("firestoreUsers").document(registerEmail).setData({
           'fullName': registerFullName,
           'email': registerEmail,

@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
-
 //klase poredane po folderima iz view-a
+
+import 'package:flutter/material.dart';
 
 class NewPostScreen {
   String unosNaslov = "Novi unos";

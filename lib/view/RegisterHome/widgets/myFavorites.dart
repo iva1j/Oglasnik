@@ -2,12 +2,6 @@ import 'package:Oglasnik/view/RegisterHome/widgets/MyFavorites/favoritesContaine
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/MyFavorites/favItemRow.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/MyFavorites/favProductsRow.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardTags.dart';
-import 'package:flutter/material.dart';
 
 class MyFavorites extends StatefulWidget {
   @override
@@ -16,6 +10,7 @@ class MyFavorites extends StatefulWidget {
 
 class _MyFavoritesState extends State<MyFavorites> {
   @override
+  // ignore: override_on_non_overriding_member
   void justSetState() {
     setState(() {});
   }
