@@ -48,6 +48,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   String _path1, _path2, _path3;
   String _fileName1, _fileName2, _fileName3;
+  // ignore: unused_field
   String _extension1, _extension2, _extension3;
 
   bool loading = false;

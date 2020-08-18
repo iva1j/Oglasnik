@@ -24,7 +24,9 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
+  // ignore: unused_field
   int _selectedIndex;
+  // ignore: unused_element
   _onSelected(int index) {
     setState(() {
       _selectedIndex = index;
@@ -58,6 +60,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         color: bottomSheetColor,
       ),
       body: WillPopScope(
+        // ignore: missing_return
         onWillPop: () {
           if (widget.setStateParent != null) {
             widget.setStateParent();

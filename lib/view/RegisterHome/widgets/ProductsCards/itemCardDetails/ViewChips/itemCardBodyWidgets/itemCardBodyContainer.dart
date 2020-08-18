@@ -4,9 +4,6 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:flutter/material.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
 
 class ItemCardBodyContainer extends StatefulWidget {
   const ItemCardBodyContainer({

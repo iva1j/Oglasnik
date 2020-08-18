@@ -11,16 +11,20 @@ class UpdateName extends StatefulWidget {
     this.user,
   }) : super(key: key);
   final DocumentSnapshot user;
-
   @override
   _UpdateNameState createState() => _UpdateNameState();
 }
 
 class _UpdateNameState extends State<UpdateName> {
   @override
+  void initState() {
+    updateProfileName = widget.user["fullName"];
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     updateProfilePassword = widget.user["password"];
-
     return Container(
       margin: EdgeInsets.only(
         top: SizeConfig.blockSizeVertical * 15,
@@ -51,7 +55,6 @@ class _UpdateNameState extends State<UpdateName> {
               hintText: 'Ime i prezime',
               contentPadding: EdgeInsets.only(left: 20),
             ),
-            // controller: updateFullNameInputController,
             keyboardType: TextInputType.text,
           ),
         ),

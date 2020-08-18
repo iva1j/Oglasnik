@@ -10,6 +10,7 @@ Future<Size> calculateImageDimension(String imgUrl) async {
   Completer<Size> completer = Completer();
   //proslijeđeni URL u funkciju
   Image image = Image.network(imgUrl);
+  // ignore: await_only_futures
   await image.image.resolve(ImageConfiguration()).addListener(
     ImageStreamListener(
       (ImageInfo image, bool synchronousCall) {
