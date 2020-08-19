@@ -29,14 +29,12 @@ class _LogoutButtonState extends State<LogoutButton> {
         updateProfileEmail = null;
         updateProfileName = null;
         updateProfilePhoneNumber = null;
-        //prefs.remove('phoneNumber');
         Navigator.of(context).pushAndRemoveUntil(
             FadeRoute(page: AnonymousHome()), (Route<dynamic> route) => false);
       },
       icon: Icon(
         Icons.power_settings_new,
-        color: Colors.white,
-        size: SizeConfig.blockSizeHorizontal * 10,
+        color: Colors.black,
       ),
     );
   }

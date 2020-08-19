@@ -86,6 +86,7 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ),
         body: WillPopScope(
+          // ignore: missing_return
           onWillPop: () {
             Navigator.of(context).pushReplacement(
               FadeRoute(page: AnonymousHome()),

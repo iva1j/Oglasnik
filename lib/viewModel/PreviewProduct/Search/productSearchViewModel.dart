@@ -17,19 +17,20 @@ class ProductSearchDB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Firestore.instance.collection('products').getDocuments(),
+      future: Firestore.instance
+          .collection('products')
+          .where('productFinished', isEqualTo: false)
+          .getDocuments(),
       builder: (BuildContext context, AsyncSnapshot snapshott) {
         if (snapshott.hasData) {
           productsForSearch.clear();
           allProductsObject.clear();
           allProductsObject = snapshott.data.documents;
+
           allProductsObject.forEach((element) {
             productsForSearch.add(element['productName']);
           });
-          print('sasasasasasasas');
-          print(productsForSearch);
-          //print("Lista svih proizvoda u ispravnom builderu: " +
-          //    productsForSearch.toString());
+
           return Container();
         } else {
           return Container();
@@ -54,4 +55,3 @@ void suggestionLogic(List<String> productsAndBrandList, String query) {
       .where((e) => e.toLowerCase().startsWith(query.toLowerCase()))
       .toList();
 }
-

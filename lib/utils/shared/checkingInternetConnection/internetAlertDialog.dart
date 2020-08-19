@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:flutter/material.dart';
 
 class TestInternetDialog extends StatefulWidget {

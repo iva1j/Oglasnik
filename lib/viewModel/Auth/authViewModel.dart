@@ -81,6 +81,7 @@ class AuthService extends ChangeNotifier {
               });
               Navigator.of(context)
                   .pushReplacement(FadeRoute(page: PasswordChange(email)));
+
               sendemail(token);
               print('Za korisnika: ' +
                   email +

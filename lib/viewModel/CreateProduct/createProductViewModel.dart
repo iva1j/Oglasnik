@@ -69,7 +69,7 @@ class CreateProduct extends ProductInterface {
       'productLocation': productLocation,
       'cijena': productCijena,
       'productTag': productTag,
-      'productFinished': false,
+      //  'productFinished': false,
       'productDesc': productDesc,
       'productImg1': productImg1,
       'productImg2': productImg2,
@@ -81,12 +81,11 @@ class CreateProduct extends ProductInterface {
 
 class UpdateProduct extends UpdateProductInterface {
   @override
-  Future updateProduct(String productID) {
+  Future updateProduct(String productID, String productName) {
     print('productID je: ' + productID.toString());
     db.collection("products").document(productID).updateData({
       'productFinished': true,
     });
-
     return null;
   }
 }

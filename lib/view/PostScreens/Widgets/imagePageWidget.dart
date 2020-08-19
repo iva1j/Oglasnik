@@ -332,7 +332,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           if (pageController.page == 4) {
             if (productPriceFormKey.currentState.validate()) {
               widget.onFlatButtonPressed();
-
               setState(() => loading = true);
               createdGlob = true;
               azurload = true;
@@ -376,16 +375,6 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                 productImg1Update,
                 productImg2Update,
                 productImg3Update,
-                /*
-                productImg1 == null
-                    ? widget.productSnapshot.productImg1
-                    : productImg1,
-                productImg2 == null
-                    ? widget.productSnapshot.productImg2
-                    : productImg2,
-                productImg3 == null
-                    ? widget.productSnapshot.productImg3
-                    : productImg3,*/
                 productprice,
               );
               img1 = immutableImg1;

@@ -1,7 +1,5 @@
 //klase poredane po folderima iz view-a
 
-import 'package:flutter/material.dart';
-
 class NewPostScreen {
   String unosNaslov = "Novi unos";
 }
@@ -232,7 +230,7 @@ final String noPhoto = "assets/images/nophoto.jpg";
 final String noPhotoNetwork =
     "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2Fnophoto.jpg?alt=media&token=96dd6536-d191-4c8a-bd21-26e88705d306";
 List<String> productsForSearch = List<String>();
-
+List<String> productsAndBrandList = List<String>();
 List<String> suggestionsList;
 final List<String> cityDropdownItems = <String>[
   'Sarajevo',

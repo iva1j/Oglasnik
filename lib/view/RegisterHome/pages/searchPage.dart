@@ -4,7 +4,6 @@ import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/productSearch.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
-
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
@@ -83,7 +82,7 @@ class DataSearch extends SearchDelegate<String> {
     ///Nakon što je donešena odluka da se u kroz search može pretraživati i brendovi (pored naziva
     ///proizvoda), potrebno je bilo i modificirati listu sugestija. Pa smo tako listi
     ///
-    var productsAndBrandList = [
+    productsAndBrandList = [
       ...{...productsForSearch}
     ];
 
