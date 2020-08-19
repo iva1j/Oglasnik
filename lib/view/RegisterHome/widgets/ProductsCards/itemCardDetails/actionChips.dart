@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ActionChipsWidget extends StatefulWidget {
   const ActionChipsWidget(
     // ignore: invalid_required_positional_param
-    @required this.actionChipDeleted,
+    @required this.actionChipDeleted, 
   );
   @override
   // ignore: override_on_non_overriding_member
