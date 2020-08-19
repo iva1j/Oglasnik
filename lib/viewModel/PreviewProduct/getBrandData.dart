@@ -17,20 +17,18 @@ Future getBrandData(String productBrand) async {
   brandData.forEach((element) {
     if (element["productImg1"] != null) {
       slikeBrandova.add(element['productImg1']);
-    }
-    if (element["productImg2"] != null) {
+    } else if (element["productImg2"] != null) {
       slikeBrandova.add(element['productImg2']);
-    }
-    if (element["productImg3"] != null) {
+    } else if (element["productImg3"] != null) {
       slikeBrandova.add(element['productImg3']);
     }
   });
 
   ///sve dok nam je duzina liste slikaBrandova manja od 4 slike za dati item,
   ///dodajemo drugu sliku u listu; u ovom slucaju (no photo) sliku
-  while (slikeBrandova.length < 4) {
+  /*while (slikeBrandova.length < 4) {
     slikeBrandova.add(
-        'https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2Fnophoto.jpg?alt=media&token=a4d040c4-b5b4-4c13-a49d-b6ecf292fafe');
-  }
+        'https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2Fnophoto.jpg?alt=media&token=8a6ae209-2839-4707-a1d8-5bf548545e81');
+  }*/
   return slikeBrandova;
 }

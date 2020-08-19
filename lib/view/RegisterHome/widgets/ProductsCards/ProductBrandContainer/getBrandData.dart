@@ -22,11 +22,16 @@ FutureBuilder getBrandDataFutureBuilder(int index) {
         //var random = new Random();
         List<int> indexi = List<int>();
         var random = new Random();
-        do {
-          final result = random.nextInt(snapshot.data.length);
-          if (!listContains(result, indexi)) indexi.add(result);
-        } while (indexi.length < 4);
-        return productBrandImages(snapshot, indexi);
+        if (snapshot.data.length > 4) {
+          do {
+            final result = random.nextInt(snapshot.data.length);
+            if (!listContains(result, indexi)) indexi.add(result);
+          } while (indexi.length < 4);
+          return productBrandImages(snapshot, indexi);
+        } else {
+          for (int i = 0; i < snapshot.data.length; i++) indexi.add(i);
+          return productBrandImages(snapshot, indexi);
+        }
       } else {
         return Expanded(
           child: Center(
