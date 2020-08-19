@@ -5,6 +5,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileChangePa
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileForm.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileSaveButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileText.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/logoutButton.dart';
 import 'package:flutter/material.dart';
 
 class UpdateProfile extends StatefulWidget {
@@ -31,6 +32,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
+          actions: <Widget>[
+            LogoutButton(),
+          ],
           leading: IconButton(
             icon: Icon(Icons.close, color: Colors.black),
             onPressed: () => Navigator.of(context)
@@ -38,6 +42,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
           ),
         ),
         body: WillPopScope(
+          // ignore: missing_return
           onWillPop: () {
             Navigator.of(context).pushReplacement(
               FadeRoute(page: RegisteredHome()),
