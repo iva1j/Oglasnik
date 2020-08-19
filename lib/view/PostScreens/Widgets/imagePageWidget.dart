@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
@@ -286,7 +287,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             editProduct: widget.editProduct,
           ),
           Container(
-            margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 16),
+            margin: Margin().only(0, 16, 0, 0),
           ),
           imageOneUploadButton(openFileExplorer1, deleteFirstEntry),
           imageTwoUploadButton(openFileExplorer2, deleteSecondEntry),
@@ -295,11 +296,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                  margin: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 3,
-                      left: SizeConfig.blockSizeHorizontal * 12,
-                      bottom: SizeConfig.blockSizeVertical * 3),
-                  child: priceTextField()),
+                  margin: Margin().only(3, 3, 0, 12), child: priceTextField()),
               Padding(
                 padding: EdgeInsets.only(left: 7, bottom: 5),
                 child: Text(
@@ -312,7 +309,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             height: SizeConfig.blockSizeVertical * 8,
           ),
           Container(
-            margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
+            margin: Margin().only(0, 1, 0, 0),
             child: pageViewSubmitButton(context),
           ),
         ],

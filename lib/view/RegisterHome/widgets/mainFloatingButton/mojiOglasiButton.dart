@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/myPosts.dart';
@@ -11,18 +12,12 @@ class MojiOglasiButton extends StatefulWidget {
   @override
   _MojiOglasiButtonState createState() => _MojiOglasiButtonState();
 }
- 
+
 class _MojiOglasiButtonState extends State<MojiOglasiButton> {
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return Container(
-      // height: SizeConfig.blockSizeVertical *8,
-      // width: SizeConfig.blockSizeHorizontal * 15,
-      margin: EdgeInsets.only(
-        bottom: SizeConfig.blockSizeVertical * 2,
-      //  left: SizeConfig.blockSizeHorizontal*5,
-        // right: SizeConfig.blockSizeHorizontal*3
-      ),
+      margin: Margin().only(0, 2, 0, 0),
       child: SizedBox.fromSize(
         size: Size(80, 80), // button width and height
         child: ClipOval(
@@ -38,7 +33,10 @@ class _MojiOglasiButtonState extends State<MojiOglasiButton> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.assignment), // icon
-                  Text("Moji oglasi",textAlign: TextAlign.center,),
+                  Text(
+                    "Moji oglasi",
+                    textAlign: TextAlign.center,
+                  ),
                   // text
                 ],
               ),

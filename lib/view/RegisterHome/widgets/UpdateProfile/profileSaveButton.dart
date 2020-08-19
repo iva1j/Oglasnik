@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -13,9 +14,7 @@ class ProfileSaveButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        margin: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 8,
-            bottom: SizeConfig.blockSizeVertical * 1),
+        margin: Margin().only(8, 1, 0, 0),
         child: button(
           'Sačuvaj',
           () async {

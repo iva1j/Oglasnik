@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -15,7 +16,7 @@ class _CitanjeState extends State<Citanje> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.all(50),
+        margin: Margin().all(50),
         child: StreamBuilder(
           stream: Firestore.instance.collection('products').snapshots(),
           builder: (context, snapshot) {

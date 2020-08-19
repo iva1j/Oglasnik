@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +11,7 @@ class NoviOglasButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-          left: SizeConfig.blockSizeHorizontal * 2,
-          // bottom: SizeConfig.blockSizeVertical * 1,
-          ),
+      margin: Margin().only(0, 0, 0, 2),
       child: SizedBox.fromSize(
         size: Size(80, 80), // button width and height
         child: ClipOval(

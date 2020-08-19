@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:flutter/material.dart';
 
@@ -11,11 +12,7 @@ class ItemName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        top: SizeConfig.blockSizeVertical * 2,
-        bottom: SizeConfig.blockSizeVertical,
-        left: SizeConfig.blockSizeHorizontal * 3,
-      ),
+      margin: Margin().only(2, 1, 0, 3),
       child: Align(
         alignment: Alignment.topLeft,
         child: Text(

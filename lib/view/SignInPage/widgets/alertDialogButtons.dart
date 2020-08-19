@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
@@ -20,7 +21,7 @@ class _AlertDialogButtonsState extends State<AlertDialogButtons> {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      margin: EdgeInsets.only(left: SizeConfig.safeBlockHorizontal * 5),
+      margin: Margin().only(0, 0, 0, 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[

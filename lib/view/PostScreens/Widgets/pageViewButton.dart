@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -14,7 +15,7 @@ class PageViewButton extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-      margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 5),
+      margin: Margin().only(0, 5, 0, 0),
       child: button("Dalje", () async {
         allowAutoValidate = true;
         if (pageController.page == 3) {

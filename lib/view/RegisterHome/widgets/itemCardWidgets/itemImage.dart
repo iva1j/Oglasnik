@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,7 @@ class _ItemImageState extends State<ItemImage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        top: SizeConfig.blockSizeVertical * 1,
-        right: SizeConfig.blockSizeHorizontal * 1,
-      ),
+      margin: Margin().only(1, 0, 1, 0),
       height: SizeConfig.blockSizeVertical * 20,
       width: SizeConfig.blockSizeVertical * 20,
       decoration: BoxDecoration(

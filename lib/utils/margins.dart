@@ -8,7 +8,7 @@ class Margin {
       right: SizeConfig.blockSizeHorizontal * right,
       left: SizeConfig.blockSizeHorizontal * left);
 
-  EdgeInsets symetric(double vertical, horizontal) => EdgeInsets.symmetric(
+  EdgeInsets symmetric(double vertical, horizontal) => EdgeInsets.symmetric(
       vertical: SizeConfig.blockSizeVertical * vertical,
       horizontal: SizeConfig.blockSizeHorizontal * horizontal);
 

@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryCard.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/topBrands.dart';
@@ -45,12 +46,7 @@ class _CategoryCardContainerState extends State<CategoryCardContainer> {
                   Radius.circular(10),
                 ),
               ),
-              margin: EdgeInsets.only(
-                left: SizeConfig.blockSizeHorizontal * 5,
-                right: SizeConfig.blockSizeHorizontal * 5,
-                top: SizeConfig.blockSizeVertical * 3,
-                bottom: SizeConfig.blockSizeVertical * 2,
-              ),
+              margin: Margin().only(3, 2, 5, 5),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[

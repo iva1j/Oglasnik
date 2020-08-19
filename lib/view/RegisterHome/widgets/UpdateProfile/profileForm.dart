@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
@@ -24,10 +25,7 @@ class _ProfileFormState extends State<ProfileForm> {
   Widget build(BuildContext context) {
     AuthService().userExistingorNot(updateProfileEmail);
     return Container(
-      margin: EdgeInsets.only(
-        left: SizeConfig.blockSizeHorizontal * 13,
-        right: SizeConfig.blockSizeHorizontal * 13,
-      ),
+      margin: Margin().only(0, 0, 13, 13),
       child: Form(
         key: updateproductNameFormKey,
         child: Theme(

@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:flutter/material.dart';
 
@@ -9,11 +10,7 @@ class OglasTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        left: SizeConfig.blockSizeHorizontal * 3,
-        top: SizeConfig.blockSizeVertical * 1,
-        bottom: SizeConfig.blockSizeVertical * 2,
-      ),
+      margin: Margin().only(1, 2, 0, 3),
       child: Text(
         // Task radio Elvir. Code handluje unos tagova na inputu to jest, ako korisnik unese sljedece:
         // tag, #tag, ##tag to ce se prikazati kao: #tag #tag #tag

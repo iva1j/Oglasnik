@@ -27,11 +27,6 @@ class NovaLozinka extends StatelessWidget {
             validator: passwordValidator,
             initialValue: newPasswordChanged,
             onChanged: (value) => newPasswordChanged = value,
-            //controller: passwordInputController,
-            // validator: (value) => value.isEmpty
-            //     ? 'Polje ne može biti prazno!'
-            //     : null,
-            // onSaved: (value) => newPassword = value,
           ),
         ),
       ),

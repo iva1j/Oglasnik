@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/smallMainButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -72,10 +73,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                             Radius.circular(10),
                           ),
                         ),
-                        margin: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 5,
-                          vertical: SizeConfig.blockSizeVertical * 5,
-                        ),
+                        margin: Margin().symmetric(5, 5),
                         child: Container(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,11 +128,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                               ),
                               productDetailsLocationWidget(index),
                               Container(
-                                margin: EdgeInsets.only(
-                                  left: SizeConfig.blockSizeHorizontal * 5,
-                                  right: SizeConfig.blockSizeHorizontal * 3,
-                                  top: SizeConfig.blockSizeVertical * 1.1,
-                                ),
+                                margin: Margin().only(1.1, 0, 3, 5),
                                 child: Row(children: <Widget>[
                                   Container(
                                     width: 170.0,
@@ -169,8 +163,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                   ),
                   products[index].email == email
                       ? Container(
-                          margin: EdgeInsets.only(
-                              bottom: SizeConfig.blockSizeVertical * 15),
+                          margin: Margin().only(0, 15, 0, 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[

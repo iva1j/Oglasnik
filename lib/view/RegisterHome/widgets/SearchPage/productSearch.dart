@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/actionChips.dart';
@@ -38,9 +39,7 @@ class _SearchPageFutureBuilderState extends State<SearchPageFutureBuilder> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-            margin: EdgeInsets.only(
-                left: SizeConfig.blockSizeHorizontal * 7,
-                top: SizeConfig.blockSizeVertical * 2),
+            margin: Margin().only(2, 0, 0, 7),
             child: Text(
               FilterTitle().filterNaslov,
               style: TextStyle(fontSize: 16.0),

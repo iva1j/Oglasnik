@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/actionChips.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/dynamicChips.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/itemCardBodyWidgets/itemCardBodyContainer.dart';
@@ -58,9 +59,7 @@ class _ItemCardBodyState extends State<ItemCardBody> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-            margin: EdgeInsets.only(
-                left: SizeConfig.blockSizeHorizontal * 7,
-                top: SizeConfig.blockSizeVertical * 2),
+            margin: Margin().only(2, 0, 0, 7),
             child: Text(
               'Filter',
               style: TextStyle(fontSize: 16.0),

@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -56,12 +57,7 @@ class ProductBrandContainer extends StatelessWidget {
                   Radius.circular(10),
                 ),
               ),
-              margin: EdgeInsets.only(
-                left: SizeConfig.blockSizeHorizontal * 5,
-                right: SizeConfig.blockSizeHorizontal * 5,
-                top: SizeConfig.blockSizeVertical * 4,
-                //bottom: SizeConfig.blockSizeVertical * 2,
-              ),
+              margin: Margin().only(4, 0, 5, 5),
               child: Container(
                 height: SizeConfig.blockSizeVertical * 25,
                 child: Row(
@@ -95,11 +91,7 @@ class ProductBrandContainer extends StatelessWidget {
                     Container(
                       child: Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(
-                            right: SizeConfig.blockSizeHorizontal * 3,
-                            top: SizeConfig.blockSizeVertical * 2,
-                            bottom: SizeConfig.blockSizeVertical * 2,
-                          ),
+                          margin: Margin().only(2, 2, 3, 0),
                           child: getBrandDataFutureBuilder(index),
                         ),
                       ),
