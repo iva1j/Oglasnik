@@ -59,32 +59,35 @@ class EditProfile extends UpdateProfileInterface {
 
 void onPressedSaveButton(BuildContext context) async {
   await EditProfile().isEmailReserved(email);
-  if (updateproductNameFormKey.currentState.validate()
-      // &&
-      // (allowUsertoUpdateEmail == true || currentEmail == true)
-      ) {
-    db.collection("firestoreUsers").document(email).updateData({
-      'fullName': updateProfileName,
-      'email': updateProfileEmail,
-      'phoneNumber': updateProfilePhoneNumber,
-    });
-    if (updateProfileEmail != email) {
-      db.collection("firestoreUsers").document(email).delete();
-      db.collection("firestoreUsers").document(updateProfileEmail).setData({
-        'fullName': updateProfileName,
-        'email': updateProfileEmail,
-        'password': updateProfilePassword,
-        'phoneNumber': updateProfilePhoneNumber,
-      });
-      email = updateProfileEmail;
-    }
-    print("trenutni user: " + email.toString());
-    print("Ispis current-a: " + currentEmail.toString());
-    print("Ispis allow user to update: " + allowUsertoUpdateEmail.toString());
-    currentEmail = null;
-    allowUsertoUpdateEmail = null;
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (_) => RegisteredHome()));
+  if (updateproductNameFormKey.currentState.validate()) {
+    userChangedData(context);
   } else
     print('Nemoguce');
+}
+
+void userChangedData(BuildContext context) {
+  db.collection("firestoreUsers").document(email).updateData({
+    'fullName': updateProfileName,
+    'email': updateProfileEmail,
+    'phoneNumber': updateProfilePhoneNumber,
+  });
+  if (updateProfileEmail != email) {
+    userChangedProfile();
+  }
+
+  currentEmail = null;
+  allowUsertoUpdateEmail = null;
+  Navigator.of(context)
+      .pushReplacement(MaterialPageRoute(builder: (_) => RegisteredHome()));
+}
+
+void userChangedProfile() {
+  db.collection("firestoreUsers").document(updateProfileEmail).setData({
+    'fullName': updateProfileName,
+    'email': updateProfileEmail,
+    'password': updateProfilePassword,
+    'phoneNumber': updateProfilePhoneNumber,
+  });
+  db.collection("firestoreUsers").document(email).delete();
+  email = updateProfileEmail;
 }
