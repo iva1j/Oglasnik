@@ -80,9 +80,8 @@ class AuthService extends ChangeNotifier {
                 'token': token,
               });
               Navigator.of(context)
-                  .pushReplacement(MaterialPageRoute(builder: (_) {
-                return PasswordChange(email);
-              }));
+                  .pushReplacement(FadeRoute(page: PasswordChange(email)));
+
               sendemail(token);
               print('Za korisnika: ' +
                   email +

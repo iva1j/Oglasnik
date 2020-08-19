@@ -78,8 +78,7 @@ void userChangedData(BuildContext context) {
 
   currentEmail = null;
   allowUsertoUpdateEmail = null;
-  Navigator.of(context)
-      .pushReplacement(MaterialPageRoute(builder: (_) => RegisteredHome()));
+  Navigator.of(context).pushReplacement(FadeRoute(page: RegisteredHome()));
 }
 
 void userChangedProfile() {
