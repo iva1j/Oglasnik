@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../utils/strings.dart';
-import '../../../../../utils/strings.dart';
-import '../../../../../utils/strings.dart';
 import '../../../../../utils/strings.dart';
 
 GridView productBrandImages(AsyncSnapshot snapshot, List<int> indexi) {
