@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/nazivTextField.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -61,10 +62,7 @@ class _ArticlePageWidgetState extends State<ArticlePageWidget> {
             height: SizeConfig.blockSizeVertical * 20,
           ),
           Container(
-            margin: EdgeInsets.only(
-              left: SizeConfig.blockSizeHorizontal * 10,
-              right: SizeConfig.blockSizeHorizontal * 10,
-            ),
+            margin: Margin().only(0, 0, 10, 10),
             child: NazivTextField(
               productSnapshot: widget.productSnapshot,
             ),

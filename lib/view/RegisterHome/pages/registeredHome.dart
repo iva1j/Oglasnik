@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/mainbody.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
@@ -43,6 +44,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
         backgroundColor: AppBarTheme.of(context).color,
         centerTitle: true,
         title: Text('Oglasnik'),
+        leading: Icon(Icons.accessibility_new, color: mainAppColor),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),

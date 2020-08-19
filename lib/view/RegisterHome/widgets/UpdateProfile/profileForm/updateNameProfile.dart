@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation/nameValidator.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -26,10 +27,7 @@ class _UpdateNameState extends State<UpdateName> {
   Widget build(BuildContext context) {
     updateProfilePassword = widget.user["password"];
     return Container(
-      margin: EdgeInsets.only(
-        top: SizeConfig.blockSizeVertical * 15,
-        bottom: SizeConfig.blockSizeVertical * 1,
-      ),
+      margin: Margin().only(15, 1, 0, 0),
       child: new SizedBox(
         width: double.infinity,
         child: Container(

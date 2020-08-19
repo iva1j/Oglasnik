@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,7 @@ import 'package:flutter/material.dart';
 class ActionChipsWidget extends StatefulWidget {
   const ActionChipsWidget(
     // ignore: invalid_required_positional_param
-    @required this.actionChipDeleted, 
+    @required this.actionChipDeleted,
   );
   @override
   // ignore: override_on_non_overriding_member
@@ -22,13 +23,11 @@ class _ActionChipsWidgetState extends State<ActionChipsWidget> {
     ///pomoću sortiranja čipovi se nakon sto su obrisani vrate na svoje prvobitne pozicije u listi
     selectedChips.sort();
     return Container(
-      margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 6),
+      margin: Margin().only(0, 0, 0, 6),
       child: Row(
         children: List<Widget>.generate(selectedChips.length, (index) {
           return Container(
-            margin: EdgeInsets.only(
-              right: SizeConfig.blockSizeHorizontal * 2,
-            ),
+            margin: Margin().only(0, 0, 2, 0),
             child: Chip(
               label: Text(
                 selectedChips[index],

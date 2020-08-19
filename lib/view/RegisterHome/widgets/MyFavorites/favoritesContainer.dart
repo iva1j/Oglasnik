@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/MyFavorites/favItemRow.dart';
@@ -33,12 +34,7 @@ class FavContainer extends StatelessWidget {
           Radius.circular(4),
         ),
       ),
-      margin: EdgeInsets.only(
-        left: SizeConfig.blockSizeHorizontal * 5,
-        right: SizeConfig.blockSizeHorizontal * 5,
-        top: SizeConfig.blockSizeVertical * 4,
-        bottom: SizeConfig.blockSizeVertical * 2,
-      ),
+      margin: Margin().only(4, 2, 5, 5),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -21,16 +22,11 @@ class _CityDropDownState extends State<CityDropDown> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: SizeConfig.blockSizeHorizontal * 9,
-      ),
+      margin: Margin().symmetric(0, 9),
       child: Card(
         elevation: 16,
         child: Container(
-          margin: EdgeInsets.only(
-            left: SizeConfig.blockSizeHorizontal * 5,
-            right: SizeConfig.blockSizeHorizontal * 2,
-          ),
+          margin: Margin().only(0, 0, 2, 5),
           child: Center(
             child: Align(
               alignment: Alignment.topRight,

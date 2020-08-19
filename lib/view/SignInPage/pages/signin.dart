@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/PageLogos/mainLogo.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
@@ -97,7 +98,7 @@ class _SigninPageState extends State<SigninPage> {
             child: Padding(
               padding: EdgeInsets.only(bottom: bottom),
               child: Container(
-                  margin: EdgeInsets.all(45),
+                  margin: Margin().all(45),
                   child: Column(
                     children: <Widget>[
                       LogoContainer(),

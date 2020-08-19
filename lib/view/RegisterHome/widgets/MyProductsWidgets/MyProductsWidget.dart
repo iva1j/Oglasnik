@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -73,9 +74,7 @@ class _MyProductsWidgetState extends State<MyProductsWidget> {
                             );
                           } else if (widget.showMessage == true) {
                             return Container(
-                                margin: EdgeInsets.symmetric(
-                                    vertical:
-                                        SizeConfig.blockSizeVertical * 30),
+                                margin: Margin().symmetric(30, 0),
                                 child: Center(
                                     child: Text(EmptyProductList().emptyList)));
                           } else {

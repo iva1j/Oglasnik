@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/phoneNumberWidget.dart';
@@ -23,20 +24,14 @@ class _ProductDetailsContactsWidgetState
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-      margin: EdgeInsets.only(
-          top: SizeConfig.blockSizeVertical * 1,
-          bottom: SizeConfig.blockSizeVertical * 16), // ne mijenjati
+      margin: Margin().only(1, 16, 0, 0), // ne mijenjati
       color: mainAppColor,
       width: SizeConfig.screenWidth,
       height: SizeConfig.blockSizeVertical * 8,
       child: Row(
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(
-              left: SizeConfig.blockSizeHorizontal * 10,
-              top: SizeConfig.blockSizeVertical * 1,
-              bottom: SizeConfig.blockSizeVertical * 1,
-            ),
+            margin: Margin().only(1, 1, 0, 10),
             child: CircleAvatar(
               radius: 20,
               backgroundColor: Colors.white,
@@ -50,12 +45,7 @@ class _ProductDetailsContactsWidgetState
             ),
           ),
           Container(
-            margin: EdgeInsets.only(
-              left: SizeConfig.blockSizeHorizontal * 5,
-              right: SizeConfig.blockSizeHorizontal * 3,
-              top: SizeConfig.blockSizeVertical * 1.5,
-              //bottom: SizeConfig.blockSizeVertical * 1,
-            ),
+            margin: Margin().only(1.5, 0, 3, 5),
             child: phoneNumberWidget(widget.index),
           ),
           phoneNumberButtonWidget(widget.index),

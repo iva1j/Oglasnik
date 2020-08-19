@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/opisTextField.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
@@ -35,10 +36,7 @@ class _DescriptionPageWidgetState extends State<DescriptionPageWidget> {
               height: SizeConfig.blockSizeVertical * 20,
             ),
             Container(
-              margin: EdgeInsets.only(
-                left: SizeConfig.blockSizeHorizontal * 10,
-                right: SizeConfig.blockSizeHorizontal * 10,
-              ),
+              margin: Margin().only(0, 0, 10, 10),
               child: OpisTextField(
                 productSnapshot: widget.productSnapshot,
               ),

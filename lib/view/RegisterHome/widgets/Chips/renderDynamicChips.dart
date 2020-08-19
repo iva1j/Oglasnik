@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -7,13 +8,11 @@ import 'package:flutter/material.dart';
 
 renderDynamicChips(BuildContext context, dynamicChipPressed) {
   return Container(
-    margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 6),
+    margin: Margin().only(0, 0, 0, 6),
     child: Row(
       children: List<Widget>.generate(citysuggestions.length, (int index) {
         return Container(
-          margin: EdgeInsets.only(
-            right: SizeConfig.blockSizeHorizontal * 2,
-          ),
+          margin: Margin().only(0, 0, 2, 0),
           child: ActionChip(
             label: Text(
               citysuggestions[index],

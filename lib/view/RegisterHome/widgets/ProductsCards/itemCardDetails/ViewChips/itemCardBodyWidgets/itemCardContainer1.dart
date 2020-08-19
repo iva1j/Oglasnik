@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/ViewChips/itemCardBodyWidgets/itemCardBodyDesc.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardImage.dart';
@@ -49,12 +50,7 @@ class _ItemCardContainer1State extends State<ItemCardContainer1> {
           Radius.circular(4),
         ),
       ),
-      margin: EdgeInsets.only(
-        left: SizeConfig.blockSizeHorizontal * 5,
-        right: SizeConfig.blockSizeHorizontal * 5,
-        top: SizeConfig.blockSizeVertical * 4,
-        bottom: SizeConfig.blockSizeVertical * 2,
-      ),
+      margin: Margin().only(4, 2, 5, 5),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

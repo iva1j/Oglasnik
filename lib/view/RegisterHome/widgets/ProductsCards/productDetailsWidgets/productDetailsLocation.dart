@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsPrice.dart';
 
@@ -7,9 +8,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 Container productDetailsLocationWidget(int index) {
   return Container(
-    margin: EdgeInsets.symmetric(
-        horizontal: SizeConfig.blockSizeHorizontal * 3,
-        vertical: SizeConfig.blockSizeVertical * 1),
+    margin: Margin().symmetric(1, 3),
     child: Row(
       children: <Widget>[
         Container(child: Icon(Icons.location_on)),

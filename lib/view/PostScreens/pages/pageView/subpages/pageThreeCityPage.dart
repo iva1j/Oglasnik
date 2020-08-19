@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/cityDropDown.dart';
@@ -46,13 +47,7 @@ class _CityPageState extends State<CityPage> {
                   MainTitle(
                     editProduct: widget.editProduct,
                   ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 21,
-                      left: SizeConfig.blockSizeHorizontal * 10,
-                      right: SizeConfig.blockSizeHorizontal * 10,
-                    ),
-                  ),
+                  Container(margin: Margin().only(21, 0, 10, 10)),
                   CityDropDown(productSnapshot: widget.productSnapshot),
                   TagsForm(productSnapshot: widget.productSnapshot),
                   PageViewButton(),
