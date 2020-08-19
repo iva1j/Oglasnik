@@ -1,5 +1,4 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:mailgun/mailgun.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -8,12 +7,12 @@ var mailgun = MailgunMailer(
   apiKey: DotEnv().env['MAILGUN_APIKEY'],
 );
 
-Future<void> sendemail() async {
+Future<void> sendemail(String token) async {
   var response = await mailgun.send(
       from: 'oglasnik.official@gmail.com',
       to: [forgetEmail],
       subject: "Zaboravili ste lozinku? ",
-      text: "Token za resetovanje lozinke je: " + tokenCode);
+      text: "Token za resetovanje lozinke je: " + token);
   print(response.status);
   print(response.message);
 }
