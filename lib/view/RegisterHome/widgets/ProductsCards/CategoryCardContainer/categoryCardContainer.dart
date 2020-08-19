@@ -8,18 +8,24 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/CategoryCardCon
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 
-class CategoryCardContainer extends StatelessWidget {
+class CategoryCardContainer extends StatefulWidget {
   const CategoryCardContainer({
     Key key,
   }) : super(key: key);
 
   @override
+  _CategoryCardContainerState createState() => _CategoryCardContainerState();
+}
+
+class _CategoryCardContainerState extends State<CategoryCardContainer> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(bottom: 55),
       child: ListView.builder(
+          cacheExtent: 10000.0,
           itemCount: categories.length,
-          shrinkWrap: true,
+          shrinkWrap: false,
           itemBuilder: (BuildContext context, int index) {
             return Container(
               decoration: BoxDecoration(

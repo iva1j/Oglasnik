@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../utils/strings.dart';
+import '../../../../../utils/strings.dart';
+import '../../../../../utils/strings.dart';
+import '../../../../../utils/strings.dart';
+
 GridView productBrandImages(AsyncSnapshot snapshot, List<int> indexi) {
   return new GridView.count(
     padding: EdgeInsets.all(0),
@@ -10,19 +15,19 @@ GridView productBrandImages(AsyncSnapshot snapshot, List<int> indexi) {
     mainAxisSpacing: 3,
     children: <Widget>[
       Image.network(
-        snapshot.data[indexi[0]],
+        indexi.length < 1 ? noPhotoNetwork : snapshot.data[indexi[0]],
         fit: BoxFit.cover,
       ),
       Image.network(
-        snapshot.data[indexi[1]],
+        indexi.length < 2 ? noPhotoNetwork : snapshot.data[indexi[1]],
         fit: BoxFit.cover,
       ),
       Image.network(
-        snapshot.data[indexi[2]],
+        indexi.length < 3 ? noPhotoNetwork : snapshot.data[indexi[2]],
         fit: BoxFit.cover,
       ),
       Image.network(
-        snapshot.data[indexi[3]],
+        indexi.length < 4 ? noPhotoNetwork : snapshot.data[indexi[3]],
         fit: BoxFit.cover,
       ),
     ],
