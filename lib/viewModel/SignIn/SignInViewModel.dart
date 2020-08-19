@@ -16,7 +16,6 @@ import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
 
-
 ///When user enter his email on AlertDialog, onPressed "odustani" is bellow:
 void alerDialogOnPressedOdustani(BuildContext context) {
   Navigator.of(context).pop();
@@ -145,7 +144,6 @@ createdShowDialog(BuildContext context) {
 
 ///When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) async {
- 
   Container(child: AuthService().allowPasswordChange(context, forgetEmail));
   AuthService().onPressedAlertDialog(context, forgetEmail);
 }
