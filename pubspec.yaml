@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
 
   firebase_core: ^0.4.5
+  flutter_launcher_icons: ^0.7.5
   intl: ^0.16.0
   flutter_native_image: ^0.0.5
   flutter_image_compress: ^0.7.0
@@ -77,19 +78,18 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+# New app launcher icon
+flutter_icons:
+  image_path: 'assets/images/yoda.png'
+  android: true
+  ios: true
+
   # To add assets to your application, add an assets section, like this:
   assets:
-    - .env
-    - assets/images/audi.jpg
-    - assets/images/audi2.jpg
-    - assets/images/audi4.jpg
-    - assets/images/shoes.jpg
-    - assets/images/yoda.jpg
+    - .env   
+    - assets/images/yoda.png
     - assets/images/nophoto.jpg
-    - assets/img4.jpg
-    - assets/img3.jpg
-    - assets/img2.jpg
-    - assets/img1.jpg
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
