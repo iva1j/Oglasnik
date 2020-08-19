@@ -28,6 +28,7 @@ class _BookmarkedPostsState extends State<BookmarkedPosts> {
         ),
       ),
       body: WillPopScope(
+        // ignore: missing_return
         onWillPop: () {
           Navigator.of(context).pushReplacement(
             FadeRoute(page: RegisteredHome()),
