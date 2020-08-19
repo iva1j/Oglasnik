@@ -31,6 +31,7 @@ class ProductDetailsViewModel extends ProductDetailsInterface {
   }
 
   @override
+  // ignore: override_on_non_overriding_member
   void initImageSlider(AsyncSnapshot snapshot, List imageSlider) {
     products = snapshot.data.documents
         .map((doc) => Product.fromDocument(doc))

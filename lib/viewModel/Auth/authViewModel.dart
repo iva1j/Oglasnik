@@ -23,6 +23,7 @@ final AnonymousViewModel auth = AnonymousViewModel();
 
 class AuthService extends ChangeNotifier {
 // FUTURE BUILDER FOR REGISTER
+  // ignore: missing_return
   Future<bool> userExistingorNot(String email) async {
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
@@ -218,6 +219,7 @@ class AuthService extends ChangeNotifier {
 //alert dialog checker
 //FUTURE BUILDER ZA ALERT DIALOG (HOCE LI MU PUSTITI DA PROMIJENI PASSWORD)
 //best case for checking user in database!
+  // ignore: missing_return
   Future<bool> isEmailValid(String email) async {
     final QuerySnapshot result = await Firestore.instance
         .collection('firestoreUsers')
@@ -272,6 +274,7 @@ class AnonymousViewModel implements AnonymousInterface {
   }
 }
 
+// ignore: unused_element
 Future<FirebaseUser> _handleAnonymousSignIn() async {
   dynamic result = await auth.getAnonymous();
   return result;

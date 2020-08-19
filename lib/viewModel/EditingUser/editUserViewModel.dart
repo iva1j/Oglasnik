@@ -19,6 +19,7 @@ class EditProfile extends UpdateProfileInterface {
   }
 
   @override
+  // ignore: missing_return
   Future<bool> isEmailReserved(String email) async {
     print("email sa kojim ste prijavljeni je: " + email.toString());
     print("email koji je spremljen u updateProfileEmail je: " +
