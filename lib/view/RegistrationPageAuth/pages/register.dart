@@ -80,6 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
         body: WillPopScope(
+          // ignore: missing_return
           onWillPop: () {
             Navigator.of(context).pushReplacement(
               FadeRoute(page: AnonymousHome()),

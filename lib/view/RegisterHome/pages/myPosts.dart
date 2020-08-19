@@ -31,6 +31,7 @@ class _MyPostsState extends State<MyPosts> {
         ),
       ),
       body: WillPopScope(
+          // ignore: missing_return
           onWillPop: () {
             Navigator.of(context).pushReplacement(
               FadeRoute(page: RegisteredHome()),
