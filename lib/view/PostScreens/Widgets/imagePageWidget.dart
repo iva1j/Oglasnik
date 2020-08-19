@@ -401,8 +401,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               productImg2Update = null;
               productImg3Update = null;
               print('status interneta:' + productIsOnline.toString());
-              Navigator.of(context)
-                  .pushReplacement(FadeRoute(page: RegisteredHome()));
+              Navigator.of(context).pushAndRemoveUntil(
+                  FadeRoute(page: RegisteredHome()),
+                  (Route<dynamic> route) => false);
             } else
               return null;
           }
@@ -469,8 +470,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               pathGlobal3 = null;
               print('status interneta:' + productIsOnline.toString());
 
-              Navigator.of(context)
-                  .pushReplacement(FadeRoute(page: RegisteredHome()));
+              Navigator.of(context).pushAndRemoveUntil(
+                  FadeRoute(page: RegisteredHome()),
+                  (Route<dynamic> route) => false);
             } else
               return null;
           }

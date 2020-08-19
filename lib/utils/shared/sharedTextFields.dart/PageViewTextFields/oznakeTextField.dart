@@ -33,7 +33,6 @@ class OznakeTextField extends StatelessWidget {
       validator: productTagValidation,
       maxLines: null,
       keyboardType: TextInputType.multiline,
-      textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
           hintText: 'Oznake',
           helperText:
