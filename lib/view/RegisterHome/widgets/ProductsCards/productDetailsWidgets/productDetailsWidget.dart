@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/smallMainButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/anonProductDetailsTags.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsCategory.dart';
@@ -49,117 +50,122 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
             itemBuilder: (BuildContext context, int index) {
               return Column(
                 children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 1,
-                          blurRadius: 1,
-                          offset: Offset(0, 2), // changes position of shadow
-                        ),
-                      ],
-                      border: Border.all(
-                        color: Colors.black26,
-                        width: 0.2,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
-                    margin: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.blockSizeHorizontal * 5,
-                      vertical: SizeConfig.blockSizeVertical * 5,
-                    ),
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Color(0x40080808), width: 0.8),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10.0),
-                                  topRight: Radius.circular(10.0)),
+                  Stack(
+                    children: <Widget>[
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 1,
+                              offset:
+                                  Offset(0, 2), // changes position of shadow
                             ),
-                            width: SizeConfig.screenWidth,
-                            child: Container(
-                              padding: EdgeInsets.all(3),
-                              child: CarouselSlider(
-                                enableInfiniteScroll: false,
-                                initialPage: 0,
-                                viewportFraction: 1.0,
-                                aspectRatio: 1.5,
-                                items: widget.imageSlider.map((imgUrl) {
-                                  return Builder(
-                                    builder: (BuildContext context) {
-                                      return Container(
-                                        child: GestureDetector(
-                                          child: imgUrl ==
-                                                  "assets/images/nophoto.jpg"
-                                              ? Image.asset(
-                                                  "assets/images/nophoto.jpg")
-                                              : Image.network(
-                                                  imgUrl,
-                                                  fit: BoxFit.fitHeight,
-                                                ),
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    PrikazSlika(
-                                                  listaSlika:
-                                                      widget.imageSlider,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      );
-                                    },
-                                  );
-                                }).toList(),
-                              ),
-                            ),
+                          ],
+                          border: Border.all(
+                            color: Colors.black26,
+                            width: 0.2,
                           ),
-                          productDetailsLocationWidget(index),
-                          Container(
-                            margin: EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 5,
-                              right: SizeConfig.blockSizeHorizontal * 3,
-                              top: SizeConfig.blockSizeVertical * 1.1,
-                            ),
-                            child: Row(children: <Widget>[
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        margin: EdgeInsets.symmetric(
+                          horizontal: SizeConfig.blockSizeHorizontal * 5,
+                          vertical: SizeConfig.blockSizeVertical * 5,
+                        ),
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
                               Container(
-                                width: 170.0,
-                                child: Text(
-                                  widget.widget.productNameScreen,
-                                  style: Theme.of(context).textTheme.headline6,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Color(0x40080808), width: 0.8),
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10.0),
+                                      topRight: Radius.circular(10.0)),
+                                ),
+                                width: SizeConfig.screenWidth,
+                                child: Container(
+                                  padding: EdgeInsets.all(3),
+                                  child: CarouselSlider(
+                                    enableInfiniteScroll: false,
+                                    initialPage: 0,
+                                    viewportFraction: 1.0,
+                                    aspectRatio: 1.5,
+                                    items: widget.imageSlider.map((imgUrl) {
+                                      return Builder(
+                                        builder: (BuildContext context) {
+                                          return Container(
+                                            child: GestureDetector(
+                                              child: imgUrl ==
+                                                      "assets/images/nophoto.jpg"
+                                                  ? Image.asset(
+                                                      "assets/images/nophoto.jpg")
+                                                  : Image.network(
+                                                      imgUrl,
+                                                      fit: BoxFit.fitHeight,
+                                                    ),
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  FadeRoute(
+                                                    page: PrikazSlika(
+                                                      listaSlika:
+                                                          widget.imageSlider,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    }).toList(),
+                                  ),
                                 ),
                               ),
-                              Spacer(),
-                              productDetailsCategoryWidget(index)
-                            ]),
+                              productDetailsLocationWidget(index),
+                              Container(
+                                margin: EdgeInsets.only(
+                                  left: SizeConfig.blockSizeHorizontal * 5,
+                                  right: SizeConfig.blockSizeHorizontal * 3,
+                                  top: SizeConfig.blockSizeVertical * 1.1,
+                                ),
+                                child: Row(children: <Widget>[
+                                  Container(
+                                    width: 170.0,
+                                    child: Text(
+                                      widget.widget.productNameScreen,
+                                      style:
+                                          Theme.of(context).textTheme.headline6,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  productDetailsCategoryWidget(index)
+                                ]),
+                              ),
+                              productDetailsDescWidget(index),
+                              Divider(
+                                thickness: SizeConfig.blockSizeVertical * 0.2,
+                                indent: 15,
+                                endIndent: 15,
+                              ),
+                              //extract
+                              email != null
+                                  ? ProductDetailsTagsAndStar(
+                                      index: index,
+                                      docs: snapshot.data.documents,
+                                    )
+                                  : anonProductDetailsTagsWidget(index),
+                            ],
                           ),
-                          productDetailsDescWidget(index),
-                          Divider(
-                            thickness: SizeConfig.blockSizeVertical * 0.2,
-                            indent: 15,
-                            endIndent: 15,
-                          ),
-                          //extract
-                          email != null
-                              ? ProductDetailsTagsAndStar(
-                                  index: index,
-                                  docs: snapshot.data.documents,
-                                )
-                              : anonProductDetailsTagsWidget(index),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                   products[index].email == email
                       ? Container(
@@ -188,9 +194,11 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                             ],
                           ),
                         )
-                      : ProductDetailsContactsWidget(
-                          index: index,
-                        ),
+                      : Stack(children: <Widget>[
+                          ProductDetailsContactsWidget(
+                            index: index,
+                          ),
+                        ]),
                 ],
               );
             },

@@ -19,8 +19,9 @@ class PrijavaButton extends StatelessWidget {
             child: InkWell(
               splashColor: Colors.transparent, // splash color
               onTap: () {
-                Navigator.of(context)
-                    .pushReplacement(FadeRoute(page: SigninPage()));
+                Navigator.of(context).pushAndRemoveUntil(
+                    FadeRoute(page: SigninPage()),
+                    (Route<dynamic> route) => false);
               },
 
               child: Column(

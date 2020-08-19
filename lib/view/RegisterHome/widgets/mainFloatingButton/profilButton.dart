@@ -10,9 +10,6 @@ class ProfilButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // margin: EdgeInsets.only(
-      //   left: SizeConfig.blockSizeHorizontal * 10,
-      // ),
       child: SizedBox.fromSize(
         size: Size(80, 80), // button width and height
         child: ClipOval(

@@ -31,10 +31,11 @@ class _MyPostsState extends State<MyPosts> {
         ),
       ),
       body: WillPopScope(
-          onWillPop: () => Navigator.of(context)
-                  .pushReplacement(MaterialPageRoute(builder: (_) {
-                return RegisteredHome();
-              })),
+          onWillPop: () {
+            Navigator.of(context).pushReplacement(
+              FadeRoute(page: RegisteredHome()),
+            );
+          },
           child: MyProducts()),
       floatingActionButton:
           email != null ? MainFloatingButton() : homeFloatingAnimatedButton(),

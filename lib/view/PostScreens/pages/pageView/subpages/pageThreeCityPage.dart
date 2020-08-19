@@ -48,12 +48,11 @@ class _CityPageState extends State<CityPage> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 22,
+                      top: SizeConfig.blockSizeVertical * 21,
                       left: SizeConfig.blockSizeHorizontal * 10,
                       right: SizeConfig.blockSizeHorizontal * 10,
                     ),
                   ),
-                  // ),
                   CityDropDown(productSnapshot: widget.productSnapshot),
                   TagsForm(productSnapshot: widget.productSnapshot),
                   PageViewButton(),

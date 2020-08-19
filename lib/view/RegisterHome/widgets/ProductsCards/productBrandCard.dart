@@ -2,6 +2,7 @@ import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/ProductBrandContainer/productBrandContainer.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
@@ -27,7 +28,7 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.close, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.of(context).pop(FadeRoute()),
         ),
         centerTitle: true,
         title: Text(widget.categoryName),
