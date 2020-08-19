@@ -61,7 +61,11 @@ class AuthService extends ChangeNotifier {
   }
 
 //if statement must be replaced with correct validation; currently status represents user in firestore (user existed)
-  onPressedAlertDialog(BuildContext context, String email, String token) async {
+  onPressedAlertDialog(
+    BuildContext context,
+    String email,
+  ) async {
+    String token = randomAlphaNumeric(5);
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
     await InternetConnectivity().checkForConnectivity();
@@ -73,13 +77,11 @@ class AuthService extends ChangeNotifier {
               WidgetsBinding.instance.addPostFrameCallback((_) {});
               db.collection("firestoreUsers").document(email).updateData({
                 'email': email,
-                'token': randomAlphaNumeric(5),
+                'token': token,
               });
               Navigator.of(context)
-                  .pushReplacement(MaterialPageRoute(builder: (_) {
-                return PasswordChange(email);
-              }));
-              sendemail();
+                  .pushReplacement(FadeRoute(page: PasswordChange(email)));
+              sendemail(token);
               print('Za korisnika: ' +
                   email +
                   ' uspješno generisan token(na mail i firestore poslan), a on je: ' +

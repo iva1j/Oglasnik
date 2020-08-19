@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successAlertDialog.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successOnCreateAlertDialog.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/alertdialog.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 import 'package:flutter/material.dart';
@@ -20,20 +20,6 @@ import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInterne
 void alerDialogOnPressedOdustani(BuildContext context) {
   Navigator.of(context).pop();
 }
-
-///onPressed toggle that switch SignIn screen to SignUp
-void toggleRegister(BuildContext context) {
-  Navigator.pushReplacement(
-    context,
-    PageRouteBuilder(
-      pageBuilder: (context, animation1, animation2) => RegisterPage(),
-    ),
-  );
-  cleanLoginInputFields();
-}
-
-//clearing input fields with:
-void cleanLoginInputFields() {}
 
 ///funkcija kojom provjeravamo da li cemo pustiti usera da se sign in
 ///prvobitno se provjerava status konekcije sa isOnline, ako jeste
@@ -50,18 +36,18 @@ void onPressedSignInModel(
 
   if (hasActiveConnection) {
     Timer(Duration(seconds: 1), () {
-      if (signInRegisterFormKey.currentState.validate() && status == true) {
+      if (signInFormKey.currentState.validate() && status == true) {
         print('Logged in');
         globals.email = email;
+        registeredGlob = false;
         favoritesList.clear();
         FavoriteProduct().getAllFavoritesIDs().then((value) =>
             {for (final x in value) favoritesList.add(x['productID'])});
         loginPrefs(context, email);
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) {
-            registeredGlob = false;
-            return RegisteredHome();
-          }),
+          FadeRoute(
+            page: RegisteredHome(),
+          ),
         );
       } else {
         print('Email ili password nisu tacni');
@@ -159,5 +145,5 @@ createdShowDialog(BuildContext context) {
 ///When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) async {
   Container(child: AuthService().allowPasswordChange(context, forgetEmail));
-  AuthService().onPressedAlertDialog(context, forgetEmail, tokenCode);
+  AuthService().onPressedAlertDialog(context, forgetEmail);
 }

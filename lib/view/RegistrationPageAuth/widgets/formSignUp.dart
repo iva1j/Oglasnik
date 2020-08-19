@@ -1,10 +1,10 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/RegisterTextFields/emailTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/RegisterTextFields/nameTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/RegisterTextFields/passwordTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/RegisterTextFields/phoneTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/registerButton.dart';
 import 'package:flutter/material.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 class FormSignUp extends StatefulWidget {
   const FormSignUp({
@@ -19,7 +19,7 @@ class _FormSignUpState extends State<FormSignUp> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: signUpRegisterFormKey,
+        key: registerFormKey,
         child: Theme(
           data: ThemeData(
             primaryColor: Colors.black54,

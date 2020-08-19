@@ -9,6 +9,7 @@ import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageTwoU
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
@@ -285,7 +286,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             editProduct: widget.editProduct,
           ),
           Container(
-            margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 18),
+            margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 16),
           ),
           imageOneUploadButton(openFileExplorer1, deleteFirstEntry),
           imageTwoUploadButton(openFileExplorer2, deleteSecondEntry),
@@ -296,6 +297,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               Container(
                   margin: EdgeInsets.only(
                       top: SizeConfig.blockSizeVertical * 3,
+                      left: SizeConfig.blockSizeHorizontal * 12,
                       bottom: SizeConfig.blockSizeVertical * 3),
                   child: priceTextField()),
               Padding(
@@ -307,9 +309,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
             ],
           ),
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 6,
+            height: SizeConfig.blockSizeVertical * 8,
           ),
           Container(
+            margin: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
             child: pageViewSubmitButton(context),
           ),
         ],
@@ -398,8 +401,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               productImg2Update = null;
               productImg3Update = null;
               print('status interneta:' + productIsOnline.toString());
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => RegisteredHome()));
+              Navigator.of(context).pushAndRemoveUntil(
+                  FadeRoute(page: RegisteredHome()),
+                  (Route<dynamic> route) => false);
             } else
               return null;
           }
@@ -466,8 +470,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
               pathGlobal3 = null;
               print('status interneta:' + productIsOnline.toString());
 
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => RegisteredHome()));
+              Navigator.of(context).pushAndRemoveUntil(
+                  FadeRoute(page: RegisteredHome()),
+                  (Route<dynamic> route) => false);
             } else
               return null;
           }

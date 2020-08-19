@@ -18,8 +18,9 @@ class RegistracijaButton extends StatelessWidget {
             child: InkWell(
               splashColor: Colors.transparent, // splash color
               onTap: () {
-                Navigator.of(context)
-                    .pushReplacement(FadeRoute(page: RegisterPage()));
+                Navigator.of(context).pushAndRemoveUntil(
+                    FadeRoute(page: RegisterPage()),
+                    (Route<dynamic> route) => false);
               }, // button pressed
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

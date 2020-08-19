@@ -28,16 +28,22 @@ class FormPasswordChanged extends StatelessWidget {
           ),
           Form(
             key: passwordChangeFormKey,
-            child: Column(
-              children: <Widget>[
-                UnesiKod(),
-                NovaLozinka(),
-                PovrdiLozinku(),
-                Container(
-                  child: AuthService().tokenExistOrNot(context, email, token),
-                ),
-                ButtonSacuvaj(email: email),
-              ],
+            child: Theme(
+              data: ThemeData(
+                primaryColor: Colors.black54,
+                errorColor: Colors.red,
+              ),
+              child: Column(
+                children: <Widget>[
+                  UnesiKod(),
+                  NovaLozinka(),
+                  PovrdiLozinku(),
+                  Container(
+                    child: AuthService().tokenExistOrNot(context, email, token),
+                  ),
+                  ButtonSacuvaj(email: email),
+                ],
+              ),
             ),
           ),
         ],

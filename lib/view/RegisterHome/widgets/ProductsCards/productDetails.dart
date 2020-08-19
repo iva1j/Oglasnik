@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsWidget.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               if (widget.setStateParent != null) {
                 widget.setStateParent();
               }
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(FadeRoute());
             }),
       ),
       floatingActionButton:
@@ -65,7 +66,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           if (widget.setStateParent != null) {
             widget.setStateParent();
           }
-          Navigator.of(context).pop();
+          Navigator.of(context).pop(FadeRoute());
         },
         //extract Fahrudin
         child: ProductDetailsWidget(widget: widget, imageSlider: imageSlider),

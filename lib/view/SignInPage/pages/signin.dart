@@ -3,11 +3,12 @@ import 'package:Oglasnik/utils/shared/PageLogos/mainLogo.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/pages/register.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/FormSignIn.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/PrijavaWelcomeScreen.dart';
-import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,9 @@ class _SigninPageState extends State<SigninPage> {
             ),
             color: Colors.white,
             onPressed: () {
-              toggleRegister(context);
+              FocusScope.of(context).requestFocus(new FocusNode());
+              Navigator.of(context)
+                  .pushReplacement(FadeRoute(page: RegisterPage()));
             },
             child: Text(
               RegistrationPageAuthSecondWidget().buttonText,
@@ -83,10 +86,11 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ),
         body: WillPopScope(
-          onWillPop: () => Navigator.of(context)
-              .pushReplacement(MaterialPageRoute(builder: (_) {
-            return AnonymousHome();
-          })),
+          onWillPop: () {
+            Navigator.of(context).pushReplacement(
+              FadeRoute(page: AnonymousHome()),
+            );
+          },
           child: SingleChildScrollView(
             reverse: true,
             child: Padding(

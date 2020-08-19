@@ -2,6 +2,7 @@ import 'package:Oglasnik/interface/productInterface.dart';
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +20,13 @@ class ProductDetailsViewModel extends ProductDetailsInterface {
     img2 = immutableImg2;
     img3 = immutableImg3;
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) {
-        return ArticlePage(
+      FadeRoute(
+        page: ArticlePage(
           editProduct: UserProducts().editProduct,
           productSnapshot: products[index],
           productID: products[index].productID,
-        );
-      }),
+        ),
+      ),
     );
   }
 
