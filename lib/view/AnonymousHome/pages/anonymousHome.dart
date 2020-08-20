@@ -31,7 +31,12 @@ class _AnonymousHomeState extends State<AnonymousHome> {
         appBar: AppBar(
           backgroundColor: AppBarTheme.of(context).color,
           centerTitle: true,
-          title: Text('Oglasnik'),
+          title: Text(
+            'Oglasnik',
+            style: TextStyle(
+              fontFamily: 'Amaranth',
+            ),
+          ),
           leading: Container(),
           actions: <Widget>[
             IconButton(

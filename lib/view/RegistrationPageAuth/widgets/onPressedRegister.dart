@@ -11,6 +11,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
+import 'package:random_string/random_string.dart';
 
 class RegisterButton extends StatefulWidget {
   @override
@@ -31,26 +32,21 @@ class _RegisterButtonState extends State<RegisterButton> {
     return Container();
   }
 }
-
 void onPressedRegister(BuildContext context, String fullName, String email,
     String password, String phoneNumber) async {
   FocusScope.of(context).unfocus();
   FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
-
+  String userID = randomAlphaNumeric(20);
   await InternetConnectivity().checkForConnectivity();
-  // Timer(Duration(seconds: 1), () {
-  //   print('trajanje sekunde:');
-  //   InternetConnectivity().checkForConnectivity();
-  // });
-  // print('sekunda prošla:');
   if (hasActiveConnection) {
     Timer(Duration(seconds: 1), () {
       if (registerFormKey.currentState.validate() && allowUserToRegister) {
-        db.collection("firestoreUsers").document(registerEmail).setData({
+        db.collection("firestoreUsers").document(userID).setData({
           'fullName': registerFullName,
           'email': registerEmail,
           'password': registerPassword,
-          'phoneNumber': registerPhoneNumber,
+          'phoneNumber': registerPhoneNumber, 
+          'userID': userID,
         });
         print('korisnik uspješno ubačen u bazi');
 

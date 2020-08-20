@@ -85,12 +85,6 @@ flutter:
     - assets/images/nophoto.jpg
     - assets/images/logo.png
     
-
-    # New app launcher icon
-flutter_icons:
-  image_path: 'assets/images/logo.png'
-  android: true
-  ios: true
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -109,7 +103,12 @@ flutter_icons:
           weight: 700
         - asset: assets/fonts/Roboto-Regular.ttf
           weight: 700
-  #        style: italic
+      
+    - family: Amaranth
+      fonts:
+        - asset: assets/fonts/Amaranth-Regular.ttf
+        - asset: assets/fonts/Amaranth-Bold.ttf
+          
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
@@ -118,3 +117,9 @@ flutter_icons:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  # New app launcher icon
+flutter_icons:
+  image_path: 'assets/images/logo.png'
+  android: true
+  ios: true

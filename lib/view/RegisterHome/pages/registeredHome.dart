@@ -43,7 +43,12 @@ class _RegisteredHomeState extends State<RegisteredHome> {
       appBar: AppBar(
         backgroundColor: AppBarTheme.of(context).color,
         centerTitle: true,
-        title: Text('Oglasnik'),
+        title: Text(
+          'Oglasnik',
+          style: TextStyle(
+            fontFamily: 'Amaranth',
+          ),
+        ),
         leading: Icon(Icons.accessibility_new, color: mainAppColor),
         actions: <Widget>[
           IconButton(

@@ -16,7 +16,7 @@ class CategoryLoading extends StatelessWidget {
             //ovaj dio koda je radio  : Amer
             children: <Widget>[
               Container(
-                margin: Margin().only(0, 40, 0, 0),
+               // margin: Margin().only(0, 40, 0, 0),
               ),
               Container(
                 width: 350,
