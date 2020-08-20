@@ -41,6 +41,16 @@ class CreateProduct extends ProductInterface {
       'productImg2': productImg2,
       'productImg3': productImg3,
     });
+
+    db
+        .collection("firestoreUsers")
+        .document(userIDGlobal)
+        .collection('myProducts')
+        .document(productID)
+        .setData({
+      'productID': productID,
+    });
+
     return null;
   }
 
@@ -86,6 +96,12 @@ class UpdateProduct extends UpdateProductInterface {
     db.collection("products").document(productID).updateData({
       'productFinished': true,
     });
+    db
+        .collection("firestoreUsers")
+        .document(userIDGlobal)
+        .collection('myProducts')
+        .document(productID)
+        .delete();
     return null;
   }
 }

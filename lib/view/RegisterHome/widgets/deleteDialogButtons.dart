@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
@@ -30,8 +31,9 @@ class _DeleteButtonDialogState extends State<DeleteButtonDialog> {
               fontSize: 14),
         ),
         onPressed: () async {
-          await UpdateProduct().updateProduct(widget.snapshot.productID,widget.snapshot.productName);
-
+          await UpdateProduct().updateProduct(
+              widget.snapshot.productID, widget.snapshot.productName);
+          myProductList.remove(widget.snapshot.productID);
           Navigator.of(context).pushAndRemoveUntil(
               FadeRoute(page: RegisteredHome()),
               (Route<dynamic> route) => false);

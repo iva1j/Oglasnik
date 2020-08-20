@@ -116,3 +116,6 @@ bool isDeleteShown2 = false;
 bool isDeleteShown3 = false;
 
 String oldProductID;
+
+List<String> myProductList = List<String>();
+
