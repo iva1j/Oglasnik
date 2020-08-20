@@ -2,6 +2,7 @@ import 'package:Oglasnik/view/AnonymousHome/pages/mainbody.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/previewProduct.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
@@ -18,6 +19,8 @@ class _AnonymousHomeState extends State<AnonymousHome> {
   }
 
   Widget build(BuildContext context) {
+    allProducts.clear();
+    ProductViewModel().getProducts().then((value) => allProducts = value);
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
