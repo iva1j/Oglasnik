@@ -8,7 +8,7 @@ AppBarTheme buildAppBarTheme() {
       headline6: TextStyle(
         color: Colors.white,
         fontSize: 20,
-        fontFamily: 'Roboto',
+        fontFamily: 'Amaranth',
       ),
     ),
   );

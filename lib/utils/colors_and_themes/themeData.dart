@@ -19,7 +19,7 @@ ThemeData buildThemeData() {
     ),
     appBarTheme: buildAppBarTheme(),
     textTheme: ThemeData.light().textTheme.copyWith(
-          headline6: TextStyle(fontFamily: 'Roboto'),
+          headline6: TextStyle(fontFamily: 'Amaranth'),
         ),
   );
 }
