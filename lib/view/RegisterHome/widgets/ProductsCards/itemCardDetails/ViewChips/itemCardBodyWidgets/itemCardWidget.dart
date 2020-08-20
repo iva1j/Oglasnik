@@ -11,14 +11,12 @@ class ItemCardWidget extends StatefulWidget {
     @required this.index,
     @required this.setStateParent,
     @required this.docs,
-    @required this.inMyProducts,
   }) : super(key: key);
 
   final index;
   //final dynamic widget;
   final Function setStateParent;
   final List<DocumentSnapshot> docs;
-  final bool inMyProducts;
 
   @override
   _ItemCardWidgetState createState() => _ItemCardWidgetState();
@@ -47,7 +45,6 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
           snapshot: widget.docs,
           index: widget.index,
           setStateParent: widget.setStateParent,
-          inMyProducts: widget.inMyProducts,
         ),
       ),
     );

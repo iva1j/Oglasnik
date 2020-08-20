@@ -10,6 +10,6 @@ Container productBrandNumberItems(AsyncSnapshot snapshott, int index) {
       child: Text('U ovoj kategoriji nalazi se ' +
           snapshott.data.toString() +
           ' ' +
-          categoryBrand[index].productBrand +
+          categoryBrand[index] +
           '.'));
 }

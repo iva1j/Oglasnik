@@ -33,7 +33,7 @@ class ProductBrandContainer extends StatelessWidget {
               Navigator.of(context).push(
                 FadeRoute(
                   page: ItemCard(
-                    brandNameScreen: categoryBrand[index].productBrand,
+                    brandNameScreen: categoryBrand[index],
                     categoryName: categoryName,
                   ),
                 ),
@@ -65,7 +65,7 @@ class ProductBrandContainer extends StatelessWidget {
                   children: <Widget>[
                     FutureBuilder(
                         future: numberOfProductsPerBrandTest(
-                            categoryBrand[index].productBrand, categoryName),
+                            categoryBrand[index], categoryName),
                         builder:
                             (BuildContext context, AsyncSnapshot snapshott) {
                           if (!snapshott.hasData)
