@@ -52,8 +52,6 @@ class EditProfile extends UpdateProfileInterface {
           "unešeni mail nije u bazi, stoga je uspješno prošla izmjena email-a.");
       allowUsertoUpdateEmail = true;
       currentEmail = false;
-      // print("else: Trenutni status Alert Dialoga:" +
-      //     allowUsertoUpdateEmail.toString());
     }
   }
 }
