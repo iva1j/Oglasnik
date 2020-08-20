@@ -73,31 +73,56 @@ class _ItemCardBodyState extends State<ItemCardBody> {
           child: DynamicChipsWidget(refresh),
         ),
         Expanded(
-          child: FutureBuilder(
-              future: Firestore.instance
-                  .collection('products')
-                  .where('productBrand',
-                      isEqualTo: widget.widget.brandNameScreen)
-                  .where('productCategory', isEqualTo: widget.categoryName)
-                  .where('productFinished', isEqualTo: false)
-                  .getDocuments(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return Container(
-                    child: Center(
-                      child: SpinnerCircular(),
-                    ),
-                  );
-                }
+            child: StreamBuilder(
+                stream: Firestore.instance
+                    .collection('products')
+                    .where('productBrand',
+                        isEqualTo: widget.widget.brandNameScreen)
+                    .where('productCategory', isEqualTo: widget.categoryName)
+                    .where('productFinished', isEqualTo: false)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Container(
+                      child: Center(
+                        child: SpinnerCircular(),
+                      ),
+                    );
+                  }
 
-                // return itemCardBodyContainer(snapshot, showMessage, context);
-                return ItemCardBodyContainer(
-                  snapshot: snapshot,
-                  context: context,
-                  setStateParent: widget.setStateParent,
-                );
-              }),
-        ),
+                  // return itemCardBodyContainer(snapshot, showMessage, context);
+                  return ItemCardBodyContainer(
+                    snapshot: snapshot,
+                    context: context,
+                    setStateParent: widget.setStateParent,
+                  );
+                })
+
+            // FutureBuilder(
+            //     future: Firestore.instance
+            //         .collection('products')
+            //         .where('productBrand',
+            //             isEqualTo: widget.widget.brandNameScreen)
+            //         .where('productCategory', isEqualTo: widget.categoryName)
+            //         .where('productFinished', isEqualTo: false)
+            //         .getDocuments(),
+            //     builder: (context, snapshot) {
+            //       if (!snapshot.hasData) {
+            //         return Container(
+            //           child: Center(
+            //             child: SpinnerCircular(),
+            //           ),
+            //         );
+            //       }
+
+            //       // return itemCardBodyContainer(snapshot, showMessage, context);
+            //       return ItemCardBodyContainer(
+            //         snapshot: snapshot,
+            //         context: context,
+            //         setStateParent: widget.setStateParent,
+            //       );
+            //     }),
+            ),
       ],
     );
   }
