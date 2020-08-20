@@ -25,8 +25,8 @@ abstract class UpdateProductInterface {
 }
 
 abstract class AddFavoriteProductInterface {
-  Future addFavorite(String email, DocumentSnapshot product);
-  Future removeFavorite(String email, DocumentSnapshot product);
+  Future addFavorite(String email, DocumentSnapshot product, String userID);
+  Future removeFavorite(String email, DocumentSnapshot product, String userID);
   Future isProductFavorite(Product product);
 }
 

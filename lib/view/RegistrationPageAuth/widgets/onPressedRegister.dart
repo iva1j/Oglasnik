@@ -32,6 +32,7 @@ class _RegisterButtonState extends State<RegisterButton> {
     return Container();
   }
 }
+
 void onPressedRegister(BuildContext context, String fullName, String email,
     String password, String phoneNumber) async {
   FocusScope.of(context).unfocus();
@@ -45,12 +46,15 @@ void onPressedRegister(BuildContext context, String fullName, String email,
           'fullName': registerFullName,
           'email': registerEmail,
           'password': registerPassword,
-          'phoneNumber': registerPhoneNumber, 
+          'phoneNumber': registerPhoneNumber,
           'userID': userID,
         });
         print('korisnik uspješno ubačen u bazi');
 
-        loginPrefs(context, registerEmail);
+        loginPrefs(context, registerEmail, userID);
+
+        print("SAD CE UPISAT GARANT");
+        print(userIDGlobal);
         globals.email = registerEmail;
         registeredGlob = true;
 

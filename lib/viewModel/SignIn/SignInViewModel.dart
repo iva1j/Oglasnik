@@ -38,11 +38,12 @@ void onPressedSignInModel(
       if (signInFormKey.currentState.validate() && status == true) {
         print('Logged in');
         globals.email = email;
+
         registeredGlob = false;
         favoritesList.clear();
         FavoriteProduct().getAllFavoritesIDs().then((value) =>
             {for (final x in value) favoritesList.add(x['productID'])});
-        loginPrefs(context, email);
+        loginPrefs(context, email, null);
         Navigator.of(context).pushReplacement(
           FadeRoute(
             page: RegisteredHome(),
@@ -58,11 +59,31 @@ void onPressedSignInModel(
 
 ///Metoda kojom preko SharedPrefernces zapamtimo koji se user log in
 ///da bi kasnije na splash screenu mogli provjeravati da li se user prethodno logovao
-void loginPrefs(BuildContext context, String email) async {
+void loginPrefs(BuildContext context, String email, String userID) async {
   phoneNumberSetting(email);
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setString('email', email);
+  if (userID != null) {
+    prefs.setString('userID', userID);
+    userIDGlobal = userID;
+  } else {
+    userIDGlobal = await getUserID(email);
+    prefs.setString('userID', userIDGlobal);
+  }
   //prefs.setString('phoneNumber', phoneNumber);
+}
+
+Future getUserID(String email) async {
+  final QuerySnapshot qs = await Firestore.instance
+      .collection('firestoreUsers')
+      .where('email', isEqualTo: email)
+      .getDocuments();
+
+  final List<DocumentSnapshot> ds = qs.documents;
+
+  print("OVDJE NE VALJA HAMAN");
+
+  return ds[0]['userID'];
 }
 
 ///Query kojim provjeravamo da li je željeni user unio broj telefona u bazu

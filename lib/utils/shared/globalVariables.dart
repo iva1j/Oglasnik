@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 PageController pageController = PageController(initialPage: 0);
 final db = Firestore.instance;
 
+String userIDGlobal;
+
 String productName,
     email,
     phoneNumber,

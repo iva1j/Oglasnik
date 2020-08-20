@@ -9,30 +9,16 @@ import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 
-/*
-getFavoriteProducts(email) async {
-  listaProizvoda.clear();
-  final QuerySnapshot favoriteProducts = await Firestore.instance
-      .collection('firestoreUsers')
-      .document(email)
-      .collection('savedProducts')
-      .getDocuments();
-
-  List<DocumentSnapshot> allSavedProducts = favoriteProducts.documents;
-  for (int i = 0; i < allSavedProducts.length; i++) {
-    listaProizvoda.add(allSavedProducts[i]["productID"]);
-  }
-  print('printic: ');
-  print(listaProizvoda);
-  print("novi red:");
-}
-*/
 Future<void> splashScreenRouter() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString('email');
+  final id = prefs.getString('userID');
   globals.allBrands = await getAllBrands();
   globals.email = email;
+  globals.userIDGlobal = id;
+  print("OVO JE PROBLEMATICNOOO");
+  print(globals.userIDGlobal);
   globals.favoritesList.clear();
   FavoriteProduct().getAllFavoritesIDs().then((value) =>
       {for (final x in value) globals.favoritesList.add(x['productID'])});

@@ -42,14 +42,14 @@ class _FavProductsRowState extends State<FavProductsRow> {
               if (result) {
                 favoritesList
                     .remove(widget.snapshot.data[widget.index]['productID']);
-                await FavoriteProduct()
-                    .removeFavorite(email, widget.snapshot.data[widget.index]);
+                await FavoriteProduct().removeFavorite(
+                    email, widget.snapshot.data[widget.index], userIDGlobal);
                 setState(() {});
               } else {
                 favoritesList
                     .add(widget.snapshot.data[widget.index]['productID']);
-                await FavoriteProduct()
-                    .addFavorite(email, widget.snapshot.data[widget.index]);
+                await FavoriteProduct().addFavorite(
+                    email, widget.snapshot.data[widget.index], userIDGlobal);
                 setState(() {});
               }
             },

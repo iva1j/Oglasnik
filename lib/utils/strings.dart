@@ -228,7 +228,7 @@ final String noPhoto = "assets/images/nophoto.jpg";
 //final String noPhotoNetwork =
 //    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2Fnophoto.jpg?alt=media&token=cd241b95-8a79-4f1b-a4e0-4f4a77c255a8";
 final String noPhotoNetwork =
-    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/images%2Fnophoto.jpg?alt=media&token=8a6ae209-2839-4707-a1d8-5bf548545e81";
+    "https://firebasestorage.googleapis.com/v0/b/oglasnik-d920b.appspot.com/o/nophoto.jpg?alt=media&token=5d32f73b-c9cc-40e2-96eb-c5bc1b5004b7";
 List<String> productsForSearch = List<String>();
 List<String> productsAndBrandList = List<String>();
 List<String> suggestionsList;

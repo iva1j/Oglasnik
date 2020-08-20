@@ -65,13 +65,14 @@ void onPressedSaveButton(BuildContext context) async {
 }
 
 void userChangedData(BuildContext context) {
-  db.collection("firestoreUsers").document(email).updateData({
+  db.collection("firestoreUsers").document(userIDGlobal).updateData({
     'fullName': updateProfileName,
     'email': updateProfileEmail,
     'phoneNumber': updateProfilePhoneNumber,
   });
   if (updateProfileEmail != email) {
     userChangedProfile();
+    email = updateProfileEmail;
   }
 
   currentEmail = null;
@@ -80,12 +81,13 @@ void userChangedData(BuildContext context) {
 }
 
 void userChangedProfile() {
-  db.collection("firestoreUsers").document(updateProfileEmail).setData({
+  db.collection("firestoreUsers").document(userIDGlobal).setData({
     'fullName': updateProfileName,
     'email': updateProfileEmail,
     'password': updateProfilePassword,
     'phoneNumber': updateProfilePhoneNumber,
+    'userID': userIDGlobal
   });
-  db.collection("firestoreUsers").document(email).delete();
+  //db.collection("firestoreUsers").document(email).delete();
   email = updateProfileEmail;
 }
