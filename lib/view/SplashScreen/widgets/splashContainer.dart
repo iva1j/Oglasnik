@@ -32,7 +32,7 @@ class SplashContainer extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(top: 180),
           child: Text(
-            'Oglasnik',
+            'OGLASNIK',
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
