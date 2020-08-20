@@ -36,7 +36,7 @@ class SplashContainer extends StatelessWidget {
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
-                fontFamily: 'Roboto',
+                fontFamily: 'Amaranth',
                 fontWeight: FontWeight.bold),
           ),
         ),
