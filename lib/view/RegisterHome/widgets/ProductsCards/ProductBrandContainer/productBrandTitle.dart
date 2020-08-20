@@ -12,7 +12,7 @@ Container productBrandTitle(BuildContext context, int index) {
     child: Material(
       color: Colors.transparent,
       child: Text(
-        categoryBrand[index].productBrand,
+        categoryBrand[index],
         style: TextStyle(
           fontSize: SizeConfig.safeBlockHorizontal * 5,
           fontWeight: FontWeight.w500,

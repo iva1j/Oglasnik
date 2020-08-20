@@ -10,7 +10,7 @@ Container productDetailsTagsWidget(int index) {
       scrollDirection: Axis.horizontal,
       child: Container(
         margin: EdgeInsets.symmetric(
-          horizontal: SizeConfig.blockSizeHorizontal * 1,
+          horizontal: SizeConfig.blockSizeHorizontal * 2,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,

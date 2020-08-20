@@ -9,6 +9,7 @@ Future getBrandData(String productBrand) async {
   final QuerySnapshot getBrandData = await Firestore.instance
       .collection('products')
       .where('productBrand', isEqualTo: productBrand)
+      .where('productFinished', isEqualTo: false)
       .getDocuments();
 
   /// storamo snapshot brandova iz baze u novu listu brandData, gdje za svaki produkt iz te liste
