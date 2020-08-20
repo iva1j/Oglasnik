@@ -8,13 +8,14 @@ class SplashLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-//      alignment: Alignment.topLeft,
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 18),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10), color: Colors.white),
-        width: 80,
-        height: 77,
+      height: 100.0,
+      width: 100.0,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        image: DecorationImage(
+          image: AssetImage('assets/images/logo.png'),
+          fit: BoxFit.fill,
+        ),
       ),
     );
   }
