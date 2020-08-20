@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCard.dart';
@@ -43,10 +44,7 @@ class CategoryCardRow extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(
-                      left: SizeConfig.blockSizeHorizontal * 5,
-                      top: SizeConfig.blockSizeVertical * 2,
-                    ),
+                    margin: Margin().only(2, 0, 0, 5),
                     child: CircleAvatar(
                       radius: 20,
                       backgroundColor: mainAppColor,
@@ -54,10 +52,7 @@ class CategoryCardRow extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(
-                      left: SizeConfig.blockSizeHorizontal * 5,
-                      top: SizeConfig.blockSizeVertical * 2,
-                    ),
+                    margin: Margin().only(2, 0, 0, 5),
                     child: Text(
                       name,
                       style: TextStyle(
@@ -69,10 +64,7 @@ class CategoryCardRow extends StatelessWidget {
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(
-                  right: SizeConfig.blockSizeHorizontal * 4,
-                  top: SizeConfig.blockSizeVertical * 2,
-                ),
+                margin: Margin().only(2, 0, 4, 0),
                 child: Text(
                   count,
                   style: TextStyle(

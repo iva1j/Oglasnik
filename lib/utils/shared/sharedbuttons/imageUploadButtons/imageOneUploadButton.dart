@@ -1,13 +1,13 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/addImageOneTextField.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 
 Container imageOneUploadButton(dynamic function, dynamic functionDelete) {
   return Container(
     alignment: Alignment.centerLeft,
-    margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 5),
+    margin: Margin().only(0, 0, 0, 5),
     child: Row(
       children: <Widget>[
         img1 != immutableImg1

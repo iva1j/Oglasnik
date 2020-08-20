@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/bookmarkedPosts.dart';
@@ -11,9 +12,7 @@ class SacuvanoButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        bottom: SizeConfig.blockSizeVertical * 7,
-      ),
+      margin: Margin().only(0, 7, 0, 0),
       child: SizedBox.fromSize(
         size: Size(80, 80), // button width and height
         child: ClipOval(

@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/successDialogButtons.dart';
@@ -21,9 +22,7 @@ AlertDialog successAlertDialog(BuildContext context) {
                 style: TextStyle(color: alertDialogTextColor),
               ),
               Container(
-                margin: EdgeInsets.only(
-                  top: SizeConfig.blockSizeVertical * 3,
-                ),
+                margin: Margin().only(3, 0, 0, 0),
                 child: Text(
                   SuccessAlertDialog().opis2,
                   style: TextStyle(color: alertDialogTextColor),

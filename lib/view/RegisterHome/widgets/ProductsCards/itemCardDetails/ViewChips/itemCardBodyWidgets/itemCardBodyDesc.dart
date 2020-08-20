@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardDescription.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -7,9 +8,7 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 Container itemCardBodyDesc(DocumentSnapshot snapshot) {
   return Container(
     width: SizeConfig.blockSizeHorizontal * 53,
-    margin: EdgeInsets.only(
-      right: SizeConfig.blockSizeVertical * 2,
-    ),
+    margin: Margin().only(0, 0, 2, 0),
 
     ///Fahrudin
     ///

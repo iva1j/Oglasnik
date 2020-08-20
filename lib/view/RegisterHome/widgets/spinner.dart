@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -18,8 +19,7 @@ class Loading extends StatelessWidget {
             //ovaj dio koda je radio  : Amer
             children: <Widget>[
               Container(
-                margin:
-                    EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 35),
+                margin: Margin().only(0, 35, 0, 0),
               ),
               Container(
                 width: 350,

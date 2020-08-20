@@ -1,6 +1,6 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/ItemContainer/itemContainerDecoration.dart';
-import 'package:Oglasnik/utils/shared/ItemContainer/itemContainerMargins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardImage.dart';
@@ -16,7 +16,7 @@ Container itemContainer(
     BuildContext context, int index, Function setStateParent) {
   return Container(
     decoration: itemContainerDecoration(),
-    margin: itemContainerMargins(),
+    margin: Margin().only(4, 2, 5, 5),
     child: Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,

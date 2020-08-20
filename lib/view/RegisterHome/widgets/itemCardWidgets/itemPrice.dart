@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -12,10 +13,7 @@ class ItemPrice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        top: SizeConfig.blockSizeVertical,
-        // right: SizeConfig.blockSizeHorizontal * 3
-      ),
+      margin: Margin().only(1, 0, 0, 0),
       child: Text(
         NumberFormat.currency(locale: 'eu', symbol: 'KM').format(
           (double.parse('${price.toString().replaceAll(',', '.')}')),

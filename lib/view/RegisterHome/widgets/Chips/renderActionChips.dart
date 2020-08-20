@@ -1,17 +1,16 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:flutter/material.dart';
 
 renderActionChips(actionChipDeleted, context) {
   return Container(
-    margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 6),
+    margin: Margin().only(0, 0, 0, 6),
     child: Row(
       children: List<Widget>.generate(selectedChips.length, (index) {
         return Container(
-          margin: EdgeInsets.only(
-            right: SizeConfig.blockSizeHorizontal * 2,
-          ),
+          margin: Margin().only(0, 0, 2, 0),
           child: Chip(
             label: Text(
               selectedChips[index],

@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/oglasTag.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +10,7 @@ Container productDetailsTagsWidget(int index) {
     child: SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: SizeConfig.blockSizeHorizontal * 2,
-        ),
+        margin: Margin().symmetric(0, 2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: products[index]

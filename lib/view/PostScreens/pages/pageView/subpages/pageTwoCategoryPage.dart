@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
@@ -51,24 +52,13 @@ class _CategoryPageState extends State<CategoryPage> {
                   MainTitle(
                     editProduct: widget.editProduct,
                   ),
+                  Container(margin: Margin().only(22, 0, 10, 10)),
                   Container(
-                    margin: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 22,
-                      left: SizeConfig.blockSizeHorizontal * 10,
-                      right: SizeConfig.blockSizeHorizontal * 10,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.blockSizeHorizontal * 9,
-                    ),
+                    margin: Margin().symmetric(0, 9),
                     child: Card(
                         elevation: 16,
                         child: Container(
-                            margin: EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 5,
-                              right: SizeConfig.blockSizeHorizontal * 2,
-                            ),
+                            margin: Margin().only(0, 0, 2, 5),
                             child: Center(
                                 child: Align(
                                     alignment: Alignment.topRight,
@@ -113,16 +103,11 @@ class _CategoryPageState extends State<CategoryPage> {
                                     ))))),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(
-                        horizontal: SizeConfig.blockSizeHorizontal * 9,
-                        vertical: SizeConfig.blockSizeVertical * 3),
+                    margin: Margin().symmetric(3, 9),
                     child: Card(
                       elevation: 16,
                       child: Container(
-                        margin: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 5,
-                          right: SizeConfig.blockSizeHorizontal * 2,
-                        ),
+                        margin: Margin().only(0, 0, 2, 5),
                         child: Center(
                           child: Align(
                             alignment: Alignment.topRight,

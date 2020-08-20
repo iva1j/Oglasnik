@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/registerValidation/emailRegisterCheckValidator.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -27,9 +28,7 @@ class _UpdateEmailState extends State<UpdateEmail> {
   Widget build(BuildContext context) {
     AuthService().userExistingorNot(updateProfileEmail);
     return Container(
-      margin: EdgeInsets.only(
-        bottom: SizeConfig.blockSizeVertical * 1,
-      ),
+      margin: Margin().only(0, 1, 0, 0),
       child: new SizedBox(
         width: double.infinity,
         child: Container(

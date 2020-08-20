@@ -1,4 +1,5 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/oznakeTextField.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -16,12 +17,7 @@ class TagsForm extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.only(
-            bottom: SizeConfig.blockSizeVertical * 14.5,
-            left: SizeConfig.blockSizeHorizontal * 10,
-            right: SizeConfig.blockSizeHorizontal * 10,
-            top: SizeConfig.blockSizeVertical * 3,
-          ),
+          margin: Margin().only(3, 14.5, 10, 10),
           child: Form(
               key: productTagFormKey,
               child: Theme(

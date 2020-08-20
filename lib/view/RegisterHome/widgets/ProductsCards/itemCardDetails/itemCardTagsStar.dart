@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/itemCardWidgets/oglasTag.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,9 +10,7 @@ Container itemCardTags(DocumentSnapshot snapshot) {
     child: SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: SizeConfig.blockSizeHorizontal * 1,
-        ),
+        margin: Margin().symmetric(0, 1),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: snapshot['productTag']

@@ -39,7 +39,6 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                 setStateParent: widget.setStateParent,
                 index: index,
                 docs: widget.snapshot.data.documents,
-                inMyProducts: false,
               );
             } else if (showMessage == true) {
               return Container(
@@ -58,7 +57,6 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                 setStateParent: widget.setStateParent,
                 index: index,
                 docs: widget.snapshot.data.documents,
-                inMyProducts: false,
               );
             } else {
               return Container();

@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -51,8 +52,7 @@ class ItemProductContainer extends StatelessWidget {
               );
             } else if (showMessage == true) {
               return Container(
-                  margin: EdgeInsets.symmetric(
-                      vertical: SizeConfig.blockSizeVertical * 30),
+                  margin: Margin().symmetric(30, 0),
                   child: Center(child: Text(EmptyProductList().emptyList)));
             } else {
               return Container();
