@@ -7,6 +7,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+List<DocumentSnapshot> userProducts = List<DocumentSnapshot>();
+List productsIDs;
+
 class EditProfile extends UpdateProfileInterface {
   @override
   Future<List<DocumentSnapshot>> getCurrentUserInfo(String email) async {
@@ -71,10 +74,18 @@ void userChangedData(BuildContext context) {
     'phoneNumber': updateProfilePhoneNumber,
   });
   if (updateProfileEmail != email) {
+    // productList = db.collection("firestoreUsers").document(userIDGlobal).collection('myProducts').getDocuments();
+    print("lista proizvoda: ");
+    print(myProductList);
+    myProductList.forEach((element) {
+      db.collection('products').document(element).updateData({
+        'email': updateProfileEmail,
+      });
+    });
+
     userChangedProfile();
     email = updateProfileEmail;
   }
-
   currentEmail = null;
   allowUsertoUpdateEmail = null;
   Navigator.of(context).pushReplacement(FadeRoute(page: RegisteredHome()));

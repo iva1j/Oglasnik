@@ -27,3 +27,13 @@ Future<String> returnCategoryName(String id) async {
   documents.forEach((element) => s = element["categoryName"]);
   return s;
 }
+
+Future getMyProducts() async {
+  final QuerySnapshot myProducts = await Firestore.instance
+      .collection('firestoreUsers')
+      .document(userIDGlobal)
+      .collection('myProducts')
+      .getDocuments();
+  List<DocumentSnapshot> productList = myProducts.documents;
+  return productList;
+}
