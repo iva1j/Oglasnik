@@ -1,6 +1,7 @@
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/getAllBrands.dart';
+import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -22,6 +23,9 @@ Future<void> splashScreenRouter() async {
   globals.favoritesList.clear();
   FavoriteProduct().getAllFavoritesIDs().then((value) =>
       {for (final x in value) globals.favoritesList.add(x['productID'])});
+
+  getMyProducts().then((value) =>
+      {for (final x in value) globals.myProductList.add(x['productID'])});
 
   globals.registeredGlob = false;
 
