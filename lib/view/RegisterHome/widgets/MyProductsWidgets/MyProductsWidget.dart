@@ -70,7 +70,6 @@ class _MyProductsWidgetState extends State<MyProductsWidget> {
                               setStateParent: widget.setStateParent,
                               index: index,
                               docs: myPosts,
-                              inMyProducts: true,
                             );
                           } else if (widget.showMessage == true) {
                             return Container(
@@ -90,7 +89,6 @@ class _MyProductsWidgetState extends State<MyProductsWidget> {
                               setStateParent: widget.setStateParent,
                               index: index,
                               docs: myPosts,
-                              inMyProducts: true,
                             );
                           } else {
                             return Container();

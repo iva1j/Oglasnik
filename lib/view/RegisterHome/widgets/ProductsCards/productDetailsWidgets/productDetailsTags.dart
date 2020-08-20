@@ -10,7 +10,7 @@ Container productDetailsTagsWidget(int index) {
     child: SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(
-        margin: Margin().symmetric(0, 1),
+        margin: Margin().symmetric(0, 2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: products[index]
