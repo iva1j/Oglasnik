@@ -12,10 +12,10 @@ import 'package:flutter/material.dart';
 ///
 class FavoriteProduct extends AddFavoriteProductInterface {
   @override
-  Future addFavorite(String email, DocumentSnapshot product) {
+  Future addFavorite(String email, DocumentSnapshot product, String userID) {
     db
         .collection("firestoreUsers")
-        .document()
+        .document(userID)
         .collection('savedProducts')
         .document(product["productID"])
         .setData({
@@ -27,17 +27,17 @@ class FavoriteProduct extends AddFavoriteProductInterface {
   Future getAllFavoritesIDs() async {
     final QuerySnapshot favorites = await Firestore.instance
         .collection('firestoreUsers')
-        .document(email)
+        .document(userIDGlobal)
         .collection('savedProducts')
         .getDocuments();
     List<DocumentSnapshot> favoritesDocs = favorites.documents;
     return favoritesDocs;
   }
 
-  Future removeFavorite(String email, DocumentSnapshot product) {
+  Future removeFavorite(String email, DocumentSnapshot product, String userID) {
     db
         .collection("firestoreUsers")
-        .document(email)
+        .document(userID)
         .collection('savedProducts')
         .document(product["productID"])
         .delete();
@@ -84,11 +84,13 @@ class FavoriteProduct extends AddFavoriteProductInterface {
     final result = favoritesList.contains(container[index]['productID']);
     if (result) {
       favoritesList.remove(container[index]['productID']);
-      await FavoriteProduct().removeFavorite(email, container[index]);
+      await FavoriteProduct()
+          .removeFavorite(email, container[index], userIDGlobal);
       setStateParent();
     } else {
       favoritesList.add(container[index]['productID']);
-      await FavoriteProduct().addFavorite(email, container[index]);
+      await FavoriteProduct()
+          .addFavorite(email, container[index], userIDGlobal);
       setStateParent();
     }
   }

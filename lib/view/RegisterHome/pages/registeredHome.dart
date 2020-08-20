@@ -36,8 +36,6 @@ class _RegisteredHomeState extends State<RegisteredHome> {
     EditProfile().isEmailReserved(email);
     allProducts.clear();
     ProductViewModel().getProducts().then((value) => allProducts = value);
-    print("LISTA SVIH PRODUKATA JE");
-    print(allProducts);
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
