@@ -15,7 +15,7 @@ class FavoriteProduct extends AddFavoriteProductInterface {
   Future addFavorite(String email, DocumentSnapshot product) {
     db
         .collection("firestoreUsers")
-        .document(email)
+        .document()
         .collection('savedProducts')
         .document(product["productID"])
         .setData({
