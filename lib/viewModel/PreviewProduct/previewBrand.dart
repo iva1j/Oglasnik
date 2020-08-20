@@ -1,6 +1,10 @@
+import 'dart:collection';
+
 import 'package:Oglasnik/interface/productInterface.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'categoryBrands.dart';
 
 class BrandViewModel implements ReadBrandInterface {
   @override
@@ -31,10 +35,17 @@ class BrandViewModel implements ReadBrandInterface {
       else
         i++;
     }
-    print("AAAAAAAAAA");
-    print(l);
-    print("BBBBBBBBB");
-    return l;
-    //return qn;
+
+    final map = <String, dynamic>{};
+
+    for (final item in l) {
+      var numb = await numberOfProductsPerBrandTest(
+          item['productBrand'], categoryName);
+      map[item['productBrand']] = numb;
+    }
+
+    var sortedKeys = map.keys.toList(growable: false)
+      ..sort((k1, k2) => map[k2].compareTo(map[k1]));
+    return sortedKeys;
   }
 }

@@ -25,29 +25,32 @@ class _ProductDetailsTagsAndStarState extends State<ProductDetailsTagsAndStar> {
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         productDetailsTagsWidget(widget.index),
-        Container(
-          child: IconButton(
-              color: Colors.white,
-              icon: favoritesList
-                      .contains(widget.docs[widget.index]['productID'])
-                  ? Icon(
-                      Icons.star,
-                      size: 30,
-                      color: mainAppColor,
-                    )
-                  : Icon(Icons.star_border, size: 30, color: starBorderColor),
+        email != widget.docs[widget.index]['email']
+            ? Container(
+                child: IconButton(
+                    color: Colors.white,
+                    icon: favoritesList
+                            .contains(widget.docs[widget.index]['productID'])
+                        ? Icon(
+                            Icons.star,
+                            size: 30,
+                            color: mainAppColor,
+                          )
+                        : Icon(Icons.star_border,
+                            size: 30, color: starBorderColor),
 
-              //extract
-              onPressed: () async {
-                FavoriteProduct()
-                    .addOrRemoveFavorite(widget.index, null, widget.docs);
+                    //extract
+                    onPressed: () async {
+                      FavoriteProduct()
+                          .addOrRemoveFavorite(widget.index, null, widget.docs);
 
-                setState(() {});
-              }),
-        ),
+                      setState(() {});
+                    }),
+              )
+            : Container(),
       ],
     );
   }

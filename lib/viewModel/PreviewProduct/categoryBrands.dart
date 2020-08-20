@@ -10,14 +10,6 @@ void initCategoryBrands() async {
   documents.forEach((element) {
     categoryBrands[element["categoryName"]] = element["brands"];
   });
-
-  print(categoryBrands["Sportska Oprema"].runtimeType);
-
-  print(categoryBrands);
-
-  documents.forEach((element) {
-    print(element.runtimeType);
-  });
 }
 
 ///this function is used in FutureBuilder as a Future function
