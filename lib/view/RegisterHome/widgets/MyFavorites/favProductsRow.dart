@@ -24,37 +24,40 @@ class _FavProductsRowState extends State<FavProductsRow> {
     return Row(
       children: <Widget>[
         itemCardTags(widget.snapshot.data[widget.index]),
-        Container(
-          child: IconButton(
-            color: Colors.white,
-            icon: favoritesList
-                    .contains(widget.snapshot.data[widget.index]['productID'])
-                ? Icon(
-                    Icons.star,
-                    size: 30,
-                    color: mainAppColor,
-                  )
-                : Icon(Icons.star_border, size: 30, color: starBorderColor),
-            //extract
-            onPressed: () async {
-              final result = favoritesList
-                  .contains(widget.snapshot.data[widget.index]['productID']);
-              if (result) {
-                favoritesList
-                    .remove(widget.snapshot.data[widget.index]['productID']);
-                await FavoriteProduct().removeFavorite(
-                    email, widget.snapshot.data[widget.index], userIDGlobal);
-                setState(() {});
-              } else {
-                favoritesList
-                    .add(widget.snapshot.data[widget.index]['productID']);
-                await FavoriteProduct().addFavorite(
-                    email, widget.snapshot.data[widget.index], userIDGlobal);
-                setState(() {});
-              }
-            },
-          ),
-        ),
+        email != widget.snapshot.data[widget.index]['email']
+            ? Container(
+                child: IconButton(
+                  color: Colors.white,
+                  icon: favoritesList.contains(
+                          widget.snapshot.data[widget.index]['productID'])
+                      ? Icon(
+                          Icons.star,
+                          size: 30,
+                          color: mainAppColor,
+                        )
+                      : Icon(Icons.star_border,
+                          size: 30, color: starBorderColor),
+                  //extract
+                  onPressed: () async {
+                    final result = favoritesList.contains(
+                        widget.snapshot.data[widget.index]['productID']);
+                    if (result) {
+                      favoritesList.remove(
+                          widget.snapshot.data[widget.index]['productID']);
+                      await FavoriteProduct().removeFavorite(email,
+                          widget.snapshot.data[widget.index], userIDGlobal);
+                      setState(() {});
+                    } else {
+                      favoritesList
+                          .add(widget.snapshot.data[widget.index]['productID']);
+                      await FavoriteProduct().addFavorite(email,
+                          widget.snapshot.data[widget.index], userIDGlobal);
+                      setState(() {});
+                    }
+                  },
+                ),
+              )
+            : Container(),
       ],
     );
   }

@@ -14,9 +14,9 @@ bool listContains(int n, List<int> listaIntegera) {
   return false;
 }
 
-FutureBuilder getBrandDataFutureBuilder(int index) {
+FutureBuilder getBrandDataFutureBuilder(String categoryName, int index) {
   return FutureBuilder(
-    future: getBrandData(categoryBrand[index]),
+    future: getBrandData(categoryName, categoryBrand[index]),
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       if (snapshot.hasData) {
         //var random = new Random();

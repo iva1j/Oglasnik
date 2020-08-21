@@ -2,13 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 ///Future funkcija pomocu koje izvlačimo proizvode iz baze na osnovu imena branda svakog proizvoda
 /// iz kolekcije proizvodi, to storamo u varijablu getBrandData
-Future getBrandData(String productBrand) async {
+Future getBrandData(String categoryName, String productBrand) async {
   List slikeBrandova = [];
 
   /// lista u kojoj cemo storati dole izabrane slikebrandova na osnovu uslova iz if petlje
   final QuerySnapshot getBrandData = await Firestore.instance
       .collection('products')
       .where('productBrand', isEqualTo: productBrand)
+      .where('productCategory', isEqualTo: categoryName)
       .where('productFinished', isEqualTo: false)
       .getDocuments();
 
