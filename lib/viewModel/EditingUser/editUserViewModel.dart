@@ -74,9 +74,6 @@ void userChangedData(BuildContext context) {
     'phoneNumber': updateProfilePhoneNumber,
   });
   if (updateProfileEmail != email) {
-    // productList = db.collection("firestoreUsers").document(userIDGlobal).collection('myProducts').getDocuments();
-    print("lista proizvoda: ");
-    print(myProductList);
     myProductList.forEach((element) {
       db.collection('products').document(element).updateData({
         'email': updateProfileEmail,

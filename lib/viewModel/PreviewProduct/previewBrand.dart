@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:Oglasnik/interface/productInterface.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';

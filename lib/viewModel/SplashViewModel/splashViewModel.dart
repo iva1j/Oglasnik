@@ -18,8 +18,6 @@ Future<void> splashScreenRouter() async {
   globals.allBrands = await getAllBrands();
   globals.email = email;
   globals.userIDGlobal = id;
-  print("OVO JE PROBLEMATICNOOO");
-  print(globals.userIDGlobal);
   globals.favoritesList.clear();
   FavoriteProduct().getAllFavoritesIDs().then((value) =>
       {for (final x in value) globals.favoritesList.add(x['productID'])});

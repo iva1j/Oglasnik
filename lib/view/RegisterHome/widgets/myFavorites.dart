@@ -1,3 +1,4 @@
+import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/MyFavorites/favoritesContainer.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
@@ -27,6 +28,9 @@ class _MyFavoritesState extends State<MyFavorites> {
             ),
           );
         } else {
+          favoritesList.clear();
+          for (int i = 0; i < snapshot.data.length; i++)
+            favoritesList.add(snapshot.data[i]['productID']);
           return Container(
             padding: EdgeInsets.only(bottom: 55),
             child: snapshot.data.length == 0
