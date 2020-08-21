@@ -84,7 +84,7 @@ Datum završetka US: 06.08.2020<br><br><br>
   <summary> <b> Sprint 7  </b> </summary>
   
 ## User Story 1: As A User I want to EDIT MY POST so that I can update it.
-Datum početka rada: 14.08.2020 <br>
+Datum početka rada: 06.08.2020 <br>
 Kreirane cjeline: <ul><li>Mogućnost korisnika da uredi unos proizvoda</li></ul><br>
 ## User Story 2: As a User I want to SAVE SOME POSTS so that I can review them later.
 Kreirane cjeline: <ul><li>Mogućnost korisnika da sačuva željene proizvode da bi ih kasnije mogao lakše pronaći</li></ul><br>
