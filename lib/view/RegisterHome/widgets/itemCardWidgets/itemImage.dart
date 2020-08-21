@@ -1,7 +1,10 @@
 import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:flutter/material.dart';
+import 'package:meet_network_image/meet_network_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ItemImage extends StatefulWidget {
   const ItemImage({
@@ -20,19 +23,37 @@ class _ItemImageState extends State<ItemImage> {
   Widget build(BuildContext context) {
     return
         //CategoryLoading();
-        Container(
-      margin: Margin().only(1, 0, 1, 0),
-      height: SizeConfig.blockSizeVertical * 20,
-      width: SizeConfig.blockSizeVertical * 20,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            fit: BoxFit.cover,
-            image: widget.img == ""
-                ? AssetImage(noPhoto)
-                : NetworkImage(widget.img)),
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-        color: Colors.redAccent,
-      ),
-    );
+        widget.img == ""
+            ? Container(
+                margin: Margin().only(1, 0, 1, 0),
+                height: SizeConfig.blockSizeVertical * 20,
+                width: SizeConfig.blockSizeVertical * 20,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(noPhoto),
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  color: Colors.redAccent,
+                ),
+              )
+            : Container(
+                margin: Margin().only(1, 0, 1, 0),
+                height: SizeConfig.blockSizeVertical * 20,
+                width: SizeConfig.blockSizeVertical * 20,
+                child: CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      image: DecorationImage(
+                          image: imageProvider, fit: BoxFit.cover),
+                    ),
+                  ),
+                  imageUrl: widget.img,
+                  placeholder: (context, url) => SpinnerCircular(),
+                  errorWidget: (context, url, error) => new Icon(Icons.error),
+                ),
+              );
   }
 }

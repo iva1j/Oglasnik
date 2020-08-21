@@ -1,4 +1,7 @@
+import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/imageSizeCalculator.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -55,7 +58,7 @@ class PrikazSlika extends StatelessWidget {
                                   fit: BoxFit.fitWidth,
                                 )
                               : imgHeight > imgWidth
-                                  ? Image.network(
+                                  /*? Image.network(
                                       imgUrl,
                                       fit: BoxFit.fill,
                                       height: height,
@@ -64,6 +67,22 @@ class PrikazSlika extends StatelessWidget {
                                       imgUrl,
                                       fit: BoxFit.fitWidth,
                                       height: height,
+                                    ),*/
+                                  ? CachedNetworkImage(
+                                      fit: BoxFit.fill,
+                                      imageUrl: imgUrl,
+                                      placeholder: (context, url) =>
+                                          CategoryLoading(),
+                                      errorWidget: (context, url, error) =>
+                                          new Icon(Icons.error),
+                                    )
+                                  : CachedNetworkImage(
+                                      fit: BoxFit.fitWidth,
+                                      imageUrl: imgUrl,
+                                      placeholder: (context, url) =>
+                                          CategoryLoading(),
+                                      errorWidget: (context, url, error) =>
+                                          new Icon(Icons.error),
                                     ),
                         ),
                       );
