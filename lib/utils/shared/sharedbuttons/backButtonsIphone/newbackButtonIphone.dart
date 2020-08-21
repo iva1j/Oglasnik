@@ -1,5 +1,4 @@
-import 'package:Oglasnik/utils/transitionFade.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/leaveAlertDialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +10,10 @@ IconButton newInputBackButtonIphone(BuildContext context) {
         size: 30,
       ),
       onPressed: () {
-        Navigator.of(context).pushAndRemoveUntil(
-            FadeRoute(page: RegisteredHome()),
-            (Route<dynamic> route) =>
-                false); // obrise sve routes prije ove na koju pusha
+        showDialog(
+            context: context,
+            builder: (context) {
+              return leaveAlertDialog(context);
+            });
       });
 }
