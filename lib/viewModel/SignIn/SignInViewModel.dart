@@ -81,8 +81,6 @@ Future getUserID(String email) async {
 
   final List<DocumentSnapshot> ds = qs.documents;
 
-  print("OVDJE NE VALJA HAMAN");
-
   return ds[0]['userID'];
 }
 
