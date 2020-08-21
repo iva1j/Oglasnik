@@ -65,6 +65,7 @@ class AuthService extends ChangeNotifier {
     BuildContext context,
     String email,
   ) async {
+    print('UserIDGLobal ima vrijednost: '+userIDGlobal);
     String token = randomAlphaNumeric(5);
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
@@ -75,8 +76,8 @@ class AuthService extends ChangeNotifier {
             if (alertFormKey.currentState.validate() &&
                 allowUserToChangePassword == true) {
               WidgetsBinding.instance.addPostFrameCallback((_) {});
-              db.collection("firestoreUsers").document(email).updateData({
-                'email': email,
+              db.collection("firestoreUsers").document(userIDGlobal).updateData({
+               // 'email': email,
                 'token': token,
               });
               Navigator.of(context)
@@ -111,8 +112,8 @@ class AuthService extends ChangeNotifier {
       if (passwordChangeFormKey.currentState.validate() &&
           tokenstatus == true &&
           newPassword == passwordConfirm) {
-        db.collection("firestoreUsers").document(email).updateData({
-          'email': email,
+        db.collection("firestoreUsers").document(userIDGlobal).updateData({
+          //'email': email,
           'token': '',
           'password': newPassword,
         });
