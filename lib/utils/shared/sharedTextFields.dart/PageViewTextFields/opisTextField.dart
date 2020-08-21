@@ -30,13 +30,13 @@ class OpisTextField extends StatelessWidget {
                   ? updateProductDescription
                   : updateProductDescriptionReturn,
           onChanged: opisFieldOnChanged,
-          textInputAction: TextInputAction.done,
           onFieldSubmitted: (v) {
             FocusScope.of(context).nextFocus();
           },
           validator: productDescValidation,
-          maxLines: null,
+          textInputAction: TextInputAction.newline,
           keyboardType: TextInputType.multiline,
+          maxLines: null,
           textCapitalization: TextCapitalization.sentences,
           decoration: const InputDecoration(
             labelText: 'Opis',

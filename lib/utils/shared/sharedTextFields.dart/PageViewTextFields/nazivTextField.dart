@@ -40,9 +40,10 @@ class _NazivTextFieldState extends State<NazivTextField> {
                   : updateProductNameReturn,
           onChanged: nazivFieldOnChanged,
           textCapitalization: TextCapitalization.sentences,
+          textInputAction: TextInputAction.newline,
+          keyboardType: TextInputType.multiline,
+          maxLines: null,
           validator: productFieldsValidator,
-
-          //controller: productNameController,
           maxLength: 28,
           decoration: const InputDecoration(
               hintText: 'Naziv artikla',

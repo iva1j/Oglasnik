@@ -27,12 +27,11 @@ class OznakeTextField extends StatelessWidget {
       },
       //controller: productTagController,
       validator: productTagValidation,
-      maxLines: null,
       keyboardType: TextInputType.multiline,
       decoration: const InputDecoration(
           hintText: 'Oznake',
           helperText:
-              'Oznake razdvojiti zarezom: Sarajevo, zamjena, fulloprema',
+              'Svaku oznaku morate razdvojiti zarezom.\nPrimjer:prodaja, novo, zamjena, hitno...',
           contentPadding: EdgeInsets.only(left: 10.0)),
     );
   }

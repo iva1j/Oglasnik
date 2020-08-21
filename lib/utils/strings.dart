@@ -135,11 +135,15 @@ class SuccessAlertDialog {
 
   String uredu = "UREDU";
   String kreiraj = "KREIRAJ";
+  String napusti = "NAPUSTI";
   String empty = "";
   String obrisinaslov = "Završi artikal?";
   String obrisitext = "Da li ste sigurni da želite završiti artikal?";
   String delete = "ZAVRŠI";
   String odustani = "ODUSTANI";
+  String leave = "Napusti unos?";
+  String leaveopis = "Da li ste sigurni da želite napustiti novi unos?";
+  String leaveopis2 = "Ovaj artikal neće biti spašen!";
 }
 
 //..view/SplashScreen
@@ -204,7 +208,7 @@ class InternetConnectionMessage {
 }
 
 class SearchPageText {
-  String hintText = "Pretraga proizvoda...";
+  String hintText = "Pretraga";
 }
 
 class LoadingText {
