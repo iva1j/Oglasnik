@@ -1,5 +1,4 @@
 import 'package:Oglasnik/utils/margins.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,6 @@
 import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/suggestionFunction.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/itemCardDetails/itemCardBody.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductWidgets/itemContainer.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/SearchPage/ProductSearch/itemProductName.dart';

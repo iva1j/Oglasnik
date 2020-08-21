@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:flutter/material.dart';
 
 Container productBrandNumberItems(AsyncSnapshot snapshott, int index) {

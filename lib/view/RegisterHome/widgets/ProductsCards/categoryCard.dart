@@ -1,7 +1,5 @@
 import 'package:Oglasnik/model/productCategory.dart';
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
-import 'package:Oglasnik/viewModel/EditingUser/editUserViewModel.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/Search/productSearchViewModel.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewCategory.dart';
 import 'package:flutter/material.dart';
