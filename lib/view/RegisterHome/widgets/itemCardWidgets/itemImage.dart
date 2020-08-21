@@ -3,7 +3,6 @@ import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:flutter/material.dart';
-import 'package:meet_network_image/meet_network_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ItemImage extends StatefulWidget {
