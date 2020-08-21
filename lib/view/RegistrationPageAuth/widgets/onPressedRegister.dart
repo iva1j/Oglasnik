@@ -49,12 +49,9 @@ void onPressedRegister(BuildContext context, String fullName, String email,
           'phoneNumber': registerPhoneNumber,
           'userID': userID,
         });
-        print('korisnik uspješno ubačen u bazi');
 
         loginPrefs(context, registerEmail, userID);
 
-        print("SAD CE UPISAT GARANT");
-        print(userIDGlobal);
         globals.email = registerEmail;
         registeredGlob = true;
 
