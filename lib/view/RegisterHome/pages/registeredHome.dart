@@ -29,6 +29,9 @@ class _RegisteredHomeState extends State<RegisteredHome> {
   List<dynamic> products = [];
   @override
   Widget build(BuildContext context) {
+    print("object");
+    print(favoritesList);
+    print("object");
     setState(() {
       isLoading = false;
       doesPop = true;
