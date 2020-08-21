@@ -80,3 +80,18 @@ Kreirane cjeline: <ul><li>Mogućnost korisnika da filtrira proizvode iz baze na 
 Datum završetka US: 06.08.2020<br><br><br>
 </details>
 
+<details>
+  <summary> <b> Sprint 7  </b> </summary>
+  
+## User Story 1: As A User I want to EDIT MY POST so that I can update it.
+Datum početka rada: 14.08.2020 <br>
+Kreirane cjeline: <ul><li>Mogućnost korisnika da uredi unos proizvoda</li></ul><br>
+## User Story 2: As a User I want to SAVE SOME POSTS so that I can review them later.
+Kreirane cjeline: <ul><li>Mogućnost korisnika da sačuva željene proizvode da bi ih kasnije mogao lakše pronaći</li></ul><br>
+## User Story 3: As a User I want to FINISH MY POST so that I can remove it from applications.
+Kreirane cjeline: <ul><li>Mogućnost korisnika da obriše proizvod(oglas) iz aplikacije</li></ul><br>
+## User Story 4: As a User I want to UPDATE MY INFO IN PROFILE so that I can always show fresh information
+Kreirane cjeline: <ul><li>Mogućnost korisnika da ažurira informacije na svom profilu</li></ul><br>
+Datum završetka US: 21.08.2020<br><br><br>
+</details>
+
