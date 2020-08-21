@@ -25,7 +25,7 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 55),
+      padding: EdgeInsets.only(bottom: 75),
       child: ListView.builder(
         itemCount: widget.snapshot.data.documents.length,
         itemBuilder: (_, int index) {
