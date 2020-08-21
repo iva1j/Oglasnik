@@ -13,6 +13,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsW
 import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetailsWidgets/productDetailsTagsAndStar.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:Oglasnik/viewModel/ProductDetails/productDetailsViewModel.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -103,9 +104,17 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                                       "assets/images/nophoto.jpg"
                                                   ? Image.asset(
                                                       "assets/images/nophoto.jpg")
-                                                  : Image.network(
+                                                  /* : Image.network(
                                                       imgUrl,
-                                                      fit: BoxFit.fitHeight,
+                                                    ),*/
+                                                  : CachedNetworkImage(
+                                                      imageUrl: imgUrl,
+                                                      placeholder:
+                                                          (context, url) =>
+                                                              SpinnerCircular(),
+                                                      errorWidget: (context,
+                                                              url, error) =>
+                                                          new Icon(Icons.error),
                                                     ),
                                               onTap: () {
                                                 Navigator.push(
