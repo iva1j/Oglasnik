@@ -92,7 +92,7 @@ class ProductBrandContainer extends StatelessWidget {
                       child: Expanded(
                         child: Container(
                           margin: Margin().only(2, 2, 3, 0),
-                          child: getBrandDataFutureBuilder(index),
+                          child: getBrandDataFutureBuilder(categoryName, index),
                         ),
                       ),
                     )

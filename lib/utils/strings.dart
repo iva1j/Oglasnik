@@ -135,11 +135,15 @@ class SuccessAlertDialog {
 
   String uredu = "UREDU";
   String kreiraj = "KREIRAJ";
+  String napusti = "NAPUSTI";
   String empty = "";
   String obrisinaslov = "Završi artikal?";
   String obrisitext = "Da li ste sigurni da želite završiti artikal?";
   String delete = "ZAVRŠI";
   String odustani = "ODUSTANI";
+  String leave = "Napusti unos?";
+  String leaveopis = "Da li ste sigurni da želite napustiti novi unos?";
+  String leaveopis2 = "Ovaj artikal neće biti spašen!";
 }
 
 //..view/SplashScreen
@@ -204,7 +208,7 @@ class InternetConnectionMessage {
 }
 
 class SearchPageText {
-  String hintText = "Pretraga proizvoda...";
+  String hintText = "Pretraga";
 }
 
 class LoadingText {
@@ -233,17 +237,99 @@ List<String> productsForSearch = List<String>();
 List<String> productsAndBrandList = List<String>();
 List<String> suggestionsList;
 final List<String> cityDropdownItems = <String>[
+  'Apatin',
+  'Aranđelovac',
+  'Bačka Palanka',
+  'Bačka Topola',
+  'Banja Luka',
+  'Bečej',
+  'Belgrade',
+  'Bihać',
+  'Bijeljina',
+  'Bjelovar',
+  'Bor',
+  'Bosanska Krupa',
+  'Brčko',
+  'Bugojno',
+  'Cazin',
+  'Čačak',
+  'Čakovec',
+  'Ćuprija',
+  'Doboj',
+  'Dubrovnik',
+  'Goražde',
+  'Gornji Milanovac',
+  'Gračanica',
+  'Gradačac',
+  'Inđija',
+  'Jagodina',
+  'Karlovac',
+  'Kikinda',
+  'Knjazevac',
+  'Konjic',
+  'Koprivnica',
+  'Kragujevac',
+  'Kraljevo',
+  'Kruševac',
+  'Lazarevac',
+  'Leskovac',
+  'Mostar',
+  'Negotin',
+  'Niš',
+  'Nova Pazova',
+  'Novi Pazar',
+  'Novi Sad',
+  'Obrenovac',
+  'Osijek',
+  'Pančevo',
+  'Pirot',
+  'Požarevac',
+  'Požega',
+  'Prijedor',
+  'Prokuplje',
+  'Pula',
+  'Rijeka',
+  'Ruma',
+  'Samobor',
   'Sarajevo',
-  'London',
-  'Lisabon',
-  'Berlin',
-  'New York',
-  'Beč',
-  'Madrid',
-  'Rim',
-  'Bukurešt',
-  'Moskva',
-  'Kopenhagen',
-  'Basel',
-  'Pariz',
+  'Senta',
+  'Sesvete',
+  'Sisak',
+  'Slavonski Brod',
+  'Smederevo',
+  'Smederevska Palanka',
+  'Solin',
+  'Sombor',
+  'Split',
+  'Sremčica',
+  'Sremska Mitrovica',
+  'Stara Pazova',
+  'Subotica',
+  'Šabac',
+  'Šibenik',
+  'Travnik',
+  'Trebinje',
+  'Trstenik',
+  'Tuzla',
+  'Užice',
+  'Valjevo',
+  'Varaždin',
+  'Velika Gorica',
+  'Velika Kladuša',
+  'Vinkovci',
+  'Virovitica',
+  'Visoko',
+  'Vranje',
+  'Vrbas',
+  'Vršac',
+  'Vukovar',
+  'Zadar',
+  'Zagreb',
+  'Zagreb - Centar',
+  'Zagreb- Stenjevec',
+  'Zaječar',
+  'Zaprešić',
+  'Zemun',
+  'Zenica',
+  'Zrenjanin',
 ];

@@ -54,24 +54,27 @@ Container itemContainer(
             ? Row(
                 children: <Widget>[
                   itemCardTags(selectedProductsGlobal[index]),
-                  Container(
-                    child: IconButton(
-                        color: Colors.white,
-                        icon: favoritesList.contains(
-                                selectedProductsGlobal[index]['productID'])
-                            ? Icon(
-                                Icons.star,
-                                size: 30,
-                                color: mainAppColor,
-                              )
-                            : Icon(Icons.star_border,
-                                size: 30, color: starBorderColor),
-                        //extract Fahrudin
-                        onPressed: () async {
-                          FavoriteProduct().addOrRemoveFavorite(
-                              index, setStateParent, selectedProductsGlobal);
-                        }),
-                  ),
+                  email != selectedProductsGlobal[index]['email']
+                      ? Container(
+                          child: IconButton(
+                              color: Colors.white,
+                              icon: favoritesList.contains(
+                                      selectedProductsGlobal[index]
+                                          ['productID'])
+                                  ? Icon(
+                                      Icons.star,
+                                      size: 30,
+                                      color: mainAppColor,
+                                    )
+                                  : Icon(Icons.star_border,
+                                      size: 30, color: starBorderColor),
+                              //extract Fahrudin
+                              onPressed: () async {
+                                FavoriteProduct().addOrRemoveFavorite(index,
+                                    setStateParent, selectedProductsGlobal);
+                              }),
+                        )
+                      : Container(),
                 ],
               )
             : itemCardTags(selectedProductsGlobal[index]),

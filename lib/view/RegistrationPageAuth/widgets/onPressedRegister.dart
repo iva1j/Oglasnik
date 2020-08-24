@@ -62,8 +62,6 @@ void onPressedRegister(BuildContext context, String fullName, String email,
 
         loginPrefs(context, registerEmail, userID);
 
-        print("SAD CE UPISAT GARANT");
-        print(userIDGlobal);
         globals.email = registerEmail;
         registeredGlob = true;
 
