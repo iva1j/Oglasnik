@@ -41,7 +41,7 @@ class _AlertDialogWidgetState extends State<AlertDialogWidget> {
         margin: EdgeInsets.only(top: 43.0),
         child: Form(
           key: alertFormKey,
-          child: EmailAlertDialog(),
+          child: EmailAlertDialog(), 
         ),
       ),
       actions: <Widget>[

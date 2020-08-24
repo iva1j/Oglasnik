@@ -3,11 +3,16 @@ import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 
-class PosaljiKodDugme extends StatelessWidget {
+class PosaljiKodDugme extends StatefulWidget {
   const PosaljiKodDugme({
     Key key,
   }) : super(key: key);
 
+  @override
+  _PosaljiKodDugmeState createState() => _PosaljiKodDugmeState();
+}
+
+class _PosaljiKodDugmeState extends State<PosaljiKodDugme> {
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -1,4 +1,5 @@
 import 'package:Oglasnik/utils/colors_and_themes/themeData.dart';
+import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:Oglasnik/viewModel/FavoriteProduct/favoriteProductViewModel.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/getAllBrands.dart';
 import 'package:Oglasnik/viewModel/PreviewProduct/previewProductViewModel.dart';
@@ -25,6 +26,13 @@ Future<void> splashScreenRouter() async {
   getMyProducts().then((value) =>
       {for (final x in value) globals.myProductList.add(x['productID'])});
 
+  globals.userIDGlobal = null;
+  // getAllUsers().then((value) =>
+  //     {for (final x in value) globals.allUsersList.add(x['userID'])});
+  // print('lista user idijeva: ');
+  // print(globals.allUsersList);
+
+  print('Splash globalUserID:' + globals.userIDGlobal.toString());
   globals.registeredGlob = false;
 
   phoneNumberSetting(email);

@@ -34,7 +34,6 @@ class _ItemCardBodyContainerState extends State<ItemCardBodyContainer> {
                 widget.snapshot.data.documents[index]['productLocation'],
                 selectedChips)) {
               showMessage = false;
-
               return ItemCardWidget(
                 setStateParent: widget.setStateParent,
                 index: index,
