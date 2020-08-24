@@ -50,6 +50,16 @@ void onPressedRegister(BuildContext context, String fullName, String email,
           'userID': userID,
         });
 
+        db.collection("usersEmail").document(registerEmail).setData({
+          'fullName': registerFullName,
+          'email': registerEmail,
+          'password': registerPassword,
+          'phoneNumber': registerPhoneNumber,
+          'userID': userID,
+        });
+
+        print('korisnik uspješno ubačen u bazi');
+
         loginPrefs(context, registerEmail, userID);
 
         globals.email = registerEmail;

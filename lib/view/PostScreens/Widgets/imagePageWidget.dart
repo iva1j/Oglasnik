@@ -443,7 +443,7 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
                 productImg3,
                 productprice,
               );
-              myProductList.add(productID);
+              myProductList.add(productID); 
               createSwitcher = false;
 
               img1 = immutableImg1;

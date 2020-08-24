@@ -119,3 +119,7 @@ String oldProductID;
 
 List<String> myProductList = List<String>();
 
+List<String> allUsersList = List<String>();
+
+List<DocumentSnapshot> currentUser = List<DocumentSnapshot>();
+List<String> current = List<String>();

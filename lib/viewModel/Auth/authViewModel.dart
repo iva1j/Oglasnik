@@ -4,6 +4,7 @@ import 'package:Oglasnik/model/userModel.dart';
 import 'package:Oglasnik/utils/globals.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
+// import 'package:Oglasnik/utils/shared/globalVariables.dart' as globals;
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
@@ -60,38 +61,45 @@ class AuthService extends ChangeNotifier {
         });
   }
 
-//if statement must be replaced with correct validation; currently status represents user in firestore (user existed)
   onPressedAlertDialog(
     BuildContext context,
-    String email,
   ) async {
-    print('UserIDGLobal ima vrijednost: '+userIDGlobal);
     String token = randomAlphaNumeric(5);
     FocusScope.of(context).unfocus();
     FocusScope.of(context).requestFocus(new FocusNode()); //remove focus
     await InternetConnectivity().checkForConnectivity();
-
+    print('email: ' + email.toString());
     (hasActiveConnection)
-        ? Timer(Duration(milliseconds: 1000), () {
+        // ? (globals.email != null)
+        ? Timer(Duration(milliseconds: 1000), () async {
             if (alertFormKey.currentState.validate() &&
                 allowUserToChangePassword == true) {
+              await AuthService().checkUserEmail(forgetEmail);
+
               WidgetsBinding.instance.addPostFrameCallback((_) {});
-              db.collection("firestoreUsers").document(userIDGlobal).updateData({
-               // 'email': email,
+              db
+                  .collection("firestoreUsers")
+                  .document(userIDGlobal)
+                  .updateData({
+                // 'email': email,
                 'token': token,
               });
               Navigator.of(context)
                   .pushReplacement(FadeRoute(page: PasswordChange(email)));
-
               sendemail(token);
+              // globals.userIDGlobal = null;
+              // globals.forgetEmail = '';
               print('Za korisnika: ' +
-                  email +
+                  email.toString() +
                   ' uspješno generisan token(na mail i firestore poslan), a on je: ' +
                   token);
             } else {
               print('Korisnik ne postoji u bazi!');
             }
           })
+        // : Timer(Duration(milliseconds: 1000), () {
+        //     print('Korisnik nije logovan, ovaj dio potrebno je uraditi!');
+        //   })
         : displayInternetDialog(context);
   }
 
@@ -117,21 +125,22 @@ class AuthService extends ChangeNotifier {
           'token': '',
           'password': newPassword,
         });
-        print(email);
-        print('korisniku sa emailom: ' +
-            email +
-            ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
-            newPassword);
-        email = null;
-        phoneNumber = null;
+        // print(email.toString());
+        // print('korisniku sa emailom: ' +
+        //     email.toString() +
+        //     ' uspješno promijenjena lozinka. \nNova lozinka je: ' +
+        //     newPassword);
+        // email = null;
+
+        // phoneNumber = null;
         await FirebaseAuth.instance.signOut();
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.remove('email');
         prefs.remove('phoneNumber');
-        print("email: " +
-            email.toString() +
-            " phoneNumber: " +
-            phoneNumber.toString());
+        // print("email: " +
+        //     email.toString() +
+        //     " phoneNumber: " +
+        //     phoneNumber.toString());
         Navigator.of(context).pushAndRemoveUntil(
             FadeRoute(page: AnonymousHome()), (Route<dynamic> route) => false);
       }
@@ -144,6 +153,7 @@ class AuthService extends ChangeNotifier {
         print('lozinke se ne poklapaju');
       }
     });
+    // globals.userIDGlobal = null;
   }
 
 //tokenChecker
@@ -243,6 +253,18 @@ class AuthService extends ChangeNotifier {
     }
   }
 
+  checkUserEmail(String userEmail) async {
+    final QuerySnapshot result = await Firestore.instance
+        .collection('usersEmail')
+        .where('email', isEqualTo: userEmail)
+        .limit(1)
+        .getDocuments();
+    currentUser.clear();
+    currentUser = result.documents;
+    userIDGlobal = currentUser[0]['userID'];
+    print('rezultat userIDGlobal: ' + userIDGlobal.toString());
+  }
+
   allowPasswordChange(BuildContext context, String email) {
     FutureBuilder(
         future: AuthService().isEmailValid(email),
@@ -259,7 +281,25 @@ class AuthService extends ChangeNotifier {
         });
   }
 
-  //above alert dialog checker
+  getUserID() {
+    List<DocumentSnapshot> checkAllProducts = List<DocumentSnapshot>();
+    List<String> correctProduct = List<String>();
+    FutureBuilder(
+        future: db.collection('firestoreUsers').getDocuments(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            checkAllProducts = snapshot.data.documents;
+            print(checkAllProducts[0]);
+            checkAllProducts.forEach((element) {
+              correctProduct.add(element['userID']);
+            });
+            print('userID svih korisnika:');
+            print(correctProduct);
+            return null;
+          } else
+            return null;
+        });
+  }
 
   updateUser(User updatedUser, String oldEmail, String text) {}
 }
