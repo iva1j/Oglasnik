@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/colors_and_themes/colors.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/mainbody.dart';
 import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
@@ -42,7 +43,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
         backgroundColor: AppBarTheme.of(context).color,
         centerTitle: true,
         title: Text(
-          'Oglasnik',
+          RegistereHomePages().naslov,
           style: TextStyle(
             fontFamily: 'Amaranth',
           ),
