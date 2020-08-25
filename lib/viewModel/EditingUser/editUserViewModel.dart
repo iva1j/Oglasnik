@@ -73,10 +73,17 @@ void userChangedData(BuildContext context) {
     'email': updateProfileEmail,
     'phoneNumber': updateProfilePhoneNumber,
   });
+
+  db.collection("usersEmail").document(email).updateData({
+    'fullName': updateProfileName,
+    'email': updateProfileEmail,
+    'phoneNumber': updateProfilePhoneNumber,
+  });
   if (updateProfileEmail != email) {
     myProductList.forEach((element) {
       db.collection('products').document(element).updateData({
         'email': updateProfileEmail,
+        
       });
     });
 
@@ -90,6 +97,14 @@ void userChangedData(BuildContext context) {
 
 void userChangedProfile() {
   db.collection("firestoreUsers").document(userIDGlobal).setData({
+    'fullName': updateProfileName,
+    'email': updateProfileEmail,
+    'password': updateProfilePassword,
+    'phoneNumber': updateProfilePhoneNumber,
+    'userID': userIDGlobal
+  });
+
+   db.collection("usersEmail").document(email).setData({
     'fullName': updateProfileName,
     'email': updateProfileEmail,
     'password': updateProfilePassword,
