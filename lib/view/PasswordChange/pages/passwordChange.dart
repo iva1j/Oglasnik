@@ -5,9 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-String token, newPassword, confirmPassword, passwordConfirm;
-bool doesMatch = false;
-
 // ignore: must_be_immutable
 class PasswordChange extends StatefulWidget {
   String email;
