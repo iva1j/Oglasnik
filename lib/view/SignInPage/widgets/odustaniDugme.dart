@@ -1,4 +1,4 @@
-import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
+import 'package:Oglasnik/viewModel/SignIn/signInViewModel.dart';
 import 'package:flutter/material.dart';
 
 class OdustaniDugme extends StatelessWidget {
