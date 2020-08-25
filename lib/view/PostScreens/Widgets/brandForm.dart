@@ -14,7 +14,6 @@ class BrandForm extends StatefulWidget {
 }
 
 class _BrandFormState extends State<BrandForm> {
-  List<String> hambe = ["AHAHAHA", "JAHAHAA"];
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -42,11 +41,7 @@ class _BrandFormState extends State<BrandForm> {
                   height: 1.5,
                 ),
                 underline: Container(),
-                onChanged:
-                    // (dropdownValueCategory == 'Kategorija1')
-                    //     ? null
-                    //     :
-                    (String productBrandList) => setState(() {
+                onChanged: (String productBrandList) => setState(() {
                   dropdownValueBrand = productBrandList;
                 }),
                 items: List<String>.from(categoryBrands[dropdownValueCategory])

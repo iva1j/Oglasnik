@@ -15,7 +15,7 @@ Container imageOneUploadButton(dynamic function, dynamic functionDelete) {
                 icon: Icon(
                   Icons.delete,
                 ),
-                onPressed: functionDelete)
+                onPressed: () => functionDelete)
             : image1Name == null
                 ? IconButton(
                     icon: Icon(
@@ -27,7 +27,7 @@ Container imageOneUploadButton(dynamic function, dynamic functionDelete) {
                     icon: Icon(
                       Icons.delete,
                     ),
-                    onPressed: functionDelete),
+                    onPressed: () => functionDelete),
         FlatButton.icon(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),

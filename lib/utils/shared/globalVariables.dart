@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 
 PageController pageController = PageController(initialPage: 0);
@@ -76,6 +77,7 @@ bool registeredGlob = false;
 bool createdGlob = false;
 bool isLoading = false;
 bool doesPop = true;
+bool loadingGlob = false;
 
 String slika1;
 
@@ -119,3 +121,6 @@ String oldProductID;
 
 List<String> myProductList = List<String>();
 
+String path1, path2, path3;
+String fileName1, fileName2, fileName3;
+FileType imageType = FileType.image;

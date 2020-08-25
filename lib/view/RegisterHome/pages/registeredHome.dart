@@ -5,6 +5,7 @@ import 'package:Oglasnik/view/AnonymousHome/widgets/bottomSheet.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/searchPage.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloatingButton.dart';
 import 'package:Oglasnik/viewModel/EditingUser/editUserViewModel.dart';
+import 'package:Oglasnik/viewModel/ImageUpload/resetGlobalVariables.dart';
 import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
@@ -36,6 +37,8 @@ class _RegisteredHomeState extends State<RegisteredHome> {
     EditProfile().isEmailReserved(email);
     allProducts.clear();
     ProductViewModel().getProducts().then((value) => allProducts = value);
+    resetGlobalVariables();
+    loadingGlob = false;
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
