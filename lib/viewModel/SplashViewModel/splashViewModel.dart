@@ -26,7 +26,7 @@ Future<void> splashScreenRouter() async {
   getMyProducts().then((value) =>
       {for (final x in value) globals.myProductList.add(x['productID'])});
 
-  globals.userIDGlobal = null;
+  // globals.userIDGlobal = null;
   // getAllUsers().then((value) =>
   //     {for (final x in value) globals.allUsersList.add(x['userID'])});
   // print('lista user idijeva: ');

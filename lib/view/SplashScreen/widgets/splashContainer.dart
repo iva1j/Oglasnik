@@ -1,4 +1,6 @@
 import 'package:Oglasnik/utils/shared/PageLogos/splashLogo.dart';
+import 'package:Oglasnik/utils/strings.dart';
+import 'package:Oglasnik/view/SplashScreen/widgets/oglasnikMoto.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
@@ -30,27 +32,7 @@ class SplashContainer extends StatelessWidget {
             ],
           ),
         ),
-        Column(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(top: 180),
-              child: FadeAnimatedTextKit(
-                onTap: () {
-                  print("Tap Event");
-                },
-                text: [
-                  "Pronađi nešto za sebe",
-                ],
-                duration: Duration(milliseconds: 1500),
-                textStyle: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontFamily: 'Roboto',
-                ),
-              ),
-            ),
-          ],
-        ),
+        OglasnikMoto(),
       ],
     );
   }
