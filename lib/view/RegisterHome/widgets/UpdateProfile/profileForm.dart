@@ -5,6 +5,7 @@ import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileForm/upd
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileForm/updateNameProfile.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/UpdateProfile/profileForm/updatePhoneProfile.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
+import 'package:Oglasnik/viewModel/EditingUser/editUserViewModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -35,10 +36,7 @@ class _ProfileFormState extends State<ProfileForm> {
           child: Column(
             children: <Widget>[
               FutureBuilder(
-                  future: Firestore.instance
-                      .collection('firestoreUsers')
-                      .where('email', isEqualTo: email)
-                      .getDocuments(),
+                  future: EditProfile().getUsersFromdb(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (!snapshot.hasData)
                       return CategoryLoading();

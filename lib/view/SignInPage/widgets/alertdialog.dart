@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'alertDialogWidget.dart';
 
 String emailAlertDialog;
-
-
 displayDialog(BuildContext context) async {
   return showDialog(
     context: context,

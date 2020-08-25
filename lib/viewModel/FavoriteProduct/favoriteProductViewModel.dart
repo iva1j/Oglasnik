@@ -6,10 +6,6 @@ import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/productDetails.
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-/// Faruk Cidic
-///
-/// This future builder store favorite products in a list to specific user
-///
 class FavoriteProduct extends AddFavoriteProductInterface {
   @override
   Future addFavorite(String email, DocumentSnapshot product, String userID) {

@@ -3,7 +3,6 @@ import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PasswordChangeTextFi
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PasswordChangeTextFields/novaLozinkaTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PasswordChangeTextFields/potvrdiLozinkuTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PasswordChangeTextFields/unesiKodTextField.dart';
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/PasswordChange/widgets/buttonPasswordChange.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
 import 'package:flutter/material.dart';

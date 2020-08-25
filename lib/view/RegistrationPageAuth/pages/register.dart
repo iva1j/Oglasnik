@@ -3,14 +3,14 @@ import 'package:Oglasnik/utils/groupOfFunctions.dart';
 import 'package:Oglasnik/utils/shared/PageLogos/mainLogo.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/backButtonsIphone/backButtonIphone.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/registerButton.dart';
-import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/formSignUp.dart';
+import 'package:Oglasnik/view/RegistrationPageAuth/widgets/registerBottomToggle.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/signUpFormName.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
-import 'package:Oglasnik/view/SignInPage/pages/signin.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
+import 'package:Oglasnik/viewModel/Register/registerViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
@@ -41,11 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return GestureDetector(
       onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus &&
-            currentFocus.focusedChild != null) {
-          currentFocus.focusedChild.unfocus();
-        }
+        onTapRemoveFocusRegister(context);
       },
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -54,32 +50,7 @@ class _RegisterPageState extends State<RegisterPage> {
           elevation: 0.0,
           leading: backButtonIphone(context),
         ),
-        bottomNavigationBar: Padding(
-          padding: EdgeInsets.only(left: 100.0, right: 100.0, bottom: 5.0),
-          child: FlatButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-              side: BorderSide(
-                color: Colors.white,
-                style: BorderStyle.solid,
-              ),
-            ),
-            color: Colors.white,
-            onPressed: () {
-              FocusScope.of(context).requestFocus(new FocusNode());
-              Navigator.of(context)
-                  .pushReplacement(FadeRoute(page: SigninPage()));
-            },
-            child: Text(
-              RegistrationPageAuthPages().prijava,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal),
-            ),
-          ),
-        ),
+        bottomNavigationBar: RegisterBottomToggleButton(),
         body: WillPopScope(
           // ignore: missing_return
           onWillPop: () {

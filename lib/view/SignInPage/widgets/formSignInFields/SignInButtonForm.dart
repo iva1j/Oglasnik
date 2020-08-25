@@ -1,11 +1,8 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/FormSignIn.dart';
-
-import 'package:Oglasnik/viewModel/SignIn/SignInViewModel.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/signFormIn.dart';
+import 'package:Oglasnik/viewModel/SignIn/signInViewModel.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter/cupertino.dart';
 
 String email, password;

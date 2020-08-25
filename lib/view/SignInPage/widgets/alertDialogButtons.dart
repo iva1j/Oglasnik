@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/odustaniDugme.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/posaljiKodDugme.dart';
 import 'package:Oglasnik/viewModel/Auth/authViewModel.dart';
