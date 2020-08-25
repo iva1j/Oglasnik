@@ -35,5 +35,15 @@ Future getMyProducts() async {
       .collection('myProducts')
       .getDocuments();
   List<DocumentSnapshot> productList = myProducts.documents;
+
   return productList;
+}
+
+Future getAllUsers() async {
+  final QuerySnapshot myUsers =
+      await Firestore.instance.collection('firestoreUsers').getDocuments();
+  List<DocumentSnapshot> usersList = myUsers.documents;
+  print('documentSnapshot');
+  print(usersList[0]['userID']);
+  return usersList;
 }

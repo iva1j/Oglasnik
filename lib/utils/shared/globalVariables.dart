@@ -124,3 +124,7 @@ List<String> myProductList = List<String>();
 String path1, path2, path3;
 String fileName1, fileName2, fileName3;
 FileType imageType = FileType.image;
+List<String> allUsersList = List<String>();
+
+List<DocumentSnapshot> currentUser = List<DocumentSnapshot>();
+List<String> current = List<String>();

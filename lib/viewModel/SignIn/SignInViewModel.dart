@@ -113,7 +113,6 @@ allowPasswordChange(BuildContext context, String email) {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
           testUser = snapshot.data.documents;
-          //print('sejhul kurra: Omer Faruk Bukurević');
           //print(testUser[0]["email"]);
 
           // (email != testUser[0]["email"])
@@ -163,5 +162,5 @@ createdShowDialog(BuildContext context) {
 ///When user enter his email on AlertDialog, button "pošalji" is configured bellow
 void onPressedPosaljiKod(BuildContext context) async {
   Container(child: AuthService().allowPasswordChange(context, forgetEmail));
-  AuthService().onPressedAlertDialog(context, forgetEmail);
+  await AuthService().onPressedAlertDialog(context);
 }

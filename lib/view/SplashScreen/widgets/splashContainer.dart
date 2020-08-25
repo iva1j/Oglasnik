@@ -41,61 +41,16 @@ class SplashContainer extends StatelessWidget {
                 text: [
                   "Pronađi nešto za sebe",
                 ],
-                duration: Duration(milliseconds: 1000),
+                duration: Duration(milliseconds: 1500),
                 textStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontFamily: 'Roboto',
-                    // fontWeight: FontWeight.bold
-                    ),
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontFamily: 'Roboto',
+                ),
               ),
             ),
-            // Container(
-            //   // margin: EdgeInsets.only(top: 180),
-            //   child: FadeAnimatedTextKit(
-            //     onTap: () {
-            //       print("Tap Event");
-            //     },
-            //     text: [
-            //       "nesto",
-            //     ],
-            //     duration: Duration(milliseconds: 1000),
-            //     textStyle: TextStyle(
-            //         color: Colors.white,
-            //         fontSize: 22,
-            //         fontFamily: 'Amaranth',
-            //         // fontWeight: FontWeight.bold
-            //         ),
-            //   ),
-            // ),
-            // Container(
-            //   // margin: EdgeInsets.only(top: 180),
-            //   child: FadeAnimatedTextKit(
-            //     onTap: () {
-            //       print("Tap Event");
-            //     },
-            //     text: ["za SEBE!"],
-            //     duration: Duration(milliseconds: 1000),
-            //     textStyle: TextStyle(
-            //         color: Colors.white,
-            //         fontSize: 22,
-            //         fontFamily: 'Amaranth',
-            //         // fontWeight: FontWeight.bold
-            //         ),
-            //   ),
-            // ),
           ],
         ),
-
-        // child: Text(
-        //   'OGLASNIK',
-        //   style: TextStyle(
-        //       color: Colors.white,
-        //       fontSize: 20,
-        //       fontFamily: 'Amaranth',
-        //       fontWeight: FontWeight.bold),
-        // ),
-        //   ),
       ],
     );
   }
