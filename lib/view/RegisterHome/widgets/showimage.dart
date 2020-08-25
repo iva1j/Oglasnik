@@ -1,6 +1,4 @@
-import 'package:Oglasnik/view/RegisterHome/widgets/ProductsCards/categoryLoading.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/blackSpinnerCircular.dart';
-import 'package:Oglasnik/view/RegisterHome/widgets/spinnerCircular.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
