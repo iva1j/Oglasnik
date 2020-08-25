@@ -41,7 +41,7 @@ class SplashContainer extends StatelessWidget {
                 text: [
                   "Pronađi nešto za sebe",
                 ],
-                duration: Duration(milliseconds: 1000),
+                duration: Duration(milliseconds: 1500),
                 textStyle: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
