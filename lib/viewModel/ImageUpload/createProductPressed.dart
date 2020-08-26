@@ -1,12 +1,13 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:Oglasnik/viewModel/ImageUpload/initValuesOnProductCreated.dart';
-import 'package:Oglasnik/viewModel/ImageUpload/uploadImageAndPrintName.dart';
+import 'package:Oglasnik/viewModel/ImageUpload/uploadImageAndPrintNameCreate.dart';
+import 'package:Oglasnik/viewModel/ImageUpload/uploadImageAndPrintNameUpdate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:random_string/random_string.dart';
 
 createProductPressed(BuildContext context) async {
-  await uploadImageAndPrintName();
+  await uploadImageAndPrintNameCreate();
   initValuesOnProductCreated();
 
   await CreateProduct().createProduct(
