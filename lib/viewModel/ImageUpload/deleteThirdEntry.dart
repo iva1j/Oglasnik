@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:flutter/cupertino.dart';
 
 deleteThirdEntry() {
   if (createSwitcher) {
@@ -13,5 +14,4 @@ deleteThirdEntry() {
       productImg3Update = null;
     }
   }
-  //refresh();
 }

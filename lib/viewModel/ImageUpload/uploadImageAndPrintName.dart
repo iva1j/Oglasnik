@@ -2,7 +2,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/viewModel/ImageUpload/upload.dart';
 
-Future uploadImageAndPrintName() async {
+uploadImageAndPrintName() async {
   if (img1 != immutableImg1)
     await upload(img1, pathGlobal1, 1).then((value) => productImg1 = value);
   if (img2 != immutableImg2)

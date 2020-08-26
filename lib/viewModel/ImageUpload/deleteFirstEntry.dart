@@ -1,5 +1,6 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
+import 'package:flutter/cupertino.dart';
 
 deleteFirstEntry() {
   if (createSwitcher) {

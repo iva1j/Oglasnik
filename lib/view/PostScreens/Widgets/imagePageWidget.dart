@@ -1,7 +1,16 @@
 import 'package:Oglasnik/model/productModel.dart';
+import 'package:Oglasnik/utils/globals.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
+import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
+import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageFiveSubmit.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
+import 'package:Oglasnik/viewModel/ImageUpload/createProductPressed.dart';
+import 'package:Oglasnik/viewModel/ImageUpload/resetGlobalVariables.dart';
+import 'package:Oglasnik/viewModel/ImageUpload/updateProductPressed.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/margins.dart';
@@ -11,7 +20,6 @@ import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageThre
 import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageTwoUploadButton.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/mainTitle.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/pageFiveSubmit.dart';
 import 'package:Oglasnik/viewModel/ImageUpload/deleteFirstEntry.dart';
 import 'package:Oglasnik/viewModel/ImageUpload/deleteSecondEntry.dart';
 import 'package:Oglasnik/viewModel/ImageUpload/deleteThirdEntry.dart';
@@ -46,8 +54,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
 
   String _path1, _path2, _path3;
   String _fileName1, _fileName2, _fileName3;
-
   FileType _imageType = FileType.image;
+
+  bool loading = false;
 
   void openFileExplorer1() async {
     _path1 = await FilePicker.getFilePath(type: _imageType);
@@ -97,9 +106,9 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           Container(
             margin: Margin().only(0, 16, 0, 0),
           ),
-          imageOneUploadButton(openFileExplorer1, deleteFirstEntry),
-          imageTwoUploadButton(openFileExplorer2, deleteSecondEntry),
-          imageThreeUploadButton(openFileExplorer3, deleteThirdEntry),
+          imageOneUploadButton(openFileExplorer1, deleteFirstEntry, refresh),
+          imageTwoUploadButton(openFileExplorer2, deleteSecondEntry, refresh),
+          imageThreeUploadButton(openFileExplorer3, deleteThirdEntry, refresh),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -118,10 +127,10 @@ class _ImagePageWidgetState extends State<ImagePageWidget> {
           ),
           Container(
             margin: Margin().only(0, 1, 0, 0),
-            child: PageFiveSubmit(
-              context: context,
-              onFlatButtonPressed: onFlatButtonPressed,
-              refresh: refresh,
+            child: pageViewSubmitButton(
+              context,
+              onFlatButtonPressed,
+              refresh,
             ),
           ),
         ],

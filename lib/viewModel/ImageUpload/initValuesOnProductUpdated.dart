@@ -1,7 +1,7 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 void initValuesOnProductUpdated() {
-  loadingGlob = true;
+  //loadingGlob = true;
   createdGlob = true;
   azurload = true;
   productName = updateProductNameReturn == null

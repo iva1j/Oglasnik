@@ -1,7 +1,7 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
-void initValuesOnProductCreated() {
-  loadingGlob = true;
+initValuesOnProductCreated() {
+  //loadingGlob = true;
   //createdGlob = true;
 
   productName = newProductNameReturn;

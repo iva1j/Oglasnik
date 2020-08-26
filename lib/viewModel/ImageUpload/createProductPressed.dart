@@ -3,14 +3,14 @@ import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:Oglasnik/viewModel/ImageUpload/initValuesOnProductCreated.dart';
-import 'package:Oglasnik/viewModel/ImageUpload/resetGlobalVariables.dart';
 import 'package:Oglasnik/viewModel/ImageUpload/uploadImageAndPrintName.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:random_string/random_string.dart';
 
-Future createProductPressed(BuildContext context) async {
-  uploadImageAndPrintName();
+createProductPressed(BuildContext context) async {
+  await uploadImageAndPrintName();
   initValuesOnProductCreated();
+
   await CreateProduct().createProduct(
     context,
     email,
@@ -29,9 +29,4 @@ Future createProductPressed(BuildContext context) async {
   );
   myProductList.add(productID);
   createSwitcher = false;
-
-  resetGlobalVariables();
-
-  Navigator.of(context).pushAndRemoveUntil(
-      FadeRoute(page: RegisteredHome()), (Route<dynamic> route) => false);
 }

@@ -4,7 +4,8 @@ import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/a
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 
-Container imageOneUploadButton(dynamic function, dynamic functionDelete) {
+Container imageOneUploadButton(
+    dynamic function, dynamic functionDelete, VoidCallback refresh) {
   return Container(
     alignment: Alignment.centerLeft,
     margin: Margin().only(0, 0, 0, 5),
@@ -15,7 +16,11 @@ Container imageOneUploadButton(dynamic function, dynamic functionDelete) {
                 icon: Icon(
                   Icons.delete,
                 ),
-                onPressed: () => functionDelete)
+                onPressed: () {
+                  functionDelete();
+                  refresh();
+                },
+              )
             : image1Name == null
                 ? IconButton(
                     icon: Icon(
@@ -27,7 +32,11 @@ Container imageOneUploadButton(dynamic function, dynamic functionDelete) {
                     icon: Icon(
                       Icons.delete,
                     ),
-                    onPressed: () => functionDelete),
+                    onPressed: () {
+                      functionDelete();
+                      refresh();
+                    },
+                  ),
         FlatButton.icon(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
