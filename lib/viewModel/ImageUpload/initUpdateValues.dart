@@ -1,7 +1,6 @@
 import 'package:Oglasnik/model/productModel.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/articlePageWidget.dart';
 
 String imageName(String imgURL) {
   return imgURL.substring(82, imgURL.indexOf('?alt=media'));
