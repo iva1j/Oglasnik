@@ -57,7 +57,7 @@ class ProductBrandContainer extends StatelessWidget {
                   Radius.circular(10),
                 ),
               ),
-              margin: Margin().only(4, 0, 5, 5),
+              margin: Margin().only(2, 3, 5, 5),
               child: Container(
                 height: SizeConfig.blockSizeVertical * 25,
                 child: Row(

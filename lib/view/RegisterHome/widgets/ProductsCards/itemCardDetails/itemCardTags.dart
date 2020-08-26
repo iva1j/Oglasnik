@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 
 Container itemCardTags(DocumentSnapshot snapshot) {
   return Container(
-    width: email != snapshot['email']
-        ? SizeConfig.blockSizeHorizontal * 75
-        : SizeConfig.blockSizeHorizontal * 85,
+    width: email == null
+        ? SizeConfig.blockSizeHorizontal * 85
+        : email != snapshot['email']
+            ? SizeConfig.blockSizeHorizontal * 75
+            : SizeConfig.blockSizeHorizontal * 85,
     child: SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(

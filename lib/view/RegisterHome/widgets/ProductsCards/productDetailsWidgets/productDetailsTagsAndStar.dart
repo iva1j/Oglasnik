@@ -27,7 +27,7 @@ class _ProductDetailsTagsAndStarState extends State<ProductDetailsTagsAndStar> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        productDetailsTagsWidget(widget.index),
+        productDetailsTagsWidget(widget.index), 
         email != widget.docs[widget.index]['email']
             ? Container(
                 child: IconButton(

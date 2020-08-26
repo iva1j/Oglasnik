@@ -53,7 +53,7 @@ class _CategoryCardContainerState extends State<CategoryCardContainer> {
                   Material(
                     color: Colors.transparent,
                     child: categoryNameRow(context, index),
-                  ),
+                  ), 
                   Divider(
                     thickness: SizeConfig.blockSizeVertical * 0.2,
                   ),
@@ -64,7 +64,7 @@ class _CategoryCardContainerState extends State<CategoryCardContainer> {
                         if (snapshot.hasData) {
                           List<String> names = snapshot.data.keys.toList();
                           List<dynamic> counts = snapshot.data.values.toList();
-                          return names.length == 3
+                          return names.length == 3 
                               ? threeCategoriesWidget(index, names, counts,
                                   categories[index].categoryName)
                               : names.length == 2
