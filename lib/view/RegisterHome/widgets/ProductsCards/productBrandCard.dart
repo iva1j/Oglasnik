@@ -65,7 +65,6 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                   }
                 }),
           ),
-          //neki kom
           SizedBox(
             height: SizeConfig.blockSizeVertical * 6,
           ),
