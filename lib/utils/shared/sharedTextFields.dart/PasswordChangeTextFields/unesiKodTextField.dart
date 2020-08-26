@@ -28,7 +28,6 @@ class UnesiKod extends StatelessWidget {
               hintText: 'Unesi kod',
               contentPadding: EdgeInsets.only(left: 10),
             ),
-            //controller: tokenInputController,
             initialValue: passwordChangedToken,
             onChanged: (value) => passwordChangedToken = value,
             validator: tokenValidator,

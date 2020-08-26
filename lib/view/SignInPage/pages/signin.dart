@@ -7,7 +7,7 @@ import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/AnonymousHome/pages/anonymousHome.dart';
 import 'package:Oglasnik/view/RegistrationPageAuth/widgets/welcomeScreen.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/SignInBottomToggle.dart';
-import 'package:Oglasnik/view/SignInPage/widgets/formSignIn.dart';
+import 'package:Oglasnik/view/SignInPage/widgets/signFormIn.dart';
 import 'package:Oglasnik/view/SignInPage/widgets/prijavaWelcomeScreen.dart';
 import 'package:Oglasnik/viewModel/SignIn/signInViewModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';

@@ -105,6 +105,9 @@ List<String> favoritesList = List<String>();
 
 List products = [];
 
+String token, newPassword, confirmPassword, passwordConfirm;
+bool doesMatch = false;
+
 class Data {
   List imagesPass;
   Data({this.imagesPass});

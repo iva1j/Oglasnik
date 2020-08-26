@@ -150,6 +150,7 @@ class SuccessAlertDialog {
 class SplashScreen {
   String splashText = "OGLASNIK";
   String fontFamily = "Roboto";
+  String animationText = "Pronađi nešto za sebe";
 }
 
 class ProductDetailsStrings {

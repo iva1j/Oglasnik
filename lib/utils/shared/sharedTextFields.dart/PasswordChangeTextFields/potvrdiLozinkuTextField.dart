@@ -1,6 +1,5 @@
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedvalidation/tokenandpassValidation/confirmPassValidator.dart';
-import 'package:Oglasnik/view/PasswordChange/pages/passwordChange.dart';
 import 'package:flutter/material.dart';
 
 class PovrdiLozinku extends StatelessWidget {
@@ -26,7 +25,6 @@ class PovrdiLozinku extends StatelessWidget {
               contentPadding: EdgeInsets.only(left: 10),
             ),
             obscureText: true,
-            //controller: confirmPasswordInputController,
             initialValue: confirmPasswordChanged,
             onChanged: (value) => confirmPasswordChanged = value,
             validator: confirmpasswordValidator,
