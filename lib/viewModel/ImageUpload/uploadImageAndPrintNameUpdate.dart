@@ -1,4 +1,3 @@
-import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/viewModel/ImageUpload/upload.dart';
 

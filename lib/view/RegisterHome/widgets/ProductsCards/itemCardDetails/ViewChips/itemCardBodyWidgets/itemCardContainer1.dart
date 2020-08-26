@@ -86,7 +86,7 @@ class _ItemCardContainer1State extends State<ItemCardContainer1> {
           email != null
               ? Row(
                   children: <Widget>[
-                    itemCardTags(widget.snapshot[widget.index]),
+                    itemCardTags(widget.snapshot[widget.index]), 
                     email != widget.snapshot[widget.index]['email']
                         ? Container(
                             child: IconButton(

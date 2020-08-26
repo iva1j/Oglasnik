@@ -56,8 +56,6 @@ class _ProductBrandCardState extends State<ProductBrandCard> {
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     categoryBrand = snapshot.data;
-                    //.map((doc) => Product.fromDocument(doc))
-                    //.toList();
                     return ProductBrandContainer(
                         categoryName: widget.categoryName);
                   } else {
