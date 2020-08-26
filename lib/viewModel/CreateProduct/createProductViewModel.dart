@@ -5,6 +5,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
+import 'package:Oglasnik/viewModel/ImageUpload/resetGlobalVariables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -124,13 +125,9 @@ void noviOglasButton(BuildContext context) {
   image1Name = null;
   image2Name = null;
   image3Name = null;
-  img1 = immutableImg1;
-  img2 = immutableImg2;
-  img3 = immutableImg3;
+  resetGlobalVariables();
   createSwitcher = true;
   azurload = false;
-  print("Create switcher je sada: ");
-  print(createSwitcher);
   Navigator.of(context).pushReplacement(
     FadeRoute(
       page: ArticlePage(

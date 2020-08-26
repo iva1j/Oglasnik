@@ -21,7 +21,7 @@ SizedBox pageViewSubmitButton(BuildContext context,
         if (pageController.page == 4) {
           if (productPriceFormKey.currentState.validate()) {
             onFlatButtonPressed();
-
+            azurload = true;
             loadingGlob = true;
             refresh();
             await updateProductPressed(context);
@@ -46,7 +46,7 @@ SizedBox pageViewSubmitButton(BuildContext context,
         if (pageController.page == 4) {
           if (productPriceFormKey.currentState.validate()) {
             onFlatButtonPressed();
-
+            azurload = false;
             loadingGlob = true;
             createdGlob = true;
             refresh();

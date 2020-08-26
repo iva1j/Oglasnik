@@ -10,6 +10,8 @@ void initCategoryNames() async {
   documents.forEach((element) {
     categoryNames.add(element["categoryName"]);
   });
+
+  categoryNames.sort();
 }
 
 ///funkcija koja povlaci iz baze produkte iz kolekcije kategorija na osnovu unikatnog id-a

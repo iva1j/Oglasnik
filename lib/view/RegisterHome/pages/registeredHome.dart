@@ -38,7 +38,7 @@ class _RegisteredHomeState extends State<RegisteredHome> {
     EditProfile().isEmailReserved(email);
     allProducts.clear();
     ProductViewModel().getProducts().then((value) => allProducts = value);
-    resetGlobalVariables();
+
     loadingGlob = false;
     SizeConfig().init(context);
     return Scaffold(
