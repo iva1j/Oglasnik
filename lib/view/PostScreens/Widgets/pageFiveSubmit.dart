@@ -12,10 +12,12 @@ class PageFiveSubmit extends StatefulWidget {
     Key key,
     @required this.context,
     @required this.onFlatButtonPressed,
+    @required this.refresh,
   }) : super(key: key);
 
   final BuildContext context;
   final VoidCallback onFlatButtonPressed;
+  final Function refresh;
 
   @override
   _PageFiveSubmitState createState() => _PageFiveSubmitState();
@@ -32,6 +34,8 @@ class _PageFiveSubmitState extends State<PageFiveSubmit> {
           if (pageController.page == 4) {
             if (productPriceFormKey.currentState.validate()) {
               widget.onFlatButtonPressed();
+              loadingGlob = true;
+              widget.refresh();
               await updateProductPressed(context);
             } else
               return null;
@@ -48,6 +52,9 @@ class _PageFiveSubmitState extends State<PageFiveSubmit> {
           if (pageController.page == 4) {
             if (productPriceFormKey.currentState.validate()) {
               widget.onFlatButtonPressed();
+              loadingGlob = true;
+              widget.refresh();
+              createdGlob = true;
               await createProductPressed(context);
             } else
               return null;

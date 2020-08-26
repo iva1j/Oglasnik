@@ -14,11 +14,12 @@ void resetGlobalVariables() {
   productImg1Update = null;
   productImg2Update = null;
   productImg3Update = null;
+  /*
   path1 = null;
   path2 = null;
   path3 = null;
   fileName1 = null;
   fileName2 = null;
   fileName3 = null;
-  imageType = null;
+  imageType = null;*/
 }

@@ -2,7 +2,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 void initValuesOnProductCreated() {
   loadingGlob = true;
-  createdGlob = true;
+  //createdGlob = true;
 
   productName = newProductNameReturn;
   productCategory = dropdownValueCategory;

@@ -1,3 +1,6 @@
+/*
+
+
 import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/sharedTextFields.dart/PageViewTextFields/priceTextField.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/imageUploadButtons/imageOneUploadButton.dart';
@@ -56,3 +59,4 @@ Container imageUploadContainer(BuildContext context, Function refresh,
     ),
   );
 }
+*/

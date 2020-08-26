@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 
 PageController pageController = PageController(initialPage: 0);
@@ -120,11 +119,11 @@ bool isDeleteShown3 = false;
 String oldProductID;
 
 List<String> myProductList = List<String>();
-
+/*
 String path1, path2, path3;
 String fileName1, fileName2, fileName3;
 FileType imageType = FileType.image;
 List<String> allUsersList = List<String>();
-
+*/
 List<DocumentSnapshot> currentUser = List<DocumentSnapshot>();
 List<String> current = List<String>();
