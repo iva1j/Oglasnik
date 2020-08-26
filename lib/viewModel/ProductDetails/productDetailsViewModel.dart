@@ -4,6 +4,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 import 'package:Oglasnik/utils/transitionFade.dart';
 import 'package:Oglasnik/view/PostScreens/pages/articlePage.dart';
+import 'package:Oglasnik/viewModel/ImageUpload/resetGlobalVariables.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,14 +12,11 @@ class ProductDetailsViewModel extends ProductDetailsInterface {
   @override
   void onUpdatePressed(BuildContext context, int index) {
     createSwitcher = false;
-
+    resetGlobalVariables();
     updateProductNameReturn = null;
     updateProductDescriptionReturn = null;
     updateProductPriceReturn = null;
     updateProductTagsReturn = null;
-    img1 = immutableImg1;
-    img2 = immutableImg2;
-    img3 = immutableImg3;
     Navigator.of(context).push(
       FadeRoute(
         page: ArticlePage(

@@ -2,6 +2,7 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
 
 void resetGlobalVariables() {
+  print("RESETUJU SE GLOBALNE VARIJABLE");
   img1 = immutableImg1;
   img2 = immutableImg2;
   img3 = immutableImg3;

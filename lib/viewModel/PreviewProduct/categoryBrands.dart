@@ -9,6 +9,7 @@ void initCategoryBrands() async {
   final List<DocumentSnapshot> documents = brandsQuery.documents;
   documents.forEach((element) {
     categoryBrands[element["categoryName"]] = element["brands"];
+    categoryBrands[element["categoryName"]].sort();
   });
 }
 
