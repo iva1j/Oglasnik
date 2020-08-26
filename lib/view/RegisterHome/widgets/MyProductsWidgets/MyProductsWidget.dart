@@ -58,7 +58,7 @@ class _MyProductsWidgetState extends State<MyProductsWidget> {
                       itemCount: myPosts.length,
                       itemBuilder: (_, int index) {
                         if (index == myPosts.length - 1) {
-                          if (locationIsSelected( 
+                          if (locationIsSelected(
                               myPosts[index]['productLocation'],
                               selectedChips)) {
                             widget.showMessage = false;
