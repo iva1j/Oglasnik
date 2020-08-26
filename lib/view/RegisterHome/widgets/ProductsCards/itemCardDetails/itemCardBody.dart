@@ -89,40 +89,12 @@ class _ItemCardBodyState extends State<ItemCardBody> {
                       ),
                     );
                   }
-
-                  // return itemCardBodyContainer(snapshot, showMessage, context);
                   return ItemCardBodyContainer(
                     snapshot: snapshot,
                     context: context,
                     setStateParent: widget.setStateParent,
                   );
-                })
-
-            // FutureBuilder(
-            //     future: Firestore.instance
-            //         .collection('products')
-            //         .where('productBrand',
-            //             isEqualTo: widget.widget.brandNameScreen)
-            //         .where('productCategory', isEqualTo: widget.categoryName)
-            //         .where('productFinished', isEqualTo: false)
-            //         .getDocuments(),
-            //     builder: (context, snapshot) {
-            //       if (!snapshot.hasData) {
-            //         return Container(
-            //           child: Center(
-            //             child: SpinnerCircular(),
-            //           ),
-            //         );
-            //       }
-
-            //       // return itemCardBodyContainer(snapshot, showMessage, context);
-            //       return ItemCardBodyContainer(
-            //         snapshot: snapshot,
-            //         context: context,
-            //         setStateParent: widget.setStateParent,
-            //       );
-            //     }),
-            ),
+                })),
       ],
     );
   }

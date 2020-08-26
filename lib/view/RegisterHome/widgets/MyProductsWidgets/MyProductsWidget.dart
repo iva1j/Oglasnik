@@ -28,9 +28,7 @@ class _MyProductsWidgetState extends State<MyProductsWidget> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child:
-          //extract Fahrudin
-          FutureBuilder(
+      child: FutureBuilder(
         future: Firestore.instance
             .collection('products')
             .where('email', isEqualTo: email)
@@ -83,7 +81,6 @@ class _MyProductsWidgetState extends State<MyProductsWidget> {
                               myPosts[index]['productLocation'],
                               selectedChips)) {
                             widget.showMessage = false;
-//extract
                             return ItemCardWidget(
                               setStateParent: widget.setStateParent,
                               index: index,

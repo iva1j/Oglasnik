@@ -22,6 +22,7 @@ AlertDialog successAlertDialog(BuildContext context) {
               ),
               Container(
                 margin: Margin().only(3, 0, 0, 0),
+                alignment: Alignment.centerLeft,
                 child: Text(
                   SuccessAlertDialog().opis2,
                   style: TextStyle(color: alertDialogTextColor),

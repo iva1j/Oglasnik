@@ -104,9 +104,6 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                                       "assets/images/nophoto.jpg"
                                                   ? Image.asset(
                                                       "assets/images/nophoto.jpg")
-                                                  /* : Image.network(
-                                                      imgUrl,
-                                                    ),*/
                                                   : CachedNetworkImage(
                                                       imageUrl: imgUrl,
                                                       placeholder:

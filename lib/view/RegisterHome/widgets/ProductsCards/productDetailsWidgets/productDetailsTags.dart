@@ -6,7 +6,9 @@ import 'package:Oglasnik/utils/shared/globalVariables.dart';
 
 Container productDetailsTagsWidget(int index) {
   return Container(
-    width: SizeConfig.blockSizeHorizontal * 75,
+    width: email != products[index].email
+        ? SizeConfig.blockSizeHorizontal * 75
+        : SizeConfig.blockSizeHorizontal * 85,
     child: SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(
