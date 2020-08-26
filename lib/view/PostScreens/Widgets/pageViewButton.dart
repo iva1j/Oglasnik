@@ -1,9 +1,8 @@
-import 'dart:async';
-
 import 'package:Oglasnik/utils/margins.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
+import 'package:Oglasnik/viewModel/CreateProduct/createProductViewModel.dart';
 import 'package:flutter/material.dart';
 
 class PageViewButton extends StatelessWidget {
@@ -20,42 +19,22 @@ class PageViewButton extends StatelessWidget {
         allowAutoValidate = true;
         if (pageController.page == 3) {
           if (productDescFormKey.currentState.validate()) {
-            FocusScope.of(context).requestFocus(new FocusNode());
-            Timer(Duration(milliseconds: 500), () {
-              pageController.nextPage(
-                  duration: Duration(milliseconds: 800), curve: Curves.ease);
-            });
+            CreateProduct().proceedToNextPage(context);
           } else
-            print('molimo popunite polje opis!');
-          return null;
+            return null;
         } else if (pageController.page == 2) {
           if (productTagFormKey.currentState.validate()) {
-            FocusScope.of(context).requestFocus(new FocusNode());
-            Timer(Duration(milliseconds: 500), () {
-              pageController.nextPage(
-                  duration: Duration(milliseconds: 800), curve: Curves.ease);
-            });
+            CreateProduct().proceedToNextPage(context);
           } else
-            print('molimo popunite polje oznake!');
-          return null;
+            return null;
         } else if (pageController.page == 1) {
-          print('key: ' + productCategoryDropDownKey.currentState.toString());
-          FocusScope.of(context).requestFocus(new FocusNode());
-          Timer(Duration(milliseconds: 500), () {
-            pageController.nextPage(
-                duration: Duration(milliseconds: 800), curve: Curves.ease);
-          });
+          CreateProduct().proceedToNextPage(context);
           return null;
         } else if (pageController.page == 0) {
           if (productNameFormKey.currentState.validate()) {
-            FocusScope.of(context).requestFocus(new FocusNode());
-            Timer(Duration(milliseconds: 500), () {
-              pageController.nextPage(
-                  duration: Duration(milliseconds: 800), curve: Curves.ease);
-            });
+            CreateProduct().proceedToNextPage(context);
           } else
-            print('molimo popunite polje naziv proizvoda!');
-          return null;
+            return null;
         }
       }),
     );

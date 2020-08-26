@@ -5,7 +5,8 @@ import 'package:Oglasnik/utils/strings.dart';
 import 'package:flutter/material.dart';
 
 //buttons for image upload located in imagePageWidget
-Container imageThreeUploadButton(dynamic function, dynamic functionDelete) {
+Container imageThreeUploadButton(
+    dynamic function, dynamic functionDelete, VoidCallback refresh) {
   return Container(
     alignment: Alignment.centerLeft,
     margin: Margin().only(0, 0, 0, 5),
@@ -16,7 +17,10 @@ Container imageThreeUploadButton(dynamic function, dynamic functionDelete) {
                 icon: Icon(
                   Icons.delete,
                 ),
-                onPressed: functionDelete)
+                onPressed: () {
+                  functionDelete();
+                  refresh();
+                })
             : image3Name == null
                 ? IconButton(
                     icon: Icon(
@@ -28,7 +32,10 @@ Container imageThreeUploadButton(dynamic function, dynamic functionDelete) {
                     icon: Icon(
                       Icons.delete,
                     ),
-                    onPressed: functionDelete),
+                    onPressed: () {
+                      functionDelete();
+                      refresh();
+                    }),
         FlatButton.icon(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),

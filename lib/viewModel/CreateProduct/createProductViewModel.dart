@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:Oglasnik/interface/productInterface.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
 import 'package:Oglasnik/utils/strings.dart';
@@ -86,6 +88,14 @@ class CreateProduct extends ProductInterface {
       'productImg3': productImg3,
     });
     return null;
+  }
+
+  void proceedToNextPage(BuildContext context) {
+    FocusScope.of(context).requestFocus(new FocusNode());
+    Timer(Duration(milliseconds: 500), () {
+      pageController.nextPage(
+          duration: Duration(milliseconds: 800), curve: Curves.ease);
+    });
   }
 }
 

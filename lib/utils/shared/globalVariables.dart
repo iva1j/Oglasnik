@@ -76,6 +76,7 @@ bool registeredGlob = false;
 bool createdGlob = false;
 bool isLoading = false;
 bool doesPop = true;
+bool loadingGlob = false;
 
 String slika1;
 
@@ -121,8 +122,11 @@ bool isDeleteShown3 = false;
 String oldProductID;
 
 List<String> myProductList = List<String>();
-
+/*
+String path1, path2, path3;
+String fileName1, fileName2, fileName3;
+FileType imageType = FileType.image;
 List<String> allUsersList = List<String>();
-
+*/
 List<DocumentSnapshot> currentUser = List<DocumentSnapshot>();
 List<String> current = List<String>();

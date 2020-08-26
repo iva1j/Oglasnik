@@ -1,50 +1,27 @@
-import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/transitionFade.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
+import 'package:Oglasnik/view/PostScreens/Widgets/napustiLeaveAlertDialogButton.dart';
+import 'package:Oglasnik/view/RegisterHome/widgets/deleteDialogButtons.dart';
 import 'package:flutter/material.dart';
 
-class OdustaniButtonDialog extends StatelessWidget {
-  const OdustaniButtonDialog({
+class LeaveAlertDialogButtons extends StatelessWidget {
+  const LeaveAlertDialogButtons({
     Key key,
   }) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return FlatButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2.0)),
-        color: Colors.white,
-        child: Text(
-          SuccessAlertDialog().odustani,
-          style: TextStyle(
-              color: Color.fromARGB(255, 226, 11, 48),
-              fontFamily: 'Roboto',
-              fontSize: 14),
-        ),
-        onPressed: () {
-          Navigator.of(context).pop();
-        });
-  }
-}
 
-class NapustiButtonDialog extends StatelessWidget {
-  const NapustiButtonDialog({
-    Key key,
-  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
-      color: Colors.white,
-      child: Text(
-        SuccessAlertDialog().napusti,
-        style: TextStyle(
-            color: Color.fromARGB(255, 226, 11, 48),
-            fontFamily: 'Roboto',
-            fontSize: 14),
+    return Container(
+      width: double.maxFinite,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Container(
+            child: NapustiButtonDialog(),
+          ),
+          Container(
+            child: OdustaniButtonDialog(),
+          ),
+        ],
       ),
-      onPressed: () {
-        Navigator.of(context).pushAndRemoveUntil(
-            FadeRoute(page: RegisteredHome()), (Route<dynamic> route) => false);
-      },
     );
   }
 }
