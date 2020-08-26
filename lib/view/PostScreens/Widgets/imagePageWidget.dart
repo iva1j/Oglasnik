@@ -1,16 +1,8 @@
 import 'package:Oglasnik/model/productModel.dart';
-import 'package:Oglasnik/utils/globals.dart';
-import 'package:Oglasnik/utils/shared/checkingInternetConnection/checkingInternet.dart';
-import 'package:Oglasnik/utils/shared/checkingInternetConnection/internetDialog.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-import 'package:Oglasnik/utils/shared/sharedbuttons/mainAppButtons/redButton.dart';
 import 'package:Oglasnik/utils/sizeconfig.dart';
 import 'package:Oglasnik/view/PostScreens/Widgets/pageFiveSubmit.dart';
-import 'package:Oglasnik/view/PostScreens/Widgets/pageViewButton.dart';
 import 'package:Oglasnik/view/RegisterHome/widgets/spinner.dart';
-import 'package:Oglasnik/viewModel/ImageUpload/createProductPressed.dart';
-import 'package:Oglasnik/viewModel/ImageUpload/resetGlobalVariables.dart';
-import 'package:Oglasnik/viewModel/ImageUpload/updateProductPressed.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:Oglasnik/utils/margins.dart';
