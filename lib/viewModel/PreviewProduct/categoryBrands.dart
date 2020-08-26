@@ -8,8 +8,12 @@ void initCategoryBrands() async {
       await Firestore.instance.collection('categoryBrand').getDocuments();
   final List<DocumentSnapshot> documents = brandsQuery.documents;
   documents.forEach((element) {
-    categoryBrands[element["categoryName"]] = element["brands"];
-    categoryBrands[element["categoryName"]].sort();
+    List<String> br = List<String>();
+    for (final x in element["brands"]) br.add(x.toString());
+    br.sort();
+    br.remove("Ostalo");
+    br.add("Ostalo");
+    categoryBrands[element["categoryName"]] = br;
   });
 }
 
