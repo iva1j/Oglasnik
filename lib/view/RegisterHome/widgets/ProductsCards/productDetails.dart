@@ -6,7 +6,6 @@ import 'package:Oglasnik/view/RegisterHome/widgets/mainFloatingButton/mainFloati
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:Oglasnik/utils/shared/globalVariables.dart';
-
 import 'package:Oglasnik/view/AnonymousHome/widgets/homeFloatingButton.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -68,7 +67,6 @@ class _ProductDetailsState extends State<ProductDetails> {
           }
           Navigator.of(context).pop(FadeRoute());
         },
-        //extract Fahrudin
         child: ProductDetailsWidget(widget: widget, imageSlider: imageSlider),
       ),
     );
