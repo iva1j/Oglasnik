@@ -6,13 +6,19 @@ deleteFirstEntry() {
   if (createSwitcher) {
     if (img2 != immutableImg2 && img3 != immutableImg3) {
       img1 = img2;
+      pathGlobal1 = pathGlobal2;
       img2 = img3;
+      pathGlobal2 = pathGlobal3;
       img3 = immutableImg3;
+      pathGlobal3 = null;
     } else if (img2 != immutableImg2) {
       img1 = img2;
+      pathGlobal1 = pathGlobal2;
       img2 = immutableImg2;
+      pathGlobal2 = null;
     } else {
       img1 = immutableImg1;
+      pathGlobal1 = null;
     }
   } else {
     if ((img2 != immutableImg2 || image2Name != null) &&

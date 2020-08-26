@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 deleteThirdEntry() {
   if (createSwitcher) {
     img3 = immutableImg3;
+    pathGlobal3 = null;
   } else {
     if (img3 != immutableImg3) {
       img3 = immutableImg3;
