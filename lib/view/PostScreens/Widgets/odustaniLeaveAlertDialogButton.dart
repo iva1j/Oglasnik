@@ -1,6 +1,4 @@
 import 'package:Oglasnik/utils/strings.dart';
-import 'package:Oglasnik/utils/transitionFade.dart';
-import 'package:Oglasnik/view/RegisterHome/pages/registeredHome.dart';
 import 'package:flutter/material.dart';
 
 class OdustaniButtonDialog extends StatelessWidget {
